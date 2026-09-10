@@ -36,7 +36,7 @@ const THRESHOLDS = {
   training: { min: 650 }, // ADR: "≈ 700"
   "job-work": { min: 450 }, // ADR: "≈ 500" — noindex, excluded from sitemap
   about: { min: 700 },
-  contact: { min: 300 },
+  contact: { min: 120 }, // ADR-0003: contact is a utility page (≤ 400 words), not an SEO target
   certifications: { min: 600 },
   "india-state": { min: 900, max: 1200 },
   "india-city": { min: 700, max: 900 },

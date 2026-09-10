@@ -1,6 +1,6 @@
 # Content audit
 
-Generated: 2026-09-10T21:03:36.898Z
+Generated: 2026-09-10T21:06:52.185Z
 Total pages: 260
 
 ## Summary by section
@@ -11,7 +11,7 @@ Total pages: 260
 | category | 4 | 996 | 1034 | 1360 |
 | certifications | 1 | 615 | 615 | 615 |
 | contact | 1 | 171 | 171 | 171 |
-| export-country | 30 | 1146 | 1243 | 1500 |
+| export-country | 30 | 1190 | 1291 | 1577 |
 | export-hub | 1 | 1017 | 1017 | 1017 |
 | home | 1 | 1020 | 1020 | 1020 |
 | india-city | 170 | 797 | 893 | 1017 |
@@ -29,7 +29,7 @@ Total pages: 260
 - Duplicate titles: none
 - Duplicate H1s: none
 - Pages with 0 or multiple H1s: none
-- **Thin pages below ADR §5 threshold (9):** /contact (171/300), /export/indonesia (1193/1200), /export/kuwait (1165/1200), /export/malaysia (1186/1200), /export/oman (1189/1200), /export/philippines (1146/1200), /export/qatar (1170/1200), /export/sri-lanka (1161/1200), /export/tanzania (1187/1200)
+- **Thin pages below ADR §5 threshold (1):** /export/philippines (1190/1200)
 - **Pages with noindex (1):** /services/laser-cutting-job-work
 
 ## All pages
@@ -40,36 +40,36 @@ Total pages: 260
 | /certifications | Licences & Certifications \| RA Machine | Licences & Certifications | 615 |
 | /contact | Contact RA Machine — Kolkata, India | Contact RA Machine | 171 |
 | /export | Laser Cutting Machine Exporter from India \| RA Machine | Laser Cutting Machine & Robotic Welding Exporter from India | 1017 |
-| /export/australia | Laser Cutting Machine Exporter to Australia \| RA Machine | Laser Cutting Machine Exporter to Australia — Fiber Laser & Robotic Welding from India | 1290 |
-| /export/bangladesh | Laser Cutting Machine Exporter to Bangladesh \| RA Machine | Laser Cutting Machine Exporter to Bangladesh — Fiber Laser & Robotic Welding from India | 1257 |
-| /export/brazil | Laser Cutting Machine Exporter to Brazil \| RA Machine | Laser Cutting Machine Exporter to Brazil — Fiber Laser & Robotic Welding from India | 1366 |
-| /export/canada | Laser Cutting Machine Exporter to Canada \| RA Machine | Laser Cutting Machine Exporter to Canada — Fiber Laser & Robotic Welding from India | 1374 |
-| /export/egypt | Laser Cutting Machine Exporter to Egypt \| RA Machine | Laser Cutting Machine Exporter to Egypt — Fiber Laser & Robotic Welding from India | 1244 |
-| /export/ethiopia | Laser Cutting Machine Exporter to Ethiopia \| RA Machine | Laser Cutting Machine Exporter to Ethiopia — Fiber Laser & Robotic Welding from India | 1240 |
-| /export/germany | Laser Cutting Machine Exporter to Germany \| RA Machine | Laser Cutting Machine Exporter to Germany — Fiber Laser & Robotic Welding from India | 1285 |
-| /export/indonesia | Laser Cutting Machine Exporter to Indonesia \| RA Machine | Laser Cutting Machine Exporter to Indonesia — Fiber Laser & Robotic Welding from India | 1193 |
-| /export/kenya | Laser Cutting Machine Exporter to Kenya \| RA Machine | Laser Cutting Machine Exporter to Kenya — Fiber Laser & Robotic Welding from India | 1214 |
-| /export/kuwait | Laser Cutting Machine Exporter to Kuwait \| RA Machine | Laser Cutting Machine Exporter to Kuwait — Fiber Laser & Robotic Welding from India | 1165 |
-| /export/malaysia | Laser Cutting Machine Exporter to Malaysia \| RA Machine | Laser Cutting Machine Exporter to Malaysia — Fiber Laser & Robotic Welding from India | 1186 |
-| /export/mexico | Laser Cutting Machine Exporter to Mexico \| RA Machine | Laser Cutting Machine Exporter to Mexico — Fiber Laser & Robotic Welding from India | 1335 |
-| /export/nepal | Laser Cutting Machine Exporter to Nepal \| RA Machine | Laser Cutting Machine Exporter to Nepal — Fiber Laser & Robotic Welding from India | 1316 |
-| /export/nigeria | Laser Cutting Machine Exporter to Nigeria \| RA Machine | Laser Cutting Machine Exporter to Nigeria — Fiber Laser & Robotic Welding from India | 1232 |
-| /export/oman | Laser Cutting Machine Exporter to Oman \| RA Machine | Laser Cutting Machine Exporter to Oman — Fiber Laser & Robotic Welding from India | 1189 |
-| /export/peru | Laser Cutting Machine Exporter to Peru \| RA Machine | Laser Cutting Machine Exporter to Peru — Fiber Laser & Robotic Welding from India | 1242 |
-| /export/philippines | Laser Cutting Machine Exporter to Philippines \| RA Machine | Laser Cutting Machine Exporter to Philippines — Fiber Laser & Robotic Welding from India | 1146 |
-| /export/poland | Laser Cutting Machine Exporter to Poland \| RA Machine | Laser Cutting Machine Exporter to Poland — Fiber Laser & Robotic Welding from India | 1208 |
-| /export/qatar | Laser Cutting Machine Exporter to Qatar \| RA Machine | Laser Cutting Machine Exporter to Qatar — Fiber Laser & Robotic Welding from India | 1170 |
-| /export/russia | Laser Cutting Machine Exporter to Russia \| RA Machine | Laser Cutting Machine Exporter to Russia — Fiber Laser & Robotic Welding from India | 1247 |
-| /export/saudi-arabia | Laser Cutting Machine Exporter to Saudi Arabia \| RA Machine | Laser Cutting Machine Exporter to Saudi Arabia — Fiber Laser & Robotic Welding from India | 1258 |
-| /export/south-africa | Laser Cutting Machine Exporter to South Africa \| RA Machine | Laser Cutting Machine Exporter to South Africa — Fiber Laser & Robotic Welding from India | 1234 |
-| /export/sri-lanka | Laser Cutting Machine Exporter to Sri Lanka \| RA Machine | Laser Cutting Machine Exporter to Sri Lanka — Fiber Laser & Robotic Welding from India | 1161 |
-| /export/tanzania | Laser Cutting Machine Exporter to Tanzania \| RA Machine | Laser Cutting Machine Exporter to Tanzania — Fiber Laser & Robotic Welding from India | 1187 |
-| /export/turkey | Laser Cutting Machine Exporter to Turkey \| RA Machine | Laser Cutting Machine Exporter to Turkey — Fiber Laser & Robotic Welding from India | 1228 |
-| /export/united-arab-emirates | Laser Cutting Machine Exporter to United Arab… \| RA Machine | Laser Cutting Machine Exporter to United Arab Emirates — Fiber Laser & Robotic Welding from India | 1383 |
-| /export/united-kingdom | Laser Cutting Machine Exporter to United… \| RA Machine | Laser Cutting Machine Exporter to United Kingdom — Fiber Laser & Robotic Welding from India | 1260 |
-| /export/united-states | Laser Cutting Machine Exporter to United States \| RA Machine | Laser Cutting Machine Exporter to United States — Fiber Laser & Robotic Welding from India | 1500 |
-| /export/uzbekistan | Laser Cutting Machine Exporter to Uzbekistan \| RA Machine | Laser Cutting Machine Exporter to Uzbekistan — Fiber Laser & Robotic Welding from India | 1268 |
-| /export/vietnam | Laser Cutting Machine Exporter to Vietnam \| RA Machine | Laser Cutting Machine Exporter to Vietnam — Fiber Laser & Robotic Welding from India | 1276 |
+| /export/australia | Laser Cutting Machine Exporter to Australia \| RA Machine | Laser Cutting Machine Exporter to Australia — Fiber Laser & Robotic Welding from India | 1344 |
+| /export/bangladesh | Laser Cutting Machine Exporter to Bangladesh \| RA Machine | Laser Cutting Machine Exporter to Bangladesh — Fiber Laser & Robotic Welding from India | 1305 |
+| /export/brazil | Laser Cutting Machine Exporter to Brazil \| RA Machine | Laser Cutting Machine Exporter to Brazil — Fiber Laser & Robotic Welding from India | 1425 |
+| /export/canada | Laser Cutting Machine Exporter to Canada \| RA Machine | Laser Cutting Machine Exporter to Canada — Fiber Laser & Robotic Welding from India | 1433 |
+| /export/egypt | Laser Cutting Machine Exporter to Egypt \| RA Machine | Laser Cutting Machine Exporter to Egypt — Fiber Laser & Robotic Welding from India | 1288 |
+| /export/ethiopia | Laser Cutting Machine Exporter to Ethiopia \| RA Machine | Laser Cutting Machine Exporter to Ethiopia — Fiber Laser & Robotic Welding from India | 1294 |
+| /export/germany | Laser Cutting Machine Exporter to Germany \| RA Machine | Laser Cutting Machine Exporter to Germany — Fiber Laser & Robotic Welding from India | 1339 |
+| /export/indonesia | Laser Cutting Machine Exporter to Indonesia \| RA Machine | Laser Cutting Machine Exporter to Indonesia — Fiber Laser & Robotic Welding from India | 1235 |
+| /export/kenya | Laser Cutting Machine Exporter to Kenya \| RA Machine | Laser Cutting Machine Exporter to Kenya — Fiber Laser & Robotic Welding from India | 1252 |
+| /export/kuwait | Laser Cutting Machine Exporter to Kuwait \| RA Machine | Laser Cutting Machine Exporter to Kuwait — Fiber Laser & Robotic Welding from India | 1209 |
+| /export/malaysia | Laser Cutting Machine Exporter to Malaysia \| RA Machine | Laser Cutting Machine Exporter to Malaysia — Fiber Laser & Robotic Welding from India | 1228 |
+| /export/mexico | Laser Cutting Machine Exporter to Mexico \| RA Machine | Laser Cutting Machine Exporter to Mexico — Fiber Laser & Robotic Welding from India | 1395 |
+| /export/nepal | Laser Cutting Machine Exporter to Nepal \| RA Machine | Laser Cutting Machine Exporter to Nepal — Fiber Laser & Robotic Welding from India | 1381 |
+| /export/nigeria | Laser Cutting Machine Exporter to Nigeria \| RA Machine | Laser Cutting Machine Exporter to Nigeria — Fiber Laser & Robotic Welding from India | 1279 |
+| /export/oman | Laser Cutting Machine Exporter to Oman \| RA Machine | Laser Cutting Machine Exporter to Oman — Fiber Laser & Robotic Welding from India | 1234 |
+| /export/peru | Laser Cutting Machine Exporter to Peru \| RA Machine | Laser Cutting Machine Exporter to Peru — Fiber Laser & Robotic Welding from India | 1285 |
+| /export/philippines | Laser Cutting Machine Exporter to Philippines \| RA Machine | Laser Cutting Machine Exporter to Philippines — Fiber Laser & Robotic Welding from India | 1190 |
+| /export/poland | Laser Cutting Machine Exporter to Poland \| RA Machine | Laser Cutting Machine Exporter to Poland — Fiber Laser & Robotic Welding from India | 1258 |
+| /export/qatar | Laser Cutting Machine Exporter to Qatar \| RA Machine | Laser Cutting Machine Exporter to Qatar — Fiber Laser & Robotic Welding from India | 1213 |
+| /export/russia | Laser Cutting Machine Exporter to Russia \| RA Machine | Laser Cutting Machine Exporter to Russia — Fiber Laser & Robotic Welding from India | 1310 |
+| /export/saudi-arabia | Laser Cutting Machine Exporter to Saudi Arabia \| RA Machine | Laser Cutting Machine Exporter to Saudi Arabia — Fiber Laser & Robotic Welding from India | 1311 |
+| /export/south-africa | Laser Cutting Machine Exporter to South Africa \| RA Machine | Laser Cutting Machine Exporter to South Africa — Fiber Laser & Robotic Welding from India | 1280 |
+| /export/sri-lanka | Laser Cutting Machine Exporter to Sri Lanka \| RA Machine | Laser Cutting Machine Exporter to Sri Lanka — Fiber Laser & Robotic Welding from India | 1206 |
+| /export/tanzania | Laser Cutting Machine Exporter to Tanzania \| RA Machine | Laser Cutting Machine Exporter to Tanzania — Fiber Laser & Robotic Welding from India | 1229 |
+| /export/turkey | Laser Cutting Machine Exporter to Turkey \| RA Machine | Laser Cutting Machine Exporter to Turkey — Fiber Laser & Robotic Welding from India | 1277 |
+| /export/united-arab-emirates | Laser Cutting Machine Exporter to United Arab… \| RA Machine | Laser Cutting Machine Exporter to United Arab Emirates — Fiber Laser & Robotic Welding from India | 1434 |
+| /export/united-kingdom | Laser Cutting Machine Exporter to United… \| RA Machine | Laser Cutting Machine Exporter to United Kingdom — Fiber Laser & Robotic Welding from India | 1314 |
+| /export/united-states | Laser Cutting Machine Exporter to United States \| RA Machine | Laser Cutting Machine Exporter to United States — Fiber Laser & Robotic Welding from India | 1577 |
+| /export/uzbekistan | Laser Cutting Machine Exporter to Uzbekistan \| RA Machine | Laser Cutting Machine Exporter to Uzbekistan — Fiber Laser & Robotic Welding from India | 1327 |
+| /export/vietnam | Laser Cutting Machine Exporter to Vietnam \| RA Machine | Laser Cutting Machine Exporter to Vietnam — Fiber Laser & Robotic Welding from India | 1331 |
 | / | Laser Cutting Machine Manufacturer India \| RA Machine | Laser Cutting Machines Built in India, Trusted Worldwide | 1020 |
 | /india | Laser Cutting Machine Manufacturer in India \| RA Machine | Laser Cutting Machine & Robotic Welding Supplier Across India | 308 |
 | /india/andaman-and-nicobar-islands | Laser Cutting Machine in Andaman and Nicobar Islands | Laser Cutting Machine in Andaman and Nicobar Islands — Manufacturer, Supplier & Service | 1377 |

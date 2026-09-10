@@ -137,6 +137,10 @@ export default async function CountryExportPage({ params }: Props) {
           <AboutBlurb
             context={`This page covers export details specific to ${country.name}: manufacturing sectors we serve, shipping terms, power compatibility and the machines we supply there.`}
           />
+          <p className="max-w-prose text-grey-600">
+            Machines ship by sea to {country.ports.join(", ")}; urgent spares and small consignments travel by air
+            to {country.airports.join(", ")}. {country.currencyNote}
+          </p>
           <CtaGroup context={`an enquiry for ${country.name}`} />
         </div>
       </Section>

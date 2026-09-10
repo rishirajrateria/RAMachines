@@ -49,7 +49,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-white/30" />
         <Container>
           <Breadcrumbs items={[{ name: "Home", href: paths.home }]} />
-          <div className="glass-strong mx-auto mt-4 max-w-2xl p-8 text-center md:p-14">
+          <div className="glass-strong mx-auto mt-4 max-w-3xl p-8 text-center md:p-14">
             <p className="eyebrow justify-center">Manufactured in Kolkata · Exported worldwide</p>
             <h1 className="mt-4 font-display text-display-xl text-ink">
               Laser Cutting Machines Built in India, Trusted Worldwide
