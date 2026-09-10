@@ -3,17 +3,19 @@
  * Body copy is composed by lib/copy/country.ts `countrySections`; this file only
  * handles routing, metadata, JSON-LD and layout around that copy.
  *
- * ADR-0005 "Liquid Glass" page anatomy (docs/adr/0005-liquid-glass.md §6):
- * hero panel (H1, one sentence, 3 inline facts) → FactStrip (5 of voltage,
- * frequency, currency, ports, lead time, warranty) → "Why India" DividedList →
- * "Sectors" DividedList + 3 product tiles → Steps (6) → a prose column
- * (shipping, warranty/spares, regulatory — voltage/frequency/currency/ports
- * are not restated here, they are already in the hero and FactStrip) → Faq(8)
- * + an export enquiry form in glass. Seven sections total.
+ * ADR-0005 "Liquid Glass" page anatomy (docs/adr/0005-liquid-glass.md §6), with the
+ * ADR-0007 photography layer (docs/adr/0007-photography-layer.md §1, §4) over the
+ * hero: PageHero(hero-country) carrying breadcrumbs, eyebrow, H1, one sentence,
+ * buttons and 3 inline facts (voltage/frequency, currency, port) → FactStrip (5 of
+ * voltage, frequency, currency, ports, lead time, warranty) → "Why India" DividedList →
+ * "Sectors" DividedList + 3 product tiles, paired with ImageSlot(slot-cutting-head) →
+ * Steps (6) → a prose column (shipping, warranty/spares, regulatory —
+ * voltage/frequency/currency/ports are not restated here, they are already in the
+ * hero and FactStrip), paired with ImageSlot(slot-crate-shipping) on the opposite
+ * side → Faq(8) + an export enquiry form in glass. Seven sections total.
  */
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import Prose from "@/components/ui/Prose";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
@@ -21,12 +23,13 @@ import AboutBlurb from "@/components/ui/AboutBlurb";
 import CtaGroup from "@/components/ui/CtaGroup";
 import Faq from "@/components/ui/Faq";
 import JsonLd from "@/components/ui/JsonLd";
-import Band from "@/components/ui/Band";
-import { FactStrip, Steps, DividedList } from "@/components/ui/glass";
+import PageHero from "@/components/layout/PageHero";
+import { FactStrip, Steps, DividedList, ImageSlot } from "@/components/ui/glass";
 import ProductCard from "@/components/cards/ProductCard";
 import ExportForm from "@/components/forms/ExportForm";
 import { buildMetadata, truncate } from "@/lib/seo";
 import { paths } from "@/lib/urls";
+import { photos } from "@/lib/photos";
 import { organizationSchema, productSchema } from "@/lib/schema";
 import { countrySections } from "@/lib/copy/country";
 import { countries, getCountry, products } from "@/data";
@@ -108,11 +111,8 @@ export default async function CountryExportPage({ params }: Props) {
 
   return (
     <>
-      <Container>
+      <PageHero image={photos["hero-country"]} size="tall" align="start">
         <Breadcrumbs items={breadcrumbItems} />
-      </Container>
-
-      <Band tone="dark">
         <p className="eyebrow mb-3">Export to {country.name}</p>
         <h1 className="max-w-3xl font-display text-display-lg text-ink">
           Laser Cutting Machine Exporter to {country.name} — Fiber Laser &amp; Robotic Welding from India
@@ -130,7 +130,10 @@ export default async function CountryExportPage({ params }: Props) {
           <span aria-hidden="true">·</span>
           <span>{country.ports[0]}</span>
         </p>
-      </Band>
+        <div className="mt-6">
+          <CtaGroup context={`an enquiry for ${country.name}`} />
+        </div>
+      </PageHero>
 
       <Section>
         <div className="grid gap-6">
@@ -141,7 +144,6 @@ export default async function CountryExportPage({ params }: Props) {
             Machines ship by sea to {country.ports.join(", ")}; urgent spares and small consignments travel by air
             to {country.airports.join(", ")}. {country.currencyNote}
           </p>
-          <CtaGroup context={`an enquiry for ${country.name}`} />
         </div>
       </Section>
 
@@ -159,28 +161,37 @@ export default async function CountryExportPage({ params }: Props) {
       </Section>
 
       <Section title="Sectors" intro={sectorsIntro}>
-        <DividedList
-          items={country.sectors.map((sector) => {
-            const productSlug = sector.recommendedProductSlugs[0];
-            const product = productSlug ? products.find((p) => p.slug === productSlug) : undefined;
-            return {
-              title: sector.name,
-              text: `${sector.zones.join(", ")} — ${sector.note}`,
-              href: product ? paths.product(product.category, product.slug) : undefined,
-              meta: product?.name,
-            };
-          })}
-        />
-        {recommended.length > 0 && (
-          <div className="mt-10">
-            <p className="eyebrow mb-4">Recommended machines</p>
-            <div className="grid gap-5 sm:grid-cols-3">
-              {recommended.map((product) => (
-                <ProductCard key={product.slug} product={product} compact />
-              ))}
-            </div>
+        <div className="grid gap-10 md:grid-cols-2 md:items-start">
+          <div>
+            <DividedList
+              items={country.sectors.map((sector) => {
+                const productSlug = sector.recommendedProductSlugs[0];
+                const product = productSlug ? products.find((p) => p.slug === productSlug) : undefined;
+                return {
+                  title: sector.name,
+                  text: `${sector.zones.join(", ")} — ${sector.note}`,
+                  href: product ? paths.product(product.category, product.slug) : undefined,
+                  meta: product?.name,
+                };
+              })}
+            />
+            {recommended.length > 0 && (
+              <div className="mt-10">
+                <p className="eyebrow mb-4">Recommended machines</p>
+                <div className="grid gap-5 sm:grid-cols-3">
+                  {recommended.map((product) => (
+                    <ProductCard key={product.slug} product={product} compact />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
-        )}
+          <ImageSlot
+            image={photos["slot-cutting-head"]}
+            aspect="4/3"
+            label="Photo: laser cutting head close-up"
+          />
+        </div>
       </Section>
 
       <Section title="Export process">
@@ -188,16 +199,24 @@ export default async function CountryExportPage({ params }: Props) {
       </Section>
 
       <Section title="Shipping & terms">
-        <Prose>
-          {proseSections.map((section) => (
-            <div key={section.id}>
-              <h3>{section.h2}</h3>
-              {section.paragraphs.map((paragraph) => (
-                <p key={paragraph.slice(0, 32)}>{paragraph}</p>
-              ))}
-            </div>
-          ))}
-        </Prose>
+        <div className="grid gap-10 md:grid-cols-2 md:items-start">
+          <Prose className="md:order-last">
+            {proseSections.map((section) => (
+              <div key={section.id}>
+                <h3>{section.h2}</h3>
+                {section.paragraphs.map((paragraph) => (
+                  <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+                ))}
+              </div>
+            ))}
+          </Prose>
+          <ImageSlot
+            image={photos["slot-crate-shipping"]}
+            aspect="4/3"
+            label="Photo: machine crated for shipping"
+            className="md:order-first"
+          />
+        </div>
       </Section>
 
       <Section>

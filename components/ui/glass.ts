@@ -6,3 +6,5 @@ export { default as FactStrip } from "./FactStrip";
 export { default as Steps } from "./Steps";
 export type { StepItem } from "./Steps";
 export { default as DividedList } from "./DividedList";
+export { default as ImageSlot } from "./ImageSlot";
+export { default as ImageBand } from "./ImageBand";

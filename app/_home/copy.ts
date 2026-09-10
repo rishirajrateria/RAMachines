@@ -8,7 +8,7 @@
 import type { IconName } from "@/components/ui/Icons";
 
 export const heroSentence =
-  "Fiber, tube and CO2 laser cutting machines and robotic welding systems, engineered at our own Kolkata works and installed, trained and serviced across India and 25+ export markets.";
+  "Fiber, tube and CO2 laser cutting machines and robotic welding systems, built in Kolkata and serviced across India and 25+ export markets.";
 
 export const glanceContext =
   "For more than a decade, fabrication shops and export buyers have chosen RA Machine for laser cutting and welding equipment engineered, built, tested and supported entirely at our own works.";

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import { buildMetadata } from "@/lib/seo";
 import { paths } from "@/lib/urls";
 import { site } from "@/config/site";
@@ -15,6 +14,9 @@ import Button from "@/components/ui/Button";
 import { FactStrip, DividedList } from "@/components/ui/glass";
 import Faq from "@/components/ui/Faq";
 import CtaBand from "@/components/sections/CtaBand";
+import PageHero from "@/components/layout/PageHero";
+import { photos } from "@/lib/photos";
+import type { PhotoKey } from "@/lib/photos";
 import { Icon } from "@/components/ui/Icons";
 import ProductTile from "../ProductTile";
 import ComparisonTable from "./ComparisonTable";
@@ -22,6 +24,14 @@ import LongCopySections from "./LongCopySections";
 import { categoryTitles } from "../meta";
 import { categoryIcon } from "../category-icons";
 import { categoryGlance } from "./glance";
+
+// ADR-0007 §4: each category gets its own hero photo.
+const categoryHero: Record<CategorySlug, PhotoKey> = {
+  "fiber-laser-cutting-machines": "hero-fiber",
+  "tube-laser-cutting-machines": "hero-tube",
+  "co2-laser-machines": "hero-co2",
+  "robotic-welding-systems": "hero-welding",
+};
 
 export const dynamicParams = false;
 
@@ -67,7 +77,7 @@ export default async function CategoryPage({
 
   return (
     <>
-      <Container>
+      <PageHero image={photos[categoryHero[category.slug]]}>
         <Breadcrumbs
           items={[
             { name: "Home", href: paths.home },
@@ -75,39 +85,32 @@ export default async function CategoryPage({
             { name: category.name, href: paths.category(category.slug) },
           ]}
         />
-      </Container>
-
-      <Section tone="dark">
-        <div className="grid gap-10 lg:grid-cols-5 lg:items-center">
-          <div className="lg:col-span-3">
-            <p className="eyebrow mb-3">
-              <Icon name={icon} size={16} />
-              {category.shortName}
-            </p>
-            <h1 className="font-display text-display-lg text-ink">{category.name}</h1>
-            <p className="mt-4 max-w-prose text-grey-700">{category.description}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="#quote" variant="solid" icon="ArrowRight">
-                Request a Quote
-              </Button>
-              <Button href={site.phoneHref} variant="outline" icon="Phone">
-                Call us
-              </Button>
-            </div>
-          </div>
-          <div className="lg:col-span-2">
-            <div className="relative aspect-[3/2] overflow-hidden rounded-[28px] bg-[radial-gradient(circle_at_50%_40%,rgba(15,118,110,0.10),transparent_70%)]">
-              <Image
-                src={category.image.src}
-                alt={category.image.alt}
-                width={category.image.width}
-                height={category.image.height}
-                className="h-full w-full object-contain p-6"
-              />
-            </div>
-          </div>
+        <p className="eyebrow mb-3">
+          <Icon name={icon} size={16} />
+          {category.shortName}
+        </p>
+        <h1 className="font-display text-display-lg text-ink">{category.name}</h1>
+        <p className="mt-4 max-w-prose text-grey-700">
+          {category.shortName} machines engineered and manufactured in Kolkata, for delivery and installation across India and export.
+        </p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Button href="#quote" variant="solid" icon="ArrowRight">
+            Request a Quote
+          </Button>
+          <Button href={site.phoneHref} variant="outline" icon="Phone">
+            Call us
+          </Button>
         </div>
-      </Section>
+        <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm">
+          {categoryGlance[category.slug].map((fact) => (
+            <div key={fact.label} className="flex items-center gap-2">
+              <Icon name={fact.icon} size={16} className="text-teal" />
+              <span className="text-grey-600">{fact.label}:</span>
+              <span className="font-semibold text-ink">{fact.value}</span>
+            </div>
+          ))}
+        </div>
+      </PageHero>
 
       <Container>
         <AboutBlurb

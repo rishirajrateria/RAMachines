@@ -3,23 +3,25 @@
  * directory of all 30 country pages, grouped by region. Country-specific
  * detail lives on /export/[country] (see ./[country]/page.tsx).
  *
- * ADR-0005 "Liquid Glass" page anatomy (docs/adr/0005-liquid-glass.md §6):
- * hero panel → FactStrip (markets, warranty, lead time, Incoterms) → Steps
- * (export process, 6 concise labels) → regions as a DividedList of country
- * text links → a short prose column → exportHubFaqs + an export enquiry form
- * in glass. Six sections total, ≥ 96px rhythm between them.
+ * ADR-0005 "Liquid Glass" page anatomy (docs/adr/0005-liquid-glass.md §6), with the
+ * ADR-0007 photography layer (docs/adr/0007-photography-layer.md §1, §4) over the
+ * hero: PageHero(hero-export) carrying breadcrumbs, eyebrow, H1, one sentence,
+ * buttons and 3 inline facts → FactStrip (markets, warranty, lead time, Incoterms) →
+ * Steps (export process, 6 concise labels) → ImageBand(slot-port) → regions as a
+ * DividedList of country text links → a short prose column → exportHubFaqs + an
+ * export enquiry form in glass. Six sections total, ≥ 96px rhythm between them.
  */
-import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import Prose from "@/components/ui/Prose";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AboutBlurb from "@/components/ui/AboutBlurb";
 import CtaGroup from "@/components/ui/CtaGroup";
 import Faq from "@/components/ui/Faq";
-import Band from "@/components/ui/Band";
-import { FactStrip, Steps, DividedList } from "@/components/ui/glass";
+import PageHero from "@/components/layout/PageHero";
+import { FactStrip, Steps, DividedList, ImageBand } from "@/components/ui/glass";
 import { buildMetadata } from "@/lib/seo";
 import { paths } from "@/lib/urls";
+import { photos } from "@/lib/photos";
 import { countriesByRegion } from "@/data";
 import { hubIntro, hubSections, exportHubFaqs, exportProcessSteps } from "./copy";
 import { hubFacts } from "./visuals";
@@ -35,14 +37,12 @@ export const metadata = buildMetadata({
 export default function ExportHubPage() {
   const regions = countriesByRegion();
   const regionEntries = Object.entries(regions).filter(([, list]) => list.length > 0);
+  const heroFacts = hubFacts().slice(0, 3);
 
   return (
     <>
-      <Container>
+      <PageHero image={photos["hero-export"]} size="tall" align="start">
         <Breadcrumbs items={[{ name: "Home", href: paths.home }, { name: "Export", href: paths.exportHub }]} />
-      </Container>
-
-      <Band tone="dark">
         <p className="eyebrow mb-3">Export from India</p>
         <h1 className="max-w-3xl font-display text-display-lg text-ink">
           Laser Cutting Machine &amp; Robotic Welding Exporter from India
@@ -51,12 +51,22 @@ export default function ExportHubPage() {
           IEC-registered, CE marked and ISO 9001:2015 certified, with pre-shipment video inspection,
           installation, training and warranty support shipped to 30 countries.
         </p>
-      </Band>
+        <p className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-grey-600 md:text-base">
+          {heroFacts.map((fact, i) => (
+            <span key={fact.label} className="flex items-center gap-x-2">
+              {i > 0 && <span aria-hidden="true">·</span>}
+              <span>{fact.value}</span>
+            </span>
+          ))}
+        </p>
+        <div className="mt-6">
+          <CtaGroup context="an export enquiry" />
+        </div>
+      </PageHero>
 
       <Section>
         <div className="grid gap-6">
           <AboutBlurb context="This page sets out how our export process, documentation and shipping terms work for international buyers, and lists every country we currently ship to." />
-          <CtaGroup context="an export enquiry" />
         </div>
       </Section>
 
@@ -67,6 +77,12 @@ export default function ExportHubPage() {
       <Section title="Export process" intro="Every order, wherever it ships, follows the same steps from quotation to warranty support.">
         <Steps steps={exportProcessSteps.map((s) => s.title)} />
       </Section>
+
+      <ImageBand
+        image={photos["slot-port"]}
+        overlayText="Sea and air freight from Kolkata to 30 markets"
+        label="Photo: container port"
+      />
 
       <Section title="Where we ship" intro="30 markets across nine regions. Open a country page for sector-specific detail, shipping terms and an export enquiry form pre-filled with your country.">
         <div className="grid gap-x-10 gap-y-10 md:grid-cols-2 lg:grid-cols-3">

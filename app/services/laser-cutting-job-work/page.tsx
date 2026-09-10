@@ -10,7 +10,9 @@ import AboutBlurb from "@/components/ui/AboutBlurb";
 import Button from "@/components/ui/Button";
 import Faq from "@/components/ui/Faq";
 import { Icon } from "@/components/ui/Icons";
-import { DividedList } from "@/components/ui/glass";
+import { DividedList, ImageSlot } from "@/components/ui/glass";
+import PageHero from "@/components/layout/PageHero";
+import { photos } from "@/lib/photos";
 import JobWorkForm from "@/components/forms/JobWorkForm";
 import { introParagraphs, materialsParagraph, formatsParagraph, turnaroundParagraph, quoteIntro, heroLead } from "./copy";
 
@@ -25,11 +27,8 @@ export const metadata: Metadata = buildMetadata({
 export default function LaserCuttingJobWorkPage() {
   return (
     <>
-      <Container>
+      <PageHero image={photos["hero-jobwork"]}>
         <Breadcrumbs items={[{ name: "Home", href: paths.home }, { name: "Job Work", href: paths.jobWork }]} />
-      </Container>
-
-      <Section tone="dark">
         <p className="eyebrow mb-3">
           <Icon name="Sheet" size={16} />
           Job Work
@@ -44,7 +43,24 @@ export default function LaserCuttingJobWorkPage() {
             Call us
           </Button>
         </div>
-      </Section>
+        <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm">
+          <div className="flex items-center gap-2">
+            <Icon name="Layers" size={16} className="text-teal" />
+            <span className="text-grey-600">Drawings:</span>
+            <span className="font-semibold text-ink">DXF, DWG or PDF</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Icon name="Clock" size={16} className="text-teal" />
+            <span className="text-grey-600">Turnaround:</span>
+            <span className="font-semibold text-ink">A few working days</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Icon name="Sheet" size={16} className="text-teal" />
+            <span className="text-grey-600">Materials:</span>
+            <span className="font-semibold text-ink">Steel, SS, aluminium &amp; more</span>
+          </div>
+        </div>
+      </PageHero>
 
       <Container>
         <AboutBlurb context="Alongside our machine range, we also cut parts to your drawing on our own fiber laser equipment for customers who do not need to buy a machine." />
@@ -64,8 +80,11 @@ export default function LaserCuttingJobWorkPage() {
 
       <Section eyebrow="Request a quote" title="Get a Quote">
         <p className="max-w-prose text-grey-700">{quoteIntro}</p>
-        <div id="quote" className="glass mt-6 max-w-xl p-6 md:p-8">
-          <JobWorkForm />
+        <div className="mt-6 grid gap-6 lg:grid-cols-2 lg:items-start">
+          <div id="quote" className="glass max-w-xl p-6 md:p-8">
+            <JobWorkForm />
+          </div>
+          <ImageSlot image={photos["slot-cutting-head"]} label="Photo: laser cutting head close-up" />
         </div>
       </Section>
 

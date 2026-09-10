@@ -15,7 +15,9 @@ import Button from "@/components/ui/Button";
 import Faq from "@/components/ui/Faq";
 import JsonLd from "@/components/ui/JsonLd";
 import { Icon } from "@/components/ui/Icons";
-import { FactStrip, Steps, DividedList } from "@/components/ui/glass";
+import { FactStrip, Steps, DividedList, ImageSlot, ImageBand } from "@/components/ui/glass";
+import PageHero from "@/components/layout/PageHero";
+import { photos } from "@/lib/photos";
 import RepairForm from "@/components/forms/RepairForm";
 import {
   introParagraphs,
@@ -28,7 +30,6 @@ import {
   responseTimeParagraph,
   bookIntro,
   stateLinksIntro,
-  heroLead,
   repairProcessSteps,
   amcTierIcons,
 } from "./copy";
@@ -56,11 +57,8 @@ export default function MachineRepairPage() {
 
   return (
     <>
-      <Container>
+      <PageHero image={photos["hero-repair"]}>
         <Breadcrumbs items={[{ name: "Home", href: paths.home }, { name: "Machine Repair", href: paths.repair }]} />
-      </Container>
-
-      <Section tone="dark">
         <p className="eyebrow mb-3">
           <Icon name="Wrench" size={16} />
           Repair &amp; Maintenance
@@ -68,7 +66,9 @@ export default function MachineRepairPage() {
         <h1 className="max-w-4xl font-display text-display-lg text-ink">
           Laser Cutting Machine Repair &amp; CNC Maintenance Service in India
         </h1>
-        <p className="mt-4 max-w-prose text-grey-700">{heroLead}</p>
+        <p className="mt-4 max-w-prose text-grey-700">
+          One call reaches remote diagnostics, spares dispatch and an engineer from our Kolkata service desk, for any brand on your shop floor.
+        </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Button href="#book" variant="solid" icon="ArrowRight">
             Book a Repair
@@ -77,7 +77,24 @@ export default function MachineRepairPage() {
             Call us
           </Button>
         </div>
-      </Section>
+        <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm">
+          <div className="flex items-center gap-2">
+            <Icon name="Truck" size={16} className="text-teal" />
+            <span className="text-grey-600">On-site response:</span>
+            <span className="font-semibold text-ink">{site.service.responseTime}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Icon name="Headset" size={16} className="text-teal" />
+            <span className="text-grey-600">Remote response:</span>
+            <span className="font-semibold text-ink">{site.service.remoteResponseTime}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Icon name="Badge" size={16} className="text-teal" />
+            <span className="text-grey-600">Brands covered:</span>
+            <span className="font-semibold text-ink">All major brands</span>
+          </div>
+        </div>
+      </PageHero>
 
       <Container>
         <AboutBlurb context="Our service engineers repair and maintain laser cutting and robotic welding equipment of every major brand, pan-India, from our Kolkata headquarters." />
@@ -139,10 +156,19 @@ export default function MachineRepairPage() {
 
       <Section eyebrow="Book a repair" title="Book a Repair">
         <p className="max-w-prose text-grey-700">{bookIntro}</p>
-        <div id="book" className="glass mt-6 max-w-xl p-6 md:p-8">
-          <RepairForm />
+        <div className="mt-6 grid gap-6 lg:grid-cols-2 lg:items-start">
+          <div id="book" className="glass max-w-xl p-6 md:p-8">
+            <RepairForm />
+          </div>
+          <ImageSlot
+            image={photos["slot-engineer-service"]}
+            aspect="4/3"
+            label="Photo: engineer servicing a machine on-site"
+          />
         </div>
       </Section>
+
+      <ImageBand image={photos["slot-warehouse-spares"]} label="Photo: warehouse spares rack" />
 
       <Section>
         <p className="eyebrow mb-4">Where we work</p>
