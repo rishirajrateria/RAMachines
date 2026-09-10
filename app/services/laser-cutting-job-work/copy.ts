@@ -5,6 +5,7 @@
  * data/faqs.ts); the rest of the site uses the shorter "job work" or avoids the phrase.
  * To edit: change the paragraphs/arrays below directly.
  */
+import type { IconName } from "@/components/ui/Icons";
 
 export const introParagraphs: string[] = [
   "Not every business that needs precision-cut metal parts wants to invest in and maintain its own laser cutting machine. RA Machine offers laser cutting job work on our own fiber laser equipment, so you get clean, accurate parts cut to your drawing without the capital cost, floor space or in-house expertise a machine of your own would require.",
@@ -22,3 +23,17 @@ export const turnaroundParagraph: string =
 
 export const quoteIntro: string =
   "Send your drawing, material, thickness and quantity using the form below, and we will revert with feasibility, price and turnaround.";
+
+/* --------------------------- ADR-0002 visual additions --------------------------- */
+// Purely presentational metadata — icons, short chip/step labels — layered on top of
+// the copy above (page.tsx). No paragraph text is added, removed or reworded here.
+
+export const heroLead: string =
+  "Clean, accurate parts cut to your drawing on our own fiber laser equipment — no machine purchase, floor space or in-house expertise required.";
+
+export const heroChips: { label: string; icon: IconName }[] = [
+  { label: "DXF / DWG accepted", icon: "Layers" },
+  { label: "Feasibility & price first", icon: "Currency" },
+  { label: "Few working days", icon: "Clock" },
+  { label: "Prototype to batch", icon: "Package" },
+];

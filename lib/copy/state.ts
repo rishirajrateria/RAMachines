@@ -28,12 +28,23 @@ import { site } from "@/config/site";
 import { paths } from "@/lib/urls";
 import { wordCount } from "@/lib/words";
 import type { State, City, Product } from "@/data/types";
+import type { IconName } from "@/components/ui/Icons";
+
+/** What the secondary ("aside") column of a CopyBlock shows for this section — see
+ * app/india/_components/CopyBlock.tsx (structurally identical `CopyAside` there). */
+export type StateAside =
+  | { kind: "icon" }
+  | { kind: "facts"; facts: { icon: IconName; label: string; value: string }[] }
+  | { kind: "chips"; chips: { label: string; icon?: IconName }[] };
 
 export interface StateSection {
   id: string;
+  icon: IconName;
+  eyebrow: string;
   h2: string;
   paragraphs: string[];
   list?: { name: string; href: string }[];
+  aside?: StateAside;
 }
 
 /** Deterministic 32-bit hash of a slug, used to pick phrasing variants. */
@@ -48,6 +59,14 @@ function hashSlug(slug: string): number {
 /** Picks one option deterministically from `seed` plus a per-call `salt`. */
 function pick<T>(options: readonly T[], seed: number, salt: number): T {
   return options[(seed + salt) % options.length];
+}
+
+/** Pulls a "4-6 days" style transit window out of a logisticsNote sentence for the hero
+ * chip and GlancePanel, falling back to a generic label when the phrasing does not
+ * contain one (e.g. the small-UT notes that hedge instead of giving a fixed range). */
+function deliveryWindowLabel(note: string): string {
+  const match = note.match(/(\d+\s*(?:–|-)\s*\d+)\s*(?:working\s+)?days/i);
+  return match ? `${match[1].replace(/\s+/g, "")} days` : "Pan-India dispatch";
 }
 
 /**
@@ -242,54 +261,109 @@ export function stateSections(state: State, cities: City[], products: Product[])
         `As an IEC-registered exporter with CE-marked, ISO 9001:2015-certified machines, we coordinate export documentation for ${state.name} customers who go on to ship their own fabricated output abroad through the nearest gateway port, or through Kolkata and Haldia.`,
       ];
 
+  const industrialAreaCount = state.industrialAreas.length;
+  const deliveryWindow = deliveryWindowLabel(state.logisticsNote);
+
   return [
     {
       id: "overview",
+      icon: "Factory",
+      eyebrow: "Overview",
       h2: `Laser cutting machines and robotic welding in ${state.name}`,
       paragraphs: [pick(overviewIntroVariants, seed, 1)(state), ...state.overview, cityMention].filter(Boolean),
+      aside: { kind: "icon" },
     },
     {
       id: "industries",
+      icon: "Gear",
+      eyebrow: "Industries",
       h2: `Key manufacturing industries we serve in ${state.name}`,
       paragraphs: [pick(industriesIntroVariants, seed, 2)(state), ...industryParagraphs],
       list: productLinks(industryProductSlugs, products),
+      aside: { kind: "facts", facts: [{ icon: "Gear", label: "Industries covered", value: `${state.industries.length}` }] },
     },
     {
       id: "industrial-areas",
+      icon: "Building",
+      eyebrow: "Industrial areas",
       h2: `Industrial areas and estates in ${state.name}`,
       paragraphs: [
         pick(industrialAreasIntroVariants, seed, 3)(state),
         `These include ${state.industrialAreas.join(", ")}.`,
       ],
+      aside: { kind: "facts", facts: [{ icon: "Building", label: "Estates & SEZs", value: `${industrialAreaCount}` }] },
     },
     {
       id: "delivery",
+      icon: "Truck",
+      eyebrow: "Delivery",
       h2: `Delivery and installation from our Kolkata works`,
       paragraphs: [
         pick(deliveryIntroVariants, seed, 4)(state),
         pick(deliveryProcessVariants, seed, 40)(),
         state.logisticsNote,
       ],
+      aside: {
+        kind: "facts",
+        facts: [
+          { icon: "Truck", label: "Typical transit", value: deliveryWindow },
+          { icon: "Power", label: "Power required", value: "415 V, 3-phase" },
+        ],
+      },
     },
     {
       id: "service-amc",
+      icon: "Headset",
+      eyebrow: "Service & AMC",
       h2: `Service, AMC and spares support across ${state.name}`,
       paragraphs: [pick(serviceIntroVariants, seed, 5)(state), pick(serviceBodyVariants, seed, 50)()],
+      aside: {
+        kind: "facts",
+        facts: [
+          { icon: "Headset", label: "Remote response", value: site.service.remoteResponseTime },
+          { icon: "Clock", label: "On-site response", value: site.service.responseTime },
+        ],
+      },
     },
     {
       id: "training",
+      icon: "GraduationCap",
+      eyebrow: "Training",
       h2: `Operator training for ${state.name} teams`,
       paragraphs: [pick(trainingIntroVariants, seed, 6)(state), pick(trainingBodyVariants, seed, 60)()],
+      aside: {
+        kind: "facts",
+        facts: [
+          { icon: "GraduationCap", label: "On-site training", value: "Included at handover" },
+          { icon: "Building", label: "Training centre", value: "Kolkata" },
+        ],
+      },
     },
     {
       id: "why-india",
+      icon: "Award",
+      eyebrow: "Why RA Machine",
       h2: "Why buy from an Indian manufacturer",
       paragraphs: [pick(whyIndiaIntroVariants, seed, 7)(state), pick(whyIndiaBodyVariants, seed, 70)()],
+      aside: {
+        kind: "chips",
+        chips: [
+          { label: "ISO 9001:2015", icon: "Certificate" },
+          { label: "CE marked", icon: "Badge" },
+          { label: "IEC registered exporter", icon: "Ship" },
+          { label: "Indian Railways vendor", icon: "Award" },
+        ],
+      },
     },
     {
       id: "export",
+      icon: ports ? "Ship" : "Globe",
+      eyebrow: "Export",
       h2: `Export support for ${state.name} manufacturers`,
       paragraphs: exportParagraphs,
+      aside: ports
+        ? { kind: "chips", chips: ports.map((port) => ({ label: port, icon: "Ship" as IconName })) }
+        : { kind: "icon" },
     },
   ];
 }
@@ -304,3 +378,12 @@ export function stateWordCount(state: State, cities: City[], products: Product[]
   const faqWords = wordCount(state.faqs.flatMap((f) => [f.q, f.a]));
   return sectionWords + faqWords + wordCount(stateH1(state.name));
 }
+
+/** Real, named ports per state — exported so app/india/_lib/stateVisuals.ts (the
+ * GlancePanel/hero-chip data for the page template) can reuse the same source facts
+ * instead of guessing them again. */
+export { statePorts };
+
+/** Pulls a "4-6 days" style transit window out of a logisticsNote sentence — exported
+ * for the same reason as `statePorts` above. */
+export { deliveryWindowLabel };

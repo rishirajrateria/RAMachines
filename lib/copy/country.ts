@@ -19,15 +19,22 @@
  * append to the relevant `*Variants` array below — each array must keep at
  * least 3 entries. Do not add per-country special cases here; put anything
  * country-specific in the `Country` object itself (data/countries/*.ts).
+ *
+ * ADR-0002: each section also carries an `icon` so app/export/[country]/page.tsx
+ * can put an icon beside every h2 (SectionHeading) and lead each block with a
+ * visual before this section's paragraphs. This is presentation metadata only —
+ * it is not counted by `countryWordCount` and does not change the composed copy.
  */
 import { site } from "@/config/site";
 import { paths } from "@/lib/urls";
 import { wordCount } from "@/lib/words";
 import type { Country, Product } from "@/data/types";
+import type { IconName } from "@/components/ui/Icons";
 
 export interface CountrySection {
   id: string;
   h2: string;
+  icon: IconName;
   paragraphs: string[];
   list?: { name: string; href: string }[];
   table?: { label: string; value: string }[];
@@ -219,28 +226,33 @@ export function countrySections(country: Country, products: Product[]): CountryS
     {
       id: "demand",
       h2: `Laser cutting and robotic welding machine demand in ${country.name}`,
+      icon: "Globe",
       paragraphs: [pick(demandIntroVariants, seed, 1)(country), ...country.overview],
     },
     {
       id: "why-india",
       h2: `Why ${country.adjective} manufacturers buy laser cutting machines from India`,
+      icon: "Award",
       paragraphs: [pick(whyIndiaIntroVariants, seed, 2)(country), ...country.whyIndia],
     },
     {
       id: "sectors",
       h2: `Industries and industrial zones in ${country.name}`,
+      icon: "Factory",
       paragraphs: [pick(sectorsIntroVariants, seed, 3)(country), ...sectorParagraphs],
       list: productLinks(sectorProductSlugs, products),
     },
     {
       id: "export-process",
       h2: `Our export process to ${country.name}, from quotation to installation`,
+      icon: "Package",
       paragraphs: exportProcessParagraphs,
       ordered: true,
     },
     {
       id: "shipping",
       h2: `Shipping terms, ports and logistics for ${country.name}`,
+      icon: "Ship",
       paragraphs: [
         pick(shippingIntroVariants, seed, 4)(country),
         country.shippingNote,
@@ -250,16 +262,19 @@ export function countrySections(country: Country, products: Product[]): CountryS
     {
       id: "power-supply",
       h2: "Voltage, frequency and power supply compatibility",
+      icon: "Power",
       paragraphs: [pick(voltageIntroVariants, seed, 5)(country)],
     },
     {
       id: "warranty-spares",
       h2: "Warranty, spares and remote support",
+      icon: "Shield",
       paragraphs: [pick(warrantyIntroVariants, seed, 6)(country)],
     },
     {
       id: "payment-terms",
       h2: "Payment terms, lead time, currency and regulatory notes",
+      icon: "Currency",
       paragraphs: [
         pick(paymentIntroVariants, seed, 7)(country),
         country.currencyNote,

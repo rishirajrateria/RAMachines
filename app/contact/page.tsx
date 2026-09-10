@@ -1,8 +1,8 @@
 /**
- * app/contact/page.tsx — Contact (SPEC §4 "/contact"). ContactForm, full
- * address, MapFacade, Call/WhatsApp/Email cards, hours, "visit our factory"
- * line, LocalBusiness schema. Anchor id="quote" (linked from the header's
- * "Request Quote" button as /contact#quote).
+ * app/contact/page.tsx — Contact (SPEC §4 "/contact"). ADR-0002 visual refresh: an
+ * icon chip row up top, a two-column form card + GlancePanel of contact facts, a row
+ * of Call/WhatsApp/Email action cards, then the factory visit section with MapFacade.
+ * All original copy is kept, just reflowed into shorter visual blocks.
  */
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
@@ -13,10 +13,11 @@ import JsonLd from "@/components/ui/JsonLd";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AboutBlurb from "@/components/ui/AboutBlurb";
 import Section from "@/components/ui/Section";
-import ContactStrip from "@/components/sections/ContactStrip";
+import Chips from "@/components/ui/Chips";
+import GlancePanel from "@/components/ui/GlancePanel";
 import ContactForm from "@/components/forms/ContactForm";
 import MapFacade from "@/components/media/MapFacade";
-import { MapPin } from "@/components/ui/Icons";
+import { Icon, type IconName, MapPin } from "@/components/ui/Icons";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contact RA Machine — Kolkata, India",
@@ -25,13 +26,36 @@ export const metadata: Metadata = buildMetadata({
   path: paths.contact,
 });
 
+const contactFacts = [
+  { icon: "MapPin", label: "Address", value: `${site.address.locality}, ${site.address.region} ${site.address.postalCode}` },
+  { icon: "Clock", label: "Hours", value: site.hours },
+  { icon: "Phone", label: "Phone", value: site.phoneDisplay },
+  { icon: "WhatsApp", label: "WhatsApp", value: site.phoneDisplay },
+  { icon: "Mail", label: "Email", value: site.email },
+] as const;
+
+const actionCards: { icon: IconName; title: string; text: string; href: string; external?: boolean }[] = [
+  { icon: "Phone", title: "Call us", text: site.hours, href: site.phoneHref },
+  { icon: "WhatsApp", title: "WhatsApp us", text: "Fastest way to reach the sales desk", href: site.whatsappHref, external: true },
+  { icon: "Mail", title: "Email us", text: site.email, href: `mailto:${site.email}` },
+];
+
 export default function ContactPage() {
   return (
     <>
       <Section tight>
         <Breadcrumbs items={[{ name: "Home", href: paths.home }, { name: "Contact", href: paths.contact }]} />
         <h1 className="mt-2 font-display text-display-lg text-ink">Contact RA Machine</h1>
-        <div className="mt-4 max-w-2xl">
+        <div className="mt-4">
+          <Chips
+            items={[
+              { label: site.address.locality, icon: "MapPin" },
+              { label: site.hours, icon: "Clock" },
+              { label: "Response within 1 working day", icon: "Headset" },
+            ]}
+          />
+        </div>
+        <div className="mt-5 max-w-2xl">
           <AboutBlurb />
         </div>
         <p className="mt-4 max-w-prose text-grey-600">
@@ -43,9 +67,9 @@ export default function ContactPage() {
         </p>
       </Section>
 
-      <Section id="quote" eyebrow="Get in touch" title="Send us your requirement">
-        <div className="grid gap-10 lg:grid-cols-[3fr_2fr]">
-          <div>
+      <Section id="quote" eyebrow="Get in touch" icon="Mail" title="Send us your requirement">
+        <div className="grid gap-8 lg:grid-cols-[3fr_2fr]">
+          <div className="rounded-xl border border-grey-200 bg-white p-6 shadow-card">
             <p className="mb-6 max-w-prose text-sm text-grey-600">
               Fill in the form below with as much detail as you can — material, thickness, sheet or
               tube size, and production volume for a machine enquiry; brand, model and problem
@@ -55,18 +79,34 @@ export default function ContactPage() {
             </p>
             <ContactForm />
           </div>
-          <div>
-            <ContactStrip />
-            <p className="mt-6 max-w-prose text-sm text-grey-600">
-              Prefer to speak with someone directly? Call or WhatsApp us during business hours and ask
-              for sales, service or export, depending on your enquiry, and we will connect you with the
-              right person straight away.
-            </p>
-          </div>
+          <GlancePanel title="Contact details" facts={[...contactFacts]} />
         </div>
+
+        <div className="mt-8 grid gap-5 sm:grid-cols-3">
+          {actionCards.map((card) => (
+            <a
+              key={card.title}
+              href={card.href}
+              target={card.external ? "_blank" : undefined}
+              rel={card.external ? "noopener noreferrer" : undefined}
+              className="card-hover block h-full rounded-xl border border-grey-200 bg-white p-6 shadow-card"
+            >
+              <span className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-steel-soft text-steel">
+                <Icon name={card.icon} size={22} />
+              </span>
+              <h3 className="mt-4 font-display text-lg text-ink">{card.title}</h3>
+              <p className="mt-2 text-sm text-grey-600">{card.text}</p>
+            </a>
+          ))}
+        </div>
+        <p className="mt-6 max-w-prose text-sm text-grey-600">
+          Prefer to speak with someone directly? Call or WhatsApp us during business hours and ask
+          for sales, service or export, depending on your enquiry, and we will connect you with the
+          right person straight away.
+        </p>
       </Section>
 
-      <Section eyebrow="Our works" title="Visit our factory">
+      <Section eyebrow="Our works" icon="Factory" title="Visit our factory">
         <div className="grid gap-8 lg:grid-cols-2">
           <div>
             <p className="max-w-prose text-grey-600">

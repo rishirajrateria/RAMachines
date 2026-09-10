@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750">
+  <rect width="1200" height="750" fill="#E8EEF5"/>
+  <path d="M 343.28571428571433 23.571428571428612
+    L 611.1428571428571 2.142857142857167 L 712.9285714285714 157.5 L 664.7142857142857 318.2142857142857
+    L 755.7857142857142 398.57142857142856 L 621.8571428571429 505.71428571428567 L 584.3571428571429 661.0714285714286
+    L 514.7142857142857 505.71428571428567 L 423.64285714285717 425.35714285714283 L 327.2142857142857 452.1428571428571
+    L 386.14285714285717 291.42857142857144 L 316.5 184.2857142857143 Z" fill="#1F4E79" opacity="0.9"/><circle cx="450.4" cy="237.9" r="6" fill="#FFFFFF" stroke="#1F4E79" stroke-width="2.5"/><circle cx="557.6" cy="318.2" r="6" fill="#FFFFFF" stroke="#1F4E79" stroke-width="2.5"/><circle cx="477.2" cy="452.1" r="6" fill="#FFFFFF" stroke="#1F4E79" stroke-width="2.5"/><circle cx="396.9" cy="345.0" r="6" fill="#FFFFFF" stroke="#1F4E79" stroke-width="2.5"/><g><circle cx="584.3571428571429" cy="511.07142857142856" r="14" fill="#F26A21" opacity="0.28"/><path d="M584.3571428571429 495.07142857142856 c9 0 15 6.5 15 15 c0 10 -15 24 -15 24 s-15 -14 -15 -24 c0 -8.5 6 -15 15 -15 Z" fill="#F26A21" stroke="#FFFFFF" stroke-width="2"/><circle cx="584.3571428571429" cy="510.07142857142856" r="5" fill="#FFFFFF"/><text x="606.3571428571429" y="509.07142857142856" font-family="Arial, sans-serif" font-size="38" font-weight="700" fill="#111214">Kolkata HQ</text></g>
+  <text x="24" y="728" font-family="Arial, sans-serif" font-size="20" font-weight="600" fill="#111214" opacity="0.5">Installation &amp; service reach across India</text>
+</svg>

@@ -31,12 +31,23 @@ import { site } from "@/config/site";
 import { paths } from "@/lib/urls";
 import { wordCount } from "@/lib/words";
 import type { City, State, Product } from "@/data/types";
+import type { IconName } from "@/components/ui/Icons";
+
+/** What the secondary ("aside") column of a CopyBlock shows for this section — see
+ * app/india/_components/CopyBlock.tsx (structurally identical `CopyAside` there). */
+export type CityAside =
+  | { kind: "icon" }
+  | { kind: "facts"; facts: { icon: IconName; label: string; value: string }[] }
+  | { kind: "chips"; chips: { label: string; icon?: IconName }[] };
 
 export interface CitySection {
   id: string;
+  icon: IconName;
+  eyebrow: string;
   h2: string;
   paragraphs: string[];
   list?: { name: string; href: string }[];
+  aside?: CityAside;
 }
 
 /** Deterministic 32-bit hash of a slug, used to pick phrasing variants. */
@@ -51,6 +62,14 @@ function hashSlug(slug: string): number {
 /** Picks one option deterministically from `seed` plus a per-call `salt`. */
 function pick<T>(options: readonly T[], seed: number, salt: number): T {
   return options[(seed + salt) % options.length];
+}
+
+/** Pulls a "4-6 days" style transit window out of a logisticsNote sentence for the hero
+ * chip and GlancePanel, falling back to a generic label when the phrasing does not
+ * contain one. Exported so app/india/_lib/cityVisuals.ts can reuse it. */
+export function deliveryWindowLabel(note: string): string {
+  const match = note.match(/(\d+\s*(?:–|-)\s*\d+)\s*(?:working\s+)?days/i);
+  return match ? `${match[1].replace(/\s+/g, "")} days` : "Pan-India dispatch";
 }
 
 // ---------------------------------------------------------------------------
@@ -177,40 +196,80 @@ export function citySections(city: City, state: State, siblings: City[], product
   return [
     {
       id: "overview",
+      icon: "Factory",
+      eyebrow: "Overview",
       h2: `Laser cutting and welding machines in ${city.name}, ${state.name}`,
       paragraphs: [pick(overviewIntroVariants, seed, 1)(city), ...city.overview],
+      aside: { kind: "icon" },
     },
     {
       id: "industries",
+      icon: "Gear",
+      eyebrow: "Industries",
       h2: `Industries we serve in ${city.name}`,
       paragraphs: [pick(industriesIntroVariants, seed, 2)(city), pick(recommendedIntroVariants, seed, 20)(city)],
       list: productLinks(city.recommendedProductSlugs, products),
+      aside: { kind: "chips", chips: city.industries.map((name) => ({ label: name, icon: "Gear" as IconName })) },
     },
     {
       id: "industrial-areas",
+      icon: "Building",
+      eyebrow: "Industrial areas",
       h2: `Industrial areas in ${city.name}`,
       paragraphs: [pick(industrialAreasIntroVariants, seed, 3)(city)],
+      aside: { kind: "facts", facts: [{ icon: "Building", label: "Industrial areas", value: `${city.industrialAreas.length}` }] },
     },
     {
       id: "delivery",
+      icon: "Truck",
+      eyebrow: "Delivery",
       h2: `Delivery and installation from our Kolkata works`,
       paragraphs: [pick(deliveryIntroVariants, seed, 4)(city), pick(deliveryBodyVariants, seed, 40)(), city.logisticsNote],
+      aside: {
+        kind: "facts",
+        facts: [
+          { icon: "Truck", label: "Typical transit", value: deliveryWindowLabel(city.logisticsNote) },
+          { icon: "Power", label: "Power required", value: "415 V, 3-phase" },
+        ],
+      },
     },
     {
       id: "service-training",
+      icon: "Headset",
+      eyebrow: "Service & training",
       h2: `Service, AMC and operator training for ${city.name}`,
       paragraphs: [pick(serviceTrainingIntroVariants, seed, 5)(city), pick(serviceTrainingBodyVariants, seed, 50)()],
+      aside: {
+        kind: "facts",
+        facts: [
+          { icon: "Headset", label: "Remote response", value: site.service.remoteResponseTime },
+          { icon: "GraduationCap", label: "Training", value: "On-site at handover" },
+        ],
+      },
     },
     {
       id: "why-india",
+      icon: "Award",
+      eyebrow: "Why RA Machine",
       h2: "Why buy from an Indian manufacturer",
       paragraphs: [pick(whyIndiaVariants, seed, 6)(city)],
+      aside: {
+        kind: "chips",
+        chips: [
+          { label: "ISO 9001:2015", icon: "Certificate" },
+          { label: "CE marked", icon: "Badge" },
+          { label: "Indian Railways vendor", icon: "Award" },
+        ],
+      },
     },
     {
       id: "nearby",
+      icon: "MapPin",
+      eyebrow: "Nearby",
       h2: `Also serving nearby ${state.name} cities`,
       paragraphs: [pick(nearbyIntroVariants, seed, 7)(city)],
       list: nearbyLinks(city, siblings),
+      aside: { kind: "icon" },
     },
   ];
 }

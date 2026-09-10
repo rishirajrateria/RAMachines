@@ -1,6 +1,7 @@
 /**
  * components/cards/CategoryCard.tsx — category grid card used on the home page and
- * /products. `count` is the number of products in the category.
+ * /products. `count` is the number of products in the category. ADR-0002: illustration
+ * on a tinted background and a lifting card shadow.
  */
 import Image from "next/image";
 import Link from "next/link";
@@ -12,15 +13,15 @@ export default function CategoryCard({ category, count }: { category: Category; 
   return (
     <Link
       href={paths.category(category.slug)}
-      className="group block overflow-hidden rounded border border-grey-200 transition-colors hover:border-steel"
+      className="card-hover group block h-full overflow-hidden rounded-xl border border-grey-200 bg-white shadow-card"
     >
-      <div className="relative aspect-[3/2] w-full overflow-hidden bg-grey-100">
+      <div className="relative aspect-[3/2] w-full overflow-hidden bg-spark-soft">
         <Image
           src={category.image.src}
           alt={category.image.alt}
           width={category.image.width}
           height={category.image.height}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-contain p-6"
         />
       </div>
       <div className="p-5">

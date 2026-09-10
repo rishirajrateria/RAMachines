@@ -1,6 +1,7 @@
 /**
  * components/ui/RelatedPages.tsx — "related pages" internal-linking module for the
- * bottom of programmatic pages (states, cities, countries, products).
+ * bottom of programmatic pages (states, cities, countries, products). Rendered as
+ * rounded chip-style link tiles (ADR-0002) rather than a bare text list.
  */
 import Link from "next/link";
 import { ArrowRight } from "./Icons";
@@ -15,25 +16,23 @@ export default function RelatedPages({
   if (!links.length) return null;
   return (
     <div>
-      <p className="mb-4 text-xs font-semibold uppercase tracking-[0.12em] text-grey-600">
-        {title}
-      </p>
-      <ul className="grid gap-x-6 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
+      <p className="eyebrow mb-4">{title}</p>
+      <ul className="flex flex-wrap gap-2.5">
         {links.map((link) => (
           <li key={link.href}>
             <Link
               href={link.href}
-              className="group flex items-start gap-1.5 text-sm text-ink hover:text-steel"
+              className="group flex items-center gap-2 rounded-lg border border-grey-200 bg-white px-4 py-2.5 text-sm text-ink transition-colors hover:border-spark hover:text-spark-hover"
             >
+              <span>
+                {link.name}
+                {link.hint && <span className="block text-xs text-grey-500">{link.hint}</span>}
+              </span>
               <ArrowRight
                 width={14}
                 height={14}
-                className="mt-0.5 shrink-0 text-grey-400 transition-transform group-hover:translate-x-0.5 group-hover:text-steel"
+                className="shrink-0 text-grey-400 transition-transform group-hover:translate-x-0.5 group-hover:text-spark"
               />
-              <span>
-                {link.name}
-                {link.hint && <span className="block text-xs text-grey-600">{link.hint}</span>}
-              </span>
             </Link>
           </li>
         ))}

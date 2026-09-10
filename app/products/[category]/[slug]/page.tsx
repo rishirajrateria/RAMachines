@@ -5,21 +5,26 @@ import { paths } from "@/lib/urls";
 import { productSchema } from "@/lib/schema";
 import { products, getProduct } from "@/data/products";
 import { categories } from "@/data/categories";
-import { topStates } from "@/data/states";
-import { topCountries } from "@/data/countries";
 import Container from "@/components/ui/Container";
+import Band from "@/components/ui/Band";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AboutBlurb from "@/components/ui/AboutBlurb";
+import SectionHeading from "@/components/ui/SectionHeading";
 import Prose from "@/components/ui/Prose";
 import SpecTable from "@/components/ui/SpecTable";
+import IconCard from "@/components/ui/IconCard";
 import Faq from "@/components/ui/Faq";
-import RelatedPages from "@/components/ui/RelatedPages";
+import Chips from "@/components/ui/Chips";
+import Button from "@/components/ui/Button";
 import JsonLd from "@/components/ui/JsonLd";
 import Gallery from "@/components/media/Gallery";
 import ProductCard from "@/components/cards/ProductCard";
 import QuoteBlock from "@/components/sections/QuoteBlock";
-import { Check, Download } from "@/components/ui/Icons";
+import ReachSection from "@/components/sections/ReachSection";
+import { Icon } from "@/components/ui/Icons";
 import { productTitles } from "../../meta";
+import { categoryIcon } from "../../category-icons";
+import { highlightMeta } from "./highlight-icon";
 
 export const dynamicParams = false;
 
@@ -59,27 +64,12 @@ export default async function ProductPage({
   if (!product) notFound();
 
   const categoryEntry = categories.find((entry) => entry.slug === product.category);
+  const icon = categoryIcon[product.category];
   const relatedProducts = product.relatedSlugs
     .map((relatedSlug) => getProduct(relatedSlug))
     .filter((related): related is NonNullable<typeof related> => Boolean(related));
 
-  const reachLinks = [
-    ...topStates(8).map((state) => ({
-      name: state.name,
-      href: paths.state(state.slug),
-      hint: "Delivery, installation & service",
-    })),
-    ...topCountries()
-      .slice(0, 10)
-      .map((country) => ({
-        name: country.name,
-        href: paths.country(country.slug),
-        hint: "Export & installation",
-      })),
-    { name: "Export hub — all countries", href: paths.exportHub },
-    { name: "Machine repair & maintenance", href: paths.repair },
-    { name: "Operator training", href: paths.training },
-  ];
+  const headlineParts = product.headline.split(" · ");
 
   return (
     <>
@@ -96,76 +86,94 @@ export default async function ProductPage({
         />
       </Container>
 
-      <Container className="pb-14 pt-2 md:pb-20">
-        <div className="grid gap-10 lg:grid-cols-3">
-          <div className="lg:col-span-2">
-            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-steel">
-              {product.headline}
+      <Band tone="soft">
+        <div className="grid gap-10 lg:grid-cols-5 lg:items-center">
+          <div className="lg:col-span-3">
+            <p className="eyebrow mb-3">
+              <Icon name={icon} size={16} />
+              {categoryEntry?.shortName ?? "RA Machine"}
             </p>
-            <h1 className="mt-2 font-display text-display-lg text-ink">{product.name}</h1>
-            <div className="mt-5 max-w-prose">
-              <AboutBlurb context={`The ${product.name} is manufactured and supported from our Kolkata facility.`} />
-            </div>
-
-            <div className="mt-8">
-              <Gallery images={product.images} />
-            </div>
-
-            <div className="mt-10">
-              <h2 className="font-display text-display-md text-ink">Highlights</h2>
-              <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-                {product.highlights.map((highlight) => (
-                  <li key={highlight} className="flex items-start gap-2 text-sm text-grey-700">
-                    <Check width={16} height={16} className="mt-0.5 shrink-0 text-steel" />
-                    <span>{highlight}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="mt-14 border-t border-grey-200 pt-14">
-              <h2 className="mb-6 font-display text-display-md text-ink">Specifications</h2>
-              <SpecTable rows={product.specs} caption={`${product.name} — full technical specification`} />
-            </div>
-
-            <div className="mt-14 border-t border-grey-200 pt-14">
-              <h2 className="mb-6 font-display text-display-md text-ink">Overview</h2>
-              <Prose>
-                {product.longDescription.map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
-                ))}
-              </Prose>
-            </div>
-
-            <div className="mt-14 border-t border-grey-200 pt-14">
-              <h2 className="mb-6 font-display text-display-md text-ink">Applications</h2>
-              <ul className="grid gap-x-6 gap-y-3 sm:grid-cols-2">
-                {product.applications.map((application) => (
-                  <li key={application} className="text-sm text-grey-700">
-                    {application}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="mt-14 border-t border-grey-200 pt-14">
-              <h2 className="mb-6 font-display text-display-md text-ink">Materials &amp; thickness</h2>
-              <SpecTable
-                rows={product.materials.map((material) => ({
-                  label: material.material,
-                  value: material.maxThickness,
-                }))}
+            <h1 className="font-display text-display-lg text-ink">{product.name}</h1>
+            <p className="mt-4 max-w-prose text-grey-700">{product.shortDescription}</p>
+            <div className="mt-5">
+              <Chips
+                items={[
+                  ...headlineParts.map((part, i) => ({ label: part, icon: i === 0 ? "Power" as const : "Ruler" as const })),
+                  ...(categoryEntry
+                    ? [{ label: categoryEntry.shortName, href: paths.category(categoryEntry.slug), icon }]
+                    : []),
+                ]}
               />
             </div>
+          </div>
+          <div className="lg:col-span-2">
+            <Gallery images={product.images} />
+          </div>
+        </div>
+      </Band>
+
+      <Container className="pb-14 pt-12 md:pb-20 md:pt-16">
+        <div className="grid gap-10 lg:grid-cols-3">
+          <div className="lg:col-span-2">
+            <SectionHeading eyebrow="Highlights" icon="Sparkles" title="Why this machine" />
+            <div className="mt-6 grid gap-5 sm:grid-cols-2">
+              {product.highlights.map((highlight) => {
+                const meta = highlightMeta(highlight);
+                return <IconCard key={highlight} icon={meta.icon} title={meta.label} text={highlight} />;
+              })}
+            </div>
 
             <div className="mt-14 border-t border-grey-200 pt-14">
-              <RelatedPages title="Available across India & for export" links={reachLinks} />
+              <SectionHeading eyebrow="Specification" icon="Ruler" title="Full technical specification" />
+              <div className="mt-6">
+                <SpecTable rows={product.specs} caption={`${product.name} — specification`} icon={icon} />
+              </div>
+            </div>
+
+            <div className="mt-14 border-t border-grey-200 pt-14">
+              <SectionHeading eyebrow="Materials" icon="Layers" title="Materials & thickness" />
+              <div className="mt-6">
+                <SpecTable
+                  rows={product.materials.map((material) => ({
+                    label: material.material,
+                    value: material.maxThickness,
+                  }))}
+                  caption={`${product.name} — materials & thickness`}
+                  icon="Layers"
+                />
+              </div>
+            </div>
+
+            <div className="mt-14 border-t border-grey-200 pt-14">
+              <SectionHeading eyebrow="Where it's used" icon="Factory" title="Applications" />
+              <div className="mt-6">
+                <Chips items={product.applications.map((application) => ({ label: application, icon: "Check" as const }))} />
+              </div>
+            </div>
+
+            <div className="mt-14 border-t border-grey-200 pt-14">
+              <SectionHeading
+                eyebrow="Reach"
+                icon="Globe"
+                title="Available across India & for export"
+              />
+              <div className="mt-8">
+                <ReachSection />
+              </div>
+              <div className="mt-6">
+                <Chips
+                  items={[
+                    { label: "Machine repair & maintenance", href: paths.repair, icon: "Wrench" },
+                    { label: "Operator training", href: paths.training, icon: "GraduationCap" },
+                  ]}
+                />
+              </div>
             </div>
 
             {relatedProducts.length > 0 && (
               <div className="mt-14 border-t border-grey-200 pt-14">
-                <h2 className="mb-6 font-display text-display-md text-ink">Related machines</h2>
-                <div className="grid gap-6 sm:grid-cols-2">
+                <SectionHeading eyebrow="Related" icon={icon} title="Related machines" />
+                <div className="mt-6 grid gap-6 sm:grid-cols-2">
                   {relatedProducts.map((related) => (
                     <ProductCard key={related.slug} product={related} />
                   ))}
@@ -174,17 +182,26 @@ export default async function ProductPage({
             )}
 
             <div className="mt-14 border-t border-grey-200 pt-14">
-              <Faq items={product.faqs} />
+              <Button href={product.brochureUrl} variant="outline" icon="Download" download>
+                Download brochure (PDF)
+              </Button>
             </div>
 
             <div className="mt-14 border-t border-grey-200 pt-14">
-              <a
-                href={product.brochureUrl}
-                download
-                className="inline-flex h-11 items-center gap-2 rounded border border-grey-300 px-4 text-sm font-semibold text-ink hover:border-steel hover:text-steel"
-              >
-                <Download width={16} height={16} /> Download brochure (PDF)
-              </a>
+              <SectionHeading eyebrow="Overview" icon="Layers" title="Overview" />
+              <Prose className="mt-5">
+                {product.longDescription.map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
+              </Prose>
+            </div>
+
+            <div className="mt-14 border-t border-grey-200 pt-14">
+              <AboutBlurb context={`The ${product.name} is manufactured and supported from our Kolkata facility.`} />
+            </div>
+
+            <div className="mt-14 border-t border-grey-200 pt-14">
+              <Faq items={product.faqs} />
             </div>
           </div>
 

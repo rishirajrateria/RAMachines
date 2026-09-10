@@ -1,45 +1,56 @@
 /**
  * components/ui/Section.tsx — the standard vertical rhythm block: optional eyebrow +
- * h2 title + intro paragraph, a 1px top divider, and consistent vertical padding.
- * Set `tight` for smaller top/bottom padding (e.g. stacked sections in a dense page).
+ * h2 title (with the spark underline accent) + intro paragraph, then children. Set
+ * `tight` for smaller top/bottom padding (e.g. stacked sections in a dense page).
+ * `tone` (ADR-0002) paints the section as a soft/spark-tinted or dark band instead of
+ * plain white — toned sections drop the 1px top divider since the tint itself separates
+ * them from their neighbour. `icon` puts an icon beside the eyebrow.
  */
 import type { ReactNode } from "react";
 import Container from "./Container";
+import SectionHeading from "./SectionHeading";
+import type { IconName } from "./Icons";
+
+const toneClasses: Record<"plain" | "soft" | "spark" | "dark", string> = {
+  plain: "",
+  soft: "band-soft",
+  spark: "band-spark",
+  dark: "band-dark",
+};
 
 export default function Section({
   id,
   eyebrow,
+  icon,
   title,
   intro,
   children,
   className = "",
   tight = false,
+  tone = "plain",
 }: {
   id?: string;
   eyebrow?: string;
+  icon?: IconName;
   title?: string;
   intro?: string;
   children?: ReactNode;
   className?: string;
   tight?: boolean;
+  tone?: "plain" | "soft" | "spark" | "dark";
 }) {
+  const isToned = tone !== "plain";
   return (
     <section
       id={id}
-      className={`border-t border-grey-200 ${tight ? "py-10 md:py-14" : "py-14 md:py-20"} ${className}`.trim()}
+      className={`${isToned ? "" : "border-t border-grey-200"} ${toneClasses[tone]} ${
+        tight ? "section-rhythm-tight" : "section-rhythm"
+      } ${className}`.trim()}
     >
       <Container>
         {(eyebrow || title || intro) && (
-          <div className="mb-8 max-w-prose md:mb-10">
-            {eyebrow && (
-              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.12em] text-steel">
-                {eyebrow}
-              </p>
-            )}
-            {title && (
-              <h2 className="font-display text-display-md text-ink">{title}</h2>
-            )}
-            {intro && <p className="mt-3 text-grey-600">{intro}</p>}
+          <div className="mb-8 md:mb-10">
+            <SectionHeading eyebrow={eyebrow} icon={icon} title={title} intro={intro} />
           </div>
         )}
         {children}

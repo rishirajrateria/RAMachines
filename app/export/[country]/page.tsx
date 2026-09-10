@@ -2,6 +2,11 @@
  * app/export/[country]/page.tsx — one static page per export country (30 total).
  * Body copy is composed by lib/copy/country.ts `countrySections`; this file only
  * handles routing, metadata, JSON-LD and layout around that copy.
+ * ADR-0002 visual refresh: a dark hero band, an "at a glance" facts panel, a
+ * "why buy from India" FeatureGrid, sector IconCards, a ProcessSteps graphic and
+ * ProductCards lead the page; countrySections' paragraphs (unchanged) are kept in
+ * full, reorganised into a 2-column shipping/power/warranty/payment block plus a
+ * short remaining "demand" block near the bottom.
  */
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -18,11 +23,28 @@ import JsonLd from "@/components/ui/JsonLd";
 import RelatedPages from "@/components/ui/RelatedPages";
 import CtaBand from "@/components/sections/CtaBand";
 import ExportForm from "@/components/forms/ExportForm";
+import Band from "@/components/ui/Band";
+import GlancePanel from "@/components/ui/GlancePanel";
+import FeatureGrid from "@/components/ui/FeatureGrid";
+import ProcessSteps from "@/components/ui/ProcessSteps";
+import Chips from "@/components/ui/Chips";
+import { Icon } from "@/components/ui/Icons";
+import ProductCard from "@/components/cards/ProductCard";
 import { buildMetadata, truncate } from "@/lib/seo";
 import { paths } from "@/lib/urls";
 import { organizationSchema, productSchema } from "@/lib/schema";
 import { countrySections } from "@/lib/copy/country";
 import { countries, getCountry, categories, products } from "@/data";
+import {
+  exportProcessStepMeta,
+  whyIndiaTitleCycle,
+  whyIndiaIconCycle,
+  whyIndiaStandard,
+  sectorIcon,
+  recommendedProducts,
+  countryGlanceFacts,
+} from "../visuals";
+import SectorCard from "../SectorCard";
 
 type Props = { params: Promise<{ country: string }> };
 
@@ -62,7 +84,8 @@ export default async function CountryExportPage({ params }: Props) {
   if (!country) notFound();
 
   const sections = countrySections(country, products);
-  const sectionProductSlugs = new Set(sections.find((s) => s.id === "sectors")?.list?.map((l) => l.href));
+  const byId = (id: string) => sections.find((s) => s.id === id)!;
+  const sectionProductSlugs = new Set(byId("sectors").list?.map((l) => l.href));
   const schemaProducts = products.filter((p) => sectionProductSlugs.has(paths.product(p.category, p.slug)));
 
   const breadcrumbItems = [
@@ -73,48 +96,144 @@ export default async function CountryExportPage({ params }: Props) {
 
   const related = relatedCountries(country.slug, country.region);
 
+  const whyIndiaSection = byId("why-india");
+  const whyIndiaItems = whyIndiaSection.paragraphs.slice(1).map((text, i) => ({
+    icon: whyIndiaIconCycle[i % whyIndiaIconCycle.length],
+    title: whyIndiaTitleCycle[i % whyIndiaTitleCycle.length],
+    text,
+  }));
+
+  const sectorsSection = byId("sectors");
+  const sectorParagraphs = sectorsSection.paragraphs.slice(1);
+
+  const processSection = byId("export-process");
+  const processSteps = exportProcessStepMeta.map((meta, i) => ({ ...meta, text: processSection.paragraphs[i] }));
+
+  const picks = recommendedProducts(country, products);
+
+  const logisticsSections = [byId("shipping"), byId("power-supply"), byId("warranty-spares"), byId("payment-terms")];
+
+  const demandSection = byId("demand");
+
   return (
     <>
       <Container>
         <Breadcrumbs items={breadcrumbItems} />
-        <h1 className="mt-2 max-w-3xl font-display text-display-lg text-ink">
-          Laser Cutting Machine Exporter to {country.name} — Fiber Laser &amp; Robotic Welding from India
-        </h1>
-        <div className="mt-4 max-w-3xl">
-          <AboutBlurb
-            context={`This page covers export details specific to ${country.name}: manufacturing sectors we serve, shipping terms, power compatibility and the machines we supply there.`}
-          />
-        </div>
-        <div className="mt-8">
-          <CtaGroup context={`an enquiry for ${country.name}`} />
-        </div>
       </Container>
 
-      {sections.map((section) => (
-        <Section key={section.id} id={section.id} title={section.h2} tight>
-          <Prose>
-            {section.ordered ? (
-              <ol>
-                {section.paragraphs.map((paragraph) => (
-                  <li key={paragraph.slice(0, 32)}>{paragraph}</li>
-                ))}
-              </ol>
-            ) : (
-              section.paragraphs.map((paragraph) => <p key={paragraph.slice(0, 32)}>{paragraph}</p>)
-            )}
-          </Prose>
-          {section.list && section.list.length > 0 && (
+      <Band tone="dark">
+        <p className="eyebrow mb-3">
+          <Icon name="Flag" size={16} />
+          Export to {country.name}
+        </p>
+        <h1 className="max-w-3xl font-display text-display-lg text-white">
+          Laser Cutting Machine Exporter to {country.name} — Fiber Laser &amp; Robotic Welding from India
+        </h1>
+        <p className="mt-4 max-w-2xl text-white/75">
+          Export documentation, installation and warranty support built around {country.name}&apos;s ports,
+          power supply and manufacturing sectors.
+        </p>
+        <div className="mt-6">
+          <Chips
+            items={[
+              { label: country.name, icon: "Flag" },
+              { label: country.region, icon: "MapPin" },
+              { label: `${country.voltage} · ${country.frequency}`, icon: "Power" },
+              { label: country.currency, icon: "Currency" },
+              { label: country.ports[0], icon: "Ship" },
+            ]}
+          />
+        </div>
+      </Band>
+
+      <Section tight>
+        <div className="grid gap-8 md:grid-cols-2 md:items-start">
+          <div>
+            <AboutBlurb
+              context={`This page covers export details specific to ${country.name}: manufacturing sectors we serve, shipping terms, power compatibility and the machines we supply there.`}
+            />
             <div className="mt-6">
-              <LinkGrid links={section.list} columns={2} />
+              <CtaGroup context={`an enquiry for ${country.name}`} />
             </div>
-          )}
-          {section.table && section.table.length > 0 && (
-            <div className="mt-6 max-w-xl">
-              <SpecTable rows={section.table} caption={`Export facts — ${country.name}`} />
-            </div>
-          )}
+          </div>
+          <GlancePanel title="At a glance" facts={countryGlanceFacts(country)} />
+        </div>
+      </Section>
+
+      <Section title={whyIndiaSection.h2} icon={whyIndiaSection.icon} intro={whyIndiaSection.paragraphs[0]} tight>
+        <FeatureGrid items={[...whyIndiaItems, ...whyIndiaStandard]} />
+      </Section>
+
+      <Section title={sectorsSection.h2} icon={sectorsSection.icon} intro={sectorsSection.paragraphs[0]}>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {country.sectors.map((sector, i) => (
+            <SectorCard
+              key={sector.name}
+              icon={sectorIcon(sector.name)}
+              title={sector.name}
+              text={sectorParagraphs[i]}
+              products={sector.recommendedProductSlugs
+                .map((s) => products.find((p) => p.slug === s))
+                .filter((p): p is NonNullable<typeof p> => Boolean(p))
+                .map((p) => ({ name: p.name, href: paths.product(p.category, p.slug) }))}
+            />
+          ))}
+        </div>
+      </Section>
+
+      <Section title={processSection.h2} icon={processSection.icon} tight>
+        <ProcessSteps steps={processSteps} />
+      </Section>
+
+      {picks.length > 0 && (
+        <Section
+          title={`Machines recommended for ${country.name}`}
+          icon="Sparkles"
+          intro="Picked from the sectors and applications above — every machine we manufacture is available for export here."
+        >
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {picks.map((product) => (
+              <ProductCard key={product.slug} product={product} />
+            ))}
+          </div>
         </Section>
-      ))}
+      )}
+
+      <Section title={`Shipping, power supply and support for ${country.name}`} icon="Ship" tight>
+        <div className="grid gap-10 md:grid-cols-[3fr_2fr] md:items-start">
+          <div className="space-y-8">
+            {logisticsSections.map((section) => (
+              <div key={section.id}>
+                <h3 className="mb-2 flex items-center gap-2 font-display text-lg text-ink">
+                  <Icon name={section.icon} size={18} className="text-spark" />
+                  {section.h2}
+                </h3>
+                <Prose>
+                  {section.paragraphs.map((paragraph) => (
+                    <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+                  ))}
+                </Prose>
+                {section.table && section.table.length > 0 && (
+                  <div className="mt-4">
+                    <SpecTable rows={section.table} caption={`Export facts — ${country.name}`} icon="Package" />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="md:sticky md:top-24">
+            <GlancePanel title="At a glance" facts={countryGlanceFacts(country)} />
+          </div>
+        </div>
+      </Section>
+
+      <Section title={demandSection.h2} icon={demandSection.icon} intro={demandSection.paragraphs[0]} tight>
+        <Prose>
+          {demandSection.paragraphs.slice(1).map((paragraph) => (
+            <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+          ))}
+        </Prose>
+      </Section>
 
       <Section title="All RA Machine products" intro={`Every machine we manufacture is available for export to ${country.name}, grouped by category below.`}>
         <div className="space-y-8">
@@ -125,7 +244,7 @@ export default async function CountryExportPage({ params }: Props) {
                 links={products
                   .filter((p) => p.category === category.slug)
                   .map((p) => ({ name: p.name, href: paths.product(p.category, p.slug) }))}
-                columns={2}
+                variant="chips"
               />
             </div>
           ))}
@@ -136,8 +255,8 @@ export default async function CountryExportPage({ params }: Props) {
         <Faq items={country.faqs} title={`Frequently asked questions — exporting to ${country.name}`} />
       </Section>
 
-      <Section id="quote" title="Request an export quotation" tight>
-        <div className="max-w-xl">
+      <Section id="quote" title="Request an export quotation" icon="Mail" tight>
+        <div className="max-w-xl rounded-xl border border-grey-200 bg-white p-6 shadow-card">
           <ExportForm country={country.name} />
         </div>
       </Section>

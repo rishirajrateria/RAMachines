@@ -3,12 +3,19 @@ import { buildMetadata } from "@/lib/seo";
 import { courseSchema, serviceSchema } from "@/lib/schema";
 import { paths } from "@/lib/urls";
 import { trainingFaqs } from "@/data/faqs";
-import Section from "@/components/ui/Section";
+import Container from "@/components/ui/Container";
+import Band from "@/components/ui/Band";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AboutBlurb from "@/components/ui/AboutBlurb";
+import SectionHeading from "@/components/ui/SectionHeading";
+import GlancePanel from "@/components/ui/GlancePanel";
+import ProcessSteps from "@/components/ui/ProcessSteps";
+import IconCard from "@/components/ui/IconCard";
+import Chips from "@/components/ui/Chips";
 import CtaGroup from "@/components/ui/CtaGroup";
 import Faq from "@/components/ui/Faq";
 import JsonLd from "@/components/ui/JsonLd";
+import { Icon } from "@/components/ui/Icons";
 import TrainingForm from "@/components/forms/TrainingForm";
 import {
   introParagraphs,
@@ -20,6 +27,10 @@ import {
   outcomes,
   outcomesClosing,
   bookIntro,
+  heroLead,
+  heroChips,
+  moduleIcons,
+  trainingProcessSteps,
 } from "./copy";
 
 const description =
@@ -34,62 +45,126 @@ export const metadata: Metadata = buildMetadata({
 export default function OperatorTrainingPage() {
   return (
     <>
-      <Section tight>
+      <Container>
         <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Operator Training", href: paths.training }]} />
-        <h1 className="mt-4 max-w-4xl font-display text-display-lg text-ink">
+      </Container>
+
+      <Band tone="dark">
+        <p className="eyebrow mb-3">
+          <Icon name="GraduationCap" size={16} />
+          Operator Training
+        </p>
+        <h1 className="max-w-4xl font-display text-display-lg text-white">
           Laser Cutting Machine Operator Training &amp; CNC Training
         </h1>
-        <div className="mt-6 max-w-prose">
-          <AboutBlurb context="We train your operators on machine operation, safety, maintenance and nesting software, either at your site or at our Kolkata training centre." />
-        </div>
-        <div className="mt-8 space-y-4 max-w-prose text-grey-700">
-          {introParagraphs.map((p) => (
-            <p key={p.slice(0, 24)}>{p}</p>
-          ))}
+        <p className="mt-4 max-w-prose text-white/75">{heroLead}</p>
+        <div className="mt-6">
+          <Chips items={heroChips} />
         </div>
         <div className="mt-8">
           <CtaGroup context="operator training" />
         </div>
-      </Section>
+      </Band>
 
-      <Section title="Curriculum" intro={curriculumIntro} tight>
-        <div className="grid gap-8 md:grid-cols-2">
+      <Container className="pb-14 pt-12 md:pb-20 md:pt-16">
+        <GlancePanel
+          title="Training at a glance"
+          facts={[
+            { icon: "Calendar", label: "Session length", value: "With installation, or scheduled separately" },
+            { icon: "MapPin", label: "Location options", value: "Your site or our Kolkata centre" },
+            { icon: "Users", label: "Group size", value: "4–6 trainees per batch" },
+            { icon: "Certificate", label: "On completion", value: "Certificate of completion" },
+          ]}
+        />
+      </Container>
+
+      <Container className="pb-14 md:pb-20">
+        <div className="grid gap-8 md:grid-cols-[auto_1fr] md:items-start">
+          <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-steel-soft text-steel">
+            <Icon name="GraduationCap" size={28} />
+          </span>
+          <div className="space-y-4 max-w-prose text-grey-700">
+            {introParagraphs.map((p) => (
+              <p key={p.slice(0, 24)}>{p}</p>
+            ))}
+          </div>
+        </div>
+      </Container>
+
+      <Band tone="soft">
+        <SectionHeading eyebrow="Curriculum" icon="Layers" title="What the programme covers" intro={curriculumIntro} />
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {curriculumModules.map((module) => (
-            <div key={module.title}>
-              <h3 className="font-display text-lg text-ink">{module.title}</h3>
-              <p className="mt-2 max-w-prose text-sm text-grey-700">{module.body}</p>
-            </div>
+            <IconCard
+              key={module.title}
+              icon={moduleIcons[module.title] ?? "Check"}
+              title={module.title}
+              text={module.body}
+            />
           ))}
         </div>
-      </Section>
+      </Band>
 
-      <Section title="At your site or our Kolkata training centre" tight>
-        <p className="max-w-prose text-grey-700">{locationParagraph}</p>
-      </Section>
+      <Container className="pb-14 pt-14 md:pb-20 md:pt-16">
+        <SectionHeading eyebrow="Process" icon="ArrowRight" title="How training is scheduled" />
+        <div className="mt-10">
+          <ProcessSteps steps={trainingProcessSteps} />
+        </div>
+      </Container>
 
-      <Section title="Who this training is for" tight>
-        <p className="max-w-prose text-grey-700">{whoForParagraph}</p>
-      </Section>
+      <Container className="space-y-14 pb-14 md:space-y-16 md:pb-20">
+        <div className="grid gap-8 md:grid-cols-[auto_1fr] md:items-start">
+          <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-spark-soft text-spark">
+            <Icon name="MapPin" size={28} />
+          </span>
+          <div>
+            <h2 className="section-title text-display-md">At your site or our Kolkata training centre</h2>
+            <p className="mt-4 max-w-prose text-grey-700">{locationParagraph}</p>
+          </div>
+        </div>
 
-      <Section title="What your team can do afterwards" intro={outcomesIntro} tight>
-        <ul className="max-w-prose list-disc space-y-2 pl-5 text-grey-700">
+        <div className="grid gap-8 md:grid-cols-[auto_1fr] md:items-start">
+          <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-steel-soft text-steel">
+            <Icon name="Users" size={28} />
+          </span>
+          <div>
+            <h2 className="section-title text-display-md">Who this training is for</h2>
+            <p className="mt-4 max-w-prose text-grey-700">{whoForParagraph}</p>
+          </div>
+        </div>
+      </Container>
+
+      <Band tone="soft">
+        <SectionHeading eyebrow="Outcomes" icon="Check" title="What your team can do afterwards" intro={outcomesIntro} />
+        <ul className="mt-8 grid max-w-prose gap-3">
           {outcomes.map((o) => (
-            <li key={o.slice(0, 24)}>{o}</li>
+            <li key={o.slice(0, 24)} className="flex items-start gap-3 text-grey-700">
+              <Icon name="Check" size={18} className="mt-0.5 shrink-0 text-spark" />
+              <span>{o}</span>
+            </li>
           ))}
         </ul>
         <p className="mt-6 max-w-prose text-grey-700">{outcomesClosing}</p>
-      </Section>
+      </Band>
 
-      <Section id="book" title="Book Staff Training" tight>
-        <p className="max-w-prose text-grey-700">{bookIntro}</p>
-        <div className="mt-6 max-w-xl">
-          <TrainingForm />
+      <Container className="pb-14 pt-14 md:pb-20 md:pt-16">
+        <div className="grid gap-10 lg:grid-cols-2">
+          <div>
+            <SectionHeading eyebrow="Book training" icon="Calendar" title="Book Staff Training" />
+            <p className="mt-4 max-w-prose text-grey-700">{bookIntro}</p>
+            <div className="mt-6">
+              <AboutBlurb context="We train your operators on machine operation, safety, maintenance and nesting software, either at your site or at our Kolkata training centre." />
+            </div>
+          </div>
+          <div id="book" className="rounded-xl border border-grey-200 bg-white p-6 shadow-card">
+            <TrainingForm />
+          </div>
         </div>
-      </Section>
+      </Container>
 
-      <Section tight>
+      <Container className="pb-14 md:pb-20">
         <Faq items={trainingFaqs} title="Frequently asked questions about operator training" />
-      </Section>
+      </Container>
 
       <JsonLd
         data={[

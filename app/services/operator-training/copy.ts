@@ -3,6 +3,7 @@
  * kept out of page.tsx so the route file stays under the 400-line limit. To edit: change
  * the paragraphs/arrays below directly; each export is plain data consumed by page.tsx.
  */
+import type { IconName } from "@/components/ui/Icons";
 
 export const introParagraphs: string[] = [
   "A laser cutting or robotic welding machine only performs as well as the person running it. RA Machine's operator training programme is designed to take a new operator from first power-on to confident, safe, productive daily operation, and to give experienced operators a structured refresher on safety procedure, maintenance tasks and nesting software they may have picked up informally on the job.",
@@ -56,3 +57,38 @@ export const outcomesClosing: string =
 
 export const bookIntro: string =
   "Tell us your company details, number of trainees, preferred location and a target month, and our training coordinator will confirm available dates.";
+
+/* --------------------------- ADR-0002 visual additions --------------------------- */
+// Purely presentational metadata — icons, short chip/step labels — layered on top of
+// the copy above (page.tsx). No paragraph text is added, removed or reworded here.
+
+export const heroLead: string =
+  "Hands-on training on the exact machine your team will run, led by the same engineers who install and service it, on-site or at our Kolkata training centre.";
+
+export const heroChips: { label: string; icon: IconName }[] = [
+  { label: "On-site or Kolkata centre", icon: "MapPin" },
+  { label: "4–6 trainees per batch", icon: "Users" },
+  { label: "Hands-on machine time", icon: "Gauge" },
+  { label: "Certificate included", icon: "Certificate" },
+];
+
+export const moduleIcons: Record<string, IconName> = {
+  Operation: "Gear",
+  Safety: "Shield",
+  "Basic maintenance": "Wrench",
+  "Nesting software": "Layers",
+};
+
+export interface TrainingProcessStep {
+  title: string;
+  text: string;
+  icon: IconName;
+}
+
+export const trainingProcessSteps: TrainingProcessStep[] = [
+  { title: "Enquiry", text: "Tell us trainee count, machine model and preferred timing.", icon: "Phone" },
+  { title: "Plan", text: "We confirm a schedule, location and curriculum for your team.", icon: "Calendar" },
+  { title: "Training", text: "Hands-on sessions in batches of four to six trainees.", icon: "GraduationCap" },
+  { title: "Assessment", text: "Trainees demonstrate safe, independent operation on the machine.", icon: "Gauge" },
+  { title: "Certificate", text: "Each trainee receives a certificate noting modules covered.", icon: "Certificate" },
+];

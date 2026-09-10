@@ -2,9 +2,12 @@
  * app/about/IndiaReachMap.tsx — static inline SVG "India & export reach" graphic
  * for /about (SPEC: "no heavy map libraries"). The path below is a simple,
  * deliberately stylised outline of India (not survey-accurate cartography) with
- * a marker on Kolkata; `exportRegions` renders alongside as a row of chips.
- * Server component — no client JS, no external map tiles or scripts.
+ * a marker on Kolkata; `exportRegions` renders alongside as the shared Chips
+ * component (ADR-0002: consistent pill styling with a flag icon). Server
+ * component — no client JS, no external map tiles or scripts.
  */
+import Chips from "@/components/ui/Chips";
+
 export default function IndiaReachMap({ regions }: { regions: string[] }) {
   return (
     <div>
@@ -30,16 +33,9 @@ export default function IndiaReachMap({ regions }: { regions: string[] }) {
           HQ &amp; works
         </text>
       </svg>
-      <ul className="mt-6 flex flex-wrap gap-2">
-        {regions.map((region) => (
-          <li
-            key={region}
-            className="rounded border border-grey-200 px-3 py-1.5 text-xs font-semibold text-grey-700"
-          >
-            {region}
-          </li>
-        ))}
-      </ul>
+      <div className="mt-6">
+        <Chips items={regions.map((region) => ({ label: region, icon: "Flag" as const }))} />
+      </div>
     </div>
   );
 }

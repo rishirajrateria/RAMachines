@@ -16,7 +16,7 @@ export default function Breadcrumbs({ items }: { items: { name: string; href: st
             const isLast = i === items.length - 1;
             return (
               <li key={item.href} className="flex items-center gap-1.5">
-                {i > 0 && <ArrowRight width={12} height={12} className="text-grey-400" />}
+                {i > 0 && <ArrowRight width={12} height={12} className="shrink-0 text-spark" />}
                 {isLast ? (
                   <span aria-current="page" className="text-grey-700">
                     {item.name}

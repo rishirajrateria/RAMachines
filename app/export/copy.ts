@@ -3,8 +3,29 @@
  * (app/export/page.tsx). Country-specific copy lives in lib/copy/country.ts
  * instead; this file only covers the hub's general export-process content.
  * To edit: change the paragraph arrays or FAQ items directly below.
+ * ADR-0002: `icon` on each hubSection and `exportProcessSteps` below feed the
+ * visual-first layout (IconCard/ProcessSteps) that app/export/page.tsx renders
+ * ahead of this same prose, which is kept verbatim further down the page.
  */
 import type { FaqItem } from "@/data/types";
+import type { IconName } from "@/components/ui/Icons";
+import { exportProcessStepMeta } from "./visuals";
+
+/** Short step text for the hub's ProcessSteps graphic — titles/icons come from the
+ * shared exportProcessStepMeta (also used on country pages) so both stay in step. */
+const exportProcessHubText: string[] = [
+  "Share your material, thickness, bed size or welding requirement — we quote in US dollars with FOB Kolkata and CIF options.",
+  "Once the specification is confirmed, we issue a proforma invoice recording price, payment terms and the production schedule.",
+  "Your machine is assembled, wired and run through factory acceptance checks at our Kolkata facility.",
+  "We run a live video inspection with you before crating, so you see the machine cutting or welding first-hand.",
+  "The machine is export-packed and moved by sea freight from Kolkata or Haldia, with air freight kept for urgent spares.",
+  "Remote, video-guided commissioning on arrival is followed by an on-site engineer visit for final alignment and safety checks.",
+  "Operators are trained on safe operation, maintenance and the nesting or welding-program software during the installation visit.",
+  "A 24-month warranty on core systems is backed by remote diagnostics and stocked wear spares for prompt dispatch.",
+];
+
+export const exportProcessSteps: { title: string; text: string; icon: IconName }[] =
+  exportProcessStepMeta.map((step, i) => ({ ...step, text: exportProcessHubText[i] }));
 
 export const hubIntro: string[] = [
   "RA Machine manufactures fiber laser cutting machines, tube laser cutting machines, CO2 laser machines and robotic MIG/MAG welding systems at our facility in Kolkata, and we export the full range to fabricators, job shops and OEM manufacturers around the world. Export is not an occasional sideline to our domestic business — it is built into how every machine is engineered, documented and shipped, from the CE marking on the control cabinet to the pre-shipment inspection video every international buyer receives before their machine leaves our works.",
@@ -12,9 +33,10 @@ export const hubIntro: string[] = [
   "This page sets out how our export process works end to end: quotation, Incoterms, packing and pre-shipment inspection, sea and air freight, remote and on-site installation, operator training, and the warranty and spares support that continues long after commissioning. For country-specific detail — import duty context, voltage and frequency, ports and airports, and manufacturing sectors we serve in that market — open the relevant country page below.",
 ];
 
-export const hubSections: { h2: string; paragraphs: string[] }[] = [
+export const hubSections: { h2: string; icon: IconName; paragraphs: string[] }[] = [
   {
     h2: "IEC registration, CE marking and ISO documentation",
+    icon: "Certificate",
     paragraphs: [
       "Every RA Machine export order starts from the same documentation baseline: our IEC registration confirms we are authorised to export from India, our machines carry CE marking to meet the safety and conformity expectations of the European Union and countries that reference CE as a quality benchmark, and our ISO 9001:2015 certification covers the quality management system under which every machine is built and tested. Buyers can present this documentation set to their own customs authorities, insurers, auditors or end customers as proof of a properly certified supply chain.",
       "We also hold MSME/Udyam registration and are a listed Indian Railways vendor, both of which international buyers occasionally ask for as additional supplier due-diligence references, particularly where an overseas procurement team is running a formal vendor approval process before placing a first order.",
@@ -22,6 +44,7 @@ export const hubSections: { h2: string; paragraphs: string[] }[] = [
   },
   {
     h2: "Quotation, proforma invoice and Incoterms",
+    icon: "Currency",
     paragraphs: [
       `We quote in US dollars once you share your required cutting or welding specification — material, thickness range, bed size or welding envelope — and every quotation sets out both FOB Kolkata pricing and CIF pricing to your nearest major port, so you can compare landed cost against alternative suppliers on a like-for-like basis. Once the specification is agreed, we issue a proforma invoice recording price, payment terms and the production schedule for your sign-off before manufacturing begins.`,
       "Standard payment terms are 30 percent advance with the purchase order and 70 percent against pre-shipment inspection video and shipping documents, settled by wire transfer in US dollars; buyers with an established relationship or a letter of credit requirement can discuss alternative structures with our export desk at quotation stage.",
@@ -29,6 +52,7 @@ export const hubSections: { h2: string; paragraphs: string[] }[] = [
   },
   {
     h2: "Production, packing and pre-shipment video inspection",
+    icon: "Factory",
     paragraphs: [
       "Manufacturing takes place at our Kolkata facility, where each machine is assembled, wired and run through factory acceptance checks against its rated specification. Before any machine is crated, we carry out a live pre-shipment video inspection with the buyer, running the completed machine on camera so you can see it cutting or welding and confirm build quality remotely, rather than relying solely on a written test certificate.",
       "Export packing uses a sea-worthy wooden crate or case appropriate to the machine's size and weight, with the laser source, control cabinet and moving axes braced and protected against transit shock, humidity and handling at multiple ports. Sensitive optical components such as focusing lenses and mirrors are packed separately in their own protective cases within the main crate.",
@@ -36,12 +60,14 @@ export const hubSections: { h2: string; paragraphs: string[] }[] = [
   },
   {
     h2: "Sea and air freight to your port or airport",
+    icon: "Ship",
     paragraphs: [
       "Machines ship by sea freight from Kolkata or Haldia as standard, with air freight reserved for urgent spares or smaller components rather than complete machines, given their size and weight. Transit time and routing — whether via Colombo, Singapore or the Suez Canal — depend on your destination port and are confirmed at the time of vessel booking; each country page on this site gives an indicative transit window and lists the ports and airports we ship to most often in that market.",
     ],
   },
   {
     h2: "Remote and on-site installation, with operator training",
+    icon: "Wrench",
     paragraphs: [
       "Installation begins as soon as the machine arrives, with remote, video-guided commissioning by our engineering team to get the machine powered up and running its first test cuts or welds safely. This is followed by an on-site engineer visit to complete final alignment, safety checks and full commissioning at your premises, scheduled around your production calendar rather than a fixed date set at the time of shipment.",
       "Operator training is included as part of every installation, covering safe operation, routine maintenance, and the nesting or welding-program software supplied with the machine, so your team is production-ready once our engineer completes the handover rather than learning the controls on their own after we leave.",
@@ -49,6 +75,7 @@ export const hubSections: { h2: string; paragraphs: string[] }[] = [
   },
   {
     h2: "Warranty and ongoing spares support",
+    icon: "Shield",
     paragraphs: [
       "Every machine we export carries a 24-month warranty on its core systems — the laser source, drive and control system on a laser cutting machine, or the robot, positioner and power source on a robotic welding cell. After commissioning, our team continues to provide remote diagnostic support, and common wear spares such as nozzles, lenses, contact tips and drive rollers are kept in stock for prompt air-freight dispatch to your address, so a worn consumable does not become a multi-week production stoppage.",
     ],
