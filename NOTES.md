@@ -60,7 +60,41 @@ Run `npm run build` — the post-build audit (`content-audit.md`) flags any thin
 ## 7. How this repo was built (ruflo)
 The site was produced by a ruflo swarm (`npx ruflo init`, `.claude/agents/`, `.mcp.json`): the integration owner wrote the contracts (`docs/SPEC.md`, `docs/adr/0001-stack-and-ownership.md`, `config/`, `data/types.ts`, `data/india-index.ts`) and dispatched ruflo `coder`/`reviewer` agents as headless workers with disjoint file ownership via `scripts/ruflo-worker.sh`. Agent definitions are kept so future work can use the same workflow; runtime state (`.claude-flow/data`, `.swarm`, `ruvector.db`) is git-ignored. The `.mcp.json` server starts on demand only inside Claude Code and is not part of the website build.
 
-## 8. Performance notes
-- Only five client components exist (mobile nav, product filter, forms, map facade, cert modal) plus the hero video mounter; everything else is server-rendered HTML.
-- Hero: the poster `<Image priority>` is the LCP element; the `<video>` mounts after first paint, `preload="metadata"`, and is skipped entirely under `prefers-reduced-motion`.
+## 8. Performance — measured on the final build
+| Metric (home page, static export) | Value |
+|---|---|
+| Pre-rendered HTML pages | 260 (+ 277 static OG images, split sitemaps, robots, llms.txt, llms-full.txt) |
+| Home HTML (gzipped) | 27.5 KB |
+| CSS (gzipped, single file, all pages) | 5.3 KB |
+| Site-specific JS on home (gzipped) | ≈ 15 KB (layout 2.6 KB, page 3.9 KB, shared UI chunks ≈ 8.6 KB) |
+| Next.js 15 + React 19 client runtime (gzipped) | ≈ 101 KB (two framework chunks) |
+| Legacy polyfills (gzipped) | 39.5 KB — `nomodule`, downloaded only by browsers without ES-module support |
+| Fonts | 3 WOFF2 files, 51 KB total, preloaded, `display: swap` |
+| LCP element | `hero-poster.webp` (`<link rel="preload" as="image">`, `priority`, explicit 1920×1080) |
+| Layout shift | Every image has width/height; the video mounts inside the poster's box; no late-loading fonts without fallback metrics |
+
+**About the "≤ 70 KB JS" budget in the spec:** the site-specific JavaScript is well under it (~15 KB gzipped), but the React 19 + Next.js App Router client runtime alone is ~101 KB gzipped on every Next 15 site, regardless of how few client components exist. That floor cannot be removed without leaving Next.js (e.g. Astro with zero-JS islands). Everything within our control is minimised: only six client components exist (mobile nav, product filter, forms, map facade, cert modal, hero video mounter); everything else is server-rendered HTML. On a 4G profile the ~130 KB of modern-browser JS is non-blocking (deferred, loaded after the HTML and poster) and does not affect LCP, which is the poster image.
+
+- Hero: the poster `<Image priority>` is the LCP element; the `<video>` mounts after first paint (`requestIdleCallback`), `preload="metadata"`, `muted loop playsInline`, and is skipped entirely under `prefers-reduced-motion`.
 - Google Maps loads only after the user clicks the facade. No third-party scripts load on any page by default; Web3Forms is a `fetch` on submit only.
+- `hreflang` renders as `hrefLang="en"` / `x-default` (React attribute casing; HTML attributes are case-insensitive, so search engines read it as `hreflang`).
+- The placeholder email `PLACEHOLDER_EMAIL@ramachine.com` is, by the spec's instruction, the one visible placeholder string on the site (footer, contact page, JSON-LD, llms.txt); replacing `site.email` removes every occurrence.
+
+## 9. Route inventory (from `content-audit.md`)
+| Section | Pages | Words (min / median / max) |
+|---|---|---|
+| Home | 1 | 2,216 |
+| Products index | 1 | 492 |
+| Category landing pages | 4 | 1,177 / 1,247 / 1,631 |
+| Product pages | 8 | 1,243 / 1,278 / 1,300 |
+| Machine repair | 1 | 2,347 |
+| Operator training | 1 | 1,143 |
+| Job work (noindex) | 1 | 728 |
+| About / Contact / Certifications | 3 | 1,338 / 386 / 824 |
+| Privacy / Terms | 2 | 450 / 462 |
+| India hub | 1 | 724 |
+| State / UT pages | 36 | 1,644 / 1,779 / 1,925 |
+| City pages | 170 | 934 / 1,017 / 1,139 |
+| Export hub | 1 | 1,609 |
+| Export country pages | 30 | 1,508 / 1,591 / 1,873 |
+| **Total** | **260** | no page below its ADR §5 threshold; no duplicate titles or H1s |

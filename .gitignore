@@ -27,3 +27,5 @@ ruvector.db
 .claude-flow/memory-package.json
 .claude-flow/harness-active-policy.json
 .claude/checkpoints/
+.claude-flow/policy/state.json
+.claude-flow/swarm/swarm-state.json
