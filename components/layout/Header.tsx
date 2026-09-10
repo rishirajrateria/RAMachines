@@ -23,7 +23,7 @@ export default function Header() {
       <div className="container-site flex h-16 items-center justify-between gap-4">
         <Link href={paths.home} className="flex flex-col leading-none">
           <span className="font-display text-xl text-ink">{site.name}</span>
-          <span className="text-[11px] text-grey-500">an RA Group company</span>
+          <span className="text-[11px] text-grey-600">an RA Group company</span>
         </Link>
 
         <nav aria-label="Primary" className="hidden md:block">

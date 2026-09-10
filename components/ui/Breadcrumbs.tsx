@@ -11,7 +11,7 @@ export default function Breadcrumbs({ items }: { items: { name: string; href: st
   return (
     <>
       <nav aria-label="Breadcrumb" className="py-3 text-sm">
-        <ol className="flex flex-wrap items-center gap-1.5 text-grey-500">
+        <ol className="flex flex-wrap items-center gap-1.5 text-grey-600">
           {items.map((item, i) => {
             const isLast = i === items.length - 1;
             return (

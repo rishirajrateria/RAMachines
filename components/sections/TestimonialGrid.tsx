@@ -12,7 +12,7 @@ export default function TestimonialGrid() {
           <blockquote className="text-sm text-grey-700">&ldquo;{t.quote}&rdquo;</blockquote>
           <figcaption className="mt-4 text-sm">
             <span className="block font-semibold text-ink">{t.name}</span>
-            <span className="block text-grey-500">
+            <span className="block text-grey-600">
               {t.role}, {t.company}
             </span>
             <span className="block text-grey-400">{t.location}</span>

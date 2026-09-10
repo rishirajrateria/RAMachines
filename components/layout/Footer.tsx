@@ -29,7 +29,7 @@ export default function Footer() {
       <div className="container-site grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <p className="font-display text-lg text-ink">{site.name}</p>
-          <p className="mt-1 text-xs text-grey-500">an RA Group company</p>
+          <p className="mt-1 text-xs text-grey-600">an RA Group company</p>
           <address className="mt-4 flex gap-2 text-sm not-italic text-grey-600">
             <MapPin width={16} height={16} className="mt-0.5 shrink-0 text-grey-400" />
             {site.address.full}
@@ -46,7 +46,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.08em] text-grey-500">Quick links</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.08em] text-grey-600">Quick links</p>
           <ul className="mt-3 space-y-2">
             {quickLinks.map((link) => (
               <li key={link.href}>
@@ -56,7 +56,7 @@ export default function Footer() {
               </li>
             ))}
           </ul>
-          <p className="mt-6 text-xs font-semibold uppercase tracking-[0.08em] text-grey-500">Machines</p>
+          <p className="mt-6 text-xs font-semibold uppercase tracking-[0.08em] text-grey-600">Machines</p>
           <ul className="mt-3 space-y-2">
             {categories.map((category) => (
               <li key={category.slug}>
@@ -69,7 +69,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.08em] text-grey-500">Across India</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.08em] text-grey-600">Across India</p>
           <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2">
             {cities.map((city: City) => (
               <li key={city.slug}>
@@ -82,7 +82,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.08em] text-grey-500">Exporting to</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.08em] text-grey-600">Exporting to</p>
           <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2">
             {countries.map((country: Country) => (
               <li key={country.slug}>
@@ -97,7 +97,7 @@ export default function Footer() {
 
       <div className="border-t border-grey-200">
         <div className="container-site py-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.08em] text-grey-500">
+          <p className="text-xs font-semibold uppercase tracking-[0.08em] text-grey-600">
             Licences &amp; certifications
           </p>
           <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
@@ -113,7 +113,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-grey-200">
-        <div className="container-site flex flex-col gap-3 py-6 text-xs text-grey-500 sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-site flex flex-col gap-3 py-6 text-xs text-grey-600 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <span>
               &copy; {new Date().getFullYear()} {site.legalName}. Made in India.

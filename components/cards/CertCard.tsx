@@ -42,7 +42,7 @@ export default function CertCard({
         <Link href={paths.certifications}>{imageEl}</Link>
       )}
       <h3 className="mt-3 text-sm font-semibold text-ink">{cert.name}</h3>
-      <p className="mt-1 text-xs text-grey-500">{cert.oneLiner}</p>
+      <p className="mt-1 text-xs text-grey-600">{cert.oneLiner}</p>
     </div>
   );
 }

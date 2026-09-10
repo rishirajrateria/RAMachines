@@ -19,7 +19,7 @@ export default function ComparisonTable({
   return (
     <div className="overflow-x-auto">
       <table className="w-full min-w-[640px] border-collapse text-sm">
-        <caption className="mb-3 text-left text-xs text-grey-500">
+        <caption className="mb-3 text-left text-xs text-grey-600">
           Specification comparison — machines in this category
         </caption>
         <thead>

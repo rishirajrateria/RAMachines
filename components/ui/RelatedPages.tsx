@@ -15,7 +15,7 @@ export default function RelatedPages({
   if (!links.length) return null;
   return (
     <div>
-      <p className="mb-4 text-xs font-semibold uppercase tracking-[0.12em] text-grey-500">
+      <p className="mb-4 text-xs font-semibold uppercase tracking-[0.12em] text-grey-600">
         {title}
       </p>
       <ul className="grid gap-x-6 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -32,7 +32,7 @@ export default function RelatedPages({
               />
               <span>
                 {link.name}
-                {link.hint && <span className="block text-xs text-grey-500">{link.hint}</span>}
+                {link.hint && <span className="block text-xs text-grey-600">{link.hint}</span>}
               </span>
             </Link>
           </li>

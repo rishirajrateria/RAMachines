@@ -20,7 +20,7 @@ export default function ContactStrip() {
         const body = (
           <>
             <Icon width={20} height={20} className="text-steel" />
-            <span className="mt-3 block text-xs font-semibold uppercase tracking-[0.08em] text-grey-500">
+            <span className="mt-3 block text-xs font-semibold uppercase tracking-[0.08em] text-grey-600">
               {item.label}
             </span>
             <span className="mt-1 block text-sm font-semibold text-ink">{item.value}</span>

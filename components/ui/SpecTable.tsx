@@ -11,7 +11,7 @@ export default function SpecTable({
 }) {
   return (
     <table className="w-full border-collapse text-sm">
-      {caption && <caption className="mb-2 text-left text-xs text-grey-500">{caption}</caption>}
+      {caption && <caption className="mb-2 text-left text-xs text-grey-600">{caption}</caption>}
       <tbody>
         {rows.map((row) => (
           <tr key={row.label} className="border-b border-grey-200">
