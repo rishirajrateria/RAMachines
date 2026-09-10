@@ -13,9 +13,11 @@ import { Award } from "@/components/ui/Icons";
 export default function CertCard({
   cert,
   onOpen,
+  compact = false,
 }: {
   cert: Certification;
   onOpen?: (cert: Certification) => void;
+  compact?: boolean;
 }) {
   const imageEl = (
     <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-spark-soft">
@@ -48,7 +50,7 @@ export default function CertCard({
         <Link href={paths.certifications}>{imageEl}</Link>
       )}
       <h3 className="mt-3 text-sm font-semibold text-ink">{cert.name}</h3>
-      <p className="mt-1 text-xs text-grey-600">{cert.oneLiner}</p>
+      {!compact && <p className="mt-1 text-xs text-grey-600">{cert.oneLiner}</p>}
     </div>
   );
 }

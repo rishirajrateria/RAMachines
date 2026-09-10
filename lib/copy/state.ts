@@ -82,7 +82,7 @@ export function stateH1(name: string): string {
  * `cities` should be the cities belonging to this state (from
  * citiesByState) and `products` the full catalogue (from "@/data").
  */
-export function stateSections(state: State, cities: City[], products: Product[]): StateSection[] {
+export function stateSections(state: State, _cities: City[], _products: Product[]): StateSection[] {
   // `cities` and `products` are accepted for signature parity with stateWordCount's
   // caller (app/india/[state]/page.tsx passes the same three args to both) — the
   // sections below no longer link out to products or mention city names directly,

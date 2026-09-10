@@ -7,10 +7,10 @@ import { testimonials } from "@/data";
 import Avatar from "@/components/ui/Avatar";
 import { Quote, Star } from "@/components/ui/Icons";
 
-export default function TestimonialGrid() {
+export default function TestimonialGrid({ limit }: { limit?: number } = {}) {
   return (
     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {testimonials.map((t) => (
+      {(limit ? testimonials.slice(0, limit) : testimonials).map((t) => (
         <figure
           key={`${t.name}-${t.company}`}
           className="card-hover flex h-full flex-col rounded-xl border border-grey-200 bg-white p-5 shadow-card"

@@ -135,7 +135,7 @@ export default function HomePage() {
               key={product.slug}
               className="w-[75vw] max-w-[280px] flex-none [scroll-snap-align:start] sm:w-auto sm:max-w-none"
             >
-              <ProductCard product={product} />
+              <ProductCard product={product} compact />
             </div>
           ))}
         </div>
@@ -177,7 +177,7 @@ export default function HomePage() {
         <div className="mb-8 max-w-2xl">
           <AboutBlurb />
         </div>
-        <CertStrip />
+        <CertStrip compact />
       </Section>
 
       <Section eyebrow="Reach" icon="Globe" title="India + World Reach" intro={reachIntro}>
@@ -185,7 +185,7 @@ export default function HomePage() {
       </Section>
 
       <Section eyebrow="Customers" icon="Quote" title="What fabricators say about working with us">
-        <TestimonialGrid />
+        <TestimonialGrid limit={3} />
       </Section>
 
       <Section>

@@ -10,7 +10,7 @@ import { paths } from "@/lib/urls";
 import { ArrowRight } from "@/components/ui/Icons";
 import Chips from "@/components/ui/Chips";
 
-export default function ProductCard({ product }: { product: Product }) {
+export default function ProductCard({ product, compact = false }: { product: Product; compact?: boolean }) {
   const href = paths.product(product.category, product.slug);
   const image = product.images[0];
   return (
@@ -32,7 +32,7 @@ export default function ProductCard({ product }: { product: Product }) {
           {product.headline}
         </p>
         <h3 className="mt-1 font-display text-lg text-ink">{product.name}</h3>
-        <p className="mt-2 text-sm text-grey-600">{product.shortDescription}</p>
+        {!compact && <p className="mt-2 text-sm text-grey-600">{product.shortDescription}</p>}
         {product.highlights.length > 0 && (
           <div className="mt-3">
             <Chips items={product.highlights.slice(0, 3).map((label) => ({ label }))} />
