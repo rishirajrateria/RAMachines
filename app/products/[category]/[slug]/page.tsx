@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { buildMetadata } from "@/lib/seo";
 import { paths } from "@/lib/urls";
 import { productSchema } from "@/lib/schema";
@@ -15,14 +16,29 @@ import Faq from "@/components/ui/Faq";
 import Chips from "@/components/ui/Chips";
 import Button from "@/components/ui/Button";
 import JsonLd from "@/components/ui/JsonLd";
-import Gallery from "@/components/media/Gallery";
 import QuoteBlock from "@/components/sections/QuoteBlock";
-import { FactStrip, DividedList } from "@/components/ui/glass";
+import { FactStrip, DividedList, ImageSlot } from "@/components/ui/glass";
+import PageHero from "@/components/layout/PageHero";
+import { photos } from "@/lib/photos";
 import { Icon } from "@/components/ui/Icons";
 import { productTitles } from "../../meta";
 import { categoryIcon } from "../../category-icons";
 import { highlightMeta } from "./highlight-icon";
 import ProductTile from "../../ProductTile";
+
+// ADR-0007 §4: laser machines get a cutting-head/sparks/control-panel gallery,
+// welding cells get a robot-weld/sparks/control-panel gallery instead.
+const laserGallery = [
+  { key: "slot-cutting-head", label: "Photo: cutting head close-up" },
+  { key: "slot-sparks", label: "Photo: sparks during cutting" },
+  { key: "slot-control-panel", label: "Photo: control panel" },
+] as const;
+
+const weldingGallery = [
+  { key: "slot-robot-weld", label: "Photo: robotic arm welding" },
+  { key: "slot-sparks", label: "Photo: weld sparks" },
+  { key: "slot-control-panel", label: "Photo: control panel" },
+] as const;
 
 export const dynamicParams = false;
 
@@ -68,6 +84,9 @@ export default async function ProductPage({
     .filter((related): related is NonNullable<typeof related> => Boolean(related));
   const headlineParts = product.headline.split(" · ");
   const keySpecs = product.specs.slice(0, 4).map((spec) => ({ label: spec.label, value: spec.value }));
+  const heroSpecs = product.specs.slice(0, 3);
+  const glyph = product.images[0];
+  const gallerySlots = product.category === "robotic-welding-systems" ? weldingGallery : laserGallery;
   const highlightItems = product.highlights.map((highlight) => {
     const meta = highlightMeta(highlight);
     return { title: meta.label, text: highlight };
@@ -75,22 +94,19 @@ export default async function ProductPage({
 
   return (
     <>
-      <Container>
-        <Breadcrumbs
-          items={[
-            { name: "Home", href: paths.home },
-            { name: "Products", href: paths.products },
-            ...(categoryEntry
-              ? [{ name: categoryEntry.name, href: paths.category(categoryEntry.slug) }]
-              : []),
-            { name: product.name, href: paths.product(product.category, product.slug) },
-          ]}
-        />
-      </Container>
-
-      <Section tone="dark">
-        <div className="grid gap-10 lg:grid-cols-5 lg:items-center">
-          <div className="lg:col-span-3">
+      <PageHero image={photos["hero-product"]}>
+        <div className="flex items-start justify-between gap-6">
+          <div className="min-w-0 flex-1">
+            <Breadcrumbs
+              items={[
+                { name: "Home", href: paths.home },
+                { name: "Products", href: paths.products },
+                ...(categoryEntry
+                  ? [{ name: categoryEntry.name, href: paths.category(categoryEntry.slug) }]
+                  : []),
+                { name: product.name, href: paths.product(product.category, product.slug) },
+              ]}
+            />
             <p className="eyebrow mb-3">
               <Icon name={icon} size={16} />
               {categoryEntry?.shortName ?? "RA Machine"}
@@ -115,16 +131,40 @@ export default async function ProductPage({
                 Download brochure
               </Button>
             </div>
+            <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm">
+              {heroSpecs.map((spec) => (
+                <div key={spec.label} className="flex items-center gap-2">
+                  <span className="text-grey-600">{spec.label}:</span>
+                  <span className="font-semibold text-ink">{spec.value}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="lg:col-span-2">
-            <Gallery images={product.images.slice(0, 3)} />
-          </div>
+          {glyph && (
+            <div className="hidden shrink-0 sm:block">
+              <Image
+                src={glyph.src}
+                alt={glyph.alt}
+                width={96}
+                height={72}
+                className="rounded-xl object-contain opacity-90"
+              />
+            </div>
+          )}
         </div>
-      </Section>
+      </PageHero>
 
       <Container>
         <AboutBlurb context={`The ${product.name} is manufactured and supported from our Kolkata facility.`} />
       </Container>
+
+      <Section eyebrow="Gallery" title="Photos">
+        <div className="grid gap-6 sm:grid-cols-3">
+          {gallerySlots.map((slot) => (
+            <ImageSlot key={slot.key} image={photos[slot.key]} label={slot.label} />
+          ))}
+        </div>
+      </Section>
 
       <Section eyebrow="At a glance" title="Key specs">
         <FactStrip facts={keySpecs} />
