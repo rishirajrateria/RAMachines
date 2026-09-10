@@ -3,15 +3,23 @@ import { buildMetadata } from "@/lib/seo";
 import { serviceSchema } from "@/lib/schema";
 import { paths } from "@/lib/urls";
 import { site } from "@/config/site";
-import { indiaIndex } from "@/data/india-index";
+import { indiaIndex, type IndiaIndexEntry } from "@/data/india-index";
 import { repairFaqs } from "@/data/faqs";
+import type { Region } from "@/data/types";
+import Container from "@/components/ui/Container";
+import Band from "@/components/ui/Band";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AboutBlurb from "@/components/ui/AboutBlurb";
+import SectionHeading from "@/components/ui/SectionHeading";
+import GlancePanel from "@/components/ui/GlancePanel";
+import ProcessSteps from "@/components/ui/ProcessSteps";
+import FeatureGrid from "@/components/ui/FeatureGrid";
+import Chips from "@/components/ui/Chips";
 import CtaGroup from "@/components/ui/CtaGroup";
 import Faq from "@/components/ui/Faq";
 import JsonLd from "@/components/ui/JsonLd";
-import LinkGrid from "@/components/ui/LinkGrid";
+import { Icon } from "@/components/ui/Icons";
 import RepairForm from "@/components/forms/RepairForm";
 import {
   introParagraphs,
@@ -24,6 +32,11 @@ import {
   responseTimeParagraph,
   bookIntro,
   stateLinksIntro,
+  heroLead,
+  heroChips,
+  repairProcessSteps,
+  faultIcons,
+  amcTierIcons,
 } from "./copy";
 
 const description =
@@ -35,112 +48,196 @@ export const metadata: Metadata = buildMetadata({
   path: paths.repair,
 });
 
+const REGION_ORDER: Region[] = ["North", "South", "East", "West", "Central", "North-East"];
+
+function groupByRegion(entries: IndiaIndexEntry[]): Record<Region, IndiaIndexEntry[]> {
+  const grouped = {} as Record<Region, IndiaIndexEntry[]>;
+  for (const region of REGION_ORDER) grouped[region] = [];
+  for (const entry of entries) grouped[entry.region]?.push(entry);
+  return grouped;
+}
+
 export default function MachineRepairPage() {
-  const stateLinks = indiaIndex.map((s) => ({
-    name: `Laser machine repair in ${s.name}`,
-    href: paths.state(s.slug),
-  }));
+  const statesByRegion = groupByRegion(indiaIndex);
 
   return (
     <>
-      <Section tight>
+      <Container>
         <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Machine Repair", href: paths.repair }]} />
-        <h1 className="mt-4 max-w-4xl font-display text-display-lg text-ink">
+      </Container>
+
+      <Band tone="dark">
+        <p className="eyebrow mb-3">
+          <Icon name="Wrench" size={16} />
+          Repair &amp; Maintenance
+        </p>
+        <h1 className="max-w-4xl font-display text-display-lg text-white">
           Laser Cutting Machine Repair &amp; CNC Maintenance Service in India
         </h1>
-        <div className="mt-6 max-w-prose">
-          <AboutBlurb context="Our service engineers repair and maintain laser cutting and robotic welding equipment of every major brand, pan-India, from our Kolkata headquarters." />
-        </div>
-        <div className="mt-8 space-y-4 max-w-prose text-grey-700">
-          {introParagraphs.map((p) => (
-            <p key={p.slice(0, 24)}>{p}</p>
-          ))}
+        <p className="mt-4 max-w-prose text-white/75">{heroLead}</p>
+        <div className="mt-6">
+          <Chips items={heroChips} />
         </div>
         <div className="mt-8">
           <CtaGroup context="machine repair" />
         </div>
-      </Section>
+      </Band>
 
-      <Section title="Pan-India on-site service, dispatched from Kolkata" tight>
-        <p className="max-w-prose text-grey-700">{onSiteParagraph}</p>
-      </Section>
+      <Container className="pb-14 pt-12 md:pb-20 md:pt-16">
+        <GlancePanel
+          title="Service at a glance"
+          facts={[
+            { icon: "Truck", label: "On-site response", value: site.service.responseTime },
+            { icon: "Headset", label: "Remote response", value: site.service.remoteResponseTime },
+            { icon: "Badge", label: "Brands covered", value: "All major brands" },
+            { icon: "Award", label: "AMC tiers", value: "Basic, Standard, Premium" },
+          ]}
+        />
+      </Container>
 
-      <Section title="Remote diagnostics — often the fastest fix" tight>
-        <p className="max-w-prose text-grey-700">{remoteDiagnosticsParagraph}</p>
-      </Section>
-
-      <Section title="Spares availability" tight>
-        <p className="max-w-prose text-grey-700">{sparesParagraph}</p>
-      </Section>
-
-      <Section title="Annual Maintenance Contracts (AMC)" tight>
-        <p className="max-w-prose text-grey-700">{amcIntro}</p>
-        <div className="mt-6 overflow-x-auto">
-          <table className="w-full min-w-[640px] border-collapse text-sm">
-            <thead>
-              <tr className="border-b border-grey-300 text-left">
-                <th scope="col" className="py-3 pr-4 font-semibold text-ink">
-                  Feature
-                </th>
-                <th scope="col" className="py-3 pr-4 font-semibold text-ink">
-                  Basic
-                </th>
-                <th scope="col" className="py-3 pr-4 font-semibold text-ink">
-                  Standard
-                </th>
-                <th scope="col" className="py-3 font-semibold text-ink">
-                  Premium
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {amcRows.map((row) => (
-                <tr key={row.feature} className="border-b border-grey-200 align-top">
-                  <th scope="row" className="py-3 pr-4 text-left font-semibold text-ink">
-                    {row.feature}
-                  </th>
-                  <td className="py-3 pr-4 text-grey-700">{row.basic}</td>
-                  <td className="py-3 pr-4 text-grey-700">{row.standard}</td>
-                  <td className="py-3 text-grey-700">{row.premium}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      <Band tone="soft">
+        <SectionHeading eyebrow="Process" icon="ArrowRight" title="How a repair visit runs" />
+        <div className="mt-10">
+          <ProcessSteps steps={repairProcessSteps} />
         </div>
-      </Section>
+      </Band>
 
-      <Section title="Common faults we diagnose and fix" tight>
-        <div className="grid gap-8 md:grid-cols-2">
-          {commonFaults.map((fault) => (
-            <div key={fault.title}>
-              <h3 className="font-display text-lg text-ink">{fault.title}</h3>
-              <p className="mt-2 max-w-prose text-sm text-grey-700">{fault.body}</p>
+      <Container className="space-y-14 pb-14 pt-14 md:space-y-16 md:pb-20 md:pt-16">
+        <div className="grid gap-8 md:grid-cols-[auto_1fr] md:items-start">
+          <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-steel-soft text-steel">
+            <Icon name="Wrench" size={28} />
+          </span>
+          <div className="space-y-4 max-w-prose text-grey-700">
+            {introParagraphs.map((p) => (
+              <p key={p.slice(0, 24)}>{p}</p>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-[auto_1fr] md:items-start">
+          <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-spark-soft text-spark">
+            <Icon name="Truck" size={28} />
+          </span>
+          <div>
+            <h2 className="section-title text-display-md">Pan-India on-site service, dispatched from Kolkata</h2>
+            <p className="mt-4 max-w-prose text-grey-700">{onSiteParagraph}</p>
+          </div>
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-[auto_1fr] md:items-start">
+          <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-steel-soft text-steel">
+            <Icon name="Headset" size={28} />
+          </span>
+          <div>
+            <h2 className="section-title text-display-md">Remote diagnostics — often the fastest fix</h2>
+            <p className="mt-4 max-w-prose text-grey-700">{remoteDiagnosticsParagraph}</p>
+          </div>
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-[auto_1fr] md:items-start">
+          <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-spark-soft text-spark">
+            <Icon name="Package" size={28} />
+          </span>
+          <div>
+            <h2 className="section-title text-display-md">Spares availability</h2>
+            <p className="mt-4 max-w-prose text-grey-700">{sparesParagraph}</p>
+          </div>
+        </div>
+      </Container>
+
+      <Band tone="soft">
+        <SectionHeading eyebrow="AMC" icon="Award" title="Annual Maintenance Contracts (AMC)" intro={amcIntro} />
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {amcTierIcons.map((tier) => (
+            <div
+              key={tier.key}
+              className={`rounded-xl border bg-white p-6 shadow-card ${tier.recommended ? "border-spark" : "border-grey-200"}`}
+            >
+              {tier.recommended && (
+                <span className="mb-3 inline-block rounded-full bg-spark px-3 py-1 text-xs font-semibold text-white">
+                  Most popular
+                </span>
+              )}
+              <span className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-steel-soft text-steel">
+                <Icon name={tier.icon} size={22} />
+              </span>
+              <h3 className="mt-4 font-display text-lg text-ink">{tier.name}</h3>
+              <ul className="mt-4 space-y-3">
+                {amcRows.map((row) => (
+                  <li key={row.feature} className="flex items-start gap-2 text-sm text-grey-700">
+                    <Icon name="Check" size={16} className="mt-0.5 shrink-0 text-steel" />
+                    <span>
+                      <span className="font-semibold text-ink">{row.feature}:</span> {row[tier.key]}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
-      </Section>
+      </Band>
 
-      <Section title="Our response-time commitment" tight>
-        <p className="max-w-prose text-grey-700">
+      <Container className="pb-14 pt-14 md:pb-20 md:pt-16">
+        <SectionHeading eyebrow="Diagnostics" icon="Gauge" title="Common faults we diagnose and fix" />
+        <div className="mt-8">
+          <FeatureGrid
+            columns={4}
+            items={commonFaults.map((fault) => ({
+              icon: faultIcons[fault.title] ?? "Wrench",
+              title: fault.title,
+              text: fault.body,
+            }))}
+          />
+        </div>
+      </Container>
+
+      <Container className="pb-14 md:pb-20">
+        <SectionHeading eyebrow="Commitment" icon="Clock" title="Our response-time commitment" />
+        <p className="mt-4 max-w-prose text-grey-700">
           {responseTimeParagraph(site.service.responseTime, site.service.remoteResponseTime)}
         </p>
-      </Section>
+      </Container>
 
-      <Section id="book" title="Book a Repair" tight>
-        <p className="max-w-prose text-grey-700">{bookIntro}</p>
-        <div className="mt-6 max-w-xl">
-          <RepairForm />
+      <Band tone="spark">
+        <div className="grid gap-10 lg:grid-cols-2">
+          <div>
+            <SectionHeading eyebrow="Book a repair" icon="Calendar" title="Book a Repair" />
+            <p className="mt-4 max-w-prose text-grey-700">{bookIntro}</p>
+            <div className="mt-6">
+              <AboutBlurb context="Our service engineers repair and maintain laser cutting and robotic welding equipment of every major brand, pan-India, from our Kolkata headquarters." />
+            </div>
+          </div>
+          <div id="book" className="rounded-xl border border-grey-200 bg-white p-6 shadow-card">
+            <RepairForm />
+          </div>
         </div>
-      </Section>
+      </Band>
 
-      <Section tight>
+      <Container className="pb-14 pt-14 md:pb-20 md:pt-16">
         <Faq items={repairFaqs} title="Frequently asked questions about machine repair" />
-      </Section>
+      </Container>
 
       <Section title="Laser machine repair across India" tight>
         <p className="max-w-prose text-grey-700">{stateLinksIntro}</p>
-        <div className="mt-6">
-          <LinkGrid links={stateLinks} columns={4} />
+        <div className="mt-8 space-y-8">
+          {REGION_ORDER.map((region) => {
+            const entries = statesByRegion[region];
+            if (!entries.length) return null;
+            return (
+              <div key={region}>
+                <p className="eyebrow mb-3">
+                  <Icon name="MapPin" size={16} />
+                  {region} India
+                </p>
+                <Chips
+                  items={entries.map((entry) => ({
+                    label: `Laser machine repair in ${entry.name}`,
+                    href: paths.state(entry.slug),
+                  }))}
+                />
+              </div>
+            );
+          })}
         </div>
       </Section>
 

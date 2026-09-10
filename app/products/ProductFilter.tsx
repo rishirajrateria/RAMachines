@@ -6,19 +6,23 @@
  * (each wrapped in an element carrying a `data-category` attribute); this
  * component only toggles the native `hidden` attribute on those wrappers, so
  * with JavaScript disabled every card stays visible and the page still works.
+ * ADR-0002: filter buttons are restyled as icon chips (the `.chip` pill look),
+ * using `!` important utilities so the active state can override the shared
+ * `.chip` colours without editing globals.css.
  */
 import { Children, cloneElement, isValidElement, useState, type ReactElement, type ReactNode } from "react";
+import { Icon, type IconName } from "@/components/ui/Icons";
 
-type FilterOption = { slug: string; name: string };
+type FilterOption = { slug: string; name: string; icon?: IconName };
 
 const ALL = "all";
 
-function buttonClass(active: boolean): string {
+function chipClass(active: boolean): string {
   return [
-    "inline-flex h-11 items-center rounded border px-4 text-sm font-semibold transition-colors",
+    "chip h-11 border transition-colors",
     active
-      ? "border-steel bg-steel text-white"
-      : "border-grey-300 text-ink hover:border-steel hover:text-steel",
+      ? "!border-spark !bg-spark !text-white [&_svg]:!text-white"
+      : "border-transparent hover:!border-spark hover:!text-spark-hover",
   ].join(" ");
 }
 
@@ -33,13 +37,14 @@ export default function ProductFilter({
 
   return (
     <div>
-      <div role="group" aria-label="Filter machines by category" className="flex flex-wrap gap-2">
+      <div role="group" aria-label="Filter machines by category" className="flex flex-wrap gap-2.5">
         <button
           type="button"
           aria-pressed={active === ALL}
-          className={buttonClass(active === ALL)}
+          className={chipClass(active === ALL)}
           onClick={() => setActive(ALL)}
         >
+          <Icon name="Layers" size={16} />
           All Machines
         </button>
         {categories.map((category) => (
@@ -47,9 +52,10 @@ export default function ProductFilter({
             key={category.slug}
             type="button"
             aria-pressed={active === category.slug}
-            className={buttonClass(active === category.slug)}
+            className={chipClass(active === category.slug)}
             onClick={() => setActive(category.slug)}
           >
+            {category.icon && <Icon name={category.icon} size={16} />}
             {category.name}
           </button>
         ))}

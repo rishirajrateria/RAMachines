@@ -4,6 +4,7 @@
  * 400-line limit. To edit: change the paragraphs/arrays below directly; each export
  * is plain data consumed by page.tsx.
  */
+import type { IconName } from "@/components/ui/Icons";
 
 export const introParagraphs: string[] = [
   "Production downtime on a laser cutting or robotic welding line is expensive, and every hour a machine sits idle is an hour of committed orders slipping behind schedule. RA Machine's repair and maintenance service exists to get that machine back into production as quickly as possible, whether it carries our badge or another manufacturer's nameplate. Our engineers are trained across the laser source, motion, controller and welding-cell technologies that are common to the industry, so a breakdown call gets a competent first response regardless of where the machine was originally purchased.",
@@ -89,3 +90,49 @@ export const bookIntro: string =
 
 export const stateLinksIntro: string =
   "We provide laser cutting machine repair and CNC maintenance service across every state and union territory in India, with engineers dispatched from our Kolkata headquarters and remote diagnostics available nationwide. Find repair information for your state below.";
+
+/* --------------------------- ADR-0002 visual additions --------------------------- */
+// Purely presentational metadata — icons, short chip/step labels — layered on top of
+// the copy above (page.tsx). No paragraph text is added, removed or reworded here.
+
+export const heroLead: string =
+  "One call reaches remote diagnostics, spares dispatch and an engineer from our Kolkata service desk, whatever brand of laser or welding machine is on your shop floor.";
+
+export const heroChips: { label: string; icon: IconName }[] = [
+  { label: "All brands", icon: "Badge" },
+  { label: "Pan-India", icon: "MapPin" },
+  { label: "Remote diagnostics", icon: "Headset" },
+  { label: "Spares & AMC", icon: "Package" },
+];
+
+export interface RepairProcessStep {
+  title: string;
+  text: string;
+  icon: IconName;
+}
+
+export const repairProcessSteps: RepairProcessStep[] = [
+  { title: "Call or WhatsApp", text: "Report the machine, fault and city to our Kolkata service desk.", icon: "Phone" },
+  { title: "Remote diagnosis", text: "Our team reviews logs and error codes over phone or video first.", icon: "Headset" },
+  { title: "Engineer dispatch", text: "If needed, an engineer travels with tools, spares and test gear.", icon: "Truck" },
+  { title: "Repair", text: "Fault is corrected on site, with parts replaced to specification.", icon: "Wrench" },
+  { title: "Test", text: "Machine is run on test material to confirm the fix holds under load.", icon: "Gauge" },
+  { title: "Report", text: "A written service report covers findings, work done and next steps.", icon: "Certificate" },
+];
+
+export const faultIcons: Record<string, IconName> = {
+  "Laser source": "Bolt",
+  Chiller: "Gauge",
+  "Cutting head": "Sheet",
+  "Nozzle and lens": "Layers",
+  "Servo and drive": "Gear",
+  Controller: "Layers",
+  "Gas system": "Wrench",
+  "Bed and rail alignment": "Ruler",
+};
+
+export const amcTierIcons: { key: "basic" | "standard" | "premium"; name: string; icon: IconName; recommended?: boolean }[] = [
+  { key: "basic", name: "Basic", icon: "Shield" },
+  { key: "standard", name: "Standard", icon: "Award", recommended: true },
+  { key: "premium", name: "Premium", icon: "Sparkles" },
+];

@@ -1,19 +1,28 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { buildMetadata } from "@/lib/seo";
 import { paths } from "@/lib/urls";
 import { categories } from "@/data/categories";
 import { productsByCategory } from "@/data/products";
 import type { CategorySlug } from "@/data/types";
 import Container from "@/components/ui/Container";
+import Band from "@/components/ui/Band";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AboutBlurb from "@/components/ui/AboutBlurb";
-import Prose from "@/components/ui/Prose";
+import SectionHeading from "@/components/ui/SectionHeading";
+import GlancePanel from "@/components/ui/GlancePanel";
+import Chips from "@/components/ui/Chips";
+import { Icon } from "@/components/ui/Icons";
+import CtaGroup from "@/components/ui/CtaGroup";
 import Faq from "@/components/ui/Faq";
 import CtaBand from "@/components/sections/CtaBand";
 import ProductCard from "@/components/cards/ProductCard";
 import ComparisonTable from "./ComparisonTable";
+import LongCopySections from "./LongCopySections";
 import { categoryTitles } from "../meta";
+import { categoryIcon } from "../category-icons";
+import { categoryGlance } from "./glance";
 
 export const dynamicParams = false;
 
@@ -51,6 +60,7 @@ export default async function CategoryPage({
   if (!category) notFound();
 
   const categoryProducts = productsByCategory(category.slug);
+  const icon = categoryIcon[category.slug];
 
   return (
     <>
@@ -64,23 +74,55 @@ export default async function CategoryPage({
         />
       </Container>
 
-      <Container className="pb-6 pt-2">
-        <h1 className="max-w-3xl font-display text-display-lg text-ink">
-          {category.name} — Manufacturer in India
-        </h1>
-        <div className="mt-5 max-w-3xl">
-          <AboutBlurb
-            context={`Our ${category.shortName.toLowerCase()} range is designed, assembled and supported from our Kolkata facility, for buyers across India and for export.`}
-          />
+      <Band tone="dark">
+        <div className="grid gap-10 lg:grid-cols-5 lg:items-center">
+          <div className="lg:col-span-3">
+            <p className="eyebrow mb-3">
+              <Icon name={icon} size={16} />
+              {category.shortName}
+            </p>
+            <h1 className="font-display text-display-lg text-white">
+              {category.name} — Manufacturer in India
+            </h1>
+            <p className="mt-4 max-w-prose text-white/75">{category.intro}</p>
+            <div className="mt-6">
+              <Chips
+                items={categoryProducts.map((product) => ({
+                  label: product.sku,
+                  href: paths.product(product.category, product.slug),
+                  icon,
+                }))}
+              />
+            </div>
+            <div className="mt-8">
+              <CtaGroup context={category.shortName} />
+            </div>
+          </div>
+          <div className="lg:col-span-2">
+            <div className="relative aspect-[3/2] overflow-hidden rounded-xl bg-white/10">
+              <Image
+                src={category.image.src}
+                alt={category.image.alt}
+                width={category.image.width}
+                height={category.image.height}
+                className="h-full w-full object-contain p-6"
+              />
+            </div>
+          </div>
         </div>
-        <p className="mt-4 max-w-3xl text-grey-600">{category.intro}</p>
+      </Band>
+
+      <Container className="pb-14 pt-12 md:pb-20 md:pt-16">
+        <GlancePanel title={`${category.shortName} at a glance`} facts={categoryGlance[category.slug]} />
       </Container>
 
       <Container className="pb-14 md:pb-20">
-        <h2 className="font-display text-display-md text-ink">
-          {category.name} in our range
-        </h2>
-        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <SectionHeading
+          eyebrow="In our range"
+          icon={icon}
+          title={`${category.name} we manufacture`}
+        />
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {categoryProducts.map((product) => (
             <ProductCard key={product.slug} product={product} />
           ))}
@@ -88,31 +130,31 @@ export default async function CategoryPage({
       </Container>
 
       <Container className="pb-14 md:pb-20">
-        <Prose>
-          {category.longCopy.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
-        </Prose>
+        <SectionHeading eyebrow="Compare" icon="Ruler" title="Compare specifications" />
+        <div className="mt-8">
+          <ComparisonTable products={categoryProducts} specLabels={category.comparisonSpecs} icon={icon} categoryName={category.name} />
+        </div>
+      </Container>
+
+      <Band tone="soft">
+        <SectionHeading eyebrow="Where it's used" icon="Factory" title="Applications" />
+        <div className="mt-6">
+          <Chips items={category.applications.map((application) => ({ label: application, icon: "Check" }))} />
+        </div>
+      </Band>
+
+      <Container className="pb-14 pt-14 md:pb-20 md:pt-20">
+        <LongCopySections category={category} />
       </Container>
 
       <Container className="pb-14 md:pb-20">
-        <h2 className="mb-6 font-display text-display-md text-ink">Compare specifications</h2>
-        <ComparisonTable products={categoryProducts} specLabels={category.comparisonSpecs} />
+        <AboutBlurb
+          context={`Our ${category.shortName.toLowerCase()} range is designed, assembled and supported from our Kolkata facility, for buyers across India and for export.`}
+        />
       </Container>
 
       <Container className="pb-14 md:pb-20">
-        <h2 className="mb-6 font-display text-display-md text-ink">Applications</h2>
-        <ul className="grid gap-x-6 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
-          {category.applications.map((application) => (
-            <li key={application} className="text-sm text-grey-700">
-              {application}
-            </li>
-          ))}
-        </ul>
-      </Container>
-
-      <Container className="pb-14 md:pb-20">
-        <Faq items={category.faqs} />
+        <Faq items={category.faqs} title={`Frequently asked questions — ${category.shortName.toLowerCase()}`} />
       </Container>
 
       <CtaBand
