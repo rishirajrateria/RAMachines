@@ -24,8 +24,7 @@ import {
   stateSteps,
   stateCityLinks,
 } from "../_lib/stateVisuals";
-import Container from "@/components/ui/Container";
-import Band from "@/components/ui/Band";
+import PageHero from "@/components/layout/PageHero";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AboutBlurb from "@/components/ui/AboutBlurb";
@@ -34,7 +33,8 @@ import Faq from "@/components/ui/Faq";
 import ProductCard from "@/components/cards/ProductCard";
 import QuoteForm from "@/components/forms/QuoteForm";
 import JsonLd from "@/components/ui/JsonLd";
-import { FactStrip, Steps, DividedList } from "@/components/ui/glass";
+import { FactStrip, Steps, DividedList, ImageSlot } from "@/components/ui/glass";
+import { photos } from "@/lib/photos";
 
 export const dynamicParams = false;
 
@@ -82,7 +82,7 @@ export default async function StatePage({
 
   return (
     <>
-      <Container>
+      <PageHero image={photos["hero-state"]} align="start">
         <Breadcrumbs
           items={[
             { name: "Home", href: paths.home },
@@ -90,9 +90,7 @@ export default async function StatePage({
             { name: state.name, href: paths.state(state.slug) },
           ]}
         />
-      </Container>
-
-      <Band tone="dark">
+        <p className="eyebrow mb-3">{state.region} India</p>
         <h1 className="max-w-3xl font-display text-display-lg text-ink">{stateH1(state.name)}</h1>
         <p className="mt-4 max-w-2xl text-grey-600">
           Fiber laser cutting machines, tube laser machines and robotic MIG/MAG welding systems for {state.name}&apos;s
@@ -110,7 +108,7 @@ export default async function StatePage({
             Request a Quote
           </Button>
         </div>
-      </Band>
+      </PageHero>
 
       <Section tight>
         <AboutBlurb
@@ -141,7 +139,10 @@ export default async function StatePage({
       </Section>
 
       <Section eyebrow="Delivery" title="Delivery">
-        <Steps steps={stateSteps(state.name)} />
+        <div className="grid gap-10 md:grid-cols-2 md:items-center">
+          <Steps steps={stateSteps(state.name)} />
+          <ImageSlot image={photos["slot-installation"]} aspect="4/3" label="Photo: machine installation" />
+        </div>
       </Section>
 
       <Section eyebrow="City pages" title="Cities" intro={`Every city page across ${state.name}.`}>
@@ -149,15 +150,18 @@ export default async function StatePage({
       </Section>
 
       <Section eyebrow="In depth" title="Notes">
-        <div className="prose-calm">
-          {sections.map((section) => (
-            <div key={section.id}>
-              <h3>{section.h3}</h3>
-              {section.paragraphs.map((p) => (
-                <p key={p.slice(0, 40)}>{p}</p>
-              ))}
-            </div>
-          ))}
+        <div className="grid gap-10 md:grid-cols-2 md:items-start">
+          <ImageSlot image={photos["slot-engineer-service"]} aspect="4/3" label="Photo: engineer on-site service" />
+          <div className="prose-calm">
+            {sections.map((section) => (
+              <div key={section.id}>
+                <h3>{section.h3}</h3>
+                {section.paragraphs.map((p) => (
+                  <p key={p.slice(0, 40)}>{p}</p>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </Section>
 

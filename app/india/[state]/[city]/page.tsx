@@ -24,8 +24,7 @@ import {
   citySteps,
   cityNearbyLinks,
 } from "../../_lib/cityVisuals";
-import Container from "@/components/ui/Container";
-import Band from "@/components/ui/Band";
+import PageHero from "@/components/layout/PageHero";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AboutBlurb from "@/components/ui/AboutBlurb";
@@ -34,7 +33,8 @@ import Faq from "@/components/ui/Faq";
 import ProductCard from "@/components/cards/ProductCard";
 import QuoteForm from "@/components/forms/QuoteForm";
 import JsonLd from "@/components/ui/JsonLd";
-import { FactStrip, Steps, DividedList } from "@/components/ui/glass";
+import { FactStrip, Steps, DividedList, ImageSlot } from "@/components/ui/glass";
+import { photos } from "@/lib/photos";
 
 export const dynamicParams = false;
 
@@ -99,7 +99,7 @@ export default async function CityPage({
 
   return (
     <>
-      <Container>
+      <PageHero image={photos["hero-city"]} align="start">
         <Breadcrumbs
           items={[
             { name: "Home", href: paths.home },
@@ -108,9 +108,7 @@ export default async function CityPage({
             { name: city.name, href: paths.city(state.slug, city.slug) },
           ]}
         />
-      </Container>
-
-      <Band tone="dark">
+        <p className="eyebrow mb-3">{state.name}</p>
         <h1 className="max-w-3xl font-display text-display-lg text-ink">{cityH1(city.name, state.name)}</h1>
         <p className="mt-4 max-w-2xl text-grey-600">
           Laser cutting and robotic welding machines for {city.name}&apos;s fabricators, delivered, installed and
@@ -128,7 +126,7 @@ export default async function CityPage({
             Request a Quote
           </Button>
         </div>
-      </Band>
+      </PageHero>
 
       <Section tight>
         <AboutBlurb
@@ -155,7 +153,10 @@ export default async function CityPage({
       </Section>
 
       <Section eyebrow="Delivery" title="Delivery">
-        <Steps steps={citySteps(city.name)} />
+        <div className="grid gap-10 md:grid-cols-2 md:items-center">
+          <Steps steps={citySteps(city.name)} />
+          <ImageSlot image={photos["slot-engineer-service"]} aspect="4/3" label="Photo: engineer on-site service" />
+        </div>
       </Section>
 
       {nearby.length > 0 && (
@@ -165,15 +166,18 @@ export default async function CityPage({
       )}
 
       <Section eyebrow="In depth" title="Notes">
-        <div className="prose-calm">
-          {sections.map((section) => (
-            <div key={section.id}>
-              <h3>{section.h3}</h3>
-              {section.paragraphs.map((p) => (
-                <p key={p.slice(0, 40)}>{p}</p>
-              ))}
-            </div>
-          ))}
+        <div className="grid gap-10 md:grid-cols-2 md:items-start">
+          <ImageSlot image={photos["slot-installation"]} aspect="4/3" label="Photo: machine installation" />
+          <div className="prose-calm">
+            {sections.map((section) => (
+              <div key={section.id}>
+                <h3>{section.h3}</h3>
+                {section.paragraphs.map((p) => (
+                  <p key={p.slice(0, 40)}>{p}</p>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </Section>
 

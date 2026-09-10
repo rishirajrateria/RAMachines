@@ -6,10 +6,9 @@
  * context, both short by design — the state and city pages carry the long-
  * form copy and word-count floors, not this hub.
  */
-import Container from "@/components/ui/Container";
+import PageHero from "@/components/layout/PageHero";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AboutBlurb from "@/components/ui/AboutBlurb";
-import Band from "@/components/ui/Band";
 import Section from "@/components/ui/Section";
 import DividedList from "@/components/ui/DividedList";
 import CtaBand from "@/components/sections/CtaBand";
@@ -19,6 +18,7 @@ import { paths } from "@/lib/urls";
 import { localBusinessSchema, serviceSchema } from "@/lib/schema";
 import { statesByRegion, states, cities } from "@/data";
 import type { Region } from "@/data/types";
+import { photos } from "@/lib/photos";
 import { hubHeroSentence, hubAboutContext } from "./copy";
 
 export const metadata = buildMetadata({
@@ -38,16 +38,14 @@ export default function IndiaHubPage() {
 
   return (
     <>
-      <Container>
+      <PageHero image={photos["hero-india"]} size="tall" align="start">
         <Breadcrumbs items={[{ name: "Home", href: paths.home }, { name: "India", href: "/india" }]} />
-      </Container>
-
-      <Band tone="dark">
+        <p className="eyebrow mb-3">Pan-India Network</p>
         <h1 className="max-w-3xl font-display text-display-lg text-ink">
           Laser Cutting Machine &amp; Robotic Welding Supplier Across India
         </h1>
         <p className="mt-4 max-w-2xl text-grey-600">{hubHeroSentence}</p>
-      </Band>
+      </PageHero>
 
       <Section tight>
         <AboutBlurb context={hubAboutContext} />
