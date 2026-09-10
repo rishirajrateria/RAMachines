@@ -3,7 +3,12 @@
  * dots and short labels — replaces ProcessSteps' boxes. Accepts either plain
  * strings or `{title, text?}` objects so callers can pass a short label list or
  * a fuller step description. Vertical stack on mobile, horizontal row on desktop.
+ *
+ * ADR-0006 §Motion 1: each step reveals on scroll, staggered 60ms per step
+ * (`data-stagger`, capped at the 6th) via Reveal — pages need no change.
  */
+import Reveal from "./Reveal";
+
 export type StepItem = string | { title: string; text?: string };
 
 function normalise(step: StepItem): { title: string; text?: string } {
@@ -15,7 +20,12 @@ export default function Steps({ steps }: { steps: StepItem[] }) {
   return (
     <ol className="grid gap-8 md:grid-flow-col md:auto-cols-fr md:gap-4">
       {items.map((step, i) => (
-        <li key={step.title} className="relative flex gap-4 md:flex-col md:items-center md:gap-3 md:text-center">
+        <Reveal
+          as="li"
+          stagger
+          key={step.title}
+          className="relative flex gap-4 md:flex-col md:items-center md:gap-3 md:text-center"
+        >
           {i < items.length - 1 && (
             <span
               aria-hidden="true"
@@ -29,7 +39,7 @@ export default function Steps({ steps }: { steps: StepItem[] }) {
             <h3 className="font-display text-base text-ink">{step.title}</h3>
             {step.text && <p className="mt-1 text-sm text-grey-600">{step.text}</p>}
           </div>
-        </li>
+        </Reveal>
       ))}
     </ol>
   );

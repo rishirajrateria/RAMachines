@@ -60,12 +60,13 @@ const config: Config = {
       maxWidth: { site: "1720px", content: "1200px", prose: "66ch" },
       spacing: { 18: "4.5rem", 22: "5.5rem" },
       fontSize: {
-        // ADR-0005 §3 H1 — clamp(2.75rem, 6vw, 5rem), weight 600, ls -0.03em, lh 1.02.
-        "display-xl": ["clamp(2.75rem, 6vw, 5rem)", { lineHeight: "1.02", letterSpacing: "-0.03em" }],
-        "display-lg": ["clamp(2.75rem, 6vw, 5rem)", { lineHeight: "1.02", letterSpacing: "-0.03em" }],
+        // ADR-0006 §Polish — H1 letter-spacing tightened to -0.035em (was -0.03em, ADR-0005 §3).
+        "display-xl": ["clamp(2.75rem, 6vw, 5rem)", { lineHeight: "1.02", letterSpacing: "-0.035em" }],
+        "display-lg": ["clamp(2.75rem, 6vw, 5rem)", { lineHeight: "1.02", letterSpacing: "-0.035em" }],
         // ADR-0005 §3 H2 — clamp(1.9rem, 3.4vw, 2.75rem), ls -0.02em.
         "display-md": ["clamp(1.9rem, 3.4vw, 2.75rem)", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
-        eyebrow: ["0.75rem", { lineHeight: "1.3", letterSpacing: "0.14em" }],
+        // ADR-0006 §Polish — eyebrow 11.5px, tracking .16em (was 12px/.14em, ADR-0005 §3).
+        eyebrow: ["0.71875rem", { lineHeight: "1.3", letterSpacing: "0.16em" }],
       },
     },
   },

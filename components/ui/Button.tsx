@@ -6,6 +6,11 @@
  * site keeps compiling: solid → primary, outline → secondary, ghost → tertiary.
  * `tone` is accepted for backward compatibility only — ADR-0005 §4: tone "spark"
  * now renders primary teal, i.e. `tone` no longer changes the rendered colour.
+ *
+ * ADR-0006 §Motion 4: every button scales to 1.02 on hover/focus with a brighter
+ * inner highlight; primary additionally gets a faint outer teal glow; tertiary's
+ * underline grows in from the left (`.link-underline`, a background-size
+ * transition) instead of the browser's default underline.
  */
 import type { ReactNode } from "react";
 import Link from "next/link";
@@ -17,9 +22,9 @@ const sizeClasses = {
 };
 
 const variantClasses = {
-  solid: "bg-teal text-white shadow-[inset_0_1px_0_rgba(255,255,255,.35)] hover:bg-teal-hover hover:-translate-y-0.5",
-  outline: "glass-pill h-12 text-ink hover:-translate-y-0.5",
-  ghost: "h-auto px-0 text-teal hover:text-teal-hover",
+  solid: "bg-teal text-white shadow-[inset_0_1px_0_rgba(255,255,255,.35)] hover:bg-teal-hover hover:scale-[1.02] hover:shadow-[inset_0_1px_0_rgba(255,255,255,.55),0_0_0_6px_rgba(15,118,110,.16)] focus-visible:scale-[1.02]",
+  outline: "glass-pill h-12 text-ink hover:scale-[1.02] hover:shadow-[inset_0_1px_0_rgba(255,255,255,1),0_10px_40px_rgba(15,26,26,.08)] focus-visible:scale-[1.02]",
+  ghost: "link-underline h-auto px-0 pb-0.5 text-teal hover:text-teal-hover",
 };
 
 export default function Button({
@@ -44,7 +49,7 @@ export default function Button({
   className?: string;
   size?: "md" | "lg";
 } & Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "href" | "className">) {
-  const classes = `inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold transition-transform duration-200 focus-visible:outline-none ${
+  const classes = `inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold transition-[transform,box-shadow,background-color,background-size,color] duration-200 focus-visible:outline-none ${
     variant === "solid" ? "rounded-full" : ""
   } ${variant === "solid" ? sizeClasses[size] : ""} ${variantClasses[variant]} ${className}`.trim();
 
