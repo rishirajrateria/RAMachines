@@ -18,24 +18,31 @@ export function useReveal<T extends HTMLElement>() {
     const el = ref.current;
     if (!el) return;
 
+    const reveal = () => el.classList.add("is-in");
+
+    // Anything already inside (or above) the viewport at hydration is revealed at once —
+    // no waiting on observer timing, and nothing near the page bottom can get stuck.
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      reveal();
+      return;
+    }
+
     if (typeof IntersectionObserver === "undefined") {
-      el.classList.add("is-in");
+      reveal();
       return;
     }
 
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-in");
-            observer.unobserve(entry.target);
+          if (entry.isIntersecting || entry.boundingClientRect.top < window.innerHeight) {
+            reveal();
+            observer.disconnect();
           }
         }
       },
-      // threshold 0 + a small bottom inset: fire as soon as the element's top edge is ~8% into
-      // the viewport, regardless of how tall the element is (a 15% area threshold never
-      // triggers for very tall sections while only their top is on screen).
-      { threshold: 0, rootMargin: "0px 0px -8% 0px" },
+      { threshold: 0 },
     );
 
     observer.observe(el);
