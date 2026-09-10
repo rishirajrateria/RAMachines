@@ -1,5 +1,5 @@
 /**
- * components/ui/Container.tsx — the site's max-width wrapper (1280px, gutter padding).
+ * components/ui/Container.tsx — the site's max-width wrapper (1720px, fluid gutters).
  * Wrap page-level content in this once per Section rather than nesting it repeatedly.
  */
 import type { ReactNode } from "react";

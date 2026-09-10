@@ -1,6 +1,6 @@
 # Content audit
 
-Generated: 2026-09-10T19:36:49.102Z
+Generated: 2026-09-10T19:42:05.183Z
 Total pages: 260
 
 ## Summary by section
@@ -19,7 +19,7 @@ Total pages: 260
 | job-work | 1 | 809 | 809 | 809 |
 | legal | 2 | 450 | 456 | 462 |
 | other | 1 | 832 | 832 | 832 |
-| product | 8 | 1325 | 1368 | 1393 |
+| product | 8 | 1325 | 1369 | 1393 |
 | products-index | 1 | 905 | 905 | 905 |
 | repair | 1 | 2614 | 2614 | 2614 |
 | training | 1 | 1295 | 1295 | 1295 |
@@ -281,14 +281,14 @@ Total pages: 260
 | /privacy-policy | Privacy Policy \| RA Machine | Privacy Policy | 462 |
 | /products | Laser Cutting Machines & Robotic Welding \| RA Machine | Laser Cutting Machines & Robotic Welding Systems | 905 |
 | /products/co2-laser-machines | CO2 Laser Cutting Machines - Manufacturer, India | CO2 Laser Machines — Manufacturer in India | 1397 |
-| /products/co2-laser-machines/ra-c1390 | RA-C1390 CO2 Laser Cutting and Engraving Machine | RA-C1390 CO2 Laser Cutting & Engraving Machine | 1369 |
+| /products/co2-laser-machines/ra-c1390 | RA-C1390 CO2 Laser Cutting and Engraving Machine | RA-C1390 CO2 Laser Cutting & Engraving Machine | 1370 |
 | /products/fiber-laser-cutting-machines | Fiber Laser Cutting Machines - Manufacturer, India | Fiber Laser Cutting Machines — Manufacturer in India | 1910 |
-| /products/fiber-laser-cutting-machines/ra-f12k | RA-F12K 12 kW Heavy Duty Fiber Laser Cutting Machine | RA-F12K Heavy Duty Fiber Laser Cutting Machine | 1373 |
-| /products/fiber-laser-cutting-machines/ra-f1530 | RA-F1530 1.5 kW Fiber Laser Cutting Machine \| RA Machine | RA-F1530 Fiber Laser Cutting Machine | 1379 |
+| /products/fiber-laser-cutting-machines/ra-f12k | RA-F12K 12 kW Heavy Duty Fiber Laser Cutting Machine | RA-F12K Heavy Duty Fiber Laser Cutting Machine | 1374 |
+| /products/fiber-laser-cutting-machines/ra-f1530 | RA-F1530 1.5 kW Fiber Laser Cutting Machine \| RA Machine | RA-F1530 Fiber Laser Cutting Machine | 1380 |
 | /products/fiber-laser-cutting-machines/ra-f3015-pro | RA-F3015 Pro 3 kW Fiber Laser Cutting Machine \| RA Machine | RA-F3015 Pro Fiber Laser Cutting Machine | 1367 |
 | /products/fiber-laser-cutting-machines/ra-f6020-hd | RA-F6020 HD 6 kW Fiber Laser Cutting Machine \| RA Machine | RA-F6020 HD Fiber Laser Cutting Machine | 1393 |
 | /products/robotic-welding-systems | Robotic Welding Systems - Manufacturer, India \| RA Machine | Robotic Welding Systems — Manufacturer in India | 1455 |
-| /products/robotic-welding-systems/ra-rw10 | RA-RW10 Dual-Station Robotic MIG Welding \| RA Machine | RA-RW10 Robotic MIG/MAG Welding Workstation (Dual-Station) | 1338 |
+| /products/robotic-welding-systems/ra-rw10 | RA-RW10 Dual-Station Robotic MIG Welding \| RA Machine | RA-RW10 Robotic MIG/MAG Welding Workstation (Dual-Station) | 1340 |
 | /products/robotic-welding-systems/ra-rw6 | RA-RW6 6-Axis Robotic MIG Welding Cell \| RA Machine | RA-RW6 Robotic MIG Welding Cell (6-axis) | 1325 |
 | /products/tube-laser-cutting-machines | Tube Laser Cutting Machines - Manufacturer, India | Tube Laser Cutting Machines — Manufacturer in India | 1357 |
 | /products/tube-laser-cutting-machines/ra-t6000 | RA-T6000 Fiber Laser Tube Cutting Machine \| RA Machine | RA-T6000 Fiber Laser Tube Cutting Machine | 1341 |

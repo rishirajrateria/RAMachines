@@ -11,7 +11,7 @@ import type { Config } from "tailwindcss";
 const config: Config = {
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./lib/**/*.{ts,tsx}"],
   theme: {
-    container: { center: true, padding: { DEFAULT: "1rem", md: "1.5rem", xl: "2rem" }, screens: { "2xl": "1280px" } },
+    container: { center: true, padding: { DEFAULT: "1rem", md: "1.5rem", xl: "2rem" }, screens: { "2xl": "1720px" } },
     extend: {
       colors: {
         ink: { DEFAULT: "#111214", soft: "#2B2D31" },
@@ -48,7 +48,7 @@ const config: Config = {
         card: "0 1px 2px rgba(17,18,20,.06), 0 8px 24px rgba(17,18,20,.08)",
         "card-hover": "0 2px 6px rgba(17,18,20,.08), 0 20px 36px rgba(17,18,20,.14)",
       },
-      maxWidth: { site: "1280px", prose: "72ch" },
+      maxWidth: { site: "1720px", prose: "72ch" },
       spacing: { 18: "4.5rem", 22: "5.5rem" },
       fontSize: {
         "display-xl": ["clamp(2.5rem, 6vw, 4.5rem)", { lineHeight: "1.02", letterSpacing: "-0.01em" }],
