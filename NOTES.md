@@ -44,7 +44,7 @@ Fully static Next.js 15 site (App Router, `output: 'export'`), Tailwind CSS, no 
 5. Each form posts JSON to `https://api.web3forms.com/submit` with `from_name` = "RA Machine website" and a `subject` that names the form (Quote / Repair / Training / Job work / Contact / Export) so emails are easy to filter. On failure the form shows a WhatsApp fallback link.
 
 ## 5. Deploying
-**Vercel (primary):** import the repo, framework preset "Next.js", leave build command `npm run build`; `vercel.json` sets clean URLs and immutable cache headers (do not set an output directory — Vercel's Next.js builder handles `output: 'export'` itself) for `/_next/static` and hashed assets. Add the env var from §4. Set the production domain, then update `config/site.ts → url`.
+**Vercel (primary):** import the repo; `vercel.json` pins the project to a plain static deployment (`framework: null`, build `npm run build`, output `out`, clean URLs, immutable cache headers, PNG content-type for the extension-less OG images). This deliberately bypasses Vercel's Next.js builder, which fails on `output: 'export'` projects with a "routes-manifest.json couldn't be found" error. Add the env var from §4. Production follows the `main` branch; set the production domain, then update `config/site.ts → url`.
 
 **Cloudflare Pages:** create a Pages project from the repo, build command `npm run build`, output directory `out`, Node 20+. Add the same env var. No adapter is needed because the site is a pure static export; `_headers` is not required (Cloudflare caches hashed `/_next/static` assets by default).
 
