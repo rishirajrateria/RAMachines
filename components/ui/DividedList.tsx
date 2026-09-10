@@ -5,6 +5,7 @@
  */
 import Link from "next/link";
 import { ArrowRight } from "./Icons";
+import Reveal from "./Reveal";
 
 export default function DividedList({
   items,
@@ -17,7 +18,7 @@ export default function DividedList({
   const colClass = columns === 2 ? "md:columns-2 md:gap-x-10" : "";
 
   return (
-    <div className={colClass}>
+    <Reveal className={colClass}>
       {items.map((item) => {
         const row = (
           <div className="flex items-center justify-between gap-4 border-t border-[rgba(15,26,26,0.08)] py-4">
@@ -45,6 +46,6 @@ export default function DividedList({
           </div>
         );
       })}
-    </div>
+    </Reveal>
   );
 }

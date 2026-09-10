@@ -10,6 +10,7 @@
 import type { ReactNode } from "react";
 import Container from "./Container";
 import SectionHeading from "./SectionHeading";
+import Reveal from "./Reveal";
 import type { IconName } from "./Icons";
 
 export default function Section({
@@ -40,12 +41,14 @@ export default function Section({
   return (
     <section id={id} className={`${tight ? "section-rhythm-tight" : "section-rhythm"} ${className}`.trim()}>
       <Container>
-        {(eyebrow || title || intro) && (
-          <div className="mb-8 md:mb-10">
-            <SectionHeading eyebrow={eyebrow} icon={icon} title={title} intro={intro} />
-          </div>
-        )}
-        {body}
+        <Reveal>
+          {(eyebrow || title || intro) && (
+            <div className="mb-8 md:mb-10">
+              <SectionHeading eyebrow={eyebrow} icon={icon} title={title} intro={intro} />
+            </div>
+          )}
+          {body}
+        </Reveal>
       </Container>
     </section>
   );

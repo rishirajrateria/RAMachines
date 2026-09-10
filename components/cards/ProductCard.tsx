@@ -3,6 +3,8 @@
  * soft light form (radial teal→transparent) with a line-art glyph of the machine
  * — the underlying WebP already renders that way (scripts/generate-placeholders.mjs),
  * so this just drops it on a calm teal-tinted backdrop instead of a hard-edged panel.
+ * ADR-0006 §Polish: the glyph rises 4px on hover and the footer link gets a faint
+ * hairline separator above it.
  */
 import Image from "next/image";
 import type { Product } from "@/data/types";
@@ -25,7 +27,7 @@ export default function ProductCard({ product, compact = false }: { product: Pro
             alt={image.alt}
             width={image.width}
             height={image.height}
-            className="h-full w-full object-contain p-6"
+            className="h-full w-full object-contain p-6 transition-transform duration-300 group-hover:-translate-y-1"
           />
         </div>
       }
@@ -38,7 +40,7 @@ export default function ProductCard({ product, compact = false }: { product: Pro
           <Chips items={product.highlights.slice(0, 3).map((label) => ({ label }))} />
         </div>
       )}
-      <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-teal">
+      <span className="mt-4 inline-flex items-center gap-1.5 border-t border-[rgba(15,26,26,0.08)] pt-4 text-sm font-semibold text-teal">
         View machine
         <ArrowRight width={14} height={14} className="transition-transform group-hover:translate-x-0.5" />
       </span>

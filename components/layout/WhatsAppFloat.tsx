@@ -1,7 +1,9 @@
 /**
  * components/layout/WhatsAppFloat.tsx — ADR-0005 §5: a glass circle with the
  * WhatsApp icon in WhatsApp green (the only non-teal colour allowed). Fixed
- * bottom-right on every page. Server Component (a plain link needs no client JS).
+ * bottom-right on every page. Server Component (a plain link needs no client JS,
+ * including the CSS-only pulse ring below — ADR-0006 §Polish: a soft green ring
+ * pulse, 2s loop, subtle, fully off under prefers-reduced-motion).
  */
 import { site } from "@/config/site";
 import { WhatsApp } from "@/components/ui/Icons";
@@ -16,6 +18,7 @@ export default function WhatsAppFloat() {
       className="glass-strong glass-hover fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center p-0 text-whatsapp print:hidden"
       style={{ borderRadius: "9999px" }}
     >
+      <span className="wa-ring" aria-hidden="true" />
       <WhatsApp width={26} height={26} />
     </a>
   );

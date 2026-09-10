@@ -17,6 +17,10 @@
      app/fonts.ts no longer loads Barlow (the files stay on disk, unused). */
   --font-display: var(--font-ui);
 
+  /* ADR-0006: shared easing for every animation/transition in the motion system —
+     every animation ≤ 700ms, this curve, GPU-only properties. */
+  --ease-glass: cubic-bezier(0.22, 0.61, 0.36, 1);
+
   --color-ink: #0f1a1a;
   --color-ink-soft: #5b5f68;
   --color-grey-200: #e1e2e5;
@@ -53,11 +57,40 @@ body {
   color: var(--color-ink);
   font-family: var(--font-ui);
   font-size: 16px;
-  line-height: 1.65;
+  /* ADR-0006 §Polish: body 17px/1.7 (was 1.65). `.prose`/`.prose-calm` keep their
+     own explicit 1.65 for long-form copy — see that rule below, unchanged. */
+  line-height: 1.7;
 }
 @media (min-width: 768px) {
   body {
     font-size: 17px;
+  }
+}
+
+/* ADR-0006 §Polish: selection colour teal-soft. */
+::selection {
+  background-color: var(--color-teal-soft);
+  color: var(--color-ink);
+}
+
+/* ADR-0006 §Polish: thin grey scrollbar, desktop only. */
+@media (min-width: 768px) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(15, 26, 26, 0.22) transparent;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(15, 26, 26, 0.22);
+    border-radius: 9999px;
+    border: 3px solid var(--bg-page);
+    background-clip: padding-box;
   }
 }
 
@@ -127,6 +160,7 @@ h3,
  * under prefers-reduced-motion below. Mobile drops blur for GPU budget.
  * ------------------------------------------------------------------------- */
 .glass {
+  position: relative;
   background: rgba(255, 255, 255, 0.55);
   backdrop-filter: blur(24px) saturate(160%);
   -webkit-backdrop-filter: blur(24px) saturate(160%);
@@ -137,6 +171,7 @@ h3,
   border-radius: 28px;
 }
 .glass-strong {
+  position: relative;
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(32px) saturate(160%);
   -webkit-backdrop-filter: blur(32px) saturate(160%);
@@ -147,6 +182,7 @@ h3,
   border-radius: 28px;
 }
 .glass-pill {
+  position: relative;
   background: rgba(255, 255, 255, 0.55);
   backdrop-filter: blur(24px) saturate(160%);
   -webkit-backdrop-filter: blur(24px) saturate(160%);
@@ -166,13 +202,52 @@ h3,
   }
 }
 
+/* ADR-0006 §Polish: a 1px specular top-left highlight on every glass surface, via a
+   masked gradient border (padding + mask-composite exclude — the classic gradient-
+   border trick). Purely decorative, so it never intercepts pointer events. */
+.glass::before,
+.glass-strong::before,
+.glass-pill::before,
+.chip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.15) 40%, transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
 .glass-hover {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s var(--ease-glass), box-shadow 0.2s var(--ease-glass);
 }
 .glass-hover:hover,
 .glass-hover:focus-visible {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: 0 16px 48px rgba(15, 26, 26, 0.12);
+}
+
+/* ADR-0006 §Motion 4: GlassCard's pointermove specular sheen — a radial highlight
+   that follows the cursor (CSS vars --mx/--my set in GlassCard.tsx), desktop
+   pointer-fine only. Fades in on hover/focus, GPU-only (opacity). */
+.glass-sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.55), transparent 60%);
+  transition: opacity 0.3s var(--ease-glass);
+}
+@media (hover: hover) and (pointer: fine) {
+  .glass-sheen:hover::after,
+  .glass-sheen:focus-visible::after {
+    opacity: 0.6;
+  }
 }
 
 /* Reduced motion: strip transitions/animations for anyone who asked for it. */
@@ -205,7 +280,8 @@ h3,
     transform: translate(0, 0);
   }
   50% {
-    transform: translate(2%, 2%);
+    /* ADR-0006 §Motion 2: ambient light drifts ±3% (was ±2%). */
+    transform: translate(3%, 3%);
   }
   100% {
     transform: translate(0, 0);
@@ -221,14 +297,15 @@ h3,
 }
 
 /* ---------------------------------------------------------------------------
- * Section rhythm — ≥ 96px vertical rhythm between stacked sections on desktop.
+ * Section rhythm — ADR-0006 §Polish: 112px desktop / 72px mobile between
+ * stacked sections (was 96px/64px, ADR-0005 §6).
  * ------------------------------------------------------------------------- */
 .section-rhythm {
-  padding-block: 4rem;
+  padding-block: 4.5rem;
 }
 @media (min-width: 768px) {
   .section-rhythm {
-    padding-block: 6rem;
+    padding-block: 7rem;
   }
 }
 .section-rhythm-tight {
@@ -240,14 +317,15 @@ h3,
   }
 }
 
-/* Eyebrow — small uppercase teal label above every h2. */
+/* Eyebrow — small uppercase teal label above every h2. ADR-0006 §Polish: 11.5px,
+   tracking .16em (was 12px/.14em, ADR-0005 §3). */
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.75rem;
+  font-size: 0.71875rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-teal);
 }
@@ -311,6 +389,7 @@ h3,
  * Chips — small glass pills (industries, spec highlights, related-page tags).
  * ------------------------------------------------------------------------- */
 .chip {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -325,7 +404,7 @@ h3,
   font-size: 0.8rem;
   font-weight: 600;
   line-height: 1;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.15s var(--ease-glass), box-shadow 0.15s var(--ease-glass);
 }
 a.chip:hover,
 a.chip:focus-visible {
@@ -337,8 +416,11 @@ a.chip:focus-visible {
   color: var(--color-teal);
 }
 
-/* Accordion (native <details>/<summary>) — used by components/ui/Faq.tsx. Glass
-   container, hairline separators, plus/minus icon, one open at a time. */
+/* Accordion. `.accordion-toggle` + `.glass-accordion-item` are shared by two
+   patterns: native <details>/<summary> disclosures (CtaGroup, QuoteBlock — a
+   single "fill form instead" toggle, unchanged) and, since ADR-0006 §Motion 6,
+   components/ui/Faq.tsx's button + region accordion (a class-based `.is-open`
+   toggle instead of the `details[open]` selector, since it isn't a <details>). */
 details > summary {
   display: flex;
   cursor: pointer;
@@ -378,7 +460,8 @@ details > summary::-webkit-details-marker {
   width: 1.5px;
   height: 100%;
 }
-details[open] .accordion-toggle::after {
+details[open] .accordion-toggle::after,
+.accordion-toggle.is-open::after {
   transform: translate(-50%, -50%) rotate(90deg);
   opacity: 0;
 }
@@ -389,6 +472,24 @@ details[open] .accordion-toggle::after {
 }
 .glass-accordion-item:first-child {
   border-top: none;
+}
+
+/* ADR-0006 §Motion 6: Faq's open/close panel — a CSS grid-rows animation (0fr →
+   1fr, 300ms) instead of height:auto, so it can be smoothly animated without
+   knowing the content's height up front. The row track, not the child, is what
+   grows — the child just needs to be clipped and allowed to shrink below its own
+   content size (min-height:0) while the row is collapsed. */
+.accordion-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s var(--ease-glass);
+}
+.accordion-panel.is-open {
+  grid-template-rows: 1fr;
+}
+.accordion-panel > * {
+  overflow: hidden;
+  min-height: 0;
 }
 
 /* 1px dividers, used throughout via border-grey-200; this alias keeps hand-written
@@ -476,4 +577,218 @@ details[open] .accordion-toggle::after {
 .prose th {
   font-weight: 600;
   color: var(--color-ink);
+}
+
+/* ---------------------------------------------------------------------------
+ * ADR-0006 §Motion 1 — Reveal on scroll (components/ui/Reveal.tsx, GlassCard).
+ * Server-render is always fully visible: the hidden initial state only applies
+ * once <html> gets the `js` class (app/layout.tsx's inline beforeInteractive
+ * script) — so a no-JS visitor never sees `.reveal` at all, only this plain
+ * content. It is further gated to `prefers-reduced-motion: no-preference` so a
+ * reduced-motion visitor never sees an opacity/transform change either, JS or
+ * not — elements simply appear, already in their final state.
+ * ------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.6s var(--ease-glass), transform 0.6s var(--ease-glass);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .js .reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Stagger: when several `[data-stagger]` Reveal siblings sit in the same
+     parent (a grid of tiles, a row of facts, a list of steps/FAQ items), each
+     gets an increasing transition-delay — 60ms steps, capped at the 6th child.
+     An explicit `delay` prop (inline `--reveal-delay`) always wins, since an
+     inline style outranks these selectors regardless of source order. */
+  .js [data-stagger]:nth-child(2) {
+    --reveal-delay: 60ms;
+  }
+  .js [data-stagger]:nth-child(3) {
+    --reveal-delay: 120ms;
+  }
+  .js [data-stagger]:nth-child(4) {
+    --reveal-delay: 180ms;
+  }
+  .js [data-stagger]:nth-child(5) {
+    --reveal-delay: 240ms;
+  }
+  .js [data-stagger]:nth-child(n + 6) {
+    --reveal-delay: 300ms;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * ADR-0006 §Motion 2 — hero entrance. Pure CSS keyframes (no JS/observer
+ * needed: it plays on load, not on scroll), so it runs identically with or
+ * without JS. `both` fill-mode holds the "from" state until the animation
+ * starts and the "to" state after — explicitly neutralised under reduced
+ * motion below so there is truly no opacity/transform change, not just a
+ * very fast one.
+ * ------------------------------------------------------------------------- */
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.hero-panel {
+  animation: hero-in 0.7s var(--ease-glass) both;
+}
+.hero-stagger > * {
+  opacity: 0;
+  animation: hero-in 0.6s var(--ease-glass) both;
+}
+.hero-stagger > *:nth-child(1) {
+  animation-delay: 80ms;
+}
+.hero-stagger > *:nth-child(2) {
+  animation-delay: 160ms;
+}
+.hero-stagger > *:nth-child(3) {
+  animation-delay: 240ms;
+}
+.hero-stagger > *:nth-child(4) {
+  animation-delay: 320ms;
+}
+.hero-stagger > *:nth-child(n + 5) {
+  animation-delay: 400ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-panel,
+  .hero-stagger > * {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * ADR-0006 §Motion 3 — nav scroll state (components/layout/HeaderBar.tsx) and
+ * the active-link pill (components/layout/HeaderNavLinks.tsx). The scrolled
+ * state only touches background/blur/shadow (a compound selector beats
+ * `.glass-strong`'s specificity without touching that shared class); height is
+ * toggled via Tailwind classes in HeaderBar itself. The active pill is a
+ * layout-free `::before` behind the link text — no reflow.
+ * ------------------------------------------------------------------------- */
+.header-pill {
+  transition: height 0.25s var(--ease-glass), background-color 0.25s var(--ease-glass),
+    backdrop-filter 0.25s var(--ease-glass), box-shadow 0.25s var(--ease-glass);
+}
+.header-pill.is-scrolled {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(40px) saturate(160%);
+  -webkit-backdrop-filter: blur(40px) saturate(160%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 14px 44px rgba(15, 26, 26, 0.14);
+}
+
+.nav-link {
+  position: relative;
+  z-index: 0;
+}
+.nav-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.2s var(--ease-glass), transform 0.2s var(--ease-glass);
+}
+.nav-link.is-active::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ---------------------------------------------------------------------------
+ * ADR-0006 §Motion 7 — mobile menu (components/layout/MobileNav.tsx). Both the
+ * sheet and backdrop stay mounted and are toggled with `.is-open` so the close
+ * transition can play too, instead of the sheet just vanishing.
+ * ------------------------------------------------------------------------- */
+.mobilenav-backdrop {
+  opacity: 0;
+  pointer-events: none;
+  background: rgba(15, 26, 26, 0.15);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  transition: opacity 0.25s var(--ease-glass);
+}
+.mobilenav-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.mobilenav-panel {
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: opacity 0.25s var(--ease-glass), transform 0.25s var(--ease-glass);
+}
+.mobilenav-panel.is-open {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+/* ---------------------------------------------------------------------------
+ * ADR-0006 §Polish — WhatsApp float: a soft green ring pulse, 2s loop, subtle.
+ * `animation: none` under reduced motion (on top of the generic blanket rule
+ * above) so a looping decorative animation is fully off, not just very fast.
+ * ------------------------------------------------------------------------- */
+.wa-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 1.5px solid var(--color-whatsapp);
+  opacity: 0;
+  pointer-events: none;
+  animation: wa-pulse 2s var(--ease-glass) infinite;
+}
+@keyframes wa-pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.45;
+  }
+  70% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wa-ring {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * ADR-0006 §Motion 4 — tertiary/"ghost" button & text links: underline grows
+ * from the left via a background-size transition instead of text-decoration.
+ * ------------------------------------------------------------------------- */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 0.25s var(--ease-glass), color 0.2s var(--ease-glass);
+}
+.link-underline:hover,
+.link-underline:focus-visible {
+  background-size: 100% 1px;
 }
