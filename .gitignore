@@ -1,0 +1,29 @@
+
+# Next.js / build
+# Ruflo local secrets and runtime data
+# ruflo runtime state (keep agent definitions, ignore data/logs)
+*.db-shm
+*.db-wal
+*.tsbuildinfo
+.claude-flow/data/
+.claude-flow/logs/
+.claude-flow/sessions/
+.env
+.env.*
+.env.*.local
+.env.local
+.next/
+.swarm/
+next-env.d.ts
+node_modules/
+out/
+ruvector.db
+
+# ruflo runtime state
+.claude-flow/daemon.pid
+.claude-flow/daemon-state.json
+.claude-flow/agents/
+.claude-flow/metrics/
+.claude-flow/memory-package.json
+.claude-flow/harness-active-policy.json
+.claude/checkpoints/
