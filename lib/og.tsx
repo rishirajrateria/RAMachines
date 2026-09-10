@@ -11,9 +11,9 @@ import { ImageResponse } from "next/og";
 export const ogSize = { width: 1200, height: 630 };
 export const ogContentType = "image/png";
 
-const uiFont = readFileSync(join(process.cwd(), "app/fonts/manrope-latin-600-normal.woff2"));
+const uiFont = readFileSync(join(process.cwd(), "app/fonts/manrope-latin-600-normal.woff"));
 const displayFont = readFileSync(
-  join(process.cwd(), "app/fonts/barlow-semi-condensed-latin-600-normal.woff2"),
+  join(process.cwd(), "app/fonts/barlow-semi-condensed-latin-600-normal.woff"),
 );
 
 /** Wraps a title into lines of roughly `max` characters, capped at 3 lines. */

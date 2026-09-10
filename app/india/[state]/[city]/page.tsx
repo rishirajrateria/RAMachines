@@ -31,7 +31,10 @@ export function generateStaticParams() {
   return cities.map((city) => ({ state: city.stateSlug, city: city.slug }));
 }
 
-function cityTitle(name: string): string {
+function cityTitle(name: string, stateName?: string): string {
+  // A city that shares its name with its state/UT (Chandigarh, Puducherry) would otherwise
+  // duplicate the state page title, so the city page takes the "dealer" keyword variant.
+  if (stateName && stateName === name) return `Laser Cutting Machine Dealer in ${name} | RA Machine`;
   const withSuffix = `Laser Cutting Machine in ${name} | RA Machine`;
   if (withSuffix.length <= 60) return withSuffix;
   const noSuffix = `Laser Cutting Machine in ${name}`;
@@ -62,7 +65,7 @@ export async function generateMetadata({
   if (!city || !state) return {};
 
   return buildMetadata({
-    title: cityTitle(city.name),
+    title: cityTitle(city.name, state.name),
     description: `Fiber laser cutting machine sales, installation, repair and operator training in ${city.name}, ${state.name}, from RA Machine, Kolkata.`,
     path: paths.city(state.slug, city.slug),
   });

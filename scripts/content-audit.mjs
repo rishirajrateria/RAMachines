@@ -93,6 +93,10 @@ function classify(url) {
 }
 
 function decodeEntities(s) {
+  // Numeric entities (e.g. &#x27; &#39;) must be decoded before lengths are measured.
+  s = String(s)
+    .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)));
   return s
     .replace(/&nbsp;/g, " ")
     .replace(/&#0?39;|&apos;/g, "'")

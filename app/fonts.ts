@@ -6,7 +6,8 @@ import localFont from "next/font/local";
  *    numerals for spec tables; corporate without being generic.
  *  - Barlow Semi Condensed 600 — display: a compact, engineered face that reads like
  *    machine-tool signage and lets long headlines fit on mobile.
- * Files are copied from the @fontsource packages (OFL licence) into app/fonts/.
+ * Files are copied from the @fontsource packages (OFL licence) into app/fonts/. The .woff (v1)
+ * copies exist only for lib/og.tsx — satori cannot parse WOFF2.
  */
 export const fontUi = localFont({
   src: [

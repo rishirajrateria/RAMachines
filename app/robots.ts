@@ -3,6 +3,7 @@
  * Allows everything except the noindex job-work page (SPEC §6) and points crawlers
  * at the sitemap index.
  */
+export const dynamic = "force-static";
 import type { MetadataRoute } from "next";
 import { paths } from "@/lib/urls";
 import { absUrl } from "@/lib/seo";
