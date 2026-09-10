@@ -1,5 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
   <rect width="1200" height="900" fill="#E8EEF5"/>
-  <g transform="translate(160 250) scale(2.1)"><svg x="0" y="0" width="440" height="280" viewBox="130 10 240 230" preserveAspectRatio="xMidYMid slice"><g><rect x="40" y="220" width="360" height="16" rx="4" fill="#111214"/><rect x="250" y="180" width="90" height="34" rx="3" fill="#FFFFFF" stroke="#111214" stroke-width="2"/><rect x="70" y="180" width="140" height="40" rx="4" fill="#1F4E79"/><g transform="rotate(-18 140 180)"><rect x="132" y="120" width="16" height="62" rx="6" fill="#1F4E79"/></g><circle cx="140" cy="180" r="16" fill="#111214"/><circle cx="150" cy="122" r="12" fill="#111214"/><g transform="rotate(24 150 122)"><rect x="146" y="70" width="14" height="56" rx="6" fill="#1F4E79"/></g><circle cx="205" cy="80" r="10" fill="#111214"/><g transform="rotate(12 205 80)"><rect x="203" y="80" width="70" height="10" rx="4" fill="#111214"/></g></g></svg></g>
+  <g transform="translate(96 162) scale(1.8)"><svg x="0" y="0" width="560" height="320" viewBox="260 83 180 150" preserveAspectRatio="xMidYMid slice"><g>
+      <ellipse cx="260" cy="278" rx="235" ry="12" fill="#111214" opacity="0.16"/>
+      <g opacity="0.85"><rect x="30" y="118" width="8" height="140" fill="#1F4E79"/><rect x="480" y="118" width="8" height="140" fill="#1F4E79"/></g>
+      <g>
+    <rect x="300" y="211.6" width="140" height="26.4" rx="4" fill="#E1E2E5" stroke="#111214" stroke-width="1.5"/>
+    <rect x="316.8" y="150" width="106.4" height="61.599999999999994" fill="none" stroke="#1F4E79" stroke-width="4"/>
+    <line x1="316.8" y1="150" x2="423.2" y2="211.6" stroke="#3D6FA3" stroke-width="3"/>
+  </g>
+      <g>
+    <rect x="169" y="150" width="52" height="122" rx="8" fill="#1F4E79"/>
+    <rect x="161" y="264" width="68" height="10" rx="4" fill="#111214"/>
+    <line x1="195" y1="150" x2="258" y2="92" stroke="#3D6FA3" stroke-width="17" stroke-linecap="round"/>
+    <circle cx="195" cy="150" r="15" fill="#111214"/>
+    <line x1="258" y1="92" x2="322" y2="128" stroke="#1F4E79" stroke-width="13" stroke-linecap="round"/>
+    <circle cx="258" cy="92" r="11" fill="#111214"/>
+    <line x1="322" y1="128" x2="356" y2="170" stroke="#111214" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="322" cy="128" r="9" fill="#111214"/>
+    <circle cx="356" cy="170" r="5" fill="#F26A21"/>
+  </g>
+      <g><rect x="161" y="132" width="68" height="16" rx="2" fill="#FFFFFF" stroke="#111214" stroke-width="1"/><text x="195" y="143.06" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#111214" letter-spacing="0.5">RA-RW6</text></g>
+    </g></svg></g>
   <text x="24" y="878" font-family="Arial, sans-serif" font-size="20" font-weight="600" fill="#111214" opacity="0.5">RA-RW6 Robotic MIG Welding Cell — detail view</text>
 </svg>
