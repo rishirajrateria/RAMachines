@@ -24,7 +24,7 @@
  */
 import { site } from "@/config/site";
 import { wordCount } from "@/lib/words";
-import type { State, City, Product } from "@/data/types";
+import type { State } from "@/data/types";
 import type { IconName } from "@/components/ui/Icons";
 
 /** What the secondary ("aside") column of a CopyBlock shows for this section — see
