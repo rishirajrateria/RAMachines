@@ -1,6 +1,6 @@
 # Content audit
 
-Generated: 2026-09-10T21:40:18.464Z
+Generated: 2026-09-10T21:47:28.054Z
 Total pages: 260
 
 ## Summary by section
