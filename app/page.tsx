@@ -1,39 +1,29 @@
 /**
- * app/page.tsx — Home (SPEC §4 "Home"). ADR-0002 visual refresh: hero band with icon
- * chips, an "at a glance" panel, illustrated category/product cards, a soft-band
- * FeatureGrid for "Why RA Machine", icon service cards, badge certifications, reach
- * cards, testimonials, FAQ and a dark CTA band. Long copy lives in ./_home/copy.ts.
+ * app/page.tsx — Home. ADR-0005 "Liquid Glass" §6: exactly 7 calm sections —
+ * hero, FactStrip, Machines, Why RA Machine, Where we work, Certifications,
+ * Faq + CTA. Long copy lives in ./_home/copy.ts.
  */
 import type { Metadata } from "next";
+import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
 import { paths } from "@/lib/urls";
 import { localBusinessSchema } from "@/lib/schema";
 import { site } from "@/config/site";
-import { categories, products, homeFaqs } from "@/data";
+import { categories, products, topStates, topCountries, homeFaqs } from "@/data";
 import JsonLd from "@/components/ui/JsonLd";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AboutBlurb from "@/components/ui/AboutBlurb";
 import Section from "@/components/ui/Section";
-import SectionHeading from "@/components/ui/SectionHeading";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import Chips from "@/components/ui/Chips";
-import GlancePanel from "@/components/ui/GlancePanel";
 import FeatureGrid from "@/components/ui/FeatureGrid";
-import IconCard from "@/components/ui/IconCard";
 import Faq from "@/components/ui/Faq";
-import StatsBar from "@/components/sections/StatsBar";
+import { FactStrip } from "@/components/ui/glass";
 import CertStrip from "@/components/sections/CertStrip";
-import CtaBand from "@/components/sections/CtaBand";
-import ReachSection from "@/components/sections/ReachSection";
-import TestimonialGrid from "@/components/sections/TestimonialGrid";
-import ContactStrip from "@/components/sections/ContactStrip";
 import CategoryCard from "@/components/cards/CategoryCard";
-import ProductCard from "@/components/cards/ProductCard";
 import QuoteForm from "@/components/forms/QuoteForm";
-import HeroVideo from "@/components/media/HeroVideo";
-import { Icon, ArrowUpRight } from "@/components/ui/Icons";
-import { heroSub, introParagraph, whyPoints, servicesStrip, certIntro, reachIntro, ctaText } from "./_home/copy";
+import { heroSentence, glanceContext, whyPoints, ctaText } from "./_home/copy";
 
 export const metadata: Metadata = buildMetadata({
   title: "Laser Cutting Machine Manufacturer India | RA Machine",
@@ -42,82 +32,53 @@ export const metadata: Metadata = buildMetadata({
   path: paths.home,
 });
 
-const glanceFacts = [
-  { icon: "Clock", label: "Lead time", value: `${site.service.leadTimeWeeks} weeks` },
-  { icon: "Shield", label: "Warranty", value: `${site.service.warrantyMonths} months` },
-  { icon: "Headset", label: "On-site response", value: site.service.responseTime },
-  { icon: "GraduationCap", label: "Training", value: "Included with purchase" },
-  { icon: "Layers", label: "Machine categories", value: String(categories.length) },
-  { icon: "Globe", label: "Export markets", value: "25+ countries" },
-] as const;
-
 export default function HomePage() {
+  const states = topStates(8);
+  const countries = topCountries(10);
+
   return (
     <>
-      <section className="relative flex min-h-[100svh] w-full items-center overflow-hidden bg-ink text-white">
-        <HeroVideo
-          poster={{ src: "/hero-poster.webp", width: 1920, height: 1080 }}
-          posterAlt="RA Machine fiber laser cutting machine cutting steel sheet on the factory floor"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/25" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent" />
-        <Container className="relative z-10 py-24">
-          <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/80">
-              Manufactured in Kolkata · Exported worldwide
-            </p>
-            <h1 className="mt-4 font-display text-display-xl text-white">
+      {/* 1. Hero — full viewport, ambient light behind (global), one centred glass-strong panel. */}
+      <section className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden py-16">
+        <Container>
+          <Breadcrumbs items={[{ name: "Home", href: paths.home }]} />
+          <div className="glass-strong mx-auto mt-4 max-w-2xl p-8 text-center md:p-14">
+            <p className="eyebrow justify-center">Manufactured in Kolkata · Exported worldwide</p>
+            <h1 className="mt-4 font-display text-display-xl text-ink">
               Laser Cutting Machines Built in India, Trusted Worldwide
             </h1>
-            <p className="mt-5 max-w-xl text-base text-white/85 sm:text-lg">{heroSub}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button href={paths.products} variant="solid" tone="spark" size="lg" icon="ArrowRight">
-                Explore Machines
+            <p className="mx-auto mt-5 max-w-xl text-base text-grey-600 sm:text-lg">{heroSentence}</p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <Button href={paths.products} variant="solid" size="lg" icon="ArrowRight">
+                Explore machines
               </Button>
-              <Button
-                href="#quote"
-                variant="outline"
-                size="lg"
-                icon="ArrowRight"
-                className="!border-white/70 !text-white hover:!border-white hover:!text-white/80"
-              >
-                Request a Quote
+              <Button href="#quote" variant="outline" size="lg">
+                Request a quote
               </Button>
             </div>
-            <div className="mt-7">
-              <Chips
-                items={[
-                  { label: "Pan-India installation", icon: "MapPin" },
-                  { label: "Export to 25+ countries", icon: "Globe" },
-                  { label: "ISO 9001", icon: "Certificate" },
-                  { label: "Indian Railways vendor", icon: "Badge" },
-                ]}
-              />
+            <div className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-semibold text-teal">
+              <Link href={paths.repair}>Machine repair</Link>
+              <Link href={paths.training}>Operator training</Link>
+              <Link href={paths.exportHub}>Export enquiry</Link>
             </div>
           </div>
         </Container>
       </section>
 
-      <Section tight>
-        <Breadcrumbs items={[{ name: "Home", href: paths.home }]} />
-        <div className="mt-6 grid gap-8 md:grid-cols-2 md:items-center">
-          <div>
-            <SectionHeading eyebrow="Built in Kolkata" icon="Factory" title="Engineered and supported in India" />
-            <p className="mt-4 max-w-prose text-grey-600">{introParagraph}</p>
-          </div>
-          <GlancePanel title="RA Machine at a glance" facts={[...glanceFacts]} />
+      {/* 2. At a glance — AboutBlurb (entity facts) + FactStrip (headline numbers). */}
+      <Section eyebrow="Overview" title="At a glance">
+        <div className="mb-8 max-w-prose">
+          <AboutBlurb context={glanceContext} />
         </div>
+        <FactStrip facts={[...site.stats]} />
       </Section>
 
-      <Section tight>
-        <StatsBar />
-      </Section>
-
+      {/* 3. Machines — 4 category tiles. */}
       <Section
         eyebrow="Product range"
         icon="Layers"
-        title="Machines for every stage of fabrication"
-        intro="Four categories built around how Indian and export fabricators actually work."
+        title="Machines"
+        intro="Four categories built around how fabricators actually work."
       >
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {categories.map((category) => (
@@ -128,87 +89,58 @@ export default function HomePage() {
             />
           ))}
         </div>
-        <h3 className="mt-14 font-display text-lg text-ink">All machines</h3>
-        <div className="mt-5 flex gap-4 overflow-x-auto pb-2 [scroll-snap-type:x_mandatory] sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible lg:grid-cols-4">
-          {products.map((product) => (
-            <div
-              key={product.slug}
-              className="w-[75vw] max-w-[280px] flex-none [scroll-snap-align:start] sm:w-auto sm:max-w-none"
-            >
-              <ProductCard product={product} compact />
-            </div>
-          ))}
-        </div>
       </Section>
 
-      <Section tone="soft" eyebrow="Why RA Machine" icon="Sparkles" title="Six reasons fabricators choose us">
+      {/* 4. Why RA Machine — 3 glass cards. */}
+      <Section eyebrow="Why us" icon="Sparkles" title="Why RA Machine">
         <FeatureGrid items={whyPoints} columns={3} />
       </Section>
 
-      <Section eyebrow="Beyond the machine" icon="Wrench" title="Repair, training, job work and RA Auto">
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {servicesStrip.map((item) =>
-            item.external ? (
-              <a
-                key={item.name}
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="card-hover group block h-full rounded-xl border border-grey-200 bg-white p-6 shadow-card"
-              >
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-spark-soft text-spark">
-                  <Icon name={item.icon} size={22} />
-                </span>
-                <h3 className="mt-4 font-display text-lg text-ink">{item.name}</h3>
-                <p className="mt-2 text-sm text-grey-600">{item.text}</p>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-steel">
-                  Visit {item.name}
-                  <ArrowUpRight width={14} height={14} />
-                </span>
-              </a>
-            ) : (
-              <IconCard key={item.name} icon={item.icon} title={item.name} text={item.text} href={item.href} />
-            ),
-          )}
-        </div>
-      </Section>
-
-      <Section eyebrow="Compliance" icon="Award" title="Licences & Certifications" intro={certIntro}>
-        <div className="mb-8 max-w-2xl">
-          <AboutBlurb />
-        </div>
-        <CertStrip compact />
-      </Section>
-
-      <Section eyebrow="Reach" icon="Globe" title="India + World Reach" intro={reachIntro}>
-        <ReachSection />
-      </Section>
-
-      <Section eyebrow="Customers" icon="Quote" title="What fabricators say about working with us">
-        <TestimonialGrid limit={3} />
-      </Section>
-
-      <Section>
-        <Faq items={homeFaqs} />
-      </Section>
-
-      <CtaBand title="Ready to talk to our team" text={ctaText} />
-
-      <div id="quote" className="border-t border-grey-200 bg-grey-50 py-14 md:py-20">
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-[3fr_2fr]">
-            <div>
-              <SectionHeading eyebrow="Get in touch" icon="ArrowRight" title="Send us your requirement" />
-              <div className="mt-6 max-w-lg">
-                <QuoteForm />
-              </div>
-            </div>
-            <div>
-              <ContactStrip />
+      {/* 5. Where we work — two glass tiles (India state pills, world country pills). */}
+      <Section eyebrow="Reach" icon="Globe" title="Where we work">
+        <div className="grid gap-6 md:grid-cols-2">
+          <div className="glass p-6 md:p-8">
+            <h3 className="font-display text-lg text-ink">India</h3>
+            <p className="mt-2 text-sm text-grey-600">
+              Installed and serviced across every major Indian industrial state.
+            </p>
+            <div className="mt-5">
+              <Chips items={states.map((state) => ({ label: state.name, href: paths.state(state.slug) }))} />
             </div>
           </div>
-        </Container>
-      </div>
+          <div className="glass p-6 md:p-8">
+            <h3 className="font-display text-lg text-ink">World</h3>
+            <p className="mt-2 text-sm text-grey-600">Exported to more than 25 countries across five continents.</p>
+            <div className="mt-5">
+              <Chips items={countries.map((country) => ({ label: country.name, href: paths.country(country.slug) }))} />
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* 6. Certifications — single pill row + link. */}
+      <Section eyebrow="Compliance" icon="Award" title="Certifications">
+        <CertStrip />
+      </Section>
+
+      {/* 7. Faq + one glass CTA panel with QuoteForm and text contact links. */}
+      <Section>
+        <Faq items={homeFaqs} />
+        <div id="quote" className="glass-strong mt-12 p-8 md:p-10">
+          <h3 className="font-display text-2xl text-ink">Ready to talk</h3>
+          <p className="mt-2 max-w-prose text-grey-600">{ctaText}</p>
+          <div className="mt-6 grid gap-8 md:grid-cols-[3fr_2fr]">
+            <QuoteForm />
+            <div className="flex flex-col gap-2 text-sm font-semibold text-ink">
+              <a href={site.phoneHref}>{site.phoneDisplay}</a>
+              <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer">
+                WhatsApp us
+              </a>
+              <a href={`mailto:${site.email}`}>{site.email}</a>
+            </div>
+          </div>
+        </div>
+      </Section>
 
       <JsonLd data={localBusinessSchema()} />
     </>
