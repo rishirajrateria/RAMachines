@@ -778,6 +778,75 @@ details[open] .accordion-toggle::after,
 }
 
 /* ---------------------------------------------------------------------------
+ * ADR-0007 §1 — PageHero: full-bleed image banner, slow Ken Burns drift, scrim
+ * and a stronger glass panel for AA contrast over a photograph.
+ * ------------------------------------------------------------------------- */
+
+/* Ken Burns: the class sits on the (overflow-hidden) image wrapper — see
+   components/layout/PageHero.tsx — while the animated scale lives on the `img`
+   itself, so the wrapper's own bounds stay put as the clip window. 18s, ease,
+   alternate, infinite; explicitly off under reduced motion (on top of the
+   generic blanket rule above) so a looping zoom is fully still, not just slow. */
+.kenburns {
+  overflow: hidden;
+}
+.kenburns img {
+  animation: kenburns 18s ease-in-out infinite alternate;
+  transform-origin: center center;
+  will-change: transform;
+}
+@keyframes kenburns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kenburns img {
+    animation: none;
+  }
+}
+
+/* Scrim: fades a full-bleed photo into the page canvas at the bottom (also
+   used by ImageBand between sections) — ADR-0007 §1. */
+.hero-scrim {
+  background: linear-gradient(180deg, rgba(246, 248, 249, 0.15), rgba(246, 248, 249, 0.55) 70%, #f6f8f9 100%);
+}
+
+/* Inside a PageHero the glass panel sits directly over a photograph rather than
+   the calm ambient-light canvas it was tuned for, so its background is raised
+   from the default .75 to .82 opacity here to keep ink text ≥ 7:1 / teal ≥ 4.5:1
+   (ADR-0005 §8) over the busiest placeholder photos. */
+.page-hero .glass-strong {
+  background: rgba(255, 255, 255, 0.82);
+}
+
+/* Photo placeholder label — a small bottom-left pill on ImageSlot/ImageBand
+   ("Photo: factory floor") that disappears once a real photo replaces the
+   generated placeholder (`placeholder={false}`). Dark-on-photo (rather than the
+   light `.glass-pill`) so it reads over any placeholder, light or dark. */
+.photo-label {
+  position: absolute;
+  left: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 0.7rem;
+  border-radius: 9999px;
+  background: rgba(15, 26, 26, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ---------------------------------------------------------------------------
  * ADR-0006 §Motion 4 — tertiary/"ghost" button & text links: underline grows
  * from the left via a background-size transition instead of text-decoration.
  * ------------------------------------------------------------------------- */
