@@ -1,7 +1,14 @@
 /**
- * app/india/[state]/page.tsx — /india/[state]: one of 36 static state/UT
- * pages. Body copy is composed by lib/copy/state.ts (stateSections) from
- * the structured facts in data/states.ts; this file only lays out the page.
+ * app/india/[state]/page.tsx — /india/[state]: one of 36 static state/UT pages.
+ * Visual-first layout (ADR-0002 + india worker brief): hero band with icon chips, an
+ * "at a glance" GlancePanel, the key industries as a FeatureGrid of IconCards (each
+ * with a recommended-machine chip), city pages as Chips, top products as ProductCards
+ * (+ Chips for the rest), a ProcessSteps delivery graphic, then the full composed prose
+ * from lib/copy/state.ts as alternating two-column blocks, related pages, FAQ and a
+ * closing CTA band with the quote form. Body copy itself is composed by
+ * lib/copy/state.ts (stateSections) from data/states.ts; presentation-only facts
+ * (hero chips, GlancePanel, industry cards, process steps) come from
+ * app/india/_lib/stateVisuals.ts. This file only lays the page out.
  */
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -11,19 +18,24 @@ import { localBusinessSchema, serviceSchema } from "@/lib/schema";
 import { states, getState, citiesByState, products } from "@/data";
 import type { State } from "@/data/types";
 import { stateSections, stateH1 } from "@/lib/copy/state";
+import { stateHeroChips, stateGlanceFacts, stateIndustryItems, stateProcessSteps } from "../_lib/stateVisuals";
 import Container from "@/components/ui/Container";
+import Band from "@/components/ui/Band";
 import Section from "@/components/ui/Section";
-import Prose from "@/components/ui/Prose";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AboutBlurb from "@/components/ui/AboutBlurb";
 import CtaGroup from "@/components/ui/CtaGroup";
-import LinkGrid from "@/components/ui/LinkGrid";
+import Chips from "@/components/ui/Chips";
+import GlancePanel from "@/components/ui/GlancePanel";
+import ProcessSteps from "@/components/ui/ProcessSteps";
 import Faq from "@/components/ui/Faq";
 import RelatedPages from "@/components/ui/RelatedPages";
 import CtaBand from "@/components/sections/CtaBand";
 import ProductCard from "@/components/cards/ProductCard";
 import QuoteForm from "@/components/forms/QuoteForm";
 import JsonLd from "@/components/ui/JsonLd";
+import CopyBlock from "../_components/CopyBlock";
+import IndustryCard from "../_components/IndustryCard";
 
 export const dynamicParams = false;
 
@@ -69,6 +81,9 @@ export default async function StatePage({
   const neighbours = state.neighbouringStateSlugs
     .map((s) => getState(s))
     .filter((s): s is State => Boolean(s));
+  const featuredProducts = products.slice(0, 4);
+  const otherProducts = products.slice(4);
+  const industryItems = stateIndustryItems(state, products);
 
   return (
     <>
@@ -80,46 +95,82 @@ export default async function StatePage({
             { name: state.name, href: paths.state(state.slug) },
           ]}
         />
-        <h1 className="mt-2 max-w-3xl font-display text-display-lg text-ink">{stateH1(state.name)}</h1>
-        <div className="mt-4 max-w-3xl">
-          <AboutBlurb
-            context={`This page covers our coverage across ${state.name}: industries served, delivery and installation from Kolkata, service and training.`}
-          />
+      </Container>
+
+      <Band tone="soft">
+        <h1 className="max-w-3xl font-display text-display-lg text-ink">{stateH1(state.name)}</h1>
+        <p className="mt-4 max-w-2xl text-grey-700">
+          Fiber laser cutting machines, tube laser machines and robotic MIG/MAG welding systems for {state.name}'s
+          fabricators, built, delivered and serviced from our Kolkata works.
+        </p>
+        <div className="mt-5">
+          <Chips items={stateHeroChips(state, stateCities)} />
         </div>
         <div className="mt-8">
           <CtaGroup context={`a machine for ${state.name}`} />
         </div>
-      </Container>
+      </Band>
 
-      {sections.map((section) => (
-        <Section key={section.id} id={section.id} title={section.h2} tight>
-          <Prose>
-            {section.paragraphs.map((paragraph) => (
-              <p key={paragraph.slice(0, 32)}>{paragraph}</p>
-            ))}
-          </Prose>
-          {section.list && section.list.length > 0 && (
-            <div className="mt-6">
-              <LinkGrid links={section.list} columns={2} />
-            </div>
-          )}
-        </Section>
-      ))}
-
-      <Section
-        title={`City pages across ${state.name}`}
-        intro="Open a city page for its local industrial areas, recommended machines and nearby coverage."
-      >
-        <LinkGrid links={stateCities.map((c) => ({ name: c.name, href: paths.city(state.slug, c.slug) }))} columns={4} />
+      <Section tight>
+        <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr]">
+          <AboutBlurb
+            context={`This page covers our coverage across ${state.name}: industries served, delivery and installation from Kolkata, service and training.`}
+          />
+          <GlancePanel title={`${state.name} at a glance`} facts={stateGlanceFacts(state, stateCities)} />
+        </div>
       </Section>
 
       <Section
-        title="Our machine range"
+        eyebrow="Industries"
+        icon="Gear"
+        title={`Key manufacturing industries in ${state.name}`}
+        intro="Each industry below is paired with the RA Machine model our sales engineers most often recommend for it."
+      >
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {industryItems.map((item) => (
+            <IndustryCard key={item.title} icon={item.icon} title={item.title} text={item.text} machines={item.machines} />
+          ))}
+        </div>
+      </Section>
+
+      <Section
+        tone="soft"
+        eyebrow="City pages"
+        icon="MapPin"
+        title={`City pages across ${state.name}`}
+        intro="Open a city page for its local industrial areas, recommended machines and nearby coverage."
+      >
+        <Chips items={stateCities.map((c) => ({ label: c.name, href: paths.city(state.slug, c.slug) }))} />
+      </Section>
+
+      <Section
+        eyebrow="Our machine range"
+        icon="Layers"
+        title="Machines available across the state"
         intro={`All eight RA Machine models are available for delivery and installation across ${state.name}.`}
       >
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {products.map((product) => (
+          {featuredProducts.map((product) => (
             <ProductCard key={product.slug} product={product} />
+          ))}
+        </div>
+        {otherProducts.length > 0 && (
+          <div className="mt-6">
+            <Chips
+              items={otherProducts.map((p) => ({ label: p.name, href: paths.product(p.category, p.slug), icon: "ArrowRight" }))}
+            />
+          </div>
+        )}
+      </Section>
+
+      <Section tone="spark" eyebrow="How delivery works" icon="Truck" title="From order to handover">
+        <ProcessSteps steps={stateProcessSteps(state.name)} />
+      </Section>
+
+      <Section tight>
+        <div className="space-y-14">
+          {sections.map((section, i) => (
+            <CopyBlock key={section.id} section={section} reverse={i % 2 === 1} />
           ))}
         </div>
       </Section>
