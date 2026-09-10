@@ -26,8 +26,13 @@ export function buildMetadata(o: {
 }): Metadata {
   const url = absUrl(o.path);
   const description = truncate(o.description, 155);
+  // Titles are absolute (the root layout template is bypassed) so a page can never end up
+  // with a doubled brand suffix. The brand is appended only when it fits within 60 chars.
+  const suffix = ` | ${site.name}`;
+  let title = o.title.trim();
+  if (!title.includes(site.name) && title.length + suffix.length <= 60) title += suffix;
   return {
-    title: o.title,
+    title: { absolute: title },
     description,
     alternates: {
       canonical: url,
@@ -37,7 +42,7 @@ export function buildMetadata(o: {
       ? { index: false, follow: true }
       : { index: true, follow: true },
     openGraph: {
-      title: o.ogTitle ?? o.title,
+      title: o.ogTitle ?? title,
       description,
       url,
       siteName: site.name,
@@ -46,7 +51,7 @@ export function buildMetadata(o: {
     },
     twitter: {
       card: "summary_large_image",
-      title: o.ogTitle ?? o.title,
+      title: o.ogTitle ?? title,
       description,
     },
   };
