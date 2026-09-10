@@ -21,6 +21,7 @@ import FeatureGrid from "@/components/ui/FeatureGrid";
 import Faq from "@/components/ui/Faq";
 import { FactStrip } from "@/components/ui/glass";
 import CertStrip from "@/components/sections/CertStrip";
+import HeroVideo from "@/components/media/HeroVideo";
 import CategoryCard from "@/components/cards/CategoryCard";
 import QuoteForm from "@/components/forms/QuoteForm";
 import { heroSentence, glanceContext, whyPoints, ctaText } from "./_home/copy";
@@ -40,6 +41,12 @@ export default function HomePage() {
     <>
       {/* 1. Hero — full viewport, ambient light behind (global), one centred glass-strong panel. */}
       <section className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden py-16">
+        {/* Slow drifting light forms behind the panel (poster first; video mounts after paint, skipped under reduced motion). */}
+        <HeroVideo
+          poster={{ src: "/hero-poster.webp", width: 1920, height: 1080 }}
+          posterAlt="Soft teal light forms with a faint outline of a fiber laser cutting gantry"
+        />
+        <div className="absolute inset-0 bg-white/30" />
         <Container>
           <Breadcrumbs items={[{ name: "Home", href: paths.home }]} />
           <div className="glass-strong mx-auto mt-4 max-w-2xl p-8 text-center md:p-14">
