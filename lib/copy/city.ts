@@ -1,23 +1,21 @@
 /**
- * lib/copy/city.ts — composes the 700–850 word body copy for each
- * /india/[state]/[city] page from the structured facts in data/cities.ts
- * (see the `City` interface in data/types.ts) plus config/site.ts service
- * terms and the parent `State` object.
+ * lib/copy/city.ts — composes the ≥ 700 word "in depth" prose column for each
+ * /india/[state]/[city] page (ADR-0005 §6 anatomy) from the structured facts
+ * in data/cities.ts (see the `City` interface in data/types.ts) plus
+ * config/site.ts service terms and the parent `State` object.
  *
- * `citySections(city, state, siblings, products)` returns an ordered array
- * of sections the page renders top to bottom. Each section is
- * `{ id, h2, paragraphs, list? }`. The page also renders a separate local-
- * industries Chips row, a recommended-products ProductCard grid and a
- * "nearby cities" Chips row directly from `city`/`products`/`siblings`;
- * those already cover industries, recommended machines and nearby-city
- * names visually, so the sections below stay short and do not restate them
- * (ADR-0003: keep unique facts, cut anything a panel/graphic already
- * states).
+ * `citySections(city, state)` returns an ordered array of `{ id, h3,
+ * paragraphs }` blocks rendered inside one `.prose-calm` column under a
+ * single page heading (no per-section icon/eyebrow/aside — those belonged to
+ * the retired CopyBlock layout). The page also renders a FactStrip, an
+ * industries DividedList, recommended product tiles and a nearby-cities
+ * DividedList directly from `city`/`products` (see
+ * app/india/_lib/cityVisuals.ts); this prose never restates a fact already
+ * shown in one of those (ADR-0005: a fact appears once).
  *
- * `cityWordCount(city, state, siblings, products)` sums the visible words
- * this module produces for a given city — every section's heading and
- * paragraphs, every list link's visible name, the city's FAQs, and the H1
- * — for scripts/content-audit.mjs.
+ * `cityWordCount(city, state)` sums the visible words this module produces
+ * for a given city — every section heading and paragraph, the city's FAQs,
+ * and the H1 — for scripts/content-audit.mjs.
  *
  * All city-specific facts always come from the `City` object itself
  * (data/cities/*.ts) — never invent facts here, and never invent branch
@@ -26,32 +24,27 @@
  */
 import { site } from "@/config/site";
 import { wordCount } from "@/lib/words";
-import type { City, State, Product } from "@/data/types";
-import type { IconName } from "@/components/ui/Icons";
-
-/** What the secondary ("aside") column of a CopyBlock shows for this section — see
- * app/india/_components/CopyBlock.tsx (structurally identical `CopyAside` there). */
-export type CityAside =
-  | { kind: "icon" }
-  | { kind: "facts"; facts: { icon: IconName; label: string; value: string }[] }
-  | { kind: "chips"; chips: { label: string; icon?: IconName }[] };
+import type { City, State } from "@/data/types";
 
 export interface CitySection {
   id: string;
-  icon: IconName;
-  eyebrow: string;
-  h2: string;
+  h3: string;
   paragraphs: string[];
-  list?: { name: string; href: string }[];
-  aside?: CityAside;
 }
 
-/** Pulls a "4-6 days" style transit window out of a logisticsNote sentence for the hero
- * chip and GlancePanel, falling back to a generic label when the phrasing does not
- * contain one. Exported so app/india/_lib/cityVisuals.ts can reuse it. */
+/** Pulls a "4-6 days" style transit window out of a logisticsNote sentence for the
+ * hero facts and FactStrip, falling back to a generic label when the phrasing does
+ * not contain one. Exported so app/india/_lib/cityVisuals.ts can reuse it. */
 export function deliveryWindowLabel(note: string): string {
   const match = note.match(/(\d+\s*(?:–|-)\s*\d+)\s*(?:working\s+)?days/i);
   return match ? `${match[1].replace(/\s+/g, "")} days` : "Pan-India dispatch";
+}
+
+/** Joins a short list as calm prose: "a", "a and b", "a, b and c". */
+function joinList(items: string[]): string {
+  if (items.length <= 1) return items[0] ?? "";
+  if (items.length === 2) return `${items[0]} and ${items[1]}`;
+  return `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;
 }
 
 /** H1 text, shared with cityWordCount so the two never drift apart. */
@@ -60,78 +53,47 @@ export function cityH1(cityName: string, stateName: string): string {
 }
 
 /**
- * Composes the ordered, 700–850 word section list for a city page.
- * `siblings` should be every City in the same state (from citiesByState)
- * and `products` the full catalogue (from "@/data"). Both are accepted for
- * signature parity with cityWordCount's caller (app/india/[state]/[city]/page.tsx
- * passes the same four args to both); nearby cities and recommended machines are
- * already covered by the page's own Chips row and ProductCard grid.
+ * Composes the ordered prose sections for a city page. Industry names,
+ * recommended machines and nearby cities already appear in the page's own
+ * DividedLists and product tiles, so this prose adds what those cannot: the
+ * named industrial areas, the full delivery note and the full service
+ * commitment.
  */
-export function citySections(city: City, state: State, siblings: City[], products: Product[]): CitySection[] {
-  void siblings;
-  void products;
-
+export function citySections(city: City, state: State): CitySection[] {
   return [
     {
       id: "overview",
-      icon: "Factory",
-      eyebrow: "Overview",
-      h2: `Laser cutting and welding machines in ${city.name}, ${state.name}`,
+      h3: `Laser cutting and welding machines in ${city.name}, ${state.name}`,
       paragraphs: [
         `${city.name} is a city where we regularly deliver, install and service machines, with a fabrication base built around the industries above.`,
         ...city.overview,
       ],
-      aside: { kind: "icon" },
     },
     {
       id: "industrial-areas",
-      icon: "Building",
-      eyebrow: "Industrial areas",
-      h2: `Industrial areas in ${city.name}`,
-      paragraphs: [`Our engineers have carried out installation or service visits inside ${city.industrialAreas.join(", ")}.`],
-      aside: { kind: "facts", facts: [{ icon: "Building", label: "Industrial areas", value: `${city.industrialAreas.length}` }] },
+      h3: `Industrial areas in ${city.name}`,
+      paragraphs: [`Our engineers have carried out installation or service visits inside ${joinList(city.industrialAreas)}.`],
     },
     {
       id: "delivery",
-      icon: "Truck",
-      eyebrow: "Delivery",
-      h2: `Delivery to ${city.name} from our Kolkata works`,
+      h3: `Delivery to ${city.name} from our Kolkata works`,
       paragraphs: [city.logisticsNote],
-      aside: {
-        kind: "facts",
-        facts: [
-          { icon: "Truck", label: "Typical transit", value: deliveryWindowLabel(city.logisticsNote) },
-          { icon: "Power", label: "Power required", value: "415 V, 3-phase" },
-        ],
-      },
     },
     {
       id: "service-training",
-      icon: "Headset",
-      eyebrow: "Service & training",
-      h2: `Service, AMC and operator training for ${city.name}`,
+      h3: `Service, AMC and operator training for ${city.name}`,
       paragraphs: [
         `Most faults are resolved remotely within ${site.service.remoteResponseTime}; where a site visit is genuinely needed, an engineer is dispatched from our Kolkata headquarters within ${site.service.responseTime}, backed by stocked spares and optional AMC plans.`,
         `Operator training is included on-site at handover, with the option of a more structured programme at our Kolkata training centre.`,
       ],
-      aside: {
-        kind: "facts",
-        facts: [
-          { icon: "Headset", label: "Remote response", value: site.service.remoteResponseTime },
-          { icon: "GraduationCap", label: "Training", value: "On-site at handover" },
-        ],
-      },
     },
   ];
 }
 
 /** Total visible word count this module produces for a city (H1 + sections + FAQs). */
-export function cityWordCount(city: City, state: State, siblings: City[], products: Product[]): number {
-  const sections = citySections(city, state, siblings, products);
-  const sectionWords = sections.reduce((total, section) => {
-    const listWords = wordCount(section.list?.map((l) => l.name));
-    return total + wordCount(section.h2, section.paragraphs) + listWords;
-  }, 0);
+export function cityWordCount(city: City, state: State): number {
+  const sections = citySections(city, state);
+  const sectionWords = sections.reduce((total, section) => total + wordCount(section.h3, section.paragraphs), 0);
   const faqWords = wordCount(city.faqs.flatMap((f) => [f.q, f.a]));
   return sectionWords + faqWords + wordCount(cityH1(city.name, state.name));
 }
