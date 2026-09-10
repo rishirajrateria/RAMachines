@@ -25,7 +25,6 @@ import {
   whoForParagraph,
   outcomesIntro,
   outcomes,
-  outcomesClosing,
   bookIntro,
   heroLead,
   heroChips,
@@ -144,7 +143,6 @@ export default function OperatorTrainingPage() {
             </li>
           ))}
         </ul>
-        <p className="mt-6 max-w-prose text-grey-700">{outcomesClosing}</p>
       </Band>
 
       <Container className="pb-14 pt-14 md:pb-20 md:pt-16">

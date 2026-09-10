@@ -8,18 +8,17 @@
 import type { IconName } from "@/components/ui/Icons";
 
 export const introParagraphs: string[] = [
-  "Not every business that needs precision-cut metal parts wants to invest in and maintain its own laser cutting machine. RA Machine offers laser cutting job work on our own fiber laser equipment, so you get clean, accurate parts cut to your drawing without the capital cost, floor space or in-house expertise a machine of your own would require.",
-  "We cut from your DXF or DWG file, or a clear PDF or sketch for simpler parts, confirm feasibility and price before starting, and deliver finished parts on the turnaround we commit to at quotation. This suits prototype runs, short production batches, and businesses whose own machine is temporarily down or fully booked.",
+  "RA Machine offers laser cutting job work on our own fiber laser equipment, so you get clean, accurate parts cut to your drawing without the capital cost or floor space a machine of your own would require — suited to prototype runs, short batches, or when your own machine is down or fully booked.",
 ];
 
 export const materialsParagraph: string =
-  "We cut carbon steel, stainless steel, aluminium, brass, copper and galvanised sheet across the thickness ranges our fiber laser machines support, from thin-gauge sheet suited to enclosures and brackets up to heavier plate for structural and machine-building work. Send your material specification with the drawing and we will confirm feasibility as part of the quotation.";
+  "We cut carbon steel, stainless steel, aluminium, brass, copper and galvanised sheet, from thin-gauge sheet up to heavier plate for structural work. Send your material specification with the drawing and we will confirm feasibility as part of the quotation.";
 
 export const formatsParagraph: string =
-  "DXF and DWG are the preferred formats for direct import into our nesting software, giving the fastest and most accurate quotation and cutting run. We also accept PDF drawings or clear scanned sketches for simpler geometry, which our team can redraw where needed. Clear dimensions, material, thickness and quantity noted on the file or covering email help us quote and schedule the job faster.";
+  "DXF and DWG import directly into our nesting software for the fastest, most accurate quotation. We also accept PDF drawings or clear scanned sketches for simpler geometry, which our team can redraw where needed.";
 
 export const turnaroundParagraph: string =
-  "Most orders are completed within a few working days of drawing approval and material confirmation, and we confirm a firm delivery date in writing at the quotation stage rather than leaving turnaround open-ended. Larger or more complex batches are scheduled against a delivery date agreed upfront so you can plan your own production or assembly around it.";
+  "Most orders are completed within a few working days of drawing approval, with a firm delivery date confirmed in writing at the quotation stage. Larger or more complex batches are scheduled against an agreed date upfront.";
 
 export const quoteIntro: string =
   "Send your drawing, material, thickness and quantity using the form below, and we will revert with feasibility, price and turnaround.";

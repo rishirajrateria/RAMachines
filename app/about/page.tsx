@@ -27,7 +27,6 @@ import CtaBand from "@/components/sections/CtaBand";
 import IndiaReachMap from "./IndiaReachMap";
 import {
   storyParagraphs,
-  missionText,
   manufacturingParagraphs,
   certSummary,
   leadership,
@@ -110,7 +109,6 @@ export default function AboutPage() {
             <IconCard key={pillar.title} icon={pillar.icon} title={pillar.title} text={pillar.text} tone="spark" />
           ))}
         </div>
-        <p className="mt-10 max-w-prose text-grey-600">{missionText}</p>
       </Section>
 
       <Section eyebrow="Manufacturing" icon="Factory" title="Our Kolkata manufacturing capability">

@@ -10,7 +10,7 @@ export const heroSub =
   "Fiber, tube and CO2 laser cutting machines and robotic welding systems, engineered at our own Kolkata works and installed, trained and serviced across India and 25+ export markets.";
 
 export const introParagraph =
-  "For more than a decade, fabrication shops and export buyers have chosen RA Machine for laser cutting and welding equipment engineered, built and supported entirely in India. Every machine is tested and calibrated by the same engineers who built it.";
+  "For more than a decade, fabrication shops and export buyers have chosen RA Machine for laser cutting and welding equipment engineered, built, tested and supported entirely at our own Kolkata works.";
 
 export const whyPoints: { icon: IconName; title: string; text: string }[] = [
   {

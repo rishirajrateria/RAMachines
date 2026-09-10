@@ -1,9 +1,9 @@
 /**
  * app/products/[category]/LongCopySections.tsx — renders a category's `longCopy`
- * (600–900 words, kept in full for SEO) as 2–3 alternating two-column blocks instead
- * of one long wall of text (ADR-0002), each with a SectionHeading and a supporting
- * visual (the category illustration, or the "at a glance" facts again as a reminder
- * panel further down the page). No copy is trimmed — only grouped and given headings.
+ * (350–500 words per ADR-0003) as 2–3 alternating two-column blocks instead of one
+ * long wall of text (ADR-0002), each with a SectionHeading and a supporting visual
+ * (the category illustration, or the "at a glance" facts again as a reminder panel
+ * further down the page).
  */
 import Image from "next/image";
 import type { Category } from "@/data/types";
