@@ -1,23 +1,30 @@
 /**
- * app/page.tsx — Home (SPEC §4 "Home"). All 10 sections in order: hero, stats,
- * categories → products, "Why RA Machine", services strip, certifications,
- * reach, testimonials, FAQ, final CTA band. Long copy lives in ./_home/copy.ts.
+ * app/page.tsx — Home (SPEC §4 "Home"). ADR-0002 visual refresh: hero band with icon
+ * chips, an "at a glance" panel, illustrated category/product cards, a soft-band
+ * FeatureGrid for "Why RA Machine", icon service cards, badge certifications, reach
+ * cards, testimonials, FAQ and a dark CTA band. Long copy lives in ./_home/copy.ts.
  */
 import type { Metadata } from "next";
-import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
 import { paths } from "@/lib/urls";
 import { localBusinessSchema } from "@/lib/schema";
+import { site } from "@/config/site";
 import { categories, products, homeFaqs } from "@/data";
 import JsonLd from "@/components/ui/JsonLd";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AboutBlurb from "@/components/ui/AboutBlurb";
 import Section from "@/components/ui/Section";
+import SectionHeading from "@/components/ui/SectionHeading";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import Chips from "@/components/ui/Chips";
+import GlancePanel from "@/components/ui/GlancePanel";
+import FeatureGrid from "@/components/ui/FeatureGrid";
+import IconCard from "@/components/ui/IconCard";
 import Faq from "@/components/ui/Faq";
 import StatsBar from "@/components/sections/StatsBar";
 import CertStrip from "@/components/sections/CertStrip";
+import CtaBand from "@/components/sections/CtaBand";
 import ReachSection from "@/components/sections/ReachSection";
 import TestimonialGrid from "@/components/sections/TestimonialGrid";
 import ContactStrip from "@/components/sections/ContactStrip";
@@ -25,7 +32,7 @@ import CategoryCard from "@/components/cards/CategoryCard";
 import ProductCard from "@/components/cards/ProductCard";
 import QuoteForm from "@/components/forms/QuoteForm";
 import HeroVideo from "@/components/media/HeroVideo";
-import { ArrowUpRight } from "@/components/ui/Icons";
+import { Icon, ArrowUpRight } from "@/components/ui/Icons";
 import { heroSub, introParagraph, whyPoints, servicesStrip, certIntro, reachIntro, ctaText } from "./_home/copy";
 
 export const metadata: Metadata = buildMetadata({
@@ -34,6 +41,15 @@ export const metadata: Metadata = buildMetadata({
     "RA Machine designs, manufactures and exports fiber laser, tube laser, CO2 laser and robotic welding machines from Kolkata, with installation, training and service across India and worldwide.",
   path: paths.home,
 });
+
+const glanceFacts = [
+  { icon: "Clock", label: "Lead time", value: `${site.service.leadTimeWeeks} weeks` },
+  { icon: "Shield", label: "Warranty", value: `${site.service.warrantyMonths} months` },
+  { icon: "Headset", label: "On-site response", value: site.service.responseTime },
+  { icon: "GraduationCap", label: "Training", value: "Included with purchase" },
+  { icon: "Layers", label: "Machine categories", value: String(categories.length) },
+  { icon: "Globe", label: "Export markets", value: "25+ countries" },
+] as const;
 
 export default function HomePage() {
   return (
@@ -54,41 +70,41 @@ export default function HomePage() {
             </h1>
             <p className="mt-5 max-w-xl text-base text-white/85 sm:text-lg">{heroSub}</p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button href={paths.products} variant="outline" size="lg" className="!border-white !text-white hover:!border-white hover:!text-white/80">
+              <Button href={paths.products} variant="solid" tone="spark" size="lg" icon="ArrowRight">
                 Explore Machines
               </Button>
-              <Button href="#quote" variant="solid" size="lg">
+              <Button
+                href="#quote"
+                variant="outline"
+                size="lg"
+                icon="ArrowRight"
+                className="!border-white/70 !text-white hover:!border-white hover:!text-white/80"
+              >
                 Request a Quote
               </Button>
             </div>
-            <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm">
-              <li>
-                <Link href={paths.repair} className="text-white/80 hover:text-white">
-                  Machine Repair
-                </Link>
-              </li>
-              <li className="text-white/40">·</li>
-              <li>
-                <Link href={paths.training} className="text-white/80 hover:text-white">
-                  Operator Training
-                </Link>
-              </li>
-              <li className="text-white/40">·</li>
-              <li>
-                <Link href={paths.exportHub} className="text-white/80 hover:text-white">
-                  Export Enquiry
-                </Link>
-              </li>
-            </ul>
+            <div className="mt-7">
+              <Chips
+                items={[
+                  { label: "Pan-India installation", icon: "MapPin" },
+                  { label: "Export to 25+ countries", icon: "Globe" },
+                  { label: "ISO 9001", icon: "Certificate" },
+                  { label: "Indian Railways vendor", icon: "Badge" },
+                ]}
+              />
+            </div>
           </div>
         </Container>
       </section>
 
       <Section tight>
         <Breadcrumbs items={[{ name: "Home", href: paths.home }]} />
-        <div className="mt-2 grid gap-8 md:grid-cols-[2fr_3fr] md:items-start">
-          <AboutBlurb />
-          <p className="text-sm text-grey-600">{introParagraph}</p>
+        <div className="mt-6 grid gap-8 md:grid-cols-2 md:items-center">
+          <div>
+            <SectionHeading eyebrow="Built in Kolkata" icon="Factory" title="Engineered and supported in India" />
+            <p className="mt-4 max-w-prose text-grey-600">{introParagraph}</p>
+          </div>
+          <GlancePanel title="RA Machine at a glance" facts={[...glanceFacts]} />
         </div>
       </Section>
 
@@ -98,8 +114,9 @@ export default function HomePage() {
 
       <Section
         eyebrow="Product range"
+        icon="Layers"
         title="Machines for every stage of fabrication"
-        intro="Four categories built around how Indian and export fabricators actually work — sheet, tube, non-metal and welded assembly."
+        intro="Four categories built around how Indian and export fabricators actually work."
       >
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {categories.map((category) => (
@@ -111,58 +128,62 @@ export default function HomePage() {
           ))}
         </div>
         <h3 className="mt-14 font-display text-lg text-ink">All machines</h3>
-        <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-5 flex gap-4 overflow-x-auto pb-2 [scroll-snap-type:x_mandatory] sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible lg:grid-cols-4">
           {products.map((product) => (
-            <ProductCard key={product.slug} product={product} />
-          ))}
-        </div>
-      </Section>
-
-      <Section eyebrow="Why RA Machine" title="Six reasons fabricators across India and abroad choose us">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {whyPoints.map((point) => (
-            <div key={point.title}>
-              <h3 className="font-display text-lg text-ink">{point.title}</h3>
-              <p className="mt-2 text-sm text-grey-600">{point.text}</p>
+            <div
+              key={product.slug}
+              className="w-[75vw] max-w-[280px] flex-none [scroll-snap-align:start] sm:w-auto sm:max-w-none"
+            >
+              <ProductCard product={product} />
             </div>
           ))}
         </div>
       </Section>
 
-      <Section eyebrow="Beyond the machine" title="Repair, training, job work and RA Auto">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {servicesStrip.map((item) => (
-            <div key={item.name}>
-              <h3 className="font-display text-lg text-ink">{item.name}</h3>
-              <p className="mt-2 text-sm text-grey-600">{item.text}</p>
-              {item.external ? (
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-steel hover:text-steel-hover"
-                >
-                  Visit {item.name} <ArrowUpRight width={14} height={14} />
-                </a>
-              ) : (
-                <Link href={item.href} className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-steel hover:text-steel-hover">
-                  Learn more
-                </Link>
-              )}
-            </div>
-          ))}
+      <Section tone="soft" eyebrow="Why RA Machine" icon="Sparkles" title="Six reasons fabricators choose us">
+        <FeatureGrid items={whyPoints} columns={3} />
+      </Section>
+
+      <Section eyebrow="Beyond the machine" icon="Wrench" title="Repair, training, job work and RA Auto">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {servicesStrip.map((item) =>
+            item.external ? (
+              <a
+                key={item.name}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card-hover group block h-full rounded-xl border border-grey-200 bg-white p-6 shadow-card"
+              >
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-spark-soft text-spark">
+                  <Icon name={item.icon} size={22} />
+                </span>
+                <h3 className="mt-4 font-display text-lg text-ink">{item.name}</h3>
+                <p className="mt-2 text-sm text-grey-600">{item.text}</p>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-steel">
+                  Visit {item.name}
+                  <ArrowUpRight width={14} height={14} />
+                </span>
+              </a>
+            ) : (
+              <IconCard key={item.name} icon={item.icon} title={item.name} text={item.text} href={item.href} />
+            ),
+          )}
         </div>
       </Section>
 
-      <Section eyebrow="Compliance" title="Licences & Certifications" intro={certIntro}>
+      <Section eyebrow="Compliance" icon="Award" title="Licences & Certifications" intro={certIntro}>
+        <div className="mb-8 max-w-2xl">
+          <AboutBlurb />
+        </div>
         <CertStrip />
       </Section>
 
-      <Section eyebrow="Reach" title="India + World Reach" intro={reachIntro}>
+      <Section eyebrow="Reach" icon="Globe" title="India + World Reach" intro={reachIntro}>
         <ReachSection />
       </Section>
 
-      <Section eyebrow="Customers" title="What fabricators say about working with us">
+      <Section eyebrow="Customers" icon="Quote" title="What fabricators say about working with us">
         <TestimonialGrid />
       </Section>
 
@@ -170,13 +191,14 @@ export default function HomePage() {
         <Faq items={homeFaqs} />
       </Section>
 
+      <CtaBand title="Ready to talk to our team" text={ctaText} />
+
       <div id="quote" className="border-t border-grey-200 bg-grey-50 py-14 md:py-20">
         <Container>
           <div className="grid gap-10 lg:grid-cols-[3fr_2fr]">
             <div>
-              <h2 className="font-display text-display-md text-ink">Ready to talk to our team</h2>
-              <p className="mt-3 max-w-prose text-grey-600">{ctaText}</p>
-              <div className="mt-8 max-w-lg">
+              <SectionHeading eyebrow="Get in touch" icon="ArrowRight" title="Send us your requirement" />
+              <div className="mt-6 max-w-lg">
                 <QuoteForm />
               </div>
             </div>
