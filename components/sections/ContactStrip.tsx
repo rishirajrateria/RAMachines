@@ -18,20 +18,20 @@ export default function ContactStrip() {
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {items.map((item) => {
         const body = (
-          <div className="flex items-center gap-3">
+          <div className="flex min-w-0 items-center gap-3">
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-steel-soft text-steel">
               <Icon name={item.icon} size={20} />
             </span>
-            <span>
+            <span className="min-w-0">
               <span className="block text-xs font-semibold uppercase tracking-[0.08em] text-grey-600">
                 {item.label}
               </span>
-              <span className="block text-sm font-semibold text-ink">{item.value}</span>
+              <span className="block break-words text-sm font-semibold text-ink">{item.value}</span>
             </span>
           </div>
         );
         return (
-          <div key={item.label} className="rounded-xl border border-grey-200 bg-white p-4 shadow-card">
+          <div key={item.label} className="min-w-0 rounded-xl border border-grey-200 bg-white p-4 shadow-card">
             {item.href ? (
               <a
                 href={item.href}
