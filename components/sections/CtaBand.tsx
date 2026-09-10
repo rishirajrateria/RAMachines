@@ -1,8 +1,8 @@
 /**
  * components/sections/CtaBand.tsx — full-width closing CTA band used near the bottom of
- * most pages. Optional `product` pre-fills the Request a Quote form. ADR-0002: a dark
- * ink→steel gradient band with two buttons (spark solid "Request a Quote" + outlined
- * "Call us", both readable on dark).
+ * most pages. Optional `product` pre-fills the Request a Quote form. ADR-0004: a dark
+ * ink→teal gradient band (`.band-dark`) with two buttons (spark solid "Request a Quote"
+ * + outlined "Call us", both readable on dark).
  */
 import { site } from "@/config/site";
 import Button from "@/components/ui/Button";

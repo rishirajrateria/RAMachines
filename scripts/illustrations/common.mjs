@@ -1,16 +1,24 @@
 /**
  * scripts/illustrations/common.mjs — shared palette, primitives and scene/emit
- * helpers used by every illustration module. ADR-0002 palette: ink, steel (+
- * lighter steel), spark (+ light spark), light grey, white on tinted backgrounds.
+ * helpers used by every illustration module. ADR-0004 palette: ink, teal (+ light
+ * teal, + deep teal), spark (+ light spark), light grey, white on tinted
+ * backgrounds. `STEEL`/`STEEL_LIGHT`/`STEEL_SOFT` are kept as aliases of the teal
+ * values so every illustration module that imports them keeps compiling and now
+ * renders teal.
  */
 import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import sharp from "sharp";
 
-export const INK = "#111214";
-export const STEEL = "#1F4E79";
-export const STEEL_LIGHT = "#3D6FA3";
-export const STEEL_SOFT = "#E8EEF5";
+export const INK = "#0F1A1A";
+export const TEAL = "#0F766E";
+export const TEAL_LIGHT = "#2A9D93";
+export const TEAL_DEEP = "#0B5C56";
+export const TEAL_SOFT = "#E6F4F2";
+// Alias — every illustration module importing STEEL/STEEL_LIGHT/STEEL_SOFT now renders teal.
+export const STEEL = TEAL;
+export const STEEL_LIGHT = TEAL_LIGHT;
+export const STEEL_SOFT = TEAL_SOFT;
 export const SPARK = "#F26A21";
 export const SPARK_LIGHT = "#FFB08A";
 export const SPARK_SOFT = "#FFF1EA";

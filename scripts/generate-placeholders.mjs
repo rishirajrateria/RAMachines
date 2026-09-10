@@ -2,8 +2,8 @@
 /**
  * scripts/generate-placeholders.mjs — generates every placeholder binary asset the
  * site references (`node scripts/generate-placeholders.mjs`), so a static export
- * never 404s on an image/brochure/logo. ADR-0002: draws richer stylised flat SVG
- * illustrations (ink / steel + light steel / spark + light spark / light grey /
+ * never 404s on an image/brochure/logo. ADR-0004: draws richer stylised flat SVG
+ * illustrations (ink / teal + light teal / spark + light spark / light grey /
  * white on tinted backgrounds) instead of grey boxes — see scripts/illustrations/*
  * for the drawing code — rasterises them with sharp at the existing filenames/sizes
  * (WebP q82, kept small), and writes each SVG source under /public/illustrations
@@ -166,13 +166,13 @@ async function main() {
   }
 
   // Logo (public, used in Organization schema `logo`) and favicon mark
-  const logoSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 48" width="240" height="48"><rect x="0" y="20" width="10" height="10" rx="2" fill="#F26A21"/><text x="16" y="32" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#111214">RA Machine</text></svg>`;
+  const logoSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 48" width="240" height="48"><rect x="0" y="20" width="10" height="10" rx="2" fill="#F26A21"/><text x="16" y="32" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#0F1A1A">RA Machine</text></svg>`;
   const logoPath = join(PUBLIC, "logo.svg");
   await mkdir(dirname(logoPath), { recursive: true });
   await writeFile(logoPath, logoSvg);
   written.push(logoPath);
 
-  const iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32"><rect width="32" height="32" rx="7" fill="#111214"/><rect x="6" y="15" width="20" height="2" fill="#FFFFFF"/><rect x="6" y="9" width="12" height="2" fill="#1F4E79"/><rect x="6" y="21" width="10" height="2" fill="#F26A21"/></svg>`;
+  const iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32"><rect width="32" height="32" rx="7" fill="#0F1A1A"/><rect x="6" y="15" width="20" height="2" fill="#FFFFFF"/><rect x="6" y="9" width="12" height="2" fill="#0F766E"/><rect x="6" y="21" width="10" height="2" fill="#F26A21"/></svg>`;
   const iconPath = join(ROOT, "app", "icon.svg");
   await writeFile(iconPath, iconSvg);
   written.push(iconPath);

@@ -1,9 +1,9 @@
 /**
  * scripts/illustrations/certs.mjs — certificate rosette badges: ribbon + name +
  * issuer line + a small centre icon distinguishing each certificate, each with
- * its own accent tint (still within the ADR-0002 palette).
+ * its own accent tint (still within the ADR-0004 palette).
  */
-import { INK, STEEL, STEEL_LIGHT, SPARK, SPARK_LIGHT, GREY, WHITE, escapeXml, wrapLines, scene } from "./common.mjs";
+import { INK, STEEL, STEEL_LIGHT, STEEL_SOFT, SPARK, SPARK_LIGHT, SPARK_SOFT, GREY, WHITE, escapeXml, wrapLines, scene } from "./common.mjs";
 
 // ---- small centre icons, drawn centred at (0,0) in a roughly ±20 box --------
 
@@ -85,7 +85,7 @@ const TINTS = [SPARK, STEEL, STEEL_LIGHT];
  * and an issuer line lettered across it. `index` cycles the accent tint. */
 export function certBadgeSvg(width, height, name, issuer, slug, index = 0) {
   const accent = TINTS[index % TINTS.length];
-  const bg = accent === SPARK ? "#E8EEF5" : "#FFF1EA";
+  const bg = accent === SPARK ? STEEL_SOFT : SPARK_SOFT;
   const cx = width / 2;
   const cy = height * 0.4;
   const rOuter = width * 0.32;

@@ -2,7 +2,7 @@
  * scripts/illustrations/machines.mjs — richer flat-vector machine drawings used by
  * product, category, about and hero illustrations. Every machine is drawn in a
  * shared 520×320 local box (ground line at y=272) so callers can position/scale/crop
- * it uniformly. ADR-0002 palette only: ink, steel (+ light steel), spark (+ light
+ * it uniformly. ADR-0004 palette only: ink, teal (+ light teal), spark (+ light
  * spark), light grey, white.
  */
 import {

@@ -1,15 +1,20 @@
 /**
  * scripts/illustrations/hero.mjs — the dark hero/OG illustration: a full flatbed
- * fiber laser cutting a sheet, dramatic spark burst + glow, on a dark ink band
- * with a soft radial steel glow and a faint perspective grid. The left ~45% of
- * the hero canvas is kept calm (no machine geometry) so the page's H1 can sit
- * over it — see ADR-0002.
+ * fiber laser cutting a sheet, dramatic spark burst + glow, on the ADR-0004 dark
+ * ink→deep-teal→teal band gradient with a soft radial teal glow and a faint
+ * perspective grid. The left ~45% of the hero canvas is kept calm (no machine
+ * geometry) so the page's H1 can sit over it.
  */
 import { INK, STEEL, STEEL_LIGHT, SPARK, SPARK_LIGHT, WHITE, sparkBurst, sparkChips, perspectiveGrid, scene } from "./common.mjs";
 import { flatbedMachine, withOverlay, BOX_W, GROUND_Y } from "./machines.mjs";
 
 function heroDefs() {
   return `<defs>
+    <linearGradient id="heroDarkBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="${INK}"/>
+      <stop offset="55%" stop-color="#0B3B38"/>
+      <stop offset="100%" stop-color="${STEEL}"/>
+    </linearGradient>
     <radialGradient id="heroGlow" cx="72%" cy="54%" r="70%">
       <stop offset="0%" stop-color="${STEEL_LIGHT}" stop-opacity="0.4"/>
       <stop offset="55%" stop-color="${STEEL}" stop-opacity="0.16"/>
@@ -40,6 +45,7 @@ export function heroPosterSvg(width, height) {
   const extraChips = sparkChips(spx, spy, 10, height * 0.16, 7);
 
   const content = `${heroDefs()}
+    <rect width="${width}" height="${height}" fill="url(#heroDarkBg)"/>
     <rect width="${width}" height="${height}" fill="url(#heroGlow)"/>
     ${grid}
     ${bigGlow}

@@ -16,13 +16,15 @@ const sizeClasses = {
 };
 
 const variantClasses = {
+  // ADR-0004: solid buttons use the teal-brand gradient (a 1px darker "hover" tone
+  // stands in for the border on darken/lift); outline is a teal border.
   steel: {
-    solid: "bg-steel text-white hover:bg-steel-hover",
-    outline: "border border-grey-300 text-ink hover:border-steel hover:text-steel",
-    ghost: "text-steel hover:text-steel-hover px-0 h-auto",
+    solid: "bg-btn-primary text-white shadow-sm hover:brightness-95 hover:-translate-y-0.5",
+    outline: "border border-teal text-ink hover:border-teal-hover hover:text-teal-hover",
+    ghost: "text-teal hover:text-teal-hover px-0 h-auto",
   },
   spark: {
-    solid: "bg-spark text-white hover:bg-spark-hover",
+    solid: "bg-btn-spark text-white shadow-sm hover:brightness-95 hover:-translate-y-0.5",
     outline: "border border-grey-300 text-ink hover:border-spark hover:text-spark",
     ghost: "text-spark hover:text-spark-hover px-0 h-auto",
   },
@@ -48,7 +50,7 @@ export default function Button({
   className?: string;
   size?: "md" | "lg";
 } & Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "href" | "className">) {
-  const classes = `inline-flex items-center justify-center gap-2 rounded-lg whitespace-nowrap font-semibold transition-colors focus-visible:outline-none ${
+  const classes = `inline-flex items-center justify-center gap-2 rounded-lg whitespace-nowrap font-semibold transition focus-visible:outline-none ${
     variant === "ghost" ? "" : sizeClasses[size]
   } ${variantClasses[tone][variant]} ${className}`.trim();
 

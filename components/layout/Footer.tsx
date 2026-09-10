@@ -37,7 +37,7 @@ export default function Footer() {
   const countries = topCountries(10);
 
   return (
-    <footer className="band-soft border-t border-grey-200">
+    <footer className="footer-band-top band-soft border-t border-grey-200">
       <div className="container-site grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <p className="font-display text-lg text-ink">{site.name}</p>

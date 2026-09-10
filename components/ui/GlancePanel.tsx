@@ -13,7 +13,7 @@ export default function GlancePanel({
   facts: { icon: IconName; label: string; value: string }[];
 }) {
   return (
-    <div className="rounded-xl bg-steel-soft p-6">
+    <div className="panel-soft rounded-xl p-6">
       {title && <h3 className="font-display text-lg text-ink">{title}</h3>}
       <dl className={`grid grid-cols-2 gap-x-5 gap-y-5 sm:grid-cols-3 ${title ? "mt-4" : ""}`.trim()}>
         {facts.map((fact) => (
