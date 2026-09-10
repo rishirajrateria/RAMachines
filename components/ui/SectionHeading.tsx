@@ -1,8 +1,8 @@
 /**
- * components/ui/SectionHeading.tsx — eyebrow (with optional icon) + h2 with the
- * teal→spark gradient underline accent + optional intro paragraph. Used inside
- * Section/Band bodies and anywhere a page needs the standard heading block without
- * the divider Section adds.
+ * components/ui/SectionHeading.tsx — ADR-0005 §3, §5: eyebrow (teal, optional
+ * icon) + a calm, plain h2 (no underline bar, no gradient) + optional intro
+ * paragraph in grey-600. Used inside Section/Band bodies and anywhere a page
+ * needs the standard heading block.
  */
 import { Icon, type IconName } from "./Icons";
 
@@ -28,11 +28,7 @@ export default function SectionHeading({
           {eyebrow}
         </p>
       )}
-      {title && (
-        <h2 className={`section-title text-display-md ${centered ? "section-title--center" : ""}`.trim()}>
-          {title}
-        </h2>
-      )}
+      {title && <h2 className="section-title text-display-md">{title}</h2>}
       {intro && <p className="mt-3 text-grey-600">{intro}</p>}
     </div>
   );

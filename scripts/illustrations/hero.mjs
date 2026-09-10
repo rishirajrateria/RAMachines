@@ -1,57 +1,30 @@
 /**
- * scripts/illustrations/hero.mjs — the dark hero/OG illustration: a full flatbed
- * fiber laser cutting a sheet, dramatic spark burst + glow, on the ADR-0004 dark
- * ink→deep-teal→teal band gradient with a soft radial teal glow and a faint
- * perspective grid. The left ~45% of the hero canvas is kept calm (no machine
- * geometry) so the page's H1 can sit over it.
+ * scripts/illustrations/hero.mjs — ADR-0005 §7: the hero poster is light forms
+ * only (no machine drawing front-and-centre) with a faint line-art gantry glyph
+ * on the right third. Same soft teal/aqua/white ambient composition as
+ * components/layout/AmbientLight.tsx, rendered once into a static raster so it
+ * still reads correctly as the hero <video>'s poster frame before any client JS
+ * runs.
  */
-import { INK, STEEL, STEEL_LIGHT, SPARK, SPARK_LIGHT, WHITE, sparkBurst, sparkChips, perspectiveGrid, scene } from "./common.mjs";
-import { flatbedMachine, withOverlay, BOX_W, GROUND_Y } from "./machines.mjs";
-
-function heroDefs() {
-  return `<defs>
-    <linearGradient id="heroDarkBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="${INK}"/>
-      <stop offset="55%" stop-color="#0B3B38"/>
-      <stop offset="100%" stop-color="${STEEL}"/>
-    </linearGradient>
-    <radialGradient id="heroGlow" cx="72%" cy="54%" r="70%">
-      <stop offset="0%" stop-color="${STEEL_LIGHT}" stop-opacity="0.4"/>
-      <stop offset="55%" stop-color="${STEEL}" stop-opacity="0.16"/>
-      <stop offset="100%" stop-color="${INK}" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="heroSparkGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="${SPARK_LIGHT}" stop-opacity="0.55"/>
-      <stop offset="100%" stop-color="${SPARK}" stop-opacity="0"/>
-    </radialGradient>
-  </defs>`;
-}
+import { ambientLight, scene } from "./common.mjs";
+import { flatbedMachine, BOX_W, GROUND_Y } from "./machines.mjs";
 
 export function heroPosterSvg(width, height) {
-  const scale = (height / 1080) * 2.2;
-  const groundRatio = 0.83;
-  const offsetX = width * 0.212;
-  const tx = (width - BOX_W * scale) / 2 + offsetX;
-  const ty = height * groundRatio - GROUND_Y * scale;
+  const { defs, content: orbs } = ambientLight(width, height);
 
   const machine = flatbedMachine("ra-f6020-hd");
-  const machineContent = withOverlay(machine, { withSpark: true, withChips: true });
-  const [sx, sy] = machine.sparkPoint;
-  const spx = tx + sx * scale;
-  const spy = ty + sy * scale;
+  const scale = (height / 1080) * 1.55;
+  const groundRatio = 0.8;
+  // Position the glyph inside the right third of the canvas.
+  const glyphTx = width * 0.66 - (BOX_W * scale) / 2;
+  const glyphTy = height * groundRatio - GROUND_Y * scale;
 
-  const grid = perspectiveGrid(width, height, height * 0.38, STEEL_LIGHT, 0.1, width * 0.66);
-  const bigGlow = `<circle cx="${spx.toFixed(0)}" cy="${spy.toFixed(0)}" r="${(height * 0.5).toFixed(0)}" fill="url(#heroSparkGlow)"/>`;
-  const extraChips = sparkChips(spx, spy, 10, height * 0.16, 7);
-
-  const content = `${heroDefs()}
-    <rect width="${width}" height="${height}" fill="url(#heroDarkBg)"/>
-    <rect width="${width}" height="${height}" fill="url(#heroGlow)"/>
-    ${grid}
-    ${bigGlow}
-    <g transform="translate(${tx.toFixed(1)} ${ty.toFixed(1)}) scale(${scale})">${machineContent}</g>
-    ${extraChips}
-    <text x="${width - 48}" y="${height - 44}" text-anchor="end" font-family="Arial, sans-serif" font-size="${Math.round(width * 0.014)}" font-weight="700" fill="${WHITE}" opacity="0.55">RA MACHINE</text>
+  const content = `
+    <rect width="${width}" height="${height}" fill="#F6F8F9"/>
+    ${orbs}
+    <g transform="translate(${glyphTx.toFixed(1)} ${glyphTy.toFixed(1)}) scale(${scale.toFixed(3)})" opacity="0.16">
+      ${machine.svg}
+    </g>
   `;
-  return scene({ width, height, bg: INK, content });
+  return scene({ width, height, defs, content });
 }

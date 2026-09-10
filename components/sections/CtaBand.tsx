@@ -1,8 +1,8 @@
 /**
- * components/sections/CtaBand.tsx — full-width closing CTA band used near the bottom of
- * most pages. Optional `product` pre-fills the Request a Quote form. ADR-0004: a dark
- * ink→teal gradient band (`.band-dark`) with two buttons (spark solid "Request a Quote"
- * + outlined "Call us", both readable on dark).
+ * components/sections/CtaBand.tsx — ADR-0005 §5: a closing CTA glass panel
+ * (replaces the old dark ink→teal gradient band) with a primary teal pill
+ * "Request a Quote" + a secondary glass pill "Call us". Optional `product`
+ * pre-fills the Request a Quote form.
  */
 import { site } from "@/config/site";
 import Button from "@/components/ui/Button";
@@ -18,29 +18,22 @@ export default function CtaBand({
   product?: string;
 }) {
   return (
-    <div className="band-dark section-rhythm">
+    <div className="section-rhythm">
       <Container>
-        <div className="max-w-2xl">
-          <h2 className="font-display text-display-md text-white">{title}</h2>
-          <p className="mt-3 text-white/75">{text}</p>
-          <div className="mt-6 flex flex-wrap gap-3">
+        <div className="glass-strong p-8 text-center md:p-12">
+          <h2 className="section-title mx-auto max-w-2xl text-display-md">{title}</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-grey-600">{text}</p>
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Button
               href="#quote"
               variant="solid"
-              tone="spark"
               size="lg"
               icon="ArrowRight"
               aria-label={product ? `Request a quote for ${product}` : "Request a quote"}
             >
               Request a Quote
             </Button>
-            <Button
-              href={site.phoneHref}
-              variant="outline"
-              size="lg"
-              icon="Phone"
-              className="border-white/30 text-white hover:border-white hover:text-white"
-            >
+            <Button href={site.phoneHref} variant="outline" size="lg" icon="Phone">
               Call {site.phoneDisplay}
             </Button>
           </div>

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { fontUi, fontDisplay } from "./fonts";
+import { fontUi } from "./fonts";
 import { site } from "@/config/site";
 import SkipLink from "@/components/layout/SkipLink";
+import AmbientLight from "@/components/layout/AmbientLight";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
@@ -18,11 +19,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-IN" className={`${fontUi.variable} ${fontDisplay.variable}`}>
-      <body>
+    <html lang="en-IN" className={fontUi.variable}>
+      <body className="bg-[#F6F8F9] text-ink">
         <SkipLink />
+        <AmbientLight />
         <Header />
-        <main id="main">{children}</main>
+        <main id="main" className="pt-24">
+          {children}
+        </main>
         <Footer />
         <WhatsAppFloat />
         <JsonLd data={[organizationSchema(), websiteSchema()]} />

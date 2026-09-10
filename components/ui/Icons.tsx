@@ -14,13 +14,14 @@ import type { JSX, SVGProps } from "react";
 
 type IconProps = SVGProps<SVGSVGElement>;
 
+// ADR-0005 §5: 1.5px stroke, teal, sits inside a 44px .glass-pill circle when used as a tile.
 const base = {
   width: 24,
   height: 24,
   viewBox: "0 0 24 24",
   fill: "none",
   stroke: "currentColor",
-  strokeWidth: 1.75,
+  strokeWidth: 1.5,
   strokeLinecap: "round" as const,
   strokeLinejoin: "round" as const,
   "aria-hidden": true,

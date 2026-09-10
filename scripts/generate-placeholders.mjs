@@ -2,11 +2,13 @@
 /**
  * scripts/generate-placeholders.mjs — generates every placeholder binary asset the
  * site references (`node scripts/generate-placeholders.mjs`), so a static export
- * never 404s on an image/brochure/logo. ADR-0004: draws richer stylised flat SVG
- * illustrations (ink / teal + light teal / spark + light spark / light grey /
- * white on tinted backgrounds) instead of grey boxes — see scripts/illustrations/*
- * for the drawing code — rasterises them with sharp at the existing filenames/sizes
- * (WebP q82, kept small), and writes each SVG source under /public/illustrations
+ * never 404s on an image/brochure/logo. ADR-0005 "Liquid Glass" §7: draws
+ * stroke-only line-art machine glyphs (ink, 1.75px, no fills) on **transparent**
+ * backgrounds for product/category art — the card's own glass surface + a soft
+ * radial-teal CSS backdrop (components/cards/ProductCard.tsx,
+ * components/cards/CategoryCard.tsx) supplies the "soft light form" behind them —
+ * rasterises them with sharp at the existing filenames/sizes (WebP q88, alpha
+ * preserved, kept small), and writes each SVG source under /public/illustrations
  * for reuse. Regenerating is always safe (deterministic); drop a same-named real
  * photo into /public later and stop regenerating that one file to replace it
  * permanently.
@@ -16,10 +18,8 @@ import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { makeEmit, scene, STEEL_SOFT, SPARK_SOFT } from "./illustrations/common.mjs";
-import {
-  machineForProduct, machineForCategory, categoryForeground, withOverlay, placeInScene, BOX_W, BOX_H,
-} from "./illustrations/machines.mjs";
+import { makeEmit, scene } from "./illustrations/common.mjs";
+import { machineForProduct, machineForCategory, BOX_W, BOX_H, GROUND_Y, placeInScene } from "./illustrations/machines.mjs";
 import { heroPosterSvg } from "./illustrations/hero.mjs";
 import { factoryHallSvg, indiaReachSvg, worldReachSvg } from "./illustrations/about.mjs";
 import { certBadgeSvg } from "./illustrations/certs.mjs";
@@ -60,40 +60,32 @@ const CERTS = [
   { slug: "bis", name: "BIS", issuer: "Bureau of Indian Standards" },
 ];
 
-/** front / detail (cropped, zoomed-in) / in-use (spark burst + chips + operator)
- * angles for one product, composed into a 1200×900 scene. */
-function productAngleSvg(product, angle, bgIndex) {
-  const machine = machineForProduct(product.slug);
+/** front / detail (cropped, zoomed-in) / in-use (faint dashed motion trace)
+ * angles for one product, composed transparently into a 1200×900 scene. */
+function productAngleSvg(product, angle) {
+  const machine = machineForProduct(product.slug, { inUse: angle === "in-use" });
   let placed;
   if (angle === "detail") {
     const [vx, vy, vw, vh] = machine.detailCrop;
     const cropped = `<svg x="0" y="0" width="${BOX_W}" height="${BOX_H}" viewBox="${vx} ${vy} ${vw} ${vh}" preserveAspectRatio="xMidYMid slice">${machine.svg}</svg>`;
-    placed = `<g transform="translate(96 162) scale(1.8)">${cropped}</g>`;
+    placed = `<g transform="translate(220 260) scale(1.7)">${cropped}</g>`;
   } else {
-    const content = withOverlay(machine, {
-      withSpark: angle === "in-use",
-      withChips: angle === "in-use",
-      withOperator: angle === "in-use",
-    });
-    placed = placeInScene(content, 1200, 900, { scale: 2.0 });
+    placed = placeInScene(machine.svg, 1200, 900, { scale: 1.9, groundRatio: 0.82 });
   }
   return scene({
     width: 1200,
     height: 900,
-    bg: bgIndex % 2 === 0 ? STEEL_SOFT : SPARK_SOFT,
     content: placed,
     caption: `${product.name} — ${angle === "front" ? "front view" : angle === "detail" ? "detail view" : "in use"}`,
   });
 }
 
-function categorySvg(category, bgIndex) {
+function categorySvg(category) {
   const machine = machineForCategory(category.category);
-  const content = `${machine.svg}${categoryForeground(category.category)}`;
   return scene({
     width: 1200,
     height: 800,
-    bg: bgIndex % 2 === 0 ? STEEL_SOFT : SPARK_SOFT,
-    content: placeInScene(content, 1200, 800, { scale: 1.75, groundRatio: 0.84 }),
+    content: placeInScene(machine.svg, 1200, 800, { scale: 1.85, groundRatio: 0.82 }),
     caption: category.name,
   });
 }
@@ -132,7 +124,7 @@ async function main() {
   const written = [];
 
   for (const cert of CERTS) {
-    written.push(await emit(`certs/${cert.slug}.webp`, certBadgeSvg(600, 800, cert.name, cert.issuer, cert.slug, CERTS.indexOf(cert))));
+    written.push(await emit(`certs/${cert.slug}.webp`, certBadgeSvg(600, 800, cert.name, cert.issuer, cert.slug)));
   }
 
   for (const product of PRODUCTS) {
@@ -142,13 +134,13 @@ async function main() {
       ["3", "in-use"],
     ];
     for (const [index, angle] of angles) {
-      const svg = productAngleSvg(product, angle, PRODUCTS.indexOf(product));
+      const svg = productAngleSvg(product, angle);
       written.push(await emit(`products/${product.slug}-${index}.webp`, svg));
     }
   }
 
   for (const category of CATEGORIES) {
-    written.push(await emit(`categories/${category.slug}.webp`, categorySvg(category, CATEGORIES.indexOf(category))));
+    written.push(await emit(`categories/${category.slug}.webp`, categorySvg(category)));
   }
 
   written.push(await emit("hero-poster.webp", heroPosterSvg(1920, 1080)));
@@ -165,14 +157,17 @@ async function main() {
     written.push(path);
   }
 
-  // Logo (public, used in Organization schema `logo`) and favicon mark
-  const logoSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 48" width="240" height="48"><rect x="0" y="20" width="10" height="10" rx="2" fill="#F26A21"/><text x="16" y="32" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#0F1A1A">RA Machine</text></svg>`;
+  // Logo (public, used in Organization schema `logo`) — a plain ink wordmark, no
+  // orange square, no gradient (ADR-0005 §4).
+  const logoSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 40" width="220" height="40"><text x="0" y="29" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#0F1A1A">RA Machine</text></svg>`;
   const logoPath = join(PUBLIC, "logo.svg");
   await mkdir(dirname(logoPath), { recursive: true });
   await writeFile(logoPath, logoSvg);
   written.push(logoPath);
 
-  const iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32"><rect width="32" height="32" rx="7" fill="#0F1A1A"/><rect x="6" y="15" width="20" height="2" fill="#FFFFFF"/><rect x="6" y="9" width="12" height="2" fill="#0F766E"/><rect x="6" y="21" width="10" height="2" fill="#F26A21"/></svg>`;
+  // Favicon mark — a simple teal monogram (ADR-0005 §7: "logo.svg/icon.svg = simple
+  // wordmark/monogram").
+  const iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32"><rect width="32" height="32" rx="8" fill="#0F766E"/><text x="16" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">R</text></svg>`;
   const iconPath = join(ROOT, "app", "icon.svg");
   await writeFile(iconPath, iconSvg);
   written.push(iconPath);

@@ -1,14 +1,15 @@
 "use client";
 
 /**
- * components/forms/Web3Form.tsx — the single form engine every form on the site wraps
- * (QuoteForm, RepairForm, TrainingForm, JobWorkForm, ContactForm, ExportForm). Posts
- * JSON straight to Web3Forms (no backend). Renders visible labels, ≥44px inputs, a
- * honeypot field, client-side validation, and submitting/success/error states.
+ * components/forms/Web3Form.tsx — the single form engine every form on the site
+ * wraps (QuoteForm, RepairForm, TrainingForm, JobWorkForm, ContactForm,
+ * ExportForm). Posts JSON straight to Web3Forms (no backend). ADR-0005 §5: glass
+ * inputs, rounded 14px, 48px tall. Renders visible labels, a honeypot field,
+ * client-side validation, and submitting/success/error states.
  */
 import { useState, type FormEvent } from "react";
 import { site } from "@/config/site";
-import { Icon, type IconName } from "@/components/ui/Icons";
+import { Icon } from "@/components/ui/Icons";
 
 export type FieldDef = {
   name: string;
@@ -25,28 +26,12 @@ type Status = "idle" | "submitting" | "success" | "error";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_RE = /^[0-9()+\-\s]{8,15}$/;
 
-/** Best-effort icon per field, by name/type — so every label gets a small icon
- * (ADR-0002) without every form having to specify one explicitly. */
-function iconForField(field: FieldDef): IconName {
-  const n = field.name.toLowerCase();
-  if (n.includes("name")) return "Users";
-  if (n.includes("company")) return "Building";
-  if (n.includes("phone")) return "Phone";
-  if (n.includes("email")) return "Mail";
-  if (n.includes("city") || n.includes("location")) return "MapPin";
-  if (n.includes("country")) return "Globe";
-  if (n.includes("trainee")) return "GraduationCap";
-  if (n.includes("month") || n.includes("date")) return "Calendar";
-  if (n.includes("machine") || n.includes("problem")) return "Wrench";
-  if (n.includes("product")) return "Layers";
-  if (n.includes("requirement") || n.includes("drawing")) return "Package";
-  if (n.includes("subject")) return "Layers";
-  if (field.type === "textarea" || n.includes("message")) return "Mail";
-  return "Check";
+function fieldClasses() {
+  return "glass h-12 w-full rounded-[14px] px-4 text-sm text-ink placeholder:text-grey-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2";
 }
 
-function fieldClasses() {
-  return "min-h-11 w-full rounded-lg border border-grey-300 bg-white px-3 py-2 text-sm text-ink placeholder:text-grey-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-spark focus-visible:ring-offset-2";
+function textareaClasses() {
+  return "glass min-h-[7rem] w-full rounded-[14px] px-4 py-3 text-sm text-ink placeholder:text-grey-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2";
 }
 
 export default function Web3Form({
@@ -128,8 +113,8 @@ export default function Web3Form({
 
   if (status === "success") {
     return (
-      <div className="flex gap-3 rounded-xl border border-grey-200 bg-spark-soft p-5">
-        <Icon name="Check" size={20} className="mt-0.5 shrink-0 text-spark" />
+      <div className="glass flex gap-3 p-5">
+        <Icon name="Check" size={20} className="mt-0.5 shrink-0 text-teal" />
         <div>
           <p className="font-semibold text-ink">{successTitle}</p>
           <p className="mt-1 text-sm text-grey-600">{successText}</p>
@@ -140,23 +125,13 @@ export default function Web3Form({
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-4">
-      <input
-        type="checkbox"
-        name="botcheck"
-        tabIndex={-1}
-        autoComplete="off"
-        className="hidden"
-        aria-hidden="true"
-      />
+      <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
       {hidden &&
-        Object.entries(hidden).map(([key, value]) => (
-          <input key={key} type="hidden" name={key} value={value} />
-        ))}
+        Object.entries(hidden).map(([key, value]) => <input key={key} type="hidden" name={key} value={value} />)}
 
       {fields.map((field) => (
         <div key={field.name}>
-          <label htmlFor={field.name} className="mb-1.5 flex items-center gap-1.5 text-sm font-semibold text-ink">
-            <Icon name={iconForField(field)} size={15} className="text-steel" />
+          <label htmlFor={field.name} className="mb-1.5 block text-sm font-semibold text-ink">
             {field.label}
             {field.required && <span aria-hidden="true"> *</span>}
           </label>
@@ -168,7 +143,7 @@ export default function Web3Form({
               placeholder={field.placeholder}
               autoComplete={field.autoComplete}
               rows={4}
-              className={fieldClasses()}
+              className={textareaClasses()}
               aria-invalid={Boolean(errors[field.name])}
               aria-describedby={errors[field.name] ? `${field.name}-error` : undefined}
             />
@@ -215,7 +190,7 @@ export default function Web3Form({
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-spark px-6 text-sm font-semibold text-white transition-colors hover:bg-spark-hover disabled:opacity-60"
+        className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-teal px-6 text-sm font-semibold text-white transition-colors hover:bg-teal-hover disabled:opacity-60"
       >
         {status === "submitting" ? "Sending…" : submitLabel}
         {status !== "submitting" && <Icon name="ArrowRight" size={16} />}

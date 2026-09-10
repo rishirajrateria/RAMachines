@@ -3,17 +3,22 @@
 @tailwind utilities;
 
 /**
- * ADR-0004 teal brand palette (supersedes the ADR-0002 steel blue palette) — subtle
- * gradients on dark/soft bands, buttons, cards and panels; never loud, never rainbow.
- * Tokens below mirror tailwind.config.ts as CSS custom properties for the handful of
- * rules here that need a raw colour value (gradients, ::after underlines, focus rings)
- * rather than a utility class. `--color-steel*` are kept as aliases of the teal values
- * so nothing that already reads them breaks — they just render teal now.
+ * ADR-0005 "Liquid Glass" — calm, near-white, airy canvas; frosted translucent
+ * surfaces floating over soft coloured light; pill shapes; large light typography;
+ * one accent (teal); almost no decoration. This file implements §2 (glass
+ * surfaces), §3 (type), §4 (colour), hairlines, focus ring, reduced-motion rules
+ * and section rhythm. `--color-spark` stays defined (legacy classes still
+ * compile) but nothing here renders it — orange, tinted bands and gradients on
+ * text/buttons are gone.
  */
 :root {
   --font-ui: "Manrope", ui-sans-serif, sans-serif;
-  --font-display: "Barlow Semi Condensed", var(--font-ui), sans-serif;
+  /* ADR-0005 §3: one family. font-display maps to the same Manrope variable —
+     app/fonts.ts no longer loads Barlow (the files stay on disk, unused). */
+  --font-display: var(--font-ui);
+
   --color-ink: #0f1a1a;
+  --color-ink-soft: #5b5f68;
   --color-grey-200: #e1e2e5;
   --color-teal: #0f766e;
   --color-teal-hover: #0b5c56;
@@ -24,9 +29,14 @@
   --color-steel: var(--color-teal);
   --color-steel-hover: var(--color-teal-hover);
   --color-steel-soft: var(--color-teal-soft);
+  /* Kept defined so any legacy class still compiles — never rendered. */
   --color-spark: #f26a21;
   --color-spark-hover: #d65a17;
   --color-spark-soft: #fff1ea;
+  --color-whatsapp: #25d366;
+
+  --hairline: rgba(15, 26, 26, 0.08);
+  --bg-page: #f6f8f9;
 }
 
 * {
@@ -39,24 +49,40 @@ html {
 }
 
 body {
-  background-color: #ffffff;
+  background-color: var(--bg-page);
   color: var(--color-ink);
   font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1.65;
+}
+@media (min-width: 768px) {
+  body {
+    font-size: 17px;
+  }
 }
 
-/* Focus rings: 2px steel, offset, visible only for keyboard focus. */
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+/* Focus rings: 2px teal, offset, visible only for keyboard focus. */
 :focus {
   outline: none;
 }
 :focus-visible {
-  outline: 2px solid var(--color-steel);
+  outline: 2px solid var(--color-teal);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
 .container-site {
-  /* Wide-screen layout: content stretches to 1720px with fluid gutters so large monitors
-     are not left with empty margins; reading blocks still cap their own line length. */
+  /* Wide-screen layout: content stretches to 1720px with fluid gutters so large
+     monitors are not left with empty margins; reading blocks cap their own line
+     length with `.prose-calm` / `max-w-content` (1200px) instead. */
   max-width: 1720px;
   margin-inline: auto;
   padding-inline: 1rem;
@@ -82,22 +108,74 @@ body {
   position: fixed;
   top: -3rem;
   left: 1rem;
-  z-index: 50;
-  background-color: var(--color-steel);
+  z-index: 60;
+  background-color: var(--color-teal);
   color: #ffffff;
-  padding: 0.6rem 1rem;
+  padding: 0.6rem 1.1rem;
   font-size: 0.875rem;
   font-weight: 600;
-  border-radius: 8px;
+  border-radius: 9999px;
   transition: top 0.15s ease;
 }
 .skip-link:focus {
   top: 1rem;
 }
 
-/* Reduced motion: strip transitions/animations for anyone who asked for it. Combined
-   with .card-hover below, this means hover states still change (shadow/position) but
-   snap instantly rather than animating — satisfies prefers-reduced-motion. */
+/* ---------------------------------------------------------------------------
+ * Glass surfaces — ADR-0005 §2. No hard borders, no tinted backgrounds, no
+ * top-edge accents. Hover lifts 2px with a deeper shadow; both are neutralised
+ * under prefers-reduced-motion below. Mobile drops blur for GPU budget.
+ * ------------------------------------------------------------------------- */
+.glass {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 10px 40px rgba(15, 26, 26, 0.08);
+  border-radius: 28px;
+}
+.glass-strong {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(32px) saturate(160%);
+  -webkit-backdrop-filter: blur(32px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 10px 40px rgba(15, 26, 26, 0.08);
+  border-radius: 28px;
+}
+.glass-pill {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 10px 40px rgba(15, 26, 26, 0.08);
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+}
+@media (max-width: 767px) {
+  .glass,
+  .glass-strong,
+  .glass-pill {
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+}
+
+.glass-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.glass-hover:hover,
+.glass-hover:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 48px rgba(15, 26, 26, 0.12);
+}
+
+/* Reduced motion: strip transitions/animations for anyone who asked for it. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -113,15 +191,44 @@ body {
 }
 
 /* ---------------------------------------------------------------------------
- * Section rhythm — consistent vertical spacing + a 1px divider between stacked
- * sections. components/ui/Section.tsx and components/ui/Band.tsx apply these.
+ * Ambient light layer (components/layout/AmbientLight.tsx) — three large blurred
+ * radial orbs, static except a very slow 40s drift, disabled under reduced motion.
+ * ------------------------------------------------------------------------- */
+.ambient-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  will-change: transform;
+}
+@keyframes ambient-drift {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(2%, 2%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+.ambient-orb--drift {
+  animation: ambient-drift 40s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ambient-orb--drift {
+    animation: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Section rhythm — ≥ 96px vertical rhythm between stacked sections on desktop.
  * ------------------------------------------------------------------------- */
 .section-rhythm {
-  padding-block: 3.5rem;
+  padding-block: 4rem;
 }
 @media (min-width: 768px) {
   .section-rhythm {
-    padding-block: 5rem;
+    padding-block: 6rem;
   }
 }
 .section-rhythm-tight {
@@ -133,130 +240,50 @@ body {
   }
 }
 
-/* Eyebrow — small uppercase spark label with an inline icon, sits above every h2. */
+/* Eyebrow — small uppercase teal label above every h2. */
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-spark);
+  color: var(--color-teal);
 }
 .eyebrow svg {
   flex-shrink: 0;
 }
 
-/* h2 with a short teal→spark gradient underline accent. */
+/* h2 — calm, plain heading. No underline bar, no gradient (ADR-0005 §3, §5). */
 .section-title {
   font-family: var(--font-display);
+  font-weight: 600;
   color: var(--color-ink);
 }
-.section-title::after {
-  content: "";
-  display: block;
-  width: 44px;
-  height: 3px;
-  margin-top: 0.65rem;
-  border-radius: 999px;
-  background-image: linear-gradient(90deg, var(--color-teal) 0%, var(--color-spark) 100%);
-}
-.section-title--center::after {
-  margin-inline: auto;
-}
 
-/* Large teal gradient text — stat numbers only (background-clip: text). */
+/* Solid teal — replaces the old gradient-clipped stat-number treatment. */
 .text-gradient-teal {
-  background-image: linear-gradient(90deg, var(--color-teal) 0%, var(--color-teal-light) 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Teal-soft → white panel background (GlancePanel, AboutBlurb). */
-.panel-soft {
-  background-image: linear-gradient(180deg, var(--color-teal-soft) 0%, #ffffff 100%);
+  color: var(--color-teal);
+  background: none;
+  -webkit-text-fill-color: currentColor;
 }
 
 /* ---------------------------------------------------------------------------
- * Bands — full-width tonal section backgrounds (hero/CTA dark band, soft tinted
- * bands). Gradients are permitted here and on illustration backgrounds only.
- * ------------------------------------------------------------------------- */
-.band-dark {
-  background-color: var(--color-ink);
-  background-image: linear-gradient(135deg, #0f1a1a 0%, #0b3b38 55%, var(--color-teal) 130%);
-  color: #ffffff;
-}
-.band-dark :is(h1, h2, h3) {
-  color: #ffffff;
-}
-.band-dark p {
-  color: rgba(255, 255, 255, 0.75);
-}
-.band-dark .eyebrow {
-  color: var(--color-spark);
-}
-.band-dark .section-title::after {
-  background-image: linear-gradient(90deg, var(--color-teal-light) 0%, var(--color-spark) 100%);
-}
-
-.band-soft {
-  background-color: var(--color-teal-softer);
-  background-image: linear-gradient(180deg, var(--color-teal-softer) 0%, #ffffff 100%);
-}
-
-/* Very faint teal-soft → spark-soft wash, used sparingly. */
-.band-spark {
-  background-color: var(--color-spark-soft);
-  background-image: linear-gradient(135deg, var(--color-teal-soft) 0%, var(--color-spark-soft) 100%);
-}
-
-/* Ink → deep-teal gradient top band, used above the footer. */
-.footer-band-top {
-  position: relative;
-}
-.footer-band-top::before {
-  content: "";
-  display: block;
-  height: 3px;
-  background-image: linear-gradient(90deg, var(--color-ink) 0%, var(--color-teal-deep) 100%);
-}
-
-/* ---------------------------------------------------------------------------
- * Cards — soft shadow + lift on hover/focus. transform + box-shadow only, so it is
- * cheap to animate and fully neutralised by the prefers-reduced-motion block above.
- * A faint teal-soft→teal gradient top edge (2px) fades in on hover/focus — no
- * full-card gradients.
+ * Cards — soft lift + shadow on hover/focus, no gradient top edge, no coloured
+ * border. transform + box-shadow only, cheap to animate, neutralised above.
  * ------------------------------------------------------------------------- */
 .card-hover {
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-}
-.card-hover::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 2px;
-  background-image: linear-gradient(90deg, var(--color-teal-soft) 0%, var(--color-teal) 100%);
-  opacity: 0;
-  transition: opacity 0.18s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .card-hover:hover,
 .card-hover:focus-visible {
-  transform: translateY(-4px);
-  box-shadow: 0 2px 6px rgba(8, 20, 19, 0.1), 0 20px 36px rgba(15, 118, 110, 0.16);
-}
-.card-hover:hover::before,
-.card-hover:focus-visible::before {
-  opacity: 1;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 48px rgba(15, 26, 26, 0.12);
 }
 
 /* ---------------------------------------------------------------------------
- * Scroll-snap row — horizontal card carousel on mobile (product picks etc). Each
- * direct child should set a fixed/basis width; scrollbar stays native (no JS).
+ * Scroll-snap row — horizontal card carousel on mobile.
  * ------------------------------------------------------------------------- */
 .snap-row {
   display: flex;
@@ -281,38 +308,37 @@ body {
 }
 
 /* ---------------------------------------------------------------------------
- * Chips — small pill links/labels (industries, spec highlights, related-page tags).
+ * Chips — small glass pills (industries, spec highlights, related-page tags).
  * ------------------------------------------------------------------------- */
 .chip {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.4rem 0.85rem;
-  border-radius: 999px;
-  background-color: var(--color-teal-soft);
-  color: var(--color-teal-hover);
+  height: 34px;
+  padding: 0 0.85rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  color: var(--color-ink);
   font-size: 0.8rem;
   font-weight: 600;
   line-height: 1;
-  border: 1px solid transparent;
-  transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 a.chip:hover,
 a.chip:focus-visible {
-  border-color: var(--color-spark);
-  color: var(--color-spark-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(15, 26, 26, 0.1);
 }
 .chip svg {
   flex-shrink: 0;
-  color: var(--color-steel);
+  color: var(--color-teal);
 }
 
-/* Accordion (native <details>/<summary>) used by components/ui/Faq.tsx and any
-   inline "fill form" disclosures. Rounded card style with room for a leading icon
-   (the icon markup itself is rendered by the component; this only lays it out). */
-details {
-  border-bottom: none;
-}
+/* Accordion (native <details>/<summary>) — used by components/ui/Faq.tsx. Glass
+   container, hairline separators, plus/minus icon, one open at a time. */
 details > summary {
   display: flex;
   cursor: pointer;
@@ -325,105 +351,128 @@ details > summary {
 details > summary::-webkit-details-marker {
   display: none;
 }
-details > summary::after {
+
+/* Plus/minus indicator: two bars forming a "+", the vertical bar fades away and
+   rotates flat to read as "−" when the accordion item is open. */
+.accordion-toggle {
+  position: relative;
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+}
+.accordion-toggle::before,
+.accordion-toggle::after {
   content: "";
-  flex-shrink: 0;
-  width: 0.6rem;
-  height: 0.6rem;
-  border-right: 1.5px solid var(--color-ink);
-  border-bottom: 1.5px solid var(--color-ink);
-  transform: rotate(45deg);
-  transition: transform 0.15s ease;
-  margin-top: -0.15rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: var(--color-ink);
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease, opacity 0.15s ease;
 }
-details[open] > summary::after {
-  transform: rotate(-135deg);
-  margin-top: 0.15rem;
+.accordion-toggle::before {
+  width: 100%;
+  height: 1.5px;
 }
-details.rounded-item {
-  border: 1px solid var(--color-grey-200);
-  border-radius: 12px;
-  padding: 1rem 1.25rem;
-  background-color: #ffffff;
+.accordion-toggle::after {
+  width: 1.5px;
+  height: 100%;
 }
-details.rounded-item + details.rounded-item {
-  margin-top: 0.75rem;
+details[open] .accordion-toggle::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  opacity: 0;
 }
-details.rounded-item summary {
-  font-weight: 600;
+
+.glass-accordion-item {
+  border-top: 1px solid var(--hairline);
+  padding-block: 1.1rem;
 }
-.summary-icon {
-  display: inline-flex;
-  height: 2rem;
-  width: 2rem;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  background-color: var(--color-teal-soft);
-  color: var(--color-teal);
+.glass-accordion-item:first-child {
+  border-top: none;
 }
 
 /* 1px dividers, used throughout via border-grey-200; this alias keeps hand-written
    markup consistent with the Tailwind utility. */
 .divider {
-  border-top: 1px solid var(--color-grey-200);
+  border-top: 1px solid var(--hairline);
 }
 
-/* Prose — long-form copy on state/city/country/about/repair pages. */
+/* ---------------------------------------------------------------------------
+ * Prose — long-form copy (state/city/country/about/repair pages). ADR-0005 §3:
+ * 66ch, 17px/1.65. `.prose` is kept as an alias for the same rules.
+ * ------------------------------------------------------------------------- */
+.prose-calm,
 .prose {
-  color: #2b2d31;
-  max-width: 72ch;
+  color: var(--color-ink-soft);
+  max-width: 66ch;
+  font-size: 17px;
+  line-height: 1.65;
 }
+.prose-calm > * + *,
 .prose > * + * {
   margin-top: 1.1em;
 }
+.prose-calm h2,
 .prose h2 {
   font-family: var(--font-display);
+  font-weight: 600;
   font-size: clamp(1.5rem, 3vw, 2.25rem);
   line-height: 1.1;
   color: var(--color-ink);
   margin-top: 2em;
 }
+.prose-calm h3,
 .prose h3 {
   font-family: var(--font-display);
+  font-weight: 600;
   font-size: 1.25rem;
   color: var(--color-ink);
   margin-top: 1.75em;
 }
+.prose-calm p,
 .prose p {
-  max-width: 72ch;
+  max-width: 66ch;
 }
+.prose-calm ul,
+.prose-calm ol,
 .prose ul,
 .prose ol {
-  max-width: 72ch;
+  max-width: 66ch;
   padding-left: 1.25em;
 }
+.prose-calm ul,
 .prose ul {
   list-style: disc;
 }
+.prose-calm ol,
 .prose ol {
   list-style: decimal;
 }
+.prose-calm li + li,
 .prose li + li {
   margin-top: 0.4em;
 }
+.prose-calm a,
 .prose a {
-  color: var(--color-steel);
+  color: var(--color-teal);
   text-underline-offset: 2px;
 }
+.prose-calm table,
 .prose table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.9rem;
 }
+.prose-calm th,
+.prose-calm td,
 .prose th,
 .prose td {
-  border-bottom: 1px solid var(--color-grey-200);
+  border-bottom: 1px solid var(--hairline);
   padding: 0.6em 0.8em 0.6em 0;
   text-align: left;
   vertical-align: top;
 }
+.prose-calm th,
 .prose th {
   font-weight: 600;
   color: var(--color-ink);

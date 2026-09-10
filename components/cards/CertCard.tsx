@@ -1,14 +1,13 @@
 /**
- * components/cards/CertCard.tsx — certification card (home strip + /certifications
- * grid). Pass `onOpen` from a client parent to make the image open a modal viewer;
- * without it the card is a plain link to /certifications. ADR-0002: the badge image
- * sits on a spark-tinted panel with a small ribbon-style name label.
+ * components/cards/CertCard.tsx — ADR-0005 §5: a glass pill badge — the minimal
+ * ring badge image (scripts/generate-placeholders.mjs) at small size, plus the
+ * certificate name. Pass `onOpen` from a client parent to make the badge open a
+ * modal viewer; without it the badge is a plain link to /certifications.
  */
 import Image from "next/image";
 import Link from "next/link";
 import type { Certification } from "@/data/types";
 import { paths } from "@/lib/urls";
-import { Award } from "@/components/ui/Icons";
 
 export default function CertCard({
   cert,
@@ -19,38 +18,37 @@ export default function CertCard({
   onOpen?: (cert: Certification) => void;
   compact?: boolean;
 }) {
-  const imageEl = (
-    <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-spark-soft">
-      <Image
-        src={cert.image.src}
-        alt={cert.image.alt}
-        width={cert.image.width}
-        height={cert.image.height}
-        className="h-full w-full object-contain p-4"
-      />
-      <span className="absolute bottom-2 left-2 right-2 flex items-center gap-1.5 rounded-md bg-ink/85 px-2 py-1 text-[11px] font-semibold text-white">
-        <Award width={13} height={13} className="shrink-0 text-spark" />
-        <span className="truncate">{cert.name}</span>
+  const inner = (
+    <span
+      className="glass glass-hover flex h-full items-center gap-3 py-2 pl-2 pr-4 text-left"
+      style={{ borderRadius: "9999px" }}
+    >
+      <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full bg-teal-soft/40">
+        <Image src={cert.image.src} alt="" width={cert.image.width} height={cert.image.height} className="h-full w-full object-contain p-1" />
       </span>
-    </div>
+      <span className="min-w-0">
+        <span className="block truncate text-sm font-semibold text-ink">{cert.name}</span>
+        {!compact && <span className="block truncate text-xs text-grey-500">{cert.oneLiner}</span>}
+      </span>
+    </span>
   );
 
+  if (onOpen) {
+    return (
+      <button
+        type="button"
+        onClick={() => onOpen(cert)}
+        className="block w-full text-left focus-visible:outline-none"
+        aria-label={`View ${cert.name} certificate image`}
+      >
+        {inner}
+      </button>
+    );
+  }
+
   return (
-    <div className="card-hover rounded-xl border border-grey-200 bg-white p-4 shadow-card">
-      {onOpen ? (
-        <button
-          type="button"
-          onClick={() => onOpen(cert)}
-          className="block w-full text-left focus-visible:outline-none"
-          aria-label={`View ${cert.name} certificate image`}
-        >
-          {imageEl}
-        </button>
-      ) : (
-        <Link href={paths.certifications}>{imageEl}</Link>
-      )}
-      <h3 className="mt-3 text-sm font-semibold text-ink">{cert.name}</h3>
-      {!compact && <p className="mt-1 text-xs text-grey-600">{cert.oneLiner}</p>}
-    </div>
+    <Link href={paths.certifications} className="block">
+      {inner}
+    </Link>
   );
 }

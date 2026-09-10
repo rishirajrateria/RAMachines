@@ -1,14 +1,14 @@
 import type { Config } from "tailwindcss";
 
 /**
- * Design tokens — ADR-0004 "teal brand palette with subtle gradients" (supersedes the
- * ADR-0002 steel blue palette). White ground, the neutral grey scale and the warm
- * `spark` accent stay; steel blue is replaced by `teal` as the primary everywhere.
- * The `steel` token name is kept as an alias pointing at the teal values so every
- * pre-existing `steel`/`steel-hover`/`steel-soft` class keeps compiling but now renders
- * teal. `ink` moves to a slightly teal-tinted near-black. Added: gradient
- * `backgroundImage` tokens for the dark/soft bands and the primary/spark buttons, a
- * teal-soft panel gradient, and teal-tinted card shadows.
+ * Design tokens — ADR-0005 "Liquid Glass" (supersedes ADR-0002, ADR-0004). Calm,
+ * near-white canvas; frosted glass surfaces; pill shapes; one accent (teal). The
+ * `spark` (orange) token stays defined so any stray legacy class still compiles,
+ * but nothing in the design system renders it — see app/globals.css. `steel` stays
+ * as an alias of `teal` for the same reason. `ink`/`grey` are the neutral scale.
+ * `display-xl`/`display-lg` (H1) and `display-md` (H2) now carry the ADR §3 type
+ * scale, so every existing `text-display-*` class site-wide picks up the new
+ * proportions without page-level edits.
  */
 const config: Config = {
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./lib/**/*.{ts,tsx}"],
@@ -30,9 +30,11 @@ const config: Config = {
           900: "#111214",
         },
         teal: { DEFAULT: "#0F766E", hover: "#0B5C56", deep: "#084C47", light: "#2A9D93", soft: "#E6F4F2", softer: "#F2FAF9" },
-        // Alias — every pre-existing `steel`/`steel-hover`/`steel-soft` class now renders teal.
+        // Alias — every pre-existing `steel`/`steel-hover`/`steel-soft` class renders teal.
         steel: { DEFAULT: "#0F766E", hover: "#0B5C56", soft: "#E6F4F2" },
+        // Kept defined (ADR-0005 §4) so old classes compile; nothing renders it.
         spark: { DEFAULT: "#F26A21", hover: "#D65A17", soft: "#FFF1EA" },
+        whatsapp: "#25D366",
       },
       fontFamily: {
         sans: ["var(--font-ui)", "ui-sans-serif", "sans-serif"],
@@ -46,25 +48,24 @@ const config: Config = {
         lg: "12px",
         xl: "16px",
         "2xl": "20px",
+        "3xl": "28px",
+        pill: "9999px",
         full: "9999px",
       },
-      backgroundImage: {
-        "band-dark": "linear-gradient(135deg, #0F1A1A 0%, #0B3B38 55%, #0F766E 130%)",
-        "band-soft": "linear-gradient(180deg, #F2FAF9 0%, #FFFFFF 100%)",
-        "btn-primary": "linear-gradient(180deg, #14857C, #0F766E)",
-        "btn-spark": "linear-gradient(180deg, #F5772F, #F26A21)",
-        "panel-soft": "linear-gradient(180deg, #E6F4F2 0%, #FFFFFF 100%)",
-      },
       boxShadow: {
-        card: "0 1px 2px rgba(8,20,19,.07), 0 8px 24px rgba(15,118,110,.10)",
-        "card-hover": "0 2px 6px rgba(8,20,19,.10), 0 20px 36px rgba(15,118,110,.16)",
+        card: "inset 0 1px 0 rgba(255,255,255,.9), 0 10px 40px rgba(15,26,26,.08)",
+        "card-hover": "0 16px 48px rgba(15,26,26,.12)",
+        glass: "inset 0 1px 0 rgba(255,255,255,.9), 0 10px 40px rgba(15,26,26,.08)",
       },
-      maxWidth: { site: "1720px", prose: "72ch" },
+      maxWidth: { site: "1720px", content: "1200px", prose: "66ch" },
       spacing: { 18: "4.5rem", 22: "5.5rem" },
       fontSize: {
-        "display-xl": ["clamp(2.5rem, 6vw, 4.5rem)", { lineHeight: "1.02", letterSpacing: "-0.01em" }],
-        "display-lg": ["clamp(2rem, 4.5vw, 3.25rem)", { lineHeight: "1.05", letterSpacing: "-0.01em" }],
-        "display-md": ["clamp(1.5rem, 3vw, 2.25rem)", { lineHeight: "1.1" }],
+        // ADR-0005 §3 H1 — clamp(2.75rem, 6vw, 5rem), weight 600, ls -0.03em, lh 1.02.
+        "display-xl": ["clamp(2.75rem, 6vw, 5rem)", { lineHeight: "1.02", letterSpacing: "-0.03em" }],
+        "display-lg": ["clamp(2.75rem, 6vw, 5rem)", { lineHeight: "1.02", letterSpacing: "-0.03em" }],
+        // ADR-0005 §3 H2 — clamp(1.9rem, 3.4vw, 2.75rem), ls -0.02em.
+        "display-md": ["clamp(1.9rem, 3.4vw, 2.75rem)", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
+        eyebrow: ["0.75rem", { lineHeight: "1.3", letterSpacing: "0.14em" }],
       },
     },
   },

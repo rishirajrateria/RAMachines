@@ -1,5 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750">
-  <rect width="1200" height="750" fill="#FFF1EA"/>
-  <circle cx="600" cy="375" r="270" fill="#0F766E"/><ellipse cx="600" cy="375" rx="270" ry="108" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.5"/><ellipse cx="600" cy="375" rx="108" ry="270" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.5"/><line x1="330" y1="375" x2="870" y2="375" stroke="#FFFFFF" stroke-width="1.5" opacity="0.5"/><path d="M384 348 Q600 226.5 802.5 321" fill="none" stroke="#F26A21" stroke-width="2.5" stroke-dasharray="2 6" stroke-linecap="round"/><path d="M465 510 Q627 415.5 789 510" fill="none" stroke="#F26A21" stroke-width="2.5" stroke-dasharray="2 6" stroke-linecap="round"/><path d="M370.5 429 Q559.5 542.4 681 585.6" fill="none" stroke="#F26A21" stroke-width="2.5" stroke-dasharray="2 6" stroke-linecap="round"/><circle cx="384" cy="348" r="5" fill="#F26A21"/><circle cx="802.5" cy="321" r="5" fill="#F26A21"/><circle cx="789" cy="510" r="5" fill="#F26A21"/><circle cx="681" cy="585.6" r="5" fill="#F26A21"/>
-  <text x="24" y="728" font-family="Arial, sans-serif" font-size="20" font-weight="600" fill="#0F1A1A" opacity="0.5">Exporting to 25+ countries</text>
+  <defs><radialGradient id="orb9" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#0F766E" stop-opacity="0.16"/>
+    <stop offset="100%" stop-color="#0F766E" stop-opacity="0"/>
+  </radialGradient><radialGradient id="orb10" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#5EEAD4" stop-opacity="0.14"/>
+    <stop offset="100%" stop-color="#5EEAD4" stop-opacity="0"/>
+  </radialGradient><radialGradient id="orb11" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.65"/>
+    <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+  </radialGradient></defs>
+  
+  
+    <rect width="1200" height="750" fill="#F6F8F9"/>
+    <circle cx="72" cy="-37.5" r="384" fill="url(#orb9)"/><circle cx="1224" cy="165" r="336.00000000000006" fill="url(#orb10)"/><circle cx="480" cy="810" r="408.00000000000006" fill="url(#orb11)"/>
+    <g fill="none" stroke="#0F1A1A" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
+    <circle cx="600" cy="375" r="255.00000000000003"/>
+    <ellipse cx="600" cy="375" rx="255.00000000000003" ry="96.9"/>
+    <ellipse cx="600" cy="375" rx="96.9" ry="255.00000000000003"/>
+    <path d="M345 375 L855 375" opacity="0.5"/>
+  </g>
+    <path d="M396 349.5 Q600 234.74999999999997 791.25 324" fill="none" stroke="#0F766E" stroke-width="2" stroke-dasharray="1 6" stroke-linecap="round"/><path d="M472.5 502.5 Q625.5 413.25 778.5 502.5" fill="none" stroke="#0F766E" stroke-width="2" stroke-dasharray="1 6" stroke-linecap="round"/><path d="M383.25 426 Q561.75 533.1 676.5 573.9000000000001" fill="none" stroke="#0F766E" stroke-width="2" stroke-dasharray="1 6" stroke-linecap="round"/>
+    <circle cx="396.0" cy="349.5" r="4" fill="#0F766E"/><circle cx="791.3" cy="324.0" r="4" fill="#0F766E"/><circle cx="778.5" cy="502.5" r="4" fill="#0F766E"/><circle cx="676.5" cy="573.9" r="4" fill="#0F766E"/>
+  
+  <text x="24" y="728" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="#0F1A1A" opacity="0.4">Exporting to 25+ countries</text>
 </svg>
