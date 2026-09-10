@@ -21,8 +21,8 @@ function chipClass(active: boolean): string {
   return [
     "chip h-11 border transition-colors",
     active
-      ? "!border-spark !bg-spark !text-white [&_svg]:!text-white"
-      : "border-transparent hover:!border-spark hover:!text-spark-hover",
+      ? "!border-teal !bg-teal !text-white [&_svg]:!text-white"
+      : "border-transparent hover:!border-teal hover:!text-teal-hover",
   ].join(" ");
 }
 
