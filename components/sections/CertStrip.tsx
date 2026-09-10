@@ -19,7 +19,7 @@ export default function CertStrip() {
       </div>
       <Link
         href={paths.certifications}
-        className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-steel hover:text-steel-hover"
+        className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-spark hover:text-spark-hover"
       >
         View all certifications
         <ArrowRight width={14} height={14} />

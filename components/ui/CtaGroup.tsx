@@ -7,7 +7,6 @@
  */
 import { site } from "@/config/site";
 import Button from "./Button";
-import { Phone, WhatsApp, Mail } from "./Icons";
 import QuoteForm from "@/components/forms/QuoteForm";
 
 export default function CtaGroup({
@@ -23,25 +22,30 @@ export default function CtaGroup({
   return (
     <div>
       <div className="flex flex-wrap gap-3">
-        <Button href="#quote" variant="solid" aria-label={quoteLabel}>
+        <Button href="#quote" variant="solid" icon="ArrowRight" aria-label={quoteLabel}>
           Request a Quote
         </Button>
-        <Button href={site.phoneHref} variant="outline">
-          <Phone width={16} height={16} /> Call
+        <Button href={site.phoneHref} variant="outline" icon="Phone">
+          Call
         </Button>
-        <Button href={site.whatsappHref} variant="outline" external>
-          <WhatsApp width={16} height={16} /> WhatsApp
+        <Button href={site.whatsappHref} variant="outline" icon="WhatsApp" external>
+          WhatsApp
         </Button>
-        <Button href={`mailto:${site.email}`} variant="outline">
-          <Mail width={16} height={16} /> Email
+        <Button href={`mailto:${site.email}`} variant="outline" icon="Mail">
+          Email
         </Button>
       </div>
       {showForm && (
-        <details className="mt-6 max-w-xl rounded border border-grey-200 p-4">
-          <summary className="cursor-pointer text-sm font-semibold text-ink">
-            Fill form instead
+        <details className="rounded-item mt-6 max-w-xl">
+          <summary>
+            <span className="flex items-center gap-3">
+              <span className="summary-icon" aria-hidden="true">
+                +
+              </span>
+              <span className="text-sm font-semibold text-ink">Fill form instead</span>
+            </span>
           </summary>
-          <div className="mt-4">
+          <div className="mt-4 pl-11">
             <QuoteForm product={product} />
           </div>
         </details>
