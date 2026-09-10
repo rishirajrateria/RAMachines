@@ -1,7 +1,8 @@
 /**
- * components/ui/SectionHeading.tsx — eyebrow (with optional icon) + h2 with the spark
- * underline accent + optional intro paragraph. Used inside Section/Band bodies and
- * anywhere a page needs the standard heading block without the divider Section adds.
+ * components/ui/SectionHeading.tsx — eyebrow (with optional icon) + h2 with the
+ * teal→spark gradient underline accent + optional intro paragraph. Used inside
+ * Section/Band bodies and anywhere a page needs the standard heading block without
+ * the divider Section adds.
  */
 import { Icon, type IconName } from "./Icons";
 

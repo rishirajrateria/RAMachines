@@ -98,13 +98,6 @@ export default function ProductsPage() {
               title="One CNC platform, four machine families"
             />
             <p className="mt-4 max-w-prose text-grey-700">
-              Our range covers four machine families built on the same proven CNC
-              control platform: fiber laser cutting machines from 1.5&nbsp;kW to
-              12&nbsp;kW for sheet metal, a dedicated fiber laser tube cutting machine,
-              a CO2 laser for acrylic, wood and signage work, and robotic MIG/MAG
-              welding cells for consistent, high-volume weld quality.
-            </p>
-            <p className="mt-4 max-w-prose text-grey-700">
               Filter by category above, or open any machine for full specifications,
               applications and a request-a-quote option — no prices are published
               online, so every enquiry receives a quotation matched to your material,

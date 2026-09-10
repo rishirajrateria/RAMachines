@@ -8,7 +8,7 @@
  * owns, so that file stays focused on composing the word-count-checked copy.
  */
 import type { IconName } from "@/components/ui/Icons";
-import type { Country, Product, WorldRegion } from "@/data/types";
+import type { Country, WorldRegion } from "@/data/types";
 import { site } from "@/config/site";
 
 /** The 8-step export process, in the same order as `exportProcessStepVariants` in
@@ -95,23 +95,6 @@ export function sectorIcon(sectorName: string): IconName {
   if (/mining/.test(s)) return "Gear";
   if (/rail/.test(s)) return "Truck";
   return "Factory";
-}
-
-/** Resolves a country's sector `recommendedProductSlugs` (deduped, in order) to
- * full Product objects, for rendering as ProductCards. */
-export function recommendedProducts(country: Country, products: Product[]): Product[] {
-  const seen = new Set<string>();
-  const list: Product[] = [];
-  for (const sector of country.sectors) {
-    for (const slug of sector.recommendedProductSlugs) {
-      if (seen.has(slug)) continue;
-      const product = products.find((p) => p.slug === slug);
-      if (!product) continue;
-      seen.add(slug);
-      list.push(product);
-    }
-  }
-  return list;
 }
 
 /** The "At a glance" facts for a country page — restates, rather than replaces,

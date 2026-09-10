@@ -3,10 +3,16 @@
  * Body copy is composed by lib/copy/country.ts `countrySections`; this file only
  * handles routing, metadata, JSON-LD and layout around that copy.
  * ADR-0002 visual refresh: a dark hero band, an "at a glance" facts panel, a
- * "why buy from India" FeatureGrid, sector IconCards, a ProcessSteps graphic and
- * ProductCards lead the page; countrySections' paragraphs (unchanged) are kept in
- * full, reorganised into a 2-column shipping/power/warranty/payment block plus a
- * short remaining "demand" block near the bottom.
+ * "why buy from India" FeatureGrid and sector IconCards lead the page, followed by
+ * a ProcessSteps graphic and a shipping/power/warranty/regulatory block.
+ * ADR-0003: the 8-step export process is the same for every country, so its
+ * ProcessSteps captions are the shared `exportProcessSteps` from ../copy (also used
+ * on the hub) rather than a bespoke per-country narrative. The payment-terms/
+ * lead-time/Incoterms/currency/voltage/warranty figures GlancePanel already shows
+ * are not repeated in a SpecTable next to it, and the separate "recommended
+ * machines" ProductCard grid is dropped — the sector cards above already link to
+ * the same machines by name, so a second, longer card for each one added ~250
+ * words without a new fact.
  */
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -17,7 +23,6 @@ import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AboutBlurb from "@/components/ui/AboutBlurb";
 import CtaGroup from "@/components/ui/CtaGroup";
 import LinkGrid from "@/components/ui/LinkGrid";
-import SpecTable from "@/components/ui/SpecTable";
 import Faq from "@/components/ui/Faq";
 import JsonLd from "@/components/ui/JsonLd";
 import RelatedPages from "@/components/ui/RelatedPages";
@@ -29,19 +34,17 @@ import FeatureGrid from "@/components/ui/FeatureGrid";
 import ProcessSteps from "@/components/ui/ProcessSteps";
 import Chips from "@/components/ui/Chips";
 import { Icon } from "@/components/ui/Icons";
-import ProductCard from "@/components/cards/ProductCard";
 import { buildMetadata, truncate } from "@/lib/seo";
 import { paths } from "@/lib/urls";
 import { organizationSchema, productSchema } from "@/lib/schema";
 import { countrySections } from "@/lib/copy/country";
 import { countries, getCountry, categories, products } from "@/data";
+import { exportProcessSteps } from "../copy";
 import {
-  exportProcessStepMeta,
   whyIndiaTitleCycle,
   whyIndiaIconCycle,
   whyIndiaStandard,
   sectorIcon,
-  recommendedProducts,
   countryGlanceFacts,
 } from "../visuals";
 import SectorCard from "../SectorCard";
@@ -97,7 +100,7 @@ export default async function CountryExportPage({ params }: Props) {
   const related = relatedCountries(country.slug, country.region);
 
   const whyIndiaSection = byId("why-india");
-  const whyIndiaItems = whyIndiaSection.paragraphs.slice(1).map((text, i) => ({
+  const whyIndiaItems = whyIndiaSection.paragraphs.map((text, i) => ({
     icon: whyIndiaIconCycle[i % whyIndiaIconCycle.length],
     title: whyIndiaTitleCycle[i % whyIndiaTitleCycle.length],
     text,
@@ -106,12 +109,9 @@ export default async function CountryExportPage({ params }: Props) {
   const sectorsSection = byId("sectors");
   const sectorParagraphs = sectorsSection.paragraphs.slice(1);
 
-  const processSection = byId("export-process");
-  const processSteps = exportProcessStepMeta.map((meta, i) => ({ ...meta, text: processSection.paragraphs[i] }));
+  const processSteps = exportProcessSteps;
 
-  const picks = recommendedProducts(country, products);
-
-  const logisticsSections = [byId("shipping"), byId("power-supply"), byId("warranty-spares"), byId("payment-terms")];
+  const logisticsSections = [byId("shipping"), byId("power-supply"), byId("warranty-spares"), byId("regulatory")];
 
   const demandSection = byId("demand");
 
@@ -160,7 +160,7 @@ export default async function CountryExportPage({ params }: Props) {
         </div>
       </Section>
 
-      <Section title={whyIndiaSection.h2} icon={whyIndiaSection.icon} intro={whyIndiaSection.paragraphs[0]} tight>
+      <Section title={whyIndiaSection.h2} icon={whyIndiaSection.icon} tight>
         <FeatureGrid items={[...whyIndiaItems, ...whyIndiaStandard]} />
       </Section>
 
@@ -181,49 +181,25 @@ export default async function CountryExportPage({ params }: Props) {
         </div>
       </Section>
 
-      <Section title={processSection.h2} icon={processSection.icon} tight>
+      <Section title={`Our export process to ${country.name}, from quotation to installation`} icon="Package" tight>
         <ProcessSteps steps={processSteps} />
       </Section>
 
-      {picks.length > 0 && (
-        <Section
-          title={`Machines recommended for ${country.name}`}
-          icon="Sparkles"
-          intro="Picked from the sectors and applications above — every machine we manufacture is available for export here."
-        >
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {picks.map((product) => (
-              <ProductCard key={product.slug} product={product} />
-            ))}
-          </div>
-        </Section>
-      )}
-
       <Section title={`Shipping, power supply and support for ${country.name}`} icon="Ship" tight>
-        <div className="grid gap-10 md:grid-cols-[3fr_2fr] md:items-start">
-          <div className="space-y-8">
-            {logisticsSections.map((section) => (
-              <div key={section.id}>
-                <h3 className="mb-2 flex items-center gap-2 font-display text-lg text-ink">
-                  <Icon name={section.icon} size={18} className="text-spark" />
-                  {section.h2}
-                </h3>
-                <Prose>
-                  {section.paragraphs.map((paragraph) => (
-                    <p key={paragraph.slice(0, 32)}>{paragraph}</p>
-                  ))}
-                </Prose>
-                {section.table && section.table.length > 0 && (
-                  <div className="mt-4">
-                    <SpecTable rows={section.table} caption={`Export facts — ${country.name}`} icon="Package" />
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-          <div className="md:sticky md:top-24">
-            <GlancePanel title="At a glance" facts={countryGlanceFacts(country)} />
-          </div>
+        <div className="space-y-8">
+          {logisticsSections.map((section) => (
+            <div key={section.id}>
+              <h3 className="mb-2 flex items-center gap-2 font-display text-lg text-ink">
+                <Icon name={section.icon} size={18} className="text-spark" />
+                {section.h2}
+              </h3>
+              <Prose>
+                {section.paragraphs.map((paragraph) => (
+                  <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+                ))}
+              </Prose>
+            </div>
+          ))}
         </div>
       </Section>
 

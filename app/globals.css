@@ -3,19 +3,27 @@
 @tailwind utilities;
 
 /**
- * ADR-0002 visual refresh — warmer, more visual, less corporate. Tokens below mirror
- * tailwind.config.ts as CSS custom properties for the handful of rules here that need a
- * raw colour value (gradients, ::after underlines, focus rings) rather than a utility
- * class. Pre-refresh variable names are kept so nothing that already reads them breaks.
+ * ADR-0004 teal brand palette (supersedes the ADR-0002 steel blue palette) — subtle
+ * gradients on dark/soft bands, buttons, cards and panels; never loud, never rainbow.
+ * Tokens below mirror tailwind.config.ts as CSS custom properties for the handful of
+ * rules here that need a raw colour value (gradients, ::after underlines, focus rings)
+ * rather than a utility class. `--color-steel*` are kept as aliases of the teal values
+ * so nothing that already reads them breaks — they just render teal now.
  */
 :root {
   --font-ui: "Manrope", ui-sans-serif, sans-serif;
   --font-display: "Barlow Semi Condensed", var(--font-ui), sans-serif;
-  --color-ink: #111214;
+  --color-ink: #0f1a1a;
   --color-grey-200: #e1e2e5;
-  --color-steel: #1f4e79;
-  --color-steel-hover: #173b5c;
-  --color-steel-soft: #e8eef5;
+  --color-teal: #0f766e;
+  --color-teal-hover: #0b5c56;
+  --color-teal-deep: #084c47;
+  --color-teal-light: #2a9d93;
+  --color-teal-soft: #e6f4f2;
+  --color-teal-softer: #f2faf9;
+  --color-steel: var(--color-teal);
+  --color-steel-hover: var(--color-teal-hover);
+  --color-steel-soft: var(--color-teal-soft);
   --color-spark: #f26a21;
   --color-spark-hover: #d65a17;
   --color-spark-soft: #fff1ea;
@@ -140,7 +148,7 @@ body {
   flex-shrink: 0;
 }
 
-/* h2 with a short spark underline accent. */
+/* h2 with a short teal→spark gradient underline accent. */
 .section-title {
   font-family: var(--font-display);
   color: var(--color-ink);
@@ -152,10 +160,24 @@ body {
   height: 3px;
   margin-top: 0.65rem;
   border-radius: 999px;
-  background-color: var(--color-spark);
+  background-image: linear-gradient(90deg, var(--color-teal) 0%, var(--color-spark) 100%);
 }
 .section-title--center::after {
   margin-inline: auto;
+}
+
+/* Large teal gradient text — stat numbers only (background-clip: text). */
+.text-gradient-teal {
+  background-image: linear-gradient(90deg, var(--color-teal) 0%, var(--color-teal-light) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Teal-soft → white panel background (GlancePanel, AboutBlurb). */
+.panel-soft {
+  background-image: linear-gradient(180deg, var(--color-teal-soft) 0%, #ffffff 100%);
 }
 
 /* ---------------------------------------------------------------------------
@@ -164,7 +186,7 @@ body {
  * ------------------------------------------------------------------------- */
 .band-dark {
   background-color: var(--color-ink);
-  background-image: linear-gradient(135deg, #1f4e79 0%, #111214 60%);
+  background-image: linear-gradient(135deg, #0f1a1a 0%, #0b3b38 55%, var(--color-teal) 130%);
   color: #ffffff;
 }
 .band-dark :is(h1, h2, h3) {
@@ -177,28 +199,59 @@ body {
   color: var(--color-spark);
 }
 .band-dark .section-title::after {
-  background-color: var(--color-spark);
+  background-image: linear-gradient(90deg, var(--color-teal-light) 0%, var(--color-spark) 100%);
 }
 
 .band-soft {
-  background-color: var(--color-steel-soft);
+  background-color: var(--color-teal-softer);
+  background-image: linear-gradient(180deg, var(--color-teal-softer) 0%, #ffffff 100%);
 }
 
+/* Very faint teal-soft → spark-soft wash, used sparingly. */
 .band-spark {
   background-color: var(--color-spark-soft);
+  background-image: linear-gradient(135deg, var(--color-teal-soft) 0%, var(--color-spark-soft) 100%);
+}
+
+/* Ink → deep-teal gradient top band, used above the footer. */
+.footer-band-top {
+  position: relative;
+}
+.footer-band-top::before {
+  content: "";
+  display: block;
+  height: 3px;
+  background-image: linear-gradient(90deg, var(--color-ink) 0%, var(--color-teal-deep) 100%);
 }
 
 /* ---------------------------------------------------------------------------
  * Cards — soft shadow + lift on hover/focus. transform + box-shadow only, so it is
  * cheap to animate and fully neutralised by the prefers-reduced-motion block above.
+ * A faint teal-soft→teal gradient top edge (2px) fades in on hover/focus — no
+ * full-card gradients.
  * ------------------------------------------------------------------------- */
 .card-hover {
+  position: relative;
+  overflow: hidden;
   transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.card-hover::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background-image: linear-gradient(90deg, var(--color-teal-soft) 0%, var(--color-teal) 100%);
+  opacity: 0;
+  transition: opacity 0.18s ease;
 }
 .card-hover:hover,
 .card-hover:focus-visible {
   transform: translateY(-4px);
-  box-shadow: 0 2px 6px rgba(17, 18, 20, 0.08), 0 20px 36px rgba(17, 18, 20, 0.14);
+  box-shadow: 0 2px 6px rgba(8, 20, 19, 0.1), 0 20px 36px rgba(15, 118, 110, 0.16);
+}
+.card-hover:hover::before,
+.card-hover:focus-visible::before {
+  opacity: 1;
 }
 
 /* ---------------------------------------------------------------------------
@@ -236,8 +289,8 @@ body {
   gap: 0.35rem;
   padding: 0.4rem 0.85rem;
   border-radius: 999px;
-  background-color: var(--color-steel-soft);
-  color: var(--color-ink);
+  background-color: var(--color-teal-soft);
+  color: var(--color-teal-hover);
   font-size: 0.8rem;
   font-weight: 600;
   line-height: 1;
@@ -307,8 +360,8 @@ details.rounded-item summary {
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  background-color: var(--color-spark-soft);
-  color: var(--color-spark);
+  background-color: var(--color-teal-soft);
+  color: var(--color-teal);
 }
 
 /* 1px dividers, used throughout via border-grey-200; this alias keeps hand-written

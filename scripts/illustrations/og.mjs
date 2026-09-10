@@ -1,7 +1,8 @@
 /**
  * scripts/illustrations/og.mjs — og-fallback.png: the social-preview card. Mirrors
- * the hero's look (dark ink panel, soft steel glow, spark-lit cutting head) at a
- * smaller scale next to the wordmark, per ADR-0002 ("og-fallback matches the hero").
+ * the hero's look (the ADR-0004 dark ink→deep-teal→teal gradient panel, soft
+ * radial teal glow, spark-lit cutting head) at a smaller scale next to the
+ * wordmark ("og-fallback matches the hero").
  */
 import { INK, STEEL, STEEL_LIGHT, SPARK, SPARK_LIGHT, WHITE, sparkBurst, sparkChips, scene, escapeXml } from "./common.mjs";
 import { flatbedMachine, withOverlay, BOX_W, GROUND_Y } from "./machines.mjs";
@@ -23,6 +24,11 @@ export function ogFallbackSvg(width, height) {
   const spy = ty + sy * scale;
 
   const defs = `<defs>
+    <linearGradient id="ogDarkBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="${INK}"/>
+      <stop offset="55%" stop-color="#0B3B38"/>
+      <stop offset="100%" stop-color="${STEEL}"/>
+    </linearGradient>
     <radialGradient id="ogGlow" cx="60%" cy="55%" r="75%">
       <stop offset="0%" stop-color="${STEEL_LIGHT}" stop-opacity="0.4"/>
       <stop offset="100%" stop-color="${INK}" stop-opacity="0"/>
@@ -35,7 +41,7 @@ export function ogFallbackSvg(width, height) {
   </defs>`;
 
   const panel = `<g clip-path="url(#ogPanelClip)">
-    <rect x="${panelX}" y="0" width="${panelW}" height="${height}" fill="${INK}"/>
+    <rect x="${panelX}" y="0" width="${panelW}" height="${height}" fill="url(#ogDarkBg)"/>
     <rect x="${panelX}" y="0" width="${panelW}" height="${height}" fill="url(#ogGlow)"/>
     <circle cx="${spx.toFixed(0)}" cy="${spy.toFixed(0)}" r="${(height * 0.55).toFixed(0)}" fill="url(#ogSparkGlow)"/>
     <g transform="translate(${tx.toFixed(1)} ${ty.toFixed(1)}) scale(${scale})">${machineContent}</g>

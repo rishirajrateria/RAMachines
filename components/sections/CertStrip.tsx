@@ -9,12 +9,12 @@ import CertCard from "@/components/cards/CertCard";
 import { paths } from "@/lib/urls";
 import { ArrowRight } from "@/components/ui/Icons";
 
-export default function CertStrip() {
+export default function CertStrip({ compact = false }: { compact?: boolean } = {}) {
   return (
     <div>
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
         {certifications.map((cert) => (
-          <CertCard key={cert.slug} cert={cert} />
+          <CertCard key={cert.slug} cert={cert}  compact={compact} />
         ))}
       </div>
       <Link

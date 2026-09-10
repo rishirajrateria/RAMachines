@@ -27,7 +27,7 @@ export default function StatsBar() {
           <span className="mx-auto flex h-10 w-10 items-center justify-center rounded-lg bg-spark-soft text-spark">
             <Icon name={iconFor(stat.label)} size={20} />
           </span>
-          <p className="mt-3 font-display text-display-md text-spark">{stat.value}</p>
+          <p className="text-gradient-teal mt-3 font-display text-display-md">{stat.value}</p>
           <p className="mt-1 text-xs text-grey-600 sm:text-sm">{stat.label}</p>
         </div>
       ))}

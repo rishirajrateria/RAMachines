@@ -1,6 +1,6 @@
 /**
  * scripts/illustrations/about.mjs — the about/factory hall illustration and the
- * two India/world "reach" cards. ADR-0002 palette only.
+ * two India/world "reach" cards. ADR-0004 palette only.
  */
 import {
   INK, STEEL, STEEL_LIGHT, SPARK, SPARK_SOFT, STEEL_SOFT, GREY, WHITE,

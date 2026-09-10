@@ -10,7 +10,7 @@ import { Building } from "@/components/ui/Icons";
 
 export default function AboutBlurb({ context }: { context?: string }) {
   return (
-    <div className="flex max-w-prose gap-3 rounded-xl bg-steel-soft p-4">
+    <div className="panel-soft flex max-w-prose gap-3 rounded-xl p-4">
       <Building width={20} height={20} className="mt-0.5 shrink-0 text-steel" />
       <p className="text-sm text-grey-700">
         <strong className="text-ink">{site.name}</strong> is a Kolkata-based manufacturer and

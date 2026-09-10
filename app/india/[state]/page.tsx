@@ -77,7 +77,7 @@ export default async function StatePage({
   if (!state) notFound();
 
   const stateCities = citiesByState(state.slug);
-  const sections = stateSections(state, stateCities, products);
+  const sections = stateSections(state);
   const neighbours = state.neighbouringStateSlugs
     .map((s) => getState(s))
     .filter((s): s is State => Boolean(s));

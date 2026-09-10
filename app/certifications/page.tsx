@@ -47,19 +47,15 @@ const qualityPillars = [
 const qualityParagraphs: { heading: string; text: string }[] = [
   {
     heading: "Our quality management system",
-    text: "Every RA Machine unit is built under a documented quality management system certified to ISO 9001:2015, covering design review, incoming material checks, in-process inspection during fabrication and assembly, and a final functional test before dispatch. In practice this means each machine is built against a repeatable checklist rather than depending on any one technician's memory, non-conformities are logged and corrected rather than overlooked, and the same standard applies whether a machine is destined for a workshop two hours from Kolkata or a container bound for an overseas port.",
+    text: "Each machine is built against a repeatable, documented checklist rather than depending on any one technician's memory, whether it is bound for a workshop near Kolkata or a container for export.",
   },
   {
     heading: "Export safety compliance",
-    text: "Export buyers evaluate a different, additional layer of compliance, which is where CE marking matters most: it is our declaration that a machine's guarding, emergency-stop circuits, electrical enclosures and interlocks meet the applicable EU machinery and low-voltage safety directives. Many markets outside the EU also treat CE as a recognised safety benchmark during customs clearance and plant safety audits, so it simplifies onboarding a new machine at destination even where CE is not the formal local standard.",
+    text: "Many markets outside the EU also treat CE marking as a recognised safety benchmark during customs clearance and plant safety audits, simplifying onboarding at destination.",
   },
   {
     heading: "Statutory registration in India",
-    text: "Within India, GST registration, MSME/Udyam registration, our Import Export Code from the DGFT, and our listing as an Indian Railways vendor together establish us as a properly registered, tax-compliant, government-vetted manufacturing enterprise rather than an informal trading operation. These registrations are frequently mandatory pre-qualification requirements in government, PSU and railway tenders, and our alignment with the Make in India initiative confirms that machines are engineered and built domestically, not imported and rebadged.",
-  },
-  {
-    heading: "Verifiable on request",
-    text: "We are glad to share verifiable copies of any certificate, including certificate numbers and issuing body details, during the quotation process, so your procurement or compliance team can independently confirm them before placing an order or opening a tender file. If a specific tender or import requirement asks about a certification not listed here, tell us at enquiry stage and we will confirm applicability in writing.",
+    text: "These registrations are frequently mandatory pre-qualification requirements in government, PSU and railway tenders, and confirm machines are engineered and built domestically, not imported and rebadged.",
   },
 ];
 
@@ -82,13 +78,6 @@ export default function CertificationsPage() {
         <div className="mt-5 max-w-2xl">
           <AboutBlurb />
         </div>
-        <p className="mt-4 max-w-prose text-grey-600">
-          Global ad traffic and export enquiries mean many visitors land on this page before ever
-          speaking to us, so we keep it as complete and verifiable as our product pages. Every
-          certificate below covers a specific part of what a procurement or compliance team checks
-          before approving a new machinery supplier — quality management, export safety, tax and
-          statutory registration, and government-recognised manufacturing status.
-        </p>
       </Section>
 
       <Section eyebrow="Quality & compliance" icon="Shield" title="How we approach quality and compliance">
