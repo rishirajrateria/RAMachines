@@ -3,7 +3,7 @@
  * /india/[state] page from the structured facts in data/states.ts (see the
  * `State` interface in data/types.ts) plus config/site.ts service terms.
  *
- * `stateSections(state, cities, products)` returns an ordered array of
+ * `stateSections(state)` returns an ordered array of
  * sections the page renders top to bottom. Each section is
  * `{ id, h2, paragraphs, list? }`. The page also renders a separate
  * city-list LinkGrid, an industries FeatureGrid and a product grid directly
@@ -12,7 +12,7 @@
  * and do not restate them (ADR-0003: keep unique facts, cut anything a
  * panel/graphic already states).
  *
- * `stateWordCount(state, cities, products)` sums the visible words this
+ * `stateWordCount(state)` sums the visible words this
  * module produces for a given state — every section's heading and
  * paragraphs, every list link's visible name, the state's FAQs, and the H1
  * — for scripts/content-audit.mjs.
@@ -82,11 +82,9 @@ export function stateH1(name: string): string {
  * `cities` should be the cities belonging to this state (from
  * citiesByState) and `products` the full catalogue (from "@/data").
  */
-export function stateSections(state: State, _cities: City[], _products: Product[]): StateSection[] {
-  // `cities` and `products` are accepted for signature parity with stateWordCount's
-  // caller (app/india/[state]/page.tsx passes the same three args to both) — the
-  // sections below no longer link out to products or mention city names directly,
-  // since the page's own city-chip grid and product grid already cover those.
+export function stateSections(state: State): StateSection[] {
+  // The sections below do not link out to products or list city names directly —
+  // the page's own city-chip grid and product grid already cover those.
   const topClusters = Array.from(new Set(state.industries.flatMap((i) => i.clusters))).slice(0, 2);
   const industrialAreaCount = state.industrialAreas.length;
   const deliveryWindow = deliveryWindowLabel(state.logisticsNote);
@@ -175,8 +173,8 @@ export function stateSections(state: State, _cities: City[], _products: Product[
 }
 
 /** Total visible word count this module produces for a state (H1 + sections + FAQs). */
-export function stateWordCount(state: State, cities: City[], products: Product[]): number {
-  const sections = stateSections(state, cities, products);
+export function stateWordCount(state: State): number {
+  const sections = stateSections(state);
   const sectionWords = sections.reduce((total, section) => {
     const listWords = wordCount(section.list?.map((l) => l.name));
     return total + wordCount(section.h2, section.paragraphs) + listWords;
