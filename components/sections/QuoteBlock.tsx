@@ -1,8 +1,8 @@
 /**
- * components/sections/QuoteBlock.tsx — the sticky quote card on product/category pages
- * (SPEC §2): Call/WhatsApp/Email icon rows plus a "Fill form" toggle that reveals
- * QuoteForm with the product pre-filled. Set `sticky` to pin it on large screens
- * (product page sidebar). Rounded card with a soft shadow (ADR-0002).
+ * components/sections/QuoteBlock.tsx — ADR-0005 §5: the quote card on
+ * product/category pages (SPEC §2) as a glass panel — Call/WhatsApp/Email glass
+ * pill rows plus a "Fill form instead" toggle that reveals QuoteForm with the
+ * product pre-filled. Set `sticky` to pin it on large screens.
  */
 import { site } from "@/config/site";
 import { Phone, WhatsApp, Mail } from "@/components/ui/Icons";
@@ -19,10 +19,7 @@ export default function QuoteBlock({
   sticky?: boolean;
 }) {
   return (
-    <div
-      id="quote"
-      className={`rounded-xl border border-grey-200 bg-white p-5 shadow-card ${sticky ? "lg:sticky lg:top-24" : ""}`.trim()}
-    >
+    <div id="quote" className={`glass p-6 ${sticky ? "lg:sticky lg:top-24" : ""}`.trim()}>
       <h2 className="font-display text-lg text-ink">Request a Quote</h2>
       {product && (
         <p className="mt-1 text-sm text-grey-600">
@@ -31,29 +28,23 @@ export default function QuoteBlock({
         </p>
       )}
       <div className="mt-4 grid gap-2">
-        <a
-          href={site.phoneHref}
-          className="inline-flex h-11 items-center gap-2 rounded-lg border border-grey-300 px-4 text-sm font-semibold text-ink hover:border-steel hover:text-steel"
-        >
-          <Phone width={16} height={16} className="text-steel" /> {site.phoneDisplay}
+        <a href={site.phoneHref} className="glass-pill flex h-11 items-center gap-2 text-sm font-semibold text-ink">
+          <Phone width={16} height={16} className="text-teal" /> {site.phoneDisplay}
         </a>
         <a
           href={site.whatsappHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex h-11 items-center gap-2 rounded-lg border border-grey-300 px-4 text-sm font-semibold text-ink hover:border-steel hover:text-steel"
+          className="glass-pill flex h-11 items-center gap-2 text-sm font-semibold text-ink"
         >
-          <WhatsApp width={16} height={16} className="text-steel" /> WhatsApp us
+          <WhatsApp width={16} height={16} className="text-teal" /> WhatsApp us
         </a>
-        <a
-          href={`mailto:${site.email}`}
-          className="inline-flex h-11 items-center gap-2 rounded-lg border border-grey-300 px-4 text-sm font-semibold text-ink hover:border-steel hover:text-steel"
-        >
-          <Mail width={16} height={16} className="text-steel" /> {site.email}
+        <a href={`mailto:${site.email}`} className="glass-pill flex h-11 items-center gap-2 text-sm font-semibold text-ink">
+          <Mail width={16} height={16} className="text-teal" /> {site.email}
         </a>
       </div>
       <details className="mt-4">
-        <summary className="cursor-pointer text-sm font-semibold text-spark">Fill form instead</summary>
+        <summary className="cursor-pointer text-sm font-semibold text-teal">Fill form instead</summary>
         <div className="mt-4">
           <QuoteForm product={product?.name} country={country} />
         </div>

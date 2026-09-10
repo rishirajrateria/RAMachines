@@ -1,60 +1,30 @@
 /**
- * scripts/illustrations/og.mjs — og-fallback.png: the social-preview card. Mirrors
- * the hero's look (the ADR-0004 dark ink→deep-teal→teal gradient panel, soft
- * radial teal glow, spark-lit cutting head) at a smaller scale next to the
- * wordmark ("og-fallback matches the hero").
+ * scripts/illustrations/og.mjs — og-fallback.png: the social-preview card.
+ * ADR-0005 §7: light forms + wordmark + title, no gradient text, no dark panel —
+ * mirrors lib/og.tsx's dynamic per-page renderer so every OG card reads as the
+ * same calm family, with a faint line-art gantry echo on the right, like the hero.
  */
-import { INK, STEEL, STEEL_LIGHT, SPARK, SPARK_LIGHT, WHITE, sparkBurst, sparkChips, scene, escapeXml } from "./common.mjs";
-import { flatbedMachine, withOverlay, BOX_W, GROUND_Y } from "./machines.mjs";
+import { INK, ambientLight, scene, escapeXml } from "./common.mjs";
+import { flatbedMachine, BOX_W, GROUND_Y } from "./machines.mjs";
 
 export function ogFallbackSvg(width, height) {
-  const panelX = width * 0.58;
-  const panelW = width - panelX;
+  const { defs, content: orbs } = ambientLight(width, height);
 
   const machine = flatbedMachine("ra-f1530");
-  const machineContent = withOverlay(machine, { withSpark: true, withChips: true });
+  const scale = (height / 630) * 0.85;
+  const glyphTx = width * 0.72 - (BOX_W * scale) / 2;
+  const glyphTy = height * 0.86 - GROUND_Y * scale;
 
-  const scale = (height / 630) * 1.15;
-  const groundRatio = 0.88;
-  const leftMostLocalX = 155;
-  const tx = panelX + 18 - leftMostLocalX * scale;
-  const ty = height * groundRatio - GROUND_Y * scale;
-  const [sx, sy] = machine.sparkPoint;
-  const spx = tx + sx * scale;
-  const spy = ty + sy * scale;
-
-  const defs = `<defs>
-    <linearGradient id="ogDarkBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="${INK}"/>
-      <stop offset="55%" stop-color="#0B3B38"/>
-      <stop offset="100%" stop-color="${STEEL}"/>
-    </linearGradient>
-    <radialGradient id="ogGlow" cx="60%" cy="55%" r="75%">
-      <stop offset="0%" stop-color="${STEEL_LIGHT}" stop-opacity="0.4"/>
-      <stop offset="100%" stop-color="${INK}" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="ogSparkGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="${SPARK_LIGHT}" stop-opacity="0.55"/>
-      <stop offset="100%" stop-color="${SPARK}" stop-opacity="0"/>
-    </radialGradient>
-    <clipPath id="ogPanelClip"><rect x="${panelX}" y="0" width="${panelW}" height="${height}"/></clipPath>
-  </defs>`;
-
-  const panel = `<g clip-path="url(#ogPanelClip)">
-    <rect x="${panelX}" y="0" width="${panelW}" height="${height}" fill="url(#ogDarkBg)"/>
-    <rect x="${panelX}" y="0" width="${panelW}" height="${height}" fill="url(#ogGlow)"/>
-    <circle cx="${spx.toFixed(0)}" cy="${spy.toFixed(0)}" r="${(height * 0.55).toFixed(0)}" fill="url(#ogSparkGlow)"/>
-    <g transform="translate(${tx.toFixed(1)} ${ty.toFixed(1)}) scale(${scale})">${machineContent}</g>
-  </g>`;
-
-  const content = `${defs}
-    <rect x="${panelX - 4}" y="80" width="4" height="${height - 160}" fill="${SPARK}"/>
-    <line x1="80" y1="80" x2="144" y2="80" stroke="${SPARK}" stroke-width="4"/>
-    <text x="80" y="330" font-family="Arial, sans-serif" font-size="72" font-weight="700" fill="${INK}">RA Machine</text>
-    <text x="80" y="380" font-family="Arial, sans-serif" font-size="25" fill="#5B5F68">${escapeXml("Laser Cutting Machines Built in India,")}</text>
-    <text x="80" y="416" font-family="Arial, sans-serif" font-size="25" fill="#5B5F68">${escapeXml("Trusted Worldwide")}</text>
-    <text x="80" y="560" font-family="Arial, sans-serif" font-size="20" fill="#7A7E87">ramachine.com · Kolkata, India · Exporting worldwide</text>
-    ${panel}
+  const content = `
+    <rect width="${width}" height="${height}" fill="#F6F8F9"/>
+    ${orbs}
+    <g transform="translate(${glyphTx.toFixed(1)} ${glyphTy.toFixed(1)}) scale(${scale.toFixed(3)})" opacity="0.18">
+      ${machine.svg}
+    </g>
+    <text x="80" y="300" font-family="Arial, sans-serif" font-size="60" font-weight="700" fill="${INK}">RA Machine</text>
+    <text x="80" y="352" font-family="Arial, sans-serif" font-size="24" fill="#5B5F68">${escapeXml("Laser Cutting Machines Built in India,")}</text>
+    <text x="80" y="386" font-family="Arial, sans-serif" font-size="24" fill="#5B5F68">${escapeXml("Trusted Worldwide")}</text>
+    <text x="80" y="560" font-family="Arial, sans-serif" font-size="18" fill="#7A7E87">ramachine.com · Kolkata, India · Exporting worldwide</text>
   `;
-  return scene({ width, height, bg: WHITE, content });
+  return scene({ width, height, defs, content });
 }

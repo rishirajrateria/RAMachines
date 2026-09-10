@@ -3,21 +3,20 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { buildMetadata } from "@/lib/seo";
 import { paths } from "@/lib/urls";
+import { site } from "@/config/site";
 import { categories } from "@/data/categories";
 import { productsByCategory } from "@/data/products";
 import type { CategorySlug } from "@/data/types";
 import Container from "@/components/ui/Container";
-import Band from "@/components/ui/Band";
+import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AboutBlurb from "@/components/ui/AboutBlurb";
-import SectionHeading from "@/components/ui/SectionHeading";
-import GlancePanel from "@/components/ui/GlancePanel";
-import Chips from "@/components/ui/Chips";
-import { Icon } from "@/components/ui/Icons";
-import CtaGroup from "@/components/ui/CtaGroup";
+import Button from "@/components/ui/Button";
+import { FactStrip, DividedList } from "@/components/ui/glass";
 import Faq from "@/components/ui/Faq";
 import CtaBand from "@/components/sections/CtaBand";
-import ProductCard from "@/components/cards/ProductCard";
+import { Icon } from "@/components/ui/Icons";
+import ProductTile from "../ProductTile";
 import ComparisonTable from "./ComparisonTable";
 import LongCopySections from "./LongCopySections";
 import { categoryTitles } from "../meta";
@@ -61,6 +60,10 @@ export default async function CategoryPage({
 
   const categoryProducts = productsByCategory(category.slug);
   const icon = categoryIcon[category.slug];
+  const facts = [
+    ...categoryGlance[category.slug],
+    { icon: "Factory" as const, label: "Machines", value: `${categoryProducts.length} in the range` },
+  ];
 
   return (
     <>
@@ -74,32 +77,26 @@ export default async function CategoryPage({
         />
       </Container>
 
-      <Band tone="dark">
+      <Section tone="dark">
         <div className="grid gap-10 lg:grid-cols-5 lg:items-center">
           <div className="lg:col-span-3">
             <p className="eyebrow mb-3">
               <Icon name={icon} size={16} />
               {category.shortName}
             </p>
-            <h1 className="font-display text-display-lg text-white">
-              {category.name} — Manufacturer in India
-            </h1>
-            <p className="mt-4 max-w-prose text-white/75">{category.intro}</p>
-            <div className="mt-6">
-              <Chips
-                items={categoryProducts.map((product) => ({
-                  label: product.sku,
-                  href: paths.product(product.category, product.slug),
-                  icon,
-                }))}
-              />
-            </div>
-            <div className="mt-8">
-              <CtaGroup context={category.shortName} />
+            <h1 className="font-display text-display-lg text-ink">{category.name}</h1>
+            <p className="mt-4 max-w-prose text-grey-700">{category.description}</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button href="#quote" variant="solid" icon="ArrowRight">
+                Request a Quote
+              </Button>
+              <Button href={site.phoneHref} variant="outline" icon="Phone">
+                Call us
+              </Button>
             </div>
           </div>
           <div className="lg:col-span-2">
-            <div className="relative aspect-[3/2] overflow-hidden rounded-xl bg-white/10">
+            <div className="relative aspect-[3/2] overflow-hidden rounded-[28px] bg-[radial-gradient(circle_at_50%_40%,rgba(15,118,110,0.10),transparent_70%)]">
               <Image
                 src={category.image.src}
                 alt={category.image.alt}
@@ -110,52 +107,41 @@ export default async function CategoryPage({
             </div>
           </div>
         </div>
-      </Band>
+      </Section>
 
-      <Container className="pb-14 pt-12 md:pb-20 md:pt-16">
-        <GlancePanel title={`${category.shortName} at a glance`} facts={categoryGlance[category.slug]} />
-      </Container>
-
-      <Container className="pb-14 md:pb-20">
-        <SectionHeading
-          eyebrow="In our range"
-          icon={icon}
-          title={`${category.name} we manufacture`}
-        />
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {categoryProducts.map((product) => (
-            <ProductCard key={product.slug} product={product} />
-          ))}
-        </div>
-      </Container>
-
-      <Container className="pb-14 md:pb-20">
-        <SectionHeading eyebrow="Compare" icon="Ruler" title="Compare specifications" />
-        <div className="mt-8">
-          <ComparisonTable products={categoryProducts} specLabels={category.comparisonSpecs} icon={icon} categoryName={category.name} />
-        </div>
-      </Container>
-
-      <Band tone="soft">
-        <SectionHeading eyebrow="Where it's used" icon="Factory" title="Applications" />
-        <div className="mt-6">
-          <Chips items={category.applications.map((application) => ({ label: application, icon: "Check" }))} />
-        </div>
-      </Band>
-
-      <Container className="pb-14 pt-14 md:pb-20 md:pt-20">
-        <LongCopySections category={category} />
-      </Container>
-
-      <Container className="pb-14 md:pb-20">
+      <Container>
         <AboutBlurb
           context={`Our ${category.shortName.toLowerCase()} range is designed, assembled and supported from our Kolkata facility, for buyers across India and for export.`}
         />
       </Container>
 
-      <Container className="pb-14 md:pb-20">
-        <Faq items={category.faqs} title={`Frequently asked questions — ${category.shortName.toLowerCase()}`} />
-      </Container>
+      <Section eyebrow="At a glance" title="Key figures">
+        <FactStrip facts={facts} />
+      </Section>
+
+      <Section eyebrow="In our range" title="The machines" intro={category.intro}>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {categoryProducts.map((product) => (
+            <ProductTile key={product.slug} product={product} />
+          ))}
+        </div>
+      </Section>
+
+      <Section eyebrow="Where it's used" title="Applications">
+        <DividedList items={category.applications.map((application) => ({ title: application }))} />
+      </Section>
+
+      <Section eyebrow="Compare" title="Compare specs">
+        <ComparisonTable products={categoryProducts} specLabels={category.comparisonSpecs} categoryName={category.name} />
+      </Section>
+
+      <Section eyebrow="How it works" title="The engineering">
+        <LongCopySections category={category} />
+      </Section>
+
+      <Section>
+        <Faq items={category.faqs} title={`Questions about ${category.shortName.toLowerCase()}`} />
+      </Section>
 
       <CtaBand
         title={`Talk to us about a ${category.shortName.toLowerCase()} machine`}

@@ -1,37 +1,37 @@
 /**
- * components/ui/SpecTable.tsx — key/value specification table (product specs, materials
- * & thickness tables). Rounded container, zebra rows, and an optional group icon beside
- * the caption (ADR-0002: "every spec group gets an icon").
+ * components/ui/SpecTable.tsx — ADR-0005 §6: key/value specification table
+ * "inside glass" (product spec sheets, materials & thickness tables). No
+ * tinted caption band, no icon tile — a plain glass container with hairline
+ * row dividers. `icon` is accepted for backward compatibility only.
  */
-import { Icon, type IconName } from "./Icons";
+import type { IconName } from "./Icons";
 
 export default function SpecTable({
   rows,
   caption,
-  icon,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars -- accepted for backward compatibility, never rendered (ADR-0005 §6)
+  icon: _icon,
 }: {
   rows: { label: string; value: string }[];
   caption?: string;
+  /** @deprecated kept for backward compatibility — SpecTable no longer shows an icon (ADR-0005 §6). */
   icon?: IconName;
 }) {
   return (
-    <div className="overflow-hidden rounded-xl border border-grey-200">
+    <div className="glass overflow-hidden p-0">
       <table className="w-full border-collapse text-sm">
         {caption && (
-          <caption className="caption-top border-b border-grey-200 bg-steel-soft px-4 py-3 text-left">
-            <span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.08em] text-steel">
-              {icon && <Icon name={icon} size={16} />}
-              {caption}
-            </span>
+          <caption className="caption-top border-b border-[rgba(15,26,26,0.08)] px-5 py-3 text-left">
+            <span className="text-xs font-semibold uppercase tracking-[0.08em] text-grey-500">{caption}</span>
           </caption>
         )}
         <tbody>
-          {rows.map((row, i) => (
-            <tr key={row.label} className={i % 2 === 1 ? "bg-grey-50" : "bg-white"}>
-              <th scope="row" className="w-2/5 py-3 pl-4 pr-4 text-left align-top font-semibold text-ink">
+          {rows.map((row) => (
+            <tr key={row.label} className="border-b border-[rgba(15,26,26,0.08)] last:border-b-0">
+              <th scope="row" className="w-2/5 py-3 pl-5 pr-4 text-left align-top font-semibold text-ink">
                 {row.label}
               </th>
-              <td className="py-3 pr-4 align-top text-grey-700">{row.value}</td>
+              <td className="py-3 pr-5 align-top text-grey-700">{row.value}</td>
             </tr>
           ))}
         </tbody>

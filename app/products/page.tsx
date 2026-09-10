@@ -4,16 +4,13 @@ import { paths } from "@/lib/urls";
 import { products, productsByCategory } from "@/data/products";
 import { categories } from "@/data/categories";
 import Container from "@/components/ui/Container";
-import Band from "@/components/ui/Band";
+import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AboutBlurb from "@/components/ui/AboutBlurb";
-import SectionHeading from "@/components/ui/SectionHeading";
-import Chips from "@/components/ui/Chips";
-import { Icon } from "@/components/ui/Icons";
-import IllustrationCard from "@/components/ui/IllustrationCard";
-import ProductCard from "@/components/cards/ProductCard";
+import CategoryCard from "@/components/cards/CategoryCard";
 import CtaBand from "@/components/sections/CtaBand";
 import ProductFilter from "./ProductFilter";
+import ProductTile from "./ProductTile";
 import { categoryIcon } from "./category-icons";
 
 export const metadata: Metadata = buildMetadata({
@@ -36,77 +33,36 @@ export default function ProductsPage() {
         <Breadcrumbs items={[{ name: "Home", href: paths.home }, { name: "Products", href: paths.products }]} />
       </Container>
 
-      <Band tone="dark">
-        <p className="eyebrow mb-3">
-          <Icon name="Laser" size={16} />
-          Our range
+      <Section tone="dark">
+        <p className="eyebrow mb-3">Our range</p>
+        <h1 className="font-display text-display-lg text-ink">Machines</h1>
+        <p className="mt-4 max-w-prose text-grey-700">
+          Four machine families built on one CNC platform — fiber laser, tube laser, CO2 laser
+          and robotic MIG/MAG welding — engineered and manufactured in Kolkata.
         </p>
-        <h1 className="max-w-3xl font-display text-display-lg text-white">
-          Laser Cutting Machines &amp; Robotic Welding Systems
-        </h1>
-        <p className="mt-4 max-w-2xl text-white/75">
-          Four machine families built on the same proven CNC control platform — fiber
-          laser, tube laser, CO2 laser and robotic MIG/MAG welding — engineered and
-          manufactured in Kolkata for buyers across India and for export.
-        </p>
-        <div className="mt-6">
-          <Chips
-            items={categories.map((category) => ({
-              label: category.shortName,
-              href: paths.category(category.slug),
-              icon: categoryIcon[category.slug],
-            }))}
-          />
-        </div>
-      </Band>
+      </Section>
 
-      <Container className="pb-4 pt-12 md:pt-16">
-        <SectionHeading eyebrow="Browse by category" icon="Layers" title="Four machine families" />
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <Container>
+        <AboutBlurb context="Every machine below is available for delivery and installation across India and for export, backed by our own operator training and after-sales service." />
+      </Container>
+
+      <Section eyebrow="Browse" title="Machine families">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {categories.map((category) => (
-            <IllustrationCard
-              key={category.slug}
-              image={category.image}
-              title={category.name}
-              text={category.description}
-              href={paths.category(category.slug)}
-              badge={`${productsByCategory(category.slug).length} machines`}
-            />
+            <CategoryCard key={category.slug} category={category} count={productsByCategory(category.slug).length} />
           ))}
         </div>
-      </Container>
+      </Section>
 
-      <Container className="pb-14 pt-10 md:pb-20 md:pt-12">
-        <SectionHeading eyebrow="All machines" icon="Sparkles" title="Browse the full range" />
-        <div className="mt-8">
-          <ProductFilter categories={filterOptions}>
-            {products.map((product) => (
-              <div key={product.slug} data-category={product.category}>
-                <ProductCard product={product} />
-              </div>
-            ))}
-          </ProductFilter>
-        </div>
-      </Container>
-
-      <Band tone="soft">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div>
-            <SectionHeading
-              eyebrow="About the range"
-              icon="Building"
-              title="One CNC platform, four machine families"
-            />
-            <p className="mt-4 max-w-prose text-grey-700">
-              Filter by category above, or open any machine for full specifications,
-              applications and a request-a-quote option — no prices are published
-              online, so every enquiry receives a quotation matched to your material,
-              thickness and production volume.
-            </p>
-          </div>
-          <AboutBlurb context="Every machine above is available for delivery and installation across India and for export, backed by our own operator training and after-sales service." />
-        </div>
-      </Band>
+      <Section eyebrow="All machines" title="The full range">
+        <ProductFilter categories={filterOptions}>
+          {products.map((product) => (
+            <div key={product.slug} data-category={product.category}>
+              <ProductTile product={product} />
+            </div>
+          ))}
+        </ProductFilter>
+      </Section>
 
       <CtaBand
         title="Not sure which machine fits your job"

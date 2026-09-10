@@ -1,9 +1,9 @@
 "use client";
 
 /**
- * components/media/MapFacade.tsx — click-to-load Google Maps embed. Shows a static grey
- * preview with a MapPin icon and the address until the visitor taps the button, so the
- * heavy Maps iframe never loads (or blocks anything) unless requested.
+ * components/media/MapFacade.tsx — click-to-load Google Maps embed. Shows a glass
+ * preview with a MapPin icon and the address until the visitor taps the button, so
+ * the heavy Maps iframe never loads (or blocks anything) unless requested.
  */
 import { useState } from "react";
 import { site } from "@/config/site";
@@ -14,7 +14,7 @@ export default function MapFacade() {
 
   if (loaded) {
     return (
-      <div className="aspect-[4/3] w-full overflow-hidden rounded border border-grey-200 sm:aspect-video">
+      <div className="glass aspect-[4/3] w-full overflow-hidden p-0 sm:aspect-video">
         <iframe
           src={site.address.mapsEmbedUrl}
           title={`Map showing ${site.name} location in Kolkata`}
@@ -27,14 +27,12 @@ export default function MapFacade() {
   }
 
   return (
-    <div className="flex aspect-[4/3] w-full flex-col items-center justify-center gap-3 rounded border border-grey-200 bg-grey-100 p-6 text-center sm:aspect-video">
-      <MapPin width={28} height={28} className="text-grey-500" />
+    <div className="glass flex aspect-[4/3] w-full flex-col items-center justify-center gap-3 p-6 text-center sm:aspect-video">
+      <span className="glass-pill flex h-11 w-11 items-center justify-center p-0 text-teal">
+        <MapPin width={20} height={20} />
+      </span>
       <p className="max-w-sm text-sm text-grey-600">{site.address.full}</p>
-      <button
-        type="button"
-        onClick={() => setLoaded(true)}
-        className="inline-flex h-11 items-center justify-center rounded border border-grey-300 bg-white px-5 text-sm font-semibold text-ink transition-colors hover:border-steel hover:text-steel"
-      >
+      <button type="button" onClick={() => setLoaded(true)} className="glass-pill h-11 px-5 text-sm font-semibold text-ink">
         Load map
       </button>
     </div>

@@ -1,30 +1,26 @@
 /**
- * components/ui/Band.tsx — full-width tonal section wrapper (dark hero/CTA band, soft
- * tinted band, spark-tinted band, or a plain white section). Pairs with .band-dark /
- * .band-soft / .band-spark in app/globals.css. Consistent section-rhythm padding.
+ * components/ui/Band.tsx — full-width section wrapper. ADR-0005: tinted/dark
+ * bands are gone; `tone` is kept for backward compatibility only. "dark" (the
+ * old hero/CTA band) now renders a `.glass-strong` panel instead of a dark
+ * background — the only dark element on the page is text (ADR-0005 §1).
  */
 import type { ReactNode } from "react";
 import Container from "./Container";
-
-const toneClasses: Record<"dark" | "soft" | "spark" | "plain", string> = {
-  dark: "band-dark",
-  soft: "band-soft",
-  spark: "band-spark",
-  plain: "bg-white",
-};
 
 export default function Band({
   tone = "plain",
   children,
   className = "",
 }: {
+  /** @deprecated only "dark" still changes rendering (a glass-strong panel) — kept for backward compatibility. */
   tone?: "dark" | "soft" | "spark" | "plain";
   children: ReactNode;
   className?: string;
 }) {
+  const panelled = tone === "dark";
   return (
-    <div className={`section-rhythm ${toneClasses[tone]} ${className}`.trim()}>
-      <Container>{children}</Container>
+    <div className={`section-rhythm ${className}`.trim()}>
+      <Container>{panelled ? <div className="glass-strong p-8 md:p-12">{children}</div> : children}</Container>
     </div>
   );
 }

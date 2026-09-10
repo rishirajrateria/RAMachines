@@ -1,13 +1,11 @@
 import localFont from "next/font/local";
 
 /**
- * Self-hosted fonts (see NOTES.md for the rationale):
- *  - Manrope 400/600 — UI & body: a clean, slightly geometric grotesque with excellent
- *    numerals for spec tables; corporate without being generic.
- *  - Barlow Semi Condensed 600 — display: a compact, engineered face that reads like
- *    machine-tool signage and lets long headlines fit on mobile.
- * Files are copied from the @fontsource packages (OFL licence) into app/fonts/. The .woff (v1)
- * copies exist only for lib/og.tsx — satori cannot parse WOFF2.
+ * Self-hosted fonts. ADR-0005 "Liquid Glass" §3: one family site-wide — Manrope
+ * (400 body, 600 headings/display). Barlow Semi Condensed is no longer loaded
+ * (its files stay under app/fonts/ unused, per the ADR, in case a future ADR
+ * brings it back); `fontDisplay` now points at the same Manrope variable so
+ * every `font-display` class keeps compiling and resolving correctly.
  */
 export const fontUi = localFont({
   src: [
@@ -15,13 +13,6 @@ export const fontUi = localFont({
     { path: "./fonts/manrope-latin-600-normal.woff2", weight: "600", style: "normal" },
   ],
   variable: "--font-ui",
-  display: "swap",
-  preload: true,
-});
-
-export const fontDisplay = localFont({
-  src: [{ path: "./fonts/barlow-semi-condensed-latin-600-normal.woff2", weight: "600", style: "normal" }],
-  variable: "--font-display",
   display: "swap",
   preload: true,
 });

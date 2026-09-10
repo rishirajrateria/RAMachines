@@ -1,6 +1,6 @@
 /**
- * components/ui/Avatar.tsx — initials in a spark-tinted circle, used in place of a real
- * headshot (TestimonialGrid). Purely decorative, so it is aria-hidden.
+ * components/ui/Avatar.tsx — initials in a teal-tinted circle, used in place of a
+ * real headshot (TestimonialGrid). Purely decorative, so it is aria-hidden.
  */
 export default function Avatar({ name, size = 44 }: { name: string; size?: number }) {
   const initials =
@@ -14,7 +14,7 @@ export default function Avatar({ name, size = 44 }: { name: string; size?: numbe
   return (
     <span
       aria-hidden="true"
-      className="inline-flex shrink-0 items-center justify-center rounded-full bg-spark-soft font-display text-spark"
+      className="inline-flex shrink-0 items-center justify-center rounded-full bg-teal-soft font-display text-teal"
       style={{ width: size, height: size, fontSize: Math.round(size * 0.38) }}
     >
       {initials}

@@ -1,7 +1,9 @@
 /**
- * components/layout/Header.tsx — sticky, 64px header. Server Component; the only
- * interactive part is <MobileNav />. ADR-0002: softer border/blur, spark "Request
- * Quote" button (the site's one deliberately warm, attention-grabbing CTA).
+ * components/layout/Header.tsx — ADR-0005 §5: a floating glass pill bar, fixed
+ * top: 12px, centred, max-width 1100px, 56px tall: wordmark, nav links, a
+ * "RA Auto ↗" text link, one teal pill "Request quote". Server Component; the
+ * only interactive part is <MobileNav />. app/layout.tsx compensates with
+ * pt-24 on <main> so this never overlaps page content.
  */
 import Link from "next/link";
 import { site } from "@/config/site";
@@ -13,18 +15,17 @@ import { navLinks } from "./navLinks";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-30 h-16 border-b border-grey-200/70 bg-white/95 backdrop-blur">
-      <div className="container-site flex h-16 items-center justify-between gap-4">
+    <header className="fixed inset-x-0 top-3 z-30 mx-auto max-w-[1100px] px-4">
+      <div className="glass-strong flex h-14 items-center justify-between gap-4 rounded-full px-4 md:px-5">
         <Link href={paths.home} className="flex flex-col leading-none">
-          <span className="font-display text-xl text-ink">{site.name}</span>
-          <span className="text-[11px] text-grey-600">an RA Group company</span>
+          <span className="font-display text-lg text-ink">{site.name}</span>
         </Link>
 
         <nav aria-label="Primary" className="hidden md:block">
           <ul className="flex items-center gap-6">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="text-sm font-semibold text-ink transition-colors hover:text-spark">
+                <Link href={link.href} className="text-sm font-medium text-ink/80 transition-colors hover:text-ink">
                   {link.name}
                 </Link>
               </li>
@@ -38,12 +39,12 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="RA Auto, opens in new tab"
-            className="inline-flex h-10 items-center gap-1.5 rounded-lg border border-grey-300 px-4 text-sm font-semibold text-ink transition-colors hover:border-steel hover:text-steel"
+            className="inline-flex items-center gap-1 text-sm font-medium text-ink/80 hover:text-ink"
           >
-            RA Auto <ArrowUpRight width={14} height={14} />
+            RA Auto <ArrowUpRight width={13} height={13} />
           </a>
-          <Button href="/contact#quote" variant="solid" tone="spark" size="md">
-            Request Quote
+          <Button href="/contact#quote" variant="solid" size="md">
+            Request quote
           </Button>
         </div>
 

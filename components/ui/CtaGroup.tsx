@@ -1,9 +1,8 @@
 /**
  * components/ui/CtaGroup.tsx — the standard CTA row used on product, category and
- * service pages: solid "Request a Quote" (anchors to the page's #quote block by
- * default) plus outlined Call / WhatsApp / Email. Set `showForm` to also reveal an
- * inline QuoteForm behind a native <details> toggle (no extra client state needed here
- * — only QuoteForm itself is a client component).
+ * service pages: primary teal pill "Request a Quote" (anchors to the page's
+ * #quote block by default) plus secondary glass pills Call / WhatsApp / Email.
+ * Set `showForm` to also reveal an inline QuoteForm behind a glass disclosure.
  */
 import { site } from "@/config/site";
 import Button from "./Button";
@@ -36,16 +35,12 @@ export default function CtaGroup({
         </Button>
       </div>
       {showForm && (
-        <details className="rounded-item mt-6 max-w-xl">
+        <details className="glass-accordion-item glass mt-6 max-w-xl px-6">
           <summary>
-            <span className="flex items-center gap-3">
-              <span className="summary-icon" aria-hidden="true">
-                +
-              </span>
-              <span className="text-sm font-semibold text-ink">Fill form instead</span>
-            </span>
+            <span className="text-sm font-semibold text-ink">Fill form instead</span>
+            <span className="accordion-toggle" aria-hidden="true" />
           </summary>
-          <div className="mt-4 pl-11">
+          <div className="pb-2">
             <QuoteForm product={product} />
           </div>
         </details>

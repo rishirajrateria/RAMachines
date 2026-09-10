@@ -1,21 +1,21 @@
 /**
- * lib/copy/state.ts — composes the 950–1,200 word body copy for each
- * /india/[state] page from the structured facts in data/states.ts (see the
- * `State` interface in data/types.ts) plus config/site.ts service terms.
+ * lib/copy/state.ts — composes the ≥ 900 word "in depth" prose column for each
+ * /india/[state] page (ADR-0005 §6 anatomy) from the structured facts in
+ * data/states.ts (see the `State` interface in data/types.ts) plus
+ * config/site.ts service terms.
  *
- * `stateSections(state)` returns an ordered array of
- * sections the page renders top to bottom. Each section is
- * `{ id, h2, paragraphs, list? }`. The page also renders a separate
- * city-list LinkGrid, an industries FeatureGrid and a product grid directly
- * from `cities`/`state`/`products`; those already cover industries, city
- * names and recommended machines visually, so the sections below stay short
- * and do not restate them (ADR-0003: keep unique facts, cut anything a
- * panel/graphic already states).
+ * `stateSections(state)` returns an ordered array of `{ id, h3, paragraphs }`
+ * blocks rendered inside one `.prose-calm` column under a single page heading
+ * (no per-section icon/eyebrow/aside — those belonged to the retired
+ * CopyBlock layout). The page also renders a FactStrip, an "Industries"
+ * DividedList, product tiles, delivery Steps and a city/nearby-city
+ * DividedList directly from `state`/`products` (see
+ * app/india/_lib/stateVisuals.ts); this prose never restates a fact already
+ * shown in one of those (ADR-0005: a fact appears once).
  *
- * `stateWordCount(state)` sums the visible words this
- * module produces for a given state — every section's heading and
- * paragraphs, every list link's visible name, the state's FAQs, and the H1
- * — for scripts/content-audit.mjs.
+ * `stateWordCount(state)` sums the visible words this module produces for a
+ * given state — every section heading and paragraph, the state's FAQs, and
+ * the H1 — for scripts/content-audit.mjs.
  *
  * All state-specific facts always come from the `State` object itself
  * (data/states/*.ts) — never invent facts here, and never invent branch
@@ -25,31 +25,27 @@
 import { site } from "@/config/site";
 import { wordCount } from "@/lib/words";
 import type { State } from "@/data/types";
-import type { IconName } from "@/components/ui/Icons";
-
-/** What the secondary ("aside") column of a CopyBlock shows for this section — see
- * app/india/_components/CopyBlock.tsx (structurally identical `CopyAside` there). */
-export type StateAside =
-  | { kind: "icon" }
-  | { kind: "facts"; facts: { icon: IconName; label: string; value: string }[] }
-  | { kind: "chips"; chips: { label: string; icon?: IconName }[] };
 
 export interface StateSection {
   id: string;
-  icon: IconName;
-  eyebrow: string;
-  h2: string;
+  h3: string;
   paragraphs: string[];
-  list?: { name: string; href: string }[];
-  aside?: StateAside;
 }
 
-/** Pulls a "4-6 days" style transit window out of a logisticsNote sentence for the hero
- * chip and GlancePanel, falling back to a generic label when the phrasing does not
- * contain one (e.g. the small-UT notes that hedge instead of giving a fixed range). */
-function deliveryWindowLabel(note: string): string {
+/** Pulls a "4-6 days" style transit window out of a logisticsNote sentence for the
+ * hero facts and FactStrip, falling back to a generic label when the phrasing does
+ * not contain one (e.g. the small-UT notes that hedge instead of giving a fixed
+ * range). Exported so app/india/_lib/stateVisuals.ts can reuse it. */
+export function deliveryWindowLabel(note: string): string {
   const match = note.match(/(\d+\s*(?:–|-)\s*\d+)\s*(?:working\s+)?days/i);
   return match ? `${match[1].replace(/\s+/g, "")} days` : "Pan-India dispatch";
+}
+
+/** Joins a short list as calm prose: "a", "a and b", "a, b and c". */
+function joinList(items: string[]): string {
+  if (items.length <= 1) return items[0] ?? "";
+  if (items.length === 2) return `${items[0]} and ${items[1]}`;
+  return `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;
 }
 
 /**
@@ -78,94 +74,59 @@ export function stateH1(name: string): string {
 }
 
 /**
- * Composes the ordered, 950–1,200 word section list for a state page.
- * `cities` should be the cities belonging to this state (from
- * citiesByState) and `products` the full catalogue (from "@/data").
+ * Composes the ordered prose sections for a state page. Clusters, city names
+ * and recommended-machine links already appear in the page's own DividedList
+ * and product tiles, so this prose adds what those cannot: why each industry
+ * matters here, the named industrial estates, the full delivery note and the
+ * full service commitment.
  */
 export function stateSections(state: State): StateSection[] {
-  // The sections below do not link out to products or list city names directly —
-  // the page's own city-chip grid and product grid already cover those.
-  const topClusters = Array.from(new Set(state.industries.flatMap((i) => i.clusters))).slice(0, 2);
-  const industrialAreaCount = state.industrialAreas.length;
-  const deliveryWindow = deliveryWindowLabel(state.logisticsNote);
   const ports = statePorts[state.slug];
 
   const sections: StateSection[] = [
     {
       id: "overview",
-      icon: "Factory",
-      eyebrow: "Overview",
-      h2: `Laser cutting machines and robotic welding in ${state.name}`,
+      h3: `Laser cutting and robotic welding in ${state.name}`,
       paragraphs: [
         `${state.name} is one of the states where RA Machine sees consistent, repeat demand for fiber laser cutting machines and robotic MIG/MAG welding systems, a pattern that tracks the depth of the state's own manufacturing base.`,
         ...state.overview,
       ],
-      aside: { kind: "icon" },
     },
     {
       id: "industries",
-      icon: "Gear",
-      eyebrow: "Industries",
-      h2: `Key manufacturing industries in ${state.name}`,
-      paragraphs: [
-        topClusters.length
-          ? `The cards above pair each industry with the machine we recommend for it; the busiest clusters are ${topClusters.join(" and ")}.`
-          : `The cards above pair each industry with the machine we recommend for it.`,
-      ],
-      aside: { kind: "facts", facts: [{ icon: "Gear", label: "Industries covered", value: `${state.industries.length}` }] },
+      h3: `What ${state.name}'s manufacturers make`,
+      paragraphs: state.industries.map(
+        (industry) =>
+          `${industry.name} units in ${state.name} typically produce ${joinList(industry.products)}. ${industry.note}`,
+      ),
     },
     {
       id: "industrial-areas",
-      icon: "Building",
-      eyebrow: "Industrial areas",
-      h2: `Industrial areas and estates in ${state.name}`,
-      paragraphs: [`We regularly deliver, install and service machines at units inside ${state.industrialAreas.join(", ")}.`],
-      aside: { kind: "facts", facts: [{ icon: "Building", label: "Estates & SEZs", value: `${industrialAreaCount}` }] },
+      h3: `Industrial areas and estates in ${state.name}`,
+      paragraphs: [`We regularly deliver, install and service machines at units inside ${joinList(state.industrialAreas)}.`],
     },
     {
       id: "delivery",
-      icon: "Truck",
-      eyebrow: "Delivery",
-      h2: `Delivery to ${state.name} from our Kolkata works`,
+      h3: `Delivery to ${state.name} from our Kolkata works`,
       paragraphs: [state.logisticsNote],
-      aside: {
-        kind: "facts",
-        facts: [
-          { icon: "Truck", label: "Typical transit", value: deliveryWindow },
-          { icon: "Power", label: "Power required", value: "415 V, 3-phase" },
-        ],
-      },
     },
     {
       id: "service-training",
-      icon: "Headset",
-      eyebrow: "Service & training",
-      h2: `Service, AMC and training across ${state.name}`,
+      h3: `Service, AMC and training across ${state.name}`,
       paragraphs: [
         `Most faults are resolved remotely within ${site.service.remoteResponseTime}; where a site visit is genuinely needed, an engineer is dispatched from our Kolkata headquarters within ${site.service.responseTime} for metro and major industrial locations, backed by stocked spares and optional AMC plans.`,
         `Operator training is included with every installation, delivered on-site at handover, with refresher sessions and a dedicated Kolkata training centre available afterward.`,
       ],
-      aside: {
-        kind: "facts",
-        facts: [
-          { icon: "Headset", label: "Remote response", value: site.service.remoteResponseTime },
-          { icon: "Clock", label: "On-site response", value: site.service.responseTime },
-          { icon: "GraduationCap", label: "Training", value: "Included at handover" },
-        ],
-      },
     },
   ];
 
   if (ports) {
     sections.push({
       id: "export",
-      icon: "Ship",
-      eyebrow: "Export",
-      h2: `Export support for ${state.name} manufacturers`,
+      h3: `Export support for ${state.name} manufacturers`,
       paragraphs: [
-        `Export-ready shipments from ${state.name} typically move through ${ports.join(", ")}, and as an IEC-registered exporter with CE-marked, ISO 9001:2015-certified machines, we handle export documentation for customers shipping their own fabricated output through the same gateways.`,
+        `Export-ready shipments from ${state.name} typically move through ${joinList(ports)}, and as an IEC-registered exporter with CE-marked, ISO 9001:2015-certified machines, we handle export documentation for customers shipping their own fabricated output through the same gateways.`,
       ],
-      aside: { kind: "chips", chips: ports.map((port) => ({ label: port, icon: "Ship" as IconName })) },
     });
   }
 
@@ -175,19 +136,12 @@ export function stateSections(state: State): StateSection[] {
 /** Total visible word count this module produces for a state (H1 + sections + FAQs). */
 export function stateWordCount(state: State): number {
   const sections = stateSections(state);
-  const sectionWords = sections.reduce((total, section) => {
-    const listWords = wordCount(section.list?.map((l) => l.name));
-    return total + wordCount(section.h2, section.paragraphs) + listWords;
-  }, 0);
+  const sectionWords = sections.reduce((total, section) => total + wordCount(section.h3, section.paragraphs), 0);
   const faqWords = wordCount(state.faqs.flatMap((f) => [f.q, f.a]));
   return sectionWords + faqWords + wordCount(stateH1(state.name));
 }
 
 /** Real, named ports per state — exported so app/india/_lib/stateVisuals.ts (the
- * GlancePanel/hero-chip data for the page template) can reuse the same source facts
+ * FactStrip/hero-facts data for the page template) can reuse the same source facts
  * instead of guessing them again. */
 export { statePorts };
-
-/** Pulls a "4-6 days" style transit window out of a logisticsNote sentence — exported
- * for the same reason as `statePorts` above. */
-export { deliveryWindowLabel };

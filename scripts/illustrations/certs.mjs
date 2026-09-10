@@ -1,26 +1,25 @@
 /**
- * scripts/illustrations/certs.mjs — certificate rosette badges: ribbon + name +
- * issuer line + a small centre icon distinguishing each certificate, each with
- * its own accent tint (still within the ADR-0004 palette).
+ * scripts/illustrations/certs.mjs — ADR-0005 §7: minimal ring badges with the
+ * certificate name. A thin ink outer ring, a small teal inner accent ring, a
+ * simple line-art glyph identifying the certificate, and the name lettered
+ * below — on a transparent background so it drops cleanly into the glass pill
+ * badge (components/cards/CertCard.tsx).
  */
-import { INK, STEEL, STEEL_LIGHT, STEEL_SOFT, SPARK, SPARK_LIGHT, SPARK_SOFT, GREY, WHITE, escapeXml, wrapLines, scene } from "./common.mjs";
+import { INK, TEAL, escapeXml, wrapLines, lineArt, scene } from "./common.mjs";
 
-// ---- small centre icons, drawn centred at (0,0) in a roughly ±20 box --------
+// ---- small centre glyphs, drawn centred at (0,0) in a roughly ±16 box -------
 
-function shieldIcon(color) {
-  return `<g><path d="M0 -20 L17 -13 V4 C17 15 9 21 0 24 C-9 21 -17 15 -17 4 V-13 Z" fill="none" stroke="${color}" stroke-width="3" stroke-linejoin="round"/><path d="M-8 0 L-2 8 L10 -8" fill="none" stroke="${color}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>`;
+function shieldGlyph() {
+  return `<path d="M0 -16 L14 -10 V4 C14 12 7 17 0 19 C-7 17 -14 12 -14 4 V-10 Z"/><path d="M-6 0 L-1 6 L8 -6"/>`;
 }
-
-function ceIcon(color) {
-  return `<text x="0" y="9" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="800" fill="${color}" letter-spacing="1">CE</text>`;
+function ceGlyph() {
+  return `<text x="0" y="6" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="${INK}" stroke="none">CE</text>`;
 }
-
-function documentIcon(color) {
-  return `<g><path d="M-13 -20 H6 L13 -13 V20 H-13 Z" fill="none" stroke="${color}" stroke-width="3" stroke-linejoin="round"/><path d="M6 -20 V-13 H13" fill="none" stroke="${color}" stroke-width="3" stroke-linejoin="round"/><line x1="-7" y1="-2" x2="7" y2="-2" stroke="${color}" stroke-width="2.5"/><line x1="-7" y1="5" x2="7" y2="5" stroke="${color}" stroke-width="2.5"/><line x1="-7" y1="12" x2="2" y2="12" stroke="${color}" stroke-width="2.5"/></g>`;
+function documentGlyph() {
+  return `<path d="M-10 -16 H5 L10 -11 V16 H-10 Z"/><path d="M5 -16 V-11 H10"/><path d="M-5 -2 H5 M-5 3 H5 M-5 8 H1"/>`;
 }
-
-function gearIcon(color) {
-  const cx = 0, cy = 0, r = 16, rInner = r * 0.62, teeth = 8;
+function gearGlyph() {
+  const cx = 0, cy = 0, r = 13, rInner = r * 0.6, teeth = 8;
   let d = "";
   for (let i = 0; i < teeth; i++) {
     const a0 = (Math.PI * 2 * i) / teeth;
@@ -29,91 +28,74 @@ function gearIcon(color) {
     const p = (a, rr) => `${(cx + Math.cos(a) * rr).toFixed(1)} ${(cy + Math.sin(a) * rr).toFixed(1)}`;
     d += `${i === 0 ? "M" : "L"}${p(a0, rInner)} L${p(a0, r)} L${p(a1, r)} L${p(a2, rInner)} `;
   }
-  d += "Z";
-  return `<g><path d="${d}" fill="${color}"/><circle cx="0" cy="0" r="${r * 0.34}" fill="none" stroke="${INK}" stroke-width="2.5"/></g>`;
+  return `<path d="${d}Z"/><circle cx="0" cy="0" r="${(r * 0.32).toFixed(1)}"/>`;
 }
-
-function flagIcon(color) {
-  return `<g><line x1="-12" y1="-20" x2="-12" y2="20" stroke="${color}" stroke-width="3" stroke-linecap="round"/><path d="M-12 -18 H14 L6 -8 L14 2 H-12 Z" fill="${color}"/></g>`;
+function flagGlyph() {
+  return `<path d="M-9 -16 V16"/><path d="M-9 -14 H10 L3 -6 L10 2 H-9"/>`;
 }
-
-function trainIcon(color) {
-  return `<g><path d="M-16 -4 C-16 -16 -8 -18 0 -18 C10 -18 16 -14 16 -4 V10 H-16 Z" fill="none" stroke="${color}" stroke-width="3" stroke-linejoin="round"/><line x1="-16" y1="-2" x2="16" y2="-2" stroke="${color}" stroke-width="2.5"/><circle cx="-7" cy="-9" r="3.4" fill="${color}"/><circle cx="7" cy="-9" r="3.4" fill="${color}"/><circle cx="-9" cy="16" r="4" fill="${color}"/><circle cx="9" cy="16" r="4" fill="${color}"/></g>`;
+function trainGlyph() {
+  return `<path d="M-12 -2 C-12 -12 -6 -14 0 -14 C7 -14 12 -10 12 -2 V8 H-12 Z"/><path d="M-12 0 H12"/><circle cx="-6" cy="12" r="3"/><circle cx="6" cy="12" r="3"/>`;
 }
-
-function lotusIcon(color, alt) {
-  const petal = (angle, len, w) => {
+function lotusGlyph() {
+  const petal = (angle, len) => {
     const rad = (angle * Math.PI) / 180;
     const tipX = Math.sin(rad) * len;
     const tipY = -Math.cos(rad) * len;
-    const nx = Math.cos(rad) * w;
-    const ny = Math.sin(rad) * w;
-    return `<path d="M0 4 Q${(-nx).toFixed(1)} ${(4 + ny * 0.4).toFixed(1)} ${tipX.toFixed(1)} ${tipY.toFixed(1)} Q${nx.toFixed(1)} ${(4 + ny * 0.4).toFixed(1)} 0 4 Z" fill="${color}"/>`;
+    return `<path d="M0 4 Q${(-len * 0.3).toFixed(1)} 0 ${tipX.toFixed(1)} ${tipY.toFixed(1)} Q${(len * 0.3).toFixed(1)} 0 0 4 Z"/>`;
   };
-  return `<g>${petal(-46, 20, 8)}${petal(-22, 24, 7)}${petal(0, 26, 7.5)}${petal(22, 24, 7)}${petal(46, 20, 8)}<path d="M-18 6 Q0 16 18 6 Q0 12 -18 6 Z" fill="${alt}"/></g>`;
+  return `${petal(-40, 16)}${petal(-16, 19)}${petal(0, 21)}${petal(16, 19)}${petal(40, 16)}<path d="M-14 4 Q0 10 14 4"/>`;
 }
-
-function starIcon(color) {
+function starGlyph() {
   const pts = [];
   for (let i = 0; i < 10; i++) {
-    const r = i % 2 === 0 ? 18 : 8;
+    const r = i % 2 === 0 ? 15 : 6.5;
     const a = (Math.PI * 2 * i) / 10 - Math.PI / 2;
     pts.push(`${(Math.cos(a) * r).toFixed(1)},${(Math.sin(a) * r).toFixed(1)}`);
   }
-  return `<polygon points="${pts.join(" ")}" fill="${color}"/>`;
+  return `<polygon points="${pts.join(" ")}"/>`;
+}
+function checkGlyph() {
+  return `<circle cx="0" cy="0" r="15"/><path d="M-7 0 L-1 6 L9 -7"/>`;
 }
 
-function checkIcon(color) {
-  return `<g><circle cx="0" cy="0" r="18" fill="none" stroke="${color}" stroke-width="3"/><path d="M-9 0 L-2 8 L11 -9" fill="none" stroke="${color}" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></g>`;
-}
-
-const ICONS = {
-  "iso-9001-2015": (c) => shieldIcon(c),
-  "ce-marking": (c) => ceIcon(c),
-  "gst-registered": (c) => documentIcon(c),
-  "msme-udyam": (c) => gearIcon(c),
-  "iec-import-export-code": (c) => flagIcon(c),
-  "indian-railways-vendor": (c) => trainIcon(c),
-  "make-in-india": (c, alt) => lotusIcon(c, alt),
-  "startup-india": (c) => starIcon(c),
-  bis: (c) => checkIcon(c),
+const GLYPHS = {
+  "iso-9001-2015": shieldGlyph,
+  "ce-marking": ceGlyph,
+  "gst-registered": documentGlyph,
+  "msme-udyam": gearGlyph,
+  "iec-import-export-code": flagGlyph,
+  "indian-railways-vendor": trainGlyph,
+  "make-in-india": lotusGlyph,
+  "startup-india": starGlyph,
+  bis: checkGlyph,
 };
 
-const TINTS = [SPARK, STEEL, STEEL_LIGHT];
-
-/** Rosette / ribbon certificate badge with a centre icon, the certificate name
- * and an issuer line lettered across it. `index` cycles the accent tint. */
-export function certBadgeSvg(width, height, name, issuer, slug, index = 0) {
-  const accent = TINTS[index % TINTS.length];
-  const bg = accent === SPARK ? STEEL_SOFT : SPARK_SOFT;
+/** Minimal ring badge: ink outer ring, teal inner accent ring, a small centre
+ * glyph and the certificate name lettered below. Transparent background. */
+export function certBadgeSvg(width, height, name, issuer, slug) {
   const cx = width / 2;
   const cy = height * 0.4;
-  const rOuter = width * 0.32;
-  const rInner = rOuter * 0.8;
-  let petals = "";
-  for (let i = 0; i < 14; i++) {
-    const a = (Math.PI * 2 * i) / 14;
-    const px = cx + Math.cos(a) * rOuter;
-    const py = cy + Math.sin(a) * rOuter;
-    petals += `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${(rOuter * 0.2).toFixed(1)}" fill="${accent}"/>`;
-  }
-  const iconFn = ICONS[slug] || checkIcon;
-  const icon = `<g transform="translate(${cx} ${cy - rInner * 0.42}) scale(1.15)">${iconFn(WHITE, SPARK_LIGHT)}</g>`;
+  const rOuter = width * 0.28;
+  const rInner = rOuter * 0.82;
 
-  const lines = wrapLines(name, 13);
-  const lineHeight = 20;
-  const startY = cy + rInner * 0.12 + 7;
+  const glyphFn = GLYPHS[slug] || checkGlyph;
+  const glyph = `<g transform="translate(${cx} ${cy})">${glyphFn()}</g>`;
+
+  const lines = wrapLines(name, 16);
+  const lineHeight = 22;
+  const startY = cy + rOuter + 40;
   const nameText = lines
     .map(
       (line, i) =>
-        `<text x="${cx}" y="${startY + i * lineHeight}" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="${WHITE}">${escapeXml(line)}</text>`,
+        `<text x="${cx}" y="${startY + i * lineHeight}" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="${INK}">${escapeXml(line)}</text>`,
     )
     .join("");
   const issuerText = issuer
-    ? `<text x="${cx}" y="${startY + lines.length * lineHeight + 14}" text-anchor="middle" font-family="Arial, sans-serif" font-size="10.5" font-weight="600" fill="${WHITE}" opacity="0.62" letter-spacing="0.4">${escapeXml(issuer)}</text>`
+    ? `<text x="${cx}" y="${startY + lines.length * lineHeight + 16}" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="600" fill="#5B5F68" letter-spacing="0.3">${escapeXml(issuer)}</text>`
     : "";
 
-  const tailY = cy + rInner * 0.72;
-  const content = `${petals}<circle cx="${cx}" cy="${cy}" r="${rInner}" fill="${INK}"/><circle cx="${cx}" cy="${cy}" r="${rInner - 10}" fill="none" stroke="${WHITE}" stroke-width="2" stroke-dasharray="4 5" opacity="0.5"/>${icon}${nameText}${issuerText}<path d="M${cx - 38} ${tailY} L${cx - 14} ${tailY + 76} L${cx} ${tailY + 44} L${cx + 14} ${tailY + 76} L${cx + 38} ${tailY} Z" fill="${accent}"/>`;
-  return scene({ width, height, bg, content });
+  const rings = lineArt(`<circle cx="${cx}" cy="${cy}" r="${rOuter}"/>`) + lineArt(`<circle cx="${cx}" cy="${cy}" r="${rInner}"/>`, { color: TEAL, opacity: 0.7 });
+
+  const content = `${rings}${lineArt(glyph)}${nameText}${issuerText}`;
+  return scene({ width, height, content });
 }

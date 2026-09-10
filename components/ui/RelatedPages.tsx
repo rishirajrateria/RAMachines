@@ -1,7 +1,7 @@
 /**
- * components/ui/RelatedPages.tsx — "related pages" internal-linking module for the
- * bottom of programmatic pages (states, cities, countries, products). Rendered as
- * rounded chip-style link tiles (ADR-0002) rather than a bare text list.
+ * components/ui/RelatedPages.tsx — "related pages" internal-linking module for
+ * the bottom of programmatic pages (states, cities, countries, products).
+ * ADR-0005: rendered as glass pill/tile links rather than orange-bordered chips.
  */
 import Link from "next/link";
 import { ArrowRight } from "./Icons";
@@ -20,19 +20,12 @@ export default function RelatedPages({
       <ul className="flex flex-wrap gap-2.5">
         {links.map((link) => (
           <li key={link.href}>
-            <Link
-              href={link.href}
-              className="group flex items-center gap-2 rounded-lg border border-grey-200 bg-white px-4 py-2.5 text-sm text-ink transition-colors hover:border-spark hover:text-spark-hover"
-            >
+            <Link href={link.href} className="glass glass-hover group flex items-center gap-2 px-4 py-2.5 text-sm text-ink">
               <span>
                 {link.name}
                 {link.hint && <span className="block text-xs text-grey-500">{link.hint}</span>}
               </span>
-              <ArrowRight
-                width={14}
-                height={14}
-                className="shrink-0 text-grey-400 transition-transform group-hover:translate-x-0.5 group-hover:text-spark"
-              />
+              <ArrowRight width={14} height={14} className="shrink-0 text-teal transition-transform group-hover:translate-x-0.5" />
             </Link>
           </li>
         ))}

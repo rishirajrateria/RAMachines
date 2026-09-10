@@ -1,6 +1,7 @@
 /**
- * components/ui/Chips.tsx — small pill list (industries at a glance, related-page tags,
- * spec highlights). Renders a link chip when `href` is given, a static chip otherwise.
+ * components/ui/Chips.tsx — ADR-0005 §5: small glass pills (`.chip`, 34px tall).
+ * Used sparingly — max one row per page section. Renders a link chip when `href`
+ * is given, a static chip otherwise.
  */
 import Link from "next/link";
 import { Icon, type IconName } from "./Icons";
