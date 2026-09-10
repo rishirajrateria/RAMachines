@@ -271,3 +271,8 @@ export const categories: Category[] = [
     image: { src: "/categories/robotic-welding-systems.webp", alt: "Six-axis robot arm MIG welding a steel bracket assembly", width: 1200, height: 800 },
   },
 ];
+
+/** Look up a category by slug (undefined if unknown). */
+export function getCategory(slug: string): Category | undefined {
+  return categories.find((c) => c.slug === slug);
+}

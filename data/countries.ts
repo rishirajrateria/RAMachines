@@ -58,8 +58,9 @@ export function countriesByRegion(): Record<WorldRegion, Country[]> {
   return grouped;
 }
 
-export function topCountries(): Country[] {
-  return countries.filter((c) => c.isTop);
+export function topCountries(n?: number): Country[] {
+  const top = countries.filter((c) => c.isTop);
+  return n ? top.slice(0, n) : top;
 }
 
 export const countryCount = countries.length; // 30

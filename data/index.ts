@@ -12,4 +12,6 @@ export { cities, getCity, citiesByState, topCities } from "@/data/cities";
 export { countries, getCountry, countriesByRegion, topCountries } from "@/data/countries";
 export { certifications } from "@/data/certifications";
 export { testimonials } from "@/data/testimonials";
-export { homeFaqs } from "@/data/faqs";
+export { homeFaqs, repairFaqs, trainingFaqs, jobWorkFaqs, exportHubFaqs, aboutFaqs, certificationFaqs } from "@/data/faqs";
+export { indiaIndex } from "@/data/india-index";
+export type { Product, Category, State, City, Country, Certification, Testimonial, FaqItem } from "@/data/types";
