@@ -573,6 +573,10 @@ async function emit(key, width, height, quality) {
   const svg = photoSvg(key, width, height);
   const outPath = join(OUT_DIR, `${key}.webp`);
   await mkdir(dirname(outPath), { recursive: true });
+  if (key === "slot-factory") {
+    const { writeFile } = await import("node:fs/promises");
+    await writeFile(join(ROOT, "scripts", "_debug.svg"), svg);
+  }
   await sharp(Buffer.from(svg)).webp({ quality, effort: 6 }).toFile(outPath);
   return outPath;
 }

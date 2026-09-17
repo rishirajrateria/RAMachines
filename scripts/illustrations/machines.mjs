@@ -271,17 +271,28 @@ export function flatbedMachine(presetKey, { inUse = false } = {}) {
       <polygon points="${[gTL, gTR, gBR, gBL].map((p) => `${fmt(p[0])},${fmt(p[1])}`).join(" ")}" fill="url(#${glassG.id})"/>
       <path d="M${fmt(gTL[0])} ${fmt(gTL[1])} L${fmt(gTR[0])} ${fmt(gTR[1])}" stroke="#fff" stroke-width="1" opacity="0.35"/>`;
   } else if (p.enclosure === "cabin") {
+    // Operator cabin on a raised platform with a handrail, reached by steps —
+    // the tell for the largest machine in the range (ADR-0008 §1).
     const cabinX = cabX + 62;
-    const cabinBase = box3d(project, { x: cabinX, yGround: baseY - 6, z: 6, w: 54, h: 20, d: 30 }, { topFrom: METAL_LIGHT, topTo: METAL_MID });
-    const cabin = box3d(project, { x: cabinX + 6, yGround: baseY - 26, z: 10, w: 42, h: 46, d: 22 }, { frontFrom: BODY_TEAL_LIGHT, frontTo: GRAPHITE });
-    const winP = project(cabinX + 12, baseY - 50, 8);
-    const win = `<rect x="${fmt(winP[0])}" y="${fmt(winP[1])}" width="20" height="14" rx="2" fill="${GLASS}" opacity="0.4"/>`;
+    const cabinBase = box3d(project, { x: cabinX, yGround: baseY - 6, z: 6, w: 58, h: 20, d: 32 }, { topFrom: METAL_LIGHT, topTo: METAL_MID });
+    const cabin = box3d(project, { x: cabinX + 6, yGround: baseY - 26, z: 10, w: 46, h: 50, d: 24 }, { frontFrom: BODY_TEAL_LIGHT, frontTo: GRAPHITE });
+    const winTL = project(cabinX + 12, baseY - 56, 9);
+    const winBR = project(cabinX + 40, baseY - 34, 9);
+    const winG = linGrad(winTL[0], winTL[1], winBR[0], winBR[1], [
+      [0, "#E7F3F1", 0.55],
+      [100, GLASS, 0.3],
+    ]);
+    const win = `<defs>${winG.tag}</defs>
+      <rect x="${fmt(winTL[0])}" y="${fmt(winTL[1])}" width="${fmt(winBR[0] - winTL[0])}" height="${fmt(winBR[1] - winTL[1])}" rx="2" fill="url(#${winG.id})" stroke="#0B1414" stroke-width="1.2" opacity="0.95"/>
+      <line x1="${fmt((winTL[0] + winBR[0]) / 2)}" y1="${fmt(winTL[1])}" x2="${fmt((winTL[0] + winBR[0]) / 2)}" y2="${fmt(winBR[1])}" stroke="#0B1414" stroke-width="1" opacity="0.5"/>`;
+    const rail = limb(project(cabinX, baseY - 26, 6), project(cabinX + 58, baseY - 26, 6), 1.6, 1.6, { light: METAL_LIGHT });
+    const railPosts = [0, 0.5, 1].map((t) => limb(project(cabinX + 58 * t, baseY - 6, 6), project(cabinX + 58 * t, baseY - 26, 6), 1.4, 1.4, { light: METAL_LIGHT })).join("");
     const steps = Array.from({ length: 4 }, (_, i) => {
       const sy = baseY - i * 6;
-      const sx = cabinX - 4 - i * 10;
-      return box3d(project, { x: sx, yGround: sy, z: 6, w: 12, h: 6, d: 14 }, { topFrom: METAL_LIGHT, topTo: METAL_DARK });
+      const sx = cabinX - 6 - i * 11;
+      return box3d(project, { x: sx, yGround: sy, z: 6, w: 14, h: 6, d: 16 }, { topFrom: METAL_LIGHT, topTo: METAL_DARK });
     }).join("");
-    enclosureExtra = `${cabinBase}${cabin}${win}${steps}`;
+    enclosureExtra = `${cabinBase}${steps}${cabin}${win}${rail}${railPosts}`;
   }
 
   const shadowCx = (project(baseX, 0, 0)[0] + project(baseX + p.bedW, 0, p.bedD)[0]) / 2;
