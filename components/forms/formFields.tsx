@@ -1,17 +1,15 @@
 /**
- * components/forms/formFields.tsx — the field markup shared by the native,
- * zero-JS form (Web3Form.tsx) and its JS enhancement (FormClient.tsx), so the
- * two can never drift apart visually. Pure presentational pieces only — no
- * hooks, no "use client" — safe to import from a Server Component or a Client
- * Component alike.
+ * components/forms/formFields.tsx — the field markup for the native, zero-JS
+ * form engine (Web3Form.tsx). Pure presentational pieces only — no hooks, no
+ * state.
  *
  * `FieldRows` renders real HTML5 validation attributes (`required`,
  * `type="email"`, `pattern`/`title` for phone numbers, `minLength` on
  * required free-text fields) so the plain HTML form catches obviously-bad
  * input before it ever leaves the browser, with no JavaScript at all.
- * `errors` (client-only; always empty on the server-rendered pass) layers the
- * existing inline error message + `aria-invalid` on top once FormClient takes
- * over — it never changes what the browser-native validation already does.
+ * ADR-0010: the browser's own validation UI is the only validation UI — the
+ * hand-rolled `errors` / `aria-invalid` layer went away with FormClient, along
+ * with the client bundle it needed.
  */
 import { site } from "@/config/site";
 import { Icon } from "@/components/ui/Icons";

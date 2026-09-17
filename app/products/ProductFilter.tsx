@@ -1,27 +1,38 @@
-"use client";
-
 /**
- * app/products/ProductFilter.tsx — tiny client-side category filter for the
- * /products grid. All product cards are rendered on the server as `children`
- * (each wrapped in an element carrying a `data-category` attribute); this
- * component only toggles the native `hidden` attribute on those wrappers, so
- * with JavaScript disabled every card stays visible and the page still works.
- * ADR-0002: filter buttons are restyled as icon chips (the `.chip` pill look),
- * using `!` important utilities so the active state can override the shared
- * `.chip` colours without editing globals.css.
+ * app/products/ProductFilter.tsx — the category filter above the /products grid.
+ * All product cards are rendered on the server as `children` (each wrapped in an
+ * element carrying a `data-category` attribute); filtering only toggles the
+ * native `hidden` attribute on those wrappers.
+ *
+ * ADR-0010: a Server Component. The chips are real links to the category pages,
+ * so with JavaScript disabled every card stays visible and each chip still takes
+ * you somewhere useful (the category's own page). public/enhance.js intercepts
+ * the click and filters in place instead.
+ *
+ * They are therefore plain links in the markup — no `aria-pressed`, which is not
+ * a valid attribute on a link and would misdescribe them to assistive tech for
+ * any visitor without JavaScript, for whom they really are navigation. It is
+ * enhance.js, at the moment it takes the clicks over, that promotes them to
+ * `role="button"` and starts reporting `aria-pressed` — so the announced
+ * semantics always match what the control actually does.
+ *
+ * ADR-0002: chips use the `.chip` pill look, with `!` important utilities so the
+ * active state can override the shared `.chip` colours without editing globals.css.
  */
-import { Children, cloneElement, isValidElement, useState, type ReactElement, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Icon, type IconName } from "@/components/ui/Icons";
+import { paths } from "@/lib/urls";
 
 type FilterOption = { slug: string; name: string; icon?: IconName };
 
 const ALL = "all";
 
+/** Mirrors the class lists public/enhance.js toggles, so the two never drift. */
 function chipClass(active: boolean): string {
   return [
     "chip h-11 border transition-colors",
     active
-      ? "!border-teal !bg-teal !text-white [&_svg]:!text-white"
+      ? "is-active !border-teal !bg-teal !text-white [&_svg]:!text-white"
       : "border-transparent hover:!border-teal hover:!text-teal-hover",
   ].join(" ");
 }
@@ -33,43 +44,27 @@ export default function ProductFilter({
   categories: FilterOption[];
   children: ReactNode;
 }) {
-  const [active, setActive] = useState<string>(ALL);
-
   return (
     <div>
       <div role="group" aria-label="Filter machines by category" className="flex flex-wrap gap-2.5">
-        <button
-          type="button"
-          aria-pressed={active === ALL}
-          className={chipClass(active === ALL)}
-          onClick={() => setActive(ALL)}
-        >
+        <a data-filter={ALL} href={paths.products} className={chipClass(true)}>
           <Icon name="Layers" size={16} />
           All Machines
-        </button>
+        </a>
         {categories.map((category) => (
-          <button
+          <a
             key={category.slug}
-            type="button"
-            aria-pressed={active === category.slug}
-            className={chipClass(active === category.slug)}
-            onClick={() => setActive(category.slug)}
+            data-filter={category.slug}
+            href={`${paths.products}/${category.slug}`}
+            className={chipClass(false)}
           >
             {category.icon && <Icon name={category.icon} size={16} />}
             {category.name}
-          </button>
+          </a>
         ))}
       </div>
 
-      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {Children.map(children, (child) => {
-          if (!isValidElement(child)) return child;
-          const element = child as ReactElement<{ "data-category"?: string; hidden?: boolean }>;
-          const category = element.props["data-category"];
-          const hidden = active !== ALL && category !== active;
-          return cloneElement(element, { hidden });
-        })}
-      </div>
+      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">{children}</div>
     </div>
   );
 }

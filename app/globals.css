@@ -986,6 +986,41 @@ details[open] > .accordion-panel {
   pointer-events: auto;
 }
 
+/* ADR-0010 — no-JS fallback. The menu trigger is a real
+   `<a href="#mobile-nav-panel">`, so without public/enhance.js the sheet still
+   opens via `:target` and the whole mobile nav stays usable; the backdrop is an
+   anchor back to `#main`, which closes it again. `html.js` scopes these rules
+   off the moment enhance.js boots, so the JS path (which toggles `.is-open`)
+   is never fighting a `:target` match left over in the URL. */
+html:not(.js) .mobilenav-panel:target {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+html:not(.js) .mobilenav-panel:target ~ .mobilenav-backdrop,
+html:not(.js) .mobilenav-panel:target + .mobilenav-backdrop {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ---------------------------------------------------------------------------
+ * ADR-0010 — form success state, with no JavaScript.
+ * Web3Forms redirects a completed submission back to `…?sent=1#sent`, which
+ * makes the pre-rendered confirmation panel `:target`. The panel is hidden
+ * until then, and the form itself is swapped out for it, so the visitor sees a
+ * real confirmation instead of the page they just submitted from. Reverting to
+ * the form is a normal back-navigation.
+ * ------------------------------------------------------------------------- */
+.form-sent {
+  display: none;
+}
+.form-sent:target {
+  display: block;
+}
+.form-sent:target ~ .form-on-sent {
+  display: none;
+}
+
 /* ---------------------------------------------------------------------------
  * ADR-0006 §Polish — WhatsApp float: a soft green ring pulse, 2s loop, subtle.
  * `animation: none` under reduced motion (on top of the generic blanket rule

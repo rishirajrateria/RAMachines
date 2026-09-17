@@ -6,10 +6,11 @@
  * gz, app-only JS gz, CSS gz, referenced image bytes) and fails the build with
  * a clear message if any budget from ADR-0009 §"Targets" is broken:
  *
- *   - home page, modern-browser JS   > 130 KB gz
- *   - home page, app-only JS         >  15 KB gz
- *   - any single optimised image     > 120 KB   (raw bytes — already AVIF/WebP)
- *   - home page, first-view images   > 150 KB   (a 390px viewport)
+ *   - any route, modern-browser JS   >   8 KB gz  (ADR-0010)
+ *   - home, HTML                     >  19 KB gz  (ADR-0010)
+ *   - any other route, HTML          >  16 KB gz  (ADR-0010)
+ *   - any single optimised image     > 120 KB     (raw bytes — already AVIF/WebP)
+ *   - home page, first-view images   > 150 KB     (a 390px viewport)
  *
  * "Modern-browser JS" is every `<script src>` on the page that isn't marked
  * `nomodule` (a legacy-browser-only fallback bundle, if one exists, is never
@@ -40,9 +41,18 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT_DIR = path.join(ROOT, "out");
 const IMAGE_DIRS = ["photos", "products", "categories", "certs", "about"];
 
+// ADR-0010 targets. The JS and HTML budgets now apply to EVERY route, not just
+// home: with React stripped from the output there is no shared framework floor
+// to excuse an outlier, so any page that regresses is a real regression.
 const BUDGETS = {
-  homeModernJsGz: 130 * 1024,
-  homeAppJsGz: 15 * 1024,
+  anyRouteJsGz: 8 * 1024,
+  // Home is structurally the largest document on the site (hero + bento
+  // showcase + category grid + cert strip + FAQ + quote form), so it gets its
+  // own ceiling; every other route is held to the tighter one. A single flat
+  // budget set high enough for home would let an inner page double in size
+  // without anyone noticing.
+  homeHtmlGz: 19 * 1024,
+  anyRouteHtmlGz: 16 * 1024,
   singleImage: 120 * 1024,
   homeFirstViewImages: 150 * 1024,
 };
@@ -192,18 +202,17 @@ async function main() {
 
     rows.push({ route, htmlGz, jsGz, appJsGz, cssGz, imageBytes, firstViewBytes });
 
-    if (route === "/") {
-      if (jsGz > BUDGETS.homeModernJsGz) {
-        failures.push(`home modern-browser JS is ${fmt(jsGz)}, over the ${fmt(BUDGETS.homeModernJsGz)} budget`);
-      }
-      if (appJsGz > BUDGETS.homeAppJsGz) {
-        failures.push(`home app-only JS is ${fmt(appJsGz)}, over the ${fmt(BUDGETS.homeAppJsGz)} budget`);
-      }
-      if (firstViewBytes > BUDGETS.homeFirstViewImages) {
-        failures.push(
-          `home first-view (390px) image bytes are ${fmt(firstViewBytes)}, over the ${fmt(BUDGETS.homeFirstViewImages)} budget`,
-        );
-      }
+    if (jsGz > BUDGETS.anyRouteJsGz) {
+      failures.push(`${route} JS is ${fmt(jsGz)}, over the ${fmt(BUDGETS.anyRouteJsGz)} per-route budget`);
+    }
+    const htmlBudget = route === "/" ? BUDGETS.homeHtmlGz : BUDGETS.anyRouteHtmlGz;
+    if (htmlGz > htmlBudget) {
+      failures.push(`${route} HTML is ${fmt(htmlGz)}, over the ${fmt(htmlBudget)} budget`);
+    }
+    if (route === "/" && firstViewBytes > BUDGETS.homeFirstViewImages) {
+      failures.push(
+        `home first-view (390px) image bytes are ${fmt(firstViewBytes)}, over the ${fmt(BUDGETS.homeFirstViewImages)} budget`,
+      );
     }
   }
   rows.sort((a, b) => a.route.localeCompare(b.route));
