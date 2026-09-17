@@ -376,6 +376,12 @@ export function flatbedMachine(presetKey, { inUse = false } = {}) {
   const cabinet = controlCabinet(project, { x: cabX, yGround: baseY, z: 6, w: 46, h: 96, d: 26 }, p.label);
 
   let enclosureExtra = "";
+  // Translucent glass drawn separately from the opaque structure below — it
+  // sits closer to the camera than the machine body, so it has to be
+  // composited AFTER (on top of) the machine or the painter's-algorithm
+  // draw order occludes it backwards (glass hidden behind opaque bed/posts
+  // that are actually further away — ADR-0008 §1 critique pass 2).
+  let enclosureGlass = "";
   if (p.enclosure === "exchange") {
     // A visible two-deck shuttle table beside the bed (not a low box that
     // blends into the plinth) — the F3015 Pro tell.
@@ -388,8 +394,12 @@ export function flatbedMachine(presetKey, { inUse = false } = {}) {
     const riserA = limb(project(exX + 8, exLowerY - 6, 14), project(exX + 8, exUpperY - 6, 14), 2.4, 2.4, { light: METAL_LIGHT });
     const riserB = limb(project(exX + exW - 8, exLowerY - 6, 14), project(exX + exW - 8, exUpperY - 6, 14), 2.4, 2.4, { light: METAL_LIGHT });
     const deckUpper = box3d(project, { x: exX + 5, yGround: exUpperY, z: 12, w: exW - 10, h: 6, d: exD - 8 }, STEEL_PALETTE);
+    // The lower deck sits at bed height (exLowerY), not the true floor —
+    // support legs carry it the rest of the way down so its feet don't float.
+    const legA = limb(project(exX + 10, exLowerY, 10), project(exX + 10, baseY, 10), 3, 3, { light: METAL_MID, dark: GRAPHITE_DARK });
+    const legB = limb(project(exX + exW - 10, exLowerY, 10), project(exX + exW - 10, baseY, 10), 3, 3, { light: METAL_MID, dark: GRAPHITE_DARK });
     const exFeet = feet(project, [[exX + 10, 10], [exX + exW - 10, 10]], baseY + 2, 5);
-    enclosureExtra = `${exFeet}${deckLower}${riserA}${riserB}${deckUpper}`;
+    enclosureExtra = `${exFeet}${legA}${legB}${deckLower}${riserA}${riserB}${deckUpper}`;
   } else if (p.enclosure === "full") {
     // Two window panes (a vertical mullion) plus side posts and a top
     // valance — a full enclosure, not one flat pane.
@@ -406,11 +416,12 @@ export function flatbedMachine(presetKey, { inUse = false } = {}) {
     const frameL = limb(project(postXL - 10, gantryTopY, postZ - postD * 1.3), project(postXL - 10, postY + 10, postZ - postD * 1.3), 2, 2, { light: METAL_LIGHT });
     const frameR = limb(project(postXR + 10, gantryTopY, postZ - postD * 1.3), project(postXR + 10, postY + 10, postZ - postD * 1.3), 2, 2, { light: METAL_LIGHT });
     const valance = box3d(project, { x: postXL - 12, yGround: gantryTopY + 6, z: postZ - postD * 1.3 - 2, w: postXR - postXL + 24, h: 8, d: 4 }, TEAL_PALETTE);
-    enclosureExtra = `<defs>${glassG.tag}</defs>
+    enclosureExtra = valance;
+    enclosureGlass = `<defs>${glassG.tag}</defs>
       <polygon points="${[gTL, gTR, gBR, gBL].map((pt) => `${fmt(pt[0])},${fmt(pt[1])}`).join(" ")}" fill="url(#${glassG.id})"/>
       <line x1="${fmt(gMidTop[0])}" y1="${fmt(gMidTop[1])}" x2="${fmt(gMidBot[0])}" y2="${fmt(gMidBot[1])}" stroke="#5B6266" stroke-width="2" opacity="0.55"/>
       <path d="M${fmt(gTL[0])} ${fmt(gTL[1])} L${fmt(gTR[0])} ${fmt(gTR[1])}" stroke="#fff" stroke-width="1" opacity="0.35"/>
-      ${frameL}${frameR}${valance}`;
+      ${frameL}${frameR}`;
   } else if (p.enclosure === "cabin") {
     // Operator cabin on a raised platform with a handrail, reached by steps,
     // plus a satellite chiller/PSU cabinet and rooftop extraction ducting —
@@ -464,7 +475,7 @@ export function flatbedMachine(presetKey, { inUse = false } = {}) {
   const spark = inUse ? sparkBurst(headTip[0], headTip[1] + 30, 0.95) : "";
   const beamLine = inUse ? beamGlow(headTip[0], nozzleTipY, headTip[0], headTip[1] + 30, 2.4) : "";
 
-  const svg = `<g>${shadow}${reflection}${reflectContent}${beamLine}${spark}</g>`;
+  const svg = `<g>${shadow}${reflection}${reflectContent}${enclosureGlass}${beamLine}${spark}</g>`;
   const bbox = bboxOfPoints([...project.points, [shadowCx - p.bedW * 0.62, baseY + 10], [shadowCx + p.bedW * 0.62, baseY + 10]], 6);
   return {
     svg,
@@ -740,10 +751,10 @@ export function robotCellMachine(stations = 1, { inUse = false } = {}) {
   const pedestal = box3d(project, { x: pedX - 26, yGround: baseY, z: 10, w: 52, h: 64, d: 40 }, BLACK_PALETTE);
   const arm = robotArm(project, { baseX: pedX, baseY: baseY - 64, z: 30, reach: 1.1, inUse });
 
-  const turnCx = pedX + 128;
+  const turnCx = pedX + 118;
   const turnCz = 24;
   const turnP = project(turnCx, baseY, turnCz);
-  const turnR = 70;
+  const turnR = 58;
   const turnG = radGrad(turnP[0], turnP[1], turnR, [
     [0, METAL_LIGHT],
     [70, METAL_MID],
@@ -755,16 +766,18 @@ export function robotCellMachine(stations = 1, { inUse = false } = {}) {
   const stationOffsets = [-0.55, 0.55];
   const fixtures = stationOffsets
     .map((off) => {
-      const fx = turnCx + off * 56;
+      const fx = turnCx + off * 44;
       const fz = turnCz + (off < 0 ? -20 : 12);
-      return box3d(project, { x: fx - 24, yGround: baseY - 6, z: fz, w: 48, h: 24, d: 20 }, { topFrom: METAL_LIGHT, topTo: METAL_DARK, frontFrom: "#2E3A3A", frontTo: GRAPHITE_DARK });
+      return box3d(project, { x: fx - 20, yGround: baseY - 6, z: fz, w: 40, h: 22, d: 18 }, STEEL_PALETTE);
     })
     .join("");
 
   // Amber safety curtain partitioning the far side of the cell — a header
-  // rail plus overlapping translucent PVC strips.
-  const curtainX = cellX + cellW - 92;
-  const curtainW = 84;
+  // rail plus overlapping translucent PVC strips. Kept clear of the
+  // turntable/fixture cluster (which ends ~turnCx+turnR) so the strips don't
+  // overlap and muddy into it.
+  const curtainX = Math.max(cellX + cellW - 66, turnCx + turnR + 14);
+  const curtainW = cellX + cellW - 12 - curtainX;
   const curtainZ = 6;
   const curtainRail = limb(project(curtainX, baseY - 76, curtainZ), project(curtainX + curtainW, baseY - 76, curtainZ), 3, 3, { light: METAL_LIGHT });
   const curtainStrips = Array.from({ length: 8 }, (_, i) => {

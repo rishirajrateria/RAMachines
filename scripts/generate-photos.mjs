@@ -30,7 +30,17 @@ const TEAL_DEEP = "#0A2E2B";
 const AQUA = "#5EEAD4";
 const HAZE = "#F6F8F9";
 const AMBER = "#FFB067";
-const WARM = "#FFE3B8";
+const WARM = "#FFD9A8"; // warm lamp light, low opacity only
+const STEEL = "#4A5658"; // neutral steel-grey machine body, teal is an accent only
+const WALL_GREY = "#333B3C"; // neutral cool concrete-grey wall base, less green than GRAPHITE2
+const CONCRETE_NEAR = "#2A3133"; // floor near/bottom
+const CONCRETE_FAR = "#3E4749"; // floor far/top (subtle, roughly even)
+
+// One-point perspective room shell: horizon + inset vanishing points shared by
+// every interior template so the floor is always a trapezoid, never a triangle.
+const HORIZON_FRAC = 0.58;
+const VP_INSET_L = 0.3;
+const VP_INSET_R = 0.7;
 
 // --------------------------------------------------------------------------- PRNG / color
 function hashSeed(str) {
@@ -135,7 +145,26 @@ function trussBeam(w, y, taper, vpxFrac, op) {
     <polygon points="${insetL.toFixed(1)},${y} ${(w - insetR).toFixed(1)},${y} ${midR.toFixed(1)},${(y + depth).toFixed(1)} ${midL.toFixed(1)},${(y + depth).toFixed(1)}" fill="${GRAPHITE}" opacity="${op}"/>
     <line x1="${insetL.toFixed(1)}" y1="${y}" x2="${(w - insetR).toFixed(1)}" y2="${y}" stroke="${mix(GRAPHITE, "#FFFFFF", 0.3)}" stroke-width="1.5" opacity="${(op * 0.6).toFixed(2)}"/>`;
 }
-function floorPlane(w, h, vpx, vpy, near, far) {
+/**
+ * Correct one-point-perspective room shell. The horizon sits at vpy (~58% of
+ * height); the floor is bounded by two inset points on the horizon (30%/70%
+ * of width) instead of converging to a single point, so it is a TRAPEZOID,
+ * never a triangle. Ceiling mirrors the floor above the horizon, and a side
+ * wall triangle fills each flank so every pixel of the frame is covered by
+ * floor, wall or ceiling — no bare background, no dark voids beside the floor.
+ */
+function roomShell(w, h, vpx, vpy, { floorFill, ceilFill, sideFill }) {
+  const lx = w * VP_INSET_L, rx = w * VP_INSET_R;
+  return `
+    <polygon points="0,0 ${w},0 ${rx.toFixed(1)},${vpy.toFixed(1)} ${lx.toFixed(1)},${vpy.toFixed(1)}" fill="${ceilFill}"/>
+    <polygon points="0,0 ${lx.toFixed(1)},${vpy.toFixed(1)} 0,${h}" fill="${sideFill}"/>
+    <polygon points="${w},0 ${rx.toFixed(1)},${vpy.toFixed(1)} ${w},${h}" fill="${sideFill}"/>
+    <polygon points="0,${h} ${w},${h} ${rx.toFixed(1)},${vpy.toFixed(1)} ${lx.toFixed(1)},${vpy.toFixed(1)}" fill="${floorFill}"/>`;
+}
+/** Grid lines confined to the floor trapezoid: converging lines all meet the
+ * single vpx/vpy vanishing point (which sits on the horizon between the inset
+ * points), horizontal lines get closer together with distance. */
+function floorGrid(w, h, vpx, vpy) {
   let grid = "";
   const cols = 9;
   for (let i = 0; i <= cols; i++) {
@@ -147,47 +176,62 @@ function floorPlane(w, h, vpx, vpy, near, far) {
     const y = h - (h - vpy) * (1 - Math.pow(1 - t, 1.7));
     grid += `<line x1="0" y1="${y.toFixed(1)}" x2="${w}" y2="${y.toFixed(1)}" stroke="#FFFFFF" stroke-width="1.4" stroke-opacity="${(0.2 * (1 - t) + 0.03).toFixed(3)}"/>`;
   }
-  return `
-    <polygon points="0,${h} ${w},${h} ${vpx.toFixed(1)},${vpy.toFixed(1)}" fill="url(#floorGrad)"/>
-    ${grid}
-    <polygon points="0,${h} ${w},${h} ${(vpx + (w - vpx) * 0.3).toFixed(1)},${(vpy + (h - vpy) * 0.55).toFixed(1)} ${(vpx * 0.7).toFixed(1)},${(vpy + (h - vpy) * 0.55).toFixed(1)}" fill="#FFFFFF" opacity="0.03"/>`;
+  return grid;
+}
+/** Gives a flat rect real volume: a lighter top-face band (catches the key
+ * light), the body as the mid front face, and a darker side-face band along
+ * the trailing edge (in shadow) — plus callers add a contact shadow. */
+function bevelBox(x, y, w, h, body, { rx = 3, topT = 0.16, sideT = 0.14, mirror = false } = {}) {
+  const topH = h * topT, sideW = w * sideT;
+  const top = mix(body, "#FFFFFF", 0.4);
+  const side = mix(body, "#000000", 0.4);
+  const sideX = mirror ? x : x + w - sideW;
+  return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${w.toFixed(1)}" height="${h.toFixed(1)}" rx="${rx}" fill="${body}"/>
+    <rect x="${sideX.toFixed(1)}" y="${y.toFixed(1)}" width="${sideW.toFixed(1)}" height="${h.toFixed(1)}" rx="${rx}" fill="${side}" opacity="0.55"/>
+    <rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${w.toFixed(1)}" height="${topH.toFixed(1)}" rx="${rx}" fill="${top}" opacity="0.8"/>`;
 }
 function machineShape(kind, body, accent, glow) {
   if (kind === "tube") {
-    return `<rect x="-40" y="-158" width="16" height="60" rx="3" fill="${body}"/><rect x="-190" y="-6" width="380" height="26" rx="13" fill="${accent}"/>
-      <ellipse cx="-190" cy="7" rx="10" ry="15" fill="${body}"/><ellipse cx="190" cy="7" rx="10" ry="15" fill="${body}"/>
-      <rect x="-210" y="30" width="34" height="44" rx="4" fill="${body}"/><rect x="176" y="30" width="34" height="44" rx="4" fill="${body}"/>
-      <rect x="-70" y="30" width="30" height="40" rx="3" fill="${body}"/><rect x="40" y="30" width="30" height="40" rx="3" fill="${body}"/>
+    // Steel roller bed with a single slim teal accent stripe, not a solid teal bar.
+    return `${bevelBox(-40, -158, 16, 60, body, { rx: 3 })}${bevelBox(-190, -6, 380, 26, body, { rx: 13 })}
+      <rect x="-186" y="1" width="372" height="6" rx="3" fill="${accent}"/>
+      <ellipse cx="-190" cy="7" rx="10" ry="15" fill="${mix(body, "#000000", 0.2)}"/><ellipse cx="190" cy="7" rx="10" ry="15" fill="${mix(body, "#000000", 0.2)}"/>
+      ${bevelBox(-210, 30, 34, 44, body, { rx: 4 })}${bevelBox(176, 30, 34, 44, body, { rx: 4 })}
+      ${bevelBox(-70, 30, 30, 40, accent, { rx: 3 })}${bevelBox(40, 30, 30, 40, accent, { rx: 3 })}
       <circle cx="0" cy="7" r="5" fill="${glow}"/>`;
   }
   if (kind === "co2") {
-    return `<rect x="-170" y="-4" width="340" height="100" rx="10" fill="${body}"/>
+    return `${bevelBox(-170, -4, 340, 100, body, { rx: 10 })}
       <polygon points="-170,-4 170,-4 150,-72 -150,-72" fill="${accent}"/>
+      <polygon points="-150,-72 150,-72 150,-58 -150,-58" fill="${mix(accent, "#FFFFFF", 0.45)}" opacity="0.7"/>
       <rect x="-140" y="14" width="280" height="60" rx="4" fill="${glow}" fill-opacity="0.2"/>
       <line x1="-140" y1="24" x2="140" y2="24" stroke="${glow}" stroke-opacity="0.3" stroke-width="2"/>
       <line x1="-140" y1="44" x2="140" y2="44" stroke="${glow}" stroke-opacity="0.3" stroke-width="2"/>
       <line x1="-140" y1="64" x2="140" y2="64" stroke="${glow}" stroke-opacity="0.3" stroke-width="2"/>
-      <rect x="-30" y="96" width="14" height="30" rx="2" fill="${body}"/><rect x="20" y="96" width="14" height="30" rx="2" fill="${body}"/>`;
+      <rect x="-30" y="96" width="14" height="30" rx="2" fill="${mix(body, "#000000", 0.3)}"/><rect x="20" y="96" width="14" height="30" rx="2" fill="${mix(body, "#000000", 0.3)}"/>`;
   }
   if (kind === "robot") {
-    return `<rect x="-56" y="96" width="112" height="30" rx="6" fill="${body}"/><rect x="-18" y="10" width="36" height="92" rx="10" fill="${accent}"/>
-      <circle cx="0" cy="10" r="24" fill="${accent}"/><g transform="rotate(-28)"><rect x="0" y="-15" width="164" height="30" rx="12" fill="${accent}"/></g>
-      <circle cx="145" cy="-54" r="18" fill="${body}"/><g transform="translate(145,-54) rotate(38)"><rect x="0" y="-12" width="108" height="24" rx="10" fill="${body}"/></g>
+    // Steel-grey arm links; teal stays confined to the joint rings and shoulder collar.
+    return `${bevelBox(-56, 96, 112, 30, body, { rx: 6 })}${bevelBox(-18, 10, 36, 92, body, { rx: 10 })}
+      <circle cx="0" cy="10" r="24" fill="${body}"/><circle cx="0" cy="10" r="24" fill="none" stroke="${accent}" stroke-width="5" opacity="0.85"/>
+      <g transform="rotate(-28)">${bevelBox(0, -15, 164, 30, body, { rx: 12 })}</g>
+      <circle cx="145" cy="-54" r="18" fill="${accent}"/><g transform="translate(145,-54) rotate(38)">${bevelBox(0, -12, 108, 24, body, { rx: 10 })}</g>
       <polygon points="240,-34 276,-12 262,24 226,4" fill="${glow}" opacity="0.9"/>`;
   }
   // gantry (default laser cutter)
-  return `<rect x="-220" y="68" width="440" height="24" rx="6" fill="${body}"/>
-    <rect x="-190" y="-16" width="18" height="86" rx="4" fill="${body}"/><rect x="170" y="-16" width="18" height="86" rx="4" fill="${body}"/>
-    <rect x="-205" y="-40" width="410" height="26" rx="6" fill="${accent}"/>
-    <rect x="-8" y="-14" width="16" height="66" rx="3" fill="${accent}"/>
-    <rect x="164" y="0" width="56" height="70" rx="8" fill="${body}"/><rect x="180" y="16" width="24" height="16" rx="2" fill="${glow}" fill-opacity="0.55"/>
+  return `${bevelBox(-220, 68, 440, 24, mix(body, "#000000", 0.15), { rx: 6 })}
+    ${bevelBox(-190, -16, 18, 86, body, { rx: 4 })}${bevelBox(170, -16, 18, 86, body, { rx: 4 })}
+    ${bevelBox(-205, -40, 410, 26, accent, { rx: 6 })}
+    ${bevelBox(-8, -14, 16, 66, accent, { rx: 3 })}
+    ${bevelBox(164, 0, 56, 70, body, { rx: 8 })}<rect x="180" y="16" width="24" height="16" rx="2" fill="${glow}" fill-opacity="0.55"/>
     <rect x="-170" y="10" width="300" height="40" rx="3" fill="${GRAPHITE}" fill-opacity="0.45"/>
     <rect x="-205" y="-42" width="410" height="4" fill="${mix(accent, "#FFFFFF", 0.5)}" opacity="0.6"/>`;
 }
-function machineUnit(kind, x, y, scale, mirror, tint, op) {
+function machineUnit(kind, x, y, scale, mirror, depthT, op) {
   const sx = (mirror ? -1 : 1) * scale;
-  const body = mix(tint, GRAPHITE, 0.2);
-  const accent = mix(tint, "#FFFFFF", 0.32);
+  // Steel-grey body, cooling/desaturating with distance; teal stays confined to accent panels.
+  const body = atmo(mix(STEEL, GRAPHITE, 0.35), depthT * 0.7);
+  const accent = atmo(mix(TEAL, AQUA, 0.2), depthT * 0.5);
   const glow = mix(AQUA, "#FFFFFF", 0.2);
   return `
     <ellipse cx="${x.toFixed(1)}" cy="${(y + 14 * scale).toFixed(1)}" rx="${(160 * scale).toFixed(1)}" ry="${(20 * scale).toFixed(1)}" fill="#050A09" opacity="${(op * 0.4).toFixed(2)}" filter="url(#blurS)"/>
@@ -205,25 +249,27 @@ function personFig(x, y, scale, mirror, tool, tint, op) {
     </g>`;
 }
 function crateShape(x, y, scale, tint, op) {
-  return `<g transform="translate(${x} ${y}) scale(${scale})" fill="${tint}" opacity="${op}">
-    <rect x="-70" y="-56" width="140" height="112" rx="3"/>
-    <line x1="-70" y1="-2" x2="70" y2="-2" stroke="${GRAPHITE}" stroke-width="4"/>
-    <line x1="0" y1="-56" x2="0" y2="56" stroke="${GRAPHITE}" stroke-width="4"/>
-    <ellipse cx="0" cy="60" rx="76" ry="12" fill="#050A09" opacity="0.3" filter="url(#blurXS)"/>
+  return `<g transform="translate(${x} ${y}) scale(${scale})" opacity="${op}">
+    <ellipse cx="0" cy="60" rx="86" ry="14" fill="#050A09" opacity="0.35" filter="url(#blurXS)"/>
+    ${bevelBox(-70, -56, 140, 112, tint, { rx: 3 })}
+    <line x1="-70" y1="-2" x2="70" y2="-2" stroke="${mix(tint, "#000000", 0.4)}" stroke-width="4"/>
+    <line x1="0" y1="-56" x2="0" y2="56" stroke="${mix(tint, "#000000", 0.4)}" stroke-width="4"/>
   </g>`;
 }
 function shelfRack(x, y, scale, tint, op) {
   const frame = mix(tint, "#FFFFFF", 0.45);
   const bin = mix(tint, "#FFFFFF", 0.2);
+  const binAccent = mix(tint, AQUA, 0.4);
   return `<g transform="translate(${x} ${y}) scale(${scale})" opacity="${op}">
+    <ellipse cx="0" cy="196" rx="200" ry="18" fill="#050A09" opacity="0.3" filter="url(#blurS)"/>
     <g fill="${frame}">
       <rect x="-190" y="-190" width="10" height="380"/><rect x="180" y="-190" width="10" height="380"/>
       <rect x="-190" y="-190" width="380" height="8"/><rect x="-190" y="-58" width="380" height="8"/><rect x="-190" y="74" width="380" height="8"/><rect x="-190" y="184" width="380" height="8"/>
     </g>
-    <rect x="-166" y="-172" width="58" height="102" rx="3" fill="${bin}"/><rect x="-84" y="-166" width="68" height="96" rx="3" fill="${AMBER}" opacity="0.75"/>
-    <rect x="8" y="-170" width="58" height="100" rx="3" fill="${bin}"/><rect x="96" y="-162" width="70" height="92" rx="3" fill="${AQUA}" opacity="0.6"/>
-    <rect x="-160" y="-40" width="68" height="90" rx="3" fill="${AMBER}" opacity="0.6"/><rect x="-64" y="-36" width="80" height="86" rx="3" fill="${bin}"/>
-    <rect x="44" y="-42" width="68" height="92" rx="3" fill="${bin}"/>
+    ${bevelBox(-166, -172, 58, 102, bin, { rx: 3 })}${bevelBox(-84, -166, 68, 96, binAccent, { rx: 3 })}
+    ${bevelBox(8, -170, 58, 100, bin, { rx: 3 })}${bevelBox(96, -162, 70, 92, binAccent, { rx: 3 })}
+    ${bevelBox(-160, -40, 68, 90, binAccent, { rx: 3 })}${bevelBox(-64, -36, 80, 86, bin, { rx: 3 })}
+    ${bevelBox(44, -42, 68, 92, bin, { rx: 3 })}
   </g>`;
 }
 function sparkBurst(x, y, rnd, scale, n = 13) {
@@ -252,33 +298,26 @@ function bokehField(rnd, w, h, count, dark) {
   }
   return out;
 }
-function skyWall(w, h, top, bottom, dir) {
-  return `<defs><linearGradient id="skyGrad" x1="${dir.x1}" y1="${dir.y1}" x2="${dir.x2}" y2="${dir.y2}"><stop offset="0%" stop-color="${top}"/><stop offset="100%" stop-color="${bottom}"/></linearGradient></defs><rect width="${w}" height="${h}" fill="url(#skyGrad)"/>`;
-}
-const DIRECTIONS = [
-  { x1: "0%", y1: "0%", x2: "100%", y2: "100%" },
-  { x1: "100%", y1: "0%", x2: "0%", y2: "100%" },
-  { x1: "20%", y1: "0%", x2: "80%", y2: "100%" },
-];
-
 // --------------------------------------------------------------------------- Template: interior room
 function interiorRoom(rnd, w, h, opts) {
   const { hue = 0, populate = "machines", person = true, crates = false, dark = false, biasRight = false } = opts;
-  const vpx = w * (biasRight ? 0.56 + rnd() * 0.1 : 0.4 + rnd() * 0.16);
-  const vpy = h * (0.26 + rnd() * 0.07);
-  const wallTop = mix(dark ? INK : GRAPHITE, TEAL_DEEP, 0.1 + rnd() * 0.1);
-  const wallBottom = mix(TEAL_DEEP, dark ? "#1B4440" : TEAL, 0.55);
-  const floorNear = mix(dark ? "#0E1D1B" : GRAPHITE2, TEAL_DEEP, 0.3);
-  const floorFar = atmo(floorNear, 0.38);
+  // Vanishing point stays well inside the inset horizon segment (30%-70% of
+  // width) so grid lines and machine lanes never cross into the wall triangles.
+  const vpx = w * (biasRight ? 0.52 + rnd() * 0.1 : 0.42 + rnd() * 0.1);
+  const vpy = h * (HORIZON_FRAC + (rnd() - 0.5) * 0.03);
+  // Steel-grey walls; teal is only a faint distant-haze accent, not the whole frame.
+  const wallTop = mix(dark ? INK : GRAPHITE, TEAL_DEEP, 0.06 + rnd() * 0.04);
+  const wallBottom = mix(WALL_GREY, TEAL_DEEP, 0.16);
+  const sideWall = mix(wallBottom, "#000000", 0.22);
+  // Concrete floor, near-even gradient (far/top slightly lighter+hazier, near/bottom darker).
+  const floorNear = dark ? mix(CONCRETE_NEAR, "#000000", 0.12) : CONCRETE_NEAR;
+  const floorFar = atmo(CONCRETE_FAR, 0.22);
   let out = `<defs>
     <linearGradient id="wallGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="${wallTop}"/><stop offset="100%" stop-color="${wallBottom}"/></linearGradient>
     <linearGradient id="floorGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="${floorFar}"/><stop offset="100%" stop-color="${floorNear}"/></linearGradient>
   </defs>`;
-  out += `<rect width="${w}" height="${vpy}" fill="url(#wallGrad)"/>`;
-  const sideWall = mix(wallBottom, "#000000", 0.18);
-  out += `<polygon points="0,0 ${vpx.toFixed(1)},${vpy.toFixed(1)} 0,${h}" fill="${sideWall}"/>`;
-  out += `<polygon points="${w},0 ${vpx.toFixed(1)},${vpy.toFixed(1)} ${w},${h}" fill="${sideWall}"/>`;
-  out += floorPlane(w, h, vpx, vpy, floorNear, wallTop);
+  out += roomShell(w, h, vpx, vpy, { floorFill: "url(#floorGrad)", ceilFill: "url(#wallGrad)", sideFill: sideWall });
+  out += floorGrid(w, h, vpx, vpy);
   // trusses: two beams receding toward the vanishing point
   out += trussBeam(w, vpy * 0.1, 1, vpx / w, "0.9");
   out += trussBeam(w, vpy * 0.42, 0.55, vpx / w, "0.75");
@@ -298,9 +337,8 @@ function interiorRoom(rnd, w, h, opts) {
     const x = lerp(laneNearX, laneFarX, t) + (rnd() - 0.5) * w * 0.02;
     const y = lerp(h * 0.9, vpy + (h - vpy) * 0.3, t);
     const scale = lerp(1.3, 0.16, t) * (w / 1800);
-    const tint = atmo(mix(TEAL, AQUA, 0.12), t * 0.9);
-    if (populate === "shelves") out += shelfRack(x, y, scale * 0.9, atmo(mix(GRAPHITE2, TEAL, 0.35), t), (0.95 - t * 0.3).toFixed(2));
-    else if (populate === "machines") out += machineUnit("gantry", x, y, scale, rnd() > 0.5, tint, (0.98 - t * 0.3).toFixed(2));
+    if (populate === "shelves") out += shelfRack(x, y, scale * 0.9, atmo(mix(GRAPHITE2, TEAL, 0.2), t), (0.95 - t * 0.3).toFixed(2));
+    else if (populate === "machines") out += machineUnit("gantry", x, y, scale, rnd() > 0.5, t, (0.98 - t * 0.3).toFixed(2));
   }
   if (person) {
     const px = lerp(w * (biasRight ? 0.5 : 0.36), vpx, 0.26);
@@ -317,16 +355,21 @@ function interiorRoom(rnd, w, h, opts) {
 // --------------------------------------------------------------------------- Template: machine working
 function machineWorking(rnd, w, h, opts) {
   const { kind = "gantry", sparks = true, hero = false, installation = false, finishedParts = false } = opts;
-  const dir = pick(rnd, DIRECTIONS);
-  const top = mix(INK, TEAL_DEEP, 0.35);
-  const bottom = mix(TEAL_DEEP, TEAL, 0.5);
-  let out = skyWall(w, h, top, bottom, dir);
-  const vpx = w * (0.5 + (rnd() - 0.5) * 0.2), vpy = h * 0.58;
-  out += `<defs><linearGradient id="floorGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="${mix(bottom, HAZE, 0.1)}"/><stop offset="100%" stop-color="${mix(GRAPHITE, TEAL_DEEP, 0.4)}"/></linearGradient></defs>`;
-  out += floorPlane(w, h, vpx, vpy, bottom, top);
+  const top = mix(INK, TEAL_DEEP, 0.1);
+  const bottom = mix(WALL_GREY, TEAL_DEEP, 0.16);
+  const vpx = w * (0.5 + (rnd() - 0.5) * 0.2), vpy = h * HORIZON_FRAC;
+  const sideWall = mix(bottom, "#000000", 0.22);
+  const floorNear = mix(GRAPHITE, CONCRETE_NEAR, 0.5);
+  const floorFar = atmo(CONCRETE_FAR, 0.2);
+  let out = `<defs>
+    <linearGradient id="wallGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="${top}"/><stop offset="100%" stop-color="${bottom}"/></linearGradient>
+    <linearGradient id="floorGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="${floorFar}"/><stop offset="100%" stop-color="${floorNear}"/></linearGradient>
+  </defs>`;
+  out += roomShell(w, h, vpx, vpy, { floorFill: "url(#floorGrad)", ceilFill: "url(#wallGrad)", sideFill: sideWall });
+  out += floorGrid(w, h, vpx, vpy);
   const mx = w * (hero ? 0.6 : 0.52), my = h * 0.58, scale = (hero ? 1.55 : 1.7) * (w / 1900);
   out += lampUnit(mx - scale * 60, h * 0.05, my - scale * 40, 1.5, true, "0.85");
-  out += machineUnit(kind, mx, my, scale, rnd() > 0.5, mix(TEAL, AQUA, 0.1), 0.98);
+  out += machineUnit(kind, mx, my, scale, rnd() > 0.5, 0, 0.98);
   const workX = mx + (kind === "tube" ? scale * 40 : scale * -6), workY = my + scale * (kind === "robot" ? -50 : 4);
   if (sparks) out += sparkBurst(workX, workY, rnd, scale * 1.1);
   if (installation) {
@@ -386,13 +429,18 @@ function macroShot(rnd, w, h, opts) {
 // --------------------------------------------------------------------------- Template: people scene
 function peopleScene(rnd, w, h, opts) {
   const { scene = "office", hero = false } = opts;
-  const dir = pick(rnd, DIRECTIONS);
-  const top = mix(hero ? INK : GRAPHITE, TEAL_DEEP, 0.3);
-  const bottom = mix(TEAL_DEEP, hero ? "#123632" : TEAL, 0.45);
-  let out = skyWall(w, h, top, bottom, dir);
-  const vpx = w * 0.5, vpy = h * 0.34;
-  out += `<defs><linearGradient id="floorGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="${atmo(bottom, 0.5)}"/><stop offset="100%" stop-color="${mix(GRAPHITE2, TEAL_DEEP, 0.3)}"/></linearGradient></defs>`;
-  out += floorPlane(w, h, vpx, vpy, bottom, top);
+  const top = mix(hero ? INK : GRAPHITE, TEAL_DEEP, 0.08);
+  const bottom = mix(WALL_GREY, TEAL_DEEP, 0.14);
+  const vpx = w * (0.44 + rnd() * 0.12), vpy = h * HORIZON_FRAC;
+  const sideWall = mix(bottom, "#000000", 0.22);
+  const floorNear = hero ? mix(CONCRETE_NEAR, "#000000", 0.1) : CONCRETE_NEAR;
+  const floorFar = atmo(CONCRETE_FAR, 0.2);
+  let out = `<defs>
+    <linearGradient id="wallGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="${top}"/><stop offset="100%" stop-color="${bottom}"/></linearGradient>
+    <linearGradient id="floorGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="${floorFar}"/><stop offset="100%" stop-color="${floorNear}"/></linearGradient>
+  </defs>`;
+  out += roomShell(w, h, vpx, vpy, { floorFill: "url(#floorGrad)", ceilFill: "url(#wallGrad)", sideFill: sideWall });
+  out += floorGrid(w, h, vpx, vpy);
   const winX = w * 0.72;
   for (let i = 0; i < 6; i++) {
     out += `<rect x="${(winX + i * 26).toFixed(1)}" y="0" width="6" height="${h * 0.5}" fill="${HAZE}" opacity="0.05" filter="url(#blurS)"/>`;
@@ -439,7 +487,7 @@ function peopleScene(rnd, w, h, opts) {
     for (const [ox, yf] of positions) out += personFig(w / 2 + ox * (w / 1700), h * yf, 1.1 * (w / 1700), ox > 0, false, atmo(GRAPHITE, 0.05), 0.94);
   } else if (scene === "service") {
     const mx = w * 0.62, my = h * 0.62, s = 1.3 * (w / 1700);
-    out += machineUnit("gantry", mx, my, s * 0.9, true, mix(GRAPHITE, TEAL_DEEP, 0.15), 0.8);
+    out += machineUnit("gantry", mx, my, s * 0.9, true, 0.35, 0.8);
     out += `<rect x="${(mx - 30 * s).toFixed(1)}" y="${(my - 10 * s).toFixed(1)}" width="${(60 * s).toFixed(1)}" height="${(50 * s).toFixed(1)}" fill="${INK}" opacity="0.85"/>
       <path d="M${(mx - 20 * s).toFixed(1)},${(my + 4 * s).toFixed(1)} q${10 * s},${14 * s} ${20 * s},0 t${20 * s},0" fill="none" stroke="${AMBER}" stroke-width="2" opacity="0.6"/>
       <circle cx="${(mx + 10 * s).toFixed(1)}" cy="${(my + 20 * s).toFixed(1)}" r="4" fill="${AQUA}"/>`;
