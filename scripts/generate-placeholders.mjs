@@ -19,7 +19,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { makeEmit, scene } from "./illustrations/common.mjs";
-import { machineForProduct, machineForCategory, BOX_W, BOX_H, GROUND_Y, placeInScene } from "./illustrations/machines.mjs";
+import { machineForProduct, machineForCategory, BOX_W, BOX_H, GROUND_Y, placeToFit } from "./illustrations/machines.mjs";
 import { heroPosterSvg } from "./illustrations/hero.mjs";
 import { factoryHallSvg, indiaReachSvg, worldReachSvg } from "./illustrations/about.mjs";
 import { certBadgeSvg } from "./illustrations/certs.mjs";
@@ -62,19 +62,25 @@ const CERTS = [
 
 /** front / detail (cropped, zoomed-in) / in-use (faint dashed motion trace)
  * angles for one product, composed transparently into a 1200×900 scene. */
+// Render at 2× the target raster (ADR-0008 §1 "Method that works") — crisper
+// edges/gradients than authoring straight at final size; emit() downsamples.
+const SS = 2;
+
 function productAngleSvg(product, angle) {
   const machine = machineForProduct(product.slug, { inUse: angle === "in-use" });
   let placed;
   if (angle === "detail") {
     const [vx, vy, vw, vh] = machine.detailCrop;
     const cropped = `<svg x="0" y="0" width="${BOX_W}" height="${BOX_H}" viewBox="${vx} ${vy} ${vw} ${vh}" preserveAspectRatio="xMidYMid slice">${machine.svg}</svg>`;
-    placed = `<g transform="translate(220 260) scale(1.7)">${cropped}</g>`;
+    placed = `<g transform="translate(${210 * SS} ${255 * SS}) scale(${1.75 * SS})">${cropped}</g>`;
   } else {
-    placed = placeInScene(machine.svg, 1200, 900, { scale: 1.9, groundRatio: 0.82 });
+    // Render fills ~80% of the tile (ADR-0008 §3), up from the old ~35%,
+    // fitted to the machine's actual projected bounding box.
+    placed = placeToFit(machine.svg, machine.bbox, 1200 * SS, 900 * SS, { fillRatio: 0.82, bottomMargin: 0.1 });
   }
   return scene({
-    width: 1200,
-    height: 900,
+    width: 1200 * SS,
+    height: 900 * SS,
     content: placed,
     caption: `${product.name} — ${angle === "front" ? "front view" : angle === "detail" ? "detail view" : "in use"}`,
   });
@@ -83,9 +89,10 @@ function productAngleSvg(product, angle) {
 function categorySvg(category) {
   const machine = machineForCategory(category.category);
   return scene({
-    width: 1200,
-    height: 800,
-    content: placeInScene(machine.svg, 1200, 800, { scale: 1.85, groundRatio: 0.82 }),
+    width: 1200 * SS,
+    height: 800 * SS,
+    // Slightly wider composition than a product tile (more headroom/margin).
+    content: placeToFit(machine.svg, machine.bbox, 1200 * SS, 800 * SS, { fillRatio: 0.72, bottomMargin: 0.12 }),
     caption: category.name,
   });
 }
@@ -135,15 +142,15 @@ async function main() {
     ];
     for (const [index, angle] of angles) {
       const svg = productAngleSvg(product, angle);
-      written.push(await emit(`products/${product.slug}-${index}.webp`, svg));
+      written.push(await emit(`products/${product.slug}-${index}.webp`, svg, { superSample: [1200, 900] }));
     }
   }
 
   for (const category of CATEGORIES) {
-    written.push(await emit(`categories/${category.slug}.webp`, categorySvg(category)));
+    written.push(await emit(`categories/${category.slug}.webp`, categorySvg(category), { superSample: [1200, 800] }));
   }
 
-  written.push(await emit("hero-poster.webp", heroPosterSvg(1920, 1080)));
+  written.push(await emit("hero-poster.webp", heroPosterSvg(1920 * SS, 1080 * SS), { superSample: [1920, 1080] }));
   written.push(await emit("about/factory.webp", factoryHallSvg(1600, 1000)));
   written.push(await emit("about/india-reach.webp", indiaReachSvg(1200, 750)));
   written.push(await emit("about/world-reach.webp", worldReachSvg(1200, 750)));
