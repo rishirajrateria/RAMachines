@@ -2,9 +2,12 @@
  * components/ui/IllustrationCard.tsx — ADR-0005 §5: a bigger glass card (India/
  * world reach, about highlights): image panel, optional badge, title, text and a
  * teal arrow link. The whole card is a single link.
+ *
+ * ADR-0009 §1: renders via `components/media/Img` (`<picture>`, AVIF/WebP
+ * srcset, LQIP) instead of `next/image` — the "tile" sizes recipe.
  */
-import Image from "next/image";
-import type { Img } from "@/data/types";
+import type { Img as ImgData } from "@/data/types";
+import Img from "@/components/media/Img";
 import { ArrowRight } from "./Icons";
 import GlassCard from "./GlassCard";
 
@@ -15,7 +18,7 @@ export default function IllustrationCard({
   href,
   badge,
 }: {
-  image: Img;
+  image: ImgData;
   title: string;
   text: string;
   href: string;
@@ -26,7 +29,7 @@ export default function IllustrationCard({
       href={href}
       artwork={
         <div className="relative aspect-[16/10] w-full">
-          <Image src={image.src} alt={image.alt} width={image.width} height={image.height} className="h-full w-full object-cover" />
+          <Img image={image} sizes="(min-width: 1024px) 33vw, 100vw" className="h-full w-full object-cover" />
           {badge && (
             <span className="glass-pill absolute left-3 top-3 text-xs font-semibold text-ink">{badge}</span>
           )}

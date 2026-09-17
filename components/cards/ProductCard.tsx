@@ -12,9 +12,12 @@
  * numerals) beneath the name — `compact` now gates that spec line instead of the
  * description. The footer hairline uses `border-[color:var(--hairline)]` so it
  * retints for free inside a `.band-deep` section.
+ *
+ * ADR-0009 §1: renders via `components/media/Img` (`<picture>`, AVIF/WebP
+ * srcset, LQIP) instead of `next/image` — the "tile" sizes recipe.
  */
-import Image from "next/image";
 import type { Product } from "@/data/types";
+import Img from "@/components/media/Img";
 import { paths } from "@/lib/urls";
 import { ArrowRight } from "@/components/ui/Icons";
 import GlassCard from "@/components/ui/GlassCard";
@@ -30,11 +33,9 @@ export default function ProductCard({ product, compact = false }: { product: Pro
       className="h-full"
       artwork={
         <div className="pedestal relative aspect-[4/3] w-full overflow-hidden bg-[radial-gradient(circle_at_50%_40%,rgba(15,118,110,0.10),transparent_70%)]">
-          <Image
-            src={image.src}
-            alt={image.alt}
-            width={image.width}
-            height={image.height}
+          <Img
+            image={image}
+            sizes="(min-width: 1024px) 33vw, 100vw"
             className="pedestal-render mx-auto h-full w-4/5 object-contain"
           />
         </div>

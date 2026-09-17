@@ -4,6 +4,11 @@
  * (including the job-work link, which per SPEC §3 appears in the footer only,
  * never in the nav), product categories, top cities, top countries,
  * certifications as small glass pill badges and legal links.
+ *
+ * ADR-0009 §2: every link in every column opts out of viewport prefetch
+ * (`prefetch={false}`) — the footer sits at the bottom of every page and its
+ * columns (12 cities, 10 countries, …) are exactly the "bulk link list" the App
+ * Router's per-viewport-`<Link>` prefetching gets expensive on.
  */
 import Link from "next/link";
 import { site } from "@/config/site";
@@ -56,7 +61,7 @@ export default function Footer() {
           <ul className="mt-3 space-y-2">
             {quickLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="text-grey-600 hover:text-teal">
+                <Link href={link.href} prefetch={false} className="text-grey-600 hover:text-teal">
                   {link.name}
                 </Link>
               </li>
@@ -68,7 +73,7 @@ export default function Footer() {
           <ul className="mt-3 space-y-2">
             {categories.map((category) => (
               <li key={category.slug}>
-                <Link href={paths.category(category.slug)} className="text-grey-600 hover:text-teal">
+                <Link href={paths.category(category.slug)} prefetch={false} className="text-grey-600 hover:text-teal">
                   {category.name}
                 </Link>
               </li>
@@ -81,7 +86,7 @@ export default function Footer() {
           <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2">
             {cities.map((city: City) => (
               <li key={city.slug}>
-                <Link href={paths.city(city.stateSlug, city.slug)} className="text-grey-600 hover:text-teal">
+                <Link href={paths.city(city.stateSlug, city.slug)} prefetch={false} className="text-grey-600 hover:text-teal">
                   {city.name}
                 </Link>
               </li>
@@ -94,7 +99,7 @@ export default function Footer() {
           <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2">
             {countries.map((country: Country) => (
               <li key={country.slug}>
-                <Link href={paths.country(country.slug)} className="text-grey-600 hover:text-teal">
+                <Link href={paths.country(country.slug)} prefetch={false} className="text-grey-600 hover:text-teal">
                   {country.name}
                 </Link>
               </li>
@@ -109,7 +114,7 @@ export default function Footer() {
           <ul className="mt-4 flex flex-wrap items-center gap-2.5">
             {certifications.map((cert) => (
               <li key={cert.slug}>
-                <Link href={paths.certifications} className="chip">
+                <Link href={paths.certifications} prefetch={false} className="chip">
                   {cert.name}
                 </Link>
               </li>
@@ -132,10 +137,10 @@ export default function Footer() {
             </a>
           </div>
           <div className="flex gap-4">
-            <Link href={paths.privacy} className="hover:text-teal">
+            <Link href={paths.privacy} prefetch={false} className="hover:text-teal">
               Privacy Policy
             </Link>
-            <Link href={paths.terms} className="hover:text-teal">
+            <Link href={paths.terms} prefetch={false} className="hover:text-teal">
               Terms
             </Link>
           </div>

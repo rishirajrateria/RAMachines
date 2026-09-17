@@ -6,6 +6,10 @@
  * "dark" now renders a full-bleed `.band-deep` section (ink → teal-deep gradient,
  * faint grain, white heading/body text, glass surfaces retinted for dark) instead
  * of the ADR-0005/0006 inset `.glass-strong` panel — see app/globals.css.
+ *
+ * ADR-0009 §4: carries `.cv-auto` (`content-visibility: auto` +
+ * `contain-intrinsic-size`) — every `Section` below the fold skips layout/paint
+ * until it's actually relevant to the user.
  */
 import type { ReactNode } from "react";
 import Container from "./Container";
@@ -40,7 +44,7 @@ export default function Section({
   return (
     <section
       id={id}
-      className={`${tight ? "section-rhythm-tight" : "section-rhythm"} ${deep ? "band-deep grain" : ""} ${className}`.trim()}
+      className={`cv-auto ${tight ? "section-rhythm-tight" : "section-rhythm"} ${deep ? "band-deep grain" : ""} ${className}`.trim()}
     >
       <Container>
         <Reveal>

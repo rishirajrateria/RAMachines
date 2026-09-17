@@ -5,13 +5,15 @@
   "description": "RA Machine — laser cutting machine manufacturer & exporter, Kolkata. Fully static Next.js site.",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "postbuild": "node scripts/content-audit.mjs",
+    "build": "npm run optimize:images && next build",
+    "postbuild": "node scripts/content-audit.mjs && node scripts/perf-budget.mjs",
     "start": "serve out -l 3000",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "placeholders": "node scripts/generate-placeholders.mjs",
-    "audit:content": "node scripts/content-audit.mjs"
+    "audit:content": "node scripts/content-audit.mjs",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "perf:budget": "node scripts/perf-budget.mjs"
   },
   "dependencies": {
     "next": "15.5.25",

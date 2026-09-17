@@ -160,7 +160,19 @@ h3,
 /* ---------------------------------------------------------------------------
  * Glass surfaces — ADR-0005 §2. No hard borders, no tinted backgrounds, no
  * top-edge accents. Hover lifts 2px with a deeper shadow; both are neutralised
- * under prefers-reduced-motion below. Mobile drops blur for GPU budget.
+ * under prefers-reduced-motion below.
+ *
+ * ADR-0009 §4: `backdrop-filter` compositing is real paint cost on low-end
+ * Android, and most `.glass`/`.glass-strong`/`.glass-pill`/`.chip` surfaces on
+ * this site sit on the flat `#F6F8F9` canvas or a section background, not on
+ * imagery — a blurred backdrop is indistinguishable from a plain translucent
+ * one there. So the base rules below carry no `backdrop-filter` at all; it's
+ * added back only for the surfaces that actually overlap a photo or sit in a
+ * `.band-deep` dark section (ADR-0008 §3), each restored explicitly further
+ * down this file: `.header-pill` (floats over scrolling imagery), `.page-hero
+ * .glass-strong` (the hero panel), `.image-band .glass-strong` (the overlay
+ * pill on a full-bleed photo) and `.band-deep .glass/.glass-strong/.glass-pill/
+ * .chip` (panels on a dark band).
  * ------------------------------------------------------------------------- */
 /* ADR-0008 §3: `.glass`/`.glass-strong`/`.glass-pill` shadows refined to two layers —
    a tight contact shadow (grounds the surface) plus the original wide ambient shadow
@@ -169,8 +181,6 @@ h3,
 .glass {
   position: relative;
   background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.75);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.9),
@@ -181,8 +191,6 @@ h3,
 .glass-strong {
   position: relative;
   background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(32px) saturate(160%);
-  -webkit-backdrop-filter: blur(32px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.75);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.9),
@@ -193,8 +201,6 @@ h3,
 .glass-pill {
   position: relative;
   background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.75);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.9),
@@ -202,14 +208,6 @@ h3,
     0 24px 56px rgba(15, 26, 26, 0.12);
   border-radius: 9999px;
   padding: 0.5rem 1rem;
-}
-@media (max-width: 767px) {
-  .glass,
-  .glass-strong,
-  .glass-pill {
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-  }
 }
 
 /* ADR-0006 §Polish: a 1px specular top-left highlight on every glass surface, via a
@@ -330,6 +328,25 @@ h3,
   }
 }
 
+/* ---------------------------------------------------------------------------
+ * ADR-0009 §4 — `content-visibility: auto` on every `Section`/`Band` (the two
+ * generic section wrappers almost all page content below the hero is built
+ * from): the browser skips layout/paint for instances that are nowhere near the
+ * viewport, which is most of a long programmatic page (state/city/country) at
+ * any given scroll position. `contain-intrinsic-size` gives it a placeholder
+ * height to reserve before it's ever rendered so the page's scrollbar/height
+ * doesn't jump; the `auto` keyword then has the browser remember each
+ * section's real measured height after that, so the estimate only matters
+ * once, for whichever sections start out far below the fold. Chrome renders an
+ * element normally well before it's actually on screen (its own "relevant to
+ * the user" margin), so this never visibly skips content a visitor scrolls to,
+ * and it costs nothing for a section already in the initial viewport.
+ * ------------------------------------------------------------------------- */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
 /* Eyebrow — small uppercase teal label above every h2. ADR-0008 §3: 11px, tracking
    .18em (was 11.5px/.16em, ADR-0006 §Polish) — matches the `eyebrow` fontSize token
    in tailwind.config.ts. */
@@ -448,6 +465,10 @@ h3,
 .band-deep .chip {
   background: rgba(255, 255, 255, 0.12);
   border-color: rgba(255, 255, 255, 0.18);
+  /* ADR-0009 §4: one of the few contexts that keeps `backdrop-filter` — a panel
+     on a dark band (see the note above `.glass`). */
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.28),
     0 4px 14px rgba(0, 0, 0, 0.35),
@@ -580,8 +601,6 @@ h3,
   padding: 0 0.85rem;
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.75);
   color: var(--color-ink);
   font-size: 0.8rem;
@@ -599,11 +618,11 @@ a.chip:focus-visible {
   color: var(--color-teal);
 }
 
-/* Accordion. `.accordion-toggle` + `.glass-accordion-item` are shared by two
-   patterns: native <details>/<summary> disclosures (CtaGroup, QuoteBlock — a
-   single "fill form instead" toggle, unchanged) and, since ADR-0006 §Motion 6,
-   components/ui/Faq.tsx's button + region accordion (a class-based `.is-open`
-   toggle instead of the `details[open]` selector, since it isn't a <details>). */
+/* Accordion. `.accordion-toggle` + `.glass-accordion-item` are shared by every
+   native <details>/<summary> disclosure on the site: CtaGroup/QuoteBlock's
+   single "fill form instead" toggle, and — since ADR-0009 §3 — Faq.tsx's
+   `<details name="faq">` items too (previously a client button+region
+   accordion with its own `.is-open` class; now plain `[open]`). */
 details > summary {
   display: flex;
   cursor: pointer;
@@ -643,8 +662,7 @@ details > summary::-webkit-details-marker {
   width: 1.5px;
   height: 100%;
 }
-details[open] .accordion-toggle::after,
-.accordion-toggle.is-open::after {
+details[open] .accordion-toggle::after {
   transform: translate(-50%, -50%) rotate(90deg);
   opacity: 0;
 }
@@ -662,12 +680,18 @@ details[open] .accordion-toggle::after,
    knowing the content's height up front. The row track, not the child, is what
    grows — the child just needs to be clipped and allowed to shrink below its own
    content size (min-height:0) while the row is collapsed. */
+/* ADR-0009 §3: `.accordion-panel` sits inside a native `<details>` now (Faq.tsx).
+   The UA stylesheet hides everything after `<summary>` with
+   `details:not([open]) > *:not(summary) { display: none }` while closed — this
+   `display: grid` (present unconditionally, an ordinary author rule) overrides
+   that so the panel stays laid out at all times and the grid-rows 0fr/1fr tween
+   below does the actual open/close animation instead of a hard display toggle. */
 .accordion-panel {
   display: grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows 0.3s var(--ease-glass);
 }
-.accordion-panel.is-open {
+details[open] > .accordion-panel {
   grid-template-rows: 1fr;
 }
 .accordion-panel > * {
@@ -770,38 +794,70 @@ details[open] .accordion-toggle::after,
  * content. It is further gated to `prefers-reduced-motion: no-preference` so a
  * reduced-motion visitor never sees an opacity/transform change either, JS or
  * not — elements simply appear, already in their final state.
+ *
+ * ADR-0009 §3: split into two paths. Browsers that support CSS scroll-driven
+ * animations (`animation-timeline: view()`) get a pure-CSS reveal — the
+ * `IntersectionObserver` in components/ui/observer.ts still runs (harmlessly;
+ * it only ever adds the now-unused `.is-in` class) but paints nothing, so
+ * there's no double animation. Everything else falls back to the original
+ * JS-driven, `.is-in`-toggled transition below.
  * ------------------------------------------------------------------------- */
-@media (prefers-reduced-motion: no-preference) {
-  .js .reveal {
-    opacity: 0;
-    transform: translateY(14px);
-    transition: opacity 0.6s var(--ease-glass), transform 0.6s var(--ease-glass);
-    transition-delay: var(--reveal-delay, 0ms);
-  }
-  .js .reveal.is-in {
-    opacity: 1;
-    transform: none;
-  }
+@supports not (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.6s var(--ease-glass), transform 0.6s var(--ease-glass);
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+    .js .reveal.is-in {
+      opacity: 1;
+      transform: none;
+    }
 
-  /* Stagger: when several `[data-stagger]` Reveal siblings sit in the same
-     parent (a grid of tiles, a row of facts, a list of steps/FAQ items), each
-     gets an increasing transition-delay — 60ms steps, capped at the 6th child.
-     An explicit `delay` prop (inline `--reveal-delay`) always wins, since an
-     inline style outranks these selectors regardless of source order. */
-  .js [data-stagger]:nth-child(2) {
-    --reveal-delay: 60ms;
+    /* Stagger: when several `[data-stagger]` Reveal siblings sit in the same
+       parent (a grid of tiles, a row of facts, a list of steps/FAQ items), each
+       gets an increasing transition-delay — 60ms steps, capped at the 6th child.
+       An explicit `delay` prop (inline `--reveal-delay`) always wins, since an
+       inline style outranks these selectors regardless of source order. */
+    .js [data-stagger]:nth-child(2) {
+      --reveal-delay: 60ms;
+    }
+    .js [data-stagger]:nth-child(3) {
+      --reveal-delay: 120ms;
+    }
+    .js [data-stagger]:nth-child(4) {
+      --reveal-delay: 180ms;
+    }
+    .js [data-stagger]:nth-child(5) {
+      --reveal-delay: 240ms;
+    }
+    .js [data-stagger]:nth-child(n + 6) {
+      --reveal-delay: 300ms;
+    }
   }
-  .js [data-stagger]:nth-child(3) {
-    --reveal-delay: 120ms;
-  }
-  .js [data-stagger]:nth-child(4) {
-    --reveal-delay: 180ms;
-  }
-  .js [data-stagger]:nth-child(5) {
-    --reveal-delay: 240ms;
-  }
-  .js [data-stagger]:nth-child(n + 6) {
-    --reveal-delay: 300ms;
+}
+
+/* Pure-CSS path: the element's own scroll position through the nearest
+   scrollable ancestor (`view()`, default = the document) drives the animation
+   directly — no JS observer, no per-element transition-delay bookkeeping. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes reveal-in {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    .js .reveal {
+      animation: reveal-in 0.6s var(--ease-glass) both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 30%;
+    }
   }
 }
 
@@ -862,7 +918,12 @@ details[open] .accordion-toggle::after,
  * toggled via Tailwind classes in HeaderBar itself. The active pill is a
  * layout-free `::before` behind the link text — no reflow.
  * ------------------------------------------------------------------------- */
+/* ADR-0009 §4: the header floats fixed over scrolling content — including
+   photographic heroes and image bands — so it's one of the few surfaces that
+   keeps `backdrop-filter` (see the note above `.glass`). */
 .header-pill {
+  backdrop-filter: blur(32px) saturate(160%);
+  -webkit-backdrop-filter: blur(32px) saturate(160%);
   transition: height 0.25s var(--ease-glass), background-color 0.25s var(--ease-glass),
     backdrop-filter 0.25s var(--ease-glass), box-shadow 0.25s var(--ease-glass);
 }
@@ -1004,6 +1065,17 @@ details[open] .accordion-toggle::after,
    (ADR-0005 §8) over the busiest placeholder photos. */
 .page-hero .glass-strong {
   background: rgba(255, 255, 255, 0.82);
+  /* ADR-0009 §4: over a photograph, not the flat canvas — keeps `backdrop-filter`. */
+  backdrop-filter: blur(32px) saturate(160%);
+  -webkit-backdrop-filter: blur(32px) saturate(160%);
+}
+
+/* ADR-0009 §4: ImageBand's `overlayText` pill sits directly on its full-bleed
+   photo, so — unlike every other `.glass-strong` on the page — it keeps
+   `backdrop-filter` (components/ui/ImageBand.tsx). */
+.image-band .glass-strong {
+  backdrop-filter: blur(32px) saturate(160%);
+  -webkit-backdrop-filter: blur(32px) saturate(160%);
 }
 
 /* Photo placeholder label — a small bottom-left pill on ImageSlot/ImageBand

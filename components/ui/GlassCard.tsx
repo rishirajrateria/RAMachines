@@ -11,14 +11,19 @@
  * automatically (every GlassCard — and everything built on it: product/category
  * tiles, IconCard, IllustrationCard, CertCard's glass span, Gallery — reveals on
  * scroll with no page-level changes) and carries the pointermove specular sheen
- * (`.glass-sheen`, CSS vars `--mx`/`--my`, desktop pointer-fine only). Both concerns
- * share the same ref/node instead of adding a wrapper element, so there's no extra
- * DOM node and no risk of layout shift.
+ * (`.glass-sheen`, CSS vars `--mx`/`--my`, mouse only). Both concerns share the
+ * same ref/node instead of adding a wrapper element, so there's no extra DOM node
+ * and no risk of layout shift.
+ *
+ * ADR-0009 §3: the sheen no longer attaches its own `pointermove` listener per
+ * card — `components/ui/sheen` registers a single delegated listener on
+ * `document` the first time any `GlassCard` mounts.
  */
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { useEffect } from "react";
 import { useReveal } from "./useReveal";
+import { initGlassSheen } from "./sheen";
 
 export default function GlassCard({
   href,
@@ -36,21 +41,8 @@ export default function GlassCard({
   const ref = useReveal<HTMLElement>();
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
-
-    function onPointerMove(e: PointerEvent) {
-      const rect = el!.getBoundingClientRect();
-      const mx = ((e.clientX - rect.left) / rect.width) * 100;
-      const my = ((e.clientY - rect.top) / rect.height) * 100;
-      el!.style.setProperty("--mx", `${mx}%`);
-      el!.style.setProperty("--my", `${my}%`);
-    }
-
-    el.addEventListener("pointermove", onPointerMove);
-    return () => el.removeEventListener("pointermove", onPointerMove);
-  }, [ref]);
+    initGlassSheen();
+  }, []);
 
   const surface = strong ? "glass-strong" : "glass";
   const classes = `reveal glass-hover glass-sheen block h-full overflow-hidden ${surface} ${className}`.trim();

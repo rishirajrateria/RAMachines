@@ -2,13 +2,21 @@
 
 /**
  * components/media/HeroVideo.tsx — full-viewport hero background. The poster image is
- * the LCP element and renders immediately via <Image priority>. The <video> itself is
- * only mounted after first paint (requestIdleCallback, falling back to a short timeout)
- * and only when the visitor has not requested reduced motion, so it never competes with
- * or delays LCP.
+ * the LCP element and renders immediately via `Img priority` (ADR-0009 §1: `<picture>`,
+ * AVIF/WebP srcset, LQIP — instead of `next/image`).
+ *
+ * ADR-0009 §5: the `<video>` itself gets `preload="none"` and only mounts once this
+ * element is (about to be) on screen, via the shared reveal `IntersectionObserver`
+ * (`components/ui/observer`) — not an idle callback, so a visitor who never scrolls
+ * the hero into a relevant view never pays for it. It's also skipped outright under
+ * `prefers-reduced-motion`, `navigator.connection.saveData`, or an `effectiveType`
+ * slower than 4G, so a constrained connection never fetches the clip at all.
  */
-import { useEffect, useState } from "react";
-import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import Img from "@/components/media/Img";
+import { observeOnce } from "@/components/ui/observer";
+
+type NetworkInformation = { saveData?: boolean; effectiveType?: string };
 
 export default function HeroVideo({
   poster,
@@ -17,47 +25,30 @@ export default function HeroVideo({
   poster: { src: string; width: number; height: number };
   posterAlt: string;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
   const [mountVideo, setMountVideo] = useState(false);
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    let idleId: number | undefined;
-    let timeoutId: number | undefined;
+    const connection = (navigator as Navigator & { connection?: NetworkInformation }).connection;
+    if (connection?.saveData) return;
+    if (connection?.effectiveType && /^(slow-2g|2g|3g)$/.test(connection.effectiveType)) return;
 
-    if (typeof window.requestIdleCallback === "function") {
-      idleId = window.requestIdleCallback(() => setMountVideo(true));
-    } else {
-      timeoutId = window.setTimeout(() => setMountVideo(true), 200);
-    }
-
-    return () => {
-      if (idleId !== undefined && typeof window.cancelIdleCallback === "function") {
-        window.cancelIdleCallback(idleId);
-      }
-      if (timeoutId !== undefined) {
-        window.clearTimeout(timeoutId);
-      }
-    };
+    const el = ref.current;
+    if (!el) return;
+    return observeOnce(el, () => setMountVideo(true));
   }, []);
 
   return (
-    <div className="absolute inset-0 h-full w-full overflow-hidden">
-      <Image
-        src={poster.src}
-        alt={posterAlt}
-        width={poster.width}
-        height={poster.height}
-        priority
-        className="h-full w-full object-cover"
-      />
+    <div ref={ref} className="absolute inset-0 h-full w-full overflow-hidden">
+      <Img image={{ src: poster.src, alt: posterAlt, width: poster.width, height: poster.height }} sizes="100vw" priority className="h-full w-full object-cover" />
       {mountVideo && (
         <video
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="none"
           poster={poster.src}
           className="absolute inset-0 h-full w-full object-cover"
         >

@@ -5,6 +5,10 @@
  *
  * ADR-0008 §3: the divider uses `border-[color:var(--hairline)]` (was a baked-in
  * rgba) so it retints for free inside a `.band-deep` section (app/globals.css).
+ *
+ * ADR-0009 §2: a bulk link list — every row link opts out of the App Router's
+ * viewport prefetch (`prefetch={false}`); these are never the link people click
+ * next, and a long list (industries, sectors, applications) can be 20+ rows.
  */
 import Link from "next/link";
 import { ArrowRight } from "./Icons";
@@ -40,7 +44,7 @@ export default function DividedList({
         return (
           <div key={item.title} className="break-inside-avoid">
             {item.href ? (
-              <Link href={item.href} className="group block">
+              <Link href={item.href} prefetch={false} className="group block">
                 {row}
               </Link>
             ) : (

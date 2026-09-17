@@ -37,6 +37,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Script id="js-class" strategy="beforeInteractive">
           {`document.documentElement.classList.add("js")`}
         </Script>
+        {/*
+          ADR-0009 §3: HeaderBar's scroll state (the floating nav pill going slightly
+          more opaque past 24px of scroll) watches this sentinel with an
+          IntersectionObserver instead of a scroll listener — it sits in normal flow
+          at the very top of the page, so once the user has scrolled its height past
+          the viewport top, the observer fires exactly once instead of every frame.
+        */}
+        <span id="scroll-sentinel" aria-hidden="true" className="pointer-events-none absolute left-0 top-0 h-6 w-px" />
         <SkipLink />
         <AmbientLight />
         <Header />

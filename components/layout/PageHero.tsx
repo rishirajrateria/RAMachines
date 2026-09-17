@@ -18,10 +18,13 @@
  * `overlay` renders above the image at 35% opacity, below the scrim and panel — home
  * passes the existing `<HeroVideo/>` here so its drifting light forms still show
  * through, without HeroVideo having to know anything about the photo underneath it.
+ *
+ * ADR-0009 §1: the image renders via `components/media/Img` (`<picture>`,
+ * AVIF/WebP srcset, LQIP) instead of `next/image` — `fill` + `priority` + `sizes="100vw"`.
  */
 import type { ReactNode } from "react";
-import Image from "next/image";
 import Container from "@/components/ui/Container";
+import Img from "@/components/media/Img";
 
 export default function PageHero({
   image,
@@ -43,7 +46,7 @@ export default function PageHero({
   return (
     <section className={`page-hero relative flex w-full overflow-hidden py-16 ${heightClass} ${verticalAlign}`}>
       <div className="kenburns absolute inset-0">
-        <Image src={image.src} alt={image.alt} fill priority sizes="100vw" className="object-cover" />
+        <Img image={image} sizes="100vw" fill priority />
       </div>
       {overlay && <div className="absolute inset-0 opacity-35">{overlay}</div>}
       <div className="hero-scrim absolute inset-0" />

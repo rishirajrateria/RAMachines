@@ -1,15 +1,19 @@
 /**
  * components/ui/ImageSlot.tsx — ADR-0007 §2: a glass-framed image box (`.glass`
  * already carries the 28px radius, hairline border and soft shadow — ADR-0005 §2) for
- * `aspect` "16/9" | "4/3" | "3/4" | "1/1", `next/image` with explicit width/height, an
+ * `aspect` "16/9" | "4/3" | "3/4" | "1/1", an explicit width/height, an
  * optional `caption` below the frame. While a slot uses a generated placeholder, a
  * tiny bottom-left pill (`.photo-label`, app/globals.css) reads `label` (e.g. "Photo:
  * factory floor") — pass `placeholder={false}` once a real photo replaces it and the
  * pill disappears. Wrapped in the same scroll-reveal (`Reveal`) as every other glass
  * surface on the page — a Server Component itself, like `IllustrationCard`/`GlassCard`.
+ *
+ * ADR-0009 §1: renders via `components/media/Img` (`<picture>`, AVIF/WebP
+ * srcset, LQIP) instead of `next/image` — `sizes="(min-width: 768px) 50vw, 100vw"`
+ * (the "slot" recipe).
  */
-import Image from "next/image";
-import type { Img } from "@/data/types";
+import type { Img as ImgData } from "@/data/types";
+import Img from "@/components/media/Img";
 import Reveal from "./Reveal";
 
 const ASPECT_CLASS: Record<"16/9" | "4/3" | "3/4" | "1/1", string> = {
@@ -27,7 +31,7 @@ export default function ImageSlot({
   caption,
   className = "",
 }: {
-  image: Img;
+  image: ImgData;
   aspect?: "16/9" | "4/3" | "3/4" | "1/1";
   /** e.g. "Photo: factory floor" — shown only while `placeholder` is true. */
   label?: string;
@@ -40,14 +44,7 @@ export default function ImageSlot({
     <Reveal className={className}>
       <figure className="glass overflow-hidden p-0">
         <div className={`relative w-full ${ASPECT_CLASS[aspect]}`}>
-          <Image
-            src={image.src}
-            alt={image.alt}
-            width={image.width}
-            height={image.height}
-            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-            className="h-full w-full object-cover"
-          />
+          <Img image={image} sizes="(min-width: 768px) 50vw, 100vw" className="h-full w-full object-cover" />
           {placeholder && label && <span className="photo-label">{label}</span>}
         </div>
         {caption && <figcaption className="px-5 py-3 text-sm text-grey-600">{caption}</figcaption>}

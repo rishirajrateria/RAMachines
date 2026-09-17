@@ -7,6 +7,10 @@
  * the plain canvas. Children (FactStrip, GlassCard-based tiles, Chips, Faq, …)
  * supply their own glass surfaces, which `.band-deep` retints for dark —
  * app/globals.css.
+ *
+ * ADR-0009 §4: carries `.cv-auto` (`content-visibility: auto` +
+ * `contain-intrinsic-size`) — every `Band` below the fold skips layout/paint
+ * until it's actually relevant to the user.
  */
 import type { ReactNode } from "react";
 import Container from "./Container";
@@ -23,7 +27,7 @@ export default function Band({
 }) {
   const deep = tone === "dark";
   return (
-    <div className={`section-rhythm ${deep ? "band-deep grain" : ""} ${className}`.trim()}>
+    <div className={`cv-auto section-rhythm ${deep ? "band-deep grain" : ""} ${className}`.trim()}>
       <Container>{children}</Container>
     </div>
   );
