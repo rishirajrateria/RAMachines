@@ -4,6 +4,7 @@
  * 400-line limit. To edit: change the paragraphs/arrays below directly; each export
  * is plain data consumed by page.tsx.
  */
+import { site } from "@/config/site";
 import type { IconName } from "@/components/ui/Icons";
 
 export const introParagraphs: string[] = [
@@ -81,7 +82,7 @@ export const commonFaults: FaultBlock[] = [
 ];
 
 export function responseTimeParagraph(responseTime: string, remoteResponseTime: string): string {
-  return `Remote diagnostic contact within ${remoteResponseTime}, and an on-site engineer within ${responseTime} for metro and major industrial locations; AMC and Premium-tier customers get priority scheduling ahead of this.`;
+  return `Remote diagnostic contact within ${remoteResponseTime}. On site, we aim for the ${site.service.responseTimeLocal.toLowerCase()} in Kolkata and the surrounding districts and within ${responseTime} elsewhere in India; visits outside India are ${site.service.responseTimeInternational}. AMC and Premium-tier customers get priority scheduling ahead of this.`;
 }
 
 export const bookIntro: string =
