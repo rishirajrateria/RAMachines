@@ -67,7 +67,10 @@ const CERTS = [
 const SS = 2;
 
 function productAngleSvg(product, angle) {
-  const machine = machineForProduct(product.slug, { inUse: angle === "in-use" });
+  // "detail" is a close-up of the head mid-cut (ADR-0008 §1 critique pass 2
+  // §8) — it needs the spark/beam active just like "in-use", not a static
+  // idle head.
+  const machine = machineForProduct(product.slug, { inUse: angle === "in-use" || angle === "detail" });
   let placed;
   if (angle === "detail") {
     const [vx, vy, vw, vh] = machine.detailCrop;

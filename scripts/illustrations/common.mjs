@@ -264,39 +264,77 @@ export function floorReflection(content, groundY, fadeHeight = 130, opacity = 0.
   <g transform="translate(0 ${fmt(2 * groundY)}) scale(1,-1)" mask="url(#${maskId})">${content}</g>`;
 }
 
-/** The one warm accent (ADR-0008 §1): hot-white core → amber → transparent,
- * a soft bloom halo, and 12–18 radiating spark lines of varying length/opacity. */
+/** The one warm accent (ADR-0008 §1): a soft bloom halo BEHIND a hot-white
+ * core, 14–20 radiating spark lines (varying length/angle/opacity, some
+ * curved, tips fading amber), and a few detached glowing particles with
+ * short motion trails — a real burst, not a fuzzy blob. Sparks are biased
+ * toward the upper hemisphere (they erupt up/out from a cut) rather than a
+ * full circle, which reads as a floating snowflake. */
 export function sparkBurst(cx, cy, scale = 1) {
   const blurId = nextId("blur");
-  const glow = radGrad(cx, cy, 30 * scale, [
-    [0, SPARK_HOT, 0.95],
-    [35, SPARK_AMBER, 0.55],
+  // Bloom sits behind everything else and stays soft/low-contrast so the
+  // spark lines and core read clearly through it instead of being replaced.
+  const glow = radGrad(cx, cy, 36 * scale, [
+    [0, SPARK_HOT, 0.5],
+    [30, SPARK_AMBER, 0.28],
     [100, SPARK_AMBER, 0],
   ]);
-  const core = radGrad(cx, cy, 6 * scale, [
+  const core = radGrad(cx, cy, 5 * scale, [
     [0, "#ffffff", 1],
-    [55, SPARK_HOT, 1],
+    [50, SPARK_HOT, 1],
     [100, SPARK_AMBER, 0],
   ]);
-  const n = 16;
+  const n = 18;
+  const spread = Math.PI * 1.4; // ~250°, mostly up and out, a little downward spill
   let sparks = "";
   for (let i = 0; i < n; i++) {
-    const ang = (Math.PI * 2 * i) / n + (i % 2 ? 0.18 : -0.1);
-    const len = (9 + ((i * 37) % 24)) * scale;
-    const op = (0.35 + ((i * 13) % 55) / 100).toFixed(2);
-    const w = i % 3 === 0 ? 1.7 : 1;
+    const ang = -Math.PI / 2 - spread / 2 + (spread * i) / (n - 1) + (i % 2 ? 0.08 : -0.06);
+    const len = (10 + ((i * 37) % 30)) * scale;
+    const op = (0.3 + ((i * 13) % 60) / 100).toFixed(2);
+    const w = i % 4 === 0 ? 1.8 : i % 2 === 0 ? 1.2 : 0.75;
     const x2 = cx + Math.cos(ang) * len;
     const y2 = cy + Math.sin(ang) * len;
-    const tipR = (0.9 + (i % 3) * 0.4) * scale;
-    sparks += `<line x1="${fmt(cx)}" y1="${fmt(cy)}" x2="${fmt(x2)}" y2="${fmt(y2)}" stroke="${SPARK_AMBER}" stroke-width="${w}" stroke-linecap="round" opacity="${op}"/>`;
-    sparks += `<circle cx="${fmt(x2)}" cy="${fmt(y2)}" r="${fmt(tipR)}" fill="${SPARK_HOT}" opacity="${(op * 0.9).toFixed(2)}"/>`;
+    // A third of the sparks get a slight curve (perpendicular bow at the
+    // midpoint) so the burst doesn't read as a rigid star.
+    const bow = i % 3 === 0 ? ((i % 6 === 0 ? 1 : -1) * len * 0.16) : 0;
+    const perpAng = ang + Math.PI / 2;
+    const mx = cx + Math.cos(ang) * len * 0.5 + Math.cos(perpAng) * bow;
+    const my = cy + Math.sin(ang) * len * 0.5 + Math.sin(perpAng) * bow;
+    const tipR = (0.6 + (i % 3) * 0.32) * scale;
+    const tipColor = i % 3 === 0 ? SPARK_HOT : SPARK_AMBER;
+    sparks += `<path d="M${fmt(cx)} ${fmt(cy)} Q${fmt(mx)} ${fmt(my)} ${fmt(x2)} ${fmt(y2)}" fill="none" stroke="${SPARK_AMBER}" stroke-width="${w.toFixed(2)}" stroke-linecap="round" opacity="${op}"/>`;
+    sparks += `<circle cx="${fmt(x2)}" cy="${fmt(y2)}" r="${fmt(tipR)}" fill="${tipColor}" opacity="${(op * 0.9).toFixed(2)}"/>`;
+  }
+  // A few sparks that have broken free of the burst — small bright dots
+  // trailing a short fading motion streak.
+  let particles = "";
+  const pAngles = [-2.35, -1.85, -0.55, 0.32, -1.15];
+  for (let i = 0; i < pAngles.length; i++) {
+    const ang = pAngles[i];
+    const dist = (24 + i * 8) * scale;
+    const px = cx + Math.cos(ang) * dist;
+    const py = cy + Math.sin(ang) * dist + i * 2.4 * scale;
+    const tx = px - Math.cos(ang) * 7 * scale;
+    const ty = py - Math.sin(ang) * 7 * scale - 2.5 * scale;
+    particles += `<line x1="${fmt(tx)}" y1="${fmt(ty)}" x2="${fmt(px)}" y2="${fmt(py)}" stroke="${SPARK_AMBER}" stroke-width="${(1.1 * scale).toFixed(2)}" stroke-linecap="round" opacity="0.4"/>
+      <circle cx="${fmt(px)}" cy="${fmt(py)}" r="${fmt(1.3 * scale)}" fill="${SPARK_HOT}" opacity="0.85"/>`;
   }
   return `<defs>${glow.tag}${core.tag}
-      <filter id="${blurId}" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="${(3.5 * scale).toFixed(2)}"/></filter>
+      <filter id="${blurId}" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="${(4.5 * scale).toFixed(2)}"/></filter>
     </defs>
-    <circle cx="${fmt(cx)}" cy="${fmt(cy)}" r="${fmt(30 * scale)}" fill="url(#${glow.id})" filter="url(#${blurId})"/>
+    <circle cx="${fmt(cx)}" cy="${fmt(cy)}" r="${fmt(36 * scale)}" fill="url(#${glow.id})" filter="url(#${blurId})"/>
     ${sparks}
-    <circle cx="${fmt(cx)}" cy="${fmt(cy)}" r="${fmt(6 * scale)}" fill="url(#${core.id})"/>`;
+    ${particles}
+    <circle cx="${fmt(cx)}" cy="${fmt(cy)}" r="${fmt(5 * scale)}" fill="url(#${core.id})"/>`;
+}
+
+/** A thin bright beam with an additive-feeling glow, nozzle → sheet — the
+ * "thin bright beam line" ADR-0008 §1 calls for alongside the burst. */
+export function beamGlow(x1, y1, x2, y2, width = 2.2) {
+  const blurId = nextId("blur");
+  return `<defs><filter id="${blurId}" x="-150%" y="-150%" width="400%" height="400%"><feGaussianBlur stdDeviation="1.4"/></filter></defs>
+    <line x1="${fmt(x1)}" y1="${fmt(y1)}" x2="${fmt(x2)}" y2="${fmt(y2)}" stroke="${SPARK_AMBER}" stroke-width="${(width * 2.6).toFixed(2)}" stroke-linecap="round" opacity="0.3" filter="url(#${blurId})"/>
+    <line x1="${fmt(x1)}" y1="${fmt(y1)}" x2="${fmt(x2)}" y2="${fmt(y2)}" stroke="${SPARK_HOT}" stroke-width="${width}" stroke-linecap="round" opacity="0.92"/>`;
 }
 
 /** A small dark nameplate with an SKU label — panel detail per ADR-0008 §1. */

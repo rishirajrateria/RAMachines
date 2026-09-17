@@ -80,11 +80,12 @@ function sharedDefs(w) {
         <feFuncB type="linear" slope="1.12" intercept="-0.05"/>
       </feComponentTransfer>
     </filter>
-    <filter id="grain" x="0" y="0" width="100%" height="100%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" seed="7" stitchTiles="stitch" result="n"/>
+    <filter id="grain" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="n"/>
       <feColorMatrix in="n" type="saturate" values="0" result="m"/>
-      <feComponentTransfer in="m"><feFuncR type="linear" slope="2.2" intercept="-0.55"/><feFuncG type="linear" slope="2.2" intercept="-0.55"/><feFuncB type="linear" slope="2.2" intercept="-0.55"/></feComponentTransfer>
-    </filter>`;
+      <feComponentTransfer in="m"><feFuncR type="linear" slope="1.6" intercept="-0.3"/><feFuncG type="linear" slope="1.6" intercept="-0.3"/><feFuncB type="linear" slope="1.6" intercept="-0.3"/></feComponentTransfer>
+    </filter>
+    <pattern id="grainPat" width="128" height="128" patternUnits="userSpaceOnUse"><rect width="128" height="128" filter="url(#grain)"/></pattern>`;
 }
 function wrap(key, w, h, inner, { dark, grainOp, vignetteOp }) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
@@ -93,7 +94,7 @@ function wrap(key, w, h, inner, { dark, grainOp, vignetteOp }) {
   </defs>
   <g filter="url(#contrastBoost)">${inner}</g>
   <rect width="${w}" height="${h}" fill="url(#vig)"/>
-  <rect width="${w}" height="${h}" filter="url(#grain)" opacity="${grainOp}"/>
+  <rect width="${w}" height="${h}" fill="url(#grainPat)" opacity="${grainOp}"/>
 </svg>`;
 }
 /** Darkens/flattens the left ~45% for hero images so white headline text stays legible. */
@@ -212,13 +213,17 @@ function crateShape(x, y, scale, tint, op) {
   </g>`;
 }
 function shelfRack(x, y, scale, tint, op) {
-  return `<g transform="translate(${x} ${y}) scale(${scale})" fill="${tint}" opacity="${op}">
-    <rect x="-190" y="-190" width="10" height="380"/><rect x="180" y="-190" width="10" height="380"/>
-    <rect x="-190" y="-190" width="380" height="8"/><rect x="-190" y="-58" width="380" height="8"/><rect x="-190" y="74" width="380" height="8"/><rect x="-190" y="184" width="380" height="8"/>
-    <rect x="-166" y="-172" width="58" height="102" rx="3" fill-opacity="0.7"/><rect x="-84" y="-166" width="68" height="96" rx="3" fill-opacity="0.7"/>
-    <rect x="8" y="-170" width="58" height="100" rx="3" fill-opacity="0.7"/><rect x="96" y="-162" width="70" height="92" rx="3" fill-opacity="0.7"/>
-    <rect x="-160" y="-40" width="68" height="90" rx="3" fill-opacity="0.7"/><rect x="-64" y="-36" width="80" height="86" rx="3" fill-opacity="0.7"/>
-    <rect x="44" y="-42" width="68" height="92" rx="3" fill-opacity="0.7"/>
+  const frame = mix(tint, "#FFFFFF", 0.45);
+  const bin = mix(tint, "#FFFFFF", 0.2);
+  return `<g transform="translate(${x} ${y}) scale(${scale})" opacity="${op}">
+    <g fill="${frame}">
+      <rect x="-190" y="-190" width="10" height="380"/><rect x="180" y="-190" width="10" height="380"/>
+      <rect x="-190" y="-190" width="380" height="8"/><rect x="-190" y="-58" width="380" height="8"/><rect x="-190" y="74" width="380" height="8"/><rect x="-190" y="184" width="380" height="8"/>
+    </g>
+    <rect x="-166" y="-172" width="58" height="102" rx="3" fill="${bin}"/><rect x="-84" y="-166" width="68" height="96" rx="3" fill="${AMBER}" opacity="0.75"/>
+    <rect x="8" y="-170" width="58" height="100" rx="3" fill="${bin}"/><rect x="96" y="-162" width="70" height="92" rx="3" fill="${AQUA}" opacity="0.6"/>
+    <rect x="-160" y="-40" width="68" height="90" rx="3" fill="${AMBER}" opacity="0.6"/><rect x="-64" y="-36" width="80" height="86" rx="3" fill="${bin}"/>
+    <rect x="44" y="-42" width="68" height="92" rx="3" fill="${bin}"/>
   </g>`;
 }
 function sparkBurst(x, y, rnd, scale, n = 13) {
@@ -270,6 +275,9 @@ function interiorRoom(rnd, w, h, opts) {
     <linearGradient id="floorGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="${floorFar}"/><stop offset="100%" stop-color="${floorNear}"/></linearGradient>
   </defs>`;
   out += `<rect width="${w}" height="${vpy}" fill="url(#wallGrad)"/>`;
+  const sideWall = mix(wallBottom, "#000000", 0.18);
+  out += `<polygon points="0,0 ${vpx.toFixed(1)},${vpy.toFixed(1)} 0,${h}" fill="${sideWall}"/>`;
+  out += `<polygon points="${w},0 ${vpx.toFixed(1)},${vpy.toFixed(1)} ${w},${h}" fill="${sideWall}"/>`;
   out += floorPlane(w, h, vpx, vpy, floorNear, wallTop);
   // trusses: two beams receding toward the vanishing point
   out += trussBeam(w, vpy * 0.1, 1, vpx / w, "0.9");
@@ -282,14 +290,16 @@ function interiorRoom(rnd, w, h, opts) {
     const floorY = lerp(h * 0.9, vpy + (h - vpy) * 0.4, t);
     out += lampUnit(lx, ly, floorY, lerp(1.15, 0.5, t), true, (0.9 - t * 0.25).toFixed(2));
   }
-  // subject row (machines or shelves), near -> far, offset toward right for hero calm-left
-  const depths = [0.1, 0.4, 0.68];
+  // subject row (machines or shelves), near -> far along one wall, offset toward right for hero calm-left
+  const laneNearX = w * (biasRight ? 0.86 : 0.66);
+  const laneFarX = vpx + w * (biasRight ? 0.14 : 0.1);
+  const depths = [0.06, 0.42, 0.78];
   for (const t of depths) {
-    const x = lerp(w * (biasRight ? 0.74 : 0.62), vpx + w * 0.02, t) + (rnd() - 0.5) * w * 0.03;
-    const y = lerp(h * 0.88, vpy + (h - vpy) * 0.46, t);
-    const scale = lerp(1.35, 0.26, t) * (w / 1800);
+    const x = lerp(laneNearX, laneFarX, t) + (rnd() - 0.5) * w * 0.02;
+    const y = lerp(h * 0.9, vpy + (h - vpy) * 0.3, t);
+    const scale = lerp(1.3, 0.16, t) * (w / 1800);
     const tint = atmo(mix(TEAL, AQUA, 0.12), t * 0.9);
-    if (populate === "shelves") out += shelfRack(x, y, scale * 0.9, atmo(mix(GRAPHITE2, TEAL, 0.25), t), (0.95 - t * 0.3).toFixed(2));
+    if (populate === "shelves") out += shelfRack(x, y, scale * 0.9, atmo(mix(GRAPHITE2, TEAL, 0.35), t), (0.95 - t * 0.3).toFixed(2));
     else if (populate === "machines") out += machineUnit("gantry", x, y, scale, rnd() > 0.5, tint, (0.98 - t * 0.3).toFixed(2));
   }
   if (person) {
@@ -349,14 +359,17 @@ function macroShot(rnd, w, h, opts) {
     </g>`;
     out += sparkBurst(cx, cy + 60, rnd, subject === "sparks" ? 2.2 : 1.4, subject === "sparks" ? 20 : 13);
   } else if (subject === "qualityCheck") {
-    out += `<g transform="translate(${cx.toFixed(1)} ${cy.toFixed(1)})">
+    out += `<g transform="translate(${cx.toFixed(1)} ${cy.toFixed(1)}) scale(1.9)">
+      <circle cx="0" cy="-70" r="52" fill="${mix(GRAPHITE2, AQUA, 0.15)}"/>
+      <circle cx="0" cy="-70" r="52" fill="none" stroke="${mix(GRAPHITE2, "#FFFFFF", 0.4)}" stroke-width="3"/>
+      <circle cx="0" cy="-70" r="16" fill="${INK}"/>
       <rect x="-160" y="-22" width="320" height="44" rx="8" fill="${GRAPHITE2}"/>
-      <rect x="-190" y="-64" width="40" height="128" rx="6" fill="${GRAPHITE}"/>
-      <rect x="150" y="-64" width="40" height="128" rx="6" fill="${GRAPHITE}"/>
+      <rect x="-160" y="-22" width="320" height="10" rx="4" fill="${mix(GRAPHITE2, "#FFFFFF", 0.35)}"/>
+      <rect x="-190" y="-96" width="40" height="160" rx="6" fill="${GRAPHITE}"/>
+      <rect x="150" y="-96" width="40" height="160" rx="6" fill="${GRAPHITE}"/>
       <rect x="-40" y="34" width="130" height="46" rx="6" fill="${INK}"/>
       <text x="-30" y="66" font-family="monospace" font-size="30" fill="${AQUA}">24.05</text>
     </g>`;
-    out += personFig(cx - w * 0.22, cy + h * 0.22, 0.7 * (w / 1600), false, false, GRAPHITE, 0.85);
   } else if (subject === "controlPanel") {
     out += `<g transform="translate(${cx.toFixed(1)} ${cy.toFixed(1)})">
       <rect x="-320" y="-220" width="640" height="440" rx="18" fill="${GRAPHITE2}"/>
@@ -397,8 +410,8 @@ function peopleScene(rnd, w, h, opts) {
         if (row === 1) out += personFig(x, y + 30 * s, s * 1.5, rnd() > 0.5, false, atmo(GRAPHITE, 0.1), 0.85);
       }
     }
-    out += `<rect x="${(w * 0.34).toFixed(1)}" y="${(h * 0.18).toFixed(1)}" width="${(w * 0.32).toFixed(1)}" height="${(h * 0.22).toFixed(1)}" rx="6" fill="${INK}" opacity="0.8"/>
-      <polyline points="${w * 0.38},${h * 0.34} ${w * 0.43},${h * 0.24} ${w * 0.49},${h * 0.3} ${w * 0.55},${h * 0.2} ${w * 0.62},${h * 0.28}" fill="none" stroke="${AQUA}" stroke-width="4" opacity="0.7"/>`;
+    out += `<rect x="${(w * 0.34).toFixed(1)}" y="${(h * 0.09).toFixed(1)}" width="${(w * 0.32).toFixed(1)}" height="${(h * 0.19).toFixed(1)}" rx="6" fill="${INK}" opacity="0.85"/>
+      <polyline points="${w * 0.38},${h * 0.25} ${w * 0.43},${h * 0.15} ${w * 0.49},${h * 0.21} ${w * 0.55},${h * 0.11} ${w * 0.62},${h * 0.19}" fill="none" stroke="${AQUA}" stroke-width="4" opacity="0.7"/>`;
     out += personFig(w * 0.3, h * 0.68, 0.9 * (w / 1700), false, true, GRAPHITE, 0.92);
   } else if (scene === "office" || scene === "desk") {
     const dx = w * (scene === "desk" ? 0.5 : 0.5), dy = h * 0.72;
@@ -412,11 +425,14 @@ function peopleScene(rnd, w, h, opts) {
     if (scene === "office") out += personFig(dx - 20 * s, dy + 80 * s, s * 1.1, false, false, atmo(GRAPHITE, 0.05), 0.9);
   } else if (scene === "badges") {
     for (let i = 0; i < 4; i++) {
-      const x = lerp(w * 0.2, w * 0.8, i / 3), y = h * 0.34, s = 0.9 * (w / 1700);
-      out += `<rect x="${(x - 60 * s).toFixed(1)}" y="${(y - 74 * s).toFixed(1)}" width="${(120 * s).toFixed(1)}" height="${(148 * s).toFixed(1)}" rx="6" fill="${GRAPHITE2}" opacity="0.92"/>
-        <path d="M${x},${(y - 46 * s).toFixed(1)} c${34 * s},${6 * s} ${58 * s},${24 * s} ${58 * s},${52 * s} c0,${38 * s} -${30 * s},${68 * s} -${58 * s},${86 * s} c-${28 * s},-${18 * s} -${58 * s},-${48 * s} -${58 * s},-${86 * s} c0,-${28 * s} ${24 * s},-${46 * s} ${58 * s},-${52 * s} Z" fill="${AMBER}" opacity="0.75" transform="translate(-${x},0)" />
-        <circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(30 * s).toFixed(1)}" fill="${WARM}" opacity="0.4"/>`;
-      out += `<ellipse cx="${x.toFixed(1)}" cy="${(y - 90 * s).toFixed(1)}" rx="${(70 * s).toFixed(1)}" ry="${(18 * s).toFixed(1)}" fill="${HAZE}" opacity="0.18" filter="url(#blurM)"/>`;
+      const x = lerp(w * 0.2, w * 0.8, i / 3), y = h * 0.36, s = 1.1 * (w / 1700);
+      out += `<rect x="${(x - 62 * s).toFixed(1)}" y="${(y - 78 * s).toFixed(1)}" width="${(124 * s).toFixed(1)}" height="${(156 * s).toFixed(1)}" rx="6" fill="${GRAPHITE2}" opacity="0.92"/>
+        <rect x="${(x - 62 * s).toFixed(1)}" y="${(y - 78 * s).toFixed(1)}" width="${(124 * s).toFixed(1)}" height="${(6 * s).toFixed(1)}" fill="${mix(GRAPHITE2, "#FFFFFF", 0.4)}"/>
+        <polygon points="${(x - 22 * s).toFixed(1)},${(y + 30 * s).toFixed(1)} ${x.toFixed(1)},${(y + 6 * s).toFixed(1)} ${(x + 22 * s).toFixed(1)},${(y + 30 * s).toFixed(1)} ${(x + 14 * s).toFixed(1)},${(y - 4 * s).toFixed(1)} ${(x - 14 * s).toFixed(1)},${(y - 4 * s).toFixed(1)}" fill="${mix(AMBER, GRAPHITE2, 0.2)}" opacity="0.85"/>
+        <circle cx="${x.toFixed(1)}" cy="${(y - 18 * s).toFixed(1)}" r="${(34 * s).toFixed(1)}" fill="${AMBER}" opacity="0.85"/>
+        <circle cx="${x.toFixed(1)}" cy="${(y - 18 * s).toFixed(1)}" r="${(34 * s).toFixed(1)}" fill="none" stroke="${mix(AMBER, "#FFFFFF", 0.5)}" stroke-width="${(2.5 * s).toFixed(1)}"/>
+        <path d="M${(x - 14 * s).toFixed(1)},${(y - 18 * s).toFixed(1)} l${(9 * s).toFixed(1)},${(10 * s).toFixed(1)} l${(18 * s).toFixed(1)},${(-20 * s).toFixed(1)}" fill="none" stroke="${INK}" stroke-width="${(4 * s).toFixed(1)}" stroke-linecap="round" stroke-linejoin="round"/>`;
+      out += `<ellipse cx="${x.toFixed(1)}" cy="${(y - 96 * s).toFixed(1)}" rx="${(76 * s).toFixed(1)}" ry="${(20 * s).toFixed(1)}" fill="${HAZE}" opacity="0.16" filter="url(#blurM)"/>`;
     }
   } else if (scene === "team") {
     const positions = [[-150, 0.86], [10, 0.9], [150, 0.86]];
@@ -441,29 +457,37 @@ function outdoorScene(rnd, w, h, opts) {
       <stop offset="0%" stop-color="${duskTop}"/><stop offset="62%" stop-color="${duskMid}"/><stop offset="100%" stop-color="${mix(AMBER, duskMid, 0.55)}"/>
     </linearGradient></defs><rect width="${w}" height="${h}" fill="url(#skyGrad)"/>`;
   const horizon = h * 0.62;
-  out += `<rect y="${horizon.toFixed(1)}" width="${w}" height="${(h - horizon).toFixed(1)}" fill="url(#waterGrad)"/>
-    <defs><linearGradient id="waterGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="${mix(duskMid, TEAL_DEEP, 0.5)}"/><stop offset="100%" stop-color="${mix(GRAPHITE2, TEAL_DEEP, 0.6)}"/></linearGradient></defs>
-    <ellipse cx="${(w * 0.5).toFixed(1)}" cy="${horizon.toFixed(1)}" rx="${(w * 0.36).toFixed(1)}" ry="${(h * 0.05).toFixed(1)}" fill="${AMBER}" opacity="0.4" filter="url(#blurS)"/>`;
-  for (let i = 0; i < 8; i++) {
-    const y = horizon + (h - horizon) * (i / 8) + rnd() * 4;
-    out += `<line x1="0" y1="${y.toFixed(1)}" x2="${w}" y2="${y.toFixed(1)}" stroke="${AMBER}" stroke-width="1" opacity="${(0.09 * (1 - i / 8)).toFixed(3)}"/>`;
+  if (subject !== "globe") {
+    out += `<rect y="${horizon.toFixed(1)}" width="${w}" height="${(h - horizon).toFixed(1)}" fill="url(#waterGrad)"/>
+      <defs><linearGradient id="waterGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="${mix(duskMid, TEAL_DEEP, 0.5)}"/><stop offset="100%" stop-color="${mix(GRAPHITE2, TEAL_DEEP, 0.6)}"/></linearGradient></defs>
+      <ellipse cx="${(w * 0.5).toFixed(1)}" cy="${horizon.toFixed(1)}" rx="${(w * 0.36).toFixed(1)}" ry="${(h * 0.05).toFixed(1)}" fill="${AMBER}" opacity="0.4" filter="url(#blurS)"/>`;
+    for (let i = 0; i < 8; i++) {
+      const y = horizon + (h - horizon) * (i / 8) + rnd() * 4;
+      out += `<line x1="0" y1="${y.toFixed(1)}" x2="${w}" y2="${y.toFixed(1)}" stroke="${AMBER}" stroke-width="1" opacity="${(0.09 * (1 - i / 8)).toFixed(3)}"/>`;
+    }
+  } else {
+    out += bokehField(rnd, w, h, 4, true);
   }
   if (subject === "port" || subject === "crate") {
-    const containerColors = [mix(TEAL, GRAPHITE2, 0.3), mix(AMBER, GRAPHITE2, 0.55), GRAPHITE2];
+    const containerColors = [mix(TEAL, AQUA, 0.15), AMBER, mix(GRAPHITE2, TEAL, 0.4)];
     for (let stack = 0; stack < 5; stack++) {
       const sx = w * (0.06 + stack * 0.1), depth = stack / 5, s = lerp(1, 0.55, depth);
       const rows = 2 + Math.floor(rnd() * 2);
       for (let r = 0; r < rows; r++) {
         const cy = horizon - r * 56 * s;
-        out += `<rect x="${sx.toFixed(1)}" y="${(cy - 56 * s).toFixed(1)}" width="${(96 * s).toFixed(1)}" height="${(56 * s).toFixed(1)}" fill="${atmo(pick(rnd, containerColors), depth)}" opacity="0.95"/>
-          <rect x="${sx.toFixed(1)}" y="${(cy - 56 * s).toFixed(1)}" width="${(96 * s).toFixed(1)}" height="6" fill="#FFFFFF" opacity="0.08"/>`;
+        const c = atmo(pick(rnd, containerColors), depth * 0.8);
+        out += `<rect x="${sx.toFixed(1)}" y="${(cy - 56 * s).toFixed(1)}" width="${(96 * s).toFixed(1)}" height="${(56 * s).toFixed(1)}" fill="${c}" opacity="0.92"/>
+          <rect x="${sx.toFixed(1)}" y="${(cy - 56 * s).toFixed(1)}" width="${(96 * s).toFixed(1)}" height="${(7 * s).toFixed(1)}" fill="${mix(c, "#FFFFFF", 0.5)}" opacity="0.9"/>
+          <line x1="${(sx + 96 * s * 0.5).toFixed(1)}" y1="${(cy - 56 * s).toFixed(1)}" x2="${(sx + 96 * s * 0.5).toFixed(1)}" y2="${cy.toFixed(1)}" stroke="${mix(c, "#000000", 0.3)}" stroke-width="2" opacity="0.4"/>`;
       }
     }
-    // crane
+    // gantry crane: legs, a raised boom with counterweight, and a trolley cable
     const cx = w * 0.7;
-    out += `<rect x="${(cx - 8).toFixed(1)}" y="${(h * 0.14).toFixed(1)}" width="16" height="${(horizon - h * 0.14).toFixed(1)}" fill="${GRAPHITE}"/>
-      <polygon points="${(cx - 8).toFixed(1)},${(h * 0.16).toFixed(1)} ${(cx + 220).toFixed(1)},${(h * 0.1).toFixed(1)} ${(cx + 220).toFixed(1)},${(h * 0.16).toFixed(1)} ${(cx + 8).toFixed(1)},${(h * 0.22).toFixed(1)}" fill="${GRAPHITE}"/>
-      <line x1="${(cx + 190).toFixed(1)}" y1="${(h * 0.11).toFixed(1)}" x2="${(cx + 190).toFixed(1)}" y2="${(h * 0.3).toFixed(1)}" stroke="${GRAPHITE}" stroke-width="4"/>
+    out += `<polygon points="${(cx - 60).toFixed(1)},${horizon.toFixed(1)} ${(cx - 14).toFixed(1)},${(h * 0.12).toFixed(1)} ${(cx + 14).toFixed(1)},${(h * 0.12).toFixed(1)} ${(cx + 60).toFixed(1)},${horizon.toFixed(1)}" fill="${GRAPHITE}"/>
+      <rect x="${(cx - 26).toFixed(1)}" y="${(h * 0.1).toFixed(1)}" width="52" height="22" rx="3" fill="${GRAPHITE}"/>
+      <polygon points="${(cx - 20).toFixed(1)},${(h * 0.13).toFixed(1)} ${(cx + 236).toFixed(1)},${(h * 0.08).toFixed(1)} ${(cx + 236).toFixed(1)},${(h * 0.14).toFixed(1)} ${(cx + 16).toFixed(1)},${(h * 0.19).toFixed(1)}" fill="${GRAPHITE}"/>
+      <rect x="${(cx - 90).toFixed(1)}" y="${(h * 0.1).toFixed(1)}" width="66" height="26" rx="4" fill="${GRAPHITE2}"/>
+      <line x1="${(cx + 200).toFixed(1)}" y1="${(h * 0.09).toFixed(1)}" x2="${(cx + 200).toFixed(1)}" y2="${(h * 0.3).toFixed(1)}" stroke="${GRAPHITE}" stroke-width="3"/>
       <rect x="${(cx + 170).toFixed(1)}" y="${(h * 0.3).toFixed(1)}" width="40" height="20" fill="${AMBER}" opacity="0.85"/>`;
     if (subject === "crate") {
       out += crateShape(w * 0.28, h * 0.86, 1.3 * (w / 1600), mix(GRAPHITE2, TEAL, 0.1), 0.95);
@@ -573,10 +597,6 @@ async function emit(key, width, height, quality) {
   const svg = photoSvg(key, width, height);
   const outPath = join(OUT_DIR, `${key}.webp`);
   await mkdir(dirname(outPath), { recursive: true });
-  if (key === "slot-factory") {
-    const { writeFile } = await import("node:fs/promises");
-    await writeFile(join(ROOT, "scripts", "_debug.svg"), svg);
-  }
   await sharp(Buffer.from(svg)).webp({ quality, effort: 6 }).toFile(outPath);
   return outPath;
 }
