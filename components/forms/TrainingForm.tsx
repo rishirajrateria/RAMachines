@@ -1,10 +1,9 @@
-"use client";
-
 /**
  * components/forms/TrainingForm.tsx — "Book Staff Training" form on
  * /services/operator-training.
  */
 import Web3Form, { type FieldDef } from "./Web3Form";
+import { paths } from "@/lib/urls";
 
 const fields: FieldDef[] = [
   { name: "name", label: "Full name", type: "text", required: true, autoComplete: "name" },
@@ -24,6 +23,7 @@ export default function TrainingForm() {
       submitLabel="Book Staff Training"
       successTitle="Thank you — your training request has been sent."
       successText="Our training coordinator will contact you to confirm a schedule, usually within one working day."
+      redirectPath={paths.training}
     />
   );
 }

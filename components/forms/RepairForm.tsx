@@ -1,9 +1,8 @@
-"use client";
-
 /**
  * components/forms/RepairForm.tsx — "Book a Repair" form on /services/machine-repair.
  */
 import Web3Form, { type FieldDef } from "./Web3Form";
+import { paths } from "@/lib/urls";
 
 const fields: FieldDef[] = [
   { name: "name", label: "Full name", type: "text", required: true, autoComplete: "name" },
@@ -22,6 +21,7 @@ export default function RepairForm() {
       submitLabel="Book a Repair"
       successTitle="Thank you — your repair request has been sent."
       successText="Our service desk will call to confirm a visit or remote diagnostic slot, usually within one working day."
+      redirectPath={paths.repair}
     />
   );
 }

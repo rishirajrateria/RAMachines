@@ -42,15 +42,14 @@ const AVIF_OPTS = { quality: 50, effort: 6 };
 const WEBP_OPTS = { quality: 72 };
 const LQIP_WIDTH = 20;
 
-// Generated variants live beside the source as `<name>-<width>.<ext>` — this
-// pattern lets a re-run tell a source image apart from its own previous output.
-// Any `-<3-or-4-digit-width>.<ext>` suffix marks a generated variant. Matching the
-// full numeric shape (not just TARGET_WIDTHS) matters because a source narrower than
-// a target width is emitted at its own width — e.g. a 1200px category image produces
-// `-1200.webp`, which a TARGET_WIDTHS-only pattern would re-ingest as a source on the
-// next run, yielding `-1200-1200.webp` and so on. Source images use single-digit
-// suffixes (`-1`, `-2`, `-3`), so a 3-4 digit match cannot catch them.
-const VARIANT_RE = /-\d{3,4}\.(avif|webp)$/i;
+// Generated variants are written to a dedicated tree (`public/_img/...`), never beside
+// their source. Keeping them in their own directory means the build can tell source from
+// output by LOCATION rather than by filename pattern — a filename rule is unsafe here
+// because legitimate sources carry digit groups too (e.g. `iso-9001-2015.webp` ends in
+// what looks exactly like a `-<width>` suffix). One ignore rule (`public/_img/`) covers
+// every derivative, and a re-run can never re-ingest its own output.
+const VARIANT_DIR = "_img";
+
 const SOURCE_EXT_RE = /\.(webp|png|jpe?g)$/i;
 
 async function findSources(dir) {
@@ -59,8 +58,9 @@ async function findSources(dir) {
   for (const entry of entries) {
     const full = join(dir, entry.name);
     if (entry.isDirectory()) {
+      if (entry.name === VARIANT_DIR) continue; // never treat generated output as input
       files.push(...(await findSources(full)));
-    } else if (SOURCE_EXT_RE.test(entry.name) && !VARIANT_RE.test(entry.name)) {
+    } else if (SOURCE_EXT_RE.test(entry.name)) {
       files.push(full);
     }
   }
@@ -92,9 +92,13 @@ async function processImage(srcPath, publicRoot) {
   let built = 0;
   let skipped = 0;
 
+  const outDir = join(publicRoot, VARIANT_DIR, relDir.replace(/^\//, ""));
+  const outRel = `/${VARIANT_DIR}${relDir}`.replace(/\/{2,}/g, "/");
+  await mkdir(outDir, { recursive: true });
+
   for (const w of widths) {
-    const avifPath = join(dir, `${name}-${w}.avif`);
-    const webpPath = join(dir, `${name}-${w}.webp`);
+    const avifPath = join(outDir, `${name}-${w}.avif`);
+    const webpPath = join(outDir, `${name}-${w}.webp`);
 
     if (await isFresh(avifPath, srcStat.mtimeMs)) {
       skipped++;
@@ -102,7 +106,7 @@ async function processImage(srcPath, publicRoot) {
       await sharp(srcPath).resize({ width: w }).avif(AVIF_OPTS).toFile(avifPath);
       built++;
     }
-    variants.avif.push({ w, src: `${relDir}/${name}-${w}.avif`.replace(/\/{2,}/g, "/") });
+    variants.avif.push({ w, src: `${outRel}/${name}-${w}.avif`.replace(/\/{2,}/g, "/") });
 
     if (await isFresh(webpPath, srcStat.mtimeMs)) {
       skipped++;
@@ -110,7 +114,7 @@ async function processImage(srcPath, publicRoot) {
       await sharp(srcPath).resize({ width: w }).webp(WEBP_OPTS).toFile(webpPath);
       built++;
     }
-    variants.webp.push({ w, src: `${relDir}/${name}-${w}.webp`.replace(/\/{2,}/g, "/") });
+    variants.webp.push({ w, src: `${outRel}/${name}-${w}.webp`.replace(/\/{2,}/g, "/") });
   }
 
   // LQIP: tiny, cheap, always recomputed.

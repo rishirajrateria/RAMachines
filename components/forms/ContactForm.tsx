@@ -1,11 +1,10 @@
-"use client";
-
 /**
  * components/forms/ContactForm.tsx — the general enquiry form on /contact, with a
  * subject dropdown routing the enquiry (buy / repair / training / export / job work /
  * other).
  */
 import Web3Form, { type FieldDef } from "./Web3Form";
+import { paths } from "@/lib/urls";
 
 const fields: FieldDef[] = [
   { name: "name", label: "Full name", type: "text", required: true, autoComplete: "name" },
@@ -31,6 +30,7 @@ export default function ContactForm() {
       submitLabel="Send Message"
       successTitle="Thank you — your message has been sent."
       successText="We will get back to you shortly, usually within one working day."
+      redirectPath={paths.contact}
     />
   );
 }
