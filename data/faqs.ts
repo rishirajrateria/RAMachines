@@ -30,7 +30,7 @@ export const homeFaqs: FaqItem[] = [
   },
   {
     q: "What warranty and spares support do you provide?",
-    a: "RA Machine products carry a standard warranty covering major components against manufacturing defects, with remote diagnostic support available within hours of a reported fault. Commonly replaced items such as nozzles, lenses, filters and drive belts are stocked so routine spares can be dispatched quickly, and our service team supports both in-warranty repairs and out-of-warranty maintenance for the life of the machine.",
+    a: "RA Machine products carry a standard 12-month warranty covering major components against manufacturing defects, with customised extended warranty available on request, with remote diagnostic support available within hours of a reported fault. Commonly replaced items such as nozzles, lenses, filters and drive belts are stocked so routine spares can be dispatched quickly, and our service team supports both in-warranty repairs and out-of-warranty maintenance for the life of the machine.",
   },
   {
     q: "Do you provide operator training with a new machine?",
@@ -42,7 +42,11 @@ export const homeFaqs: FaqItem[] = [
   },
   {
     q: "What is the typical lead time, and is financing available?",
-    a: "Standard lead time from confirmed order to dispatch is typically six to eight weeks, depending on the model and current production schedule; we confirm an exact date at the quotation stage. We do not offer financing directly, but we are glad to prepare the documentation your bank, NBFC or leasing partner needs to process an equipment loan alongside your quotation.",
+    a: "Standard lead time from confirmed order to dispatch is typically eight to ten weeks, depending on the model and current production schedule; we confirm an exact date at the quotation stage. We do not offer financing directly, but we are glad to prepare the documentation your bank, NBFC or leasing partner needs to process an equipment loan alongside your quotation.",
+  },
+  {
+    q: "What are your payment terms for a machine bought in India?",
+    a: "For domestic orders the standard structure is 30 per cent advance with the confirmed order, 60 per cent before shipment and the remaining 10 per cent after installation at your site. Export orders follow a separate structure of 70 per cent advance and 30 per cent before shipment. GST and any transport or installation costs are shown separately on the quotation so you can see exactly what is included.",
   },
 ];
 
@@ -159,7 +163,7 @@ export const exportHubFaqs: FaqItem[] = [
   },
   {
     q: "What are your standard export shipping terms?",
-    a: "Standard terms are FOB Kolkata, with CIF quotations to your nearest major port available on request. We handle export documentation, crating and pre-shipment video inspection before the machine leaves our facility, and can work with your preferred freight forwarder or recommend one we have shipped with previously for your region.",
+    a: "Standard terms are FOB Kolkata or Delhi, with CIF quotations to your nearest major port available on request. We handle export documentation, crating and pre-shipment video inspection before the machine leaves our facility, and can work with your preferred freight forwarder or recommend one we have shipped with previously for your region.",
   },
   {
     q: "Is installation support available after the machine reaches my country?",
@@ -175,7 +179,7 @@ export const exportHubFaqs: FaqItem[] = [
   },
   {
     q: "What are your payment terms for export orders?",
-    a: "Our standard export payment structure is a percentage advance with the order, with the balance due against pre-shipment inspection, invoiced in US dollars unless otherwise agreed. Exact terms and any adjustment for order size or repeat-customer history are confirmed in writing in your formal quotation and proforma invoice.",
+    a: "Our standard export payment structure is 70 per cent advance with the confirmed order and 30 per cent before shipment, invoiced in US dollars unless otherwise agreed. Exact terms and any adjustment for order size or repeat-customer history are confirmed in writing in your formal quotation and proforma invoice.",
   },
 ];
 

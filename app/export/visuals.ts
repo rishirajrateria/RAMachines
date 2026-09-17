@@ -33,7 +33,7 @@ export function hubFacts(): { icon: IconName; label: string; value: string }[] {
     { icon: "Globe", label: "Markets", value: "30 countries" },
     { icon: "Shield", label: "Warranty", value: `${site.service.warrantyMonths} months` },
     { icon: "Clock", label: "Lead time", value: `${site.service.leadTimeWeeks} weeks` },
-    { icon: "Truck", label: "Incoterms", value: "FOB / CIF" },
+    { icon: "Truck", label: "Incoterms", value: "FOB Kolkata or Delhi / CIF" },
   ];
 }
 

@@ -94,7 +94,7 @@ export const exportHubFaqs: FaqItem[] = [
   },
   {
     q: "What is your standard Incoterm for export shipments?",
-    a: "We quote FOB Kolkata as standard and can also quote CIF to your nearest major sea port on request. The choice between FOB and CIF depends on whether you prefer to arrange your own freight forwarder or have us handle freight and insurance to your port.",
+    a: "We quote FOB Kolkata or Delhi as standard and can also quote CIF to your nearest major sea port on request. The choice between FOB and CIF depends on whether you prefer to arrange your own freight forwarder or have us handle freight and insurance to your port.",
   },
   {
     q: "How do you handle quality control before a machine ships?",

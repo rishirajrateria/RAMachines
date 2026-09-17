@@ -4,6 +4,7 @@
  * manufacturing (each paired with an image, alternating sides), certifications
  * pill row, leadership cards, aboutFaqs. Long copy lives in ./copy.ts.
  */
+import Image from "next/image";
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { paths } from "@/lib/urls";
@@ -95,6 +96,13 @@ export default function AboutPage() {
               </a>
               .
             </p>
+            <Image
+              src="/ra-auto-engineering-works-logo.webp"
+              alt={`${site.legalName} company logo`}
+              width={487}
+              height={107}
+              className="mt-2 h-auto w-56 max-w-full"
+            />
           </Prose>
           <ImageSlot image={photos["slot-assembly"]} aspect="4/3" label="Photo: assembly line" />
         </div>
