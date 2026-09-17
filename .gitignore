@@ -29,3 +29,8 @@ ruvector.db
 .claude/checkpoints/
 .claude-flow/policy/state.json
 .claude-flow/swarm/swarm-state.json
+
+# Scratch output from the illustration scripts
+scripts/_debug.svg
+scripts/_debug*.svg
+scripts/_debug*.png
