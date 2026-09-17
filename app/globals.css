@@ -23,6 +23,9 @@
 
   --color-ink: #0f1a1a;
   --color-ink-soft: #5b5f68;
+  /* ADR-0008 §3: near-black used for `.band-deep`'s gradient (a section background),
+     distinct from --color-ink above (body/heading text). */
+  --color-ink-deep: #0b1414;
   --color-grey-200: #e1e2e5;
   --color-teal: #0f766e;
   --color-teal-hover: #0b5c56;
@@ -159,6 +162,10 @@ h3,
  * top-edge accents. Hover lifts 2px with a deeper shadow; both are neutralised
  * under prefers-reduced-motion below. Mobile drops blur for GPU budget.
  * ------------------------------------------------------------------------- */
+/* ADR-0008 §3: `.glass`/`.glass-strong`/`.glass-pill` shadows refined to two layers —
+   a tight contact shadow (grounds the surface) plus the original wide ambient shadow
+   (reads as depth) — on top of the existing 1px inner top highlight. Mirrors the
+   `shadow-lift` Tailwind token (tailwind.config.ts) used elsewhere for hover-lift. */
 .glass {
   position: relative;
   background: rgba(255, 255, 255, 0.55);
@@ -167,7 +174,8 @@ h3,
   border: 1px solid rgba(255, 255, 255, 0.75);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    0 10px 40px rgba(15, 26, 26, 0.08);
+    0 2px 8px rgba(15, 26, 26, 0.05),
+    0 24px 56px rgba(15, 26, 26, 0.12);
   border-radius: 28px;
 }
 .glass-strong {
@@ -178,7 +186,8 @@ h3,
   border: 1px solid rgba(255, 255, 255, 0.75);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    0 10px 40px rgba(15, 26, 26, 0.08);
+    0 2px 8px rgba(15, 26, 26, 0.05),
+    0 24px 56px rgba(15, 26, 26, 0.12);
   border-radius: 28px;
 }
 .glass-pill {
@@ -189,7 +198,8 @@ h3,
   border: 1px solid rgba(255, 255, 255, 0.75);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    0 10px 40px rgba(15, 26, 26, 0.08);
+    0 2px 8px rgba(15, 26, 26, 0.05),
+    0 24px 56px rgba(15, 26, 26, 0.12);
   border-radius: 9999px;
   padding: 0.5rem 1rem;
 }
@@ -227,7 +237,10 @@ h3,
 .glass-hover:hover,
 .glass-hover:focus-visible {
   transform: translateY(-3px);
-  box-shadow: 0 16px 48px rgba(15, 26, 26, 0.12);
+  /* ADR-0008 §3: two-layer on hover too — tight contact + wide ambient. */
+  box-shadow:
+    0 4px 12px rgba(15, 26, 26, 0.08),
+    0 28px 64px rgba(15, 26, 26, 0.16);
 }
 
 /* ADR-0006 §Motion 4: GlassCard's pointermove specular sheen — a radial highlight
@@ -317,15 +330,16 @@ h3,
   }
 }
 
-/* Eyebrow — small uppercase teal label above every h2. ADR-0006 §Polish: 11.5px,
-   tracking .16em (was 12px/.14em, ADR-0005 §3). */
+/* Eyebrow — small uppercase teal label above every h2. ADR-0008 §3: 11px, tracking
+   .18em (was 11.5px/.16em, ADR-0006 §Polish) — matches the `eyebrow` fontSize token
+   in tailwind.config.ts. */
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.71875rem;
+  font-size: 0.6875rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-teal);
 }
@@ -347,6 +361,16 @@ h3,
   -webkit-text-fill-color: currentColor;
 }
 
+/* ADR-0008 §3 — `.text-stat`: the spec/fact numeral type step (FactStrip values,
+   ProductCard/CategoryCard spec numerals, bento feature-tile stat). Sizing/weight/
+   letter-spacing come from the `stat` fontSize token (tailwind.config.ts) via the
+   `text-stat` utility it generates; this adds what that scale can't express —
+   tabular numerals (so digits don't jitter in width) and the display font. */
+.text-stat {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+}
+
 /* ---------------------------------------------------------------------------
  * Cards — soft lift + shadow on hover/focus, no gradient top edge, no coloured
  * border. transform + box-shadow only, cheap to animate, neutralised above.
@@ -357,7 +381,166 @@ h3,
 .card-hover:hover,
 .card-hover:focus-visible {
   transform: translateY(-2px);
-  box-shadow: 0 16px 48px rgba(15, 26, 26, 0.12);
+  box-shadow:
+    0 4px 12px rgba(15, 26, 26, 0.08),
+    0 28px 64px rgba(15, 26, 26, 0.16);
+}
+
+/* ---------------------------------------------------------------------------
+ * ADR-0008 §3 — Grain: a 2% monochrome noise overlay via an inline SVG data URI
+ * (feTurbulence → feColorMatrix, alpha scaled down so the effective grain reads
+ * at roughly 2%). Standalone utility — combine with any element, e.g.
+ * `className="band-deep grain"` (Band/Section, tone="dark") or on a photo/hero
+ * surface. `pointer-events: none` so it never intercepts clicks; low alpha so it
+ * never affects text contrast.
+ * ------------------------------------------------------------------------- */
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+/* ---------------------------------------------------------------------------
+ * ADR-0008 §3 — `.band-deep`: the deep-section treatment (Band/Section,
+ * tone="dark"). An ink → teal-deep gradient background, white text, and every
+ * glass surface inside retinted for dark (12% white fill, 18% white border) —
+ * scoped with plain `.band-deep <selector>` descendant rules rather than
+ * Tailwind's `dark:` variant, per ADR §3. Two mechanisms do the retinting:
+ *   1. Redeclaring the shared CSS custom properties (--color-ink, --hairline,
+ *      --color-teal, …) so every hand-written rule that already reads them
+ *      (`.section-title`, `.eyebrow`, `.chip svg`, `.accordion-toggle`,
+ *      `.divider`, `.glass-accordion-item`, and any `border-[color:var(--hairline)]`
+ *      utility) repaints for free, with no component edits.
+ *   2. Explicit overrides for the static Tailwind colour utilities components
+ *      apply directly (`text-ink`, `text-grey-600`, `text-teal`, …), which are
+ *      baked to literal hex at build time and can't be reached by a CSS var.
+ * Apply alongside `.grain` (`className="band-deep grain"`) for the faint noise
+ * overlay — kept separate so `.grain` stays reusable on its own.
+ * ------------------------------------------------------------------------- */
+.band-deep {
+  position: relative;
+  isolation: isolate;
+  color: #ffffff;
+  background-image: linear-gradient(155deg, var(--color-ink-deep) 0%, var(--color-ink-deep) 55%, var(--color-teal-deep) 100%);
+
+  /* Custom-property re-scope — see mechanism 1 above. */
+  --color-ink: #ffffff;
+  --color-ink-soft: #e1e2e5; /* grey-200 */
+  --color-teal: #2a9d93; /* teal-light */
+  --hairline: rgba(255, 255, 255, 0.18);
+}
+
+/* Glass/chip surfaces inside a deep band: 12% white fill, 18% white border (the
+ * `::before` specular highlight is already a white gradient mask, so it needs no
+ * override), retuned two-layer shadow (dark ambient reads against a dark
+ * backdrop; the light-mode values above would be invisible here). */
+.band-deep .glass,
+.band-deep .glass-strong,
+.band-deep .glass-pill,
+.band-deep .chip {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 4px 14px rgba(0, 0, 0, 0.35),
+    0 32px 72px rgba(0, 0, 0, 0.45);
+}
+/* `.glass-hover`'s own :hover rule (app/globals.css, ADR-0006 §Motion) has the same
+   0,2,0 specificity as the resting-state override above, so without this it would
+   lose to whichever rule is later in source order on hover. This 3-class selector
+   always wins, keeping the hover-lift shadow visible inside a deep band too. */
+.band-deep .glass-hover:hover,
+.band-deep .glass-hover:focus-visible {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.32),
+    0 6px 18px rgba(0, 0, 0, 0.4),
+    0 36px 84px rgba(0, 0, 0, 0.5);
+}
+
+/* Static Tailwind colour utilities — see mechanism 2 above. Covers every
+ * component this pass touches (FactStrip, DividedList, Chips, Button, Faq,
+ * GlassCard and the product/category tiles built on it) plus the rest of the
+ * component library, so any of it reads correctly if placed in a dark band. */
+.band-deep .text-ink,
+.band-deep .text-ink\/80 {
+  color: #ffffff;
+}
+.band-deep .text-grey-600,
+.band-deep .text-grey-700 {
+  color: #e1e2e5; /* grey-200 body text */
+}
+.band-deep .text-grey-400,
+.band-deep .text-grey-500 {
+  color: rgba(255, 255, 255, 0.6);
+}
+.band-deep .text-teal {
+  color: #2a9d93; /* teal-light accents */
+}
+.band-deep .border-grey-200 {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* ---------------------------------------------------------------------------
+ * ADR-0008 §3 — `.pedestal`: a soft radial glow behind a product render, plus
+ * the paired hover recipe (render lifts 6px, pedestal glow brightens). Usage:
+ * a `.pedestal` wrapper (`position: relative` is built in) around the machine
+ * image, with the image itself carrying `.pedestal-render`. Works standalone
+ * (`.pedestal:hover`/`:focus-within`) and inside a GlassCard-style tile, where
+ * hovering anywhere on the card's `.group` link brightens it too.
+ * ------------------------------------------------------------------------- */
+.pedestal {
+  position: relative;
+}
+.pedestal::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  z-index: 0;
+  width: 74%;
+  height: 32%;
+  transform: translateX(-50%);
+  border-radius: 9999px;
+  background: radial-gradient(ellipse at center, rgba(15, 118, 110, 0.35) 0%, rgba(15, 118, 110, 0.14) 45%, transparent 72%);
+  filter: blur(18px);
+  opacity: 0.85;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-glass), filter 0.3s var(--ease-glass);
+}
+.band-deep .pedestal::before {
+  background: radial-gradient(ellipse at center, rgba(42, 157, 147, 0.45) 0%, rgba(42, 157, 147, 0.16) 45%, transparent 72%);
+}
+.pedestal-render {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.35s var(--ease-glass);
+}
+.pedestal:hover::before,
+.pedestal:focus-within::before,
+.group:hover .pedestal::before,
+.group:focus-visible .pedestal::before {
+  opacity: 1;
+  filter: blur(22px);
+}
+.pedestal:hover .pedestal-render,
+.pedestal:focus-within .pedestal-render,
+.group:hover .pedestal-render,
+.group:focus-visible .pedestal-render {
+  transform: translateY(-6px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .pedestal::before,
+  .pedestal-render {
+    transition: none;
+  }
 }
 
 /* ---------------------------------------------------------------------------
