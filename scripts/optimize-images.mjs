@@ -44,7 +44,13 @@ const LQIP_WIDTH = 20;
 
 // Generated variants live beside the source as `<name>-<width>.<ext>` — this
 // pattern lets a re-run tell a source image apart from its own previous output.
-const VARIANT_RE = new RegExp(`-(${TARGET_WIDTHS.join("|")})\\.(avif|webp)$`);
+// Any `-<3-or-4-digit-width>.<ext>` suffix marks a generated variant. Matching the
+// full numeric shape (not just TARGET_WIDTHS) matters because a source narrower than
+// a target width is emitted at its own width — e.g. a 1200px category image produces
+// `-1200.webp`, which a TARGET_WIDTHS-only pattern would re-ingest as a source on the
+// next run, yielding `-1200-1200.webp` and so on. Source images use single-digit
+// suffixes (`-1`, `-2`, `-3`), so a 3-4 digit match cannot catch them.
+const VARIANT_RE = /-\d{3,4}\.(avif|webp)$/i;
 const SOURCE_EXT_RE = /\.(webp|png|jpe?g)$/i;
 
 async function findSources(dir) {

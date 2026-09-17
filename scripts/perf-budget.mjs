@@ -14,12 +14,16 @@
  * "Modern-browser JS" is every `<script src>` on the page that isn't marked
  * `nomodule` (a legacy-browser-only fallback bundle, if one exists, is never
  * fetched by a modern browser). "App-only JS" needs the shared Next/React
- * runtime chunks subtracted out — rather than guess at that from chunk
- * filenames (fragile: naming conventions change between Next versions/routers),
- * this treats whatever script src set is common to *every* route's `<script>`
- * tags as the shared runtime, and counts only what's left as app code. That's
- * exactly what the runtime actually is: the same handful of chunks referenced
- * by literally every page.
+ * runtime chunks subtracted out. The authoritative source for that is `next
+ * build`'s own `.next/app-build-manifest.json` — the root `app/layout.tsx`'s
+ * entry there lists exactly the chunks every content page needs regardless of
+ * route (React, the Next.js runtime, the App Router's Link/prefetch client
+ * code, and layout's own client components). Everything a route's `<script>`
+ * tags reference beyond that set is counted as app code. Falls back to
+ * treating whatever script src set is common to *every* route's `<script>`
+ * tags as shared (fragile: a route with no outbound `<link>`s at all — the
+ * generated 404 page — can lack a chunk every real content page needs, which
+ * would wrongly count it as "app") only when `.next/` isn't available.
  *
  * "First-view images" are the page's `fetchpriority="high"` `<picture>`s (see
  * components/media/Img.tsx) — the ones a 390px-wide device fetches without any
@@ -147,12 +151,16 @@ async function main() {
     entry.modernSrcs = new Set(entry.tags.scripts.filter((s) => !s.nomodule).map((s) => s.src));
   }
 
-  // The shared Next/React runtime = whatever script src set every single route
-  // references — see file header. Falls back to "nothing shared" for a
-  // one-route build (never true here, but keeps this from throwing).
-  let sharedRuntime = null;
-  for (const entry of htmlByRoute.values()) {
-    sharedRuntime = sharedRuntime === null ? new Set(entry.modernSrcs) : intersect(sharedRuntime, entry.modernSrcs);
+  // The shared Next/React runtime — prefer the authoritative build manifest;
+  // fall back to "whatever every route's <script> tags have in common" (see
+  // file header for why that fallback is less precise).
+  let sharedRuntime = await sharedRuntimeFromBuildManifest();
+  let sharedRuntimeSource = "app-build-manifest.json";
+  if (!sharedRuntime) {
+    sharedRuntimeSource = "route intersection (fallback — .next/app-build-manifest.json not found)";
+    for (const entry of htmlByRoute.values()) {
+      sharedRuntime = sharedRuntime === null ? new Set(entry.modernSrcs) : intersect(sharedRuntime, entry.modernSrcs);
+    }
   }
   sharedRuntime ??= new Set();
 
@@ -216,7 +224,7 @@ async function main() {
   printTable(rows);
   console.log(`\n[perf-budget] largest single image: ${largest.file} — ${fmt(largest.size)}`);
   console.log(`[perf-budget] ${rows.length} routes · ${imageFiles.length} optimised image files checked.`);
-  console.log(`[perf-budget] shared runtime scripts: ${sharedRuntime.size}`);
+  console.log(`[perf-budget] shared runtime scripts: ${sharedRuntime.size} (source: ${sharedRuntimeSource})`);
 
   if (failures.length > 0) {
     console.error("\n[perf-budget] FAILED — budget(s) exceeded:");
@@ -231,6 +239,23 @@ function intersect(a, b) {
   const out = new Set();
   for (const v of a) if (b.has(v)) out.add(v);
   return out;
+}
+
+// Authoritative shared-chunk set — see file header. Returns null (not an empty
+// set) when the manifest is missing/unreadable so the caller can fall back.
+async function sharedRuntimeFromBuildManifest() {
+  const manifestPath = path.join(ROOT, ".next", "app-build-manifest.json");
+  if (!existsSync(manifestPath)) return null;
+  try {
+    const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
+    const layoutChunks = manifest.pages?.["/layout"];
+    if (!Array.isArray(layoutChunks)) return null;
+    return new Set(
+      layoutChunks.filter((f) => f.endsWith(".js")).map((f) => `/_next/${f}`),
+    );
+  } catch {
+    return null;
+  }
 }
 
 main().catch((err) => {
