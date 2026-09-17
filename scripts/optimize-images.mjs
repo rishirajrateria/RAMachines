@@ -117,6 +117,30 @@ async function processImage(srcPath, publicRoot) {
   return { publicSrc, entry: { width, height, lqip, variants }, built, skipped };
 }
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+// A source image can be mid-write from an unrelated generator script sharing
+// this checkout (e.g. scripts/generate-photos.mjs, which this script never
+// owns or blocks on) — sharp then sees a half-written file and throws. One
+// short retry clears that up; if it still fails the source is genuinely
+// broken, so skip it (logged) rather than aborting every other image.
+async function processImageSafe(src, publicRoot) {
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    try {
+      return await processImage(src, publicRoot);
+    } catch (err) {
+      if (attempt === 2) {
+        console.warn(`[optimize-images] skipped ${src}: ${err.message}`);
+        return null;
+      }
+      await sleep(300);
+    }
+  }
+  return null;
+}
+
 async function main() {
   const start = Date.now();
   const publicRoot = join(ROOT, "public");
@@ -124,13 +148,19 @@ async function main() {
   let totalBuilt = 0;
   let totalSkipped = 0;
   let totalImages = 0;
+  let totalFailed = 0;
 
   for (const sourceDir of SOURCE_DIRS) {
     const dir = join(publicRoot, sourceDir);
     if (!existsSync(dir)) continue;
     const sources = await findSources(dir);
     for (const src of sources.sort()) {
-      const { publicSrc, entry, built, skipped } = await processImage(src, publicRoot);
+      const result = await processImageSafe(src, publicRoot);
+      if (!result) {
+        totalFailed++;
+        continue;
+      }
+      const { publicSrc, entry, built, skipped } = result;
       manifest[publicSrc] = entry;
       totalBuilt += built;
       totalSkipped += skipped;
@@ -144,7 +174,9 @@ async function main() {
 
   const ms = Date.now() - start;
   console.log(
-    `[optimize-images] ${totalImages} source images · ${totalBuilt} variant(s) built · ${totalSkipped} up to date · ${ms}ms`,
+    `[optimize-images] ${totalImages} source images · ${totalBuilt} variant(s) built · ${totalSkipped} up to date` +
+      (totalFailed ? ` · ${totalFailed} skipped (see warnings above)` : "") +
+      ` · ${ms}ms`,
   );
 }
 

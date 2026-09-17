@@ -18,6 +18,7 @@ import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
+import { flatbedMachine, tubeLaserMachine, co2EngraverMachine, robotCellMachine } from "./illustrations/machines.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT_DIR = join(ROOT, "public", "photos");
@@ -190,58 +191,11 @@ function bevelBox(x, y, w, h, body, { rx = 3, topT = 0.16, sideT = 0.14, mirror 
     <rect x="${sideX.toFixed(1)}" y="${y.toFixed(1)}" width="${sideW.toFixed(1)}" height="${h.toFixed(1)}" rx="${rx}" fill="${side}" opacity="0.55"/>
     <rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${w.toFixed(1)}" height="${topH.toFixed(1)}" rx="${rx}" fill="${top}" opacity="0.8"/>`;
 }
-function machineShape(kind, body, accent, glow) {
-  if (kind === "tube") {
-    // Steel roller bed with a single slim teal accent stripe, not a solid teal bar.
-    return `${bevelBox(-40, -158, 16, 60, body, { rx: 3 })}${bevelBox(-190, -6, 380, 26, body, { rx: 13 })}
-      <rect x="-186" y="1" width="372" height="6" rx="3" fill="${accent}"/>
-      <ellipse cx="-190" cy="7" rx="10" ry="15" fill="${mix(body, "#000000", 0.2)}"/><ellipse cx="190" cy="7" rx="10" ry="15" fill="${mix(body, "#000000", 0.2)}"/>
-      ${bevelBox(-210, 30, 34, 44, body, { rx: 4 })}${bevelBox(176, 30, 34, 44, body, { rx: 4 })}
-      ${bevelBox(-70, 30, 30, 40, accent, { rx: 3 })}${bevelBox(40, 30, 30, 40, accent, { rx: 3 })}
-      <circle cx="0" cy="7" r="5" fill="${glow}"/>`;
-  }
-  if (kind === "co2") {
-    return `${bevelBox(-170, -4, 340, 100, body, { rx: 10 })}
-      <polygon points="-170,-4 170,-4 150,-72 -150,-72" fill="${accent}"/>
-      <polygon points="-150,-72 150,-72 150,-58 -150,-58" fill="${mix(accent, "#FFFFFF", 0.45)}" opacity="0.7"/>
-      <rect x="-140" y="14" width="280" height="60" rx="4" fill="${glow}" fill-opacity="0.2"/>
-      <line x1="-140" y1="24" x2="140" y2="24" stroke="${glow}" stroke-opacity="0.3" stroke-width="2"/>
-      <line x1="-140" y1="44" x2="140" y2="44" stroke="${glow}" stroke-opacity="0.3" stroke-width="2"/>
-      <line x1="-140" y1="64" x2="140" y2="64" stroke="${glow}" stroke-opacity="0.3" stroke-width="2"/>
-      <rect x="-30" y="96" width="14" height="30" rx="2" fill="${mix(body, "#000000", 0.3)}"/><rect x="20" y="96" width="14" height="30" rx="2" fill="${mix(body, "#000000", 0.3)}"/>`;
-  }
-  if (kind === "robot") {
-    // Steel-grey arm links; teal stays confined to the joint rings and shoulder collar.
-    return `${bevelBox(-56, 96, 112, 30, body, { rx: 6 })}${bevelBox(-18, 10, 36, 92, body, { rx: 10 })}
-      <circle cx="0" cy="10" r="24" fill="${body}"/><circle cx="0" cy="10" r="24" fill="none" stroke="${accent}" stroke-width="5" opacity="0.85"/>
-      <g transform="rotate(-28)">${bevelBox(0, -15, 164, 30, body, { rx: 12 })}</g>
-      <circle cx="145" cy="-54" r="18" fill="${accent}"/><g transform="translate(145,-54) rotate(38)">${bevelBox(0, -12, 108, 24, body, { rx: 10 })}</g>
-      <polygon points="240,-34 276,-12 262,24 226,4" fill="${glow}" opacity="0.9"/>`;
-  }
-  // gantry (default laser cutter)
-  return `${bevelBox(-220, 68, 440, 24, mix(body, "#000000", 0.15), { rx: 6 })}
-    ${bevelBox(-190, -16, 18, 86, body, { rx: 4 })}${bevelBox(170, -16, 18, 86, body, { rx: 4 })}
-    ${bevelBox(-205, -40, 410, 26, accent, { rx: 6 })}
-    ${bevelBox(-8, -14, 16, 66, accent, { rx: 3 })}
-    ${bevelBox(164, 0, 56, 70, body, { rx: 8 })}<rect x="180" y="16" width="24" height="16" rx="2" fill="${glow}" fill-opacity="0.55"/>
-    <rect x="-170" y="10" width="300" height="40" rx="3" fill="${GRAPHITE}" fill-opacity="0.45"/>
-    <rect x="-205" y="-42" width="410" height="4" fill="${mix(accent, "#FFFFFF", 0.5)}" opacity="0.6"/>`;
-}
-function machineUnit(kind, x, y, scale, mirror, depthT, op) {
-  const sx = (mirror ? -1 : 1) * scale;
-  // Steel-grey body, cooling/desaturating with distance; teal stays confined to accent panels.
-  const body = atmo(mix(STEEL, GRAPHITE, 0.35), depthT * 0.7);
-  const accent = atmo(mix(TEAL, AQUA, 0.2), depthT * 0.5);
-  const glow = mix(AQUA, "#FFFFFF", 0.2);
-  return `
-    <ellipse cx="${x.toFixed(1)}" cy="${(y + 14 * scale).toFixed(1)}" rx="${(160 * scale).toFixed(1)}" ry="${(20 * scale).toFixed(1)}" fill="#050A09" opacity="${(op * 0.4).toFixed(2)}" filter="url(#blurS)"/>
-    <g transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(${sx.toFixed(2)} ${scale.toFixed(2)})" opacity="${op}">${machineShape(kind, body, accent, glow)}</g>`;
-}
 function personFig(x, y, scale, mirror, tool, tint, op) {
   const sx = (mirror ? -1 : 1) * scale;
   return `
     <ellipse cx="${x.toFixed(1)}" cy="${(y + 78 * scale).toFixed(1)}" rx="${(30 * scale).toFixed(1)}" ry="${(7 * scale).toFixed(1)}" fill="#050A09" opacity="${(op * 0.35).toFixed(2)}" filter="url(#blurXS)"/>
-    <g transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(${sx.toFixed(2)} ${scale.toFixed(2)})" fill="${tint}" opacity="${op}" stroke="${mix(tint, "#FFFFFF", 0.6)}" stroke-width="1.5" stroke-opacity="0.5">
+    <g transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(${sx.toFixed(2)} ${scale.toFixed(2)})" fill="${tint}" opacity="${op}" stroke="${mix(tint, AQUA, 0.55)}" stroke-width="1.5" stroke-opacity="0.75">
       <circle cx="0" cy="-96" r="17"/>
       <path d="M-20,-76 L20,-76 L26,10 C26,18 20,24 12,24 L-12,24 C-20,24 -26,18 -26,10 Z"/>
       <rect x="-18" y="24" width="13" height="52" rx="5"/><rect x="6" y="24" width="13" height="52" rx="5"/>
@@ -298,19 +252,17 @@ function bokehField(rnd, w, h, count, dark) {
   }
   return out;
 }
-// --------------------------------------------------------------------------- Template: interior room
-function interiorRoom(rnd, w, h, opts) {
-  const { hue = 0, populate = "machines", person = true, crates = false, dark = false, biasRight = false } = opts;
-  // Vanishing point stays well inside the inset horizon segment (30%-70% of
-  // width) so grid lines and machine lanes never cross into the wall triangles.
-  const vpx = w * (biasRight ? 0.52 + rnd() * 0.1 : 0.42 + rnd() * 0.1);
+// --------------------------------------------------------------------------- Template: warehouse (slot-warehouse-spares only)
+/** One large spares rack close and dominant, per ADR-0008 §2 pass 3 "other
+ * slots ... bring the subject much closer and larger" — not a receding row
+ * of small racks. */
+function warehouseScene(rnd, w, h) {
+  const vpx = w * (0.46 + rnd() * 0.08);
   const vpy = h * (HORIZON_FRAC + (rnd() - 0.5) * 0.03);
-  // Steel-grey walls; teal is only a faint distant-haze accent, not the whole frame.
-  const wallTop = mix(dark ? INK : GRAPHITE, TEAL_DEEP, 0.06 + rnd() * 0.04);
+  const wallTop = mix(GRAPHITE, TEAL_DEEP, 0.08);
   const wallBottom = mix(WALL_GREY, TEAL_DEEP, 0.16);
   const sideWall = mix(wallBottom, "#000000", 0.22);
-  // Concrete floor, near-even gradient (far/top slightly lighter+hazier, near/bottom darker).
-  const floorNear = dark ? mix(CONCRETE_NEAR, "#000000", 0.12) : CONCRETE_NEAR;
+  const floorNear = CONCRETE_NEAR;
   const floorFar = atmo(CONCRETE_FAR, 0.22);
   let out = `<defs>
     <linearGradient id="wallGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="${wallTop}"/><stop offset="100%" stop-color="${wallBottom}"/></linearGradient>
@@ -318,72 +270,238 @@ function interiorRoom(rnd, w, h, opts) {
   </defs>`;
   out += roomShell(w, h, vpx, vpy, { floorFill: "url(#floorGrad)", ceilFill: "url(#wallGrad)", sideFill: sideWall });
   out += floorGrid(w, h, vpx, vpy);
-  // trusses: two beams receding toward the vanishing point
-  out += trussBeam(w, vpy * 0.1, 1, vpx / w, "0.9");
-  out += trussBeam(w, vpy * 0.42, 0.55, vpx / w, "0.75");
-  // lamps along depth, hung from the trusses
-  const lampDepths = [0.22, 0.6];
-  for (const t of lampDepths) {
-    const lx = lerp(w * (biasRight ? 0.42 : 0.22), vpx, t) + (rnd() - 0.5) * w * 0.06;
-    const ly = lerp(vpy * 0.55, vpy * 0.85, t);
-    const floorY = lerp(h * 0.9, vpy + (h - vpy) * 0.4, t);
-    out += lampUnit(lx, ly, floorY, lerp(1.15, 0.5, t), true, (0.9 - t * 0.25).toFixed(2));
-  }
-  // subject row (machines or shelves), near -> far along one wall, offset toward right for hero calm-left
-  const laneNearX = w * (biasRight ? 0.86 : 0.66);
-  const laneFarX = vpx + w * (biasRight ? 0.14 : 0.1);
-  const depths = [0.06, 0.42, 0.78];
-  for (const t of depths) {
-    const x = lerp(laneNearX, laneFarX, t) + (rnd() - 0.5) * w * 0.02;
-    const y = lerp(h * 0.9, vpy + (h - vpy) * 0.3, t);
-    const scale = lerp(1.3, 0.16, t) * (w / 1800);
-    if (populate === "shelves") out += shelfRack(x, y, scale * 0.9, atmo(mix(GRAPHITE2, TEAL, 0.2), t), (0.95 - t * 0.3).toFixed(2));
-    else if (populate === "machines") out += machineUnit("gantry", x, y, scale, rnd() > 0.5, t, (0.98 - t * 0.3).toFixed(2));
-  }
-  if (person) {
-    const px = lerp(w * (biasRight ? 0.5 : 0.36), vpx, 0.26);
-    const py = h * 0.85;
-    out += personFig(px, py, 1.05 * (w / 1800), rnd() > 0.5, false, mix(GRAPHITE, TEAL, 0.15), 0.94);
-  }
-  if (crates) {
-    out += crateShape(w * (biasRight ? 0.1 : 0.85), h * 0.9, 0.9 * (w / 1600), atmo(GRAPHITE2, 0.05), 0.9);
-    out += crateShape(w * (biasRight ? 0.06 : 0.9), h * 0.98, 0.7 * (w / 1600), atmo(GRAPHITE, 0.1), 0.85);
-  }
+  out += trussBeam(w, vpy * 0.2, 0.7, vpx / w, "0.8");
+  // One large rack owns the frame — a spotlight lamp hangs directly above it
+  // instead of floating in empty floor to its side.
+  const rackX = w * 0.56, rackY = h * 0.72, rackScale = 1.55 * (w / 1600);
+  out += lampUnit(rackX, vpy * 0.5, rackY - 200 * rackScale, 1.3, true, "0.9");
+  out += shelfRack(rackX, rackY, rackScale, mix(GRAPHITE2, TEAL, 0.16), 0.98);
   return out;
 }
 
-// --------------------------------------------------------------------------- Template: machine working
-function machineWorking(rnd, w, h, opts) {
-  const { kind = "gantry", sparks = true, hero = false, installation = false, finishedParts = false } = opts;
-  const top = mix(INK, TEAL_DEEP, 0.1);
-  const bottom = mix(WALL_GREY, TEAL_DEEP, 0.16);
-  const vpx = w * (0.5 + (rnd() - 0.5) * 0.2), vpy = h * HORIZON_FRAC;
-  const sideWall = mix(bottom, "#000000", 0.22);
-  const floorNear = mix(GRAPHITE, CONCRETE_NEAR, 0.5);
-  const floorFar = atmo(CONCRETE_FAR, 0.2);
-  let out = `<defs>
-    <linearGradient id="wallGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="${top}"/><stop offset="100%" stop-color="${bottom}"/></linearGradient>
-    <linearGradient id="floorGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="${floorFar}"/><stop offset="100%" stop-color="${floorNear}"/></linearGradient>
-  </defs>`;
-  out += roomShell(w, h, vpx, vpy, { floorFill: "url(#floorGrad)", ceilFill: "url(#wallGrad)", sideFill: sideWall });
-  out += floorGrid(w, h, vpx, vpy);
-  const mx = w * (hero ? 0.6 : 0.52), my = h * 0.58, scale = (hero ? 1.55 : 1.7) * (w / 1900);
-  out += lampUnit(mx - scale * 60, h * 0.05, my - scale * 40, 1.5, true, "0.85");
-  out += machineUnit(kind, mx, my, scale, rnd() > 0.5, 0, 0.98);
-  const workX = mx + (kind === "tube" ? scale * 40 : scale * -6), workY = my + scale * (kind === "robot" ? -50 : 4);
-  if (sparks) out += sparkBurst(workX, workY, rnd, scale * 1.1);
-  if (installation) {
-    out += `<line x1="${(mx - scale * 40).toFixed(1)}" y1="${(my - scale * 60).toFixed(1)}" x2="${(mx - scale * 4).toFixed(1)}" y2="${(h * 0.06).toFixed(1)}" stroke="${HAZE}" stroke-width="4" opacity="0.5"/>
-      <line x1="${(mx + scale * 40).toFixed(1)}" y1="${(my - scale * 60).toFixed(1)}" x2="${(mx + scale * 4).toFixed(1)}" y2="${(h * 0.06).toFixed(1)}" stroke="${HAZE}" stroke-width="4" opacity="0.5"/>`;
-    out += personFig(mx - scale * 130, h * 0.87, 0.9 * (w / 1800), false, true, GRAPHITE, 0.9);
+// --------------------------------------------------------------------------- Cinematic machine-subject helpers (pass 3)
+/** Fits a `scripts/illustrations/machines.mjs` render (`{ svg, bbox, tip }`)
+ * into a `w`×`h` canvas so it fills `heightFrac` (0.55-0.75) of the frame
+ * height, right-edge anchored at `rightFrac` of the width (not centred — a
+ * wide machine's left edge is free to run into the calm/dark zone, which the
+ * caller dims separately) and bottom-set near the floor line — "the subject
+ * should own the frame" per the pass-3 brief. */
+function fitMachine(machine, w, h, { heightFrac = 0.64, rightFrac = 0.9, bottomMargin = 0.055, maxWidthFrac = 0.94 } = {}) {
+  const [minX, minY, maxX, maxY] = machine.bbox;
+  const bw = Math.max(1, maxX - minX);
+  const bh = Math.max(1, maxY - minY);
+  let scale = (h * heightFrac) / bh;
+  const widthCap = (w * maxWidthFrac) / bw;
+  if (scale > widthCap) scale = widthCap;
+  const tx = w * rightFrac - maxX * scale;
+  const ty = h * (1 - bottomMargin) - maxY * scale;
+  const toScreen = (lx, ly) => [tx + lx * scale, ty + ly * scale];
+  const tip = toScreen(machine.tip[0], machine.tip[1]);
+  return {
+    group: `<g transform="translate(${tx.toFixed(1)} ${ty.toFixed(1)}) scale(${scale.toFixed(4)})">${machine.svg}</g>`,
+    scale,
+    tip,
+    minX: tx + minX * scale,
+    maxX: tx + maxX * scale,
+    minY: ty + minY * scale,
+    maxY: ty + maxY * scale,
+  };
+}
+/** One or two soft volumetric light shafts falling from the upper-left —
+ * strong enough to actually read against the dark backdrop. */
+function lightShafts(rnd, w, h, n = 2) {
+  let out = "";
+  const c = mix(HAZE, AQUA, 0.3);
+  for (let i = 0; i < n; i++) {
+    const originX = w * (rnd() * 0.12);
+    const originY = -h * 0.08;
+    const angle = (32 + i * 18 + rnd() * 10) * (Math.PI / 180);
+    const len = h * 1.4;
+    const topW = 10 + rnd() * 10;
+    const botW = w * (0.2 + rnd() * 0.12);
+    const dx = Math.sin(angle), dy = Math.cos(angle);
+    const endX = originX + dx * len, endY = originY + dy * len;
+    const nx = -dy, ny = dx;
+    const poly = [
+      [originX - nx * topW, originY - ny * topW],
+      [originX + nx * topW, originY + ny * topW],
+      [endX + nx * botW, endY + ny * botW],
+      [endX - nx * botW, endY - ny * botW],
+    ]
+      .map(([px, py]) => `${px.toFixed(1)},${py.toFixed(1)}`)
+      .join(" ");
+    const op = (0.1 + rnd() * 0.09).toFixed(3);
+    out += `<polygon points="${poly}" fill="${c}" opacity="${op}" filter="url(#blurM)"/>`;
   }
-  if (finishedParts) {
-    for (let i = 0; i < 3; i++) {
-      const px = w * (0.14 + i * 0.09), py = h * (0.86 + i * 0.02);
-      out += `<rect x="${(px - 30).toFixed(1)}" y="${(py - 8).toFixed(1)}" width="60" height="16" rx="3" fill="${mix(AQUA, HAZE, 0.4)}" opacity="0.85"/>`;
+  // A soft top-left ambient glow so the shafts read as coming from a source,
+  // not floating triangles.
+  out += `<ellipse cx="${(w * 0.02).toFixed(1)}" cy="${(-h * 0.05).toFixed(1)}" rx="${(w * 0.5).toFixed(1)}" ry="${(h * 0.4).toFixed(1)}" fill="${c}" opacity="0.14" filter="url(#blurL)"/>`;
+  return out;
+}
+/** A soft glow on the horizon behind the subject's feet, so the backdrop
+ * reads as lit space instead of a flat void. */
+function horizonGlow(cx, cy, w, color, op) {
+  return `<ellipse cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" rx="${(w * 0.48).toFixed(1)}" ry="${(w * 0.12).toFixed(1)}" fill="${color}" opacity="${op}" filter="url(#blurL)"/>`;
+}
+/** Faint atmospheric haze banding the floor line between subject and background. */
+function floorHaze(w, h, groundYFrac) {
+  const y = h * Math.max(0.28, groundYFrac - 0.18);
+  return `<rect x="0" y="${y.toFixed(1)}" width="${w}" height="${(h * 0.26).toFixed(1)}" fill="${HAZE}" opacity="0.08" filter="url(#blurM)"/>`;
+}
+/** Cool fill (left) + warm rim (right, spark side) glows framing the subject —
+ * drawn behind the machine group. */
+function subjectLighting(fit, w) {
+  const midY = (fit.minY + fit.maxY) / 2;
+  const halfH = Math.max(1, (fit.maxY - fit.minY) / 2);
+  const fill = `<ellipse cx="${fit.minX.toFixed(1)}" cy="${midY.toFixed(1)}" rx="${(w * 0.15).toFixed(1)}" ry="${(halfH * 0.95).toFixed(1)}" fill="${AQUA}" opacity="0.14" filter="url(#blurL)"/>`;
+  const rim = `<ellipse cx="${fit.maxX.toFixed(1)}" cy="${midY.toFixed(1)}" rx="${(w * 0.12).toFixed(1)}" ry="${(halfH * 0.9).toFixed(1)}" fill="${AMBER}" opacity="0.2" filter="url(#blurL)"/>`;
+  return fill + rim;
+}
+/** A single blurred out-of-focus element low in a corner — a rail, a stacked
+ * sheet or a bollard — the foreground depth cue. */
+function foregroundBlur(rnd, w, h, kind, side) {
+  const x0 = side === "right" ? w * 0.78 : -w * 0.06;
+  const op = (0.3 + rnd() * 0.12).toFixed(2);
+  if (kind === "sheet") {
+    return `<rect x="${x0.toFixed(1)}" y="${(h * 0.8).toFixed(1)}" width="${(w * 0.26).toFixed(1)}" height="${(h * 0.09).toFixed(1)}" rx="6" fill="${STEEL}" opacity="${op}" filter="url(#blurM)"/>`;
+  }
+  if (kind === "bollard") {
+    return `<rect x="${(x0 + w * 0.02).toFixed(1)}" y="${(h * 0.74).toFixed(1)}" width="${(w * 0.025).toFixed(1)}" height="${(h * 0.24).toFixed(1)}" rx="10" fill="${GRAPHITE2}" opacity="${op}" filter="url(#blurM)"/>`;
+  }
+  return `<rect x="${x0.toFixed(1)}" y="${(h * 0.87).toFixed(1)}" width="${(w * 0.3).toFixed(1)}" height="${(h * 0.045).toFixed(1)}" rx="8" fill="${GRAPHITE}" opacity="${op}" filter="url(#blurM)"/>`;
+}
+/** A far-background gantry-crane silhouette for export/port keys. */
+function craneSilhouette(w, h, atXFrac) {
+  const cx = w * atXFrac, top = h * 0.1, base = h * 0.6;
+  const c = atmo(GRAPHITE, 0.55);
+  return `<g opacity="0.4">
+    <polygon points="${(cx - 26).toFixed(1)},${base.toFixed(1)} ${(cx - 8).toFixed(1)},${top.toFixed(1)} ${(cx + 8).toFixed(1)},${top.toFixed(1)} ${(cx + 26).toFixed(1)},${base.toFixed(1)}" fill="${c}"/>
+    <polygon points="${(cx - 10).toFixed(1)},${(top + 6).toFixed(1)} ${(cx + 150).toFixed(1)},${(top - 12).toFixed(1)} ${(cx + 150).toFixed(1)},${(top - 2).toFixed(1)} ${(cx + 6).toFixed(1)},${(top + 16).toFixed(1)}" fill="${c}"/>
+    <line x1="${(cx + 128).toFixed(1)}" y1="${(top - 4).toFixed(1)}" x2="${(cx + 128).toFixed(1)}" y2="${(top + 34).toFixed(1)}" stroke="${c}" stroke-width="2"/>
+  </g>`;
+}
+/** A short stack of crates set beside the subject. */
+function crateCluster(w, h, fit, side) {
+  const baseX = side === "right" ? fit.maxX + w * 0.06 : Math.max(w * 0.02, fit.minX - w * 0.16);
+  const s = (w / 1700) * 0.85;
+  let out = crateShape(baseX, fit.maxY - h * 0.005, s, mix(GRAPHITE2, TEAL, 0.12), 0.92);
+  out += crateShape(baseX + w * 0.05, fit.maxY + h * 0.01, s * 0.74, GRAPHITE2, 0.86);
+  return out;
+}
+/** A small certification-badge glyph set near the subject's control cabinet. */
+function badgeGlyph(w, h, fit) {
+  const x = fit.maxX - w * 0.02, y = fit.minY + (fit.maxY - fit.minY) * 0.26, s = w * 0.00034;
+  return `<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(${s.toFixed(3)})">
+    <circle cx="0" cy="0" r="60" fill="${AMBER}" opacity="0.88"/>
+    <circle cx="0" cy="0" r="60" fill="none" stroke="${mix(AMBER, "#FFFFFF", 0.5)}" stroke-width="4"/>
+    <path d="M-24,-2 l16,18 l32,-36" fill="none" stroke="${INK}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="-20,50 0,20 20,50 12,34 -12,34" fill="${mix(AMBER, GRAPHITE2, 0.3)}" opacity="0.9"/>
+  </g>`;
+}
+/** A small distant location glyph (pin / city skyline / globe) sitting high
+ * in the background — a supporting element, not the scene. */
+function locateGlyph(w, h, kind) {
+  const cx = w * 0.14, cy = h * 0.22;
+  if (kind === "pin") {
+    return `<g transform="translate(${cx.toFixed(1)} ${cy.toFixed(1)}) scale(${(w * 0.00016).toFixed(4)})" opacity="0.55">
+      <path d="M0,-140 C70,-140 122,-92 122,-32 C122,44 0,140 0,140 C0,140 -122,44 -122,-32 C-122,-92 -70,-140 0,-140 Z" fill="${TEAL}" opacity="0.8"/>
+      <circle cx="0" cy="-32" r="34" fill="${HAZE}" opacity="0.85"/>
+    </g>`;
+  }
+  if (kind === "city") {
+    let out = `<g opacity="0.4">`;
+    for (let i = 0; i < 5; i++) {
+      const bx = cx + i * w * 0.028, bh = h * (0.05 + (i % 3) * 0.03);
+      out += `<rect x="${bx.toFixed(1)}" y="${(cy + h * 0.12 - bh).toFixed(1)}" width="${(w * 0.02).toFixed(1)}" height="${bh.toFixed(1)}" fill="${GRAPHITE}"/>`;
     }
+    return out + `</g>`;
   }
-  out += `<g opacity="0.14" filter="url(#blurM)"><rect x="0" y="${(h * 0.7).toFixed(1)}" width="${(w * 0.12).toFixed(1)}" height="${(h * 0.3).toFixed(1)}" fill="${INK}"/></g>`;
+  const r = w * 0.055;
+  return `<g opacity="0.42" stroke="${AQUA}" stroke-width="1.4" fill="none">
+    <circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${r.toFixed(1)}"/>
+    <ellipse cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" rx="${r.toFixed(1)}" ry="${(r * 0.36).toFixed(1)}"/>
+    <ellipse cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" rx="${(r * 0.4).toFixed(1)}" ry="${r.toFixed(1)}"/>
+  </g>`;
+}
+/**
+ * The "subject owns the frame" template used for every hero-* image and
+ * every machine-related slot (ADR-0008 §2 pass 3): a large solid-shaded
+ * machine render from illustrations/machines.mjs, right/centre-right of
+ * frame, against a deep vertical-gradient backdrop with volumetric light
+ * shafts, a horizon glow, floor haze and one blurred foreground element —
+ * a cinematic environment, not a room.
+ */
+function machineScene(rnd, w, h, opts) {
+  const {
+    hero = false,
+    machine,
+    machine2 = null,
+    heightFrac = 0.64 + rnd() * 0.09,
+    rightFrac = hero ? 0.92 + rnd() * 0.03 : 0.84 + rnd() * 0.05,
+    figures = 0,
+    crates = false,
+    crane = false,
+    badge = false,
+    locate = null,
+    lift = false,
+  } = opts;
+  const hf = Math.min(0.75, Math.max(0.55, heightFrac));
+
+  const topC = "#050B0A";
+  const midC = mix(TEAL_DEEP, "#124440", 0.5);
+  const floorC = mix(CONCRETE_FAR, HAZE, 0.14);
+  let out = `<defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="${topC}"/>
+      <stop offset="55%" stop-color="${midC}"/>
+      <stop offset="100%" stop-color="${floorC}"/>
+    </linearGradient>
+  </defs><rect width="${w}" height="${h}" fill="url(#bgGrad)"/>`;
+
+  out += lightShafts(rnd, w, h, hero ? 2 : 1);
+  if (locate) out += locateGlyph(w, h, locate);
+  if (crane) out += craneSilhouette(w, h, rightFrac - 0.1);
+
+  const fit = fitMachine(machine, w, h, { heightFrac: hf, rightFrac, maxWidthFrac: hero ? 0.95 : 0.9 });
+  let fit2 = null;
+  if (machine2) {
+    fit2 = fitMachine(machine2, w, h, {
+      heightFrac: hf * 0.58,
+      rightFrac: Math.max(0.3, rightFrac - 0.42),
+      maxWidthFrac: 0.34,
+      bottomMargin: 0.075,
+    });
+  }
+
+  const groundYFrac = fit.maxY / h;
+  out += horizonGlow(fit.minX + (fit.maxX - fit.minX) / 2, h * Math.min(0.7, groundYFrac * 0.95), w, mix(TEAL, AQUA, 0.3), 0.3);
+  out += floorHaze(w, h, groundYFrac);
+  out += subjectLighting(fit, w);
+
+  if (fit2) out += fit2.group;
+  if (lift) {
+    // A crane rigging cue — two taut lift-sling lines from off the top of
+    // frame down to the machine, for the "being installed" slot.
+    const topCx = fit.minX + (fit.maxX - fit.minX) * 0.5;
+    out += `<line x1="${(topCx - 60).toFixed(1)}" y1="${fit.minY.toFixed(1)}" x2="${(topCx - 10).toFixed(1)}" y2="${(-h * 0.02).toFixed(1)}" stroke="${HAZE}" stroke-width="3" opacity="0.5"/>
+      <line x1="${(topCx + 60).toFixed(1)}" y1="${fit.minY.toFixed(1)}" x2="${(topCx + 10).toFixed(1)}" y2="${(-h * 0.02).toFixed(1)}" stroke="${HAZE}" stroke-width="3" opacity="0.5"/>`;
+  }
+  out += fit.group;
+  out += `<circle cx="${fit.tip[0].toFixed(1)}" cy="${fit.tip[1].toFixed(1)}" r="${(w * 0.05).toFixed(1)}" fill="${AMBER}" opacity="0.18" filter="url(#blurM)"/>`;
+
+  if (crates) out += crateCluster(w, h, fit, "left");
+  if (badge) out += badgeGlyph(w, h, fit);
+
+  // Figures stand close to the machine's control cabinet (near its right
+  // edge, where the cabinet actually sits), never out at the far/dark left
+  // edge of the bbox where they'd read as a stray silhouette.
+  for (let i = 0; i < figures; i++) {
+    const frac = figures === 1 ? 0.76 : 0.56 + i * 0.22;
+    const fx = Math.min(fit.minX + (fit.maxX - fit.minX) * frac, w * 0.94) + (rnd() - 0.5) * w * 0.015;
+    out += personFig(fx, fit.maxY - h * 0.018, 1.05 * (w / 1700), i % 2 === 0, i === 0, mix(GRAPHITE, TEAL, 0.12), 0.96);
+  }
+
+  out += foregroundBlur(rnd, w, h, pick(rnd, ["rail", "sheet", "bollard"]), "left");
   return out;
 }
 
@@ -426,14 +544,14 @@ function macroShot(rnd, w, h, opts) {
   return out;
 }
 
-// --------------------------------------------------------------------------- Template: people scene
+// --------------------------------------------------------------------------- Template: people scene (slot-office, slot-team only)
 function peopleScene(rnd, w, h, opts) {
-  const { scene = "office", hero = false } = opts;
-  const top = mix(hero ? INK : GRAPHITE, TEAL_DEEP, 0.08);
+  const { scene = "office" } = opts;
+  const top = mix(GRAPHITE, TEAL_DEEP, 0.08);
   const bottom = mix(WALL_GREY, TEAL_DEEP, 0.14);
   const vpx = w * (0.44 + rnd() * 0.12), vpy = h * HORIZON_FRAC;
   const sideWall = mix(bottom, "#000000", 0.22);
-  const floorNear = hero ? mix(CONCRETE_NEAR, "#000000", 0.1) : CONCRETE_NEAR;
+  const floorNear = CONCRETE_NEAR;
   const floorFar = atmo(CONCRETE_FAR, 0.2);
   let out = `<defs>
     <linearGradient id="wallGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="${top}"/><stop offset="100%" stop-color="${bottom}"/></linearGradient>
@@ -441,179 +559,72 @@ function peopleScene(rnd, w, h, opts) {
   </defs>`;
   out += roomShell(w, h, vpx, vpy, { floorFill: "url(#floorGrad)", ceilFill: "url(#wallGrad)", sideFill: sideWall });
   out += floorGrid(w, h, vpx, vpy);
+  out += lightShafts(rnd, w, h, 1);
+  out += horizonGlow(w * 0.5, vpy, w, mix(TEAL, AQUA, 0.3), 0.28);
   const winX = w * 0.72;
   for (let i = 0; i < 6; i++) {
     out += `<rect x="${(winX + i * 26).toFixed(1)}" y="0" width="6" height="${h * 0.5}" fill="${HAZE}" opacity="0.05" filter="url(#blurS)"/>`;
   }
-  if (scene === "training") {
-    for (let row = 0; row < 2; row++) {
-      for (let col = 0; col < 3; col++) {
-        const t = 0.3 + row * 0.3;
-        const x = lerp(w * 0.24, w * 0.74, col / 2) + (rnd() - 0.5) * 20;
-        const y = h * (0.62 + row * 0.16);
-        const s = lerp(0.55, 0.85, row) * (w / 1700);
-        out += `<rect x="${(x - 40 * s).toFixed(1)}" y="${(y - 6 * s).toFixed(1)}" width="${(80 * s).toFixed(1)}" height="${(6 * s).toFixed(1)}" rx="2" fill="${GRAPHITE}" opacity="0.85"/>
-          <rect x="${(x - 26 * s).toFixed(1)}" y="${(y - 34 * s).toFixed(1)}" width="${(52 * s).toFixed(1)}" height="${(30 * s).toFixed(1)}" rx="2" fill="${GRAPHITE2}" opacity="0.9"/>
-          <rect x="${(x - 22 * s).toFixed(1)}" y="${(y - 30 * s).toFixed(1)}" width="${(44 * s).toFixed(1)}" height="${(22 * s).toFixed(1)}" fill="${AQUA}" opacity="0.28"/>`;
-        if (row === 1) out += personFig(x, y + 30 * s, s * 1.5, rnd() > 0.5, false, atmo(GRAPHITE, 0.1), 0.85);
-      }
-    }
-    out += `<rect x="${(w * 0.34).toFixed(1)}" y="${(h * 0.09).toFixed(1)}" width="${(w * 0.32).toFixed(1)}" height="${(h * 0.19).toFixed(1)}" rx="6" fill="${INK}" opacity="0.85"/>
-      <polyline points="${w * 0.38},${h * 0.25} ${w * 0.43},${h * 0.15} ${w * 0.49},${h * 0.21} ${w * 0.55},${h * 0.11} ${w * 0.62},${h * 0.19}" fill="none" stroke="${AQUA}" stroke-width="4" opacity="0.7"/>`;
-    out += personFig(w * 0.3, h * 0.68, 0.9 * (w / 1700), false, true, GRAPHITE, 0.92);
-  } else if (scene === "office" || scene === "desk") {
-    const dx = w * (scene === "desk" ? 0.5 : 0.5), dy = h * 0.72;
-    const s = (scene === "desk" ? 1.5 : 1.1) * (w / 1700);
+  if (scene === "team") {
+    // Three figures, close and large, backlit against the horizon glow —
+    // filling most of the frame height, the centre one nearest camera.
+    const positions = [[-390, 0.96, 3.9], [30, 1.1, 4.7], [420, 0.96, 3.9]];
+    for (const [ox, yf, s] of positions) out += personFig(w / 2 + ox * (w / 1600), h * yf, s * (w / 1600), ox > 0, false, atmo(GRAPHITE, 0.05), 0.97);
+  } else {
+    const dx = w * 0.52, dy = h * 0.84, s = 1.75 * (w / 1600);
     out += `<rect x="${(dx - 210 * s).toFixed(1)}" y="${(dy - 4 * s).toFixed(1)}" width="${(420 * s).toFixed(1)}" height="${(16 * s).toFixed(1)}" rx="4" fill="${GRAPHITE2}"/>
       <rect x="${(dx - 80 * s).toFixed(1)}" y="${(dy - 130 * s).toFixed(1)}" width="${(160 * s).toFixed(1)}" height="${(112 * s).toFixed(1)}" rx="6" fill="${GRAPHITE}"/>
       <rect x="${(dx - 68 * s).toFixed(1)}" y="${(dy - 120 * s).toFixed(1)}" width="${(136 * s).toFixed(1)}" height="${(88 * s).toFixed(1)}" fill="${AQUA}" opacity="0.22"/>
       <rect x="${(dx - 8 * s).toFixed(1)}" y="${(dy - 18 * s).toFixed(1)}" width="${(16 * s).toFixed(1)}" height="${(18 * s).toFixed(1)}" fill="${GRAPHITE2}"/>
       <rect x="${(dx - 150 * s).toFixed(1)}" y="${(dy - 12 * s).toFixed(1)}" width="${(70 * s).toFixed(1)}" height="${(10 * s).toFixed(1)}" rx="3" fill="${GRAPHITE}"/>
       <ellipse cx="${(dx + 130 * s).toFixed(1)}" cy="${(dy - 40 * s).toFixed(1)}" rx="${(14 * s).toFixed(1)}" ry="${(46 * s).toFixed(1)}" fill="${TEAL}" opacity="0.5"/>`;
-    if (scene === "office") out += personFig(dx - 20 * s, dy + 80 * s, s * 1.1, false, false, atmo(GRAPHITE, 0.05), 0.9);
-  } else if (scene === "badges") {
-    for (let i = 0; i < 4; i++) {
-      const x = lerp(w * 0.2, w * 0.8, i / 3), y = h * 0.36, s = 1.1 * (w / 1700);
-      out += `<rect x="${(x - 62 * s).toFixed(1)}" y="${(y - 78 * s).toFixed(1)}" width="${(124 * s).toFixed(1)}" height="${(156 * s).toFixed(1)}" rx="6" fill="${GRAPHITE2}" opacity="0.92"/>
-        <rect x="${(x - 62 * s).toFixed(1)}" y="${(y - 78 * s).toFixed(1)}" width="${(124 * s).toFixed(1)}" height="${(6 * s).toFixed(1)}" fill="${mix(GRAPHITE2, "#FFFFFF", 0.4)}"/>
-        <polygon points="${(x - 22 * s).toFixed(1)},${(y + 30 * s).toFixed(1)} ${x.toFixed(1)},${(y + 6 * s).toFixed(1)} ${(x + 22 * s).toFixed(1)},${(y + 30 * s).toFixed(1)} ${(x + 14 * s).toFixed(1)},${(y - 4 * s).toFixed(1)} ${(x - 14 * s).toFixed(1)},${(y - 4 * s).toFixed(1)}" fill="${mix(AMBER, GRAPHITE2, 0.2)}" opacity="0.85"/>
-        <circle cx="${x.toFixed(1)}" cy="${(y - 18 * s).toFixed(1)}" r="${(34 * s).toFixed(1)}" fill="${AMBER}" opacity="0.85"/>
-        <circle cx="${x.toFixed(1)}" cy="${(y - 18 * s).toFixed(1)}" r="${(34 * s).toFixed(1)}" fill="none" stroke="${mix(AMBER, "#FFFFFF", 0.5)}" stroke-width="${(2.5 * s).toFixed(1)}"/>
-        <path d="M${(x - 14 * s).toFixed(1)},${(y - 18 * s).toFixed(1)} l${(9 * s).toFixed(1)},${(10 * s).toFixed(1)} l${(18 * s).toFixed(1)},${(-20 * s).toFixed(1)}" fill="none" stroke="${INK}" stroke-width="${(4 * s).toFixed(1)}" stroke-linecap="round" stroke-linejoin="round"/>`;
-      out += `<ellipse cx="${x.toFixed(1)}" cy="${(y - 96 * s).toFixed(1)}" rx="${(76 * s).toFixed(1)}" ry="${(20 * s).toFixed(1)}" fill="${HAZE}" opacity="0.16" filter="url(#blurM)"/>`;
-    }
-  } else if (scene === "team") {
-    const positions = [[-150, 0.86], [10, 0.9], [150, 0.86]];
-    for (const [ox, yf] of positions) out += personFig(w / 2 + ox * (w / 1700), h * yf, 1.1 * (w / 1700), ox > 0, false, atmo(GRAPHITE, 0.05), 0.94);
-  } else if (scene === "service") {
-    const mx = w * 0.62, my = h * 0.62, s = 1.3 * (w / 1700);
-    out += machineUnit("gantry", mx, my, s * 0.9, true, 0.35, 0.8);
-    out += `<rect x="${(mx - 30 * s).toFixed(1)}" y="${(my - 10 * s).toFixed(1)}" width="${(60 * s).toFixed(1)}" height="${(50 * s).toFixed(1)}" fill="${INK}" opacity="0.85"/>
-      <path d="M${(mx - 20 * s).toFixed(1)},${(my + 4 * s).toFixed(1)} q${10 * s},${14 * s} ${20 * s},0 t${20 * s},0" fill="none" stroke="${AMBER}" stroke-width="2" opacity="0.6"/>
-      <circle cx="${(mx + 10 * s).toFixed(1)}" cy="${(my + 20 * s).toFixed(1)}" r="4" fill="${AQUA}"/>`;
-    out += personFig(mx - 90 * s, h * (hero ? 0.9 : 0.87), s * 1.3, false, true, GRAPHITE, 0.95);
-    out += `<rect x="${(mx - 200 * s).toFixed(1)}" y="${(h * 0.92).toFixed(1)}" width="${(70 * s).toFixed(1)}" height="${(40 * s).toFixed(1)}" rx="4" fill="${GRAPHITE2}" opacity="0.9"/>`;
-  }
-  return out;
-}
-
-// --------------------------------------------------------------------------- Template: outdoor
-function outdoorScene(rnd, w, h, opts) {
-  const { subject = "port" } = opts;
-  const duskTop = mix(INK, TEAL_DEEP, 0.35), duskMid = mix(TEAL_DEEP, "#2A6B62", 0.5);
-  let out = `<defs><linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="${duskTop}"/><stop offset="62%" stop-color="${duskMid}"/><stop offset="100%" stop-color="${mix(AMBER, duskMid, 0.55)}"/>
-    </linearGradient></defs><rect width="${w}" height="${h}" fill="url(#skyGrad)"/>`;
-  const horizon = h * 0.62;
-  if (subject !== "globe") {
-    out += `<rect y="${horizon.toFixed(1)}" width="${w}" height="${(h - horizon).toFixed(1)}" fill="url(#waterGrad)"/>
-      <defs><linearGradient id="waterGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="${mix(duskMid, TEAL_DEEP, 0.5)}"/><stop offset="100%" stop-color="${mix(GRAPHITE2, TEAL_DEEP, 0.6)}"/></linearGradient></defs>
-      <ellipse cx="${(w * 0.5).toFixed(1)}" cy="${horizon.toFixed(1)}" rx="${(w * 0.36).toFixed(1)}" ry="${(h * 0.05).toFixed(1)}" fill="${AMBER}" opacity="0.4" filter="url(#blurS)"/>`;
-    for (let i = 0; i < 8; i++) {
-      const y = horizon + (h - horizon) * (i / 8) + rnd() * 4;
-      out += `<line x1="0" y1="${y.toFixed(1)}" x2="${w}" y2="${y.toFixed(1)}" stroke="${AMBER}" stroke-width="1" opacity="${(0.09 * (1 - i / 8)).toFixed(3)}"/>`;
-    }
-  } else {
-    out += bokehField(rnd, w, h, 4, true);
-  }
-  if (subject === "port" || subject === "crate") {
-    const containerColors = [mix(TEAL, AQUA, 0.15), AMBER, mix(GRAPHITE2, TEAL, 0.4)];
-    for (let stack = 0; stack < 5; stack++) {
-      const sx = w * (0.06 + stack * 0.1), depth = stack / 5, s = lerp(1, 0.55, depth);
-      const rows = 2 + Math.floor(rnd() * 2);
-      for (let r = 0; r < rows; r++) {
-        const cy = horizon - r * 56 * s;
-        const c = atmo(pick(rnd, containerColors), depth * 0.8);
-        out += `<rect x="${sx.toFixed(1)}" y="${(cy - 56 * s).toFixed(1)}" width="${(96 * s).toFixed(1)}" height="${(56 * s).toFixed(1)}" fill="${c}" opacity="0.92"/>
-          <rect x="${sx.toFixed(1)}" y="${(cy - 56 * s).toFixed(1)}" width="${(96 * s).toFixed(1)}" height="${(7 * s).toFixed(1)}" fill="${mix(c, "#FFFFFF", 0.5)}" opacity="0.9"/>
-          <line x1="${(sx + 96 * s * 0.5).toFixed(1)}" y1="${(cy - 56 * s).toFixed(1)}" x2="${(sx + 96 * s * 0.5).toFixed(1)}" y2="${cy.toFixed(1)}" stroke="${mix(c, "#000000", 0.3)}" stroke-width="2" opacity="0.4"/>`;
-      }
-    }
-    // gantry crane: legs, a raised boom with counterweight, and a trolley cable
-    const cx = w * 0.7;
-    out += `<polygon points="${(cx - 60).toFixed(1)},${horizon.toFixed(1)} ${(cx - 14).toFixed(1)},${(h * 0.12).toFixed(1)} ${(cx + 14).toFixed(1)},${(h * 0.12).toFixed(1)} ${(cx + 60).toFixed(1)},${horizon.toFixed(1)}" fill="${GRAPHITE}"/>
-      <rect x="${(cx - 26).toFixed(1)}" y="${(h * 0.1).toFixed(1)}" width="52" height="22" rx="3" fill="${GRAPHITE}"/>
-      <polygon points="${(cx - 20).toFixed(1)},${(h * 0.13).toFixed(1)} ${(cx + 236).toFixed(1)},${(h * 0.08).toFixed(1)} ${(cx + 236).toFixed(1)},${(h * 0.14).toFixed(1)} ${(cx + 16).toFixed(1)},${(h * 0.19).toFixed(1)}" fill="${GRAPHITE}"/>
-      <rect x="${(cx - 90).toFixed(1)}" y="${(h * 0.1).toFixed(1)}" width="66" height="26" rx="4" fill="${GRAPHITE2}"/>
-      <line x1="${(cx + 200).toFixed(1)}" y1="${(h * 0.09).toFixed(1)}" x2="${(cx + 200).toFixed(1)}" y2="${(h * 0.3).toFixed(1)}" stroke="${GRAPHITE}" stroke-width="3"/>
-      <rect x="${(cx + 170).toFixed(1)}" y="${(h * 0.3).toFixed(1)}" width="40" height="20" fill="${AMBER}" opacity="0.85"/>`;
-    if (subject === "crate") {
-      out += crateShape(w * 0.28, h * 0.86, 1.3 * (w / 1600), mix(GRAPHITE2, TEAL, 0.1), 0.95);
-      out += crateShape(w * 0.4, h * 0.92, 1 * (w / 1600), GRAPHITE2, 0.9);
-      out += `<rect x="${(w * 0.1).toFixed(1)}" y="${(h * 0.9).toFixed(1)}" width="${(w * 0.12).toFixed(1)}" height="10" fill="${GRAPHITE}"/>
-        <rect x="${(w * 0.09).toFixed(1)}" y="${(h * 0.76).toFixed(1)}" width="10" height="${(h * 0.14).toFixed(1)}" fill="${GRAPHITE}"/>`;
-      out += personFig(w * 0.2, h * 0.9, 1 * (w / 1600), false, true, GRAPHITE, 0.95);
-    } else {
-      out += `<polygon points="${(w * 0.55).toFixed(1)},${horizon.toFixed(1)} ${(w * 0.98).toFixed(1)},${horizon.toFixed(1)} ${(w * 0.92).toFixed(1)},${(horizon - h * 0.08).toFixed(1)} ${(w * 0.6).toFixed(1)},${(horizon - h * 0.08).toFixed(1)}" fill="${atmo(GRAPHITE2, 0.4)}"/>
-        <rect x="${(w * 0.62).toFixed(1)}" y="${(horizon - h * 0.15).toFixed(1)}" width="8" height="${(h * 0.08).toFixed(1)}" fill="${atmo(GRAPHITE, 0.4)}"/>`;
-    }
-  } else if (subject === "city") {
-    for (let i = 0; i < 7; i++) {
-      const bx = (i / 7) * w, depth = 0.2 + (i % 3) * 0.2, bw = w * 0.07, bh = h * (0.18 + rnd() * 0.28);
-      out += `<rect x="${bx.toFixed(1)}" y="${(horizon - bh).toFixed(1)}" width="${bw.toFixed(1)}" height="${bh.toFixed(1)}" fill="${atmo(GRAPHITE, depth)}" opacity="${(0.95 - depth * 0.3).toFixed(2)}"/>`;
-      for (let wi = 0; wi < 4; wi++) out += `<rect x="${(bx + 8 + wi * (bw / 4)).toFixed(1)}" y="${(horizon - bh + 12).toFixed(1)}" width="4" height="${(bh - 24).toFixed(1)}" fill="${AMBER}" opacity="0.05"/>`;
-    }
-    out += `<rect x="${(w * 0.06).toFixed(1)}" y="${(h * 0.5).toFixed(1)}" width="18" height="${(horizon - h * 0.5).toFixed(1)}" fill="${GRAPHITE}"/>`;
-  } else if (subject === "pin") {
-    out += `<g transform="translate(${(w * 0.55).toFixed(1)} ${(h * 0.42).toFixed(1)})">
-      <path d="M0,-140 C70,-140 122,-92 122,-32 C122,44 0,140 0,140 C0,140 -122,44 -122,-32 C-122,-92 -70,-140 0,-140 Z" fill="${TEAL}" opacity="0.85"/>
-      <circle cx="0" cy="-32" r="34" fill="${HAZE}" opacity="0.9"/>
-      <circle cx="0" cy="0" r="180" fill="none" stroke="${AQUA}" stroke-width="2" opacity="0.3"/>
-      <circle cx="0" cy="0" r="240" fill="none" stroke="${AQUA}" stroke-width="1.5" opacity="0.18"/>
-    </g>`;
-    out += `<rect x="${(w * 0.1).toFixed(1)}" y="${horizon.toFixed(1)}" width="${(w * 0.3).toFixed(1)}" height="${(h - horizon).toFixed(1)}" fill="${atmo(GRAPHITE2, 0.4)}" opacity="0.6"/>`;
-  } else if (subject === "globe") {
-    const gx = w * 0.5, gy = h * 0.48, gr = Math.min(w, h) * 0.28;
-    out += `<circle cx="${gx.toFixed(1)}" cy="${gy.toFixed(1)}" r="${gr.toFixed(1)}" fill="none" stroke="${AQUA}" stroke-width="2" opacity="0.4"/>
-      <ellipse cx="${gx.toFixed(1)}" cy="${gy.toFixed(1)}" rx="${gr.toFixed(1)}" ry="${(gr * 0.35).toFixed(1)}" fill="none" stroke="${AQUA}" stroke-width="1.5" opacity="0.28"/>
-      <ellipse cx="${gx.toFixed(1)}" cy="${gy.toFixed(1)}" rx="${(gr * 0.42).toFixed(1)}" ry="${gr.toFixed(1)}" fill="none" stroke="${AQUA}" stroke-width="1.5" opacity="0.28"/>
-      <circle cx="${gx.toFixed(1)}" cy="${gy.toFixed(1)}" r="${gr.toFixed(1)}" fill="${TEAL}" opacity="0.08"/>`;
-    for (let i = 0; i < 6; i++) {
-      const a = rnd() * Math.PI * 2, r = gr * (0.6 + rnd() * 0.4);
-      const dx = gx + Math.cos(a) * r, dy = gy + Math.sin(a) * r * 0.6;
-      out += `<circle cx="${dx.toFixed(1)}" cy="${dy.toFixed(1)}" r="4" fill="${AMBER}" opacity="0.8"/>
-        <path d="M${gx},${gy} Q${((gx + dx) / 2).toFixed(1)},${(gy - 60).toFixed(1)} ${dx.toFixed(1)},${dy.toFixed(1)}" fill="none" stroke="${AMBER}" stroke-width="1.4" opacity="0.35"/>`;
-    }
+    out += personFig(dx - 20 * s, dy + 80 * s, s * 1.05, false, false, atmo(GRAPHITE, 0.05), 0.92);
   }
   return out;
 }
 
 // --------------------------------------------------------------------------- key -> builder registry
+// Pass 3 (ADR-0008 §2 revisit): every hero-* and every machine-related slot is
+// now composed around a large solid-shaded machine render from
+// illustrations/machines.mjs via machineScene() — subject owns the frame —
+// instead of a distant room. Non-machine "other" slots (office/team/quality
+// check/control panel/installation/warehouse-spares) keep their composed
+// scene but tuned closer/larger.
 const SCENES = {
-  "hero-home": (r, w, h) => interiorRoom(r, w, h, { populate: "machines", person: true, crates: true, dark: true, biasRight: true }),
-  "hero-products": (r, w, h) => interiorRoom(r, w, h, { populate: "machines", person: false, crates: false, dark: true, biasRight: true }),
-  "hero-fiber": (r, w, h) => machineWorking(r, w, h, { kind: "gantry", sparks: true, hero: true }),
-  "hero-tube": (r, w, h) => machineWorking(r, w, h, { kind: "tube", sparks: true, hero: true }),
-  "hero-co2": (r, w, h) => machineWorking(r, w, h, { kind: "co2", sparks: true, hero: true }),
-  "hero-welding": (r, w, h) => machineWorking(r, w, h, { kind: "robot", sparks: true, hero: true }),
-  "hero-product": (r, w, h) => machineWorking(r, w, h, { kind: "gantry", sparks: false, hero: true }),
-  "hero-repair": (r, w, h) => peopleScene(r, w, h, { scene: "service", hero: true }),
-  "hero-training": (r, w, h) => peopleScene(r, w, h, { scene: "training", hero: true }),
-  "hero-jobwork": (r, w, h) => machineWorking(r, w, h, { kind: "gantry", sparks: false, hero: true, finishedParts: true }),
-  "hero-about": (r, w, h) => interiorRoom(r, w, h, { populate: "none", person: true, crates: false, dark: true, biasRight: true }),
-  "hero-contact": (r, w, h) => peopleScene(r, w, h, { scene: "desk", hero: true }),
-  "hero-certifications": (r, w, h) => peopleScene(r, w, h, { scene: "badges", hero: true }),
-  "hero-india": (r, w, h) => outdoorScene(r, w, h, { subject: "pin" }),
-  "hero-state": (r, w, h) => outdoorScene(r, w, h, { subject: "pin" }),
-  "hero-city": (r, w, h) => outdoorScene(r, w, h, { subject: "city" }),
-  "hero-export": (r, w, h) => outdoorScene(r, w, h, { subject: "port" }),
-  "hero-country": (r, w, h) => outdoorScene(r, w, h, { subject: "globe" }),
-  "slot-factory": (r, w, h) => interiorRoom(r, w, h, { populate: "machines", person: true, crates: false, dark: false }),
-  "slot-assembly": (r, w, h) => interiorRoom(r, w, h, { populate: "machines", person: true, crates: true, dark: false }),
+  "hero-home": (r, w, h) => machineScene(r, w, h, { hero: true, machine: flatbedMachine("ra-f3015-pro", { inUse: true }), crates: true }),
+  "hero-products": (r, w, h) => machineScene(r, w, h, { hero: true, machine: flatbedMachine("ra-f1530", { inUse: true }) }),
+  "hero-fiber": (r, w, h) => machineScene(r, w, h, { hero: true, machine: flatbedMachine("ra-f6020-hd", { inUse: true }), heightFrac: 0.58 }),
+  "hero-tube": (r, w, h) => machineScene(r, w, h, { hero: true, machine: tubeLaserMachine({ inUse: true }) }),
+  "hero-co2": (r, w, h) => machineScene(r, w, h, { hero: true, machine: co2EngraverMachine({ inUse: true }) }),
+  "hero-welding": (r, w, h) => machineScene(r, w, h, { hero: true, machine: robotCellMachine(1, { inUse: true }), heightFrac: 0.68 }),
+  "hero-product": (r, w, h) => machineScene(r, w, h, { hero: true, machine: flatbedMachine("ra-f12k", { inUse: true }), heightFrac: 0.72 }),
+  "hero-repair": (r, w, h) => machineScene(r, w, h, { hero: true, machine: flatbedMachine("ra-f3015-pro", { inUse: false }), figures: 1 }),
+  "hero-training": (r, w, h) => machineScene(r, w, h, { hero: true, machine: flatbedMachine("ra-f1530", { inUse: false }), figures: 2 }),
+  "hero-jobwork": (r, w, h) => machineScene(r, w, h, { hero: true, machine: flatbedMachine("ra-f6020-hd", { inUse: false }), heightFrac: 0.58 }),
+  "hero-about": (r, w, h) => machineScene(r, w, h, { hero: true, machine: flatbedMachine("ra-f1530", { inUse: false }), machine2: flatbedMachine("ra-f3015-pro", { inUse: false }), heightFrac: 0.72 }),
+  "hero-contact": (r, w, h) => machineScene(r, w, h, { hero: true, machine: flatbedMachine("ra-f1530", { inUse: false }), locate: "pin" }),
+  "hero-certifications": (r, w, h) => machineScene(r, w, h, { hero: true, machine: flatbedMachine("ra-f3015-pro", { inUse: false }), badge: true }),
+  "hero-india": (r, w, h) => machineScene(r, w, h, { hero: true, machine: flatbedMachine("ra-f1530", { inUse: true }), locate: "pin" }),
+  "hero-state": (r, w, h) => machineScene(r, w, h, { hero: true, machine: co2EngraverMachine({ inUse: true }), locate: "pin" }),
+  "hero-city": (r, w, h) => machineScene(r, w, h, { hero: true, machine: tubeLaserMachine({ inUse: true }), locate: "city" }),
+  "hero-export": (r, w, h) => machineScene(r, w, h, { hero: true, machine: flatbedMachine("ra-f6020-hd", { inUse: false }), heightFrac: 0.58, crates: true, crane: true }),
+  "hero-country": (r, w, h) => machineScene(r, w, h, { hero: true, machine: robotCellMachine(1, { inUse: true }), locate: "globe" }),
+  "slot-factory": (r, w, h) => machineScene(r, w, h, { machine: flatbedMachine("ra-f1530", { inUse: false }), machine2: tubeLaserMachine({ inUse: false }) }),
+  "slot-assembly": (r, w, h) => machineScene(r, w, h, { machine: flatbedMachine("ra-f3015-pro", { inUse: false }), machine2: robotCellMachine(1, { inUse: false }), figures: 1 }),
   "slot-cutting-head": (r, w, h) => macroShot(r, w, h, { subject: "cuttingHead" }),
   "slot-sparks": (r, w, h) => macroShot(r, w, h, { subject: "sparks" }),
-  "slot-tube-cutting": (r, w, h) => machineWorking(r, w, h, { kind: "tube", sparks: true }),
-  "slot-robot-weld": (r, w, h) => machineWorking(r, w, h, { kind: "robot", sparks: true }),
+  "slot-tube-cutting": (r, w, h) => machineScene(r, w, h, { machine: tubeLaserMachine({ inUse: true }) }),
+  "slot-robot-weld": (r, w, h) => machineScene(r, w, h, { machine: robotCellMachine(2, { inUse: true }), heightFrac: 0.58 }),
   "slot-control-panel": (r, w, h) => macroShot(r, w, h, { subject: "controlPanel" }),
-  "slot-engineer-service": (r, w, h) => peopleScene(r, w, h, { scene: "service" }),
-  "slot-training-room": (r, w, h) => peopleScene(r, w, h, { scene: "training" }),
-  "slot-crate-shipping": (r, w, h) => outdoorScene(r, w, h, { subject: "crate" }),
-  "slot-port": (r, w, h) => outdoorScene(r, w, h, { subject: "port" }),
+  "slot-engineer-service": (r, w, h) => machineScene(r, w, h, { machine: flatbedMachine("ra-f3015-pro", { inUse: false }), figures: 1 }),
+  "slot-training-room": (r, w, h) => machineScene(r, w, h, { machine: flatbedMachine("ra-f1530", { inUse: false }), figures: 2 }),
+  "slot-crate-shipping": (r, w, h) => machineScene(r, w, h, { machine: flatbedMachine("ra-f1530", { inUse: false }), crates: true }),
+  "slot-port": (r, w, h) => machineScene(r, w, h, { machine: flatbedMachine("ra-f6020-hd", { inUse: false }), heightFrac: 0.56, crates: true, crane: true }),
   "slot-team": (r, w, h) => peopleScene(r, w, h, { scene: "team" }),
   "slot-office": (r, w, h) => peopleScene(r, w, h, { scene: "office" }),
-  "slot-installation": (r, w, h) => machineWorking(r, w, h, { kind: "gantry", sparks: false, installation: true }),
+  "slot-installation": (r, w, h) => machineScene(r, w, h, { machine: flatbedMachine("ra-f3015-pro", { inUse: false }), figures: 1, lift: true }),
   "slot-quality-check": (r, w, h) => macroShot(r, w, h, { subject: "qualityCheck" }),
-  "slot-warehouse-spares": (r, w, h) => interiorRoom(r, w, h, { populate: "shelves", person: false, crates: false, dark: false }),
+  "slot-warehouse-spares": (r, w, h) => warehouseScene(r, w, h),
 };
 
 function photoSvg(key, width, height) {
