@@ -112,7 +112,7 @@ export function countrySections(country: Country, products: Product[]): CountryS
       icon: "Shield",
       paragraphs: [
         `Machines carry a ${site.service.warrantyMonths}-month warranty on core systems, backed by remote diagnostic support typically within ${site.service.remoteResponseTime} and stocked wear spares — nozzles, lenses, contact tips and drive rollers — for prompt air-freight dispatch to ${country.name}. ${site.service.warrantyNote}`,
-        `Export orders are quoted on ${site.service.exportIncoterms} terms, with payment ${site.service.exportPaymentTerms.toLowerCase()}.`,
+        `Export orders are quoted on ${site.service.exportIncoterms} terms, with ${site.service.exportPaymentTerms.toLowerCase()}.`,
       ],
     },
     {
