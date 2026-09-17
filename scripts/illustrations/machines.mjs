@@ -145,18 +145,23 @@ function cropAround(cx, cy, w, h) {
 // ---------------------------------------------------------------------------
 
 /** Dark rubber feet with a tight contact-shadow pool under each — the ground
- * connection every machine needs (ADR-0008 §1 "ground the object"). */
-function feet(xs, yGround, r = 7) {
-  return xs
-    .map((x) => {
-      const g = radGrad(x, yGround - r * 0.3, r * 1.1, [
+ * connection every machine needs (ADR-0008 §1 "ground the object"). Takes the
+ * live `project` fn plus `[x, z]` local-unit pairs — every other builder here
+ * projects before drawing, and feet must too or they drift off whatever
+ * they're meant to stand under whenever that surface isn't at z=0 (the bug
+ * behind the "floating dot" artifacts in pass 1). */
+function feet(project, xzs, yGround, r = 7) {
+  return xzs
+    .map(([x, z = 0]) => {
+      const [sx, sy] = project(x, yGround, z);
+      const g = radGrad(sx, sy - r * 0.3, r * 1.1, [
         [0, "#3A4444", 1],
         [70, RUBBER, 1],
         [100, "#000000", 1],
       ]);
       return `<defs>${g.tag}</defs>
-      <ellipse cx="${fmt(x)}" cy="${fmt(yGround + r * 0.35)}" rx="${fmt(r * 1.5)}" ry="${fmt(r * 0.55)}" fill="#000" opacity="0.22"/>
-      <ellipse cx="${fmt(x)}" cy="${fmt(yGround)}" rx="${fmt(r)}" ry="${fmt(r * 0.8)}" fill="url(#${g.id})"/>`;
+      <ellipse cx="${fmt(sx)}" cy="${fmt(sy + r * 0.35)}" rx="${fmt(r * 1.5)}" ry="${fmt(r * 0.55)}" fill="#000" opacity="0.22"/>
+      <ellipse cx="${fmt(sx)}" cy="${fmt(sy)}" rx="${fmt(r)}" ry="${fmt(r * 0.8)}" fill="url(#${g.id})"/>`;
     })
     .join("");
 }
@@ -178,17 +183,17 @@ function sheetWithCutouts(project, { x, yTop, z, w, d }) {
     [50, METAL_LIGHT],
     [100, METAL_MID],
   ]);
-  // Cutouts stay in the left ~55% of the sheet (t < 0.5); the head travels
-  // the right side (headProgress 0.4–0.65) so the spark burst never lands on
-  // top of a cutout shape (ADR-0008 §1 critique pass 2).
+  // Cutouts stay in the left ~58% of the sheet, well spread out; the head
+  // travels the right side (headProgress 0.4–0.65) so the spark burst never
+  // lands on top of a cutout shape (ADR-0008 §1 critique pass 2).
   const local = (t, u) => project(x + w * t, yTop, z + d * u);
-  const gearC = local(0.16, 0.4);
-  const bracketC = local(0.3, 0.64);
-  const flangeBaseX = x + w * 0.45;
-  const flangeBaseZ = z + d * 0.3;
+  const gearC = local(0.13, 0.38);
+  const bracketC = local(0.3, 0.68);
+  const flangeBaseX = x + w * 0.5;
+  const flangeBaseZ = z + d * 0.22;
   const flangeGround = project(flangeBaseX, yTop, flangeBaseZ);
-  const flangeLift = project(flangeBaseX, yTop - 8, flangeBaseZ);
-  const gearR = Math.hypot(b[0] - a[0], b[1] - a[1]) * 0.075;
+  const flangeLift = project(flangeBaseX, yTop - 11, flangeBaseZ);
+  const gearR = Math.hypot(b[0] - a[0], b[1] - a[1]) * 0.095;
   const cutEdge = "#7C8488";
   const holeDark = "#171F1F";
   const teeth = Array.from({ length: 10 }, (_, i) => {
@@ -199,9 +204,9 @@ function sheetWithCutouts(project, { x, yTop, z, w, d }) {
     const y2 = gearC[1] + Math.sin(ang) * gearR * 1.18 * 0.55;
     return `<line x1="${fmt(x1)}" y1="${fmt(y1)}" x2="${fmt(x2)}" y2="${fmt(y2)}" stroke="${holeDark}" stroke-width="2" opacity="0.85" stroke-linecap="round"/>`;
   }).join("");
-  const bracketW = gearR * 2;
-  const bracketH = gearR * 0.8;
-  const holeR = bracketH * 0.22;
+  const bracketW = gearR * 2.1;
+  const bracketH = gearR * 0.85;
+  const holeR = bracketH * 0.28;
   const flangeShadow = contactShadow(flangeGround[0], flangeGround[1], gearR * 0.85, gearR * 0.32, 0.32);
   const flangeGrad = radGrad(flangeLift[0] - gearR * 0.15, flangeLift[1] - gearR * 0.12, gearR * 0.85, [
     [0, "#F2F5F6"],
@@ -214,10 +219,10 @@ function sheetWithCutouts(project, { x, yTop, z, w, d }) {
     <ellipse cx="${fmt(gearC[0])}" cy="${fmt(gearC[1])}" rx="${fmt(gearR)}" ry="${fmt(gearR * 0.55)}" fill="${holeDark}" opacity="0.88"/>
     <ellipse cx="${fmt(gearC[0])}" cy="${fmt(gearC[1])}" rx="${fmt(gearR * 0.32)}" ry="${fmt(gearR * 0.18)}" fill="none" stroke="${cutEdge}" stroke-width="1" opacity="0.55"/>
     ${teeth}
-    <rect x="${fmt(bracketC[0] - bracketW / 2 - 1.5)}" y="${fmt(bracketC[1] - bracketH / 2 - 1.5)}" width="${fmt(bracketW + 3)}" height="${fmt(bracketH + 3)}" rx="3" fill="none" stroke="${cutEdge}" stroke-width="1" opacity="0.5"/>
-    <rect x="${fmt(bracketC[0] - bracketW / 2)}" y="${fmt(bracketC[1] - bracketH / 2)}" width="${fmt(bracketW)}" height="${fmt(bracketH)}" rx="2.5" fill="${holeDark}" opacity="0.88"/>
-    <circle cx="${fmt(bracketC[0] - bracketW * 0.28)}" cy="${fmt(bracketC[1])}" r="${fmt(holeR)}" fill="${METAL_DARK}" opacity="0.9"/>
-    <circle cx="${fmt(bracketC[0] + bracketW * 0.28)}" cy="${fmt(bracketC[1])}" r="${fmt(holeR)}" fill="${METAL_DARK}" opacity="0.9"/>
+    <rect x="${fmt(bracketC[0] - bracketW / 2 - 1.5)}" y="${fmt(bracketC[1] - bracketH / 2 - 1.5)}" width="${fmt(bracketW + 3)}" height="${fmt(bracketH + 3)}" rx="1.2" fill="none" stroke="${cutEdge}" stroke-width="1" opacity="0.55"/>
+    <rect x="${fmt(bracketC[0] - bracketW / 2)}" y="${fmt(bracketC[1] - bracketH / 2)}" width="${fmt(bracketW)}" height="${fmt(bracketH)}" rx="1" fill="${holeDark}" opacity="0.9"/>
+    <circle cx="${fmt(bracketC[0] - bracketW * 0.3)}" cy="${fmt(bracketC[1])}" r="${fmt(holeR)}" fill="${METAL_MID}" opacity="0.95"/>
+    <circle cx="${fmt(bracketC[0] + bracketW * 0.3)}" cy="${fmt(bracketC[1])}" r="${fmt(holeR)}" fill="${METAL_MID}" opacity="0.95"/>
     <ellipse cx="${fmt(flangeGround[0])}" cy="${fmt(flangeGround[1])}" rx="${fmt(gearR * 0.9)}" ry="${fmt(gearR * 0.4)}" fill="none" stroke="${cutEdge}" stroke-width="1" opacity="0.4" stroke-dasharray="2 2"/>
     ${flangeShadow}
     <ellipse cx="${fmt(flangeLift[0])}" cy="${fmt(flangeLift[1])}" rx="${fmt(gearR * 0.82)}" ry="${fmt(gearR * 0.42)}" fill="url(#${flangeGrad.id})" stroke="#5B6266" stroke-width="0.8"/>
@@ -236,7 +241,7 @@ function controlCabinet(project, { x, yGround, z, w = 46, h = 94, d = 26 }, sku)
   const scrW = w * 0.62;
   const scrH = h * 0.24;
   const scrY = yGround - h * 0.66;
-  const feetContent = feet([x + w * 0.22, x + w * 0.78], yGround + 2, 4.5);
+  const feetContent = feet(project, [[x + w * 0.22, z], [x + w * 0.78, z]], yGround + 2, 4.5);
   return `${feetContent}${trim}${box}
     ${screenUi(topFrontL[0] + (topFrontR[0] - topFrontL[0]) * 0.19, scrY, scrW, scrH)}
     ${nameplate(x + w * 0.24, yGround - h * 0.26, w * 0.52, h * 0.09, sku)}`;
@@ -318,7 +323,7 @@ export function flatbedMachine(presetKey, { inUse = false } = {}) {
   const accentTrim = box3d(project, { x: baseX, yGround: baseY - baseH + 3, z: 0, w: p.bedW, h: 3, d: p.bedD }, TEAL_PALETTE);
   const bed = box3d(project, { x: baseX + 6, yGround: baseY - baseH, z: bedZ, w: p.bedW - 12, h: bedH, d: p.bedD - 20 }, STEEL_PALETTE);
   const sheet = sheetWithCutouts(project, { x: baseX + 6, yTop: baseY - baseH - bedH, z: bedZ, w: p.bedW - 12, d: p.bedD - 20 });
-  const feetContent = feet([baseX + p.bedW * 0.08, baseX + p.bedW * 0.5, baseX + p.bedW * 0.92], baseY + 2, 7);
+  const feetContent = feet(project, [[baseX + p.bedW * 0.08, 0], [baseX + p.bedW * 0.5, 0], [baseX + p.bedW * 0.92, 0]], baseY + 2, 7);
 
   const postY = baseY - baseH - bedH;
   const postXL = baseX + p.bedW * 0.06;
@@ -383,7 +388,7 @@ export function flatbedMachine(presetKey, { inUse = false } = {}) {
     const riserA = limb(project(exX + 8, exLowerY - 6, 14), project(exX + 8, exUpperY - 6, 14), 2.4, 2.4, { light: METAL_LIGHT });
     const riserB = limb(project(exX + exW - 8, exLowerY - 6, 14), project(exX + exW - 8, exUpperY - 6, 14), 2.4, 2.4, { light: METAL_LIGHT });
     const deckUpper = box3d(project, { x: exX + 5, yGround: exUpperY, z: 12, w: exW - 10, h: 6, d: exD - 8 }, STEEL_PALETTE);
-    const exFeet = feet([exX + 10, exX + exW - 10], baseY + 2, 5);
+    const exFeet = feet(project, [[exX + 10, 10], [exX + exW - 10, 10]], baseY + 2, 5);
     enclosureExtra = `${exFeet}${deckLower}${riserA}${riserB}${deckUpper}`;
   } else if (p.enclosure === "full") {
     // Two window panes (a vertical mullion) plus side posts and a top
@@ -547,7 +552,7 @@ export function tubeLaserMachine({ inUse = false } = {}) {
 
   const cabinet = controlCabinet(project, { x: baseX + 330 + 2, yGround: baseY, z: 8, w: 40, h: 92, d: 24 }, "RA-T6000");
 
-  const feetContent = feet([baseX + 40, baseX + 200, baseX + 330], baseY + 2, 7);
+  const feetContent = feet(project, [[baseX + 40, 0], [baseX + 200, 0], [baseX + 330, 0]], baseY + 2, 7);
   const shadow = contactShadow(baseX + 200, baseY + 10, 200, 16, 0.4);
 
   const content = `${base}${baseAccent}${chuck}${rollers}${tubeSeg1}${tubeSeg2}${railPostL}${railPostR}${railGantry}${headCol}${head}${rack}${rackTubes}${cabinet}${feetContent}`;
@@ -626,7 +631,7 @@ export function co2EngraverMachine({ inUse = false } = {}) {
   const cabinet = controlCabinet(project, { x: cabX, yGround: baseY, z: 6, w: 42, h: 88, d: 24 }, "RA-C1390");
   const plate = nameplate(baseX + w * 0.36, baseY - 14, 60, 12, "CO2 · 1390");
 
-  const feetContent = feet(legXs, baseY + 2, 6);
+  const feetContent = feet(project, legXs.map((lx) => [lx, 0]), baseY + 2, 6);
   const shadow = contactShadow(baseX + w / 2, baseY + 8, w * 0.6, 15, 0.38);
 
   const content = `${baseTrim}${cabinetBox}<defs>${glassG.tag}</defs><polygon points="${[winTL, winTR, winBR, winBL].map((p) => `${fmt(p[0])},${fmt(p[1])}`).join(" ")}" fill="url(#${glassG.id})"/>${hexes.join("")}${headRail}${head}${lid}${cabinet}${plate}${feetContent}`;
@@ -718,7 +723,7 @@ export function robotCellMachine(stations = 1, { inUse = false } = {}) {
     const fenceLine = fence(project, fixtureX - 6, fixtureX + 98, baseY, 66);
 
     const cabinet = controlCabinet(project, { x: pedX - 118, yGround: baseY, z: 6, w: 40, h: 84, d: 22 }, "RA-RW6");
-    const feetContent = feet([pedX, fixtureX + 10, fixtureX + 82], baseY + 2, 6);
+    const feetContent = feet(project, [[pedX, 0], [fixtureX + 10, 10], [fixtureX + 82, 10]], baseY + 2, 6);
     const shadow = contactShadow(pedX + 70, baseY + 10, 190, 16, 0.38);
 
     const content = `${pedestal}${cabinet}${arm.svg}${fixture}${part}${fenceLine}${feetContent}`;
@@ -772,7 +777,7 @@ export function robotCellMachine(stations = 1, { inUse = false } = {}) {
   }).join("");
 
   const cabinet = controlCabinet(project, { x: cellX - 44, yGround: baseY, z: 8, w: 40, h: 86, d: 22 }, "RA-RW10");
-  const feetContent = feet([cellX + 10, cellX + cellW * 0.5, cellX + cellW - 10], baseY + 2, 6);
+  const feetContent = feet(project, [[cellX + 10, -6], [cellX + cellW * 0.5, -6], [cellX + cellW - 10, -6]], baseY + 2, 6);
   const shadow = contactShadow(cellX + cellW / 2, baseY + 10, cellW * 0.56, 17, 0.4);
 
   const content = `${cell}${pedestal}${cabinet}${arm.svg}${turntable}${fixtures}${curtainStrips}${curtainRail}${feetContent}`;
