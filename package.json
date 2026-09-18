@@ -15,7 +15,8 @@
     "optimize:images": "node scripts/optimize-images.mjs",
     "perf:budget": "node scripts/perf-budget.mjs",
     "dehydrate": "node scripts/dehydrate.mjs",
-    "verify:interactions": "node scripts/verify-interactions.mjs"
+    "verify:interactions": "node scripts/verify-interactions.mjs",
+    "verify:contrast": "node scripts/verify-hero-contrast.mjs"
   },
   "dependencies": {
     "next": "15.5.25",

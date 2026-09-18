@@ -879,9 +879,9 @@ details[open] > .accordion-panel {
     transform: none;
   }
 }
-.hero-panel {
-  animation: hero-in 0.7s var(--ease-glass) both;
-}
+/* The hero's copy block no longer animates as a unit — with the panel gone
+   there is no single surface to move, and `.hero-stagger` already brings each
+   line in on its own beat. */
 .hero-stagger > * {
   opacity: 0;
   animation: hero-in 0.6s var(--ease-glass) both;
@@ -902,7 +902,6 @@ details[open] > .accordion-panel {
   animation-delay: 400ms;
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-panel,
   .hero-stagger > * {
     animation: none;
     opacity: 1;
@@ -1090,8 +1089,21 @@ html:not(.js) .mobilenav-panel:target + .mobilenav-backdrop {
 
 /* Scrim: fades a full-bleed photo into the page canvas at the bottom (also
    used by ImageBand between sections) — ADR-0007 §1. */
+/* The copy sits directly on the photograph (components/layout/PageHero.tsx), so
+   this gradient is what makes it readable. It darkens the whole frame, and
+   darkens hardest at the top (under the floating header) and the bottom (where
+   `align="start"` heroes place their copy), leaving the middle clearest so the
+   machine imagery still reads. The exact stops are tuned against measured
+   contrast — see scripts/verify-hero-contrast.mjs, which fails the build's
+   sibling check if any hero text drops below WCAG AA on a real render. */
 .hero-scrim {
-  background: linear-gradient(180deg, rgba(246, 248, 249, 0.15), rgba(246, 248, 249, 0.55) 70%, #f6f8f9 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(5, 16, 16, 0.62) 0%,
+    rgba(5, 16, 16, 0.48) 38%,
+    rgba(5, 16, 16, 0.58) 70%,
+    rgba(5, 16, 16, 0.82) 100%
+  );
 }
 
 /* ---------------------------------------------------------------------------
@@ -1129,15 +1141,68 @@ main > .page-hero:first-child {
   margin-top: -6rem;
 }
 
-/* Inside a PageHero the glass panel sits directly over a photograph rather than
-   the calm ambient-light canvas it was tuned for, so its background is raised
-   from the default .75 to .82 opacity here to keep ink text ≥ 7:1 / teal ≥ 4.5:1
-   (ADR-0005 §8) over the busiest placeholder photos. */
-.page-hero .glass-strong {
-  background: rgba(255, 255, 255, 0.82);
-  /* ADR-0009 §4: over a photograph, not the flat canvas — keeps `backdrop-filter`. */
-  backdrop-filter: blur(32px) saturate(160%);
-  -webkit-backdrop-filter: blur(32px) saturate(160%);
+/* ---------------------------------------------------------------------------
+ * Hero copy sits on the photograph, not on a panel.
+ *
+ * Every page builds its hero from the same small vocabulary of utilities
+ * (`text-ink`, `text-grey-600`, `text-grey-500`, `text-teal`, `.eyebrow`,
+ * Breadcrumbs, Button), so the light-on-dark treatment is defined once here
+ * rather than edited into all 16 page files.
+ *
+ * These are element+class selectors (0,1,1) or two-class selectors (0,2,0), so
+ * they outrank the single-class Tailwind utilities they override without
+ * `!important`. Buttons are deliberately NOT targeted: the primary button keeps
+ * its teal fill and the secondary keeps its light `.glass-pill` with ink text,
+ * both of which already read correctly against a darkened photograph.
+ * ------------------------------------------------------------------------- */
+.hero-copy {
+  color: rgba(255, 255, 255, 0.9);
+  /* A soft shadow buys legibility over the brighter patches of a photo without
+     reading as a "text shadow" at normal viewing distance. */
+  text-shadow: 0 1px 28px rgba(3, 12, 12, 0.5);
+}
+.hero-copy h1 {
+  color: #fff;
+}
+.hero-copy p {
+  color: rgba(255, 255, 255, 0.9);
+}
+.hero-copy strong {
+  color: #fff;
+}
+/* On a centred hero (home) the breadcrumb's own flex row doesn't inherit the
+   panel's `text-center`, so it sat left while everything above and below it was
+   centred. */
+.hero-copy.text-center nav ol {
+  justify-content: center;
+}
+
+/* Breadcrumbs: present, but the quietest thing in the frame. */
+.hero-copy nav {
+  color: rgba(255, 255, 255, 0.72);
+}
+.hero-copy nav [aria-current] {
+  color: rgba(255, 255, 255, 0.95);
+}
+/* The brand teal is tuned for ink-on-white and goes muddy on a dark photo, so
+   the eyebrow and inline links use the light end of the teal ramp instead. */
+.hero-copy .eyebrow,
+.hero-copy .text-teal {
+  color: #7ff0e2;
+}
+.hero-copy a.text-teal:hover,
+.hero-copy nav a:hover {
+  color: #b6f7ee;
+}
+
+/* The secondary button is a 55%-white pill, which was tuned to sit on the light
+   page canvas. Over a darkened photograph that composites down to a mid grey —
+   measured at 3.02:1 against its own ink text on the /products hero, i.e. below
+   AA — so inside a hero it is raised to a near-solid white that stays light
+   whatever the image behind it is doing. */
+.hero-copy .glass-pill {
+  background: rgba(255, 255, 255, 0.93);
+  border-color: rgba(255, 255, 255, 0.95);
 }
 
 /* ADR-0009 §4: ImageBand's `overlayText` pill sits directly on its full-bleed
