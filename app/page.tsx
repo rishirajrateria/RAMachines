@@ -43,6 +43,7 @@ import {
   whyPoints,
   ctaText,
 } from "./_home/copy";
+import { glueUnits, statSizeForGroup } from "@/components/ui/statValue";
 
 export const metadata: Metadata = buildMetadata({
   title: "Laser Cutting Machine Manufacturer India | RA Machine",
@@ -160,7 +161,7 @@ export default function HomePage() {
               <dl className="mt-4 grid grid-cols-3 gap-3 border-t border-[color:var(--hairline)] pt-4">
                 {flagshipStats.map((stat) => (
                   <div key={stat.label}>
-                    <dd className="text-stat text-ink">{stat.value}</dd>
+                    <dd className={`${statSizeForGroup(site.stats.map((s) => s.value))} text-ink`}>{glueUnits(stat.value)}</dd>
                     <dt className="mt-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-grey-500">{stat.label}</dt>
                   </div>
                 ))}

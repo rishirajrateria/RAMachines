@@ -21,6 +21,7 @@ import Img from "@/components/media/Img";
 import { paths } from "@/lib/urls";
 import { ArrowRight } from "@/components/ui/Icons";
 import GlassCard from "@/components/ui/GlassCard";
+import { glueUnits, statSize } from "@/components/ui/statValue";
 
 export default function ProductCard({ product, compact = false }: { product: Product; compact?: boolean }) {
   const href = paths.product(product.category, product.slug);
@@ -45,7 +46,7 @@ export default function ProductCard({ product, compact = false }: { product: Pro
       <h3 className="mt-1 font-display text-lg text-ink">{product.name}</h3>
       {!compact && primarySpec && (
         <p className="mt-3 flex flex-wrap items-baseline gap-x-2">
-          <span className="text-stat text-ink">{primarySpec.value}</span>
+          <span className={`${statSize(primarySpec.value)} text-ink`}>{glueUnits(primarySpec.value)}</span>
           <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-grey-500">{primarySpec.label}</span>
         </p>
       )}

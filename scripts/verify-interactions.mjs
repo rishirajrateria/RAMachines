@@ -192,6 +192,25 @@ for (const path of ["/", "/products", "/about", "/contact", "/india/west-bengal/
   ok(`no horizontal overflow at 390px: ${path}`, overflow <= 1, `${overflow}px`);
 }
 
+// ------------------------------------------------- fragment landing / anchors
+// A fixed header plus smooth scrolling made links-with-a-fragment land in the
+// wrong place (one overshot to the bottom of the page). Assert the real
+// outcome: the target is visible and clear of the header.
+for (const [url, id] of [["/about#faq", "faq"], ["/#faq", "faq"], ["/contact#quote", "quote"], ["/products/fiber-laser-cutting-machines/ra-f3015-pro#quote", "quote"]]) {
+  await page.goto(`${BASE}${url}`, { waitUntil: "networkidle" });
+  await page.waitForTimeout(2200);
+  const r = await page.evaluate((anchorId) => {
+    const el = document.getElementById(anchorId);
+    if (!el) return null;
+    const rect = el.getBoundingClientRect();
+    const header = document.querySelector(".header-pill").getBoundingClientRect();
+    return { top: Math.round(rect.top), headerBottom: Math.round(header.bottom), viewport: innerHeight };
+  }, id);
+  if (!r) { ok(`anchor ${url} target exists`, false, "no such id"); continue; }
+  ok(`anchor lands clear of the header: ${url}`, r.top >= r.headerBottom && r.top < r.viewport,
+    `target top=${r.top}px, header bottom=${r.headerBottom}px`);
+}
+
 // ------------------------------------------------------------------- no JS
 const nojs = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
 const np = await nojs.newPage();

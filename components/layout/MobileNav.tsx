@@ -28,7 +28,7 @@ export default function MobileNav() {
         aria-expanded="false"
         aria-controls="mobile-nav-panel"
         aria-label="Open menu"
-        className="glass-pill flex h-10 w-10 items-center justify-center p-0 text-ink"
+        className="glass-pill flex h-11 w-11 items-center justify-center p-0 text-ink"
       >
         <span data-navicon="open" className="flex">
           <Menu width={18} height={18} />

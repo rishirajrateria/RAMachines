@@ -88,6 +88,11 @@ const config: Config = {
         "display-md": ["clamp(1.9rem, 3.4vw, 2.75rem)", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
         // ADR-0008 §3 — eyebrow 11px, tracking .18em (was 11.5px/.16em, ADR-0006 §Polish).
         eyebrow: ["0.6875rem", { lineHeight: "1.3", letterSpacing: "0.18em" }],
+        // Step-downs from `stat`, for spec values too long to set at 40-64px —
+        // see components/ui/statValue.ts, which picks the step from the value's
+        // length so a measurement never has to wrap to fit its column.
+        "stat-md": ["clamp(1.75rem, 3.2vw, 2.5rem)", { lineHeight: "1.05", letterSpacing: "-0.02em" }],
+        "stat-sm": ["clamp(1.25rem, 2.2vw, 1.75rem)", { lineHeight: "1.15", letterSpacing: "-0.015em" }],
         // ADR-0008 §3 — spec/fact numerals: clamp(2.5rem, 5vw, 4rem), 600, tabular numerals.
         // `.text-stat` in globals.css adds `font-variant-numeric: tabular-nums` (not
         // expressible in this scale) and the display font-family on top of this token.

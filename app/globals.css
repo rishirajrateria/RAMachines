@@ -55,6 +55,16 @@ html {
   scroll-behavior: smooth;
 }
 
+/* The header is fixed, so an anchor jump would otherwise park its target
+   underneath it — `/contact#quote`, the destination of the header's own
+   "Request quote" button, landed with the form heading behind the bar.
+   `scroll-margin-top` on the targets is the whole fix; an earlier version also
+   set `scroll-padding-top` on <html> and the two ADDED UP, dropping every
+   target 224px down the page instead of 112px. */
+[id] {
+  scroll-margin-top: 7rem;
+}
+
 body {
   background-color: var(--bg-page);
   color: var(--color-ink);
@@ -113,6 +123,25 @@ h3,
   outline: 2px solid var(--color-teal);
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+/* Buttons carry Tailwind's `focus-visible:outline-none` and signalled focus
+   with a 2% scale alone — which is invisible to anyone who needs it, and fails
+   WCAG 2.4.7 on the primary call to action. Restore a real ring. It is drawn in
+   white with a teal inner edge so it stays visible both on the light page and
+   on the darkened hero photograph, where a teal-only ring disappears. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.85);
+}
+.page-hero a:focus-visible,
+.band-deep a:focus-visible,
+.band-deep button:focus-visible {
+  outline-color: #fff;
+  box-shadow: 0 0 0 5px rgba(15, 118, 110, 0.55);
 }
 
 .container-site {
@@ -383,7 +412,26 @@ h3,
    letter-spacing come from the `stat` fontSize token (tailwind.config.ts) via the
    `text-stat` utility it generates; this adds what that scale can't express —
    tabular numerals (so digits don't jitter in width) and the display font. */
-.text-stat {
+/* Headings set their own line breaks badly at large sizes — several ended on a
+   single short word ("…fits your job", "…demand in United States"). `balance`
+   evens the lines out; it is capped by the browser at a handful of lines, which
+   is exactly the range headings live in, and silently does nothing where it is
+   unsupported. `pretty` does the same job for body copy, where it only prevents
+   the last-line orphan. */
+h1,
+h2,
+h3,
+.section-title {
+  text-wrap: balance;
+}
+p,
+li {
+  text-wrap: pretty;
+}
+
+.text-stat,
+.text-stat-md,
+.text-stat-sm {
   font-family: var(--font-display);
   font-variant-numeric: tabular-nums;
 }

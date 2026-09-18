@@ -73,6 +73,44 @@
     io.observe(el);
   }
 
+  /* ------------------------------------------------------- fragment landing
+   * `scroll-behavior: smooth` and a fragment in the URL do not get along: the
+   * browser starts animating towards the target while the document is still
+   * growing, and the animation is clamped against the page height as it was at
+   * the time. Measured on a real load, /about#faq ended at the very bottom of
+   * the page (the target 399px ABOVE the viewport) and /#faq stopped 553px
+   * short; with instant scrolling both land exactly right.
+   *
+   * So: once everything has loaded and the layout is final, re-align to the
+   * target with smooth scrolling temporarily switched off. Any sign that the
+   * visitor has started scrolling for themselves cancels it — arriving at a
+   * link's destination should never mean having the page yanked away.
+   */
+  if (location.hash.length > 1) {
+    var userScrolled = false;
+    var cancel = function () {
+      userScrolled = true;
+    };
+    addEventListener("wheel", cancel, { passive: true, once: true });
+    addEventListener("touchmove", cancel, { passive: true, once: true });
+    addEventListener("keydown", cancel, { once: true });
+
+    addEventListener("load", function () {
+      if (userScrolled) return;
+      var target;
+      try {
+        target = doc.getElementById(decodeURIComponent(location.hash.slice(1)));
+      } catch (e) {
+        return;
+      }
+      if (!target) return;
+      var previous = root.style.scrollBehavior;
+      root.style.scrollBehavior = "auto";
+      target.scrollIntoView();
+      root.style.scrollBehavior = previous;
+    });
+  }
+
   /* ------------------------------------------------------------------ reveal
    * Browsers with scroll-driven CSS animations (animation-timeline: view())
    * already reveal in pure CSS — globals.css hides this JS path from them, so

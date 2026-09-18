@@ -1,6 +1,6 @@
 # Content audit
 
-Generated: 2026-09-18T10:09:31.043Z
+Generated: 2026-09-18T10:31:57.680Z
 Total pages: 260
 
 ## Summary by section
@@ -8,7 +8,7 @@ Total pages: 260
 | Section | Pages | Min words | Median words | Max words |
 |---|---|---|---|---|
 | about | 1 | 784 | 784 | 784 |
-| category | 4 | 1036 | 1067 | 1394 |
+| category | 4 | 1040 | 1067 | 1398 |
 | certifications | 1 | 1398 | 1398 | 1398 |
 | contact | 1 | 202 | 202 | 202 |
 | export-country | 30 | 1201 | 1284 | 1575 |
@@ -282,7 +282,7 @@ Total pages: 260
 | /products | Laser Cutting Machines & Robotic Welding \| RA Machine | Machines | 408 |
 | /products/co2-laser-machines | CO2 Laser Cutting Machines - Manufacturer, India | CO2 Laser Machines | 1080 |
 | /products/co2-laser-machines/ra-c1390 | RA-C1390 CO2 Laser Cutting and Engraving Machine | RA-C1390 CO2 Laser Cutting & Engraving Machine | 1288 |
-| /products/fiber-laser-cutting-machines | Fiber Laser Cutting Machines - Manufacturer, India | Fiber Laser Cutting Machines | 1394 |
+| /products/fiber-laser-cutting-machines | Fiber Laser Cutting Machines - Manufacturer, India | Fiber Laser Cutting Machines | 1398 |
 | /products/fiber-laser-cutting-machines/ra-f12k | RA-F12K 12 kW Heavy Duty Fiber Laser Cutting Machine | RA-F12K Heavy Duty Fiber Laser Cutting Machine | 1294 |
 | /products/fiber-laser-cutting-machines/ra-f1530 | RA-F1530 1.5 kW Fiber Laser Cutting Machine \| RA Machine | RA-F1530 Fiber Laser Cutting Machine | 1294 |
 | /products/fiber-laser-cutting-machines/ra-f3015-pro | RA-F3015 Pro 3 kW Fiber Laser Cutting Machine \| RA Machine | RA-F3015 Pro Fiber Laser Cutting Machine | 1274 |
@@ -290,8 +290,8 @@ Total pages: 260
 | /products/robotic-welding-systems | Robotic Welding Systems - Manufacturer, India \| RA Machine | Robotic Welding Systems | 1053 |
 | /products/robotic-welding-systems/ra-rw10 | RA-RW10 Dual-Station Robotic MIG Welding \| RA Machine | RA-RW10 Robotic MIG/MAG Welding Workstation (Dual-Station) | 1233 |
 | /products/robotic-welding-systems/ra-rw6 | RA-RW6 6-Axis Robotic MIG Welding Cell \| RA Machine | RA-RW6 Robotic MIG Welding Cell (6-axis) | 1214 |
-| /products/tube-laser-cutting-machines | Tube Laser Cutting Machines - Manufacturer, India | Tube Laser Cutting Machines | 1036 |
-| /products/tube-laser-cutting-machines/ra-t6000 | RA-T6000 Fiber Laser Tube Cutting Machine \| RA Machine | RA-T6000 Fiber Laser Tube Cutting Machine | 1260 |
+| /products/tube-laser-cutting-machines | Tube Laser Cutting Machines - Manufacturer, India | Tube Laser Cutting Machines | 1040 |
+| /products/tube-laser-cutting-machines/ra-t6000 | RA-T6000 Fiber Laser Tube Cutting Machine \| RA Machine | RA-T6000 Fiber Laser Tube Cutting Machine | 1264 |
 | /services/laser-cutting-job-work | Laser Cutting Job Work — Custom Metal Cutting \| RA Machine | Laser Cutting Job Work | 712 |
 | /services/machine-repair | Laser Cutting Machine Repair & CNC Maintenance India | Laser Cutting Machine Repair & CNC Maintenance Service in India | 1946 |
 | /services/operator-training | Laser Cutting Machine Operator Training & CNC Course | Laser Cutting Machine Operator Training & CNC Training | 1047 |
