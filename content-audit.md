@@ -1,6 +1,6 @@
 # Content audit
 
-Generated: 2026-09-18T11:10:06.818Z
+Generated: 2026-09-18T12:00:21.447Z
 Total pages: 260
 
 ## Summary by section
@@ -13,7 +13,7 @@ Total pages: 260
 | contact | 1 | 202 | 202 | 202 |
 | export-country | 30 | 1201 | 1284 | 1575 |
 | export-hub | 1 | 1089 | 1089 | 1089 |
-| home | 1 | 1257 | 1257 | 1257 |
+| home | 1 | 1255 | 1255 | 1255 |
 | india-city | 170 | 787 | 868 | 983 |
 | india-state | 36 | 1147 | 1266 | 1472 |
 | job-work | 1 | 712 | 712 | 712 |
@@ -70,7 +70,7 @@ Total pages: 260
 | /export/united-states | Laser Cutting Machine Exporter to United States \| RA Machine | Laser Cutting Machine Exporter to United States — Fiber Laser & Robotic Welding from India | 1575 |
 | /export/uzbekistan | Laser Cutting Machine Exporter to Uzbekistan \| RA Machine | Laser Cutting Machine Exporter to Uzbekistan — Fiber Laser & Robotic Welding from India | 1317 |
 | /export/vietnam | Laser Cutting Machine Exporter to Vietnam \| RA Machine | Laser Cutting Machine Exporter to Vietnam — Fiber Laser & Robotic Welding from India | 1327 |
-| / | Laser Cutting Machine Manufacturer India \| RA Machine | Laser Cutting Machines Built in India, Trusted Worldwide | 1257 |
+| / | Laser Cutting Machine Manufacturer India \| RA Machine | Laser Cutting Machines Built in India, Trusted Worldwide | 1255 |
 | /india | Laser Cutting Machine Manufacturer in India \| RA Machine | Laser Cutting Machine & Robotic Welding Supplier Across India | 326 |
 | /india/andaman-and-nicobar-islands | Laser Cutting Machine in Andaman and Nicobar Islands | Laser Cutting Machine in Andaman and Nicobar Islands — Manufacturer, Supplier & Service | 1336 |
 | /india/andaman-and-nicobar-islands/port-blair | Laser Cutting Machine in Port Blair \| RA Machine | Laser Cutting Machine in Port Blair, Andaman and Nicobar Islands — Sales, Installation, Repair & Training | 933 |

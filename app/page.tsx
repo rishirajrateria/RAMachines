@@ -20,7 +20,6 @@ import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AboutBlurb from "@/components/ui/AboutBlurb";
 import Section from "@/components/ui/Section";
 import Button from "@/components/ui/Button";
-import Chips from "@/components/ui/Chips";
 import Faq from "@/components/ui/Faq";
 import { Icon, ArrowRight } from "@/components/ui/Icons";
 import GlassCard from "@/components/ui/GlassCard";
@@ -29,6 +28,7 @@ import BentoGrid from "@/components/ui/BentoGrid";
 import BentoTile from "@/components/ui/BentoTile";
 import { FactStrip, ImageSlot, ImageBand } from "@/components/ui/glass";
 import CertStrip from "@/components/sections/CertStrip";
+import WorldReach from "@/components/sections/WorldReach";
 import HeroVideo from "@/components/media/HeroVideo";
 import CategoryCard from "@/components/cards/CategoryCard";
 import ProductCard from "@/components/cards/ProductCard";
@@ -209,26 +209,9 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* 5. Where we work — two glass tiles, each with an image header. */}
-      <Section eyebrow="Reach" icon="Globe" title="Where we work">
-        <div className="grid gap-6 md:grid-cols-2">
-          <GlassCard artwork={<ImageSlot image={photos["slot-crate-shipping"]} aspect="16/9" label="Photo: crate shipping" />}>
-            <h3 className="font-display text-lg text-ink">India</h3>
-            <p className="mt-2 text-sm text-grey-600">
-              Installed and serviced across every major Indian industrial state.
-            </p>
-            <div className="mt-5">
-              <Chips items={states.map((state) => ({ label: state.name, href: paths.state(state.slug) }))} />
-            </div>
-          </GlassCard>
-          <GlassCard artwork={<ImageSlot image={photos["slot-port"]} aspect="16/9" label="Photo: container port" />}>
-            <h3 className="font-display text-lg text-ink">World</h3>
-            <p className="mt-2 text-sm text-grey-600">Exported to more than 25 countries across five continents.</p>
-            <div className="mt-5">
-              <Chips items={countries.map((country) => ({ label: country.name, href: paths.country(country.slug) }))} />
-            </div>
-          </GlassCard>
-        </div>
+      {/* 5. Where we work — the claim drawn as a map, on a deep band. */}
+      <Section tone="dark" eyebrow="Reach" icon="Globe" title="Where we work">
+        <WorldReach states={states} countries={countries} />
       </Section>
 
       {/* 6. Certifications — single quiet row of badges + link. */}
