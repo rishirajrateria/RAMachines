@@ -9,12 +9,27 @@
  *     width, then de-duplicated.
  *   - a 20px-wide base64 WebP data URI (LQIP) for the blurred loading placeholder.
  *
- * Output files sit next to the source as `<name>-<width>.avif` / `.webp` (the
- * source file itself is never touched or renamed — ADR-0008 "keep every existing
- * filename"). Re-running the script never re-encodes work that's already up to
- * date: a variant is only (re)built when it's missing or older than its source.
- * Manifest metadata (dimensions + LQIP) is cheap enough to always recompute so
- * the manifest never goes stale.
+ * Output files go to `public/_img/...` (see VARIANT_DIR below); the source file
+ * itself is never touched or renamed — ADR-0008 "keep every existing filename".
+ *
+ * SPEED. This is by far the most expensive step in the build: ~1085 variants,
+ * and a cold run took ~40 MINUTES, which was the entire Vercel build time (one
+ * deploy hit the 45-minute limit and failed). Three things fix that:
+ *
+ *   1. Images encode CONCURRENTLY, one worker per core, with libvips' own
+ *      threading turned down to 1 so the two don't oversubscribe each other.
+ *      Many medium images in parallel beats one image at a time.
+ *   2. AVIF effort drops 6 -> 4 (sharp's own default). Effort 6 costs roughly
+ *      double the CPU for a couple of percent of file size.
+ *   3. Freshness is keyed on a HASH OF THE SOURCE BYTES, recorded in the
+ *      manifest — not on mtimes. mtimes do not survive a git clone, so an
+ *      mtime check re-encodes everything on every CI machine even when the
+ *      outputs are right there. With a content hash, a build whose sources
+ *      haven't changed does no encoding at all.
+ *
+ * Because of (3) the generated tree and the manifest are COMMITTED, so a deploy
+ * never encodes anything and `next build` is the whole build. Regenerate with
+ * `npm run optimize:images` after changing any source image, and commit both.
  *
  * Writes `lib/image-manifest.json`:
  *   {
@@ -29,16 +44,24 @@
  *
  * Run via `npm run optimize:images`, wired into `npm run build` before `next build`.
  */
-import { readdir, stat, mkdir, writeFile } from "node:fs/promises";
+import { readdir, stat, mkdir, writeFile, readFile, rm } from "node:fs/promises";
 import { existsSync } from "node:fs";
-import { dirname, join, extname, basename } from "node:path";
+import { createHash } from "node:crypto";
+import { availableParallelism } from "node:os";
+import { dirname, join, extname, basename, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
+
+// One image per worker, one libvips thread per image. Letting both layers use
+// every core at once just makes them fight over the same ones.
+sharp.concurrency(1);
+const WORKERS = Math.max(1, Math.min(availableParallelism(), 8));
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCE_DIRS = ["photos", "products", "categories", "certs", "about"];
 const TARGET_WIDTHS = [640, 1024, 1600, 1920];
-const AVIF_OPTS = { quality: 50, effort: 6 };
+// effort 4 is sharp's default; 6 roughly doubles CPU for ~2% of file size.
+const AVIF_OPTS = { quality: 50, effort: 4 };
 const WEBP_OPTS = { quality: 72 };
 const LQIP_WIDTH = 20;
 
@@ -67,14 +90,26 @@ async function findSources(dir) {
   return files;
 }
 
-async function isFresh(outPath, srcMtimeMs) {
-  if (!existsSync(outPath)) return false;
-  const outStat = await stat(outPath);
-  return outStat.mtimeMs >= srcMtimeMs;
+async function hashFile(path) {
+  return createHash("sha256").update(await readFile(path)).digest("hex").slice(0, 16);
 }
 
-async function processImage(srcPath, publicRoot) {
-  const srcStat = await stat(srcPath);
+/**
+ * A cached manifest entry is reusable only if the source is byte-identical AND
+ * every file it promises is actually on disk — otherwise a half-deleted tree
+ * would be reported as up to date and the page would 404 its own images.
+ */
+function entryIsUsable(entry, hash, publicRoot) {
+  if (!entry || entry.hash !== hash || !entry.variants) return false;
+  for (const format of ["avif", "webp"]) {
+    for (const v of entry.variants[format] ?? []) {
+      if (!existsSync(join(publicRoot, v.src.replace(/^\//, "")))) return false;
+    }
+  }
+  return !!entry.lqip;
+}
+
+async function processImage(srcPath, publicRoot, srcHash) {
   const image = sharp(srcPath);
   const meta = await image.metadata();
   const width = meta.width ?? 0;
@@ -100,20 +135,11 @@ async function processImage(srcPath, publicRoot) {
     const avifPath = join(outDir, `${name}-${w}.avif`);
     const webpPath = join(outDir, `${name}-${w}.webp`);
 
-    if (await isFresh(avifPath, srcStat.mtimeMs)) {
-      skipped++;
-    } else {
-      await sharp(srcPath).resize({ width: w }).avif(AVIF_OPTS).toFile(avifPath);
-      built++;
-    }
-    variants.avif.push({ w, src: `${outRel}/${name}-${w}.avif`.replace(/\/{2,}/g, "/") });
+    await sharp(srcPath).resize({ width: w }).avif(AVIF_OPTS).toFile(avifPath);
+    await sharp(srcPath).resize({ width: w }).webp(WEBP_OPTS).toFile(webpPath);
+    built += 2;
 
-    if (await isFresh(webpPath, srcStat.mtimeMs)) {
-      skipped++;
-    } else {
-      await sharp(srcPath).resize({ width: w }).webp(WEBP_OPTS).toFile(webpPath);
-      built++;
-    }
+    variants.avif.push({ w, src: `${outRel}/${name}-${w}.avif`.replace(/\/{2,}/g, "/") });
     variants.webp.push({ w, src: `${outRel}/${name}-${w}.webp`.replace(/\/{2,}/g, "/") });
   }
 
@@ -124,7 +150,7 @@ async function processImage(srcPath, publicRoot) {
     .toBuffer();
   const lqip = `data:image/webp;base64,${lqipBuffer.toString("base64")}`;
 
-  return { publicSrc, entry: { width, height, lqip, variants }, built, skipped };
+  return { publicSrc, entry: { hash: srcHash, width, height, lqip, variants }, built, skipped };
 }
 
 function sleep(ms) {
@@ -136,10 +162,10 @@ function sleep(ms) {
 // owns or blocks on) — sharp then sees a half-written file and throws. One
 // short retry clears that up; if it still fails the source is genuinely
 // broken, so skip it (logged) rather than aborting every other image.
-async function processImageSafe(src, publicRoot) {
+async function processImageSafe(src, publicRoot, srcHash) {
   for (let attempt = 1; attempt <= 2; attempt++) {
     try {
-      return await processImage(src, publicRoot);
+      return await processImage(src, publicRoot, srcHash);
     } catch (err) {
       if (attempt === 2) {
         console.warn(`[optimize-images] skipped ${src}: ${err.message}`);
@@ -154,40 +180,102 @@ async function processImageSafe(src, publicRoot) {
 async function main() {
   const start = Date.now();
   const publicRoot = join(ROOT, "public");
-  const manifest = {};
-  let totalBuilt = 0;
-  let totalSkipped = 0;
-  let totalImages = 0;
-  let totalFailed = 0;
+  const manifestPath = join(ROOT, "lib", "image-manifest.json");
 
+  /** Last run's manifest, if any — the cache that lets an unchanged build do nothing. */
+  let previous = {};
+  try {
+    previous = JSON.parse(await readFile(manifestPath, "utf8"));
+  } catch {
+    previous = {};
+  }
+
+  // Collect every source first, so the work can be spread across workers.
+  const sources = [];
   for (const sourceDir of SOURCE_DIRS) {
     const dir = join(publicRoot, sourceDir);
     if (!existsSync(dir)) continue;
-    const sources = await findSources(dir);
-    for (const src of sources.sort()) {
-      const result = await processImageSafe(src, publicRoot);
+    sources.push(...(await findSources(dir)));
+  }
+  sources.sort();
+
+  const manifest = {};
+  let totalBuilt = 0;
+  let reused = 0;
+  let totalFailed = 0;
+
+  let next = 0;
+  async function worker() {
+    for (;;) {
+      const index = next++;
+      if (index >= sources.length) return;
+      const src = sources[index];
+
+      const hash = await hashFile(src);
+      const publicSrc = `/${relative(publicRoot, src).split("\\").join("/")}`;
+
+      // Unchanged source and every promised file present: nothing to do.
+      if (entryIsUsable(previous[publicSrc], hash, publicRoot)) {
+        manifest[publicSrc] = previous[publicSrc];
+        reused++;
+        continue;
+      }
+
+      const result = await processImageSafe(src, publicRoot, hash);
       if (!result) {
         totalFailed++;
         continue;
       }
-      const { publicSrc, entry, built, skipped } = result;
-      manifest[publicSrc] = entry;
-      totalBuilt += built;
-      totalSkipped += skipped;
-      totalImages++;
+      manifest[result.publicSrc] = result.entry;
+      totalBuilt += result.built;
     }
   }
+  await Promise.all(Array.from({ length: WORKERS }, worker));
 
-  const manifestPath = join(ROOT, "lib", "image-manifest.json");
   await mkdir(dirname(manifestPath), { recursive: true });
   await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
 
+  // Drop generated files nothing references any more, so the committed tree
+  // never accumulates orphans from renamed or deleted sources. Scoped to the
+  // variant directory, and driven by the manifest we just wrote rather than by
+  // any filename pattern.
+  const referenced = new Set();
+  for (const entry of Object.values(manifest)) {
+    for (const format of ["avif", "webp"]) {
+      for (const v of entry.variants[format] ?? []) referenced.add(v.src);
+    }
+  }
+  let pruned = 0;
+  const variantRoot = join(publicRoot, VARIANT_DIR);
+  if (existsSync(variantRoot)) {
+    for (const file of await findAll(variantRoot)) {
+      const rel = `/${VARIANT_DIR}/${relative(variantRoot, file).split("\\").join("/")}`;
+      if (!referenced.has(rel)) {
+        await rm(file, { force: true });
+        pruned++;
+      }
+    }
+  }
+
   const ms = Date.now() - start;
   console.log(
-    `[optimize-images] ${totalImages} source images · ${totalBuilt} variant(s) built · ${totalSkipped} up to date` +
+    `[optimize-images] ${sources.length} sources · ${reused} unchanged · ${totalBuilt} variant(s) encoded` +
+      (pruned ? ` · ${pruned} orphan(s) pruned` : "") +
       (totalFailed ? ` · ${totalFailed} skipped (see warnings above)` : "") +
-      ` · ${ms}ms`,
+      ` · ${WORKERS} workers · ${(ms / 1000).toFixed(1)}s`,
   );
+}
+
+/** Every file under a directory, recursively. */
+async function findAll(dir) {
+  const entries = await readdir(dir, { withFileTypes: true }).catch(() => []);
+  const files = [];
+  for (const entry of entries) {
+    const full = join(dir, entry.name);
+    if (entry.isDirectory()) files.push(...(await findAll(full)));
+    else files.push(full);
+  }
+  return files;
 }
 
 main().catch((err) => {
