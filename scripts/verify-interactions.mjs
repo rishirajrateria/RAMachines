@@ -150,6 +150,11 @@ const panelHidden = await mp.evaluate(() => {
   return getComputedStyle(p).opacity === "0" && p.hasAttribute("inert");
 });
 ok("mobile nav starts closed and inert", panelHidden);
+ok("menu button shows exactly one icon when closed", await mp.evaluate(() => {
+  const shown = [...document.querySelectorAll("[data-navicon]")]
+    .filter((i) => getComputedStyle(i).display !== "none");
+  return shown.length === 1 && shown[0].dataset.navicon === "open";
+}));
 await mp.click("[data-navtoggle]");
 const navOpened = await mp
   .waitForFunction(() => getComputedStyle(document.getElementById("mobile-nav-panel")).opacity === "1", null, { timeout: 4000 })
@@ -162,13 +167,18 @@ const opened = await mp.evaluate(() => {
     opacity: getComputedStyle(p).opacity,
     expanded: t.getAttribute("aria-expanded"),
     inert: p.hasAttribute("inert"),
-    closeIcon: !document.querySelector('[data-navicon="close"]').hidden,
+    // Computed style, not the `hidden` property: a display utility on the same
+    // element can override the attribute, which is exactly how both icons once
+    // ended up on screen at the same time.
+    closeIconShown: getComputedStyle(document.querySelector('[data-navicon="close"]')).display !== "none",
+    openIconShown: getComputedStyle(document.querySelector('[data-navicon="open"]')).display !== "none",
   };
 });
 ok("mobile nav opens", navOpened && opened.open, `opacity=${opened.opacity}`);
 ok("mobile nav sets aria-expanded", opened.expanded === "true");
 ok("mobile nav panel is no longer inert", opened.inert === false);
-ok("mobile nav swaps to the close icon", opened.closeIcon);
+ok("mobile nav swaps to the close icon", opened.closeIconShown && !opened.openIconShown,
+  `close=${opened.closeIconShown} open=${opened.openIconShown}`);
 await mp.keyboard.press("Escape");
 const navClosed = await mp
   .waitForFunction(() => !document.getElementById("mobile-nav-panel").classList.contains("is-open"), null, { timeout: 4000 })

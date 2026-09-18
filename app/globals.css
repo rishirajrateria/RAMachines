@@ -1094,6 +1094,41 @@ html:not(.js) .mobilenav-panel:target + .mobilenav-backdrop {
   background: linear-gradient(180deg, rgba(246, 248, 249, 0.15), rgba(246, 248, 249, 0.55) 70%, #f6f8f9 100%);
 }
 
+/* ---------------------------------------------------------------------------
+ * Make the `hidden` ATTRIBUTE win over Tailwind display utilities.
+ *
+ * The UA stylesheet hides `[hidden]` with `display: none`, but that is a plain
+ * attribute selector — any Tailwind display class (`flex`, `block`, `grid`) on
+ * the same element beats it on specificity and the element stays visible. That
+ * bit the mobile menu button, which renders both icons and toggles `hidden`
+ * between them: both carried `flex`, so both showed at once.
+ *
+ * ADR-0010 leans on the `hidden` attribute for several toggles (menu icons,
+ * filtered product cards, certificate panels), so rather than avoid display
+ * classes case by case, make the attribute authoritative everywhere.
+ * ------------------------------------------------------------------------- */
+[hidden] {
+  display: none !important;
+}
+
+/* ---------------------------------------------------------------------------
+ * The hero starts at the very top of the viewport.
+ *
+ * `<main>` carries `pt-24` (6rem) so ordinary page content clears the fixed
+ * floating header. A full-bleed hero must NOT clear it — the header is designed
+ * to float over the imagery — so a hero that opens a page was being pushed 6rem
+ * down, leaving a band of bare `#F6F8F9` canvas above it that read as a stray
+ * white box behind the header (and disappeared as soon as you scrolled past it).
+ *
+ * Cancelling the padding on a hero that is `<main>`'s first child fixes it
+ * exactly where it happens: 258 of the 261 routes open with a hero and now run
+ * edge to edge from y=0, while the three that don't (404, /terms,
+ * /privacy-policy) keep the full 6rem of clearance they need.
+ * ------------------------------------------------------------------------- */
+main > .page-hero:first-child {
+  margin-top: -6rem;
+}
+
 /* Inside a PageHero the glass panel sits directly over a photograph rather than
    the calm ambient-light canvas it was tuned for, so its background is raised
    from the default .75 to .82 opacity here to keep ink text ≥ 7:1 / teal ≥ 4.5:1
