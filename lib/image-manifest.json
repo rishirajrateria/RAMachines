@@ -43,6 +43,42 @@
       ]
     }
   },
+  "/categories/co2-laser-machines-1200.webp": {
+    "hash": "c13d08067f3a94f1",
+    "width": 1200,
+    "height": 800,
+    "lqip": "data:image/webp;base64,UklGRt4AAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSGEAAAABcBMAAJrM/dsrDdxdkVsrEAga8BGDCjSggLu7EyAiJgD445x+yz9gnGa7Nzzdbd2rHE8Pj6dT9x52enr7ls0btqf+PXw1n88Xi/lsPWh09HusKFtxuRDolkACtzhBgMDLAFZQOCBWAAAAMAMAnQEqFAANAD7tZKlNqaWkIjAIATAdiUAYmwGwJZlIAAD51otwWtZJglvf/k3AnMnQOSkPj8Pd32YtaOL+Cc0GykEjFuvF9v5KA/+3NmutmeEJAAA=",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/categories/co2-laser-machines-1200-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/categories/co2-laser-machines-1200-1024.avif"
+        },
+        {
+          "w": 1200,
+          "src": "/_img/categories/co2-laser-machines-1200-1200.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/categories/co2-laser-machines-1200-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/categories/co2-laser-machines-1200-1024.webp"
+        },
+        {
+          "w": 1200,
+          "src": "/_img/categories/co2-laser-machines-1200-1200.webp"
+        }
+      ]
+    }
+  },
   "/about/india-reach.webp": {
     "hash": "dfa66208a6183132",
     "width": 3667,
@@ -83,42 +119,6 @@
         {
           "w": 1920,
           "src": "/_img/about/india-reach-1920.webp"
-        }
-      ]
-    }
-  },
-  "/categories/co2-laser-machines-1200.webp": {
-    "hash": "c13d08067f3a94f1",
-    "width": 1200,
-    "height": 800,
-    "lqip": "data:image/webp;base64,UklGRt4AAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSGEAAAABcBMAAJrM/dsrDdxdkVsrEAga8BGDCjSggLu7EyAiJgD445x+yz9gnGa7Nzzdbd2rHE8Pj6dT9x52enr7ls0btqf+PXw1n88Xi/lsPWh09HusKFtxuRDolkACtzhBgMDLAFZQOCBWAAAAMAMAnQEqFAANAD7tZKlNqaWkIjAIATAdiUAYmwGwJZlIAAD51otwWtZJglvf/k3AnMnQOSkPj8Pd32YtaOL+Cc0GykEjFuvF9v5KA/+3NmutmeEJAAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/categories/co2-laser-machines-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/categories/co2-laser-machines-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/categories/co2-laser-machines-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/categories/co2-laser-machines-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/categories/co2-laser-machines-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/categories/co2-laser-machines-1200-1200.webp"
         }
       ]
     }
@@ -203,42 +203,6 @@
       ]
     }
   },
-  "/categories/fiber-laser-cutting-machines-1200.webp": {
-    "hash": "f78a20ee78363f6d",
-    "width": 1200,
-    "height": 800,
-    "lqip": "data:image/webp;base64,UklGRhQBAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSIgAAAANcFpt27I8uLu7+wSs4DIBh8gh0RnBYQWyZZaApJXk7vD/aGKAiJgA/G0K5QNB/ODOJqfixYXgZBo/EJd7Xj0hbo4Eft1zDXwZQVv6Aqn7F7sFaWjZVLA59ccHSQff2xEC7/7S9QoK5QFQuz0uPvZzIzaHwzueT3S1rgaASaGsxjgdDzsAF3wEVlA4IGYAAABwAwCdASoUAA0APu1kqk4ppaQiMAgBMB2JZQDCgBI6l0NqLAAA7Fnz+8r711+SkOW015d2gMLIrQNrYOoBvC87VaRxRwQeoMo6F14chWxQBZHmLj/edpCAe3IAGKThJXbnOEtoAAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/categories/fiber-laser-cutting-machines-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/categories/fiber-laser-cutting-machines-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/categories/fiber-laser-cutting-machines-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/categories/fiber-laser-cutting-machines-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/categories/fiber-laser-cutting-machines-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/categories/fiber-laser-cutting-machines-1200-1200.webp"
-        }
-      ]
-    }
-  },
   "/categories/fiber-laser-cutting-machines.webp": {
     "hash": "a608f46df038d257",
     "width": 1200,
@@ -275,6 +239,42 @@
       ]
     }
   },
+  "/categories/fiber-laser-cutting-machines-1200.webp": {
+    "hash": "f78a20ee78363f6d",
+    "width": 1200,
+    "height": 800,
+    "lqip": "data:image/webp;base64,UklGRhQBAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSIgAAAANcFpt27I8uLu7+wSs4DIBh8gh0RnBYQWyZZaApJXk7vD/aGKAiJgA/G0K5QNB/ODOJqfixYXgZBo/EJd7Xj0hbo4Eft1zDXwZQVv6Aqn7F7sFaWjZVLA59ccHSQff2xEC7/7S9QoK5QFQuz0uPvZzIzaHwzueT3S1rgaASaGsxjgdDzsAF3wEVlA4IGYAAABwAwCdASoUAA0APu1kqk4ppaQiMAgBMB2JZQDCgBI6l0NqLAAA7Fnz+8r711+SkOW015d2gMLIrQNrYOoBvC87VaRxRwQeoMo6F14chWxQBZHmLj/edpCAe3IAGKThJXbnOEtoAAA=",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/categories/fiber-laser-cutting-machines-1200-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/categories/fiber-laser-cutting-machines-1200-1024.avif"
+        },
+        {
+          "w": 1200,
+          "src": "/_img/categories/fiber-laser-cutting-machines-1200-1200.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/categories/fiber-laser-cutting-machines-1200-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/categories/fiber-laser-cutting-machines-1200-1024.webp"
+        },
+        {
+          "w": 1200,
+          "src": "/_img/categories/fiber-laser-cutting-machines-1200-1200.webp"
+        }
+      ]
+    }
+  },
   "/categories/robotic-welding-systems-1200.webp": {
     "hash": "aec2f3f8e3241f90",
     "width": 1200,
@@ -307,6 +307,42 @@
         {
           "w": 1200,
           "src": "/_img/categories/robotic-welding-systems-1200-1200.webp"
+        }
+      ]
+    }
+  },
+  "/categories/tube-laser-cutting-machines.webp": {
+    "hash": "cbe4c3df04e10992",
+    "width": 1200,
+    "height": 800,
+    "lqip": "data:image/webp;base64,UklGRu4AAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSG8AAAANcGLbttrccFJmkPFltB1EOwQcWyXpToBBoWdmCMv6iJgA/P0Ct8TlnV3uB3recPsXindQzUmiPalXN00tP+ShK+mE1yjCeAIt0bpuCIJgpI8krWoLHSlmZnme4/B8PoKiCwBLELsl7vfHBQC+0AIAVlA4IFgAAABwAwCdASoUAA0APu1kqU2ppaQiMAgBMB2JYwAAWp9maYHNgAAA/uvimlAAcVZ8kaKQocqNPwYFwFl17CH9OyS2nOuyazEf9YomebQn/Kjt7y3FwA9+gAAA",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/categories/tube-laser-cutting-machines-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/categories/tube-laser-cutting-machines-1024.avif"
+        },
+        {
+          "w": 1200,
+          "src": "/_img/categories/tube-laser-cutting-machines-1200.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/categories/tube-laser-cutting-machines-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/categories/tube-laser-cutting-machines-1024.webp"
+        },
+        {
+          "w": 1200,
+          "src": "/_img/categories/tube-laser-cutting-machines-1200.webp"
         }
       ]
     }
@@ -379,42 +415,6 @@
         {
           "w": 1200,
           "src": "/_img/categories/tube-laser-cutting-machines-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/categories/tube-laser-cutting-machines.webp": {
-    "hash": "cbe4c3df04e10992",
-    "width": 1200,
-    "height": 800,
-    "lqip": "data:image/webp;base64,UklGRu4AAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSG8AAAANcGLbttrccFJmkPFltB1EOwQcWyXpToBBoWdmCMv6iJgA/P0Ct8TlnV3uB3recPsXindQzUmiPalXN00tP+ShK+mE1yjCeAIt0bpuCIJgpI8krWoLHSlmZnme4/B8PoKiCwBLELsl7vfHBQC+0AIAVlA4IFgAAABwAwCdASoUAA0APu1kqU2ppaQiMAgBMB2JYwAAWp9maYHNgAAA/uvimlAAcVZ8kaKQocqNPwYFwFl17CH9OyS2nOuyazEf9YomebQn/Kjt7y3FwA9+gAAA",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/categories/tube-laser-cutting-machines-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/categories/tube-laser-cutting-machines-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/categories/tube-laser-cutting-machines-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/categories/tube-laser-cutting-machines-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/categories/tube-laser-cutting-machines-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/categories/tube-laser-cutting-machines-1200.webp"
         }
       ]
     }
@@ -859,46 +859,46 @@
       ]
     }
   },
-  "/certs/make-in-india-1833.webp": {
-    "hash": "371d2cadcac46298",
+  "/certs/iso-9001-2015.webp": {
+    "hash": "0fd084f48f632afd",
     "width": 1833,
     "height": 2444,
-    "lqip": "data:image/webp;base64,UklGRsAAAABXRUJQVlA4WAoAAAAQAAAAEwAAGgAAQUxQSGkAAAABcBzZbtt8ZQkfFCA5tJDt/vsTCZ7sc0RMAH6pu5l7rDvNJDmfusguAwAMsgdURmRH0ZIRRVpAADyfACRCAH0PgAE/ZOmlUTWnOpZgkg5JDNE1kWRaEe/dzHvUfm+3F6qvyq1OZE51/yEAVlA4IDAAAADwAgCdASoUABsAPu1ur1KppiQiqAgBMB2JZwAAPbVcAAD+8MkiAzNYG6rpj6uQAAA=",
+    "lqip": "data:image/webp;base64,UklGRrwAAABXRUJQVlA4WAoAAAAQAAAAEwAAGgAAQUxQSGoAAAABcBzZbtt8BSd8QIBzETn135xI8GSfI2IC8Esj3CNyw35Nkuv9kNnJAgAWskuoLFFcitacqNITAuBwBiAZAqAAYCJmRUZtqVpSXdbgYjMTR3YykrQJ+THcY0Tr9355dS2283Br0qBKy58IVlA4ICwAAADwAgCdASoUABsAPu1sq1EppiOiqAqpMB2JaQAAPlRrgAD+8NbBM3zlQCwAAA==",
     "variants": {
       "avif": [
         {
           "w": 640,
-          "src": "/_img/certs/make-in-india-1833-640.avif"
+          "src": "/_img/certs/iso-9001-2015-640.avif"
         },
         {
           "w": 1024,
-          "src": "/_img/certs/make-in-india-1833-1024.avif"
+          "src": "/_img/certs/iso-9001-2015-1024.avif"
         },
         {
           "w": 1600,
-          "src": "/_img/certs/make-in-india-1833-1600.avif"
+          "src": "/_img/certs/iso-9001-2015-1600.avif"
         },
         {
           "w": 1833,
-          "src": "/_img/certs/make-in-india-1833-1833.avif"
+          "src": "/_img/certs/iso-9001-2015-1833.avif"
         }
       ],
       "webp": [
         {
           "w": 640,
-          "src": "/_img/certs/make-in-india-1833-640.webp"
+          "src": "/_img/certs/iso-9001-2015-640.webp"
         },
         {
           "w": 1024,
-          "src": "/_img/certs/make-in-india-1833-1024.webp"
+          "src": "/_img/certs/iso-9001-2015-1024.webp"
         },
         {
           "w": 1600,
-          "src": "/_img/certs/make-in-india-1833-1600.webp"
+          "src": "/_img/certs/iso-9001-2015-1600.webp"
         },
         {
           "w": 1833,
-          "src": "/_img/certs/make-in-india-1833-1833.webp"
+          "src": "/_img/certs/iso-9001-2015-1833.webp"
         }
       ]
     }
@@ -947,46 +947,46 @@
       ]
     }
   },
-  "/certs/iso-9001-2015.webp": {
-    "hash": "0fd084f48f632afd",
+  "/certs/make-in-india-1833.webp": {
+    "hash": "371d2cadcac46298",
     "width": 1833,
     "height": 2444,
-    "lqip": "data:image/webp;base64,UklGRrwAAABXRUJQVlA4WAoAAAAQAAAAEwAAGgAAQUxQSGoAAAABcBzZbtt8BSd8QIBzETn135xI8GSfI2IC8Esj3CNyw35Nkuv9kNnJAgAWskuoLFFcitacqNITAuBwBiAZAqAAYCJmRUZtqVpSXdbgYjMTR3YykrQJ+THcY0Tr9355dS2283Br0qBKy58IVlA4ICwAAADwAgCdASoUABsAPu1sq1EppiOiqAqpMB2JaQAAPlRrgAD+8NbBM3zlQCwAAA==",
+    "lqip": "data:image/webp;base64,UklGRsAAAABXRUJQVlA4WAoAAAAQAAAAEwAAGgAAQUxQSGkAAAABcBzZbtt8ZQkfFCA5tJDt/vsTCZ7sc0RMAH6pu5l7rDvNJDmfusguAwAMsgdURmRH0ZIRRVpAADyfACRCAH0PgAE/ZOmlUTWnOpZgkg5JDNE1kWRaEe/dzHvUfm+3F6qvyq1OZE51/yEAVlA4IDAAAADwAgCdASoUABsAPu1ur1KppiQiqAgBMB2JZwAAPbVcAAD+8MkiAzNYG6rpj6uQAAA=",
     "variants": {
       "avif": [
         {
           "w": 640,
-          "src": "/_img/certs/iso-9001-2015-640.avif"
+          "src": "/_img/certs/make-in-india-1833-640.avif"
         },
         {
           "w": 1024,
-          "src": "/_img/certs/iso-9001-2015-1024.avif"
+          "src": "/_img/certs/make-in-india-1833-1024.avif"
         },
         {
           "w": 1600,
-          "src": "/_img/certs/iso-9001-2015-1600.avif"
+          "src": "/_img/certs/make-in-india-1833-1600.avif"
         },
         {
           "w": 1833,
-          "src": "/_img/certs/iso-9001-2015-1833.avif"
+          "src": "/_img/certs/make-in-india-1833-1833.avif"
         }
       ],
       "webp": [
         {
           "w": 640,
-          "src": "/_img/certs/iso-9001-2015-640.webp"
+          "src": "/_img/certs/make-in-india-1833-640.webp"
         },
         {
           "w": 1024,
-          "src": "/_img/certs/iso-9001-2015-1024.webp"
+          "src": "/_img/certs/make-in-india-1833-1024.webp"
         },
         {
           "w": 1600,
-          "src": "/_img/certs/iso-9001-2015-1600.webp"
+          "src": "/_img/certs/make-in-india-1833-1600.webp"
         },
         {
           "w": 1833,
-          "src": "/_img/certs/iso-9001-2015-1833.webp"
+          "src": "/_img/certs/make-in-india-1833-1833.webp"
         }
       ]
     }
@@ -1035,50 +1035,6 @@
       ]
     }
   },
-  "/certs/startup-india-1833.webp": {
-    "hash": "3e2770f30b203a16",
-    "width": 1833,
-    "height": 2444,
-    "lqip": "data:image/webp;base64,UklGRr4AAABXRUJQVlA4WAoAAAAQAAAAEwAAGgAAQUxQSGgAAAABcBzZbtt8Zww+wFiDs91/gSLBk32OiAnALy0l51Jihy4kKf0QaXoCgJO2gOkZw7PaLBNT5oACqBWARghABAADZTNkmZ3NRmbnGbL6xjUjmpwkPSF+LDmXI1af3+sby60mXxPJuvYfAlZQOCAwAAAA8AIAnQEqFAAbAD7tbq9SqaYkIqgIATAdiWcAAD21XAAA/vDJIgMzWBuq6Y+rkAAA",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/certs/startup-india-1833-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/certs/startup-india-1833-1024.avif"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/certs/startup-india-1833-1600.avif"
-        },
-        {
-          "w": 1833,
-          "src": "/_img/certs/startup-india-1833-1833.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/certs/startup-india-1833-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/certs/startup-india-1833-1024.webp"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/certs/startup-india-1833-1600.webp"
-        },
-        {
-          "w": 1833,
-          "src": "/_img/certs/startup-india-1833-1833.webp"
-        }
-      ]
-    }
-  },
   "/certs/msme-udyam.webp": {
     "hash": "09d1f82870d70e8c",
     "width": 1833,
@@ -1119,6 +1075,50 @@
         {
           "w": 1833,
           "src": "/_img/certs/msme-udyam-1833.webp"
+        }
+      ]
+    }
+  },
+  "/certs/startup-india-1833.webp": {
+    "hash": "3e2770f30b203a16",
+    "width": 1833,
+    "height": 2444,
+    "lqip": "data:image/webp;base64,UklGRr4AAABXRUJQVlA4WAoAAAAQAAAAEwAAGgAAQUxQSGgAAAABcBzZbtt8Zww+wFiDs91/gSLBk32OiAnALy0l51Jihy4kKf0QaXoCgJO2gOkZw7PaLBNT5oACqBWARghABAADZTNkmZ3NRmbnGbL6xjUjmpwkPSF+LDmXI1af3+sby60mXxPJuvYfAlZQOCAwAAAA8AIAnQEqFAAbAD7tbq9SqaYkIqgIATAdiWcAAD21XAAA/vDJIgMzWBuq6Y+rkAAA",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/certs/startup-india-1833-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/certs/startup-india-1833-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/certs/startup-india-1833-1600.avif"
+        },
+        {
+          "w": 1833,
+          "src": "/_img/certs/startup-india-1833-1833.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/certs/startup-india-1833-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/certs/startup-india-1833-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/certs/startup-india-1833-1600.webp"
+        },
+        {
+          "w": 1833,
+          "src": "/_img/certs/startup-india-1833-1833.webp"
         }
       ]
     }
@@ -1607,50 +1607,6 @@
       ]
     }
   },
-  "/photos/hero-jobwork.webp": {
-    "hash": "8bfdfebb5ae5acad",
-    "width": 1920,
-    "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAwCdASoUAAsAPu1kqk4ppaQiMAgBMB2JYwC7AB6PjW7s0aLxrgAA/u9LVfuopN+BG7h4DuylseV59Rl8gzxmQ2d/RmtiH/VrOWmkitAE52LzxWsuYAAA",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/photos/hero-jobwork-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/hero-jobwork-1024.avif"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/hero-jobwork-1600.avif"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-jobwork-1920.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/photos/hero-jobwork-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/hero-jobwork-1024.webp"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/hero-jobwork-1600.webp"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-jobwork-1920.webp"
-        }
-      ]
-    }
-  },
   "/photos/hero-product.webp": {
     "hash": "3490e88f50228283",
     "width": 1920,
@@ -1691,6 +1647,50 @@
         {
           "w": 1920,
           "src": "/_img/photos/hero-product-1920.webp"
+        }
+      ]
+    }
+  },
+  "/photos/hero-jobwork.webp": {
+    "hash": "8bfdfebb5ae5acad",
+    "width": 1920,
+    "height": 1080,
+    "lqip": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAwCdASoUAAsAPu1kqk4ppaQiMAgBMB2JYwC7AB6PjW7s0aLxrgAA/u9LVfuopN+BG7h4DuylseV59Rl8gzxmQ2d/RmtiH/VrOWmkitAE52LzxWsuYAAA",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-jobwork-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-jobwork-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-jobwork-1600.avif"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-jobwork-1920.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-jobwork-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-jobwork-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-jobwork-1600.webp"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-jobwork-1920.webp"
         }
       ]
     }
@@ -2031,42 +2031,6 @@
       ]
     }
   },
-  "/photos/slot-cutting-head.webp": {
-    "hash": "bb7659bae1e7efe5",
-    "width": 1600,
-    "height": 1200,
-    "lqip": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAABwAwCdASoUAA8APu1iqk2ppaQiMAgBMB2JZwC7ACHgCmv9f0AA/vDFbyNSM/UY6OcSL0S5z236XCUUgAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/photos/slot-cutting-head-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/slot-cutting-head-1024.avif"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/slot-cutting-head-1600.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/photos/slot-cutting-head-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/slot-cutting-head-1024.webp"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/slot-cutting-head-1600.webp"
-        }
-      ]
-    }
-  },
   "/photos/slot-crate-shipping.webp": {
     "hash": "d021dc40a108dc3d",
     "width": 1600,
@@ -2099,6 +2063,42 @@
         {
           "w": 1600,
           "src": "/_img/photos/slot-crate-shipping-1600.webp"
+        }
+      ]
+    }
+  },
+  "/photos/slot-cutting-head.webp": {
+    "hash": "bb7659bae1e7efe5",
+    "width": 1600,
+    "height": 1200,
+    "lqip": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAABwAwCdASoUAA8APu1iqk2ppaQiMAgBMB2JZwC7ACHgCmv9f0AA/vDFbyNSM/UY6OcSL0S5z236XCUUgAA=",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/photos/slot-cutting-head-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/slot-cutting-head-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/slot-cutting-head-1600.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/photos/slot-cutting-head-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/slot-cutting-head-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/slot-cutting-head-1600.webp"
         }
       ]
     }
@@ -2355,42 +2355,6 @@
       ]
     }
   },
-  "/photos/slot-team.webp": {
-    "hash": "5c958ed0fdf87f3e",
-    "width": 1600,
-    "height": 1200,
-    "lqip": "data:image/webp;base64,UklGRooAAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSBwAAAABD9D/iAgoaCQ1Wn5kIx5aCxH9T17KHr6OKi40VlA4IEgAAABQBACdASoUAA8APu1iqU2ppaOiMAgBMB2JYwC7MoADTrJN/ac5TKZcp6+AAP7cXFzlherXTa4/4cBAFSlrkg1pz2C7XRmUAAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/photos/slot-team-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/slot-team-1024.avif"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/slot-team-1600.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/photos/slot-team-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/slot-team-1024.webp"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/slot-team-1600.webp"
-        }
-      ]
-    }
-  },
   "/photos/slot-sparks.webp": {
     "hash": "13330ec9e7377ed8",
     "width": 1600,
@@ -2423,6 +2387,42 @@
         {
           "w": 1600,
           "src": "/_img/photos/slot-sparks-1600.webp"
+        }
+      ]
+    }
+  },
+  "/photos/slot-team.webp": {
+    "hash": "5c958ed0fdf87f3e",
+    "width": 1600,
+    "height": 1200,
+    "lqip": "data:image/webp;base64,UklGRooAAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSBwAAAABD9D/iAgoaCQ1Wn5kIx5aCxH9T17KHr6OKi40VlA4IEgAAABQBACdASoUAA8APu1iqU2ppaOiMAgBMB2JYwC7MoADTrJN/ac5TKZcp6+AAP7cXFzlherXTa4/4cBAFSlrkg1pz2C7XRmUAAA=",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/photos/slot-team-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/slot-team-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/slot-team-1600.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/photos/slot-team-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/slot-team-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/slot-team-1600.webp"
         }
       ]
     }
@@ -3975,42 +3975,6 @@
       ]
     }
   },
-  "/products/ra-rw6-3-1200.webp": {
-    "hash": "aeff61bc8f85a90f",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRi4BAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSJkAAAABgKpt+/rkm7u7u7u7u0tb3IBIs8RFdTsDEgfwJ3ImVJq7y3xL9IiYAPhna6e6+ZYR+cYSdo71MwJA4pg+De2qU5AKAGA0KpMeN3Zy1e9f/Ty/mADMF99XjLH7v/74pxo6z/2/Lkzo9/t//XMjYPr9PgLjhv2tzdfLFYVUyO0mm9wJHI0tUCk229VsxG2U4gCAQCKRSDgszA4AVlA4IG4AAAAQBACdASoUAA8APu1kqk4ppaQiMAgBMB2JYwAD4tIGvmsV3DxaFf+yAAD+9Br7ozKW10Uac4k+uL43nCDHhOIH3pfXe03bzgqVem8mWcVUbBG5AIQ5QXAv+47QOfMB60flurrd9FR0p4vNRtSAAA==",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw6-3-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw6-3-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw6-3-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw6-3-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw6-3-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw6-3-1200-1200.webp"
-        }
-      ]
-    }
-  },
   "/products/ra-rw6-3.webp": {
     "hash": "b0c7a9fcf50776f7",
     "width": 1200,
@@ -4043,6 +4007,42 @@
         {
           "w": 1200,
           "src": "/_img/products/ra-rw6-3-1200.webp"
+        }
+      ]
+    }
+  },
+  "/products/ra-rw6-3-1200.webp": {
+    "hash": "aeff61bc8f85a90f",
+    "width": 1200,
+    "height": 900,
+    "lqip": "data:image/webp;base64,UklGRi4BAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSJkAAAABgKpt+/rkm7u7u7u7u0tb3IBIs8RFdTsDEgfwJ3ImVJq7y3xL9IiYAPhna6e6+ZYR+cYSdo71MwJA4pg+De2qU5AKAGA0KpMeN3Zy1e9f/Ty/mADMF99XjLH7v/74pxo6z/2/Lkzo9/t//XMjYPr9PgLjhv2tzdfLFYVUyO0mm9wJHI0tUCk229VsxG2U4gCAQCKRSDgszA4AVlA4IG4AAAAQBACdASoUAA8APu1kqk4ppaQiMAgBMB2JYwAD4tIGvmsV3DxaFf+yAAD+9Br7ozKW10Uac4k+uL43nCDHhOIH3pfXe03bzgqVem8mWcVUbBG5AIQ5QXAv+47QOfMB60flurrd9FR0p4vNRtSAAA==",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/products/ra-rw6-3-1200-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/products/ra-rw6-3-1200-1024.avif"
+        },
+        {
+          "w": 1200,
+          "src": "/_img/products/ra-rw6-3-1200-1200.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/products/ra-rw6-3-1200-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/products/ra-rw6-3-1200-1024.webp"
+        },
+        {
+          "w": 1200,
+          "src": "/_img/products/ra-rw6-3-1200-1200.webp"
         }
       ]
     }

@@ -70,7 +70,7 @@ export default function AboutPage() {
       {/* 2. At a glance — AboutBlurb (moved under the hero) + FactStrip. */}
       <Section title="At a glance">
         <div className="mb-8 max-w-prose">
-          <AboutBlurb context={`We are part of ${site.parent}, alongside our sister business ${site.raAuto.name}.`} />
+          <AboutBlurb linkToAbout={false} context={`We are part of ${site.parent}, alongside our sister business ${site.raAuto.name}.`} />
         </div>
         <FactStrip facts={aboutFacts} />
       </Section>

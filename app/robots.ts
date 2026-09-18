@@ -1,11 +1,17 @@
 /**
- * app/robots.ts — generates /robots.txt via Next's static metadata-route convention.
- * Allows everything except the noindex job-work page (SPEC §6) and points crawlers
- * at the sitemap index.
+ * app/robots.ts — generates /robots.txt via Next's static metadata-route
+ * convention, and points crawlers at the sitemap index.
+ *
+ * Nothing is disallowed, deliberately. The job-work page is meant to stay out of
+ * the index (SPEC §6) and carries `<meta name="robots" content="noindex, follow">`
+ * to say so. Disallowing it here as well was self-defeating: robots.txt blocks
+ * CRAWLING, so a blocked page is never fetched and its noindex is never read —
+ * and because every page in the site links to it, Google would still discover
+ * the URL and could list it with no description at all. Letting it be crawled is
+ * what actually keeps it out, and `follow` keeps its outgoing links working.
  */
 export const dynamic = "force-static";
 import type { MetadataRoute } from "next";
-import { paths } from "@/lib/urls";
 import { absUrl } from "@/lib/seo";
 
 export default function robots(): MetadataRoute.Robots {
@@ -13,7 +19,6 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: [paths.jobWork],
     },
     sitemap: absUrl("/sitemap.xml"),
   };

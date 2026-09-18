@@ -114,10 +114,30 @@ async function main() {
     for (const f of await walk(dir, () => true)) reclaimed += (await stat(f)).size;
     await rm(dir, { recursive: true, force: true });
   }
-  const rscFiles = await walk(OUT, (n) => n.endsWith(".txt"));
-  for (const f of rscFiles) {
-    reclaimed += (await stat(f)).size;
-    await rm(f, { force: true });
+  /*
+   * The App Router's per-route RSC payloads are named `<route>.txt`, sitting
+   * beside the `<route>.html` they belong to. An earlier version of this deleted
+   * EVERY .txt under out/, which also destroyed robots.txt, llms.txt and
+   * llms-full.txt — real, published content, and in robots.txt's case the file
+   * that points crawlers at the sitemaps.
+   *
+   * So a .txt is only removed when the matching HTML page exists next to it.
+   * That is exactly the set Next generates, and nothing else can collide with
+   * it: none of the real .txt files has an .html of the same name.
+   */
+  for (const file of await walk(OUT, (n) => n.endsWith(".txt"))) {
+    const base = file.slice(0, -".txt".length);
+    const isRoutePayload = existsSync(`${base}.html`) || existsSync(path.join(base, "index.html"));
+    if (!isRoutePayload) continue;
+    reclaimed += (await stat(file)).size;
+    await rm(file, { force: true });
+  }
+
+  // These are published files, not build artefacts. If a future change to the
+  // rules above starts eating them again, fail the build rather than quietly
+  // shipping a site with no robots.txt.
+  for (const required of ["robots.txt", "llms.txt", "llms-full.txt", "sitemap.xml"]) {
+    if (!existsSync(path.join(OUT, required))) problems.push(`${required} is missing from the export`);
   }
 
   const pages = htmlFiles.length;

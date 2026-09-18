@@ -27,10 +27,10 @@ import PageHero from "@/components/layout/PageHero";
 import { FactStrip, Steps, DividedList, ImageSlot } from "@/components/ui/glass";
 import ProductCard from "@/components/cards/ProductCard";
 import ExportForm from "@/components/forms/ExportForm";
-import { buildMetadata, truncate } from "@/lib/seo";
+import { absUrl, buildMetadata, truncate } from "@/lib/seo";
 import { paths } from "@/lib/urls";
 import { photos } from "@/lib/photos";
-import { organizationSchema, productSchema } from "@/lib/schema";
+import { organizationSchema } from "@/lib/schema";
 import { countrySections } from "@/lib/copy/country";
 import { countries, getCountry, products } from "@/data";
 import type { Country } from "@/data";
@@ -95,6 +95,11 @@ export default async function CountryExportPage({ params }: Props) {
   ];
 
   const recommended = topProducts(country);
+
+  /** Other export markets in this country's region — see the section below. */
+  const regionSiblings = countries
+    .filter((c) => c.region === country.region && c.slug !== country.slug)
+    .slice(0, 6);
 
   const topZones = Array.from(new Set(country.sectors.flatMap((s) => s.zones))).slice(0, 2);
   const sectorsIntro =
@@ -219,6 +224,32 @@ export default async function CountryExportPage({ params }: Props) {
         </div>
       </Section>
 
+      {/*
+        Other markets in the same region. This is useful to a buyer comparing
+        nearby destinations, and it is also the fix for a real structural
+        problem: measured across the built site, every export country page had
+        exactly ONE in-content inbound link (the export hub), against a median
+        of 7 for India pages — leaving a third of the site's commercial pages at
+        the edge of the crawl graph. Cross-linking the region raises each of
+        them to several, the same way "Nearby cities" already does for India.
+      */}
+      {regionSiblings.length > 0 && (
+        <Section
+          eyebrow="Same region"
+          title={`Other ${country.region} markets`}
+          intro={`RA Machine also supplies and supports machines across ${country.region}.`}
+        >
+          <DividedList
+            items={regionSiblings.map((c) => ({
+              title: `Laser cutting machines in ${c.name}`,
+              text: `Export, installation and service for ${c.name}.`,
+              href: paths.country(c.slug),
+            }))}
+            columns={2}
+          />
+        </Section>
+      )}
+
       <Section>
         <Faq items={country.faqs} title={`Frequently asked questions — exporting to ${country.name}`} />
         <div id="quote" className="glass-strong mt-10 p-8 text-center md:p-12">
@@ -241,7 +272,8 @@ export default async function CountryExportPage({ params }: Props) {
             itemListElement: schemaProducts.map((p, i) => ({
               "@type": "ListItem",
               position: i + 1,
-              item: productSchema(p),
+              name: p.name,
+              url: absUrl(`/products/${p.category}/${p.slug}`),
             })),
           },
         ]}

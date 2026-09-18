@@ -104,20 +104,50 @@ export function faqSchema(items: { q: string; a: string }[]): object {
   };
 }
 
+/**
+ * Product entity for a machine.
+ *
+ * `offers` carries no price, and that is deliberate: these are made-to-order
+ * capital machines quoted per configuration, so any number here would be
+ * invented. An earlier version tried to say so with
+ * `priceSpecification: "Contact for price"` — which is invalid, because
+ * `priceSpecification` takes a PriceSpecification object, not a string, and a
+ * validator simply rejects it. Stating availability, seller and currency
+ * honestly, and leaving price out, is worth more than a field that fails
+ * validation. (Google will note the missing price; without a public price that
+ * is the correct outcome, and the rest of the entity still resolves.)
+ *
+ * `additionalProperty` publishes the real spec table — laser power, bed size,
+ * cutting thickness and so on — as machine-readable values, which is what
+ * actually helps a search or answer engine match this machine to a query like
+ * "3 kW fiber laser 1500x3000".
+ */
 export function productSchema(p: Product): object {
   return {
     "@type": "Product",
     name: p.name,
     sku: p.sku,
+    mpn: p.sku,
+    category: p.category,
     brand: { "@type": "Brand", name: site.name },
+    manufacturer: { "@id": `${site.url}/#organization` },
+    itemCondition: "https://schema.org/NewCondition",
     description: p.shortDescription,
     image: p.images.map((img) => absUrl(img.src)),
     url: absUrl(`/products/${p.category}/${p.slug}`),
+    additionalProperty: p.specs.map((spec) => ({
+      "@type": "PropertyValue",
+      name: spec.label,
+      value: spec.value,
+    })),
+    material: p.materials.map((m) => m.material),
     offers: {
       "@type": "Offer",
-      priceSpecification: "Contact for price",
       availability: "https://schema.org/InStock",
+      priceCurrency: "INR",
+      url: absUrl(`/products/${p.category}/${p.slug}`),
       seller: { "@id": `${site.url}/#organization` },
+      areaServed: "Worldwide",
     },
   };
 }

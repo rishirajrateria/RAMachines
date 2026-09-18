@@ -10,9 +10,9 @@
  */
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { buildMetadata, truncate } from "@/lib/seo";
+import { absUrl, buildMetadata, truncate } from "@/lib/seo";
 import { paths } from "@/lib/urls";
-import { localBusinessSchema, serviceSchema, productSchema } from "@/lib/schema";
+import { localBusinessSchema, serviceSchema } from "@/lib/schema";
 import { cities, getCity, getState, citiesByState, products } from "@/data";
 import type { Product } from "@/data/types";
 import { citySections, cityH1 } from "@/lib/copy/city";
@@ -60,7 +60,8 @@ function productListSchema(list: Product[]): object {
     itemListElement: list.map((product, i) => ({
       "@type": "ListItem",
       position: i + 1,
-      item: productSchema(product),
+      name: product.name,
+      url: absUrl(`/products/${product.category}/${product.slug}`),
     })),
   };
 }
