@@ -13,7 +13,7 @@ import { ArrowUpRight } from "@/components/ui/Icons";
 import Button from "@/components/ui/Button";
 import HeaderBar from "./HeaderBar";
 import HeaderNavLinks from "./HeaderNavLinks";
-import MobileNav from "./MobileNav";
+import { MobileNavToggle, MobileNavSheet } from "./MobileNav";
 
 export default function Header() {
   return (
@@ -40,8 +40,12 @@ export default function Header() {
           </Button>
         </div>
 
-        <MobileNav />
+        <MobileNavToggle />
       </HeaderBar>
+
+      {/* Outside the pill: `.header-pill`'s backdrop-filter would otherwise become
+          the containing block for these fixed elements. */}
+      <MobileNavSheet />
     </header>
   );
 }

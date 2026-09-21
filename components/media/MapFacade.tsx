@@ -15,7 +15,7 @@ export default function MapFacade() {
   return (
     <div data-map>
       <div className="glass flex aspect-[4/3] w-full flex-col items-center justify-center gap-3 p-6 text-center sm:aspect-video">
-        <span className="glass-pill flex h-11 w-11 items-center justify-center p-0 text-teal">
+        <span className="icon-pill h-11 w-11 text-teal">
           <MapPin width={20} height={20} />
         </span>
         <p className="max-w-sm text-sm text-grey-600">{site.address.full}</p>

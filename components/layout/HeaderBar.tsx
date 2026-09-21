@@ -14,7 +14,11 @@ import type { ReactNode } from "react";
 
 export default function HeaderBar({ children }: { children: ReactNode }) {
   return (
-    <div className="header-pill glass-strong flex h-14 items-center justify-between gap-4 rounded-full px-4 md:px-5">
+    // `relative z-30` keeps the pill — and so the menu's close button — above the
+    // mobile menu's backdrop, which covers the whole viewport at z-10. Without it
+    // the scrim painted over the header and the only visible way out of the menu
+    // was to guess that tapping the dimmed area would close it.
+    <div className="header-pill glass-strong relative z-30 flex h-14 items-center justify-between gap-4 rounded-full px-4 md:px-5">
       {children}
     </div>
   );

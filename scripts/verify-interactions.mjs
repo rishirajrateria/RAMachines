@@ -192,6 +192,88 @@ for (const path of ["/", "/products", "/about", "/contact", "/india/west-bengal/
   ok(`no horizontal overflow at 390px: ${path}`, overflow <= 1, `${overflow}px`);
 }
 
+// --------------------------------------------------------- stat value overflow
+// Spec numerals are bound to their units with non-breaking spaces so a
+// measurement can never split across lines — which also means they cannot wrap
+// to fit. If one is set at a size too large for its column it silently
+// OVERFLOWS and collides with its neighbour ("1.5 × 3 m" ran straight through
+// "25 mm" on the flagship card). Each row picks its size from its own longest
+// value; this asserts the result actually fits.
+for (const [route, width] of [["/", 1280], ["/", 390], ["/products/fiber-laser-cutting-machines/ra-f3015-pro", 1280]]) {
+  const sctx = await browser.newContext({ viewport: { width, height: 900 } });
+  const sp = await sctx.newPage();
+  await sp.goto(`${BASE}${route}`, { waitUntil: "networkidle" });
+  const overflowing = await sp.evaluate(() =>
+    [...document.querySelectorAll(".text-stat, .text-stat-md, .text-stat-sm")]
+      .filter((el) => el.scrollWidth > el.clientWidth + 1)
+      .map((el) => `"${el.textContent.trim().slice(0, 20)}" ${el.scrollWidth}>${el.clientWidth}`),
+  );
+  ok(`spec numerals fit their column: ${route} @${width}`, overflowing.length === 0, overflowing.slice(0, 3).join(" | "));
+  await sctx.close();
+}
+
+// ----------------------------------------------------------- icon integrity
+// Every icon circle on the site was once silently collapsed to 2px wide: a
+// component class's padding outranked the `p-0` utility, leaving a 2px content
+// box, and an <svg> is a flex item that shrinks by default rather than
+// overflowing where someone would notice. The circles just looked empty. Assert
+// that every icon actually renders at the size it declares.
+for (const route of ["/", "/contact", "/services/machine-repair"]) {
+  await page.goto(`${BASE}${route}`, { waitUntil: "networkidle" });
+  const squashed = await page.evaluate(() =>
+    [...document.querySelectorAll("svg[width]")]
+      .filter((s) => {
+        const declared = parseFloat(s.getAttribute("width"));
+        const r = s.getBoundingClientRect();
+        return r.width > 0 && declared > 0 && r.width < declared * 0.8;
+      })
+      .map((s) => `${s.getAttribute("width")}px declared, ${Math.round(s.getBoundingClientRect().width)}px rendered`),
+  );
+  ok(`no squashed icons: ${route}`, squashed.length === 0, squashed.slice(0, 3).join(" | "));
+}
+
+// The mobile menu must actually obscure the page behind it.
+{
+  const mctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+  const mp2 = await mctx.newPage();
+  await mp2.goto(`${BASE}/`, { waitUntil: "networkidle" });
+  await mp2.click("[data-navtoggle]");
+  await mp2.waitForTimeout(900);
+  const opacity = await mp2.evaluate(() => {
+    const cs = getComputedStyle(document.querySelector(".mobilenav-sheet"));
+    const m = cs.backgroundColor.match(/[\d.]+/g) || [];
+    return m.length === 4 ? parseFloat(m[3]) : 1;
+  });
+  ok("menu sheet is opaque enough to hide the page", opacity >= 0.95, `alpha=${opacity}`);
+  const iconsOk = await mp2.evaluate(() =>
+    [...document.querySelectorAll("#mobile-nav-panel svg[width]")].every((s) => {
+      const d = parseFloat(s.getAttribute("width"));
+      return s.getBoundingClientRect().width >= d * 0.8;
+    }),
+  );
+  ok("menu icons render at full size", iconsOk);
+
+  // The backdrop must cover the page, and must NOT bury the close button —
+  // both were broken: `.header-pill`'s backdrop-filter made it the containing
+  // block for `position: fixed`, so the "full screen" scrim painted at the size
+  // of the pill (356x54); once that was fixed the scrim covered the header and
+  // the only way out of the menu was to guess.
+  const layering = await mp2.evaluate(() => {
+    const bd = document.querySelector(".mobilenav-backdrop").getBoundingClientRect();
+    const close = document.querySelector('[data-navicon="close"]');
+    const r = close.getBoundingClientRect();
+    const onTop = document.elementsFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+    return {
+      coversViewport: bd.width >= innerWidth - 1 && bd.height >= innerHeight - 1,
+      closeReachable: onTop.some((e) => e.closest?.("[data-navtoggle]")),
+      topMost: onTop[0]?.className?.toString?.().slice(0, 40),
+    };
+  });
+  ok("menu backdrop covers the viewport", layering.coversViewport);
+  ok("close button stays above the backdrop", layering.closeReachable, `topmost=${layering.topMost}`);
+  await mctx.close();
+}
+
 // ------------------------------------------------- fragment landing / anchors
 // A fixed header plus smooth scrolling made links-with-a-fragment land in the
 // wrong place (one overshot to the bottom of the page). Assert the real

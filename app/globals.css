@@ -227,7 +227,8 @@ summary:focus-visible {
     0 24px 56px rgba(15, 26, 26, 0.12);
   border-radius: 28px;
 }
-.glass-pill {
+.glass-pill,
+.icon-pill {
   position: relative;
   background: rgba(255, 255, 255, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.75);
@@ -236,7 +237,38 @@ summary:focus-visible {
     0 2px 8px rgba(15, 26, 26, 0.05),
     0 24px 56px rgba(15, 26, 26, 0.12);
   border-radius: 9999px;
+}
+.glass-pill {
   padding: 0.5rem 1rem;
+}
+
+/* ---------------------------------------------------------------------------
+ * `.icon-pill` — a circular container sized by its own box, for a single icon.
+ *
+ * This exists because the obvious spelling was silently broken. Every icon
+ * circle on the site was written as `glass-pill … h-9 w-9 p-0`, but these
+ * component rules sit after `@tailwind utilities` in this file, so on equal
+ * specificity `.glass-pill`'s `padding: 0.5rem 1rem` BEAT the `p-0` utility.
+ * A 34px circle minus 32px of horizontal padding left a 2px content box, and
+ * because an `svg` is a flex item with the default `flex-shrink: 1`, the icon
+ * obediently squashed to 2px wide instead of overflowing where anyone would
+ * have seen it. The result was eight empty-looking circles across the site —
+ * the mobile menu, the feature cards, the contact strip, the map.
+ *
+ * So: no padding to fight, and icons never shrink.
+ * ------------------------------------------------------------------------- */
+.icon-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  padding: 0;
+}
+.glass-pill > svg,
+.icon-pill > svg,
+.chip > svg,
+.eyebrow > svg {
+  flex-shrink: 0;
 }
 
 /* ADR-0006 §Polish: a 1px specular top-left highlight on every glass surface, via a
@@ -245,6 +277,7 @@ summary:focus-visible {
 .glass::before,
 .glass-strong::before,
 .glass-pill::before,
+.icon-pill::before,
 .chip::before {
   content: "";
   position: absolute;
@@ -510,6 +543,7 @@ li {
 .band-deep .glass,
 .band-deep .glass-strong,
 .band-deep .glass-pill,
+.band-deep .icon-pill,
 .band-deep .chip {
   background: rgba(255, 255, 255, 0.12);
   border-color: rgba(255, 255, 255, 0.18);
@@ -1012,10 +1046,63 @@ details[open] > .accordion-panel {
 .mobilenav-backdrop {
   opacity: 0;
   pointer-events: none;
-  background: rgba(15, 26, 26, 0.15);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  /* Strong enough that the page clearly recedes. The sheet only covers the
+     middle of the screen, so whatever is in the gutters beside it is still in
+     view — a weak scrim left the hero headline competing with the menu. */
+  background: rgba(8, 18, 18, 0.62);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   transition: opacity 0.25s var(--ease-glass);
+}
+
+/* ---------------------------------------------------------------------------
+ * The menu sheet itself.
+ *
+ * It needs its own surface rather than `.glass-strong`. ADR-0009 §4 stripped
+ * `backdrop-filter` from the shared glass classes to save paint cost, which is
+ * right for calm in-page panels sitting on the page canvas — but this one is an
+ * OVERLAY over whatever the visitor was reading, and at 75% white with no blur
+ * the hero headline read straight through the menu. An overlay has one job.
+ *
+ * The cost is bounded: a single element, blurred only while the menu is open.
+ * ------------------------------------------------------------------------- */
+.mobilenav-sheet {
+  background: rgba(251, 253, 253, 0.98);
+  backdrop-filter: blur(30px) saturate(150%);
+  -webkit-backdrop-filter: blur(30px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    0 24px 70px rgba(10, 20, 20, 0.28);
+}
+
+/* Rows: a full-width target with a hairline between, not floating text. */
+.mobilenav-row {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  min-height: 56px;
+  padding: 0 0.25rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  border-top: 1px solid var(--hairline);
+  transition: color 0.15s var(--ease-glass);
+}
+.mobilenav-row:first-child {
+  border-top: 0;
+}
+.mobilenav-row:hover,
+.mobilenav-row:focus-visible {
+  color: var(--color-teal);
+}
+.mobilenav-row .mobilenav-chevron {
+  margin-left: auto;
+  color: #9aa5a5;
+  transition: transform 0.15s var(--ease-glass), color 0.15s var(--ease-glass);
+}
+.mobilenav-row:hover .mobilenav-chevron {
+  transform: translateX(2px);
+  color: var(--color-teal);
 }
 .mobilenav-backdrop.is-open {
   opacity: 1;

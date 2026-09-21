@@ -67,6 +67,17 @@ const flagshipStats = [
   { label: flagship.specs[2].label, value: "25 mm" },
 ];
 
+/**
+ * One size for the flagship spec row, from ITS OWN longest value.
+ *
+ * This previously sized itself from `site.stats` — the trust-strip numbers
+ * ("1989", "20+"), which are all short, so every value here was set at the
+ * largest step. "1.5 × 3 m" is bound together with non-breaking spaces so a
+ * measurement can never split from its unit, which meant it could not wrap
+ * either: it simply overflowed its column and collided with "25 mm" next to it.
+ */
+const flagshipStatSize = statSizeForGroup(flagshipStats.map((s) => s.value));
+
 export default function HomePage() {
   const states = topStates(6);
   const countries = topCountries(8);
@@ -161,7 +172,7 @@ export default function HomePage() {
               <dl className="mt-4 grid grid-cols-3 gap-3 border-t border-[color:var(--hairline)] pt-4">
                 {flagshipStats.map((stat) => (
                   <div key={stat.label}>
-                    <dd className={`${statSizeForGroup(site.stats.map((s) => s.value))} text-ink`}>{glueUnits(stat.value)}</dd>
+                    <dd className={`${flagshipStatSize} text-ink`}>{glueUnits(stat.value)}</dd>
                     <dt className="mt-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-grey-500">{stat.label}</dt>
                   </div>
                 ))}
@@ -199,7 +210,7 @@ export default function HomePage() {
               className="shadow-lift"
               artwork={<ImageSlot image={photos[whyImageKeys[i]]} aspect="16/9" label={whyImageLabels[i]} />}
             >
-              <span className="glass-pill inline-flex h-10 w-10 items-center justify-center p-0 text-teal">
+              <span className="icon-pill inline-flex h-10 w-10 text-teal">
                 <Icon name={item.icon} size={20} />
               </span>
               <h3 className="mt-3 text-base font-semibold text-ink">{item.title}</h3>

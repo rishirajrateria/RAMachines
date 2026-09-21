@@ -21,13 +21,24 @@
 
 /** Units that belong to the number in front of them. */
 const UNIT = /(\d)\s+([a-zA-Zµ°%][a-zA-Z°µ%/²³]{0,5})(?![\w-])/g;
-/** Both sides of a dimension's "×" travel together. */
+/** Normalise a dimension's separator to a real "×" with ordinary spaces. */
 const TIMES = /(\d)\s*[×x]\s*(\d)/g;
 
 const NBSP = " ";
 
+/**
+ * Bind each number to the unit that follows it, so a measurement is never split
+ * from what it measures ("25" on one line and "mm" on the next is not a
+ * measurement any more).
+ *
+ * The "×" in a dimension is deliberately left BREAKABLE. Gluing that too made
+ * "1500 × 3000 mm" a single unbreakable atom — and an atom that cannot wrap
+ * does not shrink to fit, it overflows. It ran straight through the value
+ * beside it on the flagship card, and did the same to "1.5 × 3 m" on mobile.
+ * Breaking after the "×" still reads correctly; overlapping text never does.
+ */
 export function glueUnits(value: string): string {
-  return value.replace(TIMES, `$1${NBSP}×${NBSP}$2`).replace(UNIT, `$1${NBSP}$2`);
+  return value.replace(TIMES, "$1 × $2").replace(UNIT, `$1${NBSP}$2`);
 }
 
 /**

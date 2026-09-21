@@ -134,7 +134,7 @@ export default function MachineRepairPage() {
         <div className="grid gap-6 md:grid-cols-3">
           {amcTierIcons.map((tier) => (
             <div key={tier.key} className="glass h-full p-6">
-              <span className="glass-pill inline-flex h-11 w-11 items-center justify-center p-0 text-teal">
+              <span className="icon-pill inline-flex h-11 w-11 text-teal">
                 <Icon name={tier.icon} size={22} />
               </span>
               <h3 className="mt-4 font-display text-lg text-ink">{tier.name}</h3>
