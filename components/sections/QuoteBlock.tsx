@@ -5,6 +5,7 @@
  * product pre-filled. Set `sticky` to pin it on large screens.
  */
 import { site } from "@/config/site";
+import { paths } from "@/lib/urls";
 import { Phone, WhatsApp, Mail } from "@/components/ui/Icons";
 import QuoteForm from "@/components/forms/QuoteForm";
 import type { Product } from "@/data/types";
@@ -46,7 +47,11 @@ export default function QuoteBlock({
       <details className="mt-4">
         <summary className="cursor-pointer text-sm font-semibold text-teal">Fill form instead</summary>
         <div className="mt-4">
-          <QuoteForm product={product?.name} country={country} />
+          <QuoteForm
+            product={product?.name}
+            country={country}
+            redirectPath={product ? paths.product(product.category, product.slug) : undefined}
+          />
         </div>
       </details>
     </div>

@@ -2,6 +2,9 @@
  * components/ui/RelatedPages.tsx — "related pages" internal-linking module for
  * the bottom of programmatic pages (states, cities, countries, products).
  * ADR-0005: rendered as glass pill/tile links rather than orange-bordered chips.
+ *
+ * ADR-0009 §2: a bulk link list — every link opts out of viewport prefetch
+ * (`prefetch={false}`).
  */
 import Link from "next/link";
 import { ArrowRight } from "./Icons";
@@ -20,7 +23,7 @@ export default function RelatedPages({
       <ul className="flex flex-wrap gap-2.5">
         {links.map((link) => (
           <li key={link.href}>
-            <Link href={link.href} className="glass glass-hover group flex items-center gap-2 px-4 py-2.5 text-sm text-ink">
+            <Link href={link.href} prefetch={false} className="glass glass-hover group flex items-center gap-2 px-4 py-2.5 text-sm text-ink">
               <span>
                 {link.name}
                 {link.hint && <span className="block text-xs text-grey-500">{link.hint}</span>}

@@ -2,6 +2,9 @@
  * components/ui/Chips.tsx — ADR-0005 §5: small glass pills (`.chip`, 34px tall).
  * Used sparingly — max one row per page section. Renders a link chip when `href`
  * is given, a static chip otherwise.
+ *
+ * ADR-0009 §2: a bulk link list — link chips opt out of viewport prefetch
+ * (`prefetch={false}`).
  */
 import Link from "next/link";
 import { Icon, type IconName } from "./Icons";
@@ -24,7 +27,7 @@ export default function Chips({
         return (
           <li key={item.label}>
             {item.href ? (
-              <Link href={item.href} className="chip">
+              <Link href={item.href} prefetch={false} className="chip">
                 {content}
               </Link>
             ) : (

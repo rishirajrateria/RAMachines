@@ -1,10 +1,9 @@
-"use client";
-
 /**
  * components/forms/JobWorkForm.tsx — quote form for /services/laser-cutting-job-work
  * (cutting done on our own machines for customers who do not want to buy one).
  */
 import Web3Form, { type FieldDef } from "./Web3Form";
+import { paths } from "@/lib/urls";
 
 const fields: FieldDef[] = [
   { name: "name", label: "Full name", type: "text", required: true, autoComplete: "name" },
@@ -28,6 +27,7 @@ export default function JobWorkForm() {
       submitLabel="Request a Quote"
       successTitle="Thank you — your enquiry has been sent."
       successText="We will review your drawings and requirement and revert with a quote, usually within one working day."
+      redirectPath={paths.jobWork}
     />
   );
 }

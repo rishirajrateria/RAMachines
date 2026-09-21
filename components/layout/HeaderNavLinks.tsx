@@ -2,8 +2,17 @@
 
 /**
  * components/layout/HeaderNavLinks.tsx — ADR-0006 §Motion 3: the desktop primary
- * nav list. Needs `usePathname` (client-only) to know which link is current, so it
- * gets its own small client component rather than making all of Header client. The
+ * nav list.
+ *
+ * ADR-0010: the one component still marked "use client", and it ships no client
+ * JavaScript. `usePathname()` is simply how a component nested inside the root
+ * layout reads the current route, and under `output: 'export'` every route is
+ * prerendered — so this runs at BUILD time, once per page, and each page's HTML
+ * is emitted with its own correct active link already marked. The directive is
+ * what makes that hook legal, not a statement that the browser needs it; the
+ * dehydrate step strips the resulting chunk like every other one.
+ *
+ * The
  * active link gets a soft glass pill behind it via a layout-free `::before`
  * pseudo-element (`.nav-link.is-active`) — no reflow, just an absolutely
  * positioned, faded-in background.

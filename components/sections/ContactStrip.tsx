@@ -19,7 +19,7 @@ export default function ContactStrip() {
       {items.map((item) => {
         const body = (
           <div className="flex min-w-0 items-center gap-3">
-            <span className="glass-pill flex h-11 w-11 shrink-0 items-center justify-center p-0 text-teal">
+            <span className="icon-pill h-11 w-11 shrink-0 text-teal">
               <Icon name={item.icon} size={20} />
             </span>
             <span className="min-w-0">

@@ -1,9 +1,7 @@
-"use client";
-
 /**
  * components/ui/Reveal.tsx — ADR-0006 §Motion 1: scroll reveal wrapper. Server-render
  * is always fully visible (no-JS = visible): the hidden initial state only applies
- * once `app/layout.tsx`'s inline script adds a `js` class to <html>, and only under
+ * once public/enhance.js adds a `js` class to <html>, and only under
  * `prefers-reduced-motion: no-preference` (see `.js .reveal` in app/globals.css) — so
  * reduced-motion visitors never see opacity/transform change at all, JS or not.
  *
@@ -17,9 +15,13 @@
  * `as` picks the rendered element ("div" default, "li" for list items) so Reveal can
  * be the actual list/section node instead of adding an extra wrapper (no CLS, no
  * incidental layout changes from a spare block box).
+ *
+ * ADR-0010: a Server Component — it only ever emitted a class name and a custom
+ * property, both of which the static HTML can carry directly. Browsers with
+ * scroll-driven CSS animations reveal with no JS at all; the rest get the
+ * `.is-in` class from public/enhance.js's shared IntersectionObserver.
  */
 import type { CSSProperties, ReactNode } from "react";
-import { useReveal } from "./useReveal";
 
 type RevealStyle = CSSProperties & { "--reveal-delay"?: string };
 
@@ -36,21 +38,20 @@ export default function Reveal({
   stagger?: boolean;
   className?: string;
 }) {
-  const ref = useReveal<HTMLElement>();
   const classes = `reveal ${className}`.trim();
   const style: RevealStyle | undefined = delay !== undefined ? { "--reveal-delay": `${delay}ms` } : undefined;
   const staggerProps = stagger ? { "data-stagger": "" } : {};
 
   if (as === "li") {
     return (
-      <li ref={ref as unknown as React.Ref<HTMLLIElement>} className={classes} style={style} {...staggerProps}>
+      <li className={classes} style={style} {...staggerProps}>
         {children}
       </li>
     );
   }
 
   return (
-    <div ref={ref as unknown as React.Ref<HTMLDivElement>} className={classes} style={style} {...staggerProps}>
+    <div className={classes} style={style} {...staggerProps}>
       {children}
     </div>
   );

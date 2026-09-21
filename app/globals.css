@@ -23,6 +23,9 @@
 
   --color-ink: #0f1a1a;
   --color-ink-soft: #5b5f68;
+  /* ADR-0008 §3: near-black used for `.band-deep`'s gradient (a section background),
+     distinct from --color-ink above (body/heading text). */
+  --color-ink-deep: #0b1414;
   --color-grey-200: #e1e2e5;
   --color-teal: #0f766e;
   --color-teal-hover: #0b5c56;
@@ -50,6 +53,16 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+}
+
+/* The header is fixed, so an anchor jump would otherwise park its target
+   underneath it — `/contact#quote`, the destination of the header's own
+   "Request quote" button, landed with the form heading behind the bar.
+   `scroll-margin-top` on the targets is the whole fix; an earlier version also
+   set `scroll-padding-top` on <html> and the two ADDED UP, dropping every
+   target 224px down the page instead of 112px. */
+[id] {
+  scroll-margin-top: 7rem;
 }
 
 body {
@@ -112,6 +125,25 @@ h3,
   border-radius: 4px;
 }
 
+/* Buttons carry Tailwind's `focus-visible:outline-none` and signalled focus
+   with a 2% scale alone — which is invisible to anyone who needs it, and fails
+   WCAG 2.4.7 on the primary call to action. Restore a real ring. It is drawn in
+   white with a teal inner edge so it stays visible both on the light page and
+   on the darkened hero photograph, where a teal-only ring disappears. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.85);
+}
+.page-hero a:focus-visible,
+.band-deep a:focus-visible,
+.band-deep button:focus-visible {
+  outline-color: #fff;
+  box-shadow: 0 0 0 5px rgba(15, 118, 110, 0.55);
+}
+
 .container-site {
   /* Wide-screen layout: content stretches to 1720px with fluid gutters so large
      monitors are not left with empty margins; reading blocks cap their own line
@@ -157,49 +189,86 @@ h3,
 /* ---------------------------------------------------------------------------
  * Glass surfaces — ADR-0005 §2. No hard borders, no tinted backgrounds, no
  * top-edge accents. Hover lifts 2px with a deeper shadow; both are neutralised
- * under prefers-reduced-motion below. Mobile drops blur for GPU budget.
+ * under prefers-reduced-motion below.
+ *
+ * ADR-0009 §4: `backdrop-filter` compositing is real paint cost on low-end
+ * Android, and most `.glass`/`.glass-strong`/`.glass-pill`/`.chip` surfaces on
+ * this site sit on the flat `#F6F8F9` canvas or a section background, not on
+ * imagery — a blurred backdrop is indistinguishable from a plain translucent
+ * one there. So the base rules below carry no `backdrop-filter` at all; it's
+ * added back only for the surfaces that actually overlap a photo or sit in a
+ * `.band-deep` dark section (ADR-0008 §3), each restored explicitly further
+ * down this file: `.header-pill` (floats over scrolling imagery), `.page-hero
+ * .glass-strong` (the hero panel), `.image-band .glass-strong` (the overlay
+ * pill on a full-bleed photo) and `.band-deep .glass/.glass-strong/.glass-pill/
+ * .chip` (panels on a dark band).
  * ------------------------------------------------------------------------- */
+/* ADR-0008 §3: `.glass`/`.glass-strong`/`.glass-pill` shadows refined to two layers —
+   a tight contact shadow (grounds the surface) plus the original wide ambient shadow
+   (reads as depth) — on top of the existing 1px inner top highlight. Mirrors the
+   `shadow-lift` Tailwind token (tailwind.config.ts) used elsewhere for hover-lift. */
 .glass {
   position: relative;
   background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.75);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    0 10px 40px rgba(15, 26, 26, 0.08);
+    0 2px 8px rgba(15, 26, 26, 0.05),
+    0 24px 56px rgba(15, 26, 26, 0.12);
   border-radius: 28px;
 }
 .glass-strong {
   position: relative;
   background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(32px) saturate(160%);
-  -webkit-backdrop-filter: blur(32px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.75);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    0 10px 40px rgba(15, 26, 26, 0.08);
+    0 2px 8px rgba(15, 26, 26, 0.05),
+    0 24px 56px rgba(15, 26, 26, 0.12);
   border-radius: 28px;
 }
-.glass-pill {
+.glass-pill,
+.icon-pill {
   position: relative;
   background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.75);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    0 10px 40px rgba(15, 26, 26, 0.08);
+    0 2px 8px rgba(15, 26, 26, 0.05),
+    0 24px 56px rgba(15, 26, 26, 0.12);
   border-radius: 9999px;
+}
+.glass-pill {
   padding: 0.5rem 1rem;
 }
-@media (max-width: 767px) {
-  .glass,
-  .glass-strong,
-  .glass-pill {
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-  }
+
+/* ---------------------------------------------------------------------------
+ * `.icon-pill` — a circular container sized by its own box, for a single icon.
+ *
+ * This exists because the obvious spelling was silently broken. Every icon
+ * circle on the site was written as `glass-pill … h-9 w-9 p-0`, but these
+ * component rules sit after `@tailwind utilities` in this file, so on equal
+ * specificity `.glass-pill`'s `padding: 0.5rem 1rem` BEAT the `p-0` utility.
+ * A 34px circle minus 32px of horizontal padding left a 2px content box, and
+ * because an `svg` is a flex item with the default `flex-shrink: 1`, the icon
+ * obediently squashed to 2px wide instead of overflowing where anyone would
+ * have seen it. The result was eight empty-looking circles across the site —
+ * the mobile menu, the feature cards, the contact strip, the map.
+ *
+ * So: no padding to fight, and icons never shrink.
+ * ------------------------------------------------------------------------- */
+.icon-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  padding: 0;
+}
+.glass-pill > svg,
+.icon-pill > svg,
+.chip > svg,
+.eyebrow > svg {
+  flex-shrink: 0;
 }
 
 /* ADR-0006 §Polish: a 1px specular top-left highlight on every glass surface, via a
@@ -208,6 +277,7 @@ h3,
 .glass::before,
 .glass-strong::before,
 .glass-pill::before,
+.icon-pill::before,
 .chip::before {
   content: "";
   position: absolute;
@@ -227,7 +297,10 @@ h3,
 .glass-hover:hover,
 .glass-hover:focus-visible {
   transform: translateY(-3px);
-  box-shadow: 0 16px 48px rgba(15, 26, 26, 0.12);
+  /* ADR-0008 §3: two-layer on hover too — tight contact + wide ambient. */
+  box-shadow:
+    0 4px 12px rgba(15, 26, 26, 0.08),
+    0 28px 64px rgba(15, 26, 26, 0.16);
 }
 
 /* ADR-0006 §Motion 4: GlassCard's pointermove specular sheen — a radial highlight
@@ -317,15 +390,35 @@ h3,
   }
 }
 
-/* Eyebrow — small uppercase teal label above every h2. ADR-0006 §Polish: 11.5px,
-   tracking .16em (was 12px/.14em, ADR-0005 §3). */
+/* ---------------------------------------------------------------------------
+ * ADR-0009 §4 — `content-visibility: auto` on every `Section`/`Band` (the two
+ * generic section wrappers almost all page content below the hero is built
+ * from): the browser skips layout/paint for instances that are nowhere near the
+ * viewport, which is most of a long programmatic page (state/city/country) at
+ * any given scroll position. `contain-intrinsic-size` gives it a placeholder
+ * height to reserve before it's ever rendered so the page's scrollbar/height
+ * doesn't jump; the `auto` keyword then has the browser remember each
+ * section's real measured height after that, so the estimate only matters
+ * once, for whichever sections start out far below the fold. Chrome renders an
+ * element normally well before it's actually on screen (its own "relevant to
+ * the user" margin), so this never visibly skips content a visitor scrolls to,
+ * and it costs nothing for a section already in the initial viewport.
+ * ------------------------------------------------------------------------- */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
+/* Eyebrow — small uppercase teal label above every h2. ADR-0008 §3: 11px, tracking
+   .18em (was 11.5px/.16em, ADR-0006 §Polish) — matches the `eyebrow` fontSize token
+   in tailwind.config.ts. */
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.71875rem;
+  font-size: 0.6875rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-teal);
 }
@@ -347,6 +440,35 @@ h3,
   -webkit-text-fill-color: currentColor;
 }
 
+/* ADR-0008 §3 — `.text-stat`: the spec/fact numeral type step (FactStrip values,
+   ProductCard/CategoryCard spec numerals, bento feature-tile stat). Sizing/weight/
+   letter-spacing come from the `stat` fontSize token (tailwind.config.ts) via the
+   `text-stat` utility it generates; this adds what that scale can't express —
+   tabular numerals (so digits don't jitter in width) and the display font. */
+/* Headings set their own line breaks badly at large sizes — several ended on a
+   single short word ("…fits your job", "…demand in United States"). `balance`
+   evens the lines out; it is capped by the browser at a handful of lines, which
+   is exactly the range headings live in, and silently does nothing where it is
+   unsupported. `pretty` does the same job for body copy, where it only prevents
+   the last-line orphan. */
+h1,
+h2,
+h3,
+.section-title {
+  text-wrap: balance;
+}
+p,
+li {
+  text-wrap: pretty;
+}
+
+.text-stat,
+.text-stat-md,
+.text-stat-sm {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+}
+
 /* ---------------------------------------------------------------------------
  * Cards — soft lift + shadow on hover/focus, no gradient top edge, no coloured
  * border. transform + box-shadow only, cheap to animate, neutralised above.
@@ -357,7 +479,171 @@ h3,
 .card-hover:hover,
 .card-hover:focus-visible {
   transform: translateY(-2px);
-  box-shadow: 0 16px 48px rgba(15, 26, 26, 0.12);
+  box-shadow:
+    0 4px 12px rgba(15, 26, 26, 0.08),
+    0 28px 64px rgba(15, 26, 26, 0.16);
+}
+
+/* ---------------------------------------------------------------------------
+ * ADR-0008 §3 — Grain: a 2% monochrome noise overlay via an inline SVG data URI
+ * (feTurbulence → feColorMatrix, alpha scaled down so the effective grain reads
+ * at roughly 2%). Standalone utility — combine with any element, e.g.
+ * `className="band-deep grain"` (Band/Section, tone="dark") or on a photo/hero
+ * surface. `pointer-events: none` so it never intercepts clicks; low alpha so it
+ * never affects text contrast.
+ * ------------------------------------------------------------------------- */
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+/* ---------------------------------------------------------------------------
+ * ADR-0008 §3 — `.band-deep`: the deep-section treatment (Band/Section,
+ * tone="dark"). An ink → teal-deep gradient background, white text, and every
+ * glass surface inside retinted for dark (12% white fill, 18% white border) —
+ * scoped with plain `.band-deep <selector>` descendant rules rather than
+ * Tailwind's `dark:` variant, per ADR §3. Two mechanisms do the retinting:
+ *   1. Redeclaring the shared CSS custom properties (--color-ink, --hairline,
+ *      --color-teal, …) so every hand-written rule that already reads them
+ *      (`.section-title`, `.eyebrow`, `.chip svg`, `.accordion-toggle`,
+ *      `.divider`, `.glass-accordion-item`, and any `border-[color:var(--hairline)]`
+ *      utility) repaints for free, with no component edits.
+ *   2. Explicit overrides for the static Tailwind colour utilities components
+ *      apply directly (`text-ink`, `text-grey-600`, `text-teal`, …), which are
+ *      baked to literal hex at build time and can't be reached by a CSS var.
+ * Apply alongside `.grain` (`className="band-deep grain"`) for the faint noise
+ * overlay — kept separate so `.grain` stays reusable on its own.
+ * ------------------------------------------------------------------------- */
+.band-deep {
+  position: relative;
+  isolation: isolate;
+  color: #ffffff;
+  background-image: linear-gradient(155deg, var(--color-ink-deep) 0%, var(--color-ink-deep) 55%, var(--color-teal-deep) 100%);
+
+  /* Custom-property re-scope — see mechanism 1 above. */
+  --color-ink: #ffffff;
+  --color-ink-soft: #e1e2e5; /* grey-200 */
+  --color-teal: #2a9d93; /* teal-light */
+  --hairline: rgba(255, 255, 255, 0.18);
+}
+
+/* Glass/chip surfaces inside a deep band: 12% white fill, 18% white border (the
+ * `::before` specular highlight is already a white gradient mask, so it needs no
+ * override), retuned two-layer shadow (dark ambient reads against a dark
+ * backdrop; the light-mode values above would be invisible here). */
+.band-deep .glass,
+.band-deep .glass-strong,
+.band-deep .glass-pill,
+.band-deep .icon-pill,
+.band-deep .chip {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.18);
+  /* ADR-0009 §4: one of the few contexts that keeps `backdrop-filter` — a panel
+     on a dark band (see the note above `.glass`). */
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 4px 14px rgba(0, 0, 0, 0.35),
+    0 32px 72px rgba(0, 0, 0, 0.45);
+}
+/* `.glass-hover`'s own :hover rule (app/globals.css, ADR-0006 §Motion) has the same
+   0,2,0 specificity as the resting-state override above, so without this it would
+   lose to whichever rule is later in source order on hover. This 3-class selector
+   always wins, keeping the hover-lift shadow visible inside a deep band too. */
+.band-deep .glass-hover:hover,
+.band-deep .glass-hover:focus-visible {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.32),
+    0 6px 18px rgba(0, 0, 0, 0.4),
+    0 36px 84px rgba(0, 0, 0, 0.5);
+}
+
+/* Static Tailwind colour utilities — see mechanism 2 above. Covers every
+ * component this pass touches (FactStrip, DividedList, Chips, Button, Faq,
+ * GlassCard and the product/category tiles built on it) plus the rest of the
+ * component library, so any of it reads correctly if placed in a dark band. */
+.band-deep .text-ink,
+.band-deep .text-ink\/80 {
+  color: #ffffff;
+}
+.band-deep .text-grey-600,
+.band-deep .text-grey-700 {
+  color: #e1e2e5; /* grey-200 body text */
+}
+.band-deep .text-grey-400,
+.band-deep .text-grey-500 {
+  color: rgba(255, 255, 255, 0.6);
+}
+.band-deep .text-teal {
+  color: #2a9d93; /* teal-light accents */
+}
+.band-deep .border-grey-200 {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* ---------------------------------------------------------------------------
+ * ADR-0008 §3 — `.pedestal`: a soft radial glow behind a product render, plus
+ * the paired hover recipe (render lifts 6px, pedestal glow brightens). Usage:
+ * a `.pedestal` wrapper (`position: relative` is built in) around the machine
+ * image, with the image itself carrying `.pedestal-render`. Works standalone
+ * (`.pedestal:hover`/`:focus-within`) and inside a GlassCard-style tile, where
+ * hovering anywhere on the card's `.group` link brightens it too.
+ * ------------------------------------------------------------------------- */
+.pedestal {
+  position: relative;
+}
+.pedestal::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  z-index: 0;
+  width: 74%;
+  height: 32%;
+  transform: translateX(-50%);
+  border-radius: 9999px;
+  background: radial-gradient(ellipse at center, rgba(15, 118, 110, 0.35) 0%, rgba(15, 118, 110, 0.14) 45%, transparent 72%);
+  filter: blur(18px);
+  opacity: 0.85;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-glass), filter 0.3s var(--ease-glass);
+}
+.band-deep .pedestal::before {
+  background: radial-gradient(ellipse at center, rgba(42, 157, 147, 0.45) 0%, rgba(42, 157, 147, 0.16) 45%, transparent 72%);
+}
+.pedestal-render {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.35s var(--ease-glass);
+}
+.pedestal:hover::before,
+.pedestal:focus-within::before,
+.group:hover .pedestal::before,
+.group:focus-visible .pedestal::before {
+  opacity: 1;
+  filter: blur(22px);
+}
+.pedestal:hover .pedestal-render,
+.pedestal:focus-within .pedestal-render,
+.group:hover .pedestal-render,
+.group:focus-visible .pedestal-render {
+  transform: translateY(-6px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .pedestal::before,
+  .pedestal-render {
+    transition: none;
+  }
 }
 
 /* ---------------------------------------------------------------------------
@@ -397,8 +683,6 @@ h3,
   padding: 0 0.85rem;
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.75);
   color: var(--color-ink);
   font-size: 0.8rem;
@@ -416,11 +700,11 @@ a.chip:focus-visible {
   color: var(--color-teal);
 }
 
-/* Accordion. `.accordion-toggle` + `.glass-accordion-item` are shared by two
-   patterns: native <details>/<summary> disclosures (CtaGroup, QuoteBlock — a
-   single "fill form instead" toggle, unchanged) and, since ADR-0006 §Motion 6,
-   components/ui/Faq.tsx's button + region accordion (a class-based `.is-open`
-   toggle instead of the `details[open]` selector, since it isn't a <details>). */
+/* Accordion. `.accordion-toggle` + `.glass-accordion-item` are shared by every
+   native <details>/<summary> disclosure on the site: CtaGroup/QuoteBlock's
+   single "fill form instead" toggle, and — since ADR-0009 §3 — Faq.tsx's
+   `<details name="faq">` items too (previously a client button+region
+   accordion with its own `.is-open` class; now plain `[open]`). */
 details > summary {
   display: flex;
   cursor: pointer;
@@ -460,8 +744,7 @@ details > summary::-webkit-details-marker {
   width: 1.5px;
   height: 100%;
 }
-details[open] .accordion-toggle::after,
-.accordion-toggle.is-open::after {
+details[open] .accordion-toggle::after {
   transform: translate(-50%, -50%) rotate(90deg);
   opacity: 0;
 }
@@ -479,12 +762,18 @@ details[open] .accordion-toggle::after,
    knowing the content's height up front. The row track, not the child, is what
    grows — the child just needs to be clipped and allowed to shrink below its own
    content size (min-height:0) while the row is collapsed. */
+/* ADR-0009 §3: `.accordion-panel` sits inside a native `<details>` now (Faq.tsx).
+   The UA stylesheet hides everything after `<summary>` with
+   `details:not([open]) > *:not(summary) { display: none }` while closed — this
+   `display: grid` (present unconditionally, an ordinary author rule) overrides
+   that so the panel stays laid out at all times and the grid-rows 0fr/1fr tween
+   below does the actual open/close animation instead of a hard display toggle. */
 .accordion-panel {
   display: grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows 0.3s var(--ease-glass);
 }
-.accordion-panel.is-open {
+details[open] > .accordion-panel {
   grid-template-rows: 1fr;
 }
 .accordion-panel > * {
@@ -587,38 +876,70 @@ details[open] .accordion-toggle::after,
  * content. It is further gated to `prefers-reduced-motion: no-preference` so a
  * reduced-motion visitor never sees an opacity/transform change either, JS or
  * not — elements simply appear, already in their final state.
+ *
+ * ADR-0009 §3: split into two paths. Browsers that support CSS scroll-driven
+ * animations (`animation-timeline: view()`) get a pure-CSS reveal — the
+ * `IntersectionObserver` in components/ui/observer.ts still runs (harmlessly;
+ * it only ever adds the now-unused `.is-in` class) but paints nothing, so
+ * there's no double animation. Everything else falls back to the original
+ * JS-driven, `.is-in`-toggled transition below.
  * ------------------------------------------------------------------------- */
-@media (prefers-reduced-motion: no-preference) {
-  .js .reveal {
-    opacity: 0;
-    transform: translateY(14px);
-    transition: opacity 0.6s var(--ease-glass), transform 0.6s var(--ease-glass);
-    transition-delay: var(--reveal-delay, 0ms);
-  }
-  .js .reveal.is-in {
-    opacity: 1;
-    transform: none;
-  }
+@supports not (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.6s var(--ease-glass), transform 0.6s var(--ease-glass);
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+    .js .reveal.is-in {
+      opacity: 1;
+      transform: none;
+    }
 
-  /* Stagger: when several `[data-stagger]` Reveal siblings sit in the same
-     parent (a grid of tiles, a row of facts, a list of steps/FAQ items), each
-     gets an increasing transition-delay — 60ms steps, capped at the 6th child.
-     An explicit `delay` prop (inline `--reveal-delay`) always wins, since an
-     inline style outranks these selectors regardless of source order. */
-  .js [data-stagger]:nth-child(2) {
-    --reveal-delay: 60ms;
+    /* Stagger: when several `[data-stagger]` Reveal siblings sit in the same
+       parent (a grid of tiles, a row of facts, a list of steps/FAQ items), each
+       gets an increasing transition-delay — 60ms steps, capped at the 6th child.
+       An explicit `delay` prop (inline `--reveal-delay`) always wins, since an
+       inline style outranks these selectors regardless of source order. */
+    .js [data-stagger]:nth-child(2) {
+      --reveal-delay: 60ms;
+    }
+    .js [data-stagger]:nth-child(3) {
+      --reveal-delay: 120ms;
+    }
+    .js [data-stagger]:nth-child(4) {
+      --reveal-delay: 180ms;
+    }
+    .js [data-stagger]:nth-child(5) {
+      --reveal-delay: 240ms;
+    }
+    .js [data-stagger]:nth-child(n + 6) {
+      --reveal-delay: 300ms;
+    }
   }
-  .js [data-stagger]:nth-child(3) {
-    --reveal-delay: 120ms;
-  }
-  .js [data-stagger]:nth-child(4) {
-    --reveal-delay: 180ms;
-  }
-  .js [data-stagger]:nth-child(5) {
-    --reveal-delay: 240ms;
-  }
-  .js [data-stagger]:nth-child(n + 6) {
-    --reveal-delay: 300ms;
+}
+
+/* Pure-CSS path: the element's own scroll position through the nearest
+   scrollable ancestor (`view()`, default = the document) drives the animation
+   directly — no JS observer, no per-element transition-delay bookkeeping. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes reveal-in {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    .js .reveal {
+      animation: reveal-in 0.6s var(--ease-glass) both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 30%;
+    }
   }
 }
 
@@ -640,9 +961,9 @@ details[open] .accordion-toggle::after,
     transform: none;
   }
 }
-.hero-panel {
-  animation: hero-in 0.7s var(--ease-glass) both;
-}
+/* The hero's copy block no longer animates as a unit — with the panel gone
+   there is no single surface to move, and `.hero-stagger` already brings each
+   line in on its own beat. */
 .hero-stagger > * {
   opacity: 0;
   animation: hero-in 0.6s var(--ease-glass) both;
@@ -663,7 +984,6 @@ details[open] .accordion-toggle::after,
   animation-delay: 400ms;
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-panel,
   .hero-stagger > * {
     animation: none;
     opacity: 1;
@@ -679,7 +999,12 @@ details[open] .accordion-toggle::after,
  * toggled via Tailwind classes in HeaderBar itself. The active pill is a
  * layout-free `::before` behind the link text — no reflow.
  * ------------------------------------------------------------------------- */
+/* ADR-0009 §4: the header floats fixed over scrolling content — including
+   photographic heroes and image bands — so it's one of the few surfaces that
+   keeps `backdrop-filter` (see the note above `.glass`). */
 .header-pill {
+  backdrop-filter: blur(32px) saturate(160%);
+  -webkit-backdrop-filter: blur(32px) saturate(160%);
   transition: height 0.25s var(--ease-glass), background-color 0.25s var(--ease-glass),
     backdrop-filter 0.25s var(--ease-glass), box-shadow 0.25s var(--ease-glass);
 }
@@ -721,10 +1046,63 @@ details[open] .accordion-toggle::after,
 .mobilenav-backdrop {
   opacity: 0;
   pointer-events: none;
-  background: rgba(15, 26, 26, 0.15);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  /* Strong enough that the page clearly recedes. The sheet only covers the
+     middle of the screen, so whatever is in the gutters beside it is still in
+     view — a weak scrim left the hero headline competing with the menu. */
+  background: rgba(8, 18, 18, 0.62);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   transition: opacity 0.25s var(--ease-glass);
+}
+
+/* ---------------------------------------------------------------------------
+ * The menu sheet itself.
+ *
+ * It needs its own surface rather than `.glass-strong`. ADR-0009 §4 stripped
+ * `backdrop-filter` from the shared glass classes to save paint cost, which is
+ * right for calm in-page panels sitting on the page canvas — but this one is an
+ * OVERLAY over whatever the visitor was reading, and at 75% white with no blur
+ * the hero headline read straight through the menu. An overlay has one job.
+ *
+ * The cost is bounded: a single element, blurred only while the menu is open.
+ * ------------------------------------------------------------------------- */
+.mobilenav-sheet {
+  background: rgba(251, 253, 253, 0.98);
+  backdrop-filter: blur(30px) saturate(150%);
+  -webkit-backdrop-filter: blur(30px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    0 24px 70px rgba(10, 20, 20, 0.28);
+}
+
+/* Rows: a full-width target with a hairline between, not floating text. */
+.mobilenav-row {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  min-height: 56px;
+  padding: 0 0.25rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  border-top: 1px solid var(--hairline);
+  transition: color 0.15s var(--ease-glass);
+}
+.mobilenav-row:first-child {
+  border-top: 0;
+}
+.mobilenav-row:hover,
+.mobilenav-row:focus-visible {
+  color: var(--color-teal);
+}
+.mobilenav-row .mobilenav-chevron {
+  margin-left: auto;
+  color: #9aa5a5;
+  transition: transform 0.15s var(--ease-glass), color 0.15s var(--ease-glass);
+}
+.mobilenav-row:hover .mobilenav-chevron {
+  transform: translateX(2px);
+  color: var(--color-teal);
 }
 .mobilenav-backdrop.is-open {
   opacity: 1;
@@ -740,6 +1118,41 @@ details[open] .accordion-toggle::after,
   opacity: 1;
   transform: none;
   pointer-events: auto;
+}
+
+/* ADR-0010 — no-JS fallback. The menu trigger is a real
+   `<a href="#mobile-nav-panel">`, so without public/enhance.js the sheet still
+   opens via `:target` and the whole mobile nav stays usable; the backdrop is an
+   anchor back to `#main`, which closes it again. `html.js` scopes these rules
+   off the moment enhance.js boots, so the JS path (which toggles `.is-open`)
+   is never fighting a `:target` match left over in the URL. */
+html:not(.js) .mobilenav-panel:target {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+html:not(.js) .mobilenav-panel:target ~ .mobilenav-backdrop,
+html:not(.js) .mobilenav-panel:target + .mobilenav-backdrop {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ---------------------------------------------------------------------------
+ * ADR-0010 — form success state, with no JavaScript.
+ * Web3Forms redirects a completed submission back to `…?sent=1#sent`, which
+ * makes the pre-rendered confirmation panel `:target`. The panel is hidden
+ * until then, and the form itself is swapped out for it, so the visitor sees a
+ * real confirmation instead of the page they just submitted from. Reverting to
+ * the form is a normal back-navigation.
+ * ------------------------------------------------------------------------- */
+.form-sent {
+  display: none;
+}
+.form-sent:target {
+  display: block;
+}
+.form-sent:target ~ .form-on-sent {
+  display: none;
 }
 
 /* ---------------------------------------------------------------------------
@@ -811,16 +1224,128 @@ details[open] .accordion-toggle::after,
 
 /* Scrim: fades a full-bleed photo into the page canvas at the bottom (also
    used by ImageBand between sections) — ADR-0007 §1. */
+/* The copy sits directly on the photograph (components/layout/PageHero.tsx), so
+   this gradient is what makes it readable. It darkens the whole frame, and
+   darkens hardest at the top (under the floating header) and the bottom (where
+   `align="start"` heroes place their copy), leaving the middle clearest so the
+   machine imagery still reads. The exact stops are tuned against measured
+   contrast — see scripts/verify-hero-contrast.mjs, which fails the build's
+   sibling check if any hero text drops below WCAG AA on a real render. */
 .hero-scrim {
-  background: linear-gradient(180deg, rgba(246, 248, 249, 0.15), rgba(246, 248, 249, 0.55) 70%, #f6f8f9 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(5, 16, 16, 0.62) 0%,
+    rgba(5, 16, 16, 0.48) 38%,
+    rgba(5, 16, 16, 0.58) 70%,
+    rgba(5, 16, 16, 0.82) 100%
+  );
 }
 
-/* Inside a PageHero the glass panel sits directly over a photograph rather than
-   the calm ambient-light canvas it was tuned for, so its background is raised
-   from the default .75 to .82 opacity here to keep ink text ≥ 7:1 / teal ≥ 4.5:1
-   (ADR-0005 §8) over the busiest placeholder photos. */
-.page-hero .glass-strong {
-  background: rgba(255, 255, 255, 0.82);
+/* ---------------------------------------------------------------------------
+ * Make the `hidden` ATTRIBUTE win over Tailwind display utilities.
+ *
+ * The UA stylesheet hides `[hidden]` with `display: none`, but that is a plain
+ * attribute selector — any Tailwind display class (`flex`, `block`, `grid`) on
+ * the same element beats it on specificity and the element stays visible. That
+ * bit the mobile menu button, which renders both icons and toggles `hidden`
+ * between them: both carried `flex`, so both showed at once.
+ *
+ * ADR-0010 leans on the `hidden` attribute for several toggles (menu icons,
+ * filtered product cards, certificate panels), so rather than avoid display
+ * classes case by case, make the attribute authoritative everywhere.
+ * ------------------------------------------------------------------------- */
+[hidden] {
+  display: none !important;
+}
+
+/* ---------------------------------------------------------------------------
+ * The hero starts at the very top of the viewport.
+ *
+ * `<main>` carries `pt-24` (6rem) so ordinary page content clears the fixed
+ * floating header. A full-bleed hero must NOT clear it — the header is designed
+ * to float over the imagery — so a hero that opens a page was being pushed 6rem
+ * down, leaving a band of bare `#F6F8F9` canvas above it that read as a stray
+ * white box behind the header (and disappeared as soon as you scrolled past it).
+ *
+ * Cancelling the padding on a hero that is `<main>`'s first child fixes it
+ * exactly where it happens: 258 of the 261 routes open with a hero and now run
+ * edge to edge from y=0, while the three that don't (404, /terms,
+ * /privacy-policy) keep the full 6rem of clearance they need.
+ * ------------------------------------------------------------------------- */
+main > .page-hero:first-child {
+  margin-top: -6rem;
+}
+
+/* ---------------------------------------------------------------------------
+ * Hero copy sits on the photograph, not on a panel.
+ *
+ * Every page builds its hero from the same small vocabulary of utilities
+ * (`text-ink`, `text-grey-600`, `text-grey-500`, `text-teal`, `.eyebrow`,
+ * Breadcrumbs, Button), so the light-on-dark treatment is defined once here
+ * rather than edited into all 16 page files.
+ *
+ * These are element+class selectors (0,1,1) or two-class selectors (0,2,0), so
+ * they outrank the single-class Tailwind utilities they override without
+ * `!important`. Buttons are deliberately NOT targeted: the primary button keeps
+ * its teal fill and the secondary keeps its light `.glass-pill` with ink text,
+ * both of which already read correctly against a darkened photograph.
+ * ------------------------------------------------------------------------- */
+.hero-copy {
+  color: rgba(255, 255, 255, 0.9);
+  /* A soft shadow buys legibility over the brighter patches of a photo without
+     reading as a "text shadow" at normal viewing distance. */
+  text-shadow: 0 1px 28px rgba(3, 12, 12, 0.5);
+}
+.hero-copy h1 {
+  color: #fff;
+}
+.hero-copy p {
+  color: rgba(255, 255, 255, 0.9);
+}
+.hero-copy strong {
+  color: #fff;
+}
+/* On a centred hero (home) the breadcrumb's own flex row doesn't inherit the
+   panel's `text-center`, so it sat left while everything above and below it was
+   centred. */
+.hero-copy.text-center nav ol {
+  justify-content: center;
+}
+
+/* Breadcrumbs: present, but the quietest thing in the frame. */
+.hero-copy nav {
+  color: rgba(255, 255, 255, 0.72);
+}
+.hero-copy nav [aria-current] {
+  color: rgba(255, 255, 255, 0.95);
+}
+/* The brand teal is tuned for ink-on-white and goes muddy on a dark photo, so
+   the eyebrow and inline links use the light end of the teal ramp instead. */
+.hero-copy .eyebrow,
+.hero-copy .text-teal {
+  color: #7ff0e2;
+}
+.hero-copy a.text-teal:hover,
+.hero-copy nav a:hover {
+  color: #b6f7ee;
+}
+
+/* The secondary button is a 55%-white pill, which was tuned to sit on the light
+   page canvas. Over a darkened photograph that composites down to a mid grey —
+   measured at 3.02:1 against its own ink text on the /products hero, i.e. below
+   AA — so inside a hero it is raised to a near-solid white that stays light
+   whatever the image behind it is doing. */
+.hero-copy .glass-pill {
+  background: rgba(255, 255, 255, 0.93);
+  border-color: rgba(255, 255, 255, 0.95);
+}
+
+/* ADR-0009 §4: ImageBand's `overlayText` pill sits directly on its full-bleed
+   photo, so — unlike every other `.glass-strong` on the page — it keeps
+   `backdrop-filter` (components/ui/ImageBand.tsx). */
+.image-band .glass-strong {
+  backdrop-filter: blur(32px) saturate(160%);
+  -webkit-backdrop-filter: blur(32px) saturate(160%);
 }
 
 /* Photo placeholder label — a small bottom-left pill on ImageSlot/ImageBand

@@ -3,9 +3,13 @@
  * ring badge image (scripts/generate-placeholders.mjs) at small size, plus the
  * certificate name. Pass `onOpen` from a client parent to make the badge open a
  * modal viewer; without it the badge is a plain link to /certifications.
+ *
+ * ADR-0009 §1: renders via `components/media/Img` (`<picture>`, AVIF/WebP
+ * srcset, LQIP) instead of `next/image` — a fixed 44px badge, so `sizes` is a
+ * constant rather than viewport-relative.
  */
-import Image from "next/image";
 import Link from "next/link";
+import Img from "@/components/media/Img";
 import type { Certification } from "@/data/types";
 import { paths } from "@/lib/urls";
 
@@ -24,7 +28,7 @@ export default function CertCard({
       style={{ borderRadius: "9999px" }}
     >
       <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full bg-teal-soft/40">
-        <Image src={cert.image.src} alt="" width={cert.image.width} height={cert.image.height} className="h-full w-full object-contain p-1" />
+        <Img image={{ ...cert.image, alt: "" }} sizes="44px" className="h-full w-full object-contain p-1" />
       </span>
       <span className="min-w-0">
         <span className="block truncate text-sm font-semibold text-ink">{cert.name}</span>

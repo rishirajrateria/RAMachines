@@ -5,9 +5,14 @@
  * bottom-left placeholder label pill as `ImageSlot` (`label`, hidden once
  * `placeholder` is false). Wrapped in the same scroll-reveal (`Reveal`) as every
  * other glass surface — a Server Component, no page-level change needed to opt in.
+ *
+ * ADR-0009 §1/§4: the image renders via `components/media/Img` (`fill`,
+ * `sizes="100vw"`). The root carries `.image-band` so `app/globals.css` can keep
+ * `backdrop-filter` on the `overlayText` pill (it sits on a photo) while the same
+ * `.glass-strong` class loses it everywhere else on the page.
  */
-import Image from "next/image";
-import type { Img } from "@/data/types";
+import type { Img as ImgData } from "@/data/types";
+import Img from "@/components/media/Img";
 import Reveal from "./Reveal";
 
 export default function ImageBand({
@@ -17,7 +22,7 @@ export default function ImageBand({
   placeholder = true,
   className = "",
 }: {
-  image: Img;
+  image: ImgData;
   overlayText?: string;
   /** e.g. "Photo: shop floor" — shown only while `placeholder` is true. */
   label?: string;
@@ -26,10 +31,10 @@ export default function ImageBand({
   className?: string;
 }) {
   return (
-    <div className={`section-rhythm-tight w-full ${className}`.trim()}>
+    <div className={`image-band section-rhythm-tight w-full ${className}`.trim()}>
       <Reveal>
         <div className="relative aspect-[16/9] w-full overflow-hidden md:aspect-[21/9]">
-          <Image src={image.src} alt={image.alt} fill sizes="100vw" className="object-cover" />
+          <Img image={image} sizes="100vw" fill />
           <div className="hero-scrim absolute inset-0" />
           {placeholder && label && <span className="photo-label">{label}</span>}
           {overlayText && (

@@ -1,8 +1,16 @@
 /**
  * components/ui/Band.tsx — full-width section wrapper. ADR-0005: tinted/dark
- * bands are gone; `tone` is kept for backward compatibility only. "dark" (the
- * old hero/CTA band) now renders a `.glass-strong` panel instead of a dark
- * background — the only dark element on the page is text (ADR-0005 §1).
+ * bands were gone; `tone` is kept for backward compatibility, and only "dark"
+ * still changes rendering. ADR-0008 §3: "dark" now renders a proper deep
+ * section — `.band-deep` (ink → teal-deep gradient, full-bleed, faint grain)
+ * behind the content, rather than an inset `.glass-strong` panel floating on
+ * the plain canvas. Children (FactStrip, GlassCard-based tiles, Chips, Faq, …)
+ * supply their own glass surfaces, which `.band-deep` retints for dark —
+ * app/globals.css.
+ *
+ * ADR-0009 §4: carries `.cv-auto` (`content-visibility: auto` +
+ * `contain-intrinsic-size`) — every `Band` below the fold skips layout/paint
+ * until it's actually relevant to the user.
  */
 import type { ReactNode } from "react";
 import Container from "./Container";
@@ -12,15 +20,15 @@ export default function Band({
   children,
   className = "",
 }: {
-  /** @deprecated only "dark" still changes rendering (a glass-strong panel) — kept for backward compatibility. */
+  /** @deprecated only "dark" still changes rendering (a `.band-deep` section) — kept for backward compatibility. */
   tone?: "dark" | "soft" | "spark" | "plain";
   children: ReactNode;
   className?: string;
 }) {
-  const panelled = tone === "dark";
+  const deep = tone === "dark";
   return (
-    <div className={`section-rhythm ${className}`.trim()}>
-      <Container>{panelled ? <div className="glass-strong p-8 md:p-12">{children}</div> : children}</Container>
+    <div className={`cv-auto section-rhythm ${deep ? "band-deep grain" : ""} ${className}`.trim()}>
+      <Container>{children}</Container>
     </div>
   );
 }

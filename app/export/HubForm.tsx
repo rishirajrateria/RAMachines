@@ -1,5 +1,3 @@
-"use client";
-
 /**
  * app/export/HubForm.tsx — export enquiry form for the /export hub page only.
  * Unlike components/forms/ExportForm.tsx (used on /export/[country], which
