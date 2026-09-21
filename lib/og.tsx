@@ -16,6 +16,14 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
+import { site } from "@/config/site";
+
+/**
+ * The host shown in the card footer, derived from config/site.ts rather than
+ * typed in. It was hard-coded to a domain the site is not served from, so every
+ * social preview advertised an address that does not resolve.
+ */
+const DISPLAY_HOST = site.url.replace(/^https?:\/\//, "").replace(/\/$/, "");
 
 export const ogSize = { width: 1200, height: 630 };
 export const ogContentType = "image/png";
@@ -136,7 +144,7 @@ export function renderOg(o: { title: string; subtitle?: string; eyebrow?: string
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", fontSize: 28, fontWeight: 600, color: WHITE }}>RA Machine</div>
           <div style={{ display: "flex", fontSize: 18, color: GREY_200 }}>
-            ramachine.com · Kolkata, India · Exporting worldwide
+            {DISPLAY_HOST} · Kolkata, India · Exporting worldwide
           </div>
         </div>
       </div>

@@ -87,6 +87,42 @@
       ]
     }
   },
+  "/categories/co2-laser-machines-1200.webp": {
+    "hash": "c13d08067f3a94f1",
+    "width": 1200,
+    "height": 800,
+    "lqip": "data:image/webp;base64,UklGRt4AAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSGEAAAABcBMAAJrM/dsrDdxdkVsrEAga8BGDCjSggLu7EyAiJgD445x+yz9gnGa7Nzzdbd2rHE8Pj6dT9x52enr7ls0btqf+PXw1n88Xi/lsPWh09HusKFtxuRDolkACtzhBgMDLAFZQOCBWAAAAMAMAnQEqFAANAD7tZKlNqaWkIjAIATAdiUAYmwGwJZlIAAD51otwWtZJglvf/k3AnMnQOSkPj8Pd32YtaOL+Cc0GykEjFuvF9v5KA/+3NmutmeEJAAA=",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/categories/co2-laser-machines-1200-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/categories/co2-laser-machines-1200-1024.avif"
+        },
+        {
+          "w": 1200,
+          "src": "/_img/categories/co2-laser-machines-1200-1200.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/categories/co2-laser-machines-1200-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/categories/co2-laser-machines-1200-1024.webp"
+        },
+        {
+          "w": 1200,
+          "src": "/_img/categories/co2-laser-machines-1200-1200.webp"
+        }
+      ]
+    }
+  },
   "/about/world-reach.webp": {
     "hash": "289bd69d6a8b60a2",
     "width": 3667,
@@ -127,42 +163,6 @@
         {
           "w": 1920,
           "src": "/_img/about/world-reach-1920.webp"
-        }
-      ]
-    }
-  },
-  "/categories/co2-laser-machines-1200.webp": {
-    "hash": "c13d08067f3a94f1",
-    "width": 1200,
-    "height": 800,
-    "lqip": "data:image/webp;base64,UklGRt4AAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSGEAAAABcBMAAJrM/dsrDdxdkVsrEAga8BGDCjSggLu7EyAiJgD445x+yz9gnGa7Nzzdbd2rHE8Pj6dT9x52enr7ls0btqf+PXw1n88Xi/lsPWh09HusKFtxuRDolkACtzhBgMDLAFZQOCBWAAAAMAMAnQEqFAANAD7tZKlNqaWkIjAIATAdiUAYmwGwJZlIAAD51otwWtZJglvf/k3AnMnQOSkPj8Pd32YtaOL+Cc0GykEjFuvF9v5KA/+3NmutmeEJAAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/categories/co2-laser-machines-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/categories/co2-laser-machines-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/categories/co2-laser-machines-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/categories/co2-laser-machines-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/categories/co2-laser-machines-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/categories/co2-laser-machines-1200-1200.webp"
         }
       ]
     }
@@ -683,6 +683,50 @@
       ]
     }
   },
+  "/certs/iec-import-export-code-1833.webp": {
+    "hash": "c5b6bcfd82dc36b6",
+    "width": 1833,
+    "height": 2444,
+    "lqip": "data:image/webp;base64,UklGRsIAAABXRUJQVlA4WAoAAAAQAAAAEwAAGgAAQUxQSGoAAAABcGPbbqM8MkjySOQuQwv7X9/YcgV1REwAvzTCPSI3269VVdf7WWYnC4CF7BImS6pLsZYrTfWEAIcDIBkFFgCaiFFVo7U0q5ktW7iUUREnOxRV1TKQn4d7zOm9vL4nup+f97vvej5c+v5DVlA4IDIAAADwAgCdASoUABsAPu1ur1IppiQiqAgBMB2JZwAAPaUIAAD+8MkiAzNYG9bFh+8FxgAAAA==",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/certs/iec-import-export-code-1833-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/certs/iec-import-export-code-1833-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/certs/iec-import-export-code-1833-1600.avif"
+        },
+        {
+          "w": 1833,
+          "src": "/_img/certs/iec-import-export-code-1833-1833.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/certs/iec-import-export-code-1833-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/certs/iec-import-export-code-1833-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/certs/iec-import-export-code-1833-1600.webp"
+        },
+        {
+          "w": 1833,
+          "src": "/_img/certs/iec-import-export-code-1833-1833.webp"
+        }
+      ]
+    }
+  },
   "/certs/iec-import-export-code.webp": {
     "hash": "f1a2e85ca6e90711",
     "width": 1833,
@@ -767,50 +811,6 @@
         {
           "w": 1833,
           "src": "/_img/certs/indian-railways-vendor-1833-1833.webp"
-        }
-      ]
-    }
-  },
-  "/certs/iec-import-export-code-1833.webp": {
-    "hash": "c5b6bcfd82dc36b6",
-    "width": 1833,
-    "height": 2444,
-    "lqip": "data:image/webp;base64,UklGRsIAAABXRUJQVlA4WAoAAAAQAAAAEwAAGgAAQUxQSGoAAAABcGPbbqM8MkjySOQuQwv7X9/YcgV1REwAvzTCPSI3269VVdf7WWYnC4CF7BImS6pLsZYrTfWEAIcDIBkFFgCaiFFVo7U0q5ktW7iUUREnOxRV1TKQn4d7zOm9vL4nup+f97vvej5c+v5DVlA4IDIAAADwAgCdASoUABsAPu1ur1IppiQiqAgBMB2JZwAAPaUIAAD+8MkiAzNYG9bFh+8FxgAAAA==",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/certs/iec-import-export-code-1833-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/certs/iec-import-export-code-1833-1024.avif"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/certs/iec-import-export-code-1833-1600.avif"
-        },
-        {
-          "w": 1833,
-          "src": "/_img/certs/iec-import-export-code-1833-1833.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/certs/iec-import-export-code-1833-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/certs/iec-import-export-code-1833-1024.webp"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/certs/iec-import-export-code-1833-1600.webp"
-        },
-        {
-          "w": 1833,
-          "src": "/_img/certs/iec-import-export-code-1833-1833.webp"
         }
       ]
     }
@@ -1343,50 +1343,6 @@
       ]
     }
   },
-  "/photos/hero-contact.webp": {
-    "hash": "1baecf13f4d1d443",
-    "width": 1920,
-    "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAQBACdASoUAAsAPu1mqk4ppaOiMAgBMB2JYwC7AB6RPKAm7dNgNascAAD+70tV+6ihwVd09CNMuQbJRO5CoWRGncFcwmcFX+4lzmlgmDxGfGdYAAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/photos/hero-contact-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/hero-contact-1024.avif"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/hero-contact-1600.avif"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-contact-1920.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/photos/hero-contact-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/hero-contact-1024.webp"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/hero-contact-1600.webp"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-contact-1920.webp"
-        }
-      ]
-    }
-  },
   "/photos/hero-country.webp": {
     "hash": "1507bcde4e479d0c",
     "width": 1920,
@@ -1427,6 +1383,50 @@
         {
           "w": 1920,
           "src": "/_img/photos/hero-country-1920.webp"
+        }
+      ]
+    }
+  },
+  "/photos/hero-contact.webp": {
+    "hash": "1baecf13f4d1d443",
+    "width": 1920,
+    "height": 1080,
+    "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAQBACdASoUAAsAPu1mqk4ppaOiMAgBMB2JYwC7AB6RPKAm7dNgNascAAD+70tV+6ihwVd09CNMuQbJRO5CoWRGncFcwmcFX+4lzmlgmDxGfGdYAAA=",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-contact-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-contact-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-contact-1600.avif"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-contact-1920.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-contact-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-contact-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-contact-1600.webp"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-contact-1920.webp"
         }
       ]
     }
@@ -1519,50 +1519,6 @@
       ]
     }
   },
-  "/photos/hero-home.webp": {
-    "hash": "172b4db0a0a3fd74",
-    "width": 1920,
-    "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAwCdASoUAAsAPu1iqk2ppaQiMAgBMB2JQAAKVUgXlPT9se+YigAA/u9KIkyjMDuPC1jUtkGd5SToXkl1/7u7opPoPJ7NT6cPyX7+ZlcKs8cL6AAAAA==",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/photos/hero-home-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/hero-home-1024.avif"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/hero-home-1600.avif"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-home-1920.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/photos/hero-home-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/hero-home-1024.webp"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/hero-home-1600.webp"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-home-1920.webp"
-        }
-      ]
-    }
-  },
   "/photos/hero-india.webp": {
     "hash": "398f8b2aca7d2234",
     "width": 1920,
@@ -1603,6 +1559,50 @@
         {
           "w": 1920,
           "src": "/_img/photos/hero-india-1920.webp"
+        }
+      ]
+    }
+  },
+  "/photos/hero-home.webp": {
+    "hash": "172b4db0a0a3fd74",
+    "width": 1920,
+    "height": 1080,
+    "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAwCdASoUAAsAPu1iqk2ppaQiMAgBMB2JQAAKVUgXlPT9se+YigAA/u9KIkyjMDuPC1jUtkGd5SToXkl1/7u7opPoPJ7NT6cPyX7+ZlcKs8cL6AAAAA==",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-home-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-home-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-home-1600.avif"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-home-1920.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-home-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-home-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-home-1600.webp"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-home-1920.webp"
         }
       ]
     }
@@ -1871,50 +1871,6 @@
       ]
     }
   },
-  "/photos/hero-tube.webp": {
-    "hash": "6f90693a722a4b03",
-    "width": 1920,
-    "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADQAwCdASoUAAsAPu1iqU2ppaQiMAgBMB2JYwAAW46rXvX6Xf8wb8AA/uywBRkKVrRjcdN/0gTNwfI93Ncf6jtZXtlDpn98NbFJCSF0z/1laAiovoHBP9jMAAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/photos/hero-tube-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/hero-tube-1024.avif"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/hero-tube-1600.avif"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-tube-1920.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/photos/hero-tube-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/hero-tube-1024.webp"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/hero-tube-1600.webp"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-tube-1920.webp"
-        }
-      ]
-    }
-  },
   "/photos/hero-welding.webp": {
     "hash": "e74d2d845ac1fcb5",
     "width": 1920,
@@ -1955,6 +1911,50 @@
         {
           "w": 1920,
           "src": "/_img/photos/hero-welding-1920.webp"
+        }
+      ]
+    }
+  },
+  "/photos/hero-tube.webp": {
+    "hash": "6f90693a722a4b03",
+    "width": 1920,
+    "height": 1080,
+    "lqip": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADQAwCdASoUAAsAPu1iqU2ppaQiMAgBMB2JYwAAW46rXvX6Xf8wb8AA/uywBRkKVrRjcdN/0gTNwfI93Ncf6jtZXtlDpn98NbFJCSF0z/1laAiovoHBP9jMAAA=",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-tube-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-tube-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-tube-1600.avif"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-tube-1920.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-tube-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-tube-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-tube-1600.webp"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-tube-1920.webp"
         }
       ]
     }
@@ -2391,42 +2391,6 @@
       ]
     }
   },
-  "/photos/slot-team.webp": {
-    "hash": "5c958ed0fdf87f3e",
-    "width": 1600,
-    "height": 1200,
-    "lqip": "data:image/webp;base64,UklGRooAAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSBwAAAABD9D/iAgoaCQ1Wn5kIx5aCxH9T17KHr6OKi40VlA4IEgAAABQBACdASoUAA8APu1iqU2ppaOiMAgBMB2JYwC7MoADTrJN/ac5TKZcp6+AAP7cXFzlherXTa4/4cBAFSlrkg1pz2C7XRmUAAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/photos/slot-team-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/slot-team-1024.avif"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/slot-team-1600.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/photos/slot-team-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/slot-team-1024.webp"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/slot-team-1600.webp"
-        }
-      ]
-    }
-  },
   "/photos/slot-training-room.webp": {
     "hash": "dda7636faa9ddc49",
     "width": 1600,
@@ -2459,6 +2423,42 @@
         {
           "w": 1600,
           "src": "/_img/photos/slot-training-room-1600.webp"
+        }
+      ]
+    }
+  },
+  "/photos/slot-team.webp": {
+    "hash": "5c958ed0fdf87f3e",
+    "width": 1600,
+    "height": 1200,
+    "lqip": "data:image/webp;base64,UklGRooAAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSBwAAAABD9D/iAgoaCQ1Wn5kIx5aCxH9T17KHr6OKi40VlA4IEgAAABQBACdASoUAA8APu1iqU2ppaOiMAgBMB2JYwC7MoADTrJN/ac5TKZcp6+AAP7cXFzlherXTa4/4cBAFSlrkg1pz2C7XRmUAAA=",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/photos/slot-team-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/slot-team-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/slot-team-1600.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/photos/slot-team-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/slot-team-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/slot-team-1600.webp"
         }
       ]
     }
