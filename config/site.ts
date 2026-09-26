@@ -13,7 +13,18 @@ export const site = {
   tagline: "Laser Cutting Machines Built in India, Trusted Worldwide",
   description:
     "RA Machine is the CNC machine division of R.A. Auto Engineering Works, Kolkata — building and supplying customised fiber laser cutting, CO2 laser, tube laser and robotic MIG/MAG welding machines, with installation, service and operator training across India and export to 25+ countries.",
-  url: "https://www.ramachine.com", // PLACEHOLDER — set to the live domain before deploy (no trailing slash)
+  /**
+   * The live address, used for every canonical URL, sitemap entry, social
+   * preview and structured-data @id. It must be the domain the site is actually
+   * served from: while this was a placeholder, a shared link's preview image
+   * pointed at a host that does not serve the site, so pasting the URL into
+   * WhatsApp or LinkedIn produced no preview card at all.
+   *
+   * Change this one line when a custom domain is ready, and add a redirect from
+   * this Vercel address to it so nothing that has been shared breaks. No
+   * trailing slash.
+   */
+  url: "https://ra-machines.vercel.app",
   /** R.A. Auto Engineering Works was established in 1989; CNC machine assembly began in 2008. */
   foundedYear: 1989,
   machineDivisionSince: 2008,

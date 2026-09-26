@@ -24,7 +24,7 @@ export function ogFallbackSvg(width, height) {
     <text x="80" y="300" font-family="Arial, sans-serif" font-size="60" font-weight="700" fill="${INK}">RA Machine</text>
     <text x="80" y="352" font-family="Arial, sans-serif" font-size="24" fill="#5B5F68">${escapeXml("Laser Cutting Machines Built in India,")}</text>
     <text x="80" y="386" font-family="Arial, sans-serif" font-size="24" fill="#5B5F68">${escapeXml("Trusted Worldwide")}</text>
-    <text x="80" y="560" font-family="Arial, sans-serif" font-size="18" fill="#7A7E87">ramachine.com · Kolkata, India · Exporting worldwide</text>
+    <text x="80" y="560" font-family="Arial, sans-serif" font-size="18" fill="#7A7E87">RA Machine · Kolkata, India · Exporting worldwide</text>
   `;
   return scene({ width, height, defs, content });
 }
