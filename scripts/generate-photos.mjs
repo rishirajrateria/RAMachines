@@ -18,7 +18,15 @@ import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
-import { flatbedMachine, tubeLaserMachine, co2EngraverMachine, robotCellMachine } from "./illustrations/machines.mjs";
+import {
+  flatbedMachine,
+  tubeLaserMachine,
+  co2EngraverMachine,
+  robotCellMachine,
+  plasmaCutterMachine,
+  arcWelderMachine,
+  sawMachine,
+} from "./illustrations/machines.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT_DIR = join(ROOT, "public", "photos");
@@ -609,6 +617,12 @@ const SCENES = {
   "hero-city": (r, w, h) => machineScene(r, w, h, { hero: true, machine: tubeLaserMachine({ inUse: true }), locate: "city" }),
   "hero-export": (r, w, h) => machineScene(r, w, h, { hero: true, machine: flatbedMachine("ra-f6020-hd", { inUse: false }), heightFrac: 0.58, crates: true, crane: true }),
   "hero-country": (r, w, h) => machineScene(r, w, h, { hero: true, machine: robotCellMachine(1, { inUse: true }), locate: "globe" }),
+  // Family heroes for the plasma / arc-welding / SAW lines. The plasma table is
+  // wide like the fiber flatbed (same 0.58 height); the welding set and SAW
+  // tractor are squarer, so they sit at or just above hero-welding's 0.68.
+  "hero-plasma": (r, w, h) => machineScene(r, w, h, { hero: true, machine: plasmaCutterMachine({ inUse: true }), heightFrac: 0.58 }),
+  "hero-arc-welding": (r, w, h) => machineScene(r, w, h, { hero: true, machine: arcWelderMachine({ inUse: true }), heightFrac: 0.68 }),
+  "hero-saw": (r, w, h) => machineScene(r, w, h, { hero: true, machine: sawMachine({ inUse: true }), heightFrac: 0.7 }),
   "slot-factory": (r, w, h) => machineScene(r, w, h, { machine: flatbedMachine("ra-f1530", { inUse: false }), machine2: tubeLaserMachine({ inUse: false }) }),
   "slot-assembly": (r, w, h) => machineScene(r, w, h, { machine: flatbedMachine("ra-f3015-pro", { inUse: false }), machine2: robotCellMachine(1, { inUse: false }), figures: 1 }),
   "slot-cutting-head": (r, w, h) => macroShot(r, w, h, { subject: "cuttingHead" }),
@@ -644,6 +658,7 @@ const HERO_KEYS = [
   "hero-home", "hero-products", "hero-fiber", "hero-tube", "hero-co2", "hero-welding",
   "hero-product", "hero-repair", "hero-training", "hero-jobwork", "hero-about", "hero-contact",
   "hero-certifications", "hero-india", "hero-state", "hero-city", "hero-export", "hero-country",
+  "hero-plasma", "hero-arc-welding", "hero-saw",
 ];
 const SLOT_KEYS = [
   "slot-factory", "slot-assembly", "slot-cutting-head", "slot-sparks", "slot-tube-cutting",

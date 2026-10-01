@@ -70,7 +70,7 @@ const statePorts: Record<string, string[]> = {
 
 /** H1 text, shared with stateWordCount so the two never drift apart. */
 export function stateH1(name: string): string {
-  return `Laser Cutting Machine in ${name} — Manufacturer, Supplier & Service`;
+  return `CNC Laser, Plasma & Welding Machines in ${name} — Manufacturer, Supplier & Service`;
 }
 
 /**
@@ -86,9 +86,9 @@ export function stateSections(state: State): StateSection[] {
   const sections: StateSection[] = [
     {
       id: "overview",
-      h3: `Laser cutting and robotic welding in ${state.name}`,
+      h3: `Cutting and welding machines in ${state.name}`,
       paragraphs: [
-        `${state.name} is one of the states where RA Machine sees consistent, repeat demand for fiber laser cutting machines and robotic MIG/MAG welding systems, a pattern that tracks the depth of the state's own manufacturing base.`,
+        `RA Machine supplies, installs and supports CNC laser and plasma cutting machines, MIG, TIG, MMA and submerged arc welding machines, and cobot and robotic welding systems for fabricators in ${state.name}, each configured to the job it will do.`,
         ...state.overview,
       ],
     },
@@ -103,7 +103,7 @@ export function stateSections(state: State): StateSection[] {
     {
       id: "industrial-areas",
       h3: `Industrial areas and estates in ${state.name}`,
-      paragraphs: [`We regularly deliver, install and service machines at units inside ${joinList(state.industrialAreas)}.`],
+      paragraphs: [`We deliver, install and service machines for units across ${state.name}, including ${joinList(state.industrialAreas)}.`],
     },
     {
       id: "delivery",
@@ -112,9 +112,9 @@ export function stateSections(state: State): StateSection[] {
     },
     {
       id: "service-training",
-      h3: `Service, AMC and training across ${state.name}`,
+      h3: `Service and training across ${state.name}`,
       paragraphs: [
-        `Most faults are resolved remotely within ${site.service.remoteResponseTime}; where a site visit is genuinely needed, an engineer is dispatched from our Kolkata headquarters within ${site.service.responseTime} for metro and major industrial locations, backed by stocked spares and optional AMC plans.`,
+        `Most faults are resolved remotely within ${site.service.remoteResponseTime}; where a site visit is genuinely needed, an engineer is dispatched from our Kolkata headquarters within ${site.service.responseTime} for metro and major industrial locations, backed by stocked spares.`,
         `Operator training is included with every installation, delivered on-site at handover, with refresher sessions and a dedicated Kolkata training centre available afterward.`,
       ],
     },
@@ -125,7 +125,7 @@ export function stateSections(state: State): StateSection[] {
       id: "export",
       h3: `Export support for ${state.name} manufacturers`,
       paragraphs: [
-        `Export-ready shipments from ${state.name} typically move through ${joinList(ports)}, and as an IEC-registered exporter with CE-marked, ISO 9001:2015-certified machines, we handle export documentation for customers shipping their own fabricated output through the same gateways.`,
+        `Export-ready shipments from ${state.name} typically move through ${joinList(ports)}, and as an IEC-registered exporter with CE-marked, ISO 9001:2015-certified machines, we can handle export documentation for machines shipped through the same gateways.`,
       ],
     });
   }

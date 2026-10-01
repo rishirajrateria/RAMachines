@@ -7,7 +7,7 @@
 
 /** One sentence shown under the H1 inside the hero panel. */
 export const hubHeroSentence =
-  "One dedicated page for every Indian state, union territory and industrial city we deliver, install and service in, built and dispatched from our Kolkata works.";
+  "One dedicated page for every Indian state, union territory and major industrial city, covering how we deliver, install and service machines built in India and dispatched from Kolkata.";
 
 /** Appended to the standard AboutBlurb paragraph below the hero. */
 export const hubAboutContext =

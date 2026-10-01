@@ -25,17 +25,29 @@ import CertStrip from "@/components/sections/CertStrip";
 import { storyParagraphs, manufacturingParagraphs, leadership, timeline } from "./copy";
 
 export const metadata: Metadata = buildMetadata({
-  title: "About RA Machine — Laser Cutting Manufacturer India",
+  title: "About RA Machine — CNC Machine Manufacturer, India",
   description:
-    "RA Group's Kolkata manufacturer of fiber laser, tube laser, CO2 laser and robotic welding machines — our story, manufacturing capability and certifications.",
+    "RA Group's Kolkata manufacturer of CNC laser and plasma cutting, welding and robotic welding machines — our story, capability and certifications.",
   path: paths.about,
 });
 
+/**
+ * Looked up by LABEL, never by position. This used to read `site.stats[0]`,
+ * `[1]` and `[3]`; when the owner's real figures were added, "1989 engineering
+ * since" became the first entry and every value here moved one slot — the page
+ * showed "1989 machines installed" until the client spotted it. A missing label
+ * now fails the build instead of quietly showing the wrong number.
+ */
+function stat(label: string): string {
+  const found = site.stats.find((s) => s.label === label);
+  if (!found) throw new Error(`config/site.ts has no stat labelled "${label}"`);
+  return found.value;
+}
+
 const aboutFacts = [
   { label: "Founded", value: String(site.foundedYear) },
-  { label: "Machines installed", value: site.stats[0].value },
-  { label: "Countries served", value: site.stats[1].value },
-  { label: "Operators trained", value: site.stats[3].value },
+  { label: "Machines installed", value: stat("machines installed") },
+  { label: "Operators trained", value: stat("operators trained") },
 ];
 
 export default function AboutPage() {
@@ -47,8 +59,8 @@ export default function AboutPage() {
         <p className="eyebrow">Kolkata, India · Manufacturing since {site.foundedYear}</p>
         <h1 className="mt-4 font-display text-display-lg text-ink">About RA Machine</h1>
         <p className="mt-4 max-w-prose text-grey-600">
-          RA Group&rsquo;s Kolkata manufacturer of fiber laser, tube laser, CO2 laser and robotic welding
-          machines, engineered, built and supported entirely in-house.
+          RA Group&rsquo;s Kolkata manufacturer of CNC laser and plasma cutting machines, MIG, TIG, MMA and submerged
+          arc welding machines, and cobot and robotic welding systems — engineered, built and supported entirely in-house.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <Button href={paths.certifications} variant="solid">

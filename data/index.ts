@@ -5,13 +5,11 @@
  * Each named export below is written by the data worker that owns the source file
  * (see docs/adr/0001-stack-and-ownership.md §4); this file only re-exports.
  */
-export { products, getProduct, productsByCategory } from "@/data/products";
 export { categories, getCategory } from "@/data/categories";
 export { states, getState, statesByRegion, topStates } from "@/data/states";
 export { cities, getCity, citiesByState, topCities } from "@/data/cities";
 export { countries, getCountry, countriesByRegion, topCountries } from "@/data/countries";
 export { certifications } from "@/data/certifications";
-export { testimonials } from "@/data/testimonials";
 export { homeFaqs, repairFaqs, trainingFaqs, jobWorkFaqs, exportHubFaqs, aboutFaqs, certificationFaqs } from "@/data/faqs";
 export { indiaIndex } from "@/data/india-index";
-export type { Product, Category, State, City, Country, Certification, Testimonial, FaqItem } from "@/data/types";
+export type { Category, CategorySlug, State, City, Country, Certification, FaqItem } from "@/data/types";

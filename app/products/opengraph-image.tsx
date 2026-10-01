@@ -7,7 +7,7 @@ export const dynamic = "force-static";
 export default function Image() {
   return renderOg({
     eyebrow: "RA Machine",
-    title: "Laser Cutting Machines & Robotic Welding Systems",
-    subtitle: "Fiber laser, tube laser, CO2 laser and robotic MIG/MAG welding — built in Kolkata.",
+    title: "CNC Laser, Plasma & Welding Machines",
+    subtitle: "CNC laser and plasma cutting, MIG/TIG/MMA and SAW welding, cobot and robotic welding — built in India.",
   });
 }

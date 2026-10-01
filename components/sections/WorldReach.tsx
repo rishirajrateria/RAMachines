@@ -1,9 +1,13 @@
 /**
- * components/sections/WorldReach.tsx — the "Where we work" section.
+ * components/sections/WorldReach.tsx — the "Markets we serve" section.
  *
- * Replaces two stock-looking photo cards with the actual claim, drawn: a world
- * map with India picked out, a marker on every export market, and routes
- * fanning out from the Kolkata works.
+ * A world map with India picked out, a marker on every market the site has a
+ * country page for, and routes fanning out from the Kolkata works.
+ *
+ * Client review (Oct 2026): "Need global footprint but with minimal track
+ * record" / "show intent and ability". So every word here describes what RA
+ * Machine CAN do — ship to, install and support — never a count of countries
+ * already supplied.
  *
  * The map is `public/world-map.svg`, generated at build time by
  * scripts/generate-world-map.mjs from real Natural Earth geometry — the markers
@@ -45,7 +49,7 @@ export default function WorldReach({
             src="/world-map.svg"
             width={1000}
             height={439}
-            alt="World map: RA Machine ships from its Kolkata works to 30 export markets across North and South America, Europe, the Middle East, Africa, Asia and Oceania."
+            alt="World map of the markets RA Machine serves from its works in Kolkata, India: buyers in North and South America, Europe, the Middle East, Africa, Asia and Oceania."
             loading="lazy"
             decoding="async"
             className="w-full"
@@ -58,7 +62,7 @@ export default function WorldReach({
           </span>
           <span className="inline-flex items-center gap-2">
             <span aria-hidden="true" className="inline-block h-2 w-2 rounded-full bg-[#7ff0e2]" />
-            Export market
+            Markets we serve
           </span>
         </figcaption>
       </figure>
@@ -67,7 +71,7 @@ export default function WorldReach({
         <div>
           <h3 className="font-display text-lg text-white">India</h3>
           <p className="mt-2 text-sm text-white/75">
-            Delivered, installed and serviced across every major industrial state.
+            We can deliver, install and service machines anywhere in India.
           </p>
           <div className="mt-5">
             <Chips items={states.map((state) => ({ label: state.name, href: paths.state(state.slug) }))} />
@@ -76,7 +80,7 @@ export default function WorldReach({
         <div>
           <h3 className="font-display text-lg text-white">World</h3>
           <p className="mt-2 text-sm text-white/75">
-            Exported to more than 25 countries across five continents.
+            We can ship to, install and support buyers in these markets and beyond.
           </p>
           <div className="mt-5">
             <Chips items={countries.map((country) => ({ label: country.name, href: paths.country(country.slug) }))} />

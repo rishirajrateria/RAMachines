@@ -144,7 +144,7 @@ export function renderOg(o: { title: string; subtitle?: string; eyebrow?: string
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", fontSize: 28, fontWeight: 600, color: WHITE }}>RA Machine</div>
           <div style={{ display: "flex", fontSize: 18, color: GREY_200 }}>
-            {DISPLAY_HOST} · Kolkata, India · Exporting worldwide
+            {DISPLAY_HOST} · Kolkata, India · Ships worldwide
           </div>
         </div>
       </div>

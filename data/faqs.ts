@@ -13,12 +13,12 @@ import type { FaqItem } from "./types";
 /** Home page — 8 questions covering the buyer journey from price to financing. */
 export const homeFaqs: FaqItem[] = [
   {
-    q: "How do I get a price for an RA Machine laser cutting or welding machine?",
-    a: "We do not publish prices online because the right configuration depends on your material, thickness, sheet or tube size, and production volume. Use the Request a Quote button on any product page, call, or WhatsApp us with your requirement, and our sales engineers will respond with a formal, itemised quotation matched to your application and budget.",
+    q: "How do I get a price for an RA Machine cutting or welding machine?",
+    a: "We do not publish prices online because every machine is configured to the job: your material, thickness, part or sheet size, and production volume. Use the Request a Quote button on any page, call, or WhatsApp us with your requirement, and our sales engineers will respond with a formal, itemised quotation matched to your application and budget.",
   },
   {
     q: "Which machine should I choose for my business?",
-    a: "It depends on the materials you cut or weld, typical thickness, sheet or tube size, and your daily production volume. Light fabrication and job shops usually start with the RA-F1530 or RA-F3015 Pro, heavier plate work suits the RA-F6020 HD or RA-F12K, and tube, sign-making or robotic welding needs point to the RA-T6000, RA-C1390 or RA-RW range. Contact us and we will recommend the right fit.",
+    a: "It depends on what you cut or weld, how thick it is and how much you produce. Precision sheet work suits a CNC fiber laser (1.5–30 kW); heavier mild-steel plate from 2 mm to 25 mm is often cut more economically by CNC plasma. For joining, MIG, TIG and MMA machines cover everyday fabrication, SAW handles long seams on thick plate, and cobot or robot cells suit repeat production. Tell us the job and we will recommend the right fit.",
   },
   {
     q: "Do you deliver and install machines across India?",
@@ -26,7 +26,7 @@ export const homeFaqs: FaqItem[] = [
   },
   {
     q: "Can you export machines and support installation outside India?",
-    a: "Yes, we export worldwide and currently serve customers across 25-plus countries. Each export order includes a pre-shipment video inspection, complete shipping and customs documentation, and installation support after the machine arrives, either through a dispatched engineer or structured remote commissioning depending on the destination and machine. Post-installation training and spares support continue for the life of the machine.",
+    a: "Yes. We can ship machines worldwide and support buyers abroad. Each export order includes a pre-shipment video inspection, complete shipping and customs documentation, and installation support after the machine arrives, either through an engineer travelling from India or structured remote commissioning, depending on the destination and machine. Training and spares support continue for the life of the machine.",
   },
   {
     q: "What warranty and spares support do you provide?",
@@ -37,12 +37,12 @@ export const homeFaqs: FaqItem[] = [
     a: "Yes. Every machine purchase includes operator training covering safe operation, day-to-day maintenance and nesting or programming software, delivered either at your facility during installation or at our Kolkata training centre. We also run standalone operator and CNC training programmes for teams that need to upskill new staff or refresh existing operators; see our training page for details.",
   },
   {
-    q: "Can you repair a laser cutting or welding machine we bought from another manufacturer?",
-    a: "Yes, our repair and maintenance service covers fiber laser, CO2 laser, plasma, tube laser and robotic welding equipment from any manufacturer, not only RA Machine units. Our engineers diagnose faults in the laser source, chiller, cutting head, servo drives, controller and gas system, and can support you with an Annual Maintenance Contract as well as one-off repair visits across India.",
+    q: "Do you repair machines from other manufacturers?",
+    a: "No. Our repair and maintenance service is for the machines we build, because those are the machines whose parts, settings and workmanship we can stand behind. For RA Machine equipment, our engineers diagnose and fix faults across the laser or plasma source, welding power source, chiller, drives, controller and gas system, with remote diagnostics first and on-site visits across India.",
   },
   {
     q: "What is the typical lead time, and is financing available?",
-    a: "Standard lead time from confirmed order to dispatch is typically eight to ten weeks, depending on the model and current production schedule; we confirm an exact date at the quotation stage. We do not offer financing directly, but we are glad to prepare the documentation your bank, NBFC or leasing partner needs to process an equipment loan alongside your quotation.",
+    a: "Standard lead time from confirmed order to dispatch is typically eight to ten weeks, depending on the configuration and current production schedule; we confirm an exact date at the quotation stage. We do not offer financing directly, but we are glad to prepare the documentation your bank, NBFC or leasing partner needs to process an equipment loan alongside your quotation.",
   },
   {
     q: "What are your payment terms for a machine bought in India?",
@@ -53,12 +53,12 @@ export const homeFaqs: FaqItem[] = [
 /** /services/machine-repair — 10 questions, heavily SEO-optimised service page. */
 export const repairFaqs: FaqItem[] = [
   {
-    q: "Which machine brands and types do you repair?",
-    a: "We repair fiber laser cutting machines, CO2 laser cutting and engraving machines, plasma cutters, tube laser cutting machines and robotic MIG/MAG welding cells, regardless of manufacturer. Our engineers are trained across the common laser source, controller and drive technologies used industry-wide, so you do not need to have purchased your machine from RA Machine to use our repair service.",
+    q: "Which machines do you repair?",
+    a: "We repair and maintain the machines we build: RA Machine CNC fiber laser and plasma cutting machines, MIG, TIG and MMA welding machines, submerged arc welding machines, and cobot and robotic welding systems. We do not service other manufacturers' machines. Because our engineers build and install the same equipment they repair, they know every part of it.",
   },
   {
-    q: "Do you service machines that are out of warranty or from other manufacturers?",
-    a: "Yes. A large share of our repair work is on machines purchased elsewhere or now outside their original warranty period. We diagnose the fault, quote the repair transparently before starting work, and can also propose an ongoing Annual Maintenance Contract so future breakdowns are caught early rather than causing extended production downtime.",
+    q: "Do you service RA Machine equipment that is out of warranty?",
+    a: "Yes for RA Machine equipment: we service our machines throughout their working life, in or out of warranty. Out-of-warranty work is diagnosed first and quoted transparently before we start. We do not take on repairs of machines made by other manufacturers, as we cannot stand behind parts and settings we did not design.",
   },
   {
     q: "What is your on-site response time for a breakdown?",
@@ -69,24 +69,24 @@ export const repairFaqs: FaqItem[] = [
     a: "Yes. For controller, software, servo-drive and many electrical faults, our engineers can often diagnose the problem over a call or video session and either resolve it remotely or advise exactly which spare part and tool to have ready, which shortens the eventual on-site visit and gets your machine back into production faster.",
   },
   {
-    q: "What Annual Maintenance Contract (AMC) plans do you offer?",
-    a: "We offer Basic, Standard and Premium AMC plans covering scheduled preventive maintenance visits, priority breakdown response, and progressively wider coverage of consumables and labour as you move up the tiers. Each plan is scoped to your machine model, usage hours and site location; contact our service team for a written AMC proposal.",
+    q: "Do you offer annual maintenance contracts (AMC)?",
+    a: "We do not offer annual maintenance contracts at present. Maintenance is booked when you need it, and operator training covers the routine daily and weekly checks that keep a machine running well.",
   },
   {
-    q: "What are the most common faults you fix on fiber laser machines?",
-    a: "The faults we see most often involve the laser source losing output power, chiller temperature instability, cutting head height-sensing errors, nozzle and lens contamination, servo or drive motor faults, controller and software glitches, gas pressure or purity issues, and bed or rail alignment drifting out of tolerance after heavy use.",
+    q: "What are the most common faults you fix?",
+    a: "On laser machines: loss of source power, chiller temperature instability, cutting-head height-sensing errors and worn nozzles or contaminated lenses. On plasma machines: worn torch consumables and gas or arc-start problems. On welding machines: wire-feed and torch faults. Across all of them: servo or drive faults, controller and software glitches, and alignment drift after heavy use.",
   },
   {
-    q: "Do you keep spares in stock for chillers, cutting heads and lenses?",
-    a: "Yes, commonly replaced consumables and wear parts such as protective lenses, ceramic nozzles, ceramic rings, ball bearings, ballscrews, filters and chiller components are stocked for fast dispatch. For less common parts specific to older or third-party machines, we source and courier them as quickly as our supplier network allows.",
+    q: "Do you keep spares in stock?",
+    a: "Yes. Commonly replaced consumables and wear parts for our machines, such as protective lenses, nozzles and ceramic rings, plasma torch consumables, welding torch parts, bearings, filters and chiller components, are stocked for fast dispatch anywhere in India and by air courier abroad. Less common parts are sourced and dispatched as quickly as our suppliers allow.",
   },
   {
-    q: "Do you also repair robotic welding cells and CO2 laser machines?",
-    a: "Yes. Beyond fiber laser cutting machines, our engineers service robotic MIG/MAG welding cells (including the robot controller, wire feed system and positioner), CO2 laser tubes and optics, and tube laser cutting machines. If your equipment does not fit neatly into one category, describe the fault in the booking form and we will confirm coverage.",
+    q: "Do you also repair RA Machine cobot and robotic welding cells?",
+    a: "Yes, for RA Machine systems. Our engineers service the robot or cobot, its controller, the welding power source, wire feed system and fixtures, and can re-teach or adjust weld programs when your parts change. Describe the fault in the booking form, or call our service desk, and we will confirm the next step.",
   },
   {
     q: "How do I book a repair visit?",
-    a: "Use the Book a Repair form on this page with your company name, phone number, machine brand and model, city and a description of the problem, or call or WhatsApp our service desk directly. We will confirm whether the issue can be resolved remotely or needs an on-site visit, and schedule the earliest available engineer.",
+    a: "Use the Book a Repair form on this page with your company name, phone number, the machine type and its serial number, your city and a description of the problem, or call or WhatsApp our service desk directly. We will confirm whether the issue can be resolved remotely or needs an on-site visit, and schedule the earliest available engineer.",
   },
   {
     q: "Is there a warranty on the repair work you carry out?",
@@ -158,12 +158,12 @@ export const jobWorkFaqs: FaqItem[] = [
 /** /export — 6 questions for the export hub page. */
 export const exportHubFaqs: FaqItem[] = [
   {
-    q: "Which countries do you currently export to?",
-    a: "We currently export to more than 25 countries across North America, Europe, the Middle East, South-East Asia, South Asia, Africa and Oceania, including proven high-volume importing markets and fast-growing manufacturing economies where Indian machinery is an increasingly natural alternative to Chinese suppliers. See our country pages for details specific to your market.",
+    q: "Which countries can you export to?",
+    a: "We can ship to most countries and support buyers across North and South America, Europe, the Middle East, Africa, Asia and Oceania. Our country pages cover each market's power supply, ports, shipping route and import requirements. If your country is not listed, contact us; we will confirm documentation, shipping and installation support for your location before you order.",
   },
   {
     q: "What are your standard export shipping terms?",
-    a: "Standard terms are FOB Kolkata or Delhi, with CIF quotations to your nearest major port available on request. We handle export documentation, crating and pre-shipment video inspection before the machine leaves our facility, and can work with your preferred freight forwarder or recommend one we have shipped with previously for your region.",
+    a: "Standard terms are FOB Kolkata or Delhi, with CIF quotations to your nearest major port available on request. We handle export documentation, crating and pre-shipment video inspection before the machine leaves our facility, and can work with your preferred freight forwarder or recommend one for your region.",
   },
   {
     q: "Is installation support available after the machine reaches my country?",
@@ -171,7 +171,7 @@ export const exportHubFaqs: FaqItem[] = [
   },
   {
     q: "Will the machine work with our local voltage and frequency?",
-    a: "Our machines are configured to run on 415 V three-phase, 50 Hz supply as standard, and we confirm your local voltage, frequency and phase configuration at the quotation stage so the machine and its transformer, if needed, are built to match your site's electrical supply before shipment.",
+    a: "We confirm your local voltage, frequency and phase configuration at the quotation stage, and the machine is built to match your site's electrical supply before shipment, with a transformer where needed. Our welding machines are built for 220 V or 440 V and can be customised for other supplies.",
   },
   {
     q: "What warranty applies to machines shipped outside India?",
@@ -187,11 +187,11 @@ export const exportHubFaqs: FaqItem[] = [
 export const aboutFaqs: FaqItem[] = [
   {
     q: "When was RA Machine established and where are your machines made?",
-    a: "RA Machine has been manufacturing laser cutting and robotic welding equipment for over a decade, with every machine designed, fabricated and assembled at our facility in Kolkata, West Bengal. Manufacturing domestically keeps our engineering, service and spares teams close to the machines we build, rather than depending on an overseas supply chain for support.",
+    a: "R.A. Auto Engineering Works was established in 1989 and began building CNC machines in 2008. Every RA Machine cutting and welding machine is designed, fabricated and assembled at our works in Kolkata, West Bengal. Building in India keeps our engineering, service and spares teams close to the machines we build, rather than depending on an overseas supply chain for support.",
   },
   {
     q: "How is RA Machine related to RA Auto?",
-    a: "RA Machine and RA Auto are sister businesses under RA Group. RA Machine manufactures and supplies laser cutting machines and robotic welding systems, while RA Auto is the Group's automotive division. The two operate independently in their respective markets but share the same ownership, engineering culture and commitment to Indian manufacturing.",
+    a: "RA Machine and RA Auto are sister businesses under RA Group. RA Machine builds CNC laser and plasma cutting machines, welding machines and robotic welding systems, while RA Auto is the Group's automotive division. The two operate independently in their respective markets but share the same ownership, engineering culture and commitment to Indian manufacturing.",
   },
   {
     q: "What certifications does RA Machine hold?",

@@ -6,6 +6,38 @@
   "installCommand": "npm install",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/products/fiber-laser-cutting-machines/:slug(ra-[a-z0-9-]+)",
+      "destination": "/products/fiber-laser-cutting-machines",
+      "permanent": true
+    },
+    {
+      "source": "/products/robotic-welding-systems/:slug(ra-[a-z0-9-]+)",
+      "destination": "/products/robotic-welding-systems",
+      "permanent": true
+    },
+    {
+      "source": "/products/tube-laser-cutting-machines",
+      "destination": "/products/fiber-laser-cutting-machines",
+      "permanent": true
+    },
+    {
+      "source": "/products/tube-laser-cutting-machines/:path*",
+      "destination": "/products/fiber-laser-cutting-machines",
+      "permanent": true
+    },
+    {
+      "source": "/products/co2-laser-machines",
+      "destination": "/products",
+      "permanent": true
+    },
+    {
+      "source": "/products/co2-laser-machines/:path*",
+      "destination": "/products",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/_next/static/(.*)",
@@ -53,15 +85,6 @@
     },
     {
       "source": "/photos/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/products/(.*)",
       "headers": [
         {
           "key": "Cache-Control",

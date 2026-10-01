@@ -1,15 +1,16 @@
 /**
  * app/india/_lib/stateVisuals.ts — presentation-layer facts for /india/[state]
- * (ADR-0005 §6 anatomy), derived from the same `State`/`Product` objects
+ * (ADR-0005 §6 anatomy), derived from the same `State` objects
  * lib/copy/state.ts composes prose from: the three tiny hero facts, the
- * FactStrip, the "Industries" DividedList + product tiles, the delivery
+ * FactStrip, the "Industries" DividedList + machine-family tiles, the delivery
  * Steps and the cities DividedList. Kept out of lib/copy/state.ts so that
  * file stays focused on the composed prose. None of these repeat a fact
  * shown elsewhere on the page (ADR-0005: a fact appears once).
  */
 import type { StepItem } from "@/components/ui/glass";
 import type { IconName } from "@/components/ui/Icons";
-import type { State, City, Product } from "@/data/types";
+import type { State, City, Category } from "@/data/types";
+import { familiesFor } from "@/lib/families";
 import { deliveryWindowLabel } from "@/lib/copy/state";
 import { paths } from "@/lib/urls";
 
@@ -37,32 +38,24 @@ export function stateFactStripFacts(
   ];
 }
 
-/** One DividedList row per industry: name, clusters, and a link to the machine we
- * recommend most for it (the first of its recommended product slugs). */
-export function stateIndustryItems(
-  state: State,
-  products: Product[],
-): { title: string; text: string; href?: string; meta?: string }[] {
+/** One DividedList row per industry: name, clusters, and a link to the machine
+ * family we recommend most for it (the first of its `recommendedFamilies`). */
+export function stateIndustryItems(state: State): { title: string; text: string; href?: string; meta?: string }[] {
   return state.industries.map((industry) => {
-    const recommended = industry.recommendedProductSlugs
-      .map((slug) => products.find((p) => p.slug === slug))
-      .find((p): p is Product => Boolean(p));
+    const [recommended] = familiesFor(industry.recommendedFamilies, 1);
     return {
       title: industry.name,
       text: industry.clusters.join(", "),
-      href: recommended ? paths.product(recommended.category, recommended.slug) : undefined,
+      href: recommended ? paths.category(recommended.slug) : undefined,
       meta: recommended?.name,
     };
   });
 }
 
-/** Up to 3 machines to show as tiles: the products most often recommended across
- * this state's industries, deduplicated, falling back to the catalogue order. */
-export function stateProductTiles(state: State, products: Product[]): Product[] {
-  const slugs = Array.from(new Set(state.industries.flatMap((i) => i.recommendedProductSlugs)));
-  const recommended = slugs.map((slug) => products.find((p) => p.slug === slug)).filter((p): p is Product => Boolean(p));
-  const rest = products.filter((p) => !recommended.includes(p));
-  return [...recommended, ...rest].slice(0, 3);
+/** Up to 3 machine families to show as tiles: those recommended across this
+ * state's industries, deduplicated, in first-seen order. */
+export function stateFamilyTiles(state: State): Category[] {
+  return familiesFor(state.industries.flatMap((i) => i.recommendedFamilies));
 }
 
 /** The 5-step "how delivery works" line. */

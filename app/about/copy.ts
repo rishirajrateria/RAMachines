@@ -29,7 +29,7 @@ export const leadership: { role: string; name: string; bio: string }[] = site.le
 );
 
 export const reachIntroText =
-  "From our Kolkata works, RA Machine supplies, installs and services machines across every Indian state and union territory, and supports export customers with remote commissioning and on-site visits.";
+  "From our Kolkata works, RA Machine can supply, install and service machines anywhere in India, and supports buyers abroad with remote commissioning and on-site visits.";
 
 export const exportRegions: string[] = [
   "North America",

@@ -90,30 +90,15 @@ if (card) {
 ok("card sheen responds to pointer", await page.evaluate(() =>
   [...document.querySelectorAll(".glass-sheen")].some((c) => c.style.getPropertyValue("--mx") !== "")));
 
-// ------------------------------------------------------------- product filter
+// ------------------------------------------------------------- products index
+// Five machine families (client brief): five cards, and a range table whose
+// every row links to its family page.
 await page.goto(`${BASE}/products`, { waitUntil: "networkidle" });
-const beforeFilter = await page.evaluate(() =>
-  [...document.querySelectorAll("[data-category]")].filter((c) => !c.hidden).length);
-await page.click('[data-filter="tube-laser-cutting-machines"]');
-await page.waitForTimeout(200);
-const afterFilter = await page.evaluate(() => ({
-  shown: [...document.querySelectorAll("[data-category]")].filter((c) => !c.hidden).length,
-  allCorrect: [...document.querySelectorAll("[data-category]")]
-    .filter((c) => !c.hidden)
-    .every((c) => c.dataset.category === "tube-laser-cutting-machines"),
-  pressed: document.querySelector('[data-filter="tube-laser-cutting-machines"]').getAttribute("aria-pressed"),
-  url: location.pathname,
-}));
-ok("product filter narrows the grid", afterFilter.shown > 0 && afterFilter.shown < beforeFilter,
-  `${beforeFilter} → ${afterFilter.shown}`);
-ok("product filter shows only the chosen category", afterFilter.allCorrect);
-ok("product filter sets aria-pressed", afterFilter.pressed === "true");
-ok("filter chips are promoted to button semantics", await page.$$eval("[data-filter]", (a) => a.every((x) => x.getAttribute("role") === "button")));
-ok("product filter does not navigate", afterFilter.url === "/products");
-await page.click('[data-filter="all"]');
-await page.waitForTimeout(200);
-ok("'All machines' restores every card", await page.evaluate(() =>
-  [...document.querySelectorAll("[data-category]")].every((c) => !c.hidden)));
+const familyLinks = await page.$$eval('#range a[href^="/products/"]', (a) => [...new Set(a.map((x) => x.getAttribute("href")))]);
+ok("products index shows the five machine families", familyLinks.length === 5, familyLinks.join(", "));
+const tableLinks = await page.$$eval('table a[href^="/products/"]', (a) => a.map((x) => x.getAttribute("href")));
+ok("range table links every family", tableLinks.length === 5 && tableLinks.every((h) => familyLinks.includes(h)));
+ok("no product filter left on the index", (await page.$$("[data-filter]")).length === 0);
 
 // ------------------------------------------------------------- cert modal
 await page.goto(`${BASE}/certifications`, { waitUntil: "networkidle" });
@@ -199,7 +184,7 @@ for (const path of ["/", "/products", "/about", "/contact", "/india/west-bengal/
 // OVERFLOWS and collides with its neighbour ("1.5 × 3 m" ran straight through
 // "25 mm" on the flagship card). Each row picks its size from its own longest
 // value; this asserts the result actually fits.
-for (const [route, width] of [["/", 1280], ["/", 390], ["/products/fiber-laser-cutting-machines/ra-f3015-pro", 1280]]) {
+for (const [route, width] of [["/", 1280], ["/", 390], ["/products/cnc-plasma-cutting-machines", 390]]) {
   const sctx = await browser.newContext({ viewport: { width, height: 900 } });
   const sp = await sctx.newPage();
   await sp.goto(`${BASE}${route}`, { waitUntil: "networkidle" });
@@ -278,7 +263,7 @@ for (const route of ["/", "/contact", "/services/machine-repair"]) {
 // A fixed header plus smooth scrolling made links-with-a-fragment land in the
 // wrong place (one overshot to the bottom of the page). Assert the real
 // outcome: the target is visible and clear of the header.
-for (const [url, id] of [["/about#faq", "faq"], ["/#faq", "faq"], ["/contact#quote", "quote"], ["/products/fiber-laser-cutting-machines/ra-f3015-pro#quote", "quote"]]) {
+for (const [url, id] of [["/about#faq", "faq"], ["/#faq", "faq"], ["/contact#quote", "quote"], ["/products/cnc-plasma-cutting-machines#quote", "quote"]]) {
   await page.goto(`${BASE}${url}`, { waitUntil: "networkidle" });
   await page.waitForTimeout(2200);
   const r = await page.evaluate((anchorId) => {
@@ -310,9 +295,7 @@ ok("no-JS: mobile nav opens via :target", await np.$eval("#mobile-nav-panel", (p
 await np.goto(`${BASE}/certifications`, { waitUntil: "domcontentloaded" });
 ok("no-JS: certificate rows link to the image", await np.$eval("[data-cert]", (a) => /\.(webp|png|jpe?g|avif)$/i.test(a.getAttribute("href"))));
 await np.goto(`${BASE}/products`, { waitUntil: "domcontentloaded" });
-ok("no-JS: every product card is visible", await np.$$eval("[data-category]", (c) => c.every((x) => !x.hidden)));
-ok("no-JS: filter chips are real links", await np.$eval('[data-filter="tube-laser-cutting-machines"]', (a) => a.getAttribute("href")?.startsWith("/products/")));
-ok("no-JS: filter chips claim no button semantics", await np.$$eval("[data-filter]", (a) => a.every((x) => !x.hasAttribute("aria-pressed") && !x.hasAttribute("role"))));
+ok("no-JS: every family card is a visible link", await np.$$eval('#range a[href^="/products/"]', (a) => a.length >= 5 && a.every((x) => x.offsetParent !== null)));
 
 // Form success state — the `?sent=1#sent` round trip, with JS off entirely.
 await np.goto(`${BASE}/contact`, { waitUntil: "domcontentloaded" });

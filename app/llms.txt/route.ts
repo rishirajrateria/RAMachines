@@ -5,7 +5,7 @@
  * site. For the full detail (specs, FAQs, every state/city/country) see /llms-full.txt.
  */
 import { site } from "@/config/site";
-import { products, categories, states, countries, certifications } from "@/data";
+import { categories, states, countries, certifications } from "@/data";
 import { paths } from "@/lib/urls";
 import { absUrl } from "@/lib/seo";
 
@@ -16,7 +16,7 @@ function buildLlmsTxt(): string {
 
   lines.push(`# ${site.name}`, "");
   lines.push(
-    `${site.name} is a ${site.address.locality}-based manufacturer and exporter of laser cutting machines and robotic welding systems, and a brand of ${site.parent}.`,
+    `${site.name} is an Indian manufacturer of CNC laser and plasma cutting machines, MIG/TIG/MMA and submerged arc welding machines, and cobot and robotic welding systems, based in ${site.address.locality} and a brand of ${site.parent}. It sells by technology and configures each machine to the buyer's job; there are no fixed model numbers.`,
     "",
   );
 
@@ -31,23 +31,18 @@ function buildLlmsTxt(): string {
   lines.push(`- Website: ${site.url}`);
   lines.push(`- Certifications: ${certifications.map((c) => c.name).join(", ")}`, "");
 
-  lines.push(`## Products (${products.length})`);
-  for (const p of products) {
-    lines.push(`- ${p.name} — ${p.headline}. ${p.shortDescription} ${absUrl(paths.product(p.category, p.slug))}`);
-  }
-  lines.push("");
-
-  lines.push("## Product categories");
+  lines.push(`## Machines (${categories.length} technologies)`);
   for (const c of categories) {
-    lines.push(`- ${c.name}: ${c.description} ${absUrl(paths.category(c.slug))}`);
+    const ranges = c.ranges.map((r) => `${r.label}: ${r.value}`).join("; ");
+    lines.push(`- ${c.name} — ${ranges}. ${absUrl(paths.category(c.slug))}`);
   }
   lines.push("");
 
   lines.push("## Services");
   lines.push(
-    `- Laser cutting machine repair & CNC maintenance, pan-India, all brands: ${absUrl(paths.repair)}`,
+    `- Repair and maintenance of RA Machine's own machines, pan-India: ${absUrl(paths.repair)}`,
   );
-  lines.push(`- Laser cutting machine operator & CNC training: ${absUrl(paths.training)}`, "");
+  lines.push(`- Operator & CNC training: ${absUrl(paths.training)}`, "");
 
   lines.push(`## Service areas — India (${states.length} states/UTs)`);
   for (const s of states) {
@@ -70,7 +65,7 @@ function buildLlmsTxt(): string {
   lines.push(`- Certifications: ${absUrl(paths.certifications)}`, "");
 
   lines.push(
-    `Full detail — product specifications, materials tables, FAQs and every state, city and export-country page — is available at ${absUrl("/llms-full.txt")}.`,
+    `Full detail — each technology's range and buyer guide, FAQs and every state, city and export-country page — is available at ${absUrl("/llms-full.txt")}.`,
   );
 
   return lines.join("\n");

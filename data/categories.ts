@@ -1,273 +1,363 @@
 /**
- * data/categories.ts — the 4 product categories, each with the buyer-education
- * copy shown on its /products/[category] landing page.
+ * data/categories.ts — RA Machine's five machine families, each with the
+ * buyer-education copy shown on its /products/[category] page:
+ *   1. CNC fiber laser cutting (1.5–30 kW; source can also be fitted for welding)
+ *   2. CNC plasma cutting (100–200 A, cutting range 2–25 mm)
+ *   3. MIG / TIG / MMA arc welding (220 V and 440 V, customisable)
+ *   4. Submerged arc welding (440 V, customisable)
+ *   5. Cobot and industrial robotic welding (configured to the buyer's brief)
+ * There are no individual models: each family is configured to the buyer's job.
  *
- * To edit: change the fields below. `longCopy` is an array of paragraphs (join
- * with blank lines when rendering); keep it 350–500 words total per category
- * (ADR-0003) — unique buyer-education facts only, not restated GlancePanel/
- * chip-row content.
- * `comparisonSpecs` must list spec `label`s that actually appear in the
- * `specs` array of the products in that category (see data/products.ts), in
- * the order they should appear as comparison table rows.
- * To add a category: add a new CategorySlug in data/types.ts first (owned by
- * the integration owner), then add its entry here and assign products to it.
+ * CLIENT FIGURES ONLY. The only numbers this file may state are the ones
+ * RA Machine supplied (kW, A, mm cutting range, V) — they live in `ranges`
+ * and `headline`. Prose explains how each technology works and how to choose,
+ * using general industry facts without RA-specific numbers: no bed sizes,
+ * thickness per power level, speeds, accuracy, duty cycle, axes, reach,
+ * payload, lead times, warranty terms or prices, and no model numbers.
+ *
+ * To edit: change the fields below. `description` ≤155 characters;
+ * `longCopy` is an array of paragraphs, 350–500 words total (ADR-0003);
+ * `faqs` are 6 per family, each answer 40–90 words.
+ * To add a family: add its CategorySlug in data/types.ts first (owned by the
+ * integration owner), then add its entry here.
  */
 import type { Category } from "./types";
 
 export const categories: Category[] = [
   {
     slug: "fiber-laser-cutting-machines",
-    name: "Fiber Laser Cutting Machines",
-    shortName: "Fiber Laser",
+    name: "CNC Fiber Laser Cutting Machines",
+    shortName: "CNC Laser",
+    headline: "1.5–30 kW",
+    headlineLabel: "laser power",
+    ranges: [
+      { label: "Laser power", value: "1.5 kW – 30 kW" },
+      { label: "Process", value: "Cutting; laser can also be fitted for welding" },
+    ],
     description:
-      "Fiber laser cutting machines from 1.5 kW to 12 kW for sheet metal fabrication, engineered and built in Kolkata for India and export.",
+      "CNC fiber laser cutting machines from 1.5 kW to 30 kW, engineered and built in India for sheet and plate fabrication. Installation and training included.",
     intro:
-      "Fiber laser cutting machines are the workhorse of modern sheet metal fabrication, using a high-power fiber-optic laser beam to cut carbon steel, stainless steel, aluminium and other metals with narrow kerf, minimal heat distortion and very little manual finishing. Our fiber laser range spans four power classes, from the entry-level RA-F1530 to the heavy-duty RA-F12K, so job shops, OEM fabricators and large-scale manufacturers can each choose a machine matched to their material thickness, sheet size and daily output.",
+      "A CNC fiber laser cutting machine uses a focused, high-power beam from a solid-state fiber laser source to cut carbon steel, stainless steel, aluminium and other metals with a narrow kerf, little heat distortion and edges that rarely need further finishing. RA Machine builds fiber laser machines with sources from 1.5 kW to 30 kW, so a job shop cutting thin sheet and a heavy fabricator cutting thick plate can each have a machine configured to their material, thickness and daily output. Where the job calls for it, the same laser source can be fitted for welding instead of cutting.",
     longCopy: [
-      "A fiber laser cutting machine pumps energy into a solid-state fiber laser source, which delivers a tightly focused beam through a fiber-optic cable to a cutting head positioned over the sheet by a CNC-controlled gantry. Unlike CO2 lasers, which generate the beam in a gas-filled tube, fiber lasers convert electrical energy to light with much higher efficiency, giving lower running cost per hour and consistent beam quality for years with comparatively little maintenance.",
-      "Power output is the first buyer decision. Machines from 1–2 kW, such as our RA-F1530, suit thin-to-medium gauge sheet up to around 16 mm carbon steel and are the most economical entry point. The 3 kW RA-F3015 Pro extends to about 25 mm and cuts thinner material noticeably faster, which matters when throughput drives your schedule. From 6 kW upward, the RA-F6020 HD and RA-F12K are built for structural steel and pressure vessel shops cutting 25–50 mm plate without losing tolerance.",
-      "Bed size is the second major decision. A 1500 × 3000 mm area suits most general fabrication, while the RA-F6020 HD's 2000 × 6000 mm bed is sized for long structural sections and fewer sheet repositions — though a larger bed also means a larger footprint and heavier frame to keep the gantry rigid at speed.",
-      "Carbon steel is typically cut with oxygen assist gas for efficient thicker cutting; stainless steel and aluminium usually take nitrogen for a clean, oxide-free edge ready for welding without extra grinding. Reflective materials like copper and brass need adequate back-reflection protection, which our cutting heads and sources are specified to handle.",
-      "Running costs are dominated by electricity, assist gas and consumables such as nozzles and lenses — modest against the labour and finishing time saved over plasma or manual cutting. Our AMC plans (see our repair and maintenance service) are built around the same preventive schedule that keeps cutting quality consistent for years.",
-      "As volume grows, an automatic sheet exchange table lets an operator load the next sheet while the machine finishes the current one; every RA Machine fiber laser ships with nesting-capable CNC software as standard, and exchange tables can be specified on the 6 kW and 12 kW models.",
-      "Fiber lasers are increasingly the default for Indian automotive component makers, elevator and switchgear fabricators, HVAC ducting manufacturers and structural steel contractors moving on from plasma or oxy-fuel cutting. Export units run on standard 415 V three-phase supply with straightforward voltage adaptation and meet CE safety requirements.",
+      "A fiber laser generates its beam inside an optical fibre pumped by laser diodes, then carries it through a flexible fibre cable to a cutting head that a CNC-controlled gantry moves over the sheet. A lens focuses the beam to a small spot that melts the metal, and a jet of assist gas blows the molten material out of the kerf. Unlike CO2 lasers, which build the beam in a gas-filled resonator and steer it with mirrors, fiber lasers convert electrical power to light far more efficiently and have no beam-path mirrors to align, which keeps running cost and routine maintenance low.",
+      "Laser power is the first decision, and it should follow your work rather than assume bigger is better. Higher power cuts thicker plate and cuts thin sheet faster, but it also raises the cost of the source, the chiller and the electrical connection. A shop cutting mostly thin and medium sheet is usually well served towards the lower end of the 1.5–30 kW range; heavy engineering, plate processing and high-volume production, where cycle time sets output, justify more. We size the source to the thickest material you cut regularly, not the occasional exception, and to the hours the machine will run each day.",
+      "The rest of the machine is configured around the same job: a working area to suit the sheets you buy, the cutting head, and the nesting software that lays parts out on each sheet to keep scrap low.",
+      "Carbon steel is usually cut with oxygen, which reacts with the hot metal and helps on thicker plate. Stainless steel and aluminium are cut with nitrogen for a bright, oxide-free edge that can go straight to welding or powder coating, while compressed air is a lower-cost option for thinner, less critical parts. Reflective metals such as brass and copper can be cut too, provided the source and head are specified with back-reflection protection.",
+      "Day-to-day running cost is mostly electricity, assist gas and consumables such as nozzles and protective windows. The source and cutting head need a closed-loop water chiller to keep beam quality stable, and the cutting area needs fume extraction. Against those costs, a laser removes most of the grinding, drilling and marking-out that slower cutting methods leave behind.",
+      "Laser or plasma? A fiber laser gives finer detail, smaller holes, a narrower kerf and squarer edges, which matters for precision parts, close-fitting assemblies and visible finishes. CNC plasma costs less to buy and run and handles mild steel plate well where edge finish is less critical. Many fabricators start with plasma for structural plate and add a laser as precision work grows; we will tell you plainly which one your parts need.",
+      "Every RA Machine fiber laser is engineered, built and tested in India and configured to the buyer's job before it leaves the workshop. Installation, commissioning and operator training are part of the supply, with spares, remote diagnostics and service visits afterwards.",
     ],
     applications: [
       "Sheet metal fabrication and job work",
       "Automobile and auto component manufacturing",
+      "Electrical enclosures, control panels and switchgear",
       "Elevator and escalator panel fabrication",
       "Kitchen equipment and commercial appliance manufacturing",
-      "HVAC ducting and sheet metal ventilation systems",
-      "Electrical enclosures, panels and switchgear fabrication",
+      "HVAC ducting and ventilation components",
       "Structural steel and heavy engineering fabrication",
-      "Signage, sign-making and architectural metalwork",
       "Agricultural equipment and implement manufacturing",
-      "Railway coach and rolling stock component fabrication",
-    ],
-    comparisonSpecs: [
-      "Laser power",
-      "Working area",
-      "Max sheet thickness",
-      "Positioning accuracy",
-      "Max travel speed",
-      "Assist gases",
-      "Power supply",
-      "Machine weight",
+      "Railway coach and rolling stock components",
+      "Architectural metalwork and metal signage",
     ],
     faqs: [
       {
-        q: "What is the difference between a 1.5 kW and a 3 kW fiber laser cutting machine?",
-        a: "Power determines both maximum cuttable thickness and cutting speed on thinner material. A 1.5 kW machine comfortably cuts up to around 16 mm carbon steel and suits general fabrication, while a 3 kW machine extends to about 25 mm and cuts thinner gauge sheet noticeably faster, which matters for high-volume production where cycle time drives overall output.",
+        q: "How do I choose the right laser power between 1.5 kW and 30 kW?",
+        a: "Start with the thickest material you cut regularly and the volume you need each shift. Higher power cuts thicker plate and cuts thin sheet faster, but it raises the cost of the source, chiller and electrical supply. Buying far more power than your work needs ties up capital; buying too little slows production. Share sample drawings and your material mix, and we will recommend a power level within the range and explain the reasoning.",
       },
       {
         q: "Which assist gas should I use for fiber laser cutting?",
-        a: "Oxygen is generally used for carbon steel because it adds an exothermic reaction that speeds cutting of thicker plate, while nitrogen produces a clean, oxide-free edge on stainless steel and aluminium suited to welding or visible finishes without further grinding. Compressed air is a lower-cost option for thinner, less critical parts.",
+        a: "Oxygen is generally used for carbon steel because it reacts with the hot metal and helps the cut on thicker plate. Nitrogen produces a clean, oxide-free edge on stainless steel and aluminium, ready for welding or a visible finish without further grinding. Compressed air is a lower-cost option for thinner, less critical parts. We set up the gas supply and cutting parameters for your materials during commissioning.",
       },
       {
-        q: "Do fiber laser machines need a chiller?",
-        a: "Yes. The laser source and cutting head generate heat that must be removed to keep beam quality stable and protect the optics, so every fiber laser cutting machine ships with a dedicated industrial water chiller sized to the laser power, running as a closed loop that needs periodic coolant and filter checks.",
+        q: "Do fiber laser cutting machines need a chiller?",
+        a: "Yes. The laser source and cutting head generate heat that must be removed to keep beam quality stable and protect the optics, so every fiber laser runs with a dedicated industrial water chiller sized to the laser power. It works as a closed loop and needs periodic coolant and filter checks, which are covered in operator training along with the machine's other routine maintenance tasks.",
+      },
+      {
+        q: "Can the laser be used for welding as well as cutting?",
+        a: "Yes. The laser source can be fitted for cutting or for welding, depending on what the job needs. Laser welding produces a narrow, low-distortion weld at high travel speed and suits thin sheet, stainless steel and joints where appearance matters. Tell us whether you need cutting, welding or both, and we will configure the source, head and controls to suit your parts and production.",
       },
       {
         q: "Can one machine cut both thin sheet and thick plate well?",
-        a: "Yes, within its rated range. A correctly specified fiber laser adjusts power, speed and gas pressure automatically by material and thickness through its CNC control software, so the same machine handles thin gauge sheet and its rated maximum plate thickness without needing separate equipment, provided the thickness stays within the machine's specification.",
+        a: "Yes, within the capability of its laser power. The CNC control stores cutting parameters for each material and thickness, adjusting power, speed, focus and gas pressure automatically, so the same machine moves between thin sheet and heavier plate without separate equipment. The key is choosing a power level that covers the thickest material you cut regularly while staying economical on the thin work that makes up most jobs.",
       },
       {
-        q: "How much floor space does a fiber laser cutting machine need?",
-        a: "Beyond the machine's own footprint, allow clearance on all sides for sheet loading, cable and hose runs, the chiller unit, and safe operator access, plus space for a forklift or crane to load raw sheet and remove cut parts. Exact footprint is listed in each product's specification table; we can also advise on layout during quotation.",
-      },
-      {
-        q: "What after-sales support is included with a fiber laser cutting machine?",
-        a: "Every machine includes installation, commissioning, operator training and a standard warranty on major components, with remote diagnostic support and spares available afterward. Optional Annual Maintenance Contracts extend this with scheduled preventive visits; see our machine repair and maintenance service for details on ongoing support once your machine is in production.",
+        q: "What after-sales support comes with a fiber laser cutting machine?",
+        a: "Installation, commissioning and operator training are part of every supply, so your team is cutting production parts with confidence before handover. Training covers safe operation, programming and nesting, assist-gas settings and the daily and weekly checks that keep cut quality consistent. After that, we provide spares, remote diagnostics and service visits for the machines we build, so problems are diagnosed quickly and production keeps moving.",
       },
     ],
-    image: { src: "/categories/fiber-laser-cutting-machines.webp", alt: "Fiber laser cutting machine cutting a steel sheet", width: 1200, height: 800 },
+    image: {
+      src: "/categories/fiber-laser-cutting-machines.webp",
+      alt: "CNC fiber laser cutting machine cutting parts from a steel sheet",
+      width: 1200,
+      height: 800,
+    },
   },
   {
-    slug: "tube-laser-cutting-machines",
-    name: "Tube Laser Cutting Machines",
-    shortName: "Tube Laser",
+    slug: "cnc-plasma-cutting-machines",
+    name: "CNC Plasma Cutting Machines",
+    shortName: "CNC Plasma",
+    headline: "100–200 A",
+    headlineLabel: "plasma current",
+    ranges: [
+      { label: "Plasma current", value: "100 A – 200 A" },
+      { label: "Cutting range", value: "2 mm – 25 mm" },
+    ],
     description:
-      "Fiber laser tube cutting machine for round, square and rectangular profiles, handling handrail, furniture and structural tube fabrication.",
+      "CNC plasma cutting machines from 100 A to 200 A, cutting metal from 2 mm to 25 mm. Engineered and built in India, with installation and operator training.",
     intro:
-      "A tube laser cutting machine automates what was previously slow, error-prone manual work: cutting, notching and profiling round, square and rectangular tube for welded assemblies. Our RA-T6000 loads, chucks, rotates and cuts tube automatically to a CNC-programmed profile, producing clean mitred joints and complex end-cuts that would take a skilled fabricator far longer to mark out and cut by hand.",
+      "A CNC plasma cutting machine cuts electrically conductive metal with a constricted arc of ionised gas, guided along a programmed path by a CNC gantry. It is the economical way to cut mild steel, stainless steel and aluminium plate in quantity, where speed and running cost matter more than the fine detail of a laser. RA Machine builds CNC plasma machines with power sources from 100 A to 200 A and a cutting range of 2 mm to 25 mm, each configured to the plate sizes, thicknesses and volumes of the buyer's workshop.",
     longCopy: [
-      "Tube laser cutting clamps a length of tube in a servo-driven chuck, which rotates and feeds it past a cutting head while the beam profiles straight cuts, angled mitres, slots, holes and complex intersecting joints for tube-to-tube welding. A follow-rest supports the free end of longer tube to prevent whip during rotation, essential for holding accuracy over several metres.",
-      "The RA-T6000 runs a 2 kW fiber laser source as standard, configurable to 3 kW for thicker wall tube or faster cycles, and handles round tube from 20 mm to 219 mm diameter plus square and rectangular profiles up to 6.5 metres. Auto-loading and auto-unloading cut operator handling time significantly versus manual saw-and-notch workflows.",
-      "Furniture and handrail fabricators typically work smaller-diameter, thinner-wall tube where cut speed and edge finish matter most; structural and automotive chassis fabricators cut heavier wall tube where rigidity and laser power need headroom to cut cleanly without excessive dwell time at each joint.",
-      "Carbon steel, stainless steel, aluminium and brass tube all cut cleanly, following the same oxygen-for-steel, nitrogen-for-stainless/aluminium assist-gas principle as flat sheet. Because tube joints are compound-angle cuts, edge quality has a bigger impact on weld fit-up than flat sheet work, so a laser's precision earns back its cost quickly in reduced fitting time.",
-      "A basic single-chuck setup suits lower volumes or varied runs, while the RA-T6000's standard auto-loading rack pays for itself on repeat batches, shifting operator time from handling to programming and quality checks.",
-      "Tube laser cutting has become the standard upgrade path for furniture manufacturers, staircase and railing fabricators, solar mounting structure producers and automotive roll cage builders who have outgrown manual notching and want repeatable joint geometry across every batch.",
+      "A plasma torch forces a gas, usually compressed air, through a narrow nozzle while an electric arc passes from the electrode to the workpiece. The arc heats the gas until it becomes plasma, hot enough to melt steel, and the gas flow blows the molten metal out of the cut. Because the workpiece forms part of the electrical circuit, plasma cuts any conductive metal: mild steel, stainless steel, aluminium, brass and copper. The CNC controller drives the torch along the programmed profile, and torch height control keeps the stand-off distance correct as the plate flexes or warps with heat.",
+      "The power source current is the main configuration choice. A higher-current source cuts thicker plate and cuts mid-range thicknesses faster, while a lower-current source gives a narrower kerf and finer detail on thin sheet and costs less to buy and run. Within the 2–25 mm cutting range, the right current depends on where most of your work sits: a workshop cutting mainly thin and medium sheet does not need the top of the range, while one cutting heavier plate every day does. Gantry size, torch height control and nesting software are configured around the same job.",
+      "Plasma leaves a slightly bevelled edge and a wider heat-affected zone than a laser, and small holes relative to plate thickness are hard to cut cleanly. For brackets, base plates, gussets, flanges and parts that will be welded or machined anyway, this rarely matters. The correct current, cutting speed, stand-off height and fresh consumables keep dross to a minimum, so parts need only light cleaning.",
+      "Running costs are electricity, compressed air or other plasma gas, and consumables. The electrode and nozzle wear with every arc start and must be replaced regularly, and cut quality falls if they are run too long. Clean, dry air matters, so the supply needs proper filtration and moisture removal. A water table or downdraught table handles the fume and dust, which plasma produces more of than laser.",
+      "Plasma or fiber laser? Plasma costs considerably less to buy, is simple to run and cuts mild steel plate across the 2–25 mm range quickly, which makes it the practical choice for structural fabrication, agricultural equipment and heavy engineering. A fiber laser wins when parts need fine detail, small holes, tight fits or clean, square edges on thinner sheet. Some workshops run both: plasma for heavier plate, laser for precision sheet work.",
+      "RA Machine engineers, builds and tests its CNC plasma machines in India and configures each one to the buyer's plate sizes, materials and output. Installation, commissioning and operator training come with the machine, covering programming, nesting, consumable care and safe operation, with spares, remote diagnostics and service visits afterwards.",
     ],
     applications: [
-      "Tubular steel furniture manufacturing",
-      "Handrail and staircase fabrication",
-      "Automotive chassis and roll cage fabrication",
-      "Agricultural equipment frame manufacturing",
-      "Fitness and gym equipment fabrication",
-      "Solar mounting structure manufacturing",
-      "Scaffolding and access equipment fabrication",
-      "Exhaust and pipe fabrication",
-    ],
-    comparisonSpecs: [
-      "Laser power",
-      "Max tube length",
-      "Round tube diameter range",
-      "Positioning accuracy",
-      "Max travel speed",
-      "Power supply",
+      "Structural steel fabrication",
+      "Base plates, gussets, brackets and flanges",
+      "Agricultural implements and trailers",
+      "Earthmoving and construction equipment components",
+      "Truck body and trailer building",
+      "Storage tanks, silos and hoppers",
+      "HVAC ductwork and fittings",
+      "Steel furniture and storage racks",
+      "General plate cutting and job work",
     ],
     faqs: [
       {
-        q: "What tube sizes can a tube laser cutting machine handle?",
-        a: "The RA-T6000 cuts round tube from 20 mm to 219 mm diameter, square tube from 20×20 mm to 160×160 mm, and rectangular tube across a comparable range, in standard lengths up to 6.5 metres. Exact limits depend on wall thickness and material, so we confirm feasibility for your specific tube stock at the quotation stage.",
+        q: "Should I choose plasma or fiber laser?",
+        a: "Choose plasma if most of your work is mild steel plate for structural, agricultural or heavy fabrication, where speed and low running cost matter more than fine detail. Choose a fiber laser if you cut thinner sheet, need small holes, tight-fitting parts or clean, square edges for visible finishes. Plasma costs considerably less to buy. Share your drawings and material mix and we will recommend the technology that suits them.",
       },
       {
-        q: "Can a tube laser machine also cut flat sheet?",
-        a: "No, tube laser machines are purpose-built around a rotating chuck and follow-rest for tubular and profile stock, and are not designed to cut flat sheet. Fabricators who need both typically run a dedicated flat-sheet fiber laser like the RA-F1530 or RA-F3015 Pro alongside a tube laser such as the RA-T6000.",
+        q: "What thickness can a 100 A vs a 200 A plasma cut?",
+        a: "Both work within the stated cutting range of 2 mm to 25 mm. As a rule, a higher-current source cuts thicker plate and cuts mid-range thicknesses faster, while a lower-current source gives finer detail and a narrower kerf on thin sheet. The right choice depends on the thicknesses you cut most often, the material and the edge quality you need, so we recommend a current after reviewing your drawings.",
       },
       {
-        q: "How does auto-loading work on the RA-T6000?",
-        a: "Raw tube is stacked on a loading rack; the machine automatically feeds the next length into the chuck once the current tube is finished cutting, and separates finished parts onto an unloading rack or conveyor. This reduces operator handling time and keeps the laser cutting continuously across a batch instead of waiting for manual reloads.",
+        q: "Which metals can a CNC plasma machine cut?",
+        a: "Plasma cuts any electrically conductive metal, because the workpiece forms part of the arc circuit. That includes mild steel, stainless steel, aluminium, galvanised sheet, brass and copper. Mild steel is the most common use. Stainless steel and aluminium cut well but benefit from correct gas selection and parameters for a clean edge. Plasma cannot cut non-conductive materials such as wood, plastics or glass.",
       },
       {
-        q: "What joint types can be cut for welded tube assemblies?",
-        a: "The machine profiles straight cuts, angled mitres, saddle and fish-mouth joints for tube-to-tube intersections, slots and holes, all directly from your CAD or CAM-generated CNC program. This produces a precise fit-up for welding, reducing the manual grinding and fitting time that hand-cut or bandsaw-cut tube typically requires before welding.",
+        q: "What consumables does plasma cutting use, and when are they changed?",
+        a: "The main consumables are the electrode and nozzle, with the swirl ring and shield replaced less often. They wear with every arc start and with time under the arc, so life depends on how many pierces and how much cutting your jobs involve. Signs of wear include a wider, more bevelled cut and more dross. Operator training covers inspecting and changing consumables before quality drops.",
       },
       {
-        q: "What assist gas is used for tube laser cutting?",
-        a: "The same principle as flat sheet applies: oxygen assist gas is generally used for carbon steel tube to cut thicker wall sections efficiently, while nitrogen produces a clean, oxide-free edge on stainless steel and aluminium tube that is ready for welding without further edge preparation or grinding.",
+        q: "Does CNC plasma need compressed air or special gases?",
+        a: "Most mild steel cutting is done with compressed air, which keeps running cost low. The air must be clean and dry, because oil and moisture shorten consumable life and spoil the cut, so the supply needs proper filtration and a dryer. Other plasma gases can improve edge quality on stainless steel and aluminium. We advise on the gas setup when configuring the machine for your materials.",
       },
       {
-        q: "Is training included for switching from manual tube cutting to a laser machine?",
-        a: "Yes, operator training is included with every RA-T6000 purchase, covering safe loading and unloading, tube-nesting software, common profile programming and day-to-day maintenance. Most fabrication teams with prior sheet metal or workshop experience become confident running routine jobs within a few days of hands-on training.",
+        q: "Are installation and operator training included?",
+        a: "Yes. Every CNC plasma machine is installed and commissioned by our team, including torch height control setup, cutting parameter tables for your materials and a check of your air supply. Operator training covers programming and nesting, consumable care, safe operation and routine maintenance. After handover, we provide spares, remote diagnostics and service visits for the machines we build, so your cutting keeps running.",
       },
     ],
-    image: { src: "/categories/tube-laser-cutting-machines.webp", alt: "Fiber laser tube cutting machine profiling round steel tube", width: 1200, height: 800 },
+    image: {
+      src: "/categories/cnc-plasma-cutting-machines.webp",
+      alt: "CNC plasma cutting machine cutting a profile from steel plate",
+      width: 1200,
+      height: 800,
+    },
   },
   {
-    slug: "co2-laser-machines",
-    name: "CO2 Laser Machines",
-    shortName: "CO2 Laser",
+    slug: "mig-tig-arc-welding-machines",
+    name: "MIG, TIG & Arc (MMA) Welding Machines",
+    shortName: "MIG / TIG / MMA",
+    headline: "MIG · TIG · MMA",
+    headlineLabel: "processes",
+    ranges: [
+      { label: "Processes", value: "MIG, TIG, MMA (arc)" },
+      { label: "Supply", value: "220 V and 440 V" },
+      { label: "Configuration", value: "Customisable" },
+    ],
     description:
-      "CO2 laser cutting and engraving machine for acrylic, wood, MDF, leather and fabric, built for signage, packaging and display fabrication.",
+      "MIG, TIG and MMA arc welding machines for 220 V and 440 V supply, customisable to your work. Engineered and built in India, with installation and training.",
     intro:
-      "CO2 laser machines use a sealed, water-cooled glass laser tube to cut and engrave non-metallic materials with fine detail and a clean edge, making them the standard tool for signage, acrylic display fabrication, woodworking, leather goods and packaging sampling. Our RA-C1390 combines a 1300 × 900 mm working bed with a 130 W CO2 source, sized for both production cutting and detailed engraving work on the same machine.",
+      "Arc welding joins metal by melting the joint with an electric arc, and the three most widely used manual and semi-automatic processes are MIG, TIG and MMA (stick). RA Machine builds welding machines for all three, for 220 V and 440 V supply, and customises each to the buyer's materials, thicknesses and type of work. That covers a fabrication shop's everyday MIG set, a TIG machine for stainless steel and aluminium, and a rugged MMA machine for site erection and maintenance, each engineered, built and tested in India.",
     longCopy: [
-      "A CO2 laser generates its beam inside a sealed glass tube filled with a carbon dioxide gas mixture, excited by a high-voltage discharge and cooled by a recirculating water chiller. Mirrors direct the beam to a moving head, where a lens focuses it to a fine point capable of vaporising material along a cut line or, at lower power, marking a surface without cutting through it.",
-      "The RA-C1390's 1300 × 900 mm bed accommodates full sheets of standard acrylic, plywood and MDF stock, reducing offcut waste versus smaller-format machines. Its 130 W tube, configurable from 100–150 W, balances cutting speed on thicker board against the detail achievable when engraving fine text or artwork.",
-      "Acrylic, plywood, MDF, leather, fabric, rubber and foam all cut cleanly with a sealed edge needing no secondary finishing, since the laser vaporises material along a narrow kerf rather than tearing it. Acrylic in particular takes on a flame-polished, glass-smooth edge straight off the machine — why CO2 lasers are the default for acrylic signage and display fabrication.",
-      "A 130 W class machine does not have the power density fiber lasers apply to metal cutting, but the RA-C1390 can perform surface marking and engraving on suitably prepared or coated metal, such as nameplates — a distinct process from through-cutting, often used alongside acrylic and board work on the same line.",
-      "Running costs are modest: electricity, the chiller, and periodic replacement of the laser tube once output power degrades past its rated service life. Focus lenses and mirrors need occasional cleaning, and the bed should be kept clear of char buildup when cutting wood or MDF.",
-      "The controller accepts standard vector and raster files from common design software, with layer-based settings controlling which lines are cut, scored or engraved — no need to redraw artwork in a proprietary format.",
+      "All three processes strike an arc between an electrode and the workpiece and protect the molten weld pool from the air. They differ in how filler metal is supplied and how the pool is shielded, and that difference decides speed, the skill required, weld appearance and where each process works best.",
+      "MIG (metal inert gas) welding, called MAG when an active gas mixture is used on steel, feeds a continuous wire electrode through the torch while shielding gas flows around the arc. Because the welder never stops to change electrodes, it is the fastest of the three for production fabrication on mild steel, stainless steel and aluminium, and the easiest to learn. It needs a gas cylinder and is sensitive to wind, so it is mainly a workshop process.",
+      "TIG (tungsten inert gas) welding uses a non-consumable tungsten electrode and, where needed, a separately fed filler rod, shielded by argon. It is slower and demands more operator skill, but it gives precise heat control and clean, spatter-free welds. That makes it the choice for thin stainless steel, aluminium, food and pharmaceutical equipment, pipe root passes and any weld that will be seen.",
+      "MMA (manual metal arc, or stick) welding uses a flux-coated electrode whose coating creates its own shielding gas and slag. It needs no gas cylinder and copes with wind, mill scale and awkward positions better than the other two, so it remains the standard for site erection, structural work, repair and maintenance. It is slower than MIG because of electrode changes and slag removal between runs.",
+      "Choosing a configuration starts with the job: the processes you need, the metals and thicknesses, how long the machine will weld without a break, and the supply available. A 220 V machine runs from an ordinary single-phase connection and suits smaller workshops, maintenance teams and site use; a 440 V three-phase machine suits continuous production and heavier sections. Many buyers want one machine that covers more than one process, and we customise the output, controls, torches and accessories to suit.",
+      "These machines sit alongside the other welding families on this site. For long, straight or circumferential seams on thick plate, submerged arc welding deposits metal faster than manual MIG. For repeat parts in volume, a cobot or industrial robot can carry the MIG torch and weld every part the same way. Manual MIG, TIG and MMA remain the right tools for varied, one-off and site work.",
+      "RA Machine engineers, builds and tests its welding machines in India and supports them with installation, operator training, spares, remote diagnostics and service visits.",
     ],
     applications: [
-      "Signage and advertising fabrication",
-      "Acrylic display and point-of-sale fabrication",
-      "Packaging die-line sampling and prototyping",
-      "Furniture and woodworking decorative inlay",
-      "Leather goods and footwear component cutting",
-      "Gift, award and trophy engraving",
-      "Rubber stamp making",
-      "Textile and garment pattern cutting",
-    ],
-    comparisonSpecs: [
-      "Laser power",
-      "Working area",
-      "Laser source type",
-      "Positioning accuracy",
-      "Max cutting/engraving speed",
-      "Power supply",
+      "Structural steel and general fabrication",
+      "Stainless steel food, dairy and pharmaceutical equipment",
+      "Aluminium fabrication",
+      "Pipe and pipeline welding",
+      "Automobile body and component repair",
+      "Agricultural equipment manufacture and repair",
+      "Site erection and construction",
+      "Plant maintenance and repair workshops",
+      "Steel gates, grills and furniture",
+      "Welding training at ITIs and technical institutes",
     ],
     faqs: [
       {
-        q: "Can the RA-C1390 cut metal?",
-        a: "No, a 130 W class CO2 laser does not have the power density to cut through structural metal sheet; that is the role of our fiber laser range. The RA-C1390 can perform surface marking and light engraving on suitably prepared or coated metal for identification, branding or nameplate work, which is a distinct process from cutting through material.",
+        q: "What is the difference between MIG, TIG and MMA welding?",
+        a: "MIG feeds a continuous wire through the torch with shielding gas, making it the fastest and easiest for production fabrication. TIG uses a tungsten electrode and separate filler rod under argon, giving the cleanest, most controlled welds on thin stainless steel and aluminium, but it is slower and needs more skill. MMA uses flux-coated stick electrodes, needs no gas cylinder and is the most forgiving for site and repair work.",
       },
       {
-        q: "What is the maximum acrylic and MDF thickness it can cut?",
-        a: "The RA-C1390 cuts acrylic up to around 20 mm and plywood or MDF up to a similar thickness in a single pass, with thicker stock cuttable in multiple passes at reduced speed. Exact achievable thickness depends on the specific material grade, so we recommend a sample test cut for unusual materials before committing to a production run.",
+        q: "Should I buy a 220 V or a 440 V welding machine?",
+        a: "It depends on the supply at your site and the work you do. A 220 V machine runs from an ordinary single-phase connection, so it suits smaller workshops, maintenance teams and work where the machine moves around. A 440 V three-phase machine suits continuous production welding and heavier sections, where the machine runs for long periods. Tell us your supply and typical jobs, and we will recommend the right option.",
       },
       {
-        q: "What design software works with the machine's controller?",
-        a: "The controller accepts standard vector formats exported from common design and CAD tools, letting you send existing artwork to the machine directly. Layer or colour-based settings within the file control which lines are cut through, scored, or engraved at a lighter setting, so a single file can combine multiple operations in one job.",
+        q: "Which welding process suits stainless steel and aluminium?",
+        a: "TIG gives the most precise control and the cleanest finish on thin stainless steel and aluminium, which is why it is used for food, dairy, pharmaceutical and decorative work. MIG is faster and well suited to thicker sections and production runs in both metals, with the right wire and shielding gas. MMA can weld stainless steel with suitable electrodes but is rarely the first choice for aluminium. We configure the machine to the metals you weld.",
       },
       {
-        q: "How often does the laser tube need replacing?",
-        a: "A sealed CO2 glass tube has a rated service life, typically several thousand hours of operation, after which output power gradually degrades and cut quality on thicker material declines. Replacement interval depends on daily usage; we advise on expected tube life and replacement cost at the time of purchase based on your production volume.",
+        q: "Can one machine do MIG, TIG and MMA?",
+        a: "We can configure a machine for more than one process, which suits workshops doing varied work that do not want separate sets for each job. A multi-process machine is practical where one process dominates and the others are used occasionally. Where a workshop welds all day in one process, a dedicated machine is often simpler. We look at your work mix and recommend the arrangement that makes sense.",
       },
       {
-        q: "Does the machine need special ventilation?",
-        a: "Yes. Cutting acrylic, wood, leather and similar materials produces fumes and fine particulate that should be extracted, so we recommend fitting an exhaust or fume extraction system ducted outside the workspace, particularly for continuous production use. We can advise on extraction sizing appropriate to your workspace during installation planning.",
+        q: "What does 'customisable' mean for a welding machine?",
+        a: "It means the machine is configured to your work rather than picked from a fixed catalogue. We match the processes, output, supply voltage, controls, torches, cables, wire feeder and accessories to the metals and thicknesses you weld and how long the machine runs. Share your typical jobs, materials and the supply at your site, and we will propose a configuration and explain why it suits that work.",
       },
       {
-        q: "Is training included, and how long does it take to learn?",
-        a: "Yes, operator training is included covering safe operation, focus and lens care, software use and routine maintenance. Most operators with basic computer familiarity become comfortable running standard jobs within one to two days of hands-on training, with more advanced nesting and multi-layer job setup picked up over the following weeks of regular use.",
+        q: "Is MMA still worth buying when MIG is faster?",
+        a: "Yes, for the right work. MMA needs no gas cylinder or wire feeder, so the equipment is simple, portable and tolerant of wind, rust and awkward positions. That makes it the practical choice for site erection, structural steel, repairs and maintenance, where moving a MIG set and gas supply is inconvenient. For production welding in a workshop, MIG is usually faster and more economical per metre of weld.",
       },
     ],
-    image: { src: "/categories/co2-laser-machines.webp", alt: "CO2 laser machine cutting acrylic sheet for signage", width: 1200, height: 800 },
+    image: {
+      src: "/categories/mig-tig-arc-welding-machines.webp",
+      alt: "Arc welding machine with MIG torch welding a steel joint",
+      width: 1200,
+      height: 800,
+    },
+  },
+  {
+    slug: "submerged-arc-welding-machines",
+    name: "Submerged Arc Welding (SAW) Machines",
+    shortName: "SAW",
+    headline: "440 V",
+    headlineLabel: "supply",
+    ranges: [
+      { label: "Supply", value: "440 V" },
+      { label: "Configuration", value: "Customisable" },
+    ],
+    description:
+      "Submerged arc welding (SAW) machines for 440 V, customisable for long seams on thick plate. Engineered and built in India, with installation and training.",
+    intro:
+      "Submerged arc welding (SAW) is an automatic process in which the arc burns under a blanket of granular flux, fed by a continuous wire electrode. It deposits weld metal quickly with deep penetration, a smooth bead and almost no visible arc, spatter or fume, which makes it the standard method for long seams on thick plate. RA Machine builds SAW machines for 440 V supply and customises each to the buyer's work: the type of seam, the size of the job, and how the welding head and workpiece are to move.",
+    longCopy: [
+      "In submerged arc welding, a wire electrode is fed continuously from a spool into the joint while a hopper lays granular flux ahead of it. The arc forms between the wire and the workpiece beneath that flux layer. The flux melts to shield the weld pool and forms a slag that protects the bead as it cools, and the unmelted flux is recovered and reused. Because the arc is buried, there is no visible arc flash and very little spatter or fume, and the welding head travels at a steady, mechanised speed.",
+      "SAW beats MIG on long, straight or circumferential seams in thick material. It deposits far more weld metal per hour, penetrates deeply so thick joints need fewer passes, and produces consistent, smooth beads that need little cleaning. MIG remains the better choice for short welds, complex shapes, thin sheet and vertical or overhead positions, because SAW works only in the flat position, or on horizontal fillets, where the flux can lie on the joint.",
+      "A SAW machine is less a single welding set than a system: the power source, the wire feeder and welding head, flux handling and recovery, and the equipment that moves either the head or the work. Longitudinal seams are usually welded with a tractor running along the joint or a column-and-boom carrying the head; circumferential seams on shells and pipes use rotators or positioners turning the work beneath a fixed head. The job decides which of these you need and the size of work they must handle.",
+      "SAW is used mainly on carbon and low-alloy steels, and also on stainless steel with matching wire and flux. Wire and flux are chosen together to give the weld chemistry and toughness the job requires, which is why pressure vessel and structural fabricators specify them carefully. Joint preparation and fit-up matter, because SAW rewards clean, well-aligned joints.",
+      "The machine runs on 440 V three-phase supply, which suits the continuous, high-output welding SAW is used for. Running costs are electricity, wire and flux, reduced by reusing recovered flux. Because the operator supervises the weld rather than holding a torch, fatigue is lower and quality depends far less on individual hand skill.",
+      "RA Machine engineers, builds and tests its SAW machines in India and customises each to the buyer's seams, job sizes and handling equipment. Installation, commissioning and operator training are part of the supply, covering parameter setting, flux handling and safe operation, with spares, remote diagnostics and service visits afterwards. For shorter welds and general fabrication, our MIG, TIG and MMA machines are the better fit.",
+    ],
+    applications: [
+      "Pressure vessels and boilers",
+      "Storage tanks and silos",
+      "Large-diameter pipe fabrication",
+      "Structural beams, columns and plate girders",
+      "Wind tower sections",
+      "Shipbuilding and barge panels",
+      "Railway wagon fabrication",
+      "Heavy engineering and earthmoving equipment",
+      "Hardfacing and build-up of worn rollers and shafts",
+    ],
+    faqs: [
+      {
+        q: "What jobs is SAW best for?",
+        a: "SAW suits long, continuous welds on thick steel: longitudinal and circumferential seams on pressure vessels, boilers, tanks and pipes, and the web-to-flange joints of beams, columns and plate girders. It also suits hardfacing and build-up of worn rollers and shafts. Wherever the same long seam is welded repeatedly in the flat position, SAW delivers high deposition and consistent quality with little cleaning afterwards.",
+      },
+      {
+        q: "Does SAW work on 440 V three-phase supply?",
+        a: "Yes. RA Machine's SAW machines are built for 440 V supply, the three-phase industrial connection most Indian factories already have. SAW draws heavy current for long periods, so a three-phase supply is the practical choice. Before installation we check your incoming supply, cabling and earthing so the machine runs reliably. If your site has a different arrangement, tell us at the enquiry stage, because the configuration is customisable.",
+      },
+      {
+        q: "When should I choose SAW instead of MIG welding?",
+        a: "Choose SAW when your work involves long seams on thick plate that can be welded in the flat position, and when the volume justifies a mechanised setup. It deposits metal faster, penetrates deeper and gives smoother, more consistent beads than manual MIG. Choose MIG for short welds, complex shapes, thinner material and positional welding, where SAW's flux blanket and travel equipment are impractical.",
+      },
+      {
+        q: "Can submerged arc welding be done in all positions?",
+        a: "No. Because the arc is buried under loose granular flux, SAW is limited to the flat position and horizontal fillet welds, where gravity keeps the flux on the joint. Circumferential seams are welded flat by turning the work on rotators beneath a fixed head. Vertical and overhead welds are better done with MIG, TIG or MMA, which is why most fabrication shops use SAW alongside them.",
+      },
+      {
+        q: "What is the flux for, and can it be reused?",
+        a: "The flux shields the arc and weld pool from the air, adds alloying elements in some grades, and forms a slag that protects the bead as it cools. Only part of it melts. The unmelted flux is collected, usually by a recovery system, sieved and returned to the hopper. It must be kept dry, because moisture causes porosity, so storage and handling are covered in training.",
+      },
+      {
+        q: "What equipment do I need around a SAW machine?",
+        a: "That depends on the seams you weld. Longitudinal seams usually need a welding tractor or a column-and-boom to carry the head along the joint. Circumferential seams need rotators or a positioner to turn the shell or pipe beneath the head. Flux recovery and fixtures complete the setup. We customise the system to your job sizes and include installation, commissioning and operator training with it.",
+      },
+    ],
+    image: {
+      src: "/categories/submerged-arc-welding-machines.webp",
+      alt: "Submerged arc welding head running a long seam on thick steel plate under granular flux",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     slug: "robotic-welding-systems",
-    name: "Robotic Welding Systems",
-    shortName: "Robotic Welding",
+    name: "Cobot & Robotic Welding Systems",
+    shortName: "Cobot / Robot",
+    headline: "Built to brief",
+    headlineLabel: "configuration",
+    ranges: [
+      { label: "Type", value: "Collaborative robot (cobot) or industrial robot" },
+      { label: "Configuration", value: "As per the buyer's requirement" },
+    ],
     description:
-      "Robotic MIG/MAG welding cells and workstations for consistent, high-volume weld quality across steel, stainless and aluminium fabrication.",
+      "Cobot and industrial robotic welding systems, configured to your parts and volumes. Engineered and built in India, with installation and operator training.",
     intro:
-      "Robotic welding systems bring industrial robot arms together with MIG/MAG welding power sources and positioners to deliver weld quality and cycle time that stay consistent regardless of which operator loaded the part. Our range spans the single-station RA-RW6 six-axis welding cell for growing fabrication shops to the dual-station RA-RW10 workstation for higher-throughput, multi-shift production.",
+      "A robotic welding system carries the welding torch on a programmable arm, so every part is welded with the same path, speed and torch angle regardless of who loaded it. RA Machine supplies two kinds: collaborative robots (cobots), which work alongside people and are quick to teach, and industrial robots, which run in guarded cells for higher speed and volume. There is no fixed model list. Each system is configured as per the buyer's requirement: the parts, the welding process, the fixtures and the output needed.",
     longCopy: [
-      "A robotic welding system pairs a six-axis robot arm carrying a MIG/MAG torch with a digital wire feeder, an inverter-based power source, and a positioner that presents the workpiece at the correct angle. The robot follows a taught or offline-programmed path at a precisely repeatable speed, torch angle and stick-out distance — exactly the variables that cause weld quality to vary between manual welders across a shift.",
-      "The single-station RA-RW6 suits moderate, varied production where an operator loads a part and the robot completes the cycle before the next load. The dual-station RA-RW10 lets an operator load one station while the robot welds the other, roughly doubling throughput for shops running repeat batches.",
-      "Mild and carbon steel, stainless steel and aluminium alloys all weld reliably using synergic modes programmed into our power sources. Aluminium benefits most from a robot's consistency, since manual aluminium MIG is notoriously sensitive to travel speed and torch angle; a programmed cell reduces burn-through and porosity defects.",
-      "Each positioner has a maximum part size, weight and reach the robot can service without repositioning the fixture. For larger or irregular parts, we advise on a custom fixture design at the quotation stage so the cell is specified to your actual product range.",
-      "Both the RA-RW6 and RA-RW10 support teach-pendant programming as standard, with offline programming from a CAD model available for shops running frequent new part introductions without taking the robot out of production.",
-      "Each cell ships with a fenced enclosure, interlocked access doors and light curtains that stop the robot if the work envelope is entered mid-cycle, plus welding fume extraction sized to your part volume and material.",
+      "A robotic welding system pairs a robot arm carrying the torch with a welding power source, a wire feeder for MIG work, and fixtures or a positioner that hold the part in the right place and at the right angle. The robot follows a taught path at a repeatable speed, torch angle and stick-out, which are exactly the variables that make manual weld quality vary from welder to welder and through a long shift.",
+      "Cobots are designed to share space with people. Force sensing and speed limits let them work without full guarding where a risk assessment confirms the application is safe, and most are taught by hand-guiding the torch to each point and saving it on a tablet. That suits small and medium batches, frequent changeovers and shops automating welding for the first time. Industrial robots are faster, more rigid and built to run continuously. They work inside a guarded cell with interlocked doors and light curtains, and suit high volumes of repeat parts and layouts where one station is loaded while the robot welds another.",
+      "The configuration is decided by the work: the size and weight of the parts, the length and position of the welds, batch sizes and how often the part changes, the welding process, and the output you need per shift. Fixtures matter as much as the robot. A robot welds exactly where it was taught, so parts must be cut and fitted consistently; accurate blanks from a CNC laser or plasma machine and well-designed fixtures are what make a robot pay off. We design fixtures and positioners around your actual parts.",
+      "Robotic MIG/MAG welding of mild steel, stainless steel and aluminium is the most common application, using synergic programs that set wire speed and voltage together. Aluminium benefits most from a robot's consistency, because manual aluminium MIG is sensitive to travel speed and torch angle. TIG can also be automated where the job needs clean welds on thinner stainless steel.",
+      "A robot does not remove the need for welding knowledge. Loading parts and running a saved program needs no certified welder, but programming and setting parameters benefit from someone who understands welding, and many shops retrain an experienced welder as the robot's programmer. Routine care covers contact tips, nozzles and liners, torch cleaning, cable checks and the lubrication schedule set by the robot's maker. Fume extraction belongs in every setup.",
+      "Against the other technologies on this site, manual MIG, TIG and MMA machines remain the right tools for one-off and varied work, and SAW handles long seams on thick plate. Robotic systems take over repeat parts where consistency and throughput matter. RA Machine engineers each system to the buyer's brief, builds and tests it in India, and supports it with installation, commissioning, operator and programmer training, spares, remote diagnostics and service visits.",
     ],
     applications: [
-      "Material handling equipment fabrication",
-      "Structural steel brackets and sub-frame welding",
+      "Automobile and auto component sub-assemblies",
+      "Two-wheeler frames and components",
       "Agricultural implement fabrication",
-      "Tank and pressure vessel welding",
-      "Furniture and storage rack fabrication",
-      "Construction equipment component welding",
-      "Automotive chassis sub-assembly welding",
-      "HVAC and ducting component welding",
-    ],
-    comparisonSpecs: [
-      "Number of axes",
-      "Repeatability",
-      "Max reach",
-      "Welding process",
-      "Power source rating",
-      "Power supply",
-      "Machine weight",
+      "Construction and earthmoving equipment components",
+      "Material handling equipment fabrication",
+      "Structural brackets and sub-frames",
+      "Steel furniture and storage racks",
+      "Electrical enclosures and panel frames",
+      "HVAC and ducting components",
     ],
     faqs: [
       {
-        q: "Do I need a skilled welder to operate a robotic welding cell?",
-        a: "Basic operation, loading parts and starting a saved welding program does not require a certified welder, but programming new welds and adjusting parameters benefits from someone with welding process knowledge. Many customers retrain an experienced manual welder as the cell's programmer and operator, combining their weld-quality judgment with the robot's consistency.",
+        q: "What's the difference between a cobot and an industrial welding robot?",
+        a: "A cobot is built to work near people: it senses contact, runs at limited speed and is usually taught by hand-guiding the torch, so it suits small batches, frequent changeovers and first-time automation. An industrial robot is faster and more rigid, runs inside a guarded cell, and suits high volumes of repeat parts. We recommend one or the other after looking at your parts, batch sizes and output.",
       },
       {
-        q: "What is the difference between the RA-RW6 and RA-RW10?",
-        a: "The RA-RW6 is a single-station cell suited to moderate, varied production, where an operator loads a part and the robot completes the cycle before the next load. The RA-RW10 is a dual-station workstation that lets an operator load one station while the robot welds the other, roughly doubling throughput for shops running repeat batches.",
+        q: "Is my production volume high enough for robotic welding?",
+        a: "Robotic welding pays off when the same parts recur, even in modest batches, and when consistent weld quality or a shortage of skilled welders is holding production back. Cobots make sense at lower volumes because they are quick to teach and change over. Very varied one-off work is usually better done manually. Share your part drawings and monthly quantities, and we will give you an honest assessment.",
       },
       {
-        q: "Can the robot weld aluminium as well as steel?",
-        a: "Yes, both cells support MIG/MAG welding of mild steel, stainless steel and aluminium alloys, with synergic welding programs that automatically set voltage, wire speed and gas flow for the chosen material and wire diameter. Aluminium welding particularly benefits from the robot's consistent travel speed and torch angle compared with manual welding.",
+        q: "Do I need a skilled welder to operate a robotic welding system?",
+        a: "Loading parts and starting a saved program does not need a certified welder, but programming new welds and adjusting parameters benefits from someone with welding process knowledge. Many customers retrain an experienced manual welder as the system's programmer and operator, combining their judgement of weld quality with the robot's consistency. Our training covers both operating the system and programming new parts.",
       },
       {
-        q: "How long does it take to program a new part?",
-        a: "Teach-pendant programming for a straightforward new part typically takes from under an hour to half a day depending on weld count and joint complexity, and the saved program can be reused indefinitely for repeat batches. Offline programming from a CAD model can prepare more complex parts without taking the robot out of production.",
+        q: "Can a robot weld stainless steel and aluminium as well as mild steel?",
+        a: "Yes. Robotic MIG/MAG welding handles mild steel, stainless steel and aluminium alloys, with synergic programs that set wire speed and voltage for the chosen material and wire. Aluminium benefits particularly from a robot's steady travel speed and torch angle, which reduce burn-through and porosity compared with manual welding. TIG can also be automated where the job needs clean welds on thinner stainless steel.",
       },
       {
-        q: "What safety features are included with the welding cell?",
-        a: "Each cell is supplied with a fenced enclosure, interlocked access doors and safety light curtains that stop the robot immediately if the work envelope is entered during a cycle, along with welding fume extraction sized to your part volume. Installation includes commissioning these safety systems and testing them before handover.",
+        q: "Why do parts and fixtures matter so much for robotic welding?",
+        a: "A robot repeats the taught path exactly, so it cannot compensate the way a manual welder does for a part that is cut short or fitted with a gap. Consistent blanks, ideally from CNC laser or plasma cutting, and fixtures that locate every part in the same place are what make a robot weld reliably. We design the fixtures and positioners around your actual parts as part of the system.",
       },
       {
-        q: "What ongoing maintenance does a robotic welding cell need?",
-        a: "Routine maintenance covers the wire feeder's drive rollers and liner, the welding torch's contact tips and nozzles, robot axis lubrication per the manufacturer's schedule, and periodic calibration checks on the positioner. Our Annual Maintenance Contract plans cover scheduled preventive visits for robotic welding cells alongside our laser cutting machine range.",
+        q: "What safety measures does a robotic welding system need?",
+        a: "An industrial robot works inside a guarded cell with interlocked doors and light curtains that stop it if anyone enters during a cycle. A cobot can work without full guarding only where a risk assessment of the specific application confirms it is safe, and the welding arc still needs screening. Both need welding fume extraction. We commission and test the safety systems before handover.",
       },
     ],
-    image: { src: "/categories/robotic-welding-systems.webp", alt: "Six-axis robot arm MIG welding a steel bracket assembly", width: 1200, height: 800 },
+    image: {
+      src: "/categories/robotic-welding-systems.webp",
+      alt: "Robot arm MIG welding a steel assembly held in a fixture",
+      width: 1200,
+      height: 800,
+    },
   },
 ];
 

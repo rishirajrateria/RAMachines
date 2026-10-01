@@ -49,7 +49,7 @@ function joinList(items: string[]): string {
 
 /** H1 text, shared with cityWordCount so the two never drift apart. */
 export function cityH1(cityName: string, stateName: string): string {
-  return `Laser Cutting Machine in ${cityName}, ${stateName} — Sales, Installation, Repair & Training`;
+  return `CNC Laser, Plasma & Welding Machines in ${cityName}, ${stateName} — Sales, Installation, Repair & Training`;
 }
 
 /**
@@ -65,14 +65,14 @@ export function citySections(city: City, state: State): CitySection[] {
       id: "overview",
       h3: `Laser cutting and welding machines in ${city.name}, ${state.name}`,
       paragraphs: [
-        `${city.name} is a city where we regularly deliver, install and service machines, with a fabrication base built around the industries above.`,
+        `We deliver, install and service cutting and welding machines in ${city.name}, configured for a fabrication base built around the industries above.`,
         ...city.overview,
       ],
     },
     {
       id: "industrial-areas",
       h3: `Industrial areas in ${city.name}`,
-      paragraphs: [`Our engineers have carried out installation or service visits inside ${joinList(city.industrialAreas)}.`],
+      paragraphs: [`Our engineers travel to units across ${city.name}, including ${joinList(city.industrialAreas)}, for installation, commissioning and service.`],
     },
     {
       id: "delivery",
@@ -81,9 +81,9 @@ export function citySections(city: City, state: State): CitySection[] {
     },
     {
       id: "service-training",
-      h3: `Service, AMC and operator training for ${city.name}`,
+      h3: `Service and operator training for ${city.name}`,
       paragraphs: [
-        `Most faults are resolved remotely within ${site.service.remoteResponseTime}; where a site visit is genuinely needed, an engineer is dispatched from our Kolkata headquarters within ${site.service.responseTime}, backed by stocked spares and optional AMC plans.`,
+        `Most faults are resolved remotely within ${site.service.remoteResponseTime}; where a site visit is genuinely needed, an engineer is dispatched from our Kolkata headquarters within ${site.service.responseTime}, backed by stocked spares.`,
         `Operator training is included on-site at handover, with the option of a more structured programme at our Kolkata training centre.`,
       ],
     },

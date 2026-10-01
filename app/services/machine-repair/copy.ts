@@ -8,38 +8,17 @@ import { site } from "@/config/site";
 import type { IconName } from "@/components/ui/Icons";
 
 export const introParagraphs: string[] = [
-  "RA Machine's repair and maintenance service covers fiber laser, CO2 laser, plasma, tube laser and robotic welding equipment of any make, not only our own. Every engagement starts with a clear diagnosis and a written estimate before work begins.",
+  "RA Machine's repair and maintenance service is for the machines we build: our CNC laser and plasma cutting machines, MIG, TIG, MMA and submerged arc welding machines, and cobot and robotic welding systems. Every engagement starts with a clear diagnosis and a written estimate before work begins.",
 ];
 
 export const onSiteParagraph: string =
-  "We dispatch a service engineer from Kolkata carrying the tools, test equipment and commonly needed spares for the machine type reported, and provide a written service report after every visit. The same engineers who install new RA Machine equipment also carry out repairs, so they already know the platforms they service.";
+  "We dispatch a service engineer from Kolkata carrying the tools, test equipment and commonly needed spares for the machine type reported, and provide a written service report after every visit. The same engineers who build and install RA Machine equipment also carry out repairs, so they already know every machine they service.";
 
 export const remoteDiagnosticsParagraph: string =
   "Faults involving the controller, servo drives, nesting software or electrical wiring can often be diagnosed over a phone or video call, sometimes resolving the issue on that first call or telling you exactly which part to have ready before an engineer is dispatched.";
 
 export const sparesParagraph: string =
-  "Fast-moving parts — protective lenses, ceramic nozzles and rings, drive belts, ball bearings, ballscrews, filters and chiller components — are stocked for quick dispatch anywhere in India, and shipped by air courier for export machines. AMC customers get priority allocation during a breakdown.";
-
-export const amcIntro: string =
-  "An Annual Maintenance Contract moves maintenance from a reactive expense to a planned one. We offer three tiers, scoped to your machine model, usage hours and site location.";
-
-export interface AmcRow {
-  feature: string;
-  basic: string;
-  standard: string;
-  premium: string;
-}
-
-export const amcRows: AmcRow[] = [
-  { feature: "Preventive maintenance visits", basic: "1 per year", standard: "2 per year", premium: "4 per year" },
-  { feature: "Breakdown response priority", basic: "Standard queue", standard: "Priority scheduling", premium: "Fastest available slot" },
-  { feature: "Remote diagnostic support", basic: "Business hours", standard: "Extended hours", premium: "Extended hours, first point of contact" },
-  { feature: "Consumables & wear-part coverage", basic: "Not included", standard: "Partial coverage", premium: "Extensive coverage" },
-  { feature: "Labour on breakdown visits", basic: "Chargeable", standard: "Discounted rate", premium: "Included" },
-  { feature: "Calibration & alignment check", basic: "On request, chargeable", standard: "Included with each visit", premium: "Included with each visit" },
-  { feature: "Software & firmware updates", basic: "Not included", standard: "Included when available", premium: "Included when available" },
-  { feature: "Written service reports", basic: "Yes", standard: "Yes", premium: "Yes, with usage trend notes" },
-];
+  "Fast-moving parts for our machines — protective lenses, nozzles and ceramic rings, plasma and welding torch consumables, drive belts, bearings, ballscrews, filters and chiller components — are stocked for quick dispatch anywhere in India, and shipped by air courier for export machines.";
 
 export interface FaultBlock {
   title: string;
@@ -76,17 +55,25 @@ export const commonFaults: FaultBlock[] = [
     body: "Inconsistent gas pressure or contaminated assist gas causes dross, discolouration or incomplete piercing, usually from a regulator fault or line leak. We pressure-test the circuit and confirm delivered purity at the head.",
   },
   {
+    title: "Plasma torch",
+    body: "Bevelled or rough cuts, arc-start failures and short consumable life usually trace back to worn electrodes and nozzles, a gas pressure fault or torch-height drift. We replace consumables, check gas delivery and re-tune torch height control.",
+  },
+  {
+    title: "Welding power source and wire feed",
+    body: "Erratic arcs, porosity or wire stubbing on MIG, TIG and SAW machines often come from a slipping wire feeder, a worn liner or contact tip, or a power-source fault. We test output, service the feed path and confirm weld quality on a test joint.",
+  },
+  {
     title: "Bed and rail alignment",
     body: "Years of heavy production can cause bed sag or rail misalignment that drifts parts out of tolerance without triggering alarms. We survey level and parallelism, re-align as needed, and re-verify accuracy across the bed.",
   },
 ];
 
 export function responseTimeParagraph(responseTime: string, remoteResponseTime: string): string {
-  return `Remote diagnostic contact within ${remoteResponseTime}. On site, we aim for the ${site.service.responseTimeLocal.toLowerCase()} in Kolkata and the surrounding districts and within ${responseTime} elsewhere in India; visits outside India are ${site.service.responseTimeInternational}. AMC and Premium-tier customers get priority scheduling ahead of this.`;
+  return `Remote diagnostic contact within ${remoteResponseTime}. On site, we aim for the ${site.service.responseTimeLocal.toLowerCase()} in Kolkata and the surrounding districts and within ${responseTime} elsewhere in India; visits outside India are ${site.service.responseTimeInternational}.`;
 }
 
 export const bookIntro: string =
-  "Tell us the machine brand and model, your city and a description of the fault, and our service desk will confirm the next step, usually within one working day.";
+  "Tell us the machine type and serial number, your city and a description of the fault, and our service desk will confirm the next step, usually within one working day.";
 
 export const stateLinksIntro: string =
   "Engineers dispatch from Kolkata and remote diagnostics are available nationwide. Find repair information for your state below.";
@@ -96,13 +83,13 @@ export const stateLinksIntro: string =
 // the copy above (page.tsx). No paragraph text is added, removed or reworded here.
 
 export const heroLead: string =
-  "One call reaches remote diagnostics, spares dispatch and an engineer from our Kolkata service desk, whatever brand of laser or welding machine is on your shop floor.";
+  "One call reaches remote diagnostics, spares dispatch and an engineer from our Kolkata service desk, for every RA Machine cutting and welding machine.";
 
 export const heroChips: { label: string; icon: IconName }[] = [
-  { label: "All brands", icon: "Badge" },
+  { label: "RA Machine equipment", icon: "Badge" },
   { label: "Pan-India", icon: "MapPin" },
   { label: "Remote diagnostics", icon: "Headset" },
-  { label: "Spares & AMC", icon: "Package" },
+  { label: "Spares", icon: "Package" },
 ];
 
 export interface RepairProcessStep {
@@ -129,10 +116,6 @@ export const faultIcons: Record<string, IconName> = {
   Controller: "Layers",
   "Gas system": "Wrench",
   "Bed and rail alignment": "Ruler",
+  "Plasma torch": "Bolt",
+  "Welding power source and wire feed": "Weld",
 };
-
-export const amcTierIcons: { key: "basic" | "standard" | "premium"; name: string; icon: IconName; recommended?: boolean }[] = [
-  { key: "basic", name: "Basic", icon: "Shield" },
-  { key: "standard", name: "Standard", icon: "Award", recommended: true },
-  { key: "premium", name: "Premium", icon: "Sparkles" },
-];

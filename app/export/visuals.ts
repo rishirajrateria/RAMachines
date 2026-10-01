@@ -24,13 +24,13 @@ export const whyIndiaTitleCycle = [
   "Competitive pricing",
   "Responsive support",
   "Logistics & trade ties",
-  "Proven track record",
+  "Built for export",
 ];
 
 /** The hub FactStrip's 4 facts (markets, warranty, lead time, Incoterms). */
 export function hubFacts(): { icon: IconName; label: string; value: string }[] {
   return [
-    { icon: "Globe", label: "Markets", value: "30 countries" },
+    { icon: "Globe", label: "Shipping", value: "Worldwide, on request" },
     { icon: "Shield", label: "Warranty", value: `${site.service.warrantyMonths} months` },
     { icon: "Clock", label: "Lead time", value: `${site.service.leadTimeWeeks} weeks` },
     { icon: "Truck", label: "Incoterms", value: "FOB Kolkata or Delhi / CIF" },

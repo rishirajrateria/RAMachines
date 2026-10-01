@@ -1,10 +1,10 @@
 /**
  * app/india/[state]/page.tsx — /india/[state]: one of 36 static state/UT pages.
  * ADR-0005 §6 anatomy: hero panel (H1, one sentence, three tiny facts) →
- * FactStrip → "Industries" DividedList + 3 product tiles → delivery Steps →
+ * FactStrip → "Industries" DividedList + up to 3 machine-family tiles → delivery Steps →
  * cities DividedList → prose column (lib/copy/state.ts, .prose-calm, ≥ 900
  * words) → Faq → CTA panel with the QuoteForm. Presentation-only facts (hero
- * facts, FactStrip, industry rows, product tiles, steps, city links) come
+ * facts, FactStrip, industry rows, family tiles, steps, city links) come
  * from app/india/_lib/stateVisuals.ts; the composed prose comes from
  * lib/copy/state.ts. This file only lays the page out — no fact is shown
  * twice.
@@ -14,13 +14,13 @@ import { notFound } from "next/navigation";
 import { buildMetadata, truncate } from "@/lib/seo";
 import { paths } from "@/lib/urls";
 import { localBusinessSchema, serviceSchema } from "@/lib/schema";
-import { states, getState, citiesByState, products } from "@/data";
+import { states, getState, citiesByState } from "@/data";
 import { stateSections, stateH1 } from "@/lib/copy/state";
 import {
   stateHeroFacts,
   stateFactStripFacts,
   stateIndustryItems,
-  stateProductTiles,
+  stateFamilyTiles,
   stateSteps,
   stateCityLinks,
 } from "../_lib/stateVisuals";
@@ -30,7 +30,7 @@ import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AboutBlurb from "@/components/ui/AboutBlurb";
 import Button from "@/components/ui/Button";
 import Faq from "@/components/ui/Faq";
-import ProductCard from "@/components/cards/ProductCard";
+import CategoryCard from "@/components/cards/CategoryCard";
 import QuoteForm from "@/components/forms/QuoteForm";
 import JsonLd from "@/components/ui/JsonLd";
 import { FactStrip, Steps, DividedList, ImageSlot } from "@/components/ui/glass";
@@ -61,7 +61,7 @@ export async function generateMetadata({
 
   return buildMetadata({
     title: stateTitle(state.name),
-    description: `Fiber laser cutting machine supplier and dealer in ${state.name}: delivery, installation, AMC repair service and operator training from RA Machine, Kolkata.`,
+    description: `CNC laser and plasma cutting, MIG/TIG/MMA, SAW and robotic welding machines in ${state.name}: delivery, installation, repair and training.`,
     path: paths.state(state.slug),
   });
 }
@@ -77,8 +77,8 @@ export default async function StatePage({
 
   const stateCities = citiesByState(state.slug);
   const sections = stateSections(state);
-  const industryItems = stateIndustryItems(state, products);
-  const productTiles = stateProductTiles(state, products);
+  const industryItems = stateIndustryItems(state);
+  const familyTiles = stateFamilyTiles(state);
 
   return (
     <>
@@ -93,8 +93,8 @@ export default async function StatePage({
         <p className="eyebrow mb-3">{state.region} India</p>
         <h1 className="max-w-3xl font-display text-display-lg text-ink">{stateH1(state.name)}</h1>
         <p className="mt-4 max-w-2xl text-grey-600">
-          Fiber laser cutting machines, tube laser machines and robotic MIG/MAG welding systems for {state.name}&apos;s
-          fabricators, built, delivered and serviced from our Kolkata works.
+          CNC laser and plasma cutting machines, MIG, TIG, MMA and SAW welding machines and robotic welding systems for{" "}
+          {state.name}&apos;s fabricators — built in India, delivered, installed and serviced by our own engineers.
         </p>
         <p className="mt-5 flex flex-wrap gap-x-6 gap-y-1.5 text-xs text-grey-500">
           {stateHeroFacts(state, stateCities).map((fact) => (
@@ -126,12 +126,12 @@ export default async function StatePage({
         intro="Each industry paired with its clusters and the machine our sales engineers most often recommend."
       >
         <DividedList items={industryItems} />
-        {productTiles.length > 0 && (
+        {familyTiles.length > 0 && (
           <>
             <p className="mt-10 text-sm text-grey-600">Machines we recommend most often across {state.name}:</p>
-            <div className="mt-4 grid gap-6 sm:grid-cols-3">
-              {productTiles.map((product) => (
-                <ProductCard key={product.slug} product={product} compact />
+            <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {familyTiles.map((family) => (
+                <CategoryCard key={family.slug} category={family} />
               ))}
             </div>
           </>
@@ -185,8 +185,8 @@ export default async function StatePage({
         data={[
           localBusinessSchema({ areaServed: state.name }),
           serviceSchema({
-            name: `Laser cutting machine sales, installation and repair in ${state.name}`,
-            description: `Fiber laser, CO2 laser, tube laser and robotic welding machine sales, installation, AMC service and operator training across ${state.name}.`,
+            name: `Cutting and welding machine sales, installation and repair in ${state.name}`,
+            description: `CNC laser and plasma cutting, MIG/TIG/MMA, SAW and robotic welding machine sales, installation, service and operator training across ${state.name}.`,
             path: paths.state(state.slug),
             areaServed: state.name,
           }),

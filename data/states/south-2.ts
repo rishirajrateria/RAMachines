@@ -26,35 +26,35 @@ export const south2States: State[] = [
         clusters: ["Kochi", "Ernakulam"],
         products: ["structural steel", "machine frames", "process equipment"],
         note: "General engineering workshops around Kochi need consistent, accurate sheet cutting to keep fabrication schedules tied to marine and infrastructure projects on track.",
-        recommendedProductSlugs: ["ra-f3015-pro"],
+        recommendedFamilies: ["fiber-laser-cutting-machines", "mig-tig-arc-welding-machines"],
       },
       {
         name: "Shipbuilding & marine ancillaries",
         clusters: ["Kochi", "Cochin Shipyard belt"],
         products: ["ship hull sections", "deck fittings", "marine brackets"],
-        note: "Ancillary units feeding the Cochin Shipyard belt cut and weld thick steel plate for hull and structural work, where clean edges and repeatable robotic welds reduce rework on marine-grade steel.",
-        recommendedProductSlugs: ["ra-f6020-hd", "ra-rw6"],
+        note: "Ancillary units feeding the Cochin Shipyard belt cut and weld thick steel plate for hull and structural work, where clean edges and consistent submerged arc or robotic welds reduce rework on marine-grade steel.",
+        recommendedFamilies: ["fiber-laser-cutting-machines", "submerged-arc-welding-machines", "robotic-welding-systems"],
       },
       {
         name: "Electrical equipment",
         clusters: ["Palakkad"],
         products: ["switchgear enclosures", "transformer parts", "control panels"],
         note: "Palakkad's electrical manufacturers rely on precise thin-to-medium sheet cutting for enclosures and panel components, where dimensional accuracy affects downstream assembly speed.",
-        recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+        recommendedFamilies: ["fiber-laser-cutting-machines"],
       },
       {
         name: "Coir machinery",
         clusters: ["Alappuzha"],
         products: ["coir processing equipment", "spinning machine parts"],
         note: "Coir machinery fabricators in Alappuzha need affordable, dependable sheet cutting for machine parts produced in smaller batch sizes.",
-        recommendedProductSlugs: ["ra-f1530"],
+        recommendedFamilies: ["fiber-laser-cutting-machines", "mig-tig-arc-welding-machines"],
       },
       {
         name: "Food processing & Ayurveda equipment",
         clusters: ["Kochi", "Thrissur"],
         products: ["stainless steel tanks", "conveyor frames", "processing line components"],
         note: "Stainless steel fabrication for food and Ayurveda processing equipment benefits from clean, burr-free laser-cut edges that reduce finishing time on hygienic surfaces.",
-        recommendedProductSlugs: ["ra-f3015-pro"],
+        recommendedFamilies: ["fiber-laser-cutting-machines", "mig-tig-arc-welding-machines"],
       },
     ],
     industrialAreas: [
@@ -69,23 +69,23 @@ export const south2States: State[] = [
     faqs: [
       {
         q: "How do I get a quote for a laser cutting or welding machine in Kerala?",
-        a: "Share your material type, thickness range, typical sheet or tube size, and monthly production volume with RA Machine, and our team will recommend a suitable model and send a formal quotation covering machine price, freight from Kolkata to your Kerala facility, and installation. Site photos or a floor plan help finalise power and layout requirements before dispatch.",
+        a: "Share your material type, thickness range, typical sheet or plate size, and monthly production volume with RA Machine, and our team will recommend a suitable machine and send a formal quotation covering machine price, freight from Kolkata to your Kerala facility, and installation. Site photos or a floor plan help finalise power and layout requirements before dispatch.",
       },
       {
         q: "What is the typical delivery and installation timeline from Kolkata to Kerala?",
-        a: "After order confirmation, standard fiber laser models are typically dispatched within 3-5 weeks, with road transit to Kochi or Palakkad adding roughly 6-9 days. RA Machine engineers travel from Kolkata to carry out on-site installation, mechanical alignment, and commissioning, which usually takes 3-5 working days depending on the machine and site readiness.",
+        a: "After order confirmation, standard fiber laser machines are typically dispatched within 3-5 weeks, with road transit to Kochi or Palakkad adding roughly 6-9 days. RA Machine engineers travel from Kolkata to carry out on-site installation, mechanical alignment, and commissioning, which usually takes 3-5 working days depending on the machine and site readiness.",
       },
       {
-        q: "Does RA Machine provide on-site service and AMC support in Kerala?",
-        a: "Yes. RA Machine offers annual maintenance contracts covering scheduled servicing, calibration, and priority breakdown support. Engineers are dispatched from our Kolkata headquarters for on-site visits, backed by remote diagnostics for faster first-response troubleshooting, so customers in Kochi, Palakkad, and Alappuzha are not left waiting on unresolved issues.",
+        q: "Does RA Machine provide on-site service support in Kerala?",
+        a: "Yes. RA Machine supports its machines with warranty cover, spare parts, scheduled service visits, and breakdown support. Engineers are dispatched from our Kolkata headquarters for on-site visits, backed by remote diagnostics for faster first-response troubleshooting, so buyers in Kochi, Palakkad, and Alappuzha are not left waiting on unresolved issues.",
       },
       {
         q: "Is operator training available for customers in Kerala?",
         a: "Training is provided on-site at your facility during installation, covering machine operation, nesting software, and routine maintenance. Customers who prefer a more structured session can also send operators to RA Machine's training centre in Kolkata, which combines classroom instruction with hands-on practice on live machines before they return to run production.",
       },
       {
-        q: "Which RA Machine model suits Kerala's shipbuilding and marine fabrication industry?",
-        a: "For the Cochin Shipyard ancillary belt, the RA-F6020-HD heavy plate fiber laser handles thick steel plate cutting for hull and structural sections, while the RA-RW6 robotic welding cell improves weld consistency on repetitive marine brackets and fittings, together reducing manual rework common in marine-grade steel fabrication.",
+        q: "Which machines from RA Machine suit Kerala's shipbuilding and marine fabrication industry?",
+        a: "For the Cochin Shipyard ancillary belt, a high-power CNC fiber laser cutting machine handles thick steel plate for hull and structural sections, and a submerged arc welding (SAW) machine takes on the long seams. A cobot or robotic welding system improves consistency on repetitive marine brackets and fittings, together reducing the manual rework common in marine-grade steel fabrication.",
       },
       {
         q: "Can Kerala customers get GST invoicing or export documentation through Cochin Port?",
@@ -110,21 +110,21 @@ export const south2States: State[] = [
         clusters: ["Sedarapet", "Thattanchavady"],
         products: ["brackets", "chassis parts", "sheet metal assemblies"],
         note: "Auto component units supplying Chennai OEMs need repeatable, tight-tolerance sheet cutting to meet automotive quality standards on brackets and structural parts.",
-        recommendedProductSlugs: ["ra-f3015-pro", "ra-rw6"],
+        recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
       },
       {
         name: "Electronics assembly",
         clusters: ["Mettupalayam", "Puducherry"],
         products: ["enclosures", "chassis panels", "mounting frames"],
         note: "Electronics assembly units require precise thin-sheet cutting for enclosures and panels, where consistent dimensions reduce fitment issues during assembly.",
-        recommendedProductSlugs: ["ra-f1530"],
+        recommendedFamilies: ["fiber-laser-cutting-machines"],
       },
       {
         name: "Pharmaceutical equipment",
         clusters: ["Puducherry"],
         products: ["stainless steel frames", "equipment housings"],
         note: "Pharma equipment fabricators need clean-cut stainless steel components, where laser cutting reduces contamination risk from burrs and secondary finishing.",
-        recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+        recommendedFamilies: ["fiber-laser-cutting-machines", "mig-tig-arc-welding-machines"],
       },
     ],
     industrialAreas: [
@@ -138,23 +138,23 @@ export const south2States: State[] = [
     faqs: [
       {
         q: "How do I request a quotation for a machine in Puducherry?",
-        a: "Send RA Machine your material specifications, thickness range, and expected production volume, and we will recommend a suitable fiber laser or robotic welding model. A formal quotation follows, covering machine cost, transport from Kolkata to Puducherry, and on-site installation, tailored to whether you are supplying auto components or electronics assembly work.",
+        a: "Send RA Machine your material specifications, thickness range, and expected production volume, and we will recommend a suitable fiber laser or welding system. A formal quotation follows, covering machine cost, transport from Kolkata to Puducherry, and on-site installation, tailored to whether you are supplying auto components or electronics assembly work.",
       },
       {
         q: "What is the delivery and installation timeline from Kolkata to Puducherry?",
         a: "Standard machines are typically dispatched within 3-5 weeks of order confirmation, with road transit to Puducherry adding around 6-8 days. RA Machine engineers travel from Kolkata to handle installation, alignment, and commissioning on-site, usually completed within 3-4 working days once the machine and utilities are ready at your facility.",
       },
       {
-        q: "Is on-site service and AMC coverage available in Puducherry?",
-        a: "Yes. RA Machine's annual maintenance contracts cover periodic servicing and breakdown response for customers across Sedarapet, Thattanchavady, and Mettupalayam. Service engineers are dispatched from our Kolkata headquarters for on-site work, supported by remote diagnostics to resolve straightforward issues quickly without waiting for a physical visit.",
+        q: "Is on-site service available in Puducherry?",
+        a: "Yes. RA Machine provides periodic service visits, spare parts, and breakdown response for its machines across Sedarapet, Thattanchavady, and Mettupalayam. Service engineers are dispatched from our Kolkata headquarters for on-site work, supported by remote diagnostics to resolve straightforward issues quickly without waiting for a physical visit.",
       },
       {
         q: "Does RA Machine offer operator training for Puducherry customers?",
         a: "Training is conducted on-site at your facility as part of installation, covering safe operation, software use, and routine maintenance checks. Puducherry customers can also send operators to RA Machine's training centre in Kolkata for a more in-depth session before the machine goes into full production use.",
       },
       {
-        q: "Which RA Machine model suits Puducherry's auto component industry?",
-        a: "For auto component fabricators in Sedarapet and Thattanchavady, the RA-F3015-PRO 3 kW fiber laser handles general sheet metal cutting for brackets and chassis parts efficiently, and pairing it with the RA-RW6 robotic welding cell improves consistency on repetitive welds feeding Chennai-area automotive supply chains.",
+        q: "Which machines from RA Machine suit Puducherry's auto component industry?",
+        a: "For auto component fabricators in Sedarapet and Thattanchavady, a CNC fiber laser cutting machine handles general sheet metal cutting for brackets and chassis parts efficiently, and pairing it with a robotic welding system configured to your parts improves consistency on the repetitive welds feeding Chennai-area automotive supply chains.",
       },
       {
         q: "Can Puducherry customers get GST invoicing or arrange export through Chennai Port?",
@@ -179,21 +179,21 @@ export const south2States: State[] = [
         clusters: ["Port Blair"],
         products: ["boat fittings", "marine brackets", "deck hardware"],
         note: "Marine fabricators serving the local fishing fleet need dependable sheet cutting for fittings and hardware, reducing reliance on parts shipped in from the mainland.",
-        recommendedProductSlugs: ["ra-f1530"],
+        recommendedFamilies: ["fiber-laser-cutting-machines", "mig-tig-arc-welding-machines"],
       },
       {
         name: "Boat building and repair",
         clusters: ["Port Blair", "Junglighat"],
         products: ["hull patches", "structural repair sections", "small boat frames"],
         note: "Small boat builders and repair yards benefit from accurate thin-to-medium sheet cutting for hull sections and repair patches, where turnaround time matters for vessels returning to service.",
-        recommendedProductSlugs: ["ra-f1530", "ra-rw6"],
+        recommendedFamilies: ["fiber-laser-cutting-machines", "mig-tig-arc-welding-machines", "cnc-plasma-cutting-machines"],
       },
       {
         name: "Light engineering for infrastructure works",
         clusters: ["Port Blair", "Prothrapur"],
         products: ["brackets", "railings", "structural supports"],
         note: "Local infrastructure and port projects require light structural fabrication, where a compact laser cutting machine reduces dependence on components shipped from mainland India.",
-        recommendedProductSlugs: ["ra-f1530", "ra-c1390"],
+        recommendedFamilies: ["fiber-laser-cutting-machines", "mig-tig-arc-welding-machines"],
       },
     ],
     industrialAreas: ["Junglighat Industrial Estate", "Prothrapur Industrial Estate"],
@@ -203,23 +203,23 @@ export const south2States: State[] = [
     faqs: [
       {
         q: "How do I get a quotation for a machine to be shipped to the Andaman and Nicobar Islands?",
-        a: "Share your material type, thickness, and intended use with RA Machine, and we will recommend a suitable compact model, typically the RA-F1530, sized for local workshop conditions in Port Blair. The quotation will include machine cost, sea freight from Kolkata port, and on-site installation, since air freight for the machine itself is generally not practical at this size.",
+        a: "Share your material type, thickness, and intended use with RA Machine, and we will recommend a suitable compact machine, typically an entry-level fiber laser or a CNC plasma cutting machine, sized for local workshop conditions in Port Blair. The quotation will include machine cost, sea freight from Kolkata port, and on-site installation, since air freight for the machine itself is generally not practical at this size.",
       },
       {
         q: "What is the typical delivery timeline from Kolkata to Port Blair?",
         a: "After order confirmation, machines are dispatched and shipped by sea from Kolkata or Haldia port, with transit typically taking 4-7 days depending on vessel availability, plus port clearance time in Port Blair. RA Machine engineers then travel to the islands to complete installation and commissioning once the machine has cleared port formalities.",
       },
       {
-        q: "Is on-site service and AMC support available in the Andaman and Nicobar Islands?",
-        a: "Yes, though visit scheduling accounts for the islands' distance from the mainland. RA Machine's AMC plans cover scheduled servicing and breakdown response, with engineers dispatched from Kolkata for on-site work and remote diagnostics used first wherever possible to resolve issues without waiting for a physical visit.",
+        q: "Is on-site service available in the Andaman and Nicobar Islands?",
+        a: "Yes, though visit scheduling accounts for the islands' distance from the mainland. RA Machine provides scheduled servicing, spare parts, and breakdown response for its machines, with engineers dispatched from Kolkata for on-site work and remote diagnostics used first wherever possible to resolve issues without waiting for a physical visit.",
       },
       {
         q: "Can operators in Port Blair get training on the machine?",
         a: "Basic operational training is provided on-site during installation, covering safe use, routine maintenance, and simple troubleshooting suited to local workshop conditions. Operators who want deeper hands-on experience can also travel to RA Machine's training centre in Kolkata for a more comprehensive session before returning to the islands.",
       },
       {
-        q: "Which RA Machine model suits boat building and marine fabrication in Port Blair?",
-        a: "The RA-F1530 fiber laser is well suited to the boat building and marine fabrication workshops around Port Blair and Junglighat, handling thin-to-medium sheet cutting for hull sections, fittings, and repair patches in a compact footprint appropriate for smaller island workshops.",
+        q: "Which machines from RA Machine suit boat building and marine fabrication in Port Blair?",
+        a: "An entry-level CNC fiber laser cutting machine suits the boat building and marine fabrication workshops around Port Blair and Junglighat, handling thin-to-medium sheet for hull sections, fittings, and repair patches in a compact footprint. MIG, TIG and MMA welding machines then cover the repair and assembly work that keeps vessels in service.",
       },
       {
         q: "Can GST invoicing be arranged for Andaman and Nicobar Islands customers?",
@@ -244,14 +244,14 @@ export const south2States: State[] = [
         clusters: ["Kavaratti"],
         products: ["boat fittings", "coir processing parts", "small metal components"],
         note: "Fishing and coir-related workshops need basic sheet metal fabrication capability locally, reducing dependence on parts shipped from the mainland with long lead times.",
-        recommendedProductSlugs: ["ra-f1530"],
+        recommendedFamilies: ["mig-tig-arc-welding-machines", "cnc-plasma-cutting-machines"],
       },
       {
         name: "Small boat repair and maintenance",
         clusters: ["Kavaratti"],
         products: ["hull patches", "deck fittings", "repair brackets"],
         note: "Boat repair workshops benefit from an on-island cutting machine that shortens turnaround for hull patches and fittings, keeping fishing vessels operational without lengthy mainland shipping delays.",
-        recommendedProductSlugs: ["ra-f1530", "ra-rw6"],
+        recommendedFamilies: ["cnc-plasma-cutting-machines", "mig-tig-arc-welding-machines"],
       },
     ],
     industrialAreas: ["Small workshop cluster, Kavaratti"],
@@ -261,23 +261,23 @@ export const south2States: State[] = [
     faqs: [
       {
         q: "How do I get a quotation for a machine to be delivered to Lakshadweep?",
-        a: "Contact RA Machine with your intended use, whether boat repair or general small-scale fabrication, and we will recommend a compact model such as the RA-F1530. The quotation will include machine price, sea freight from Kolkata port to Kavaratti, and on-site installation, with realistic timelines given the limited shipping frequency to the islands.",
+        a: "Contact RA Machine with your intended use, whether boat repair or general small-scale fabrication, and we will recommend a compact option such as a MIG or MMA welding machine or a CNC plasma cutting machine. The quotation will include machine price, sea freight from Kolkata port to Kavaratti, and on-site installation, with realistic timelines given the limited shipping frequency to the islands.",
       },
       {
         q: "What is the typical delivery timeline from Kolkata to Lakshadweep?",
         a: "Machines are shipped by sea from Kolkata port, with transit typically taking 6-9 days depending on vessel schedules, and further time needed for local transfer to Kavaratti or other islands. RA Machine engineers travel out afterward to complete installation and commissioning once the machine has arrived and cleared local formalities.",
       },
       {
-        q: "Is on-site service and AMC support available for Lakshadweep customers?",
-        a: "Yes, with visit scheduling planned around the islands' limited transport frequency. RA Machine's AMC coverage includes scheduled servicing and breakdown response, with engineers dispatched from Kolkata and remote diagnostics used as a first step to resolve issues quickly without always requiring an immediate physical visit.",
+        q: "Is on-site service available for Lakshadweep buyers?",
+        a: "Yes, with visit scheduling planned around the islands' limited transport frequency. RA Machine provides scheduled servicing, spare parts, and breakdown response for its machines, with engineers dispatched from Kolkata and remote diagnostics used as a first step to resolve issues quickly without always requiring an immediate physical visit.",
       },
       {
         q: "Can workshop operators in Lakshadweep receive training?",
         a: "Basic training on machine operation and maintenance is provided on-site at the time of installation, tailored to small workshop conditions in Kavaratti. Operators who want more thorough instruction can travel to RA Machine's training centre in Kolkata for hands-on sessions before returning to the islands.",
       },
       {
-        q: "Which RA Machine model suits Lakshadweep's fishing and boat repair workshops?",
-        a: "The RA-F1530 fiber laser is well matched to Lakshadweep's fishing and boat repair workshops, offering thin-to-medium sheet cutting for hull patches, deck fittings, and coir processing parts in a compact machine footprint suited to small island facilities with limited space.",
+        q: "Which machines from RA Machine suit Lakshadweep's fishing and boat repair workshops?",
+        a: "MIG and MMA welding machines, customisable to the work and available in 220 V and 440 V versions, are the natural starting point for Lakshadweep's fishing and boat repair workshops. A compact CNC plasma cutting machine adds clean cutting from 2 mm to 25 mm for hull patches, deck fittings, and coir processing parts in small island facilities.",
       },
       {
         q: "Can GST invoicing or financing be arranged for Lakshadweep customers?",

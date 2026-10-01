@@ -7,7 +7,7 @@ export const dynamic = "force-static";
 export default function Image() {
   return renderOg({
     eyebrow: "Export",
-    title: "Laser Cutting Machine Exporter from India",
-    subtitle: "CE-marked, ISO 9001:2015-certified machines shipped to 30 countries, with installation, training and warranty support.",
+    title: "CNC Laser, Plasma & Welding Machines from India",
+    subtitle: "CE-marked, ISO 9001:2015-certified machines shipped worldwide, with installation, training and warranty support.",
   });
 }

@@ -6,7 +6,6 @@ export const paths = {
   home: "/",
   products: "/products",
   category: (c: string) => `/products/${c}`,
-  product: (c: string, s: string) => `/products/${c}/${s}`,
   repair: "/services/machine-repair",
   training: "/services/operator-training",
   jobWork: "/services/laser-cutting-job-work",

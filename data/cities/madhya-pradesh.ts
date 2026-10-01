@@ -21,7 +21,7 @@ export const cities: City[] = [
       "Pithampur–Indore auto corridor (adjacent)",
       "Rau industrial area",
     ],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-t6000", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems", "mig-tig-arc-welding-machines"],
     nearbyCitySlugs: ["bhopal", "pithampur", "jabalpur", "gwalior", "dewas", "ujjain", "satna"],
     logisticsNote:
       "Indore is roughly 1,300 km from our Kolkata works via NH19 and NH34, so deliveries typically take 4–6 working days from dispatch.",
@@ -35,8 +35,8 @@ export const cities: City[] = [
         a: "Machines dispatched from Kolkata generally reach Indore via NH19 and NH34 within 4–6 working days, after which our engineers complete installation, electrical commissioning and test cuts on-site before handing the machine over.",
       },
       {
-        q: "How does on-site repair or AMC support work for Indore customers?",
-        a: "Engineers dispatched from our Kolkata works typically reach Indore within 3–5 working days for on-site repair visits, while remote diagnostics under AMC are usually initiated within a few working hours of a service request, keeping downtime to a minimum.",
+        q: "How does on-site repair or service support work for Indore customers?",
+        a: "Engineers dispatched from our Kolkata works typically reach Indore within 3–5 working days for on-site repair visits, while remote diagnostics are usually initiated within a few working hours of a service request, keeping downtime to a minimum.",
       },
       {
         q: "What operator training options are available for an Indore auto-component unit?",
@@ -44,7 +44,7 @@ export const cities: City[] = [
       },
       {
         q: "Which machine suits Indore's auto and general engineering base best?",
-        a: "For Indore's mix of auto-component and general fabrication, the RA-F3015-PRO 3kW fiber laser is a versatile general-purpose fit, while the RA-T6000 tube laser suits chassis and tubular structural work common in auto manufacturing.",
+        a: "A CNC fiber laser cutting machine is the versatile choice for Indore's auto-component brackets, pharma equipment enclosures and textile-machinery parts. Suppliers welding repeat auto parts for the Pithampur corridor can add a robotic welding system, while TIG welding machines suit the stainless fabrication that pharma equipment makers depend on.",
       },
     ],
   },
@@ -63,7 +63,7 @@ export const cities: City[] = [
       "equipment enclosure manufacturing",
     ],
     industrialAreas: ["Govindpura Industrial Area", "Mandideep industrial belt", "BHEL ancillary industrial zone"],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "cnc-plasma-cutting-machines", "submerged-arc-welding-machines"],
     nearbyCitySlugs: ["indore", "pithampur", "jabalpur", "gwalior", "dewas", "ujjain", "satna"],
     logisticsNote:
       "Bhopal is about 1,200 km from our Kolkata works via NH19 and NH34, so deliveries typically take 4–6 working days from dispatch.",
@@ -77,8 +77,8 @@ export const cities: City[] = [
         a: "Machines dispatched from Kolkata generally reach Bhopal via NH34 within 4–6 working days, after which our engineers complete installation, commissioning and test cuts on-site before handover to the customer's operators.",
       },
       {
-        q: "How does on-site repair or AMC support work for Bhopal customers?",
-        a: "Engineers dispatched from our Kolkata works typically reach Bhopal within 3–5 working days for on-site repair visits, while remote diagnostics under AMC are usually initiated within a few working hours of a service call to limit downtime.",
+        q: "How does on-site repair or service support work for Bhopal customers?",
+        a: "Engineers dispatched from our Kolkata works typically reach Bhopal within 3–5 working days for on-site repair visits, while remote diagnostics are usually initiated within a few working hours of a service call to limit downtime.",
       },
       {
         q: "What operator training options exist for a Bhopal heavy-electrical or general engineering unit?",
@@ -86,7 +86,7 @@ export const cities: City[] = [
       },
       {
         q: "Which machine fits Bhopal's heavy-electrical and general engineering base best?",
-        a: "Given Bhopal's concentration of heavy-electrical and structural fabrication, the RA-F6020-HD 6kW fiber laser suits thicker plate and equipment-enclosure work well, with the RA-F3015-PRO covering broader general-purpose fabrication needs.",
+        a: "Equipment enclosures for Bhopal's heavy-electrical supply chain are well suited to a CNC fiber laser cutting machine, while structural and thicker plate work in Govindpura and Mandideep is cut more economically on a CNC plasma cutting machine. Units fabricating heavy tanks or structural assemblies for the electrical sector can add a submerged arc welding machine for long seams.",
       },
     ],
   },
@@ -105,7 +105,7 @@ export const cities: City[] = [
       "tubular and chassis fabrication",
     ],
     industrialAreas: ["Pithampur Industrial Area, Sector 1–3", "Pithampur Auto Cluster SEZ"],
-    recommendedProductSlugs: ["ra-t6000", "ra-f3015-pro", "ra-rw10"],
+    recommendedFamilies: ["robotic-welding-systems", "fiber-laser-cutting-machines", "mig-tig-arc-welding-machines"],
     nearbyCitySlugs: ["indore", "bhopal", "jabalpur", "gwalior", "dewas", "ujjain", "satna"],
     logisticsNote:
       "Pithampur is roughly 1,320 km from our Kolkata works via NH19 and NH34, so deliveries typically take 4–6 working days from dispatch.",
@@ -119,16 +119,16 @@ export const cities: City[] = [
         a: "Machines dispatched from Kolkata generally reach Pithampur via NH34 within 4–6 working days, after which our engineers complete installation, electrical commissioning and test cuts on-site before handing the machine over.",
       },
       {
-        q: "How does on-site repair or AMC support work for Pithampur customers?",
-        a: "Engineers dispatched from our Kolkata works typically reach Pithampur within 3–5 working days for on-site repair visits, while remote diagnostics under AMC are usually initiated within a few working hours of a call to minimise line downtime.",
+        q: "How does on-site repair or service support work for Pithampur customers?",
+        a: "Engineers dispatched from our Kolkata works typically reach Pithampur within 3–5 working days for on-site repair visits, while remote diagnostics are usually initiated within a few working hours of a call to minimise line downtime.",
       },
       {
         q: "What operator training options exist for a Pithampur auto-cluster unit?",
-        a: "Operators are trained during commissioning on cutting and tube-processing parameters for chassis and auto-component work typical of the Pithampur Auto Cluster, with additional on-site or remote sessions available as production ramps up.",
+        a: "Operators are trained during commissioning on cutting and welding parameters for chassis and auto-component work typical of the Pithampur Auto Cluster, with additional on-site or remote sessions available as production ramps up.",
       },
       {
         q: "Which machine suits Pithampur's automotive and auto-component industry best?",
-        a: "Given Pithampur's concentration of automotive manufacturing, the RA-T6000 tube laser is well suited to chassis and tubular structural parts, while the RA-RW10 robotic welding cell supports high-volume auto-component welding.",
+        a: "Pithampur's tier suppliers weld chassis parts and tubular assemblies at high volume, where a robotic welding system delivers repeatable joints shift after shift. A CNC fiber laser cutting machine handles the brackets and precision sheet-metal parts feeding those assemblies, and MIG welding machines cover fixtures and lower-volume work.",
       },
     ],
   },
@@ -147,7 +147,7 @@ export const cities: City[] = [
       "sheet-metal job-shop work",
     ],
     industrialAreas: ["Richhai Industrial Area", "Adhartal industrial belt", "district industrial centre"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "cnc-plasma-cutting-machines", "mig-tig-arc-welding-machines"],
     nearbyCitySlugs: ["indore", "bhopal", "pithampur", "gwalior", "dewas", "ujjain", "satna"],
     logisticsNote:
       "Jabalpur is about 1,050 km from our Kolkata works via NH30 and NH34, so deliveries typically take 3–5 working days from dispatch.",
@@ -161,8 +161,8 @@ export const cities: City[] = [
         a: "Machines dispatched from Kolkata generally reach Jabalpur via NH30 within 3–5 working days, after which our engineers complete installation, commissioning and test cuts on-site before handover to the customer's operators.",
       },
       {
-        q: "How does on-site repair or AMC support work for Jabalpur customers?",
-        a: "Engineers dispatched from our Kolkata works typically reach Jabalpur within 3–5 working days for on-site repair visits, while remote diagnostics under AMC are usually initiated within a few working hours of a service call.",
+        q: "How does on-site repair or service support work for Jabalpur customers?",
+        a: "Engineers dispatched from our Kolkata works typically reach Jabalpur within 3–5 working days for on-site repair visits, while remote diagnostics are usually initiated within a few working hours of a service call.",
       },
       {
         q: "What operator training options are available for a Jabalpur-based unit?",
@@ -170,7 +170,7 @@ export const cities: City[] = [
       },
       {
         q: "Which machine suits Jabalpur's defence-ancillary and general engineering base best?",
-        a: "For Jabalpur's mix of defence-ancillary and general fabrication, the RA-F3015-PRO 3kW fiber laser is a versatile fit for most sheet work, while the RA-F6020-HD suits heavier structural and equipment-support plate cutting.",
+        a: "Sheet-metal job shops in Richhai and Adhartal get the most flexibility from a CNC fiber laser cutting machine, while heavier structural and equipment-support plate for defence-linked customers is cut economically on a CNC plasma cutting machine. MIG, TIG and MMA welding machines then cover assembly across the mild steel and stainless work these units take on.",
       },
     ],
   },
@@ -189,7 +189,7 @@ export const cities: City[] = [
       "sheet-metal job-shop work",
     ],
     industrialAreas: ["Malanpur Industrial Area", "Banmore industrial belt", "Gwalior industrial estate"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "mig-tig-arc-welding-machines"],
     nearbyCitySlugs: ["indore", "bhopal", "pithampur", "jabalpur", "dewas", "ujjain", "satna"],
     logisticsNote:
       "Gwalior is around 1,150 km from our Kolkata works via NH19 and NH44, so deliveries typically take 4–6 working days from dispatch.",
@@ -203,8 +203,8 @@ export const cities: City[] = [
         a: "Machines dispatched from Kolkata generally reach Gwalior via NH19 and NH44 within 4–6 working days, after which our engineers complete installation, electrical commissioning and test cuts on-site before handing the machine over.",
       },
       {
-        q: "How does on-site repair or AMC support work for Gwalior customers?",
-        a: "Engineers dispatched from our Kolkata works typically reach Gwalior within 3–5 working days for on-site repair visits, while remote diagnostics under AMC are usually initiated within a few working hours of a service request.",
+        q: "How does on-site repair or service support work for Gwalior customers?",
+        a: "Engineers dispatched from our Kolkata works typically reach Gwalior within 3–5 working days for on-site repair visits, while remote diagnostics are usually initiated within a few working hours of a service request.",
       },
       {
         q: "What operator training options are available for a Gwalior-based workshop?",
@@ -212,7 +212,7 @@ export const cities: City[] = [
       },
       {
         q: "Which machine suits Gwalior's engineering goods and textile industry best?",
-        a: "For Gwalior's mix of engineering-goods and textile-linked fabrication, the RA-F3015-PRO 3kW fiber laser is a versatile general-purpose fit, while the RA-F1530 suits smaller workshops working mainly with thinner sheet.",
+        a: "Engineering-goods components and textile-machinery parts from Malanpur and Banmore suit a CNC fiber laser cutting machine, with a lower-power source for workshops cutting mainly thin sheet and more power for heavier parts. MIG and MMA welding machines handle the frame and general fabrication work that follows.",
       },
     ],
   },
@@ -231,7 +231,7 @@ export const cities: City[] = [
       "sheet-metal job-shop work",
     ],
     industrialAreas: ["Dewas Industrial Area", "Ajanti industrial belt", "district industrial centre"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-t6000"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["indore", "bhopal", "pithampur", "jabalpur", "gwalior", "ujjain", "satna"],
     logisticsNote:
       "Dewas is about 1,280 km from our Kolkata works via NH19 and NH34, so deliveries typically take 4–6 working days from dispatch.",
@@ -245,8 +245,8 @@ export const cities: City[] = [
         a: "Machines dispatched from Kolkata generally reach Dewas via NH34 within 4–6 working days, after which our engineers complete installation, commissioning and test cuts on-site before handover to the customer's operators.",
       },
       {
-        q: "How does on-site repair or AMC support work for Dewas customers?",
-        a: "Engineers dispatched from our Kolkata works typically reach Dewas within 3–5 working days for on-site repair visits, while remote diagnostics under AMC are usually initiated within a few working hours of a service call to limit downtime.",
+        q: "How does on-site repair or service support work for Dewas customers?",
+        a: "Engineers dispatched from our Kolkata works typically reach Dewas within 3–5 working days for on-site repair visits, while remote diagnostics are usually initiated within a few working hours of a service call to limit downtime.",
       },
       {
         q: "What operator training options exist for a Dewas auto-component or precision-engineering unit?",
@@ -254,7 +254,7 @@ export const cities: City[] = [
       },
       {
         q: "Which machine suits Dewas's precision engineering and auto-component industry best?",
-        a: "For Dewas's mix of precision engineering and auto-component fabrication, the RA-F3015-PRO 3kW fiber laser suits general sheet work well, while the RA-T6000 tube laser is a good fit for tubular and chassis-linked auto parts.",
+        a: "Precision components and auto brackets made in Dewas are well suited to a CNC fiber laser cutting machine, which holds the accuracy both trades need. Suppliers welding tubular or chassis-linked parts for the Indore–Pithampur auto cluster can add a cobot or robotic welding system to keep weld quality consistent at volume.",
       },
     ],
   },
@@ -273,7 +273,7 @@ export const cities: City[] = [
       "equipment support fabrication",
     ],
     industrialAreas: ["Ujjain Industrial Area, Nanakheda", "district industrial centre"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "cnc-plasma-cutting-machines", "mig-tig-arc-welding-machines"],
     nearbyCitySlugs: ["indore", "bhopal", "pithampur", "jabalpur", "gwalior", "dewas", "satna"],
     logisticsNote:
       "Ujjain is roughly 1,260 km from our Kolkata works via NH19 and NH34, so deliveries typically take 4–6 working days from dispatch.",
@@ -287,8 +287,8 @@ export const cities: City[] = [
         a: "Machines dispatched from Kolkata generally reach Ujjain via NH34 within 4–6 working days, after which our engineers complete installation, electrical commissioning and test cuts on-site before handing the machine over.",
       },
       {
-        q: "How does on-site repair or AMC support work for Ujjain customers?",
-        a: "Engineers dispatched from our Kolkata works typically reach Ujjain within 3–5 working days for on-site repair visits, while remote diagnostics under AMC are usually initiated within a few working hours of a service request.",
+        q: "How does on-site repair or service support work for Ujjain customers?",
+        a: "Engineers dispatched from our Kolkata works typically reach Ujjain within 3–5 working days for on-site repair visits, while remote diagnostics are usually initiated within a few working hours of a service request.",
       },
       {
         q: "What operator training options are available for a Ujjain-based workshop?",
@@ -296,7 +296,7 @@ export const cities: City[] = [
       },
       {
         q: "Which machine suits Ujjain's agro-processing and general engineering base best?",
-        a: "For Ujjain's mix of agro-processing machinery and general fabrication, the RA-F1530 1.5kW fiber laser suits thinner sheet and precision work, while the RA-F3015-PRO handles broader general-purpose fabrication needs.",
+        a: "Ujjain's agro-processing machinery combines thin sheet guards and housings, suited to a CNC fiber laser cutting machine, with heavier frames and equipment supports that a CNC plasma cutting machine cuts economically. MIG and MMA welding machines tie the work together for workshops serving the wider Malwa region.",
       },
     ],
   },
@@ -315,7 +315,7 @@ export const cities: City[] = [
       "equipment support manufacturing",
     ],
     industrialAreas: ["Satna Industrial Area", "district industrial centre"],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f3015-pro"],
+    recommendedFamilies: ["cnc-plasma-cutting-machines", "submerged-arc-welding-machines", "mig-tig-arc-welding-machines"],
     nearbyCitySlugs: ["indore", "bhopal", "pithampur", "jabalpur", "gwalior", "dewas", "ujjain"],
     logisticsNote:
       "Satna is about 1,000 km from our Kolkata works via NH19 and NH30, so deliveries typically take 3–5 working days from dispatch.",
@@ -329,8 +329,8 @@ export const cities: City[] = [
         a: "Machines dispatched from Kolkata generally reach Satna via NH30 within 3–5 working days, after which our engineers complete installation, commissioning and test cuts on-site before handover to the customer's operators.",
       },
       {
-        q: "How does on-site repair or AMC support work for Satna customers?",
-        a: "Engineers dispatched from our Kolkata works typically reach Satna within 3–5 working days for on-site repair visits, while remote diagnostics under AMC are usually initiated within a few working hours of a service call.",
+        q: "How does on-site repair or service support work for Satna customers?",
+        a: "Engineers dispatched from our Kolkata works typically reach Satna within 3–5 working days for on-site repair visits, while remote diagnostics are usually initiated within a few working hours of a service call.",
       },
       {
         q: "What operator training options are available for a Satna cement-linked fabrication unit?",
@@ -338,7 +338,7 @@ export const cities: City[] = [
       },
       {
         q: "Which machine fits Satna's cement and structural engineering base best?",
-        a: "Given Satna's concentration of cement-machinery-linked structural fabrication, the RA-F6020-HD 6kW fiber laser is well suited to thicker plate and equipment-support components, with the RA-F3015-PRO covering general-purpose fabrication needs.",
+        a: "Satna's cement-linked fabrication is dominated by structural plate and equipment supports, work a CNC plasma cutting machine cuts economically. For heavy structures with long seams, a submerged arc welding machine delivers deep, consistent welds, while MIG and MMA welding machines handle general fabrication and plant-maintenance jobs.",
       },
     ],
   },

@@ -7,7 +7,7 @@ export const dynamic = "force-static";
 export default function Image() {
   return renderOg({
     eyebrow: "Repair & Maintenance",
-    title: "Laser Cutting Machine Repair & CNC Maintenance",
-    subtitle: "Pan-India on-site service, remote diagnostics, spares and AMC — engineers dispatched from Kolkata.",
+    title: "RA Machine Repair & Maintenance",
+    subtitle: "Repair and maintenance for RA Machine equipment — pan-India on-site service, remote diagnostics and spares.",
   });
 }

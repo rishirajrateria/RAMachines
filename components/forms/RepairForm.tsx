@@ -8,7 +8,7 @@ const fields: FieldDef[] = [
   { name: "name", label: "Full name", type: "text", required: true, autoComplete: "name" },
   { name: "company", label: "Company", type: "text", autoComplete: "organization" },
   { name: "phone", label: "Phone", type: "tel", required: true, autoComplete: "tel" },
-  { name: "machine", label: "Machine brand & model", type: "text", placeholder: "e.g. RA-F3015 Pro, or another brand" },
+  { name: "machine", label: "Machine type & serial number", type: "text", placeholder: "e.g. CNC plasma, serial no. from the machine plate" },
   { name: "city", label: "City", type: "text", required: true },
   { name: "problem", label: "Problem description", type: "textarea", required: true },
 ];
