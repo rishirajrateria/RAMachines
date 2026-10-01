@@ -4,6 +4,11 @@
  * paragraph (who / what / where / since / certifications) SPEC requires near the
  * top of every key page, for human skims and LLM answer engines. Pass `context`
  * to append one page-specific sentence (e.g. naming a state or country).
+ *
+ * Reworded after the Oct 2026 client review ("rewording, punctuation"): the
+ * five technologies replace the old CO2/tube list, the certifications read as
+ * one sentence instead of a five-item run-on, and CE marking is stated "where
+ * applicable", matching the certifications page.
  */
 import Link from "next/link";
 import { site } from "@/config/site";
@@ -26,12 +31,12 @@ export default function AboutBlurb({
   return (
     <p className="max-w-prose text-sm text-grey-600">
       <strong className="font-semibold text-ink">{site.name}</strong> is the CNC machine division of{" "}
-      {site.legalName}, a Kolkata engineering company established in {site.foundedYear} and building
-      machines since {site.machineDivisionSince}. We supply fiber laser cutting machines, CO2 laser
-      machines, tube laser cutting machines and robotic MIG/MAG welding systems to customers across
-      India and export markets. {site.name} is certified to ISO 9001:2015, holds CE marking on its
-      machines, is MSME/Udyam registered, is an IEC-registered exporter and is a listed Indian
-      Railways vendor.
+      {site.legalName}, an engineering company in Kolkata, India, founded in {site.foundedYear} and
+      building machines since {site.machineDivisionSince}. We make CNC laser and plasma cutting machines,
+      MIG, TIG, MMA and submerged arc welding machines, and cobot and robotic welding systems, and supply
+      them across India and abroad. We are ISO 9001:2015 certified, MSME (Udyam) registered and a listed
+      Indian Railways vendor; our machines carry CE marking where applicable, and we hold an Import Export
+      Code for export.
       {context ? ` ${context}` : ""}{" "}
       {linkToAbout && (
         <Link href={paths.about} className="font-semibold text-teal underline-offset-2 hover:underline">

@@ -25,7 +25,7 @@ export const exportProcessSteps: { title: string; text: string }[] = [
   },
   {
     title: "Production",
-    text: "Your machine is assembled, wired and run through factory acceptance checks at our Kolkata facility.",
+    text: "Your machine is assembled, wired and run through factory acceptance checks at our works in India.",
   },
   {
     title: "Inspection & freight",
@@ -46,7 +46,7 @@ export const exportProcessSteps: { title: string; text: string }[] = [
 ];
 
 export const hubIntro: string[] = [
-  "RA Machine manufactures fiber laser cutting machines, tube laser cutting machines, CO2 laser machines and robotic MIG/MAG welding systems at our Kolkata facility, and exports the full range to fabricators, job shops and OEM manufacturers worldwide. Export is built into how every machine is engineered and shipped, from the CE marking on the control cabinet to the pre-shipment inspection video every buyer receives before their machine leaves our works.",
+  "RA Machine builds CNC laser and plasma cutting machines, MIG, TIG, MMA and submerged arc welding machines, and cobot and robotic welding systems in India, and can ship the full range to fabricators, job shops and OEM manufacturers worldwide. Export is built into how every machine is engineered and shipped, from the CE marking on the control cabinet to the pre-shipment inspection video every buyer receives before their machine leaves our works.",
   "Every export order carries a full documentation set — CE declaration of conformity, ISO 9001:2015 certificate, commercial invoice, packing list, bill of lading and certificate of origin — so your customs broker has everything needed to clear the shipment. For country-specific detail on voltage, ports, sectors and shipping terms in your market, open the relevant country page below.",
 ];
 
@@ -60,7 +60,7 @@ export const hubSections: { h2: string; paragraphs: string[] }[] = [
   {
     h2: "Production and pre-shipment video inspection",
     paragraphs: [
-      "Manufacturing takes place at our Kolkata facility, where each machine is assembled, wired and run through factory acceptance checks before a live pre-shipment video inspection with the buyer, so you see it cutting or welding and confirm build quality remotely, not just from a test certificate.",
+      "Manufacturing takes place at our works in India, where each machine is assembled, wired and run through factory acceptance checks before a live pre-shipment video inspection with the buyer, so you see it cutting or welding and confirm build quality remotely, not just from a test certificate.",
     ],
   },
   {
@@ -85,8 +85,8 @@ export const hubSections: { h2: string; paragraphs: string[] }[] = [
 
 export const exportHubFaqs: FaqItem[] = [
   {
-    q: "Which countries does RA Machine export laser cutting and welding machines to?",
-    a: "We export across North America, South America, Europe, the Middle East, South Asia, South-East Asia, Central Asia, Africa and Oceania, with dedicated country pages covering 30 markets where we see consistent import demand. If your country is not listed, send us an enquiry — we quote and ship to markets beyond this list on request.",
+    q: "Which countries can RA Machine ship cutting and welding machines to?",
+    a: "We can ship across North America, South America, Europe, the Middle East, South Asia, South-East Asia, Central Asia, Africa and Oceania, and keep a dedicated page for each market we serve. If your country is not listed, send us an enquiry — we quote and ship to markets beyond this list on request.",
   },
   {
     q: "Are your machines CE marked and ISO certified?",

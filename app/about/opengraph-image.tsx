@@ -8,6 +8,6 @@ export default function Image() {
   return renderOg({
     eyebrow: "About",
     title: "About RA Machine",
-    subtitle: "RA Group's Kolkata manufacturer of laser cutting and robotic welding machines.",
+    subtitle: "RA Group's Kolkata manufacturer of CNC laser, plasma and welding machines.",
   });
 }

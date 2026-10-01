@@ -10,9 +10,9 @@ export const site = {
   name: "RA Machine",
   legalName: "R.A. Auto Engineering Works",
   parent: "RA Group",
-  tagline: "Laser Cutting Machines Built in India, Trusted Worldwide",
+  tagline: "CNC Laser, Plasma & Welding Machines — Built in India",
   description:
-    "RA Machine is the CNC machine division of R.A. Auto Engineering Works, Kolkata — building and supplying customised fiber laser cutting, CO2 laser, tube laser and robotic MIG/MAG welding machines, with installation, service and operator training across India and export to 25+ countries.",
+    "RA Machine is the CNC machine division of R.A. Auto Engineering Works — building customised CNC laser and plasma cutting machines, MIG/TIG/MMA and submerged arc welding machines and cobot/robotic welding systems in India, with installation, service and operator training across India and support for buyers abroad.",
   /**
    * The live address, used for every canonical URL, sitemap entry, social
    * preview and structured-data @id. It must be the domain the site is actually
@@ -55,14 +55,16 @@ export const site = {
     blurb: "Automotive and railway components division of R.A. Auto Engineering Works",
   },
   /**
-   * Confirmed figures. "machines installed" and "operators trained" are the owner's own
-   * numbers; "countries served" is carried over from the brief (the owner confirmed the
-   * export reach separately). Edit any value here and it updates across the whole site.
+   * Confirmed figures — the owner's own numbers. Edit a value here and it updates
+   * across the whole site. Pages that pick one stat look it up by LABEL (see
+   * app/about/page.tsx), so reordering this list is safe.
+   *
+   * "25+ countries served" was removed after the Oct 2026 client review: export
+   * is a capability the site describes, not a track record it claims.
    */
   stats: [
     { value: "1989", label: "engineering since" },
     { value: "20+", label: "machines installed" },
-    { value: "25+", label: "countries served" },
     { value: "40+", label: "operators trained" },
   ],
   /** Confirmed service and commercial terms. */
@@ -82,10 +84,10 @@ export const site = {
     exportPaymentTerms: "70% advance with confirmed order, 30% before shipment",
     exportIncoterms: "FOB Kolkata or Delhi / CIF",
   },
-  /** Reach — pan-India plus export markets. */
+  /** Reach — pan-India, plus export as a capability (no market count is claimed). */
   reach: {
     india: "Pan-India delivery, installation, service and training from Kolkata",
-    region: "25+ export markets",
+    region: "Export enquiries welcome worldwide",
     regionNote:
       "Export orders ship FOB Kolkata or Delhi, or CIF to your nearest port, with remote and on-site commissioning support.",
   },

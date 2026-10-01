@@ -28,9 +28,9 @@ import { hubFacts } from "./visuals";
 import HubForm from "./HubForm";
 
 export const metadata = buildMetadata({
-  title: "Laser Cutting Machine Exporter from India",
+  title: "CNC Laser, Plasma & Welding Machine Exporter, India",
   description:
-    "RA Machine exports CE-marked, ISO 9001:2015-certified fiber laser cutting machines and robotic welding systems from India to 30 countries, with pre-shipment inspection, installation, training and warranty support.",
+    "CE-marked, ISO 9001:2015-certified CNC laser, plasma and welding machines built in India and shipped worldwide, with inspection, installation and training.",
   path: paths.exportHub,
 });
 
@@ -45,11 +45,11 @@ export default function ExportHubPage() {
         <Breadcrumbs items={[{ name: "Home", href: paths.home }, { name: "Export", href: paths.exportHub }]} />
         <p className="eyebrow mb-3">Export from India</p>
         <h1 className="max-w-3xl font-display text-display-lg text-ink">
-          Laser Cutting Machine &amp; Robotic Welding Exporter from India
+          CNC Laser, Plasma &amp; Welding Machines — Exported from India
         </h1>
         <p className="mt-4 max-w-2xl text-grey-600">
           IEC-registered, CE marked and ISO 9001:2015 certified, with pre-shipment video inspection,
-          installation, training and warranty support shipped to 30 countries.
+          installation, training and warranty support for buyers wherever we ship.
         </p>
         <p className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-grey-600 md:text-base">
           {heroFacts.map((fact, i) => (
@@ -66,7 +66,7 @@ export default function ExportHubPage() {
 
       <Section>
         <div className="grid gap-6">
-          <AboutBlurb context="This page sets out how our export process, documentation and shipping terms work for international buyers, and lists every country we currently ship to." />
+          <AboutBlurb context="This page sets out how our export process, documentation and shipping terms work for international buyers, with a page for each market we serve." />
         </div>
       </Section>
 
@@ -80,11 +80,11 @@ export default function ExportHubPage() {
 
       <ImageBand
         image={photos["slot-port"]}
-        overlayText="Sea and air freight from Kolkata to 30 markets"
+        overlayText="Sea and air freight from Kolkata, worldwide"
         label="Photo: container port"
       />
 
-      <Section title="Where we ship" intro="30 markets across nine regions. Open a country page for sector-specific detail, shipping terms and an export enquiry form pre-filled with your country.">
+      <Section title="Markets we serve" intro="Country pages across nine regions — and we ship beyond them on request. Open a country page for sector-specific detail, shipping terms and an export enquiry form pre-filled with your country.">
         <div className="grid gap-x-10 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
           {regionEntries.map(([region, list]) => (
             <div key={region}>

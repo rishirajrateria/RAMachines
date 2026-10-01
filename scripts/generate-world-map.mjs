@@ -202,7 +202,7 @@ function renderSvg({ spherePath, landPath, indiaPath, markers, routes, origin, h
     )
     .join("");
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${WIDTH} ${height}" role="img" aria-label="World map showing RA Machine exporting from Kolkata, India to 30 countries across five continents">
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${WIDTH} ${height}" role="img" aria-label="World map of the markets RA Machine serves from Kolkata, India, across five continents">
 <style>
   /* Tuned to sit on the site's deep band (.band-deep, an ink -> teal-deep
      gradient): the sphere is a barely-there panel so the band still reads

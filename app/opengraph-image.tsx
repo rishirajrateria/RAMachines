@@ -9,6 +9,6 @@ export default function Image() {
   return renderOg({
     eyebrow: "RA Machine",
     title: site.tagline,
-    subtitle: "Fiber laser cutting, tube laser cutting, CO2 laser and robotic welding — manufactured in Kolkata, exported worldwide.",
+    subtitle: "CNC laser and plasma cutting, MIG/TIG/MMA and SAW welding, cobot and robotic welding — manufactured in India.",
   });
 }

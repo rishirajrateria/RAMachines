@@ -24,7 +24,7 @@ import { hubHeroSentence, hubAboutContext } from "./copy";
 export const metadata = buildMetadata({
   title: "Laser Cutting Machine Manufacturer in India | RA Machine",
   description:
-    "RA Machine designs, builds, delivers and services fiber laser cutting machines and robotic welding systems across every Indian state and union territory, from Kolkata.",
+    "RA Machine builds CNC laser and plasma cutting machines and welding machines in India, and delivers, installs and services them in every state and union territory.",
   path: "/india",
 });
 
@@ -42,7 +42,7 @@ export default function IndiaHubPage() {
         <Breadcrumbs items={[{ name: "Home", href: paths.home }, { name: "India", href: "/india" }]} />
         <p className="eyebrow mb-3">Pan-India Network</p>
         <h1 className="max-w-3xl font-display text-display-lg text-ink">
-          Laser Cutting Machine &amp; Robotic Welding Supplier Across India
+          CNC Laser, Plasma &amp; Welding Machine Supplier Across India
         </h1>
         <p className="mt-4 max-w-2xl text-grey-600">{hubHeroSentence}</p>
       </PageHero>
@@ -68,8 +68,8 @@ export default function IndiaHubPage() {
         data={[
           localBusinessSchema({ areaServed: "India" }),
           serviceSchema({
-            name: "Laser cutting machine sales, installation and service across India",
-            description: "Pan-India delivery, installation, AMC service and operator training for fiber laser, CO2 laser, tube laser and robotic welding machines, dispatched from Kolkata.",
+            name: "Cutting and welding machine sales, installation and service across India",
+            description: "Pan-India delivery, installation, service and operator training for CNC laser and plasma cutting machines, MIG/TIG/MMA and SAW welding machines and robotic welding systems.",
             path: "/india",
             areaServed: "India",
           }),

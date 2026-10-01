@@ -14,7 +14,7 @@ const fields: FieldDef[] = [
   { name: "country", label: "Country", type: "text", required: true, placeholder: "e.g. Vietnam, Nigeria, Poland" },
   { name: "phone", label: "Phone (with country code)", type: "tel", required: true, autoComplete: "tel" },
   { name: "email", label: "Email", type: "email", required: true, autoComplete: "email" },
-  { name: "product", label: "Machine of interest", type: "text", placeholder: "e.g. RA-F6020 HD, or not sure yet" },
+  { name: "product", label: "Machine of interest", type: "text", placeholder: "e.g. CNC plasma, 6 kW fiber laser, or not sure yet" },
   { name: "message", label: "Message", type: "textarea" },
 ];
 
