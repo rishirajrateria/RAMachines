@@ -39,7 +39,11 @@ export default function Footer() {
     <footer className="border-t border-[rgba(15,26,26,0.08)]">
       <div className="container-site grid gap-10 py-14 text-[13px] md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <p className="font-display text-lg text-ink">{site.name}</p>
+          <p className="flex items-center gap-2 font-display text-lg text-ink">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/brand/ra-machine-mark.svg" alt="" aria-hidden="true" width={36} height={36} className="h-9 w-9 shrink-0" loading="lazy" />
+            {site.name}
+          </p>
           <p className="mt-1 text-grey-500">an RA Group company</p>
           <address className="mt-4 flex gap-2 not-italic text-grey-600">
             <MapPin width={15} height={15} className="mt-0.5 shrink-0 text-teal" />

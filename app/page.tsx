@@ -107,9 +107,10 @@ export default function HomePage() {
           </Button>
         </div>
         <div className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-semibold text-teal">
+          {/* Order per the client (review #4): export first. */}
+          <Link href={paths.exportHub}>Export enquiry</Link>
           <Link href={paths.repair}>Machine repair</Link>
           <Link href={paths.training}>Operator training</Link>
-          <Link href={paths.exportHub}>Export enquiry</Link>
         </div>
       </PageHero>
 

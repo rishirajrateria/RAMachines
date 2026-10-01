@@ -90,7 +90,7 @@ export function scene({ width, height, background, defs, content, caption }) {
 }
 
 export function makeEmit(PUBLIC) {
-  return async function emit(relPath, svg, { format = "webp", superSample } = {}) {
+  return async function emit(relPath, svg, { format = "webp", superSample, quality = 90 } = {}) {
     const rasterPath = join(PUBLIC, relPath);
     await mkdir(dirname(rasterPath), { recursive: true });
     // No .flatten() — alpha is preserved when the source SVG has no background rect.
@@ -99,7 +99,7 @@ export function makeEmit(PUBLIC) {
     // straight at the target size (ADR-0008 §1 "Method that works").
     let pipeline = sharp(Buffer.from(svg), { density: 220 });
     if (superSample) pipeline = pipeline.resize(superSample[0], superSample[1], { kernel: "lanczos3" });
-    if (format === "webp") await pipeline.webp({ quality: 90 }).toFile(rasterPath);
+    if (format === "webp") await pipeline.webp({ quality }).toFile(rasterPath);
     else await pipeline.png({ compressionLevel: 9, palette: true }).toFile(rasterPath);
 
     const svgPath = join(PUBLIC, "illustrations", relPath.replace(/\.(webp|png)$/, ".svg"));

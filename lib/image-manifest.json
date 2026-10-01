@@ -1,48 +1,4 @@
 {
-  "/about/factory.webp": {
-    "hash": "5465d85f0e2a840b",
-    "width": 4889,
-    "height": 3056,
-    "lqip": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAACwAwCdASoUAA0APu1iqk4ppaQiMAgBMB2JZwDDNCHhS7T+vZzgAAD+7U9UEkn4MtmQcempEsclfyvNPqrf+pSy11au0vLcmrbacKbTVh2lgAAA",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/about/factory-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/about/factory-1024.avif"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/about/factory-1600.avif"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/about/factory-1920.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/about/factory-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/about/factory-1024.webp"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/about/factory-1600.webp"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/about/factory-1920.webp"
-        }
-      ]
-    }
-  },
   "/about/india-reach.webp": {
     "hash": "dfa66208a6183132",
     "width": 3667,
@@ -887,50 +843,6 @@
       ]
     }
   },
-  "/certs/iso-9001-2015.webp": {
-    "hash": "0fd084f48f632afd",
-    "width": 1833,
-    "height": 2444,
-    "lqip": "data:image/webp;base64,UklGRrwAAABXRUJQVlA4WAoAAAAQAAAAEwAAGgAAQUxQSGoAAAABcBzZbtt8BSd8QIBzETn135xI8GSfI2IC8Esj3CNyw35Nkuv9kNnJAgAWskuoLFFcitacqNITAuBwBiAZAqAAYCJmRUZtqVpSXdbgYjMTR3YykrQJ+THcY0Tr9355dS2283Br0qBKy58IVlA4ICwAAADwAgCdASoUABsAPu1sq1EppiOiqAqpMB2JaQAAPlRrgAD+8NbBM3zlQCwAAA==",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/certs/iso-9001-2015-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/certs/iso-9001-2015-1024.avif"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/certs/iso-9001-2015-1600.avif"
-        },
-        {
-          "w": 1833,
-          "src": "/_img/certs/iso-9001-2015-1833.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/certs/iso-9001-2015-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/certs/iso-9001-2015-1024.webp"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/certs/iso-9001-2015-1600.webp"
-        },
-        {
-          "w": 1833,
-          "src": "/_img/certs/iso-9001-2015-1833.webp"
-        }
-      ]
-    }
-  },
   "/certs/indian-railways-vendor.webp": {
     "hash": "9921d3e16299be11",
     "width": 1833,
@@ -971,6 +883,50 @@
         {
           "w": 1833,
           "src": "/_img/certs/indian-railways-vendor-1833.webp"
+        }
+      ]
+    }
+  },
+  "/certs/iso-9001-2015.webp": {
+    "hash": "0fd084f48f632afd",
+    "width": 1833,
+    "height": 2444,
+    "lqip": "data:image/webp;base64,UklGRrwAAABXRUJQVlA4WAoAAAAQAAAAEwAAGgAAQUxQSGoAAAABcBzZbtt8BSd8QIBzETn135xI8GSfI2IC8Esj3CNyw35Nkuv9kNnJAgAWskuoLFFcitacqNITAuBwBiAZAqAAYCJmRUZtqVpSXdbgYjMTR3YykrQJ+THcY0Tr9355dS2283Br0qBKy58IVlA4ICwAAADwAgCdASoUABsAPu1sq1EppiOiqAqpMB2JaQAAPlRrgAD+8NbBM3zlQCwAAA==",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/certs/iso-9001-2015-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/certs/iso-9001-2015-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/certs/iso-9001-2015-1600.avif"
+        },
+        {
+          "w": 1833,
+          "src": "/_img/certs/iso-9001-2015-1833.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/certs/iso-9001-2015-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/certs/iso-9001-2015-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/certs/iso-9001-2015-1600.webp"
+        },
+        {
+          "w": 1833,
+          "src": "/_img/certs/iso-9001-2015-1833.webp"
         }
       ]
     }
@@ -1151,46 +1107,46 @@
       ]
     }
   },
-  "/certs/startup-india-1833.webp": {
-    "hash": "3e2770f30b203a16",
-    "width": 1833,
-    "height": 2444,
-    "lqip": "data:image/webp;base64,UklGRr4AAABXRUJQVlA4WAoAAAAQAAAAEwAAGgAAQUxQSGgAAAABcBzZbtt8Zww+wFiDs91/gSLBk32OiAnALy0l51Jihy4kKf0QaXoCgJO2gOkZw7PaLBNT5oACqBWARghABAADZTNkmZ3NRmbnGbL6xjUjmpwkPSF+LDmXI1af3+sby60mXxPJuvYfAlZQOCAwAAAA8AIAnQEqFAAbAD7tbq9SqaYkIqgIATAdiWcAAD21XAAA/vDJIgMzWBuq6Y+rkAAA",
+  "/photos/hero-about.webp": {
+    "hash": "71ada383c1b13a65",
+    "width": 1920,
+    "height": 1080,
+    "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAQBACdASoUAAsAPu1kqU4ppaOiMAgBMB2JYwC7AB6RtMZc0vU7eVw+YAD+7L78uZV5PcIPtPp01UZGqNeDUkBjM92uUkv6qBAzOlbs96yJQluoIAA=",
     "variants": {
       "avif": [
         {
           "w": 640,
-          "src": "/_img/certs/startup-india-1833-640.avif"
+          "src": "/_img/photos/hero-about-640.avif"
         },
         {
           "w": 1024,
-          "src": "/_img/certs/startup-india-1833-1024.avif"
+          "src": "/_img/photos/hero-about-1024.avif"
         },
         {
           "w": 1600,
-          "src": "/_img/certs/startup-india-1833-1600.avif"
+          "src": "/_img/photos/hero-about-1600.avif"
         },
         {
-          "w": 1833,
-          "src": "/_img/certs/startup-india-1833-1833.avif"
+          "w": 1920,
+          "src": "/_img/photos/hero-about-1920.avif"
         }
       ],
       "webp": [
         {
           "w": 640,
-          "src": "/_img/certs/startup-india-1833-640.webp"
+          "src": "/_img/photos/hero-about-640.webp"
         },
         {
           "w": 1024,
-          "src": "/_img/certs/startup-india-1833-1024.webp"
+          "src": "/_img/photos/hero-about-1024.webp"
         },
         {
           "w": 1600,
-          "src": "/_img/certs/startup-india-1833-1600.webp"
+          "src": "/_img/photos/hero-about-1600.webp"
         },
         {
-          "w": 1833,
-          "src": "/_img/certs/startup-india-1833-1833.webp"
+          "w": 1920,
+          "src": "/_img/photos/hero-about-1920.webp"
         }
       ]
     }
@@ -1239,46 +1195,90 @@
       ]
     }
   },
-  "/photos/hero-about.webp": {
-    "hash": "fe3d26a4679fce29",
-    "width": 1920,
-    "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAwBACdASoUAAsAPu1kqU4ppaOiMAgBMB2JYwC7AB6RtMfezylc4VDhJAAA/uy+/LmVeT3CD7T6esK5MdwRP7UZ8/YI03Pl3dYxH6VCbqXQPkdcYAA=",
+  "/certs/startup-india-1833.webp": {
+    "hash": "3e2770f30b203a16",
+    "width": 1833,
+    "height": 2444,
+    "lqip": "data:image/webp;base64,UklGRr4AAABXRUJQVlA4WAoAAAAQAAAAEwAAGgAAQUxQSGgAAAABcBzZbtt8Zww+wFiDs91/gSLBk32OiAnALy0l51Jihy4kKf0QaXoCgJO2gOkZw7PaLBNT5oACqBWARghABAADZTNkmZ3NRmbnGbL6xjUjmpwkPSF+LDmXI1af3+sby60mXxPJuvYfAlZQOCAwAAAA8AIAnQEqFAAbAD7tbq9SqaYkIqgIATAdiWcAAD21XAAA/vDJIgMzWBuq6Y+rkAAA",
     "variants": {
       "avif": [
         {
           "w": 640,
-          "src": "/_img/photos/hero-about-640.avif"
+          "src": "/_img/certs/startup-india-1833-640.avif"
         },
         {
           "w": 1024,
-          "src": "/_img/photos/hero-about-1024.avif"
+          "src": "/_img/certs/startup-india-1833-1024.avif"
         },
         {
           "w": 1600,
-          "src": "/_img/photos/hero-about-1600.avif"
+          "src": "/_img/certs/startup-india-1833-1600.avif"
         },
         {
-          "w": 1920,
-          "src": "/_img/photos/hero-about-1920.avif"
+          "w": 1833,
+          "src": "/_img/certs/startup-india-1833-1833.avif"
         }
       ],
       "webp": [
         {
           "w": 640,
-          "src": "/_img/photos/hero-about-640.webp"
+          "src": "/_img/certs/startup-india-1833-640.webp"
         },
         {
           "w": 1024,
-          "src": "/_img/photos/hero-about-1024.webp"
+          "src": "/_img/certs/startup-india-1833-1024.webp"
         },
         {
           "w": 1600,
-          "src": "/_img/photos/hero-about-1600.webp"
+          "src": "/_img/certs/startup-india-1833-1600.webp"
+        },
+        {
+          "w": 1833,
+          "src": "/_img/certs/startup-india-1833-1833.webp"
+        }
+      ]
+    }
+  },
+  "/photos/hero-certifications.webp": {
+    "hash": "9ec51a54270fc5bb",
+    "width": 1920,
+    "height": 1080,
+    "lqip": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADwAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JYwC7AB6PVS8IiWK75PMAAP7svvlexo3nj+VFhc1SK1wJxdK0dfZCDDPxn+9yRQ4Grguv+CoAx5328ISg7PAAAAA=",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-certifications-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-certifications-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-certifications-1600.avif"
         },
         {
           "w": 1920,
-          "src": "/_img/photos/hero-about-1920.webp"
+          "src": "/_img/photos/hero-certifications-1920.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-certifications-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-certifications-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-certifications-1600.webp"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-certifications-1920.webp"
         }
       ]
     }
@@ -1327,55 +1327,11 @@
       ]
     }
   },
-  "/photos/hero-certifications.webp": {
-    "hash": "61735f30f98f6843",
-    "width": 1920,
-    "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADwAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JYwC7AB6PVS8IiWK75PMAAP7svvlexo3nj+VFhc1SK1wJxdK0dfZCDDPxn+9yRQ4Grguv+CoAx5328ISg7PAAAAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/photos/hero-certifications-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/hero-certifications-1024.avif"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/hero-certifications-1600.avif"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-certifications-1920.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/photos/hero-certifications-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/hero-certifications-1024.webp"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/hero-certifications-1600.webp"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-certifications-1920.webp"
-        }
-      ]
-    }
-  },
   "/photos/hero-city.webp": {
-    "hash": "6b237d2bbc59cb83",
+    "hash": "cae798467980cf3d",
     "width": 1920,
     "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAACwAwCdASoUAAsAPu1iqU2ppaQiMAgBMB2JYwAAVMHK1H161+YAAAD+70vNj/sQgtT9Kn3wEHZ90U+9/qBXe6TlkWT6d2HhiGwfCG5D6mTn5QAnJDDzTw/AAAA=",
+    "lqip": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAwCdASoUAAsAPu1iqU2ppaQiMAgBMB2JYwAAUqWVFcaLd8CDeAAA/u9LVfuoadBOIsVr3MmY9CQC13VezlGeE/Tuj7zPqexexdXwQL+WRrTw7CHTAAAA",
     "variants": {
       "avif": [
         {
@@ -1415,55 +1371,11 @@
       ]
     }
   },
-  "/photos/hero-co2.webp": {
-    "hash": "5732f94d6a8f17f5",
-    "width": 1920,
-    "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADQAwCdASoUAAsAPu1iqk2ppaQiMAgBMB2JQAAKVzx+cjXKb5jQAAAA/u9LzA6nvWFGKQ36NwdyyAkOF1KY/Onl9yhSf8n89sAExZhjvonRlPGOSX63aRwAAAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/photos/hero-co2-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/hero-co2-1024.avif"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/hero-co2-1600.avif"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-co2-1920.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/photos/hero-co2-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/hero-co2-1024.webp"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/hero-co2-1600.webp"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-co2-1920.webp"
-        }
-      ]
-    }
-  },
   "/photos/hero-contact.webp": {
-    "hash": "1baecf13f4d1d443",
+    "hash": "5f6b121d92ce1829",
     "width": 1920,
     "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAQBACdASoUAAsAPu1mqk4ppaOiMAgBMB2JYwC7AB6RPKAm7dNgNascAAD+70tV+6ihwVd09CNMuQbJRO5CoWRGncFcwmcFX+4lzmlgmDxGfGdYAAA=",
+    "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAwBACdASoUAAsAPu1mqk4ppaOiMAgBMB2JYwC7AB6RPKAm7dNgNJwRfAAA/u9LVfuoocFXdPQjTLkGyUTuQqFkRp3BXMJnBV/uJc5oX0Gu89h7SAA=",
     "variants": {
       "avif": [
         {
@@ -1504,7 +1416,7 @@
     }
   },
   "/photos/hero-country.webp": {
-    "hash": "1507bcde4e479d0c",
+    "hash": "40ce06d5e8feef88",
     "width": 1920,
     "height": 1080,
     "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JYwAAW+vwdzRISZwesoAA/uzVNW7fp3oF4AQaCyfnXDrR/UQ3jD2Fshsi/Tuj9LvEzPpUP3AO1YQIFzwAAA==",
@@ -1548,7 +1460,7 @@
     }
   },
   "/photos/hero-export.webp": {
-    "hash": "a3d7abc1d13039be",
+    "hash": "fd7647ca2a5e5d7c",
     "width": 1920,
     "height": 1080,
     "lqip": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAwCdASoUAAsAPu1iqk4ppaQiMAgBMB2JYwC7AB6RL41Wt1djkgAA/uy+/QjoVJT5qtSOwLrsrVCiJ8dmtlYbfDWxTHwNRqo2HKxPV48mmLAjLc65gAAA",
@@ -1592,10 +1504,10 @@
     }
   },
   "/photos/hero-fiber.webp": {
-    "hash": "a42c814576a12924",
+    "hash": "856730d79a33b0e0",
     "width": 1920,
     "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JYwAAW+uEimtPTZulpIIAAP7sr8x+nD7OWPR8hMVQAaVEy6bv07sJcWPgajW6XzBZbXoJkZ7cio0y8wAAAA==",
+    "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADQAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JYwAAW+uEimtPTZzuXNAA/uyvy9hrAfd6uHh3WENspE2Lro/fDW10k7heXFsCvaFShXaf1Z7KOq8sAAA=",
     "variants": {
       "avif": [
         {
@@ -1636,10 +1548,10 @@
     }
   },
   "/photos/hero-home.webp": {
-    "hash": "172b4db0a0a3fd74",
+    "hash": "60ab5e8d578d9a5c",
     "width": 1920,
     "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAwCdASoUAAsAPu1iqk2ppaQiMAgBMB2JQAAKVUgXlPT9se+YigAA/u9KIkyjMDuPC1jUtkGd5SToXkl1/7u7opPoPJ7NT6cPyX7+ZlcKs8cL6AAAAA==",
+    "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAwCdASoUAAsAPu1iqk2ppaQiMAgBMB2JQAAKVUgXlPT9se+YKAAA/u9KIkyjMDuPC1jUtkGd5SToXkl1/7u7opPoPJ7NT6cPyX8AASSE2/7IHYAAAA==",
     "variants": {
       "avif": [
         {
@@ -1680,10 +1592,10 @@
     }
   },
   "/photos/hero-india.webp": {
-    "hash": "398f8b2aca7d2234",
+    "hash": "648662ae9bfc31be",
     "width": 1920,
     "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAACwAwCdASoUAAsAPu1kqk4ppaQiMAgBMB2JQBdgA9HInkCZFb30AAD+70vM7Cyms6bzz2OcbRByX2AT+DG3KSgfEUcq1zi90hx9dBqY9x1sl4AA",
+    "lqip": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAACwAwCdASoUAAsAPu1kqk4ppaQiMAgBMB2JQBdgA9HIc+Z18+eYAAD+70vM7Cyms6UKCRRN+ajHM+NBqe4jTkDcO2IcL2zx9S46hvuOtkvAAA==",
     "variants": {
       "avif": [
         {
@@ -1719,50 +1631,6 @@
         {
           "w": 1920,
           "src": "/_img/photos/hero-india-1920.webp"
-        }
-      ]
-    }
-  },
-  "/photos/hero-jobwork.webp": {
-    "hash": "8bfdfebb5ae5acad",
-    "width": 1920,
-    "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAwCdASoUAAsAPu1kqk4ppaQiMAgBMB2JYwC7AB6PjW7s0aLxrgAA/u9LVfuopN+BG7h4DuylseV59Rl8gzxmQ2d/RmtiH/VrOWmkitAE52LzxWsuYAAA",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/photos/hero-jobwork-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/hero-jobwork-1024.avif"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/hero-jobwork-1600.avif"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-jobwork-1920.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/photos/hero-jobwork-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/hero-jobwork-1024.webp"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/hero-jobwork-1600.webp"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-jobwork-1920.webp"
         }
       ]
     }
@@ -1811,52 +1679,52 @@
       ]
     }
   },
-  "/photos/hero-product.webp": {
-    "hash": "3490e88f50228283",
+  "/photos/hero-jobwork.webp": {
+    "hash": "747991a1a7cf56eb",
     "width": 1920,
     "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAACwAwCdASoUAAsAPu1iqU2ppaQiMAgBMB2JQAAJUI+NB7X8Tb+QAAD+70tYcRqU7Zeh7kZ511cU6rHIb9ZjMOe5Rwk+as0qfp3R1mp4qtx/ggjLrBFBUjsdhDpgAA==",
+    "lqip": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADQAwCdASoUAAsAPu1kqk4ppaQiMAgBMB2JYwC7AB6PjW7s0adc5IAA/u9LVfuopN+BG7h4DuylseV59Rl8gzxmQ2d/RmtiH/VrORNVhHRax70C1ZQAxVGAAAA=",
     "variants": {
       "avif": [
         {
           "w": 640,
-          "src": "/_img/photos/hero-product-640.avif"
+          "src": "/_img/photos/hero-jobwork-640.avif"
         },
         {
           "w": 1024,
-          "src": "/_img/photos/hero-product-1024.avif"
+          "src": "/_img/photos/hero-jobwork-1024.avif"
         },
         {
           "w": 1600,
-          "src": "/_img/photos/hero-product-1600.avif"
+          "src": "/_img/photos/hero-jobwork-1600.avif"
         },
         {
           "w": 1920,
-          "src": "/_img/photos/hero-product-1920.avif"
+          "src": "/_img/photos/hero-jobwork-1920.avif"
         }
       ],
       "webp": [
         {
           "w": 640,
-          "src": "/_img/photos/hero-product-640.webp"
+          "src": "/_img/photos/hero-jobwork-640.webp"
         },
         {
           "w": 1024,
-          "src": "/_img/photos/hero-product-1024.webp"
+          "src": "/_img/photos/hero-jobwork-1024.webp"
         },
         {
           "w": 1600,
-          "src": "/_img/photos/hero-product-1600.webp"
+          "src": "/_img/photos/hero-jobwork-1600.webp"
         },
         {
           "w": 1920,
-          "src": "/_img/photos/hero-product-1920.webp"
+          "src": "/_img/photos/hero-jobwork-1920.webp"
         }
       ]
     }
   },
   "/photos/hero-products.webp": {
-    "hash": "90455093bf522ec1",
+    "hash": "f0e6c8f55025da17",
     "width": 1920,
     "height": 1080,
     "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADQAwCdASoUAAsAPu1iqk4ppaQiMAgBMB2JYwC7AB6OQ58zr14vSgAA/u9Lzlr3fSTDfJ/Uuu4P9L1uH9/o3NfKSTVtoGxyAh4J4xKDThPGW51zAAA=",
@@ -1900,10 +1768,10 @@
     }
   },
   "/photos/hero-repair.webp": {
-    "hash": "4796c624a24ed6e6",
+    "hash": "5deaf19a00dff2c4",
     "width": 1920,
     "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAwCdASoUAAsAPu1kqU2ppaQiMAgBMB2JYwC7AB6RBNPg/EqAF9+AAP7svv0IdhWowPY64C4ae0Q8Zuj8qu/qfhrYsGsRf8kLN4zDlplba3KCqloIAA==",
+    "lqip": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAwCdASoUAAsAPu1kqU2ppaQiMAgBMB2JYwC7AB6RBNPg/Ep/wwWAAP7svv0IdhWowPY64C4ae0Q8Zuj8qu/qfhrYsGsRf8kLN4zCaSzZ7JNPyO0MwAAA",
     "variants": {
       "avif": [
         {
@@ -1988,10 +1856,10 @@
     }
   },
   "/photos/hero-state.webp": {
-    "hash": "617e05da1d94be75",
+    "hash": "bcbc2fc33ea147e8",
     "width": 1920,
     "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAACwAwCdASoUAAsAPu1kqk4ppaQiMAgBMB2JQAAKVT48nb3rYyxoMAD+7L78uYc1yOcgtYvNRM/pmXZLxbX4N37lCk+qpuoWqjEakMyRIQJFsx3hrZLwAA==",
+    "lqip": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAACwAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JYwAAUrojmkIRxX1e+AD+70vM45tyhVZpH2nsUyJXbGZtB8L0Jco43isX6d0hsUwIUpkX++haDCbWZMIhSAAA",
     "variants": {
       "avif": [
         {
@@ -2032,7 +1900,7 @@
     }
   },
   "/photos/hero-training.webp": {
-    "hash": "544e32ad5b32c727",
+    "hash": "e8cf89c9b776f393",
     "width": 1920,
     "height": 1080,
     "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JYwC7AB6OQ69tAAK+RigAAP7vS8zCVmj1TUHV2zLNc0RVaaUpkiNpbXaLsBqeyEUYUPbplgYWR0FSA2QAAA==",
@@ -2075,52 +1943,8 @@
       ]
     }
   },
-  "/photos/hero-tube.webp": {
-    "hash": "6f90693a722a4b03",
-    "width": 1920,
-    "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADQAwCdASoUAAsAPu1iqU2ppaQiMAgBMB2JYwAAW46rXvX6Xf8wb8AA/uywBRkKVrRjcdN/0gTNwfI93Ncf6jtZXtlDpn98NbFJCSF0z/1laAiovoHBP9jMAAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/photos/hero-tube-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/hero-tube-1024.avif"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/hero-tube-1600.avif"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-tube-1920.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/photos/hero-tube-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/hero-tube-1024.webp"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/hero-tube-1600.webp"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-tube-1920.webp"
-        }
-      ]
-    }
-  },
   "/photos/hero-welding.webp": {
-    "hash": "e74d2d845ac1fcb5",
+    "hash": "2b04d93e609867b4",
     "width": 1920,
     "height": 1080,
     "lqip": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAACQAwCdASoUAAsAPu1kqU2ppaOiMAgBMB2JYwAAUvp2p0GuilOAAP7vS88NHvZEUF2CUYPqTpTKiz39Vg0/yc+2s44L/TujqI/YxzmJP1aMeindGxGgLngAAAA=",
@@ -2164,7 +1988,7 @@
     }
   },
   "/photos/slot-assembly.webp": {
-    "hash": "dbd9135370b97f9b",
+    "hash": "5f05405c7746f865",
     "width": 1600,
     "height": 1200,
     "lqip": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAQBACdASoUAA8APu1iqk2ppaQiMAgBMB2JQBfnBDwJbTvWrYptVey1gAD+6fVNwJA6kaaELDwZ1V5crKN71jrzO9JJYYcEeIS4gz3kkDIHKRJlid1G/pzM9LzRsALnCLdSxaYXq0AAAA==",
@@ -2236,10 +2060,10 @@
     }
   },
   "/photos/slot-crate-shipping.webp": {
-    "hash": "d021dc40a108dc3d",
+    "hash": "0a0d3247b5da21b4",
     "width": 1600,
     "height": 1200,
-    "lqip": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADwAwCdASoUAA8APu1iqU2ppaOiMAgBMB2JQAALg24TOraNU0LihEwAAP7p8tDFjqUMzKQWcaynUeBuTsrQs29LmP0GnnQRun06f43zthqmB0qCGKc8/pajrcmgAA==",
+    "lqip": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADwAwCdASoUAA8APu1iqU2ppaQiMAgBMB2JQAALg24TOraNU0LihEwAAP7p8tDFjqUMzKQWcaynUeBuTsrQs29LmP0GnnQRun06f43zthqmB0qCGKc8/pajrcmgAA==",
     "variants": {
       "avif": [
         {
@@ -2308,7 +2132,7 @@
     }
   },
   "/photos/slot-engineer-service.webp": {
-    "hash": "e0d6ca361129cc0f",
+    "hash": "c8e016f36302eebf",
     "width": 1600,
     "height": 1200,
     "lqip": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAACwAwCdASoUAA8APu1iqU2ppaOiMAgBMB2JQAALfTSggxksGQU9aAD+6fVNwDNDzvAaeaTG0uyEML0hlFEPYlva5/9g5JgbASIwtcLfZV97/dkjvOCqMvE+7ypkdGdMAPbBAAAA",
@@ -2344,10 +2168,10 @@
     }
   },
   "/photos/slot-factory.webp": {
-    "hash": "656ade2a2ad78b0e",
+    "hash": "f8b35c275bfffd90",
     "width": 1600,
     "height": 1200,
-    "lqip": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADQAwCdASoUAA8APu1iqU2ppaOiMAgBMB2JQBadBDveM70dtcoEuVAA/uzVeWEGqkH7cmCp4JIqNGTWYsQaZJz2NRF7wO6Klcsjr3/65OMReIIK7XETbitrCGH+4AAA",
+    "lqip": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADwAwCdASoUAA8APu1iqU2ppaQiMAgBMB2JQBadBDveS0TKNWDiFf3gAP7s1XlhBqpB+3Jgn9T4FF6RWQfLX7YlH3WPpcNcBe33+/3Zje4Thh5hJLFevFgVwhh/uAAA",
     "variants": {
       "avif": [
         {
@@ -2380,7 +2204,7 @@
     }
   },
   "/photos/slot-installation.webp": {
-    "hash": "2d6d45d5705b0d32",
+    "hash": "c21cc19cb0c2bb36",
     "width": 1600,
     "height": 1200,
     "lqip": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAQBACdASoUAA8APu1iqU2ppaOiMAgBMB2JQBadBDwJOEPfA57P/7seAAD+7NclkOq8zmaZAGJI+1gHlvwuOsftWr/pPPwzTFhx6dQQQqnI7uJA6C0E0PGjoQw/3AAA",
@@ -2452,10 +2276,10 @@
     }
   },
   "/photos/slot-port.webp": {
-    "hash": "94f2f617c92ddc6e",
+    "hash": "fb768a3f3c0fdd1b",
     "width": 1600,
     "height": 1200,
-    "lqip": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADwAwCdASoUAA8APu1iqU2ppaOiMAgBMB2JYwC7ABuxYwuU7s5wM6AAAP7svvv46ry2OvvPn1l61gn0qARfKJ3PpXThf98qwCJum3Lvttpm/f7su1Isrx5FDV5enZ7Q5HLDXOm0CYAAAA==",
+    "lqip": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADwAwCdASoUAA8APu1iqU2ppaOiMAgBMB2JYwC7ABuxYwuU7s5vlZaAAP7svvv46ry2OvvPn1l61gn0qARfKJ3PpXThf98qwCJum3Lvttpm/f7su1Isrx5FDV5enZ7Q5HLDXOm0CYAAAA==",
     "variants": {
       "avif": [
         {
@@ -2524,7 +2348,7 @@
     }
   },
   "/photos/slot-robot-weld.webp": {
-    "hash": "3d703e06368a3d3f",
+    "hash": "f0d68a34c2d09342",
     "width": 1600,
     "height": 1200,
     "lqip": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAQBACdASoUAA8APu1iqU2ppaOiMAgBMB2JYwAAW+knJZYjdDybtBHwAAD+6fVNwK9h/B8LAuFtJk2W3LZX85EqrG0t75LPpe534S9VVBl2LjJR83EU+ndRvYrEkVocTDxTqSwv1QD+bQBAAAA=",
@@ -2632,10 +2456,10 @@
     }
   },
   "/photos/slot-training-room.webp": {
-    "hash": "dda7636faa9ddc49",
+    "hash": "05c99c922220f1d4",
     "width": 1600,
     "height": 1200,
-    "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAwCdASoUAA8APu1iqU2ppaOiMAgBMB2JQAALU/4t5Ly1wqmhwqAAAP7s1YPSfOGx8ApwEHNboKUGZD6fVzfCgD/d2PUd+A9VX9O7DoVHdGYNGRrKmXqRRzQ9R+K0K76gAA==",
+    "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADQAwCdASoUAA8APu1iqU2ppaOiMAgBMB2JQAALU/4t5KqN3c3x3QAA/uzVg9J84bHwCnAQc1ugpQXituUN0jnZDmnvHWCXvTEIB98NcSMLC0/O1Q8eHPTeQ09KNN+GF5JwAA==",
     "variants": {
       "avif": [
         {
@@ -2663,42 +2487,6 @@
         {
           "w": 1600,
           "src": "/_img/photos/slot-training-room-1600.webp"
-        }
-      ]
-    }
-  },
-  "/photos/slot-tube-cutting.webp": {
-    "hash": "827ce7f986bc0ace",
-    "width": 1600,
-    "height": 1200,
-    "lqip": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAACwAwCdASoUAA8APu1iqU2ppaOiMAgBMB2JQBYdhDk8F8PEIZ+IQAD+7NV5PvFd9ho34gNXm7nFDqb627Qg/I9cs5GPmLsZ0DTBGoiG1/d5V8LMtLcDOuhsItGIeQAA",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/photos/slot-tube-cutting-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/slot-tube-cutting-1024.avif"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/slot-tube-cutting-1600.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/photos/slot-tube-cutting-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/slot-tube-cutting-1024.webp"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/slot-tube-cutting-1600.webp"
         }
       ]
     }
@@ -2735,6 +2523,50 @@
         {
           "w": 1600,
           "src": "/_img/photos/slot-warehouse-spares-1600.webp"
+        }
+      ]
+    }
+  },
+  "/about/factory.webp": {
+    "hash": "8f70ee5be088ffb6",
+    "width": 4889,
+    "height": 3056,
+    "lqip": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADQAwCdASoUAA0APu1kqU2ppaQiMAgBMB2JZwDDNCHhS/Oq0TCRzoAA/u1PVBJJ+DLaNZNC6pESOkB7CZBdyPsACDoD9EW4Qk8nYApTS9OwAA==",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/about/factory-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/about/factory-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/about/factory-1600.avif"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/about/factory-1920.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/about/factory-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/about/factory-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/about/factory-1600.webp"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/about/factory-1920.webp"
         }
       ]
     }

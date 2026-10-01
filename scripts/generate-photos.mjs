@@ -20,8 +20,6 @@ import { fileURLToPath } from "node:url";
 import sharp from "sharp";
 import {
   flatbedMachine,
-  tubeLaserMachine,
-  co2EngraverMachine,
   robotCellMachine,
   plasmaCutterMachine,
   arcWelderMachine,
@@ -602,10 +600,7 @@ const SCENES = {
   "hero-home": (r, w, h) => machineScene(r, w, h, { hero: true, machine: flatbedMachine("ra-f3015-pro", { inUse: true }), crates: true }),
   "hero-products": (r, w, h) => machineScene(r, w, h, { hero: true, machine: flatbedMachine("ra-f1530", { inUse: true }) }),
   "hero-fiber": (r, w, h) => machineScene(r, w, h, { hero: true, machine: flatbedMachine("ra-f6020-hd", { inUse: true }), heightFrac: 0.58 }),
-  "hero-tube": (r, w, h) => machineScene(r, w, h, { hero: true, machine: tubeLaserMachine({ inUse: true }) }),
-  "hero-co2": (r, w, h) => machineScene(r, w, h, { hero: true, machine: co2EngraverMachine({ inUse: true }) }),
   "hero-welding": (r, w, h) => machineScene(r, w, h, { hero: true, machine: robotCellMachine(1, { inUse: true }), heightFrac: 0.68 }),
-  "hero-product": (r, w, h) => machineScene(r, w, h, { hero: true, machine: flatbedMachine("ra-f12k", { inUse: true }), heightFrac: 0.72 }),
   "hero-repair": (r, w, h) => machineScene(r, w, h, { hero: true, machine: flatbedMachine("ra-f3015-pro", { inUse: false }), figures: 1 }),
   "hero-training": (r, w, h) => machineScene(r, w, h, { hero: true, machine: flatbedMachine("ra-f1530", { inUse: false }), figures: 2 }),
   "hero-jobwork": (r, w, h) => machineScene(r, w, h, { hero: true, machine: flatbedMachine("ra-f6020-hd", { inUse: false }), heightFrac: 0.58 }),
@@ -613,8 +608,8 @@ const SCENES = {
   "hero-contact": (r, w, h) => machineScene(r, w, h, { hero: true, machine: flatbedMachine("ra-f1530", { inUse: false }), locate: "pin" }),
   "hero-certifications": (r, w, h) => machineScene(r, w, h, { hero: true, machine: flatbedMachine("ra-f3015-pro", { inUse: false }), badge: true }),
   "hero-india": (r, w, h) => machineScene(r, w, h, { hero: true, machine: flatbedMachine("ra-f1530", { inUse: true }), locate: "pin" }),
-  "hero-state": (r, w, h) => machineScene(r, w, h, { hero: true, machine: co2EngraverMachine({ inUse: true }), locate: "pin" }),
-  "hero-city": (r, w, h) => machineScene(r, w, h, { hero: true, machine: tubeLaserMachine({ inUse: true }), locate: "city" }),
+  "hero-state": (r, w, h) => machineScene(r, w, h, { hero: true, machine: plasmaCutterMachine({ inUse: true }), heightFrac: 0.58, locate: "pin" }),
+  "hero-city": (r, w, h) => machineScene(r, w, h, { hero: true, machine: arcWelderMachine({ inUse: true }), heightFrac: 0.68, locate: "city" }),
   "hero-export": (r, w, h) => machineScene(r, w, h, { hero: true, machine: flatbedMachine("ra-f6020-hd", { inUse: false }), heightFrac: 0.58, crates: true, crane: true }),
   "hero-country": (r, w, h) => machineScene(r, w, h, { hero: true, machine: robotCellMachine(1, { inUse: true }), locate: "globe" }),
   // Family heroes for the plasma / arc-welding / SAW lines. The plasma table is
@@ -623,11 +618,10 @@ const SCENES = {
   "hero-plasma": (r, w, h) => machineScene(r, w, h, { hero: true, machine: plasmaCutterMachine({ inUse: true }), heightFrac: 0.58 }),
   "hero-arc-welding": (r, w, h) => machineScene(r, w, h, { hero: true, machine: arcWelderMachine({ inUse: true }), heightFrac: 0.68 }),
   "hero-saw": (r, w, h) => machineScene(r, w, h, { hero: true, machine: sawMachine({ inUse: true }), heightFrac: 0.7 }),
-  "slot-factory": (r, w, h) => machineScene(r, w, h, { machine: flatbedMachine("ra-f1530", { inUse: false }), machine2: tubeLaserMachine({ inUse: false }) }),
+  "slot-factory": (r, w, h) => machineScene(r, w, h, { machine: flatbedMachine("ra-f1530", { inUse: false }), machine2: plasmaCutterMachine({ inUse: false }) }),
   "slot-assembly": (r, w, h) => machineScene(r, w, h, { machine: flatbedMachine("ra-f3015-pro", { inUse: false }), machine2: robotCellMachine(1, { inUse: false }), figures: 1 }),
   "slot-cutting-head": (r, w, h) => macroShot(r, w, h, { subject: "cuttingHead" }),
   "slot-sparks": (r, w, h) => macroShot(r, w, h, { subject: "sparks" }),
-  "slot-tube-cutting": (r, w, h) => machineScene(r, w, h, { machine: tubeLaserMachine({ inUse: true }) }),
   "slot-robot-weld": (r, w, h) => machineScene(r, w, h, { machine: robotCellMachine(2, { inUse: true }), heightFrac: 0.58 }),
   "slot-control-panel": (r, w, h) => macroShot(r, w, h, { subject: "controlPanel" }),
   "slot-engineer-service": (r, w, h) => machineScene(r, w, h, { machine: flatbedMachine("ra-f3015-pro", { inUse: false }), figures: 1 }),
@@ -655,13 +649,13 @@ function photoSvg(key, width, height) {
 }
 
 const HERO_KEYS = [
-  "hero-home", "hero-products", "hero-fiber", "hero-tube", "hero-co2", "hero-welding",
-  "hero-product", "hero-repair", "hero-training", "hero-jobwork", "hero-about", "hero-contact",
+  "hero-home", "hero-products", "hero-fiber", "hero-welding",
+  "hero-repair", "hero-training", "hero-jobwork", "hero-about", "hero-contact",
   "hero-certifications", "hero-india", "hero-state", "hero-city", "hero-export", "hero-country",
   "hero-plasma", "hero-arc-welding", "hero-saw",
 ];
 const SLOT_KEYS = [
-  "slot-factory", "slot-assembly", "slot-cutting-head", "slot-sparks", "slot-tube-cutting",
+  "slot-factory", "slot-assembly", "slot-cutting-head", "slot-sparks",
   "slot-robot-weld", "slot-control-panel", "slot-engineer-service", "slot-training-room",
   "slot-crate-shipping", "slot-port", "slot-team", "slot-office", "slot-installation",
   "slot-quality-check", "slot-warehouse-spares",

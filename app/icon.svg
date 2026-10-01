@@ -1,1 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32"><rect width="32" height="32" rx="8" fill="#0F766E"/><text x="16" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">R</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-107 -80 1000 1000" >
+  <defs>
+    <clipPath id="ram-c"><circle cx="393" cy="420" r="495"/></clipPath>
+    <clipPath id="ram-lo"><polygon points="759,-200 1200,-200 1200,1100 -100,1100 -100,1050"/></clipPath>
+    <linearGradient id="ram-g" x1="430" y1="300" x2="727" y2="712" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8c8c8c"/><stop offset="1" stop-color="#3b3b3b"/>
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#ram-c)">
+    <rect x="-107" y="-80" width="1000" height="1000" fill="#c9d7d4"/>
+    <polygon points="759,-200 1200,-200 1200,1100 -100,1100 -100,1050" fill="#e2ebe9"/>
+  </g>
+  <circle cx="393" cy="420" r="491" fill="none" stroke="#a9b6b4" stroke-width="8"/>
+  <path d="M70 250H238L235 50L400 218L557 50L560 245H727V712H560V410L403 565L245 412V712H70Z" fill="#111"/>
+  <path d="M70 250H238L235 50L400 218L557 50L560 245H727V712H560V410L403 565L245 412V712H70Z" fill="url(#ram-g)" clip-path="url(#ram-lo)"/>
+</svg>

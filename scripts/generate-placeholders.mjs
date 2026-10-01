@@ -85,25 +85,16 @@ async function main() {
   }
 
   written.push(await emit("hero-poster.webp", heroPosterSvg(1920 * SS, 1080 * SS), { superSample: [1920, 1080] }));
-  written.push(await emit("about/factory.webp", factoryHallSvg(1600, 1000)));
+  // q80: the current range's plasma table and welding set carry more detail than
+  // the machines they replaced, and q90 put this one image over the 120 KB budget.
+  written.push(await emit("about/factory.webp", factoryHallSvg(1600, 1000), { quality: 80 }));
   written.push(await emit("about/india-reach.webp", indiaReachSvg(1200, 750)));
   written.push(await emit("about/world-reach.webp", worldReachSvg(1200, 750)));
   written.push(await emit("og-fallback.png", ogFallbackSvg(1200, 630), { format: "png" }));
 
-  // Logo (public, used in Organization schema `logo`) — a plain ink wordmark, no
-  // orange square, no gradient (ADR-0005 §4).
-  const logoSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 40" width="220" height="40"><text x="0" y="29" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#0F1A1A">RA Machine</text></svg>`;
-  const logoPath = join(PUBLIC, "logo.svg");
-  await mkdir(dirname(logoPath), { recursive: true });
-  await writeFile(logoPath, logoSvg);
-  written.push(logoPath);
-
-  // Favicon mark — a simple teal monogram (ADR-0005 §7: "logo.svg/icon.svg = simple
-  // wordmark/monogram").
-  const iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32"><rect width="32" height="32" rx="8" fill="#0F766E"/><text x="16" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">R</text></svg>`;
-  const iconPath = join(ROOT, "app", "icon.svg");
-  await writeFile(iconPath, iconSvg);
-  written.push(iconPath);
+  // public/logo.svg and app/icon.svg are the real RA Machine mark now (redrawn as
+  // a vector from the owner's logo, public/brand/ra-machine-mark.svg) — no longer
+  // generated here, so regenerating art can never overwrite them.
 
   console.log(`Generated ${written.length} placeholder assets:`);
   let missing = 0;

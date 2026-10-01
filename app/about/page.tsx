@@ -46,6 +46,7 @@ function stat(label: string): string {
 
 const aboutFacts = [
   { label: "Founded", value: String(site.foundedYear) },
+  { label: "Years of experience", value: stat("years of experience") },
   { label: "Machines installed", value: stat("machines installed") },
   { label: "Operators trained", value: stat("operators trained") },
 ];

@@ -94,7 +94,7 @@ export const westStates: State[] = [
       },
       {
         q: "What is the typical delivery and installation timeline to Maharashtra from Kolkata?",
-        a: "Standard fiber laser models are usually delivered to Pune, Mumbai, Nashik or Aurangabad within 2-3 weeks of order confirmation, including road transit of 4-6 days. RA Machine engineers travel from Kolkata to commission the machine on-site, run calibration cuts, and hand over the system typically within a day or two of arrival.",
+        a: "Machines are built within 8–10 weeks of order confirmation, then reach Pune, Mumbai, Nashik or Aurangabad after a road transit of 4-6 days. RA Machine engineers travel from Kolkata to commission the machine on-site, run calibration cuts, and hand over the system typically within a day or two of arrival.",
       },
       {
         q: "Does RA Machine provide on-site service in Maharashtra?",
@@ -187,7 +187,7 @@ export const westStates: State[] = [
       },
       {
         q: "What is the delivery and installation timeline from Kolkata to Gujarat?",
-        a: "Machines typically reach Ahmedabad, Rajkot, Morbi or Vadodara within 3-4 weeks of order confirmation, factoring in a road transit window of 5-7 days. RA Machine engineers travel from Kolkata to carry out on-site installation, calibration and test cuts, generally completing commissioning within one to two days of the machine's arrival.",
+        a: "Machines are built within 8–10 weeks of order confirmation, then reach Ahmedabad, Rajkot, Morbi or Vadodara after a road transit window of 5-7 days. RA Machine engineers travel from Kolkata to carry out on-site installation, calibration and test cuts, generally completing commissioning within one to two days of the machine's arrival.",
       },
       {
         q: "Is on-site service support available in Gujarat?",
@@ -259,7 +259,7 @@ export const westStates: State[] = [
       },
       {
         q: "What is the delivery timeline from Kolkata to Goa?",
-        a: "Standard machines typically reach Verna or Kundaim within 3-4 weeks of order confirmation, including a road transit window of 6-8 days, or via coastal shipping to Mormugao Port for larger equipment. RA Machine engineers travel from Kolkata to complete on-site installation and calibration, usually within a day or two of arrival.",
+        a: "Machines are built within 8–10 weeks of order confirmation, then reach Verna or Kundaim after a road transit window of 6-8 days, or via coastal shipping to Mormugao Port for larger equipment. RA Machine engineers travel from Kolkata to complete on-site installation and calibration, usually within a day or two of arrival.",
       },
       {
         q: "Is on-site service available for Goa buyers?",
@@ -331,7 +331,7 @@ export const westStates: State[] = [
       },
       {
         q: "What is the delivery and installation timeline to Silvassa or Daman from Kolkata?",
-        a: "Machines typically arrive at Silvassa or Daman within 2-3 weeks of order confirmation, with road transit generally taking 5-6 days along the NH19/NH48 corridor. RA Machine engineers travel from Kolkata to install and calibrate the machine on-site, usually completing commissioning within a day of arrival.",
+        a: "Machines are built within 8–10 weeks of order confirmation, then arrive at Silvassa or Daman after road transit of generally 5-6 days along the NH19/NH48 corridor. RA Machine engineers travel from Kolkata to install and calibrate the machine on-site, usually completing commissioning within a day of arrival.",
       },
       {
         q: "Is on-site service available here?",

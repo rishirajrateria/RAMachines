@@ -73,7 +73,7 @@ export const south2States: State[] = [
       },
       {
         q: "What is the typical delivery and installation timeline from Kolkata to Kerala?",
-        a: "After order confirmation, standard fiber laser machines are typically dispatched within 3-5 weeks, with road transit to Kochi or Palakkad adding roughly 6-9 days. RA Machine engineers travel from Kolkata to carry out on-site installation, mechanical alignment, and commissioning, which usually takes 3-5 working days depending on the machine and site readiness.",
+        a: "Machines are built within 8–10 weeks of order confirmation, with road transit to Kochi or Palakkad adding roughly 6-9 days. RA Machine engineers travel from Kolkata to carry out on-site installation, mechanical alignment, and commissioning, which usually takes 3-5 working days depending on the machine and site readiness.",
       },
       {
         q: "Does RA Machine provide on-site service support in Kerala?",
@@ -142,7 +142,7 @@ export const south2States: State[] = [
       },
       {
         q: "What is the delivery and installation timeline from Kolkata to Puducherry?",
-        a: "Standard machines are typically dispatched within 3-5 weeks of order confirmation, with road transit to Puducherry adding around 6-8 days. RA Machine engineers travel from Kolkata to handle installation, alignment, and commissioning on-site, usually completed within 3-4 working days once the machine and utilities are ready at your facility.",
+        a: "Machines are built within 8–10 weeks of order confirmation, with road transit to Puducherry adding around 6-8 days. RA Machine engineers travel from Kolkata to handle installation, alignment, and commissioning on-site, usually completed within 3-4 working days once the machine and utilities are ready at your facility.",
       },
       {
         q: "Is on-site service available in Puducherry?",
