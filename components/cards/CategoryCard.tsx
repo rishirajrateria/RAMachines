@@ -19,6 +19,16 @@ import Img from "@/components/media/Img";
 import { paths } from "@/lib/urls";
 import { ArrowRight } from "@/components/ui/Icons";
 import GlassCard from "@/components/ui/GlassCard";
+import { categories } from "@/data/categories";
+import { glueUnits, statSizeForGroup } from "@/components/ui/statValue";
+
+/**
+ * One size for every card's figure, from the longest of the five. The cards are
+ * shown side by side (products index, home bento, "Other technologies"), so a
+ * short "440 V" must not be set twice the size of "MIG · TIG · MMA" next to it —
+ * and the longest ones, at the largest step, wrapped onto two giant lines.
+ */
+const headlineSize = statSizeForGroup(categories.map((c) => c.headline));
 
 export default function CategoryCard({ category }: { category: Category }) {
   return (
@@ -39,7 +49,7 @@ export default function CategoryCard({ category }: { category: Category }) {
       <p className="mt-2 line-clamp-2 text-sm text-grey-600">{category.description}</p>
       <span className="mt-4 flex items-center justify-between gap-2 border-t border-[color:var(--hairline)] pt-4">
         <span className="flex min-w-0 flex-wrap items-baseline gap-x-1.5">
-          <span className="text-stat text-ink">{category.headline}</span>
+          <span className={`${headlineSize} text-ink`}>{glueUnits(category.headline)}</span>
           <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-grey-500">
             {category.headlineLabel}
           </span>
