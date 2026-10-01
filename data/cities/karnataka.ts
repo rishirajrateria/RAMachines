@@ -12,7 +12,7 @@ export const cities: City[] = [
     ],
     industries: ["aerospace and defence components", "electronics enclosures", "precision engineering parts", "general machine fabrication", "auto ancillary components"],
     industrialAreas: ["Peenya Industrial Area", "Bommasandra Industrial Area", "Jigani Industrial Area", "Electronics City periphery"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["hubballi", "belagavi", "mysuru", "mangaluru", "tumakuru", "shivamogga", "davanagere"],
     logisticsNote: "Bengaluru is around 2,200 km from our Kolkata headquarters via the NH16 East Coast corridor through Bhubaneswar, Visakhapatnam and Chennai, with typical road and rail freight transit of 8–10 working days.",
     faqs: [
@@ -34,7 +34,7 @@ export const cities: City[] = [
     ],
     industries: ["railway workshop and rolling-stock fabrication", "general engineering goods", "structural steel fabrication", "agricultural implement parts"],
     industrialAreas: ["Hubballi railway workshop belt", "Gokul Road industrial area"],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["bengaluru", "belagavi", "mysuru", "mangaluru", "tumakuru", "shivamogga", "davanagere"],
     logisticsNote: "Hubballi is roughly 2,350 km from our Kolkata headquarters via the NH16 corridor through Chennai and Bengaluru, with typical road and rail freight transit of 9–11 working days.",
     faqs: [
@@ -55,7 +55,7 @@ export const cities: City[] = [
     ],
     industries: ["foundry and castings", "auto-component manufacturing", "machine tool ancillary fabrication", "general engineering"],
     industrialAreas: ["Belagavi foundry cluster", "Udyambag industrial area"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["hubballi", "bengaluru", "mysuru", "mangaluru", "tumakuru", "shivamogga", "davanagere"],
     logisticsNote: "Belagavi is about 2,450 km from our Kolkata headquarters via the NH16 and NH4 corridors through Bengaluru, with typical road and rail freight transit of 9–11 working days.",
     faqs: [
@@ -76,7 +76,7 @@ export const cities: City[] = [
     ],
     industries: ["agro-processing equipment fabrication", "general engineering goods", "agricultural implement parts", "sheet-metal enclosures"],
     industrialAreas: ["Belagola Industrial Area", "Hebbal Industrial Estate, Mysuru"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["bengaluru", "hubballi", "belagavi", "mangaluru", "tumakuru", "shivamogga", "davanagere"],
     logisticsNote: "Mysuru is roughly 2,300 km from our Kolkata headquarters via the NH16 corridor through Chennai and Bengaluru, with typical road and rail freight transit of 9–10 working days.",
     faqs: [
@@ -97,7 +97,7 @@ export const cities: City[] = [
     ],
     industries: ["refinery-linked engineering fabrication", "port and logistics equipment", "stainless steel fittings", "general engineering"],
     industrialAreas: ["Baikampady Industrial Area", "Mangalore Refinery ancillary belt"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["bengaluru", "hubballi", "belagavi", "mysuru", "tumakuru", "shivamogga", "davanagere"],
     logisticsNote: "Mangaluru is around 2,500 km from our Kolkata headquarters via the NH16 corridor through Chennai and Bengaluru, with typical road and rail freight transit of 9–11 working days.",
     faqs: [
@@ -118,7 +118,7 @@ export const cities: City[] = [
     ],
     industries: ["auto ancillary components", "general engineering fabrication", "sheet-metal enclosures", "agro-machinery parts"],
     industrialAreas: ["Vasanthanarasapura Industrial Area", "Tumakuru KIADB estate"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["bengaluru", "hubballi", "belagavi", "mysuru", "mangaluru", "shivamogga", "davanagere"],
     logisticsNote: "Tumakuru is roughly 2,180 km from our Kolkata headquarters via the NH16 corridor through Chennai and Bengaluru, with typical road and rail freight transit of 8–10 working days.",
     faqs: [
@@ -139,7 +139,7 @@ export const cities: City[] = [
     ],
     industries: ["agro-processing equipment fabrication", "paper-machinery fabrication", "general engineering", "agricultural implement parts"],
     industrialAreas: ["Shivamogga industrial estate", "Bhadravati industrial belt"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["bengaluru", "hubballi", "belagavi", "mysuru", "mangaluru", "tumakuru", "davanagere"],
     logisticsNote: "Shivamogga is about 2,330 km from our Kolkata headquarters via the NH16 corridor through Chennai and Bengaluru, with typical road and rail freight transit of 9–10 working days.",
     faqs: [
@@ -160,7 +160,7 @@ export const cities: City[] = [
     ],
     industries: ["textile machinery fabrication", "edible-oil processing equipment", "general engineering goods", "agro-machinery parts"],
     industrialAreas: ["Davanagere industrial estate", "Anaji industrial area"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["bengaluru", "hubballi", "belagavi", "mysuru", "mangaluru", "tumakuru", "shivamogga"],
     logisticsNote: "Davanagere is roughly 2,270 km from our Kolkata headquarters via the NH16 corridor through Chennai and Bengaluru, with typical road and rail freight transit of 9–10 working days.",
     faqs: [

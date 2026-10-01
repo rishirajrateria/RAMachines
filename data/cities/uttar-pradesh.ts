@@ -12,7 +12,7 @@ export const cities: City[] = [
     ],
     industries: ["electronics manufacturing", "auto-component fabrication", "sheet-metal enclosures", "general engineering", "precision machine parts"],
     industrialAreas: ["Sector 63 industrial area", "Sector 80 electronics cluster", "Phase II Noida industrial estate", "Greater Noida industrial area"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["ghaziabad", "kanpur", "lucknow", "agra", "meerut", "aligarh", "varanasi"],
     logisticsNote: "Noida sits on the NH19 Grand Trunk Road corridor from Kolkata, roughly 1,450–1,550 km by road, so freight typically reaches you in 4–6 working days after dispatch from our Kolkata works, alongside parallel rail freight on the Eastern Railway–Northern Railway goods network.",
     faqs: [
@@ -34,7 +34,7 @@ export const cities: City[] = [
     ],
     industries: ["engineering goods manufacturing", "auto-parts fabrication", "sheet-metal fabrication", "hardware and fasteners", "general job-shop engineering"],
     industrialAreas: ["Sahibabad industrial area", "Site IV industrial estate", "Loni industrial area", "Meerut Road industrial belt"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["noida", "kanpur", "lucknow", "agra", "meerut", "aligarh", "varanasi"],
     logisticsNote: "Ghaziabad lies on the same NH19 Grand Trunk Road corridor as Delhi-NCR, about 1,450–1,550 km from our Kolkata works, with road freight typically taking 4–6 working days and rail freight moving in parallel over the Eastern Railway–Northern Railway network.",
     faqs: [
@@ -55,7 +55,7 @@ export const cities: City[] = [
     ],
     industries: ["leather machinery and tanning equipment", "textile machinery", "general engineering", "foundry and castings", "structural fabrication"],
     industrialAreas: ["Panki industrial area", "Fazalganj industrial estate", "Dada Nagar industrial area", "UPSIDC industrial area"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["noida", "ghaziabad", "lucknow", "agra", "meerut", "aligarh", "varanasi"],
     logisticsNote: "Kanpur is roughly 1,000–1,100 km from our Kolkata works along the NH19 Grand Trunk Road corridor, with road freight typically taking 3–5 working days and additional capacity available on the Eastern Railway goods network for larger consignments.",
     faqs: [
@@ -76,7 +76,7 @@ export const cities: City[] = [
     ],
     industries: ["handicrafts and chikankari-linked metal fittings", "general engineering", "food-processing machinery", "sheet-metal fabrication", "growing auto-ancillary base"],
     industrialAreas: ["Amausi industrial area", "Talkatora industrial estate", "Sarojini Nagar industrial area", "UPSIDC Chinhat industrial area"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["noida", "ghaziabad", "kanpur", "agra", "meerut", "aligarh", "varanasi"],
     logisticsNote: "Lucknow is about 1,000–1,050 km from our Kolkata works via the NH19 Grand Trunk Road corridor, with road freight typically taking 3–5 working days, and rail freight available on the same Eastern Railway goods route for bulkier shipments.",
     faqs: [
@@ -97,7 +97,7 @@ export const cities: City[] = [
     ],
     industries: ["leather footwear manufacturing", "handicrafts and marble inlay", "food and petha-processing machinery", "general engineering", "sheet-metal fabrication"],
     industrialAreas: ["Sikandra industrial area", "Transport Nagar industrial estate", "Foundry Nagar", "UPSIDC Agra industrial area"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["noida", "ghaziabad", "kanpur", "lucknow", "meerut", "aligarh", "varanasi"],
     logisticsNote: "Agra is around 1,250–1,350 km from our Kolkata works via the NH19 Grand Trunk Road corridor, with road freight typically taking 3–5 working days and rail freight available on the Eastern Railway goods network for larger or heavier consignments.",
     faqs: [
@@ -118,7 +118,7 @@ export const cities: City[] = [
     ],
     industries: ["sports goods manufacturing", "scissors and cutlery manufacturing", "general engineering", "sheet-metal fabrication", "auto-parts"],
     industrialAreas: ["Sports Industrial Area", "Partapur industrial estate", "Meerut UPSIDC industrial area", "Delhi Road industrial belt"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["noida", "ghaziabad", "kanpur", "lucknow", "agra", "aligarh", "varanasi"],
     logisticsNote: "Meerut is roughly 1,550–1,600 km from our Kolkata works via the NH19 Grand Trunk Road corridor through the Delhi-NCR belt, with road freight typically taking 4–6 working days and rail freight moving over the same Eastern Railway–Northern Railway goods network.",
     faqs: [
@@ -139,7 +139,7 @@ export const cities: City[] = [
     ],
     industries: ["lock and hardware manufacturing", "brass and metal fittings", "general engineering", "sheet-metal fabrication"],
     industrialAreas: ["Lock Industrial Area", "Dhorra Mafi industrial estate", "UPSIDC Aligarh industrial area", "Ramghat Road industrial belt"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["noida", "ghaziabad", "kanpur", "lucknow", "agra", "meerut", "varanasi"],
     logisticsNote: "Aligarh is about 1,400–1,450 km from our Kolkata works along the NH19 Grand Trunk Road corridor, with road freight typically taking 4–5 working days and rail freight available on the Eastern Railway–Northern Railway goods network for bulkier shipments.",
     faqs: [
@@ -160,7 +160,7 @@ export const cities: City[] = [
     ],
     industries: ["handloom weaving-linked machinery", "brassware and metal crafts", "general fabrication", "food-processing equipment"],
     industrialAreas: ["Bhadohi-Varanasi industrial belt", "Chandpur industrial estate", "UPSIDC Varanasi industrial area", "Ramnagar industrial area"],
-    recommendedProductSlugs: ["ra-f1530", "ra-c1390", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["noida", "ghaziabad", "kanpur", "lucknow", "agra", "meerut", "aligarh"],
     logisticsNote: "Varanasi is the closest of Uttar Pradesh's major industrial cities to our Kolkata works, roughly 680–780 km via the NH19 Grand Trunk Road corridor, so road freight typically arrives within 2–4 working days of dispatch, with rail freight also available on the Eastern Railway network.",
     faqs: [

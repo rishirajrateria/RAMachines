@@ -17,7 +17,7 @@ export const cities: City[] = [
       "general machine building",
     ],
     industrialAreas: ["Adityapur Industrial Area", "Gamharia industrial belt", "Tata Steel ancillary zone"],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f12k", "ra-rw10"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["ranchi", "bokaro", "dhanbad"],
     logisticsNote:
       "Jamshedpur is about 250 km from our Kolkata works via NH16 and the South Eastern Railway line, so deliveries are typically completed within 1–2 working days of dispatch.",
@@ -59,7 +59,7 @@ export const cities: City[] = [
       "sheet-metal job-shop work",
     ],
     industrialAreas: ["Namkum industrial area", "Tatisilwai industrial area", "Ranchi Industrial Area, Kokar"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["jamshedpur", "bokaro", "dhanbad"],
     logisticsNote:
       "Ranchi is around 400 km from our Kolkata works via NH19 and NH33, so deliveries typically take 1–2 working days from dispatch.",
@@ -105,7 +105,7 @@ export const cities: City[] = [
       "Bokaro Steel Plant ancillary belt",
       "district industrial centre",
     ],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f12k"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["jamshedpur", "ranchi", "dhanbad"],
     logisticsNote:
       "Bokaro is about 330 km from our Kolkata works via NH19 and NH23, so deliveries are typically completed within 1–2 working days of dispatch.",
@@ -151,7 +151,7 @@ export const cities: City[] = [
       "Jharia coal-belt engineering cluster",
       "district industrial centre",
     ],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["jamshedpur", "ranchi", "bokaro"],
     logisticsNote:
       "Dhanbad is roughly 400 km from our Kolkata works via NH19, so deliveries typically take 1–2 working days from dispatch.",

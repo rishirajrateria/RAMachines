@@ -12,7 +12,7 @@ export const cities: City[] = [
     ],
     industries: ["pharmaceutical process equipment", "light engineering fabrication", "general sheet-metal work", "equipment enclosures"],
     industrialAreas: ["Verna Industrial Estate", "Kundaim industrial estate"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["panaji", "margao", "vasco-da-gama"],
     logisticsNote: "Verna is reached via NH66, roughly 2,000–2,150 km from our Kolkata works, with typical road/rail transit of 7–9 days.",
     faqs: [
@@ -33,7 +33,7 @@ export const cities: City[] = [
     ],
     industries: ["signage and architectural metalwork", "general fabrication", "hospitality equipment repair", "light engineering"],
     industrialAreas: ["Panaji small-scale industrial area"],
-    recommendedProductSlugs: ["ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["verna", "margao", "vasco-da-gama"],
     logisticsNote: "Panaji is reached via NH66, roughly 2,000–2,150 km from our Kolkata works, with typical road/rail transit of 7–9 days.",
     faqs: [
@@ -54,7 +54,7 @@ export const cities: City[] = [
     ],
     industries: ["general engineering fabrication", "construction and structural metalwork", "agricultural equipment repair", "general sheet-metal work"],
     industrialAreas: ["Margao industrial estate", "Davorlim industrial estate"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["verna", "panaji", "vasco-da-gama"],
     logisticsNote: "Margao is reached via NH66, roughly 2,000–2,150 km from our Kolkata works, with typical road/rail transit of 7–9 days.",
     faqs: [
@@ -75,7 +75,7 @@ export const cities: City[] = [
     ],
     industries: ["ship-repair-linked fabrication", "port and cargo equipment", "general engineering", "structural steel work"],
     industrialAreas: ["Mormugao port industrial belt", "Sancoale industrial estate"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["verna", "panaji", "margao"],
     logisticsNote: "Vasco da Gama is reached via NH66, roughly 2,000–2,150 km from our Kolkata works, with typical road/rail transit of 7–9 days; Mormugao port serves export-linked buyers directly.",
     faqs: [
@@ -96,7 +96,7 @@ export const cities: City[] = [
     ],
     industries: ["general engineering fabrication", "plastics processing equipment", "textile machinery", "electrical and switchgear enclosures"],
     industrialAreas: ["Silvassa industrial estate", "Piparia industrial area", "Masat industrial estate"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["daman"],
     logisticsNote: "Silvassa is reached via NH48, roughly 1,950–2,100 km from our Kolkata works, with typical road/rail transit of 7–9 days.",
     faqs: [
@@ -117,7 +117,7 @@ export const cities: City[] = [
     ],
     industries: ["plastics processing equipment", "general engineering", "fisheries-linked equipment", "general sheet-metal fabrication"],
     industrialAreas: ["Daman industrial estate", "Kachigam industrial area"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["silvassa"],
     logisticsNote: "Daman is reached via NH48, roughly 1,900–2,050 km from our Kolkata works, with typical road/rail transit of 7–9 days.",
     faqs: [

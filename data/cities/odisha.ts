@@ -17,7 +17,7 @@ export const cities: City[] = [
       "sheet-metal job-shop work",
     ],
     industrialAreas: ["Infocity industrial and IT belt", "Rasulgarh industrial estate", "Patia industrial area"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["cuttack", "rourkela", "angul"],
     logisticsNote:
       "Bhubaneswar is around 440 km from our Kolkata works via NH16, so deliveries are typically completed within 2–3 working days of dispatch.",
@@ -59,7 +59,7 @@ export const cities: City[] = [
       "agro-processing equipment",
     ],
     industrialAreas: ["Cuttack Industrial Estate, Madhupatna", "district industrial centre"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["bhubaneswar", "rourkela", "angul"],
     logisticsNote:
       "Cuttack is about 470 km from our Kolkata works via NH16, so deliveries typically take 2–3 working days from dispatch.",
@@ -105,7 +105,7 @@ export const cities: City[] = [
       "Rourkela Steel Plant ancillary belt",
       "district industrial centre",
     ],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f12k"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["bhubaneswar", "cuttack", "angul"],
     logisticsNote:
       "Rourkela is roughly 650 km from our Kolkata works via NH49 and NH143, so deliveries typically take 3–4 working days from dispatch.",
@@ -147,7 +147,7 @@ export const cities: City[] = [
       "heavy engineering",
     ],
     industrialAreas: ["Angul Industrial Estate", "NALCO ancillary industrial belt", "district industrial centre"],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f12k"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["bhubaneswar", "cuttack", "rourkela"],
     logisticsNote:
       "Angul is about 580 km from our Kolkata works via NH16 and NH55, so deliveries typically take 3–4 working days from dispatch.",

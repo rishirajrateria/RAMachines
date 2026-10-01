@@ -23,7 +23,7 @@ export const cities: City[] = [
       "Kalyani Industrial Area",
       "Rajarhat–New Town industrial pockets",
     ],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["howrah", "durgapur", "asansol", "haldia", "siliguri", "kharagpur", "bardhaman"],
     logisticsNote:
       "As our own works and headquarters are located in Kolkata, machines ordered by Kolkata customers are typically installed within 3–7 days of order confirmation, with no long-haul transport involved.",
@@ -71,7 +71,7 @@ export const cities: City[] = [
       "Liluah engineering cluster",
       "Howrah Industrial Estate, Bamangachi",
     ],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["kolkata", "durgapur", "asansol", "haldia", "siliguri", "kharagpur", "bardhaman"],
     logisticsNote:
       "Howrah sits directly across the river from our Kolkata works, so machines are typically delivered and installed within same-day to 2 working days, with no long-distance transport involved.",
@@ -119,7 +119,7 @@ export const cities: City[] = [
       "Ranidanga small-scale industrial area",
       "Bamunara industrial growth centre",
     ],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f12k", "ra-rw10"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["kolkata", "howrah", "asansol", "haldia", "siliguri", "kharagpur", "bardhaman"],
     logisticsNote:
       "Durgapur is around 170 km from our Kolkata works via NH19 and the Eastern Railway main line, so most orders are delivered and installed within 2–3 working days of dispatch.",
@@ -165,7 +165,7 @@ export const cities: City[] = [
       "Hirapur–Kulti industrial belt",
       "Burnpur steel and engineering zone",
     ],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f3015-pro", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["kolkata", "howrah", "durgapur", "haldia", "siliguri", "kharagpur", "bardhaman"],
     logisticsNote:
       "Asansol is roughly 200 km from our Kolkata works along NH19 and the Eastern Railway main line, so deliveries are generally completed within 2–3 working days of dispatch.",
@@ -212,7 +212,7 @@ export const cities: City[] = [
       "Haldia Petrochemicals industrial estate",
       "Durgachak industrial area",
     ],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f12k", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["kolkata", "howrah", "durgapur", "asansol", "siliguri", "kharagpur", "bardhaman"],
     logisticsNote:
       "Haldia is about 130 km from our Kolkata works via NH116 and the Kolkata–Haldia rail link, so deliveries are typically completed within 1–3 working days of dispatch.",
@@ -258,7 +258,7 @@ export const cities: City[] = [
       "Siliguri Regulated Market industrial belt",
       "Fulbari industrial growth centre",
     ],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["kolkata", "howrah", "durgapur", "asansol", "haldia", "kharagpur", "bardhaman"],
     logisticsNote:
       "Siliguri is roughly 560 km from our Kolkata works via NH12 and the Barsoi rail corridor, so deliveries typically take 3–5 working days depending on season and hill-route conditions.",
@@ -304,7 +304,7 @@ export const cities: City[] = [
       "Kharagpur industrial growth centre",
       "Nimpura industrial area",
     ],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-t6000"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["kolkata", "howrah", "durgapur", "asansol", "haldia", "siliguri", "bardhaman"],
     logisticsNote:
       "Kharagpur is about 120 km from our Kolkata works via NH16 and the South Eastern Railway main line, so deliveries are usually completed within 1–2 working days of dispatch.",
@@ -350,7 +350,7 @@ export const cities: City[] = [
       "Palashdiha industrial area",
       "district industrial centre",
     ],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["kolkata", "howrah", "durgapur", "asansol", "haldia", "siliguri", "kharagpur"],
     logisticsNote:
       "Bardhaman is around 100 km from our Kolkata works via NH19 and the Eastern Railway main line, so deliveries are typically completed within 1–2 working days of dispatch.",

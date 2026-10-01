@@ -12,7 +12,7 @@ export const cities: City[] = [
     ],
     industries: ["general engineering fabrication", "tea-industry equipment", "structural steel for construction", "sheet-metal and enclosures", "transport and logistics equipment"],
     industrialAreas: ["Bamunimaidam industrial estate", "Amingaon industrial area", "North Guwahati small-scale units"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["dibrugarh", "silchar", "tinsukia"],
     logisticsNote: "Guwahati is reached via NH27 through the Siliguri corridor, roughly 1,000 km from our Kolkata works, with typical road/rail transit of 3–5 days.",
     faqs: [
@@ -33,7 +33,7 @@ export const cities: City[] = [
     ],
     industries: ["tea-processing machinery", "oilfield equipment and support fixtures", "general engineering fabrication", "structural steel work", "sheet-metal enclosures"],
     industrialAreas: ["Dibrugarh industrial growth centre", "Chabua road industrial pocket"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["guwahati", "silchar", "tinsukia"],
     logisticsNote: "Dibrugarh is reached via NH27 through the Siliguri corridor and onward Assam highways, roughly 1,350 km from our Kolkata works, with typical road/rail transit of 4–6 days.",
     faqs: [
@@ -54,7 +54,7 @@ export const cities: City[] = [
     ],
     industries: ["tea-trade and warehouse equipment", "bamboo-based industry equipment", "general fabrication", "structural steel for construction", "sheet-metal enclosures"],
     industrialAreas: ["Silchar industrial growth centre", "Meherpur small-scale industrial area"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["guwahati", "dibrugarh", "tinsukia"],
     logisticsNote: "Silchar is reached via NH27 through the Siliguri corridor and onward into the Barak Valley, roughly 1,300 km from our Kolkata works, with typical road/rail transit of 4–6 days.",
     faqs: [
@@ -75,7 +75,7 @@ export const cities: City[] = [
     ],
     industries: ["oilfield-linked engineering", "tea-processing equipment", "general engineering fabrication", "structural steel work", "sheet-metal enclosures"],
     industrialAreas: ["Tinsukia industrial growth centre", "Digboi road small-scale units"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["guwahati", "dibrugarh", "silchar"],
     logisticsNote: "Tinsukia is reached via NH27 through the Siliguri corridor and onward Assam highways, roughly 1,430 km from our Kolkata works, with typical road/rail transit of 4–6 days.",
     faqs: [

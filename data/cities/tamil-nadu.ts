@@ -12,7 +12,7 @@ export const cities: City[] = [
     ],
     industries: ["automotive components", "auto ancillary fabrication", "electronics enclosures", "general engineering", "port-linked heavy fabrication"],
     industrialAreas: ["Ambattur Industrial Estate", "Guindy Industrial Estate", "Oragadam auto corridor", "Sriperumbudur SEZ"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-t6000", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["coimbatore", "hosur", "tiruchirappalli", "madurai", "salem", "tiruppur", "erode"],
     logisticsNote: "Chennai is reached from our Kolkata headquarters via the NH16 East Coast Road corridor through Bhubaneswar and Visakhapatnam, roughly 1,670 km, with road and rail freight typically delivering in 6–8 working days.",
     faqs: [
@@ -34,7 +34,7 @@ export const cities: City[] = [
     ],
     industries: ["pump and motor manufacturing", "textile machinery fabrication", "foundry and castings", "wet-grinder and appliance parts", "general engineering exports"],
     industrialAreas: ["Kurichi Industrial Estate", "Peelamedu industrial belt", "SIDCO Industrial Estate, Kurichi", "Sulur SIDCO estate"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["chennai", "tiruppur", "erode", "salem", "madurai", "hosur", "tiruchirappalli"],
     logisticsNote: "Coimbatore sits roughly 2,100 km from our Kolkata headquarters via the NH16 and NH544 corridors through Chennai and Salem, with typical road and rail freight transit of 8–10 working days.",
     faqs: [
@@ -56,7 +56,7 @@ export const cities: City[] = [
     ],
     industries: ["heavy engineering and boiler components", "pressure-part fabrication", "structural steel ancillary work", "general engineering goods"],
     industrialAreas: ["BHEL Tiruchirappalli industrial belt", "Tiruchirappalli SIDCO Industrial Estate"],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["madurai", "chennai", "coimbatore", "salem", "hosur", "tiruppur", "erode"],
     logisticsNote: "Trichy lies close to the NH16/NH38 route from Chennai, roughly 2,050 km from our Kolkata headquarters, with typical road and rail freight transit of 8–10 working days.",
     faqs: [
@@ -77,7 +77,7 @@ export const cities: City[] = [
     ],
     industries: ["automotive components", "textile and powerloom machinery parts", "general fabrication", "agricultural implement parts"],
     industrialAreas: ["Tuticorin Road industrial belt", "Madurai SIDCO Industrial Estate"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["tiruchirappalli", "coimbatore", "chennai", "salem", "tiruppur", "erode", "hosur"],
     logisticsNote: "Madurai is around 2,150 km from our Kolkata headquarters via the NH16 corridor through Chennai and Trichy, with typical road and rail freight transit of 8–10 working days.",
     faqs: [
@@ -98,7 +98,7 @@ export const cities: City[] = [
     ],
     industries: ["two-wheeler auto components", "precision electronics and watch-component parts", "auto ancillary fabrication", "general engineering"],
     industrialAreas: ["SIPCOT Industrial Complex, Hosur", "Hosur SIDCO estate"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-t6000", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["chennai", "coimbatore", "salem", "tiruppur", "erode", "madurai", "tiruchirappalli"],
     logisticsNote: "Hosur is roughly 1,900 km from our Kolkata headquarters via the NH16 corridor through Chennai, with typical road and rail freight transit of 7–9 working days.",
     faqs: [
@@ -119,7 +119,7 @@ export const cities: City[] = [
     ],
     industries: ["steel-linked structural fabrication", "textile and powerloom machinery parts", "general engineering goods", "agricultural implement fabrication"],
     industrialAreas: ["SAIL Salem Steel Plant industrial belt", "Salem SIDCO Industrial Estate"],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["coimbatore", "erode", "tiruppur", "chennai", "madurai", "tiruchirappalli", "hosur"],
     logisticsNote: "Salem lies on the NH44/NH544 corridor roughly 2,000 km from our Kolkata headquarters via Chennai, with typical road and rail freight transit of 8–9 working days.",
     faqs: [
@@ -140,7 +140,7 @@ export const cities: City[] = [
     ],
     industries: ["garment-machinery fabrication", "textile-processing equipment frames", "sheet-metal enclosures", "general engineering"],
     industrialAreas: ["Tiruppur knitwear industrial belt", "Tiruppur SIDCO Industrial Estate"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["coimbatore", "erode", "salem", "chennai", "madurai", "hosur", "tiruchirappalli"],
     logisticsNote: "Tiruppur is roughly 2,100 km from our Kolkata headquarters via the NH16 and NH544 corridors through Chennai, with typical road and rail freight transit of 8–10 working days.",
     faqs: [
@@ -161,7 +161,7 @@ export const cities: City[] = [
     ],
     industries: ["powerloom machinery parts", "turmeric trade processing equipment", "dyeing and textile-processing fittings", "general fabrication"],
     industrialAreas: ["Erode textile and powerloom belt", "Erode SIDCO Industrial Estate"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["coimbatore", "tiruppur", "salem", "chennai", "madurai", "tiruchirappalli", "hosur"],
     logisticsNote: "Erode is around 2,050 km from our Kolkata headquarters via the NH16 and NH544 corridors through Chennai and Salem, with typical road and rail freight transit of 8–10 working days.",
     faqs: [

@@ -12,7 +12,7 @@ export const cities: City[] = [
     ],
     industries: ["shipbuilding and marine fabrication", "port-linked heavy fabrication", "spice-processing machinery", "general engineering"],
     industrialAreas: ["Cochin Shipyard ancillary belt", "Kalamassery industrial area", "Cochin Special Economic Zone"],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f3015-pro", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["thiruvananthapuram", "kozhikode", "thrissur", "kollam", "palakkad", "kannur", "alappuzha"],
     logisticsNote: "Kochi is roughly 2,400 km from our Kolkata headquarters via the NH16 East Coast corridor through Chennai and Coimbatore, with typical road and rail freight transit of 9–11 working days.",
     faqs: [
@@ -33,7 +33,7 @@ export const cities: City[] = [
     ],
     industries: ["electronics and precision engineering", "Technopark-linked ancillary fabrication", "general engineering", "sheet-metal enclosures"],
     industrialAreas: ["Technopark ancillary belt", "Thiruvananthapuram industrial estate"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["kochi", "kozhikode", "thrissur", "kollam", "palakkad", "kannur", "alappuzha"],
     logisticsNote: "Thiruvananthapuram is about 2,650 km from our Kolkata headquarters via the NH16 East Coast corridor through Chennai and Kochi, with typical road and rail freight transit of 10–12 working days.",
     faqs: [
@@ -54,7 +54,7 @@ export const cities: City[] = [
     ],
     industries: ["timber-processing equipment", "spice-trade machinery", "general fabrication", "port-linked general engineering"],
     industrialAreas: ["Kozhikode industrial estate", "timber and spice-processing cluster"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["kochi", "thiruvananthapuram", "thrissur", "kollam", "palakkad", "kannur", "alappuzha"],
     logisticsNote: "Kozhikode is roughly 2,500 km from our Kolkata headquarters via the NH16 East Coast corridor through Chennai and Coimbatore, with typical road and rail freight transit of 9–11 working days.",
     faqs: [
@@ -75,7 +75,7 @@ export const cities: City[] = [
     ],
     industries: ["gold-jewellery manufacturing tooling", "precision die and mould components", "general engineering", "sheet-metal fabrication"],
     industrialAreas: ["Thrissur industrial estate", "jewellery-manufacturing cluster"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["kochi", "thiruvananthapuram", "kozhikode", "kollam", "palakkad", "kannur", "alappuzha"],
     logisticsNote: "Thrissur is about 2,430 km from our Kolkata headquarters via the NH16 East Coast corridor through Chennai and Coimbatore, with typical road and rail freight transit of 9–11 working days.",
     faqs: [
@@ -96,7 +96,7 @@ export const cities: City[] = [
     ],
     industries: ["cashew-processing machinery", "seafood-processing equipment", "general fabrication", "port-linked general engineering"],
     industrialAreas: ["Kollam industrial estate", "cashew and seafood-processing belt"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["kochi", "thiruvananthapuram", "kozhikode", "thrissur", "palakkad", "kannur", "alappuzha"],
     logisticsNote: "Kollam is roughly 2,600 km from our Kolkata headquarters via the NH16 East Coast corridor through Chennai and Kochi, with typical road and rail freight transit of 10–12 working days.",
     faqs: [
@@ -117,7 +117,7 @@ export const cities: City[] = [
     ],
     industries: ["general engineering", "agro-machinery fabrication", "sheet-metal components", "agricultural implement parts"],
     industrialAreas: ["Kanjikode Industrial Estate"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["kochi", "thiruvananthapuram", "kozhikode", "thrissur", "kollam", "kannur", "alappuzha"],
     logisticsNote: "Palakkad is about 2,250 km from our Kolkata headquarters via the NH16 East Coast corridor through Chennai and Coimbatore, with typical road and rail freight transit of 9–10 working days.",
     faqs: [
@@ -138,7 +138,7 @@ export const cities: City[] = [
     ],
     industries: ["handloom machinery parts", "footwear manufacturing equipment", "general fabrication", "sheet-metal components"],
     industrialAreas: ["Kannur industrial estate", "handloom and footwear-manufacturing belt"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["kochi", "thiruvananthapuram", "kozhikode", "thrissur", "kollam", "palakkad", "alappuzha"],
     logisticsNote: "Kannur is roughly 2,570 km from our Kolkata headquarters via the NH16 East Coast corridor through Chennai and Coimbatore, with typical road and rail freight transit of 10–12 working days.",
     faqs: [
@@ -159,7 +159,7 @@ export const cities: City[] = [
     ],
     industries: ["coir-industry machinery", "coir-processing equipment fabrication", "general engineering", "structural fittings"],
     industrialAreas: ["Alappuzha coir-industry belt", "Alappuzha industrial estate"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["kochi", "thiruvananthapuram", "kozhikode", "thrissur", "kollam", "palakkad", "kannur"],
     logisticsNote: "Alappuzha is about 2,470 km from our Kolkata headquarters via the NH16 East Coast corridor through Chennai and Kochi, with typical road and rail freight transit of 9–11 working days.",
     faqs: [

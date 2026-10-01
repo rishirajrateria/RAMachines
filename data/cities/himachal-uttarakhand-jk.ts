@@ -13,7 +13,7 @@ export const cities: City[] = [
     ],
     industries: ["pharmaceutical manufacturing", "FMCG production", "precision sheet-metal for equipment housings", "cleanroom panel fabrication"],
     industrialAreas: ["Baddi-Barotiwala-Nalagarh (BBN) industrial belt", "Baddi Industrial Area", "Katha industrial estate"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["nalagarh", "parwanoo", "una"],
     logisticsNote: "Baddi is roughly 1,800 km from our Kolkata headquarters via NH19 and NH5, and machines typically reach site and are commissioned within 5–8 working days.",
     faqs: [
@@ -34,7 +34,7 @@ export const cities: City[] = [
     ],
     industries: ["pharmaceutical ancillary manufacturing", "FMCG production", "plastics processing"],
     industrialAreas: ["Nalagarh Industrial Area", "Baddi-Barotiwala-Nalagarh (BBN) industrial belt"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["baddi", "parwanoo", "una"],
     logisticsNote: "Nalagarh sits within the same BBN belt as Baddi, about 1,790 km from our Kolkata headquarters via NH19 and NH5, with typical delivery and commissioning in 5–8 working days.",
     faqs: [
@@ -55,7 +55,7 @@ export const cities: City[] = [
     ],
     industries: ["pharmaceutical manufacturing", "general engineering fabrication", "FMCG production"],
     industrialAreas: ["Parwanoo Industrial Estate", "Sector 1-6 Parwanoo industrial belt"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["baddi", "nalagarh", "una"],
     logisticsNote: "Parwanoo, right on the Punjab border, is about 1,770 km from our Kolkata headquarters via NH19 and NH5, with machines typically delivered and commissioned within 5–8 working days.",
     faqs: [
@@ -76,7 +76,7 @@ export const cities: City[] = [
     ],
     industries: ["FMCG manufacturing", "pharma-linked engineering", "packaging and general fabrication"],
     industrialAreas: ["Una Industrial Area", "Tahliwal industrial estate"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["baddi", "nalagarh", "parwanoo"],
     logisticsNote: "Una is roughly 1,820 km from our Kolkata headquarters via NH19 and NH5, with typical delivery and commissioning completed within 5–8 working days.",
     faqs: [
@@ -98,7 +98,7 @@ export const cities: City[] = [
     ],
     industries: ["pharmaceutical manufacturing", "FMCG production", "heavy electrical equipment manufacturing", "sheet-metal ancillary fabrication"],
     industrialAreas: ["SIDCUL Haridwar Industrial Estate", "BHEL Haridwar industrial complex"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["rudrapur", "dehradun", "roorkee"],
     logisticsNote: "Haridwar is about 1,550 km from our Kolkata headquarters via NH19 and NH74, and machines typically arrive and are commissioned within 4–7 working days.",
     faqs: [
@@ -119,7 +119,7 @@ export const cities: City[] = [
     ],
     industries: ["auto and auto-ancillary manufacturing", "FMCG production", "precision sheet-metal fabrication"],
     industrialAreas: ["SIDCUL Pantnagar Industrial Estate", "Rudrapur industrial growth centre"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-t6000", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["haridwar", "dehradun", "roorkee"],
     logisticsNote: "Rudrapur is roughly 1,600 km from our Kolkata headquarters via NH19 and NH74, with typical delivery and commissioning within 4–7 working days.",
     faqs: [
@@ -140,7 +140,7 @@ export const cities: City[] = [
     ],
     industries: ["instrumentation manufacturing", "light engineering fabrication", "research-institution equipment fabrication"],
     industrialAreas: ["Patel Nagar industrial area", "Dehradun district industrial centre"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["haridwar", "rudrapur", "roorkee"],
     logisticsNote: "Dehradun is about 1,650 km from our Kolkata headquarters via NH19 and NH74, and machines are typically delivered and commissioned within 4–7 working days.",
     faqs: [
@@ -161,7 +161,7 @@ export const cities: City[] = [
     ],
     industries: ["cement machinery manufacturing", "general engineering fabrication", "structural component fabrication"],
     industrialAreas: ["Roorkee industrial estate", "IIT Roorkee-linked engineering ecosystem"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["haridwar", "rudrapur", "dehradun"],
     logisticsNote: "Roorkee is around 1,570 km from our Kolkata headquarters via NH19 and NH74, with typical delivery and commissioning completed within 4–7 working days.",
     faqs: [
@@ -183,7 +183,7 @@ export const cities: City[] = [
     ],
     industries: ["light engineering fabrication", "auto ancillary manufacturing", "general fabrication"],
     industrialAreas: ["Bari Brahmana Industrial Estate", "Jammu industrial growth area"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["srinagar", "kathua", "samba"],
     logisticsNote: "Jammu is about 1,950 km from our Kolkata headquarters via NH44, with typical delivery and commissioning completed within 6–9 working days.",
     faqs: [
@@ -204,7 +204,7 @@ export const cities: City[] = [
     ],
     industries: ["handicrafts (papier-mache, carpets, walnut wood)", "construction-linked metal fabrication", "small-scale general fabrication"],
     industrialAreas: ["Rangreth Industrial Estate", "Srinagar district industrial centre"],
-    recommendedProductSlugs: ["ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["jammu", "kathua", "samba"],
     logisticsNote: "Srinagar is reached via NH44 through the Jawahar Tunnel and Banihal route, which can see seasonal weather delays, so we quote a wider transit window of roughly 8–12 working days from our Kolkata headquarters.",
     faqs: [
@@ -225,7 +225,7 @@ export const cities: City[] = [
     ],
     industries: ["light engineering fabrication", "general engineering parts manufacturing", "structural fabrication"],
     industrialAreas: ["Kathua Industrial Estate", "Kathua district industrial centre"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["jammu", "srinagar", "samba"],
     logisticsNote: "Kathua sits just inside the Jammu region on NH44, about 1,900 km from our Kolkata headquarters, with typical delivery and commissioning within 6–9 working days.",
     faqs: [
@@ -246,7 +246,7 @@ export const cities: City[] = [
     ],
     industries: ["auto ancillary manufacturing", "general engineering fabrication", "structural component manufacturing"],
     industrialAreas: ["Samba Industrial Growth Centre", "Samba district industrial estate"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-t6000"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["jammu", "srinagar", "kathua"],
     logisticsNote: "Samba is about 1,940 km from our Kolkata headquarters via NH44, with typical delivery and commissioning completed within 6–9 working days.",
     faqs: [

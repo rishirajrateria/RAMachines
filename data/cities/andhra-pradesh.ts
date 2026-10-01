@@ -12,7 +12,7 @@ export const cities: City[] = [
     ],
     industries: ["port-linked heavy fabrication", "steel-plant ancillary work", "pharma-equipment fabrication", "shipbuilding-adjacent structural work"],
     industrialAreas: ["Vizag Steel Plant ancillary belt", "Auto Nagar Industrial Estate, Visakhapatnam", "Duvvada industrial area"],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f12k", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["vijayawada", "guntur", "tirupati", "nellore", "kakinada", "kurnool", "anantapur"],
     logisticsNote: "Visakhapatnam is directly on the NH16 East Coast corridor from our Kolkata headquarters, roughly 800 km, with typical road and rail freight transit of 3–5 working days.",
     faqs: [
@@ -33,7 +33,7 @@ export const cities: City[] = [
     ],
     industries: ["general engineering fabrication", "auto-component fabrication", "structural steel work", "sheet-metal components"],
     industrialAreas: ["Autonagar Industrial Estate, Vijayawada", "Kondapalli industrial area"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["visakhapatnam", "guntur", "tirupati", "nellore", "kakinada", "kurnool", "anantapur"],
     logisticsNote: "Vijayawada is about 1,150 km from our Kolkata headquarters via the NH16 East Coast corridor, with typical road and rail freight transit of 4–6 working days.",
     faqs: [
@@ -54,7 +54,7 @@ export const cities: City[] = [
     ],
     industries: ["chilli and tobacco processing equipment", "packaging machinery fabrication", "general engineering", "agro-processing machinery"],
     industrialAreas: ["Guntur industrial estate", "chilli-trade processing cluster"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["visakhapatnam", "vijayawada", "tirupati", "nellore", "kakinada", "kurnool", "anantapur"],
     logisticsNote: "Guntur is roughly 1,180 km from our Kolkata headquarters via the NH16 East Coast corridor through Vijayawada, with typical road and rail freight transit of 4–6 working days.",
     faqs: [
@@ -75,7 +75,7 @@ export const cities: City[] = [
     ],
     industries: ["electronics manufacturing components", "Sri City-linked ancillary fabrication", "general engineering", "sheet-metal enclosures"],
     industrialAreas: ["Sri City industrial cluster (Tirupati periphery)", "Tirupati industrial estate"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["visakhapatnam", "vijayawada", "guntur", "nellore", "kakinada", "kurnool", "anantapur"],
     logisticsNote: "Tirupati is about 1,600 km from our Kolkata headquarters via the NH16 East Coast corridor through Vijayawada and Chennai, with typical road and rail freight transit of 6–8 working days.",
     faqs: [
@@ -96,7 +96,7 @@ export const cities: City[] = [
     ],
     industries: ["mining-linked engineering", "aquaculture-equipment fabrication", "general engineering", "processing-equipment frames"],
     industrialAreas: ["Nellore industrial estate", "coastal aquaculture-equipment belt"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["visakhapatnam", "vijayawada", "guntur", "tirupati", "kakinada", "kurnool", "anantapur"],
     logisticsNote: "Nellore is about 1,350 km from our Kolkata headquarters via the NH16 East Coast corridor through Vijayawada, with typical road and rail freight transit of 5–7 working days.",
     faqs: [
@@ -117,7 +117,7 @@ export const cities: City[] = [
     ],
     industries: ["port and SEZ-linked fabrication", "fertiliser-plant equipment", "general engineering", "structural steel work"],
     industrialAreas: ["Kakinada SEZ", "Kakinada port industrial belt"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["visakhapatnam", "vijayawada", "guntur", "tirupati", "nellore", "kurnool", "anantapur"],
     logisticsNote: "Kakinada is roughly 950 km from our Kolkata headquarters via the NH16 East Coast corridor, with typical road and rail freight transit of 4–6 working days.",
     faqs: [
@@ -138,7 +138,7 @@ export const cities: City[] = [
     ],
     industries: ["agro-processing equipment fabrication", "textile-linked machinery parts", "general engineering", "agricultural implement fabrication"],
     industrialAreas: ["Kurnool industrial estate", "agro-processing equipment cluster"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["visakhapatnam", "vijayawada", "guntur", "tirupati", "nellore", "kakinada", "anantapur"],
     logisticsNote: "Kurnool is about 1,750 km from our Kolkata headquarters via the NH16 corridor through Vijayawada and Hyderabad, with typical road and rail freight transit of 6–9 working days.",
     faqs: [
@@ -159,7 +159,7 @@ export const cities: City[] = [
     ],
     industries: ["auto-ancillary components (Kia-linked)", "agro-processing equipment fabrication", "general engineering", "structural fittings"],
     industrialAreas: ["Anantapur auto-ancillary industrial belt", "Anantapur industrial estate"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["visakhapatnam", "vijayawada", "guntur", "tirupati", "nellore", "kakinada", "kurnool"],
     logisticsNote: "Anantapur is roughly 1,950 km from our Kolkata headquarters via the NH16 corridor through Vijayawada and Bengaluru, with typical road and rail freight transit of 7–9 working days.",
     faqs: [

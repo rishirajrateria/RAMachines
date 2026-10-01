@@ -12,7 +12,7 @@ export const cities: City[] = [
     ],
     industries: ["garment and apparel export manufacturing", "printing and packaging", "electronics assembly", "light engineering fabrication"],
     industrialAreas: ["Okhla Industrial Area Phase I", "Okhla Industrial Area Phase II", "Okhla Industrial Estate"],
-    recommendedProductSlugs: ["ra-f1530", "ra-c1390", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["bawana", "narela", "mayapuri", "wazirpur", "naraina", "patparganj", "badli"],
     logisticsNote: "Okhla lies within the Delhi NCR belt, about 1,450 km from our Kolkata headquarters via NH19, and machines are typically delivered and commissioned within 4–6 working days of dispatch.",
     faqs: [
@@ -33,7 +33,7 @@ export const cities: City[] = [
     ],
     industries: ["plastics processing and moulding", "chemical and dye manufacturing", "general engineering fabrication", "rubber and packaging components"],
     industrialAreas: ["Bawana Industrial Area (Sectors 1-8)", "DSIIDC Bawana Industrial Estate", "Bawana relocation complex"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-f6020-hd"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["okhla", "narela", "mayapuri", "wazirpur", "naraina", "patparganj", "badli"],
     logisticsNote: "Bawana is roughly 1,460 km from our Kolkata headquarters via NH19, and dispatched machines typically arrive and are commissioned within 4–6 working days.",
     faqs: [
@@ -54,7 +54,7 @@ export const cities: City[] = [
     ],
     industries: ["auto-parts and components manufacturing", "general engineering fabrication", "sheet-metal fabrication for relocated units", "structural brackets and supports"],
     industrialAreas: ["Narela Industrial Area", "DSIIDC Narela Industrial Complex", "Narela-Bawana Road industrial belt"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-t6000", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["okhla", "bawana", "mayapuri", "wazirpur", "naraina", "patparganj", "badli"],
     logisticsNote: "Narela is about 1,470 km from our Kolkata headquarters via NH19, with typical delivery and commissioning completed within 4–6 working days of dispatch.",
     faqs: [
@@ -75,7 +75,7 @@ export const cities: City[] = [
     ],
     industries: ["auto-parts trading and re-manufacturing", "scrap and metal recycling", "steel re-rolling", "precision machining"],
     industrialAreas: ["Mayapuri Industrial Area Phase I", "Mayapuri Industrial Area Phase II", "Mayapuri scrap and auto-parts market"],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f3015-pro", "ra-t6000"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["okhla", "bawana", "narela", "wazirpur", "naraina", "patparganj", "badli"],
     logisticsNote: "Mayapuri is around 1,455 km from our Kolkata headquarters via NH19, and machines typically reach site and are commissioned within 4–6 working days.",
     faqs: [
@@ -96,7 +96,7 @@ export const cities: City[] = [
     ],
     industries: ["steel re-rolling", "utensil and kitchenware manufacturing", "general steel fabrication"],
     industrialAreas: ["Wazirpur Industrial Area", "Wazirpur steel re-rolling cluster", "Wazirpur utensil manufacturing belt"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["okhla", "bawana", "narela", "mayapuri", "naraina", "patparganj", "badli"],
     logisticsNote: "Wazirpur is roughly 1,450 km from our Kolkata headquarters via NH19, with dispatched machines typically delivered and commissioned within 4–6 working days.",
     faqs: [
@@ -117,7 +117,7 @@ export const cities: City[] = [
     ],
     industries: ["light engineering fabrication", "auto components manufacturing", "electrical goods manufacturing"],
     industrialAreas: ["Naraina Industrial Area Phase I", "Naraina Industrial Area Phase II", "Naraina Industrial Estate"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro", "ra-t6000"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["okhla", "bawana", "narela", "mayapuri", "wazirpur", "patparganj", "badli"],
     logisticsNote: "Naraina is about 1,445 km from our Kolkata headquarters via NH19, and machines are typically delivered and commissioned within 4–6 working days of dispatch.",
     faqs: [
@@ -138,7 +138,7 @@ export const cities: City[] = [
     ],
     industries: ["electronics assembly", "light engineering fabrication", "packaging and carton manufacturing"],
     industrialAreas: ["Patparganj Industrial Area", "Patparganj Industrial Estate"],
-    recommendedProductSlugs: ["ra-f1530", "ra-c1390", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["okhla", "bawana", "narela", "mayapuri", "wazirpur", "naraina", "badli"],
     logisticsNote: "Patparganj is around 1,455 km from our Kolkata headquarters via NH19, with typical delivery and commissioning completed within 4–6 working days.",
     faqs: [
@@ -159,7 +159,7 @@ export const cities: City[] = [
     ],
     industries: ["textile and garment-linked fabrication", "plastics processing", "general engineering fabrication"],
     industrialAreas: ["Badli Industrial Area", "DSIIDC Badli Industrial Estate"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["okhla", "bawana", "narela", "mayapuri", "wazirpur", "naraina", "patparganj"],
     logisticsNote: "Badli is roughly 1,460 km from our Kolkata headquarters via NH19, and machines typically arrive and are commissioned within 4–6 working days of dispatch.",
     faqs: [

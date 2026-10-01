@@ -13,7 +13,7 @@ export const cities: City[] = [
     ],
     industries: ["engineering goods manufacturing", "auto components manufacturing", "precision manufacturing", "electronics enclosure fabrication"],
     industrialAreas: ["Chandigarh Industrial Area Phase I", "Chandigarh Industrial Area Phase II"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-t6000"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: [],
     logisticsNote: "Chandigarh is about 1,650 km from our Kolkata headquarters via NH19, and machines typically reach site and are commissioned within 5–7 working days.",
     faqs: [
@@ -35,7 +35,7 @@ export const cities: City[] = [
     ],
     industries: ["tourism and hospitality-linked services", "government and administrative activity", "small-scale construction-linked metal fabrication"],
     industrialAreas: ["district industrial centre"],
-    recommendedProductSlugs: ["ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: [],
     logisticsNote: "The Srinagar-Leh and Manali-Leh highways are typically snow-closed from around November to May, so deliveries to Leh are timed to the May-October road-open window or, for urgent spares, routed by air freight; expect a season-dependent window of roughly 10–15 working days from our Kolkata headquarters.",
     faqs: [

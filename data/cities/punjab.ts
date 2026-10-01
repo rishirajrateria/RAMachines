@@ -12,7 +12,7 @@ export const cities: City[] = [
     ],
     industries: ["bicycle and bicycle-parts manufacturing", "hosiery and knitwear", "auto-parts and auto-component manufacturing", "hand tools and forgings", "general engineering"],
     industrialAreas: ["Focal Point industrial area", "Industrial Area A", "Tajpur Road industrial belt", "Dhandari Kalan industrial estate"],
-    recommendedProductSlugs: ["ra-t6000", "ra-f3015-pro", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["jalandhar", "amritsar", "mohali", "patiala", "bathinda", "mandi-gobindgarh", "rajpura"],
     logisticsNote: "Ludhiana is roughly 1,750–1,850 km from our Kolkata works via the NH19 Grand Trunk Road corridor extending through Delhi-NCR into Punjab, with road freight typically taking 5–7 working days and rail freight moving over the Eastern Railway–Northern Railway goods network.",
     faqs: [
@@ -34,7 +34,7 @@ export const cities: City[] = [
     ],
     industries: ["sports goods manufacturing", "hand tools manufacturing", "leather goods", "general engineering"],
     industrialAreas: ["Sports Goods Industrial Area", "Focal Point Jalandhar", "Leather Complex", "GT Road industrial belt"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["ludhiana", "amritsar", "mohali", "patiala", "bathinda", "mandi-gobindgarh", "rajpura"],
     logisticsNote: "Jalandhar is roughly 1,800–1,900 km from our Kolkata works along the NH19 Grand Trunk Road corridor through Delhi-NCR into Punjab, with road freight typically taking 5–7 working days and rail freight available on the Eastern Railway–Northern Railway goods network.",
     faqs: [
@@ -55,7 +55,7 @@ export const cities: City[] = [
     ],
     industries: ["engineering goods manufacturing", "woolen textiles and shawls", "food-processing machinery", "general fabrication"],
     industrialAreas: ["Focal Point Amritsar", "Chheharta industrial area", "GT Road industrial belt", "Majitha Road industrial estate"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["ludhiana", "jalandhar", "mohali", "patiala", "bathinda", "mandi-gobindgarh", "rajpura"],
     logisticsNote: "Amritsar, near Punjab's border, is roughly 1,850–1,950 km from our Kolkata works via the NH19 Grand Trunk Road corridor, with road freight typically taking 6–7 working days and rail freight moving over the Eastern Railway–Northern Railway goods network.",
     faqs: [
@@ -76,7 +76,7 @@ export const cities: City[] = [
     ],
     industries: ["IT and precision engineering", "electronics manufacturing", "auto-ancillary components", "general fabrication"],
     industrialAreas: ["Phase VIII-B industrial area", "Mohali Industrial Focal Point", "IT City precision-engineering cluster", "Kharar industrial belt"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["ludhiana", "jalandhar", "amritsar", "patiala", "bathinda", "mandi-gobindgarh", "rajpura"],
     logisticsNote: "Mohali is roughly 1,700–1,800 km from our Kolkata works via the NH19 Grand Trunk Road corridor through Delhi-NCR, with road freight typically taking 5–7 working days and rail freight available on the Eastern Railway–Northern Railway goods network.",
     faqs: [
@@ -97,7 +97,7 @@ export const cities: City[] = [
     ],
     industries: ["agricultural implements", "general engineering", "foundry and castings", "sheet-metal fabrication"],
     industrialAreas: ["Rajpura Road industrial area", "Focal Point Patiala", "Bahadurgarh industrial estate (Patiala)", "Tripuri industrial belt"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["ludhiana", "jalandhar", "amritsar", "mohali", "bathinda", "mandi-gobindgarh", "rajpura"],
     logisticsNote: "Patiala is roughly 1,700–1,800 km from our Kolkata works via the NH19 Grand Trunk Road corridor through Delhi-NCR, with road freight typically taking 5–7 working days and rail freight available on the Eastern Railway–Northern Railway goods network.",
     faqs: [
@@ -118,7 +118,7 @@ export const cities: City[] = [
     ],
     industries: ["agro-processing machinery", "general engineering", "sheet-metal fabrication", "foundry"],
     industrialAreas: ["Focal Point Bathinda", "Mandi Dabwali Road industrial belt", "Bathinda industrial estate"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["ludhiana", "jalandhar", "amritsar", "mohali", "patiala", "mandi-gobindgarh", "rajpura"],
     logisticsNote: "Bathinda is roughly 1,850–1,950 km from our Kolkata works via the NH19 Grand Trunk Road corridor through Delhi-NCR into Punjab's Malwa region, with road freight typically taking 6–7 working days and rail freight available on the Eastern Railway–Northern Railway goods network.",
     faqs: [
@@ -139,7 +139,7 @@ export const cities: City[] = [
     ],
     industries: ["steel re-rolling and induction furnaces", "structural steel fabrication", "general engineering"],
     industrialAreas: ["Mandi Gobindgarh steel re-rolling belt", "Khanna Road industrial estate"],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f12k", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["ludhiana", "jalandhar", "amritsar", "mohali", "patiala", "bathinda", "rajpura"],
     logisticsNote: "Mandi Gobindgarh is roughly 1,780–1,880 km from our Kolkata works via the NH19 Grand Trunk Road corridor through Delhi-NCR into Punjab, with road freight typically taking 5–7 working days and heavier plate consignments also moving over the Eastern Railway–Northern Railway goods network.",
     faqs: [
@@ -160,7 +160,7 @@ export const cities: City[] = [
     ],
     industries: ["general engineering", "auto-ancillary components", "electrical equipment manufacturing", "sheet-metal fabrication"],
     industrialAreas: ["Rajpura Focal Point industrial area", "Patiala Road industrial belt"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["ludhiana", "jalandhar", "amritsar", "mohali", "patiala", "bathinda", "mandi-gobindgarh"],
     logisticsNote: "Rajpura is roughly 1,720–1,820 km from our Kolkata works via the NH19 Grand Trunk Road corridor through Delhi-NCR, with road freight typically taking 5–7 working days and rail freight available on the Eastern Railway–Northern Railway goods network.",
     faqs: [

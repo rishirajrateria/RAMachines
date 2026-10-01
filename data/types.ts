@@ -16,41 +16,39 @@ export interface Img {
   height: number;
 }
 
+/**
+ * The five machine families (client brief, Oct 2026). RA Machine sells by
+ * technology and configures each machine to the buyer's job, so the site
+ * presents one page per family with the client's own ranges. There are no
+ * per-model pages or model numbers; the earlier eight placeholder SKUs were
+ * removed and their URLs redirect (vercel.json).
+ */
 export type CategorySlug =
   | "fiber-laser-cutting-machines"
-  | "tube-laser-cutting-machines"
-  | "co2-laser-machines"
+  | "cnc-plasma-cutting-machines"
+  | "mig-tig-arc-welding-machines"
+  | "submerged-arc-welding-machines"
   | "robotic-welding-systems";
 
 export interface Category {
   slug: CategorySlug;
-  name: string; // "Fiber Laser Cutting Machines"
-  shortName: string; // "Fiber Laser"
+  name: string; // "CNC Fiber Laser Cutting Machines"
+  shortName: string; // "CNC Laser"
+  /** The one figure a card leads with, e.g. "1.5–30 kW". From `ranges`, never invented. */
+  headline: string;
+  headlineLabel: string; // "laser power"
+  /**
+   * The client's own figures — the only specifications the site states for this
+   * family. Shown as the range table and hero facts. Do not add a figure here
+   * unless RA Machine has supplied it.
+   */
+  ranges: { label: string; value: string }[];
   description: string; // ≤155 chars, used for meta + cards
   intro: string; // one paragraph shown at top of the category page
-  longCopy: string[]; // paragraphs; 600–900 words total, original
+  longCopy: string[]; // paragraphs; buyer education, no invented specs
   applications: string[];
-  comparisonSpecs: string[]; // spec labels to show in the comparison table, in order
   faqs: FaqItem[]; // 6+
   image: Img;
-}
-
-export interface Product {
-  slug: string;
-  sku: string; // "RA-F1530"
-  name: string; // "RA-F1530 Fiber Laser Cutting Machine"
-  category: CategorySlug;
-  headline: string; // "1.5 kW · 1500 × 3000 mm" style one-liner
-  shortDescription: string; // ≤155 chars
-  longDescription: string[]; // paragraphs, 400–600 words total
-  highlights: string[]; // 4–6 bullet points
-  specs: { label: string; value: string }[]; // key/value table
-  applications: string[];
-  materials: { material: string; maxThickness: string }[]; // materials & thickness table
-  faqs: FaqItem[]; // 6+
-  images: Img[]; // gallery, first = main
-  brochureUrl: string; // placeholder PDF under /public/brochures
-  relatedSlugs: string[];
 }
 
 export type Region = "North" | "South" | "East" | "West" | "Central" | "North-East";
@@ -60,7 +58,7 @@ export interface StateIndustry {
   clusters: string[]; // real places, e.g. ["Ludhiana", "Jalandhar"]
   products: string[]; // what they make, e.g. ["bicycle frames", "tractor parts"]
   note: string; // 1–2 sentences: why laser cutting / welding matters for this industry here
-  recommendedProductSlugs: string[]; // 1–3 product slugs
+  recommendedFamilies: CategorySlug[]; // 1–3 machine families
 }
 
 export interface State {
@@ -85,7 +83,7 @@ export interface City {
   overview: string[]; // 2 short paragraphs, ~90 words total, real local industry context
   industries: string[]; // 3–6, specific ("foundry & castings", "railway wagon fabrication")
   industrialAreas: string[]; // real estates, 2–5
-  recommendedProductSlugs: string[]; // 2–4
+  recommendedFamilies: CategorySlug[]; // 1–3 machine families
   nearbyCitySlugs: string[]; // other cities in the same state (2–7)
   logisticsNote: string; // 1–2 sentences, transit from Kolkata
   faqs: FaqItem[]; // 5, city-specific
@@ -108,7 +106,7 @@ export interface CountrySector {
   zones: string[]; // real industrial zones / cities
   products: string[];
   note: string; // 1–2 sentences
-  recommendedProductSlugs: string[];
+  recommendedFamilies: CategorySlug[]; // 1–3 machine families
 }
 
 export interface Country {
@@ -139,13 +137,4 @@ export interface Certification {
   description: string; // 60–100 words, what it means for the buyer
   image: Img; // /certs/*.webp placeholder, 3:4 aspect
   optional?: boolean;
-}
-
-export interface Testimonial {
-  quote: string; // 40–70 words
-  name: string; // PLACEHOLDER person
-  role: string;
-  company: string; // PLACEHOLDER company
-  location: string; // "Ludhiana, India" / "Hanoi, Vietnam"
-  productSlug?: string;
 }

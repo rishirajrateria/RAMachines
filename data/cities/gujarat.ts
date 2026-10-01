@@ -12,7 +12,7 @@ export const cities: City[] = [
     ],
     industries: ["textile machinery and equipment", "pharmaceutical process equipment", "chemical process fabrication", "general engineering", "electrical enclosures"],
     industrialAreas: ["Naroda GIDC", "Odhav GIDC", "Vatva GIDC", "Sanand industrial belt"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["rajkot", "surat", "vadodara", "jamnagar", "bhavnagar", "morbi", "anand"],
     logisticsNote: "Ahmedabad is reached via NH19 and NH48, roughly 1,900–2,050 km from our Kolkata works, with typical road/rail transit of 6–8 days; Mundra and Kandla ports serve export-linked buyers in the region.",
     faqs: [
@@ -34,7 +34,7 @@ export const cities: City[] = [
     ],
     industries: ["diesel engine manufacturing", "auto parts and components", "precision castings", "general engineering", "machine tooling"],
     industrialAreas: ["Rajkot GIDC", "Aji GIDC", "Shapar-Veraval industrial estate"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd", "ra-rw10"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["ahmedabad", "surat", "vadodara", "jamnagar", "bhavnagar", "morbi", "anand"],
     logisticsNote: "Rajkot is reached via NH48, roughly 2,100–2,250 km from our Kolkata works, with typical road/rail transit of 7–9 days; Mundra port lies within reasonable onward reach for export shipments.",
     faqs: [
@@ -56,7 +56,7 @@ export const cities: City[] = [
     ],
     industries: ["textile machinery", "diamond-processing equipment", "port and logistics-linked fabrication", "general engineering", "sheet-metal enclosures"],
     industrialAreas: ["Sachin GIDC", "Pandesara GIDC", "Hazira industrial belt"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["ahmedabad", "rajkot", "vadodara", "jamnagar", "bhavnagar", "morbi", "anand"],
     logisticsNote: "Surat is reached via NH48, roughly 1,800–1,950 km from our Kolkata works, with typical road/rail transit of 6–8 days; Hazira port serves export-linked buyers directly.",
     faqs: [
@@ -77,7 +77,7 @@ export const cities: City[] = [
     ],
     industries: ["petrochemical process equipment", "heavy structural fabrication", "general engineering", "pressure vessel components", "machine frames"],
     industrialAreas: ["Gorwa GIDC", "Makarpura GIDC", "Savli industrial belt"],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f3015-pro", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["ahmedabad", "rajkot", "surat", "jamnagar", "bhavnagar", "morbi", "anand"],
     logisticsNote: "Vadodara is reached via NH48, roughly 1,850–2,000 km from our Kolkata works, with typical road/rail transit of 6–8 days.",
     faqs: [
@@ -98,7 +98,7 @@ export const cities: City[] = [
     ],
     industries: ["brass parts manufacturing", "refinery-linked engineering", "general fabrication", "process equipment maintenance", "machine tooling"],
     industrialAreas: ["Jamnagar GIDC", "Dared industrial estate"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["ahmedabad", "rajkot", "surat", "vadodara", "bhavnagar", "morbi", "anand"],
     logisticsNote: "Jamnagar is reached via NH48, roughly 2,200–2,350 km from our Kolkata works, with typical road/rail transit of 7–9 days.",
     faqs: [
@@ -119,7 +119,7 @@ export const cities: City[] = [
     ],
     industries: ["ship-recycling-linked engineering", "structural steel fabrication", "general engineering", "equipment housings", "machine fabrication"],
     industrialAreas: ["Bhavnagar GIDC", "Alang ship-recycling belt"],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f3015-pro", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["ahmedabad", "rajkot", "surat", "vadodara", "jamnagar", "morbi", "anand"],
     logisticsNote: "Bhavnagar is reached via NH48 and NH51, roughly 2,150–2,300 km from our Kolkata works, with typical road/rail transit of 7–9 days.",
     faqs: [
@@ -140,7 +140,7 @@ export const cities: City[] = [
     ],
     industries: ["ceramic tile manufacturing equipment", "clock and appliance components", "general sheet-metal fabrication", "conveyor and machine frames", "general engineering"],
     industrialAreas: ["Morbi GIDC", "Shapar-Veraval industrial belt"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["ahmedabad", "rajkot", "surat", "vadodara", "jamnagar", "bhavnagar", "anand"],
     logisticsNote: "Morbi is reached via NH48, roughly 2,150–2,300 km from our Kolkata works, with typical road/rail transit of 7–9 days.",
     faqs: [
@@ -161,7 +161,7 @@ export const cities: City[] = [
     ],
     industries: ["dairy processing equipment", "stainless steel fabrication", "automotive components", "general engineering", "food processing machinery"],
     industrialAreas: ["Anand industrial estate", "Vithal Udyognagar GIDC"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["ahmedabad", "rajkot", "surat", "vadodara", "jamnagar", "bhavnagar", "morbi"],
     logisticsNote: "Anand is reached via NH48, roughly 1,900–2,050 km from our Kolkata works, with typical road/rail transit of 6–8 days.",
     faqs: [

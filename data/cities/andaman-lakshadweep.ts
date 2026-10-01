@@ -12,7 +12,7 @@ export const cities: City[] = [
     ],
     industries: ["fishing and marine fabrication", "shipping and dockyard repair work", "tourism-linked construction fabrication", "general government infrastructure steelwork"],
     industrialAreas: ["Port Blair dockyard repair workshops", "Junglighat small-scale fabrication units"],
-    recommendedProductSlugs: ["ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: [],
     logisticsNote: "Port Blair has no road link to the mainland, so machines move by sea freight from Kolkata Port, the nearest major mainland port with a regular cargo-vessel service to the islands, with transit of roughly 4–7 days by sea plus port handling; air freight is used for urgent spares.",
     faqs: [
@@ -33,7 +33,7 @@ export const cities: City[] = [
     ],
     industries: ["fishing boat fittings and repair", "coir-processing fixtures", "tourism-linked small construction work", "general island repair fabrication"],
     industrialAreas: ["Kavaratti local repair workshops"],
-    recommendedProductSlugs: ["ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: [],
     logisticsNote: "Lakshadweep has very limited direct freight capacity and relies on sea freight coordinated via the mainland, so lead times to Kavaratti are longer than elsewhere and are best confirmed at the time of quotation rather than given as a fixed range.",
     faqs: [

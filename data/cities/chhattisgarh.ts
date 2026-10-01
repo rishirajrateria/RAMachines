@@ -17,7 +17,7 @@ export const cities: City[] = [
       "heavy engineering ancillary units",
     ],
     industrialAreas: ["Urla Industrial Area", "Siltara Industrial Area", "Sirgitti industrial belt"],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f3015-pro", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["bhilai", "bilaspur", "korba"],
     logisticsNote:
       "Raipur is roughly 540 km from our Kolkata works via NH49 and NH130, so deliveries typically take 2–4 working days from dispatch.",
@@ -63,7 +63,7 @@ export const cities: City[] = [
       "Bhilai Industrial Estate, Hathkhoj",
       "district industrial centre",
     ],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f12k"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["raipur", "bilaspur", "korba"],
     logisticsNote:
       "Bhilai is about 570 km from our Kolkata works via NH49 and NH130, so deliveries typically take 2–4 working days from dispatch.",
@@ -105,7 +105,7 @@ export const cities: City[] = [
       "general engineering",
     ],
     industrialAreas: ["Bilaspur Industrial Growth Centre, Sirgitti", "district industrial centre"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["raipur", "bhilai", "korba"],
     logisticsNote:
       "Bilaspur is around 600 km from our Kolkata works via NH130 and NH49, so deliveries typically take 2–4 working days from dispatch.",
@@ -147,7 +147,7 @@ export const cities: City[] = [
       "heavy structural fabrication",
     ],
     industrialAreas: ["Korba Industrial Growth Centre", "BALCO ancillary industrial belt", "district industrial centre"],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f12k"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["raipur", "bhilai", "bilaspur"],
     logisticsNote:
       "Korba is about 670 km from our Kolkata works via NH130 and NH49, so deliveries typically take 3–4 working days from dispatch.",

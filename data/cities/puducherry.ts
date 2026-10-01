@@ -12,7 +12,7 @@ export const cities: City[] = [
     ],
     industries: ["auto-ancillary fabrication", "pharma-equipment components", "general engineering", "sheet-metal fittings"],
     industrialAreas: ["Puducherry Industrial Estate", "Sedarapet auto-ancillary belt"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["karaikal"],
     logisticsNote: "Puducherry is on the same NH16 East Coast corridor used for Chennai deliveries from our Kolkata headquarters, roughly 1,750 km, with typical road and rail freight transit of 6–9 working days.",
     faqs: [
@@ -34,7 +34,7 @@ export const cities: City[] = [
     ],
     industries: ["agro-processing equipment fabrication", "general fabrication", "port-linked engineering"],
     industrialAreas: ["Karaikal industrial estate"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["puducherry"],
     logisticsNote: "Karaikal is reached via the same NH16 corridor as Puducherry from our Kolkata headquarters, roughly 1,800 km, with typical road and rail freight transit of 6–9 working days.",
     faqs: [

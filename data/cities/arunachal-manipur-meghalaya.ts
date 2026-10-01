@@ -12,7 +12,7 @@ export const cities: City[] = [
     ],
     industries: ["construction-linked welding and fabrication", "structural steelwork for buildings", "gates, grills and general metalwork", "small engineering repair work"],
     industrialAreas: ["Itanagar district industrial centre", "Naharlagun road small-scale workshops"],
-    recommendedProductSlugs: ["ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["naharlagun"],
     logisticsNote: "Itanagar is reached via NH27 extended through the Siliguri corridor and onward state highways with hill-terrain sections, roughly 1,700 km from our Kolkata works; because of the terrain and border-area road conditions, typical transit runs a wider 5–9 days.",
     faqs: [
@@ -33,7 +33,7 @@ export const cities: City[] = [
     ],
     industries: ["construction-linked fabrication", "structural steelwork", "gates and general metalwork", "small engineering repair work"],
     industrialAreas: ["Naharlagun district industrial centre", "local small-scale workshop clusters"],
-    recommendedProductSlugs: ["ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["itanagar"],
     logisticsNote: "Naharlagun is reached via the same NH27 extended and hill-highway route as Itanagar, roughly 1,700 km from our Kolkata works, with typical transit of 5–9 days given the terrain and border-area road conditions.",
     faqs: [
@@ -54,7 +54,7 @@ export const cities: City[] = [
     ],
     industries: ["handicrafts and handloom-linked metalwork", "bamboo-based industry equipment", "construction-linked fabrication", "general engineering repair work"],
     industrialAreas: ["Imphal district industrial centre", "Sekmai road small-scale workshops"],
-    recommendedProductSlugs: ["ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["thoubal"],
     logisticsNote: "Imphal is reached via NH27 extended through the Siliguri corridor and onward state highways with hill-terrain sections, roughly 1,650 km from our Kolkata works, with typical transit of 5–9 days given the terrain and border-area road conditions.",
     faqs: [
@@ -75,7 +75,7 @@ export const cities: City[] = [
     ],
     industries: ["agro-processing equipment", "small-scale engineering workshops", "construction-linked fabrication", "general repair and metalwork"],
     industrialAreas: ["Thoubal district industrial centre", "local small-scale workshop clusters"],
-    recommendedProductSlugs: ["ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["imphal"],
     logisticsNote: "Thoubal is reached via the same NH27 extended and hill-highway route as Imphal, roughly 1,680 km from our Kolkata works, with typical transit of 5–9 days given the terrain and border-area road conditions.",
     faqs: [
@@ -96,7 +96,7 @@ export const cities: City[] = [
     ],
     industries: ["tourism and hospitality-linked fabrication", "construction-linked steelwork", "cement and limestone-linked engineering support", "general signage and metalwork"],
     industrialAreas: ["Shillong district industrial centre", "Mawiong small-scale industrial area"],
-    recommendedProductSlugs: ["ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["byrnihat"],
     logisticsNote: "Shillong is reached via NH27 extended through the Siliguri corridor and onward hill highways, roughly 1,120 km from our Kolkata works, with typical transit of 5–9 days given the terrain and border-area road conditions.",
     faqs: [
@@ -117,7 +117,7 @@ export const cities: City[] = [
     ],
     industries: ["cement plant fabrication and support", "ferro-alloy industry equipment", "structural steelwork", "conveyor and process equipment components"],
     industrialAreas: ["Byrnihat industrial belt", "Assam-Meghalaya border industrial units"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["shillong"],
     logisticsNote: "Byrnihat is reached via NH27 through the Siliguri corridor, roughly 1,060 km from our Kolkata works; being on the plains just short of the Meghalaya hills, typical road/rail transit runs 4–7 days.",
     faqs: [

@@ -17,7 +17,7 @@ export const cities: City[] = [
       "sheet-metal and general fabrication",
     ],
     industrialAreas: ["Patna Industrial Area, Fatuha", "Bihta industrial area", "district industrial centre"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["muzaffarpur", "bhagalpur", "gaya"],
     logisticsNote:
       "Patna is roughly 580 km from our Kolkata works via NH19, so deliveries are typically completed within 2–3 working days of dispatch.",
@@ -59,7 +59,7 @@ export const cities: City[] = [
       "sheet-metal job-shop work",
     ],
     industrialAreas: ["Muzaffarpur Industrial Area, Bela", "district industrial centre"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["patna", "bhagalpur", "gaya"],
     logisticsNote:
       "Muzaffarpur is around 610 km from our Kolkata works via NH19 and NH922, so deliveries typically take 2–3 working days from dispatch.",
@@ -101,7 +101,7 @@ export const cities: City[] = [
       "general engineering",
     ],
     industrialAreas: ["Bhagalpur Industrial Area, Barari", "district industrial centre"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["patna", "muzaffarpur", "gaya"],
     logisticsNote:
       "Bhagalpur is about 430 km from our Kolkata works via NH80 and NH31, so deliveries are typically completed within 2–3 working days of dispatch.",
@@ -143,7 +143,7 @@ export const cities: City[] = [
       "sheet-metal job-shop work",
     ],
     industrialAreas: ["Gaya Industrial Area", "district industrial centre"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["patna", "muzaffarpur", "bhagalpur"],
     logisticsNote:
       "Gaya is roughly 470 km from our Kolkata works via NH19 and NH83, so deliveries are typically completed within 2–3 working days of dispatch.",

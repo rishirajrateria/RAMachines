@@ -12,7 +12,7 @@ export const cities: City[] = [
     ],
     industries: ["auto and auto-component manufacturing", "electronics manufacturing", "general engineering", "precision fabrication"],
     industrialAreas: ["Udyog Vihar industrial area", "Sector 37 industrial estate", "Manesar-Gurugram auto corridor", "IMT Manesar auto cluster (nearby)"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-rw6", "ra-t6000"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["faridabad", "manesar", "panipat", "sonipat", "bahadurgarh", "ambala", "yamunanagar"],
     logisticsNote: "Gurugram is roughly 1,500–1,600 km from our Kolkata works via the NH19 Grand Trunk Road corridor through the Golden Quadrilateral, with road freight typically taking 4–6 working days and rail freight moving over the Eastern Railway–Northern Railway goods network.",
     faqs: [
@@ -33,7 +33,7 @@ export const cities: City[] = [
     ],
     industries: ["heavy engineering", "tractor and farm-equipment parts", "general fabrication", "auto-component manufacturing"],
     industrialAreas: ["Faridabad industrial township (Sector 24-31 belt)", "Ballabgarh industrial estate", "NIT industrial area"],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f3015-pro", "ra-rw10"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["gurugram", "manesar", "panipat", "sonipat", "bahadurgarh", "ambala", "yamunanagar"],
     logisticsNote: "Faridabad is roughly 1,480–1,580 km from our Kolkata works via the NH19 Grand Trunk Road corridor through the Golden Quadrilateral, with road freight typically taking 4–6 working days and rail freight moving over the Eastern Railway–Northern Railway goods network.",
     faqs: [
@@ -55,7 +55,7 @@ export const cities: City[] = [
     ],
     industries: ["automotive manufacturing", "auto-component and tooling", "tube and chassis fabrication", "general engineering"],
     industrialAreas: ["IMT Manesar industrial area", "Manesar auto-component cluster", "Sector 8 industrial estate"],
-    recommendedProductSlugs: ["ra-t6000", "ra-f3015-pro", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["gurugram", "faridabad", "panipat", "sonipat", "bahadurgarh", "ambala", "yamunanagar"],
     logisticsNote: "Manesar is roughly 1,520–1,620 km from our Kolkata works via the NH19 Grand Trunk Road corridor through the Golden Quadrilateral, with road freight typically taking 4–6 working days and rail freight moving over the Eastern Railway–Northern Railway goods network.",
     faqs: [
@@ -76,7 +76,7 @@ export const cities: City[] = [
     ],
     industries: ["handloom and carpet weaving", "textile recycling", "refinery-linked engineering", "general fabrication"],
     industrialAreas: ["Panipat textile and carpet industrial belt", "Sector 29 Part II industrial estate", "Assandh Road industrial area"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["gurugram", "faridabad", "manesar", "sonipat", "bahadurgarh", "ambala", "yamunanagar"],
     logisticsNote: "Panipat is roughly 1,600–1,700 km from our Kolkata works via the NH19 Grand Trunk Road corridor through the Golden Quadrilateral, with road freight typically taking 4–6 working days and rail freight moving over the Eastern Railway–Northern Railway goods network.",
     faqs: [
@@ -97,7 +97,7 @@ export const cities: City[] = [
     ],
     industries: ["agricultural implements", "auto-parts manufacturing", "general engineering", "sheet-metal fabrication"],
     industrialAreas: ["Rai industrial estate", "Kundli industrial area", "HSIIDC Sonipat industrial estate"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["gurugram", "faridabad", "manesar", "panipat", "bahadurgarh", "ambala", "yamunanagar"],
     logisticsNote: "Sonipat is roughly 1,560–1,660 km from our Kolkata works via the NH19 Grand Trunk Road corridor through the Golden Quadrilateral, with road freight typically taking 4–6 working days and rail freight moving over the Eastern Railway–Northern Railway goods network.",
     faqs: [
@@ -118,7 +118,7 @@ export const cities: City[] = [
     ],
     industries: ["tractor and farm-equipment parts", "footwear manufacturing", "general fabrication"],
     industrialAreas: ["Bahadurgarh industrial estate", "Delhi Road industrial belt", "HSIIDC Bahadurgarh industrial area"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["gurugram", "faridabad", "manesar", "panipat", "sonipat", "ambala", "yamunanagar"],
     logisticsNote: "Bahadurgarh is roughly 1,520–1,620 km from our Kolkata works via the NH19 Grand Trunk Road corridor through the Golden Quadrilateral, with road freight typically taking 4–6 working days and rail freight moving over the Eastern Railway–Northern Railway goods network.",
     faqs: [
@@ -139,7 +139,7 @@ export const cities: City[] = [
     ],
     industries: ["scientific and laboratory instruments manufacturing", "general engineering", "sheet-metal fabrication"],
     industrialAreas: ["Ambala Cantt industrial area", "Ambala scientific-instruments cluster", "Baldev Nagar industrial estate"],
-    recommendedProductSlugs: ["ra-f1530", "ra-c1390", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["gurugram", "faridabad", "manesar", "panipat", "sonipat", "bahadurgarh", "yamunanagar"],
     logisticsNote: "Ambala is roughly 1,650–1,750 km from our Kolkata works via the NH19 Grand Trunk Road corridor through the Golden Quadrilateral, with road freight typically taking 5–7 working days and rail freight moving over the Eastern Railway–Northern Railway goods network.",
     faqs: [
@@ -160,7 +160,7 @@ export const cities: City[] = [
     ],
     industries: ["plywood and timber processing", "paper manufacturing", "sugar-machinery fabrication", "general engineering"],
     industrialAreas: ["Yamunanagar plywood and timber industrial belt", "Jagadhri industrial estate", "Sugar Mill Road industrial area"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["gurugram", "faridabad", "manesar", "panipat", "sonipat", "bahadurgarh", "ambala"],
     logisticsNote: "Yamunanagar is roughly 1,700–1,800 km from our Kolkata works via the NH19 Grand Trunk Road corridor through the Golden Quadrilateral, with road freight typically taking 5–7 working days and rail freight moving over the Eastern Railway–Northern Railway goods network.",
     faqs: [

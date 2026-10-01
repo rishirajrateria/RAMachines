@@ -12,7 +12,7 @@ export const cities: City[] = [
     ],
     industries: ["pharma-equipment fabrication", "electronics enclosures", "general engineering", "stainless-steel process equipment"],
     industrialAreas: ["Jeedimetla Industrial Area", "Balanagar Industrial Estate", "IDA Nacharam"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["patancheru", "medchal", "warangal", "karimnagar", "nizamabad", "khammam", "mahbubnagar"],
     logisticsNote: "Hyderabad is roughly 1,500 km from our Kolkata headquarters via the NH16 and NH65 corridors, with typical road and rail freight transit of 5–8 working days.",
     faqs: [
@@ -34,7 +34,7 @@ export const cities: City[] = [
     ],
     industries: ["pharma and bulk-chemical equipment fabrication", "stainless-steel vessel and tank fabrication", "structural supports for process plants", "general engineering"],
     industrialAreas: ["Patancheru-Bollaram Industrial Development Area"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["hyderabad", "medchal", "warangal", "karimnagar", "nizamabad", "khammam", "mahbubnagar"],
     logisticsNote: "Patancheru is about 1,530 km from our Kolkata headquarters via the NH16/NH65 corridor through Hyderabad, with typical road and rail freight transit of 5–8 working days.",
     faqs: [
@@ -55,7 +55,7 @@ export const cities: City[] = [
     ],
     industries: ["electronics enclosures", "pharma-linked ancillary fabrication", "general engineering", "sheet-metal components"],
     industrialAreas: ["Medchal industrial corridor", "IDA Pocharam"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["hyderabad", "patancheru", "warangal", "karimnagar", "nizamabad", "khammam", "mahbubnagar"],
     logisticsNote: "Medchal is roughly 1,520 km from our Kolkata headquarters via the NH16/NH65 corridor through Hyderabad, with typical road and rail freight transit of 5–8 working days.",
     faqs: [
@@ -76,7 +76,7 @@ export const cities: City[] = [
     ],
     industries: ["powerloom textile machinery parts", "general engineering fabrication", "structural steel components", "agricultural implement parts"],
     industrialAreas: ["Warangal industrial estate", "Kazipet industrial belt"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["hyderabad", "patancheru", "medchal", "karimnagar", "nizamabad", "khammam", "mahbubnagar"],
     logisticsNote: "Warangal is about 1,650 km from our Kolkata headquarters via the NH16/NH65 corridor through Hyderabad, with typical road and rail freight transit of 6–8 working days.",
     faqs: [
@@ -97,7 +97,7 @@ export const cities: City[] = [
     ],
     industries: ["granite-processing equipment", "agro-machinery fabrication", "general engineering", "agricultural implement parts"],
     industrialAreas: ["Karimnagar industrial estate", "granite-processing cluster"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["hyderabad", "patancheru", "medchal", "warangal", "nizamabad", "khammam", "mahbubnagar"],
     logisticsNote: "Karimnagar is roughly 1,700 km from our Kolkata headquarters via the NH16/NH563 corridor through Hyderabad, with typical road and rail freight transit of 6–9 working days.",
     faqs: [
@@ -118,7 +118,7 @@ export const cities: City[] = [
     ],
     industries: ["turmeric and agro-processing equipment", "general engineering", "packaging and handling machinery frames", "agricultural implement fabrication"],
     industrialAreas: ["Nizamabad industrial estate", "agro-processing equipment cluster"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["hyderabad", "patancheru", "medchal", "warangal", "karimnagar", "khammam", "mahbubnagar"],
     logisticsNote: "Nizamabad is about 1,680 km from our Kolkata headquarters via the NH16/NH44 corridor through Hyderabad, with typical road and rail freight transit of 6–9 working days.",
     faqs: [
@@ -139,7 +139,7 @@ export const cities: City[] = [
     ],
     industries: ["granite-processing equipment", "agro-based manufacturing", "general engineering", "agricultural implement parts"],
     industrialAreas: ["Khammam industrial estate", "granite-processing belt"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["hyderabad", "patancheru", "medchal", "warangal", "karimnagar", "nizamabad", "mahbubnagar"],
     logisticsNote: "Khammam is roughly 1,780 km from our Kolkata headquarters via the NH16 corridor through Vijayawada and Hyderabad, with typical road and rail freight transit of 6–9 working days.",
     faqs: [
@@ -160,7 +160,7 @@ export const cities: City[] = [
     ],
     industries: ["granite and agro-processing equipment", "general engineering", "structural supports", "agricultural implement fabrication"],
     industrialAreas: ["Mahbubnagar industrial estate", "granite and agro-processing belt"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["hyderabad", "patancheru", "medchal", "warangal", "karimnagar", "nizamabad", "khammam"],
     logisticsNote: "Mahbubnagar is about 1,600 km from our Kolkata headquarters via the NH16/NH44 corridor through Hyderabad, with typical road and rail freight transit of 6–8 working days.",
     faqs: [

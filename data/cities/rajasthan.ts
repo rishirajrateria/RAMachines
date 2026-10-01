@@ -12,7 +12,7 @@ export const cities: City[] = [
     ],
     industries: ["gems and jewellery machinery", "handicrafts", "general engineering", "auto-ancillary components"],
     industrialAreas: ["Sitapura industrial area", "VKIA (Vishwakarma Industrial Area)", "Jaipur Sanganer industrial belt", "Bagru industrial estate"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["jodhpur", "udaipur", "kota", "bhiwadi", "alwar", "bhilwara", "ajmer"],
     logisticsNote: "Jaipur is roughly 1,700–1,800 km from our Kolkata works via the NH19 Grand Trunk Road corridor through Delhi-NCR before continuing on NH48, with road freight typically taking 5–7 working days and rail freight available on the Eastern Railway–Northern Railway goods network.",
     faqs: [
@@ -33,7 +33,7 @@ export const cities: City[] = [
     ],
     industries: ["handicrafts", "guar-gum processing machinery", "stone-cutting machinery", "general engineering"],
     industrialAreas: ["Boranada industrial area", "MIA (Mandore Industrial Area)", "Basni industrial estate"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["jaipur", "udaipur", "kota", "bhiwadi", "alwar", "bhilwara", "ajmer"],
     logisticsNote: "Jodhpur is roughly 2,000–2,100 km from our Kolkata works via the NH19 and NH48 corridors through Delhi-NCR and Jaipur, with road freight typically taking 6–8 working days and rail freight available on the Eastern Railway–Northern Railway goods network for larger consignments.",
     faqs: [
@@ -54,7 +54,7 @@ export const cities: City[] = [
     ],
     industries: ["marble and stone processing machinery", "mineral and zinc-linked engineering", "general fabrication", "handicrafts"],
     industrialAreas: ["Udaipur industrial area (Gulab Bagh Road)", "Madri industrial estate", "Hindustan Zinc-linked ancillary units"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["jaipur", "jodhpur", "kota", "bhiwadi", "alwar", "bhilwara", "ajmer"],
     logisticsNote: "Udaipur is roughly 1,850–1,950 km from our Kolkata works via the NH19 and NH48 corridors through Delhi-NCR and Ajmer, with road freight typically taking 6–7 working days and rail freight available on the Eastern Railway–Northern Railway goods network.",
     faqs: [
@@ -75,7 +75,7 @@ export const cities: City[] = [
     ],
     industries: ["chemical and fertiliser industry", "stone-processing machinery", "general engineering", "sheet-metal fabrication"],
     industrialAreas: ["Kota industrial area (Ranpur)", "Dadabari industrial estate", "Kota Chemical Complex ancillary units"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["jaipur", "jodhpur", "udaipur", "bhiwadi", "alwar", "bhilwara", "ajmer"],
     logisticsNote: "Kota is roughly 1,550–1,650 km from our Kolkata works via the NH19 corridor through Uttar Pradesh before continuing on NH27, with road freight typically taking 5–7 working days and rail freight available on the Eastern Railway–Northern Railway goods network.",
     faqs: [
@@ -96,7 +96,7 @@ export const cities: City[] = [
     ],
     industries: ["auto and auto-ancillary manufacturing", "electronics manufacturing", "general engineering", "FMCG-linked equipment"],
     industrialAreas: ["RIICO industrial area Bhiwadi", "Chopanki industrial area", "Tapukara industrial estate"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-rw6", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["jaipur", "jodhpur", "udaipur", "kota", "alwar", "bhilwara", "ajmer"],
     logisticsNote: "Bhiwadi is roughly 1,600–1,700 km from our Kolkata works via the NH19 Grand Trunk Road corridor through Delhi-NCR, with road freight typically taking 4–6 working days and rail freight available on the Eastern Railway–Northern Railway goods network.",
     faqs: [
@@ -117,7 +117,7 @@ export const cities: City[] = [
     ],
     industries: ["auto-ancillary components", "general engineering", "agro-processing equipment", "sheet-metal fabrication"],
     industrialAreas: ["RIICO industrial area Alwar", "Bhiwadi-Alwar auto-ancillary corridor", "MIA Alwar (Matsya Industrial Area)"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["jaipur", "jodhpur", "udaipur", "kota", "bhiwadi", "bhilwara", "ajmer"],
     logisticsNote: "Alwar is roughly 1,620–1,720 km from our Kolkata works via the NH19 Grand Trunk Road corridor through Delhi-NCR, with road freight typically taking 5–7 working days and rail freight available on the Eastern Railway–Northern Railway goods network.",
     faqs: [
@@ -138,7 +138,7 @@ export const cities: City[] = [
     ],
     industries: ["textile and wool processing (synthetic-blended fabric)", "textile machinery", "general engineering"],
     industrialAreas: ["Bhilwara textile industrial belt (RIICO)", "Gulabpura industrial estate", "Mandalgarh Road industrial area"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["jaipur", "jodhpur", "udaipur", "kota", "bhiwadi", "alwar", "ajmer"],
     logisticsNote: "Bhilwara is roughly 1,750–1,850 km from our Kolkata works via the NH19 and NH48 corridors through Delhi-NCR and Ajmer, with road freight typically taking 6–7 working days and rail freight available on the Eastern Railway–Northern Railway goods network.",
     faqs: [
@@ -159,7 +159,7 @@ export const cities: City[] = [
     ],
     industries: ["marble processing machinery", "general engineering", "agro-processing equipment"],
     industrialAreas: ["Ajmer industrial area (Makhupura)", "RIICO industrial estate Ajmer", "Kishangarh marble belt (nearby)"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["jaipur", "jodhpur", "udaipur", "kota", "bhiwadi", "alwar", "bhilwara"],
     logisticsNote: "Ajmer is roughly 1,800–1,900 km from our Kolkata works via the NH19 and NH48 corridors through Delhi-NCR and Jaipur, with road freight typically taking 6–7 working days and rail freight available on the Eastern Railway–Northern Railway goods network.",
     faqs: [

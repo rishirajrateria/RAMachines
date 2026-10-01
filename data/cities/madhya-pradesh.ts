@@ -21,7 +21,7 @@ export const cities: City[] = [
       "Pithampur–Indore auto corridor (adjacent)",
       "Rau industrial area",
     ],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-t6000", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["bhopal", "pithampur", "jabalpur", "gwalior", "dewas", "ujjain", "satna"],
     logisticsNote:
       "Indore is roughly 1,300 km from our Kolkata works via NH19 and NH34, so deliveries typically take 4–6 working days from dispatch.",
@@ -63,7 +63,7 @@ export const cities: City[] = [
       "equipment enclosure manufacturing",
     ],
     industrialAreas: ["Govindpura Industrial Area", "Mandideep industrial belt", "BHEL ancillary industrial zone"],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["indore", "pithampur", "jabalpur", "gwalior", "dewas", "ujjain", "satna"],
     logisticsNote:
       "Bhopal is about 1,200 km from our Kolkata works via NH19 and NH34, so deliveries typically take 4–6 working days from dispatch.",
@@ -105,7 +105,7 @@ export const cities: City[] = [
       "tubular and chassis fabrication",
     ],
     industrialAreas: ["Pithampur Industrial Area, Sector 1–3", "Pithampur Auto Cluster SEZ"],
-    recommendedProductSlugs: ["ra-t6000", "ra-f3015-pro", "ra-rw10"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["indore", "bhopal", "jabalpur", "gwalior", "dewas", "ujjain", "satna"],
     logisticsNote:
       "Pithampur is roughly 1,320 km from our Kolkata works via NH19 and NH34, so deliveries typically take 4–6 working days from dispatch.",
@@ -147,7 +147,7 @@ export const cities: City[] = [
       "sheet-metal job-shop work",
     ],
     industrialAreas: ["Richhai Industrial Area", "Adhartal industrial belt", "district industrial centre"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["indore", "bhopal", "pithampur", "gwalior", "dewas", "ujjain", "satna"],
     logisticsNote:
       "Jabalpur is about 1,050 km from our Kolkata works via NH30 and NH34, so deliveries typically take 3–5 working days from dispatch.",
@@ -189,7 +189,7 @@ export const cities: City[] = [
       "sheet-metal job-shop work",
     ],
     industrialAreas: ["Malanpur Industrial Area", "Banmore industrial belt", "Gwalior industrial estate"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["indore", "bhopal", "pithampur", "jabalpur", "dewas", "ujjain", "satna"],
     logisticsNote:
       "Gwalior is around 1,150 km from our Kolkata works via NH19 and NH44, so deliveries typically take 4–6 working days from dispatch.",
@@ -231,7 +231,7 @@ export const cities: City[] = [
       "sheet-metal job-shop work",
     ],
     industrialAreas: ["Dewas Industrial Area", "Ajanti industrial belt", "district industrial centre"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-t6000"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["indore", "bhopal", "pithampur", "jabalpur", "gwalior", "ujjain", "satna"],
     logisticsNote:
       "Dewas is about 1,280 km from our Kolkata works via NH19 and NH34, so deliveries typically take 4–6 working days from dispatch.",
@@ -273,7 +273,7 @@ export const cities: City[] = [
       "equipment support fabrication",
     ],
     industrialAreas: ["Ujjain Industrial Area, Nanakheda", "district industrial centre"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["indore", "bhopal", "pithampur", "jabalpur", "gwalior", "dewas", "satna"],
     logisticsNote:
       "Ujjain is roughly 1,260 km from our Kolkata works via NH19 and NH34, so deliveries typically take 4–6 working days from dispatch.",
@@ -315,7 +315,7 @@ export const cities: City[] = [
       "equipment support manufacturing",
     ],
     industrialAreas: ["Satna Industrial Area", "district industrial centre"],
-    recommendedProductSlugs: ["ra-f6020-hd", "ra-f3015-pro"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["indore", "bhopal", "pithampur", "jabalpur", "gwalior", "dewas", "ujjain"],
     logisticsNote:
       "Satna is about 1,000 km from our Kolkata works via NH19 and NH30, so deliveries typically take 3–5 working days from dispatch.",

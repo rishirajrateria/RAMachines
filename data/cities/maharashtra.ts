@@ -12,7 +12,7 @@ export const cities: City[] = [
     ],
     industries: ["general engineering and fabrication", "port and shipping-linked equipment", "signage and architectural metalwork", "sheet-metal enclosures", "tool room and jig fabrication"],
     industrialAreas: ["Andheri MIDC", "Kurla MIDC", "Nhava Sheva/JNPT port belt", "Turbhe industrial estate"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["thane", "pune", "nashik", "kolhapur", "nagpur", "solapur", "aurangabad"],
     logisticsNote: "Dispatch from our Kolkata works to Mumbai runs via NH16 and NH48, roughly 1,900–2,050 km, with typical road/rail transit of 6–8 days; export-linked buyers near Nhava Sheva/JNPT can also plan onward container movement from the same corridor.",
     faqs: [
@@ -34,7 +34,7 @@ export const cities: City[] = [
     ],
     industries: ["automotive components", "forging and precision castings", "general engineering fabrication", "machine frames and enclosures", "auto ancillary tooling"],
     industrialAreas: ["Chakan MIDC", "Talegaon MIDC", "Hinjawadi industrial belt", "Pimpri-Chinchwad industrial estate"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-rw6", "ra-t6000"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["mumbai", "thane", "nashik", "kolhapur", "solapur", "nagpur", "aurangabad"],
     logisticsNote: "Pune is served via NH16/NH48 through the same western corridor as Mumbai, roughly 1,850–2,000 km from our Kolkata works, with road/rail transit typically taking 6–8 days.",
     faqs: [
@@ -56,7 +56,7 @@ export const cities: City[] = [
     ],
     industries: ["automotive components", "aerospace and precision engineering", "stainless steel fabrication", "food and beverage processing equipment", "general sheet-metal work"],
     industrialAreas: ["Satpur MIDC", "Ambad MIDC", "Sinnar industrial area"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["mumbai", "pune", "thane", "aurangabad", "nagpur", "kolhapur", "solapur"],
     logisticsNote: "Nashik is reached via NH60 and NH53 connecting into the NH16/NH48 corridor, roughly 1,850–2,050 km from our Kolkata works, with typical road/rail transit of 6–8 days.",
     faqs: [
@@ -77,7 +77,7 @@ export const cities: City[] = [
     ],
     industries: ["automotive ancillary components", "general engineering fabrication", "brewing and beverage equipment", "sheet-metal enclosures", "machine tooling"],
     industrialAreas: ["Waluj MIDC", "Chikalthana MIDC", "Shendra MIDC"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["mumbai", "pune", "nashik", "nagpur", "kolhapur", "solapur", "thane"],
     logisticsNote: "Dispatch to Aurangabad runs via NH53 through central India, roughly 1,650–1,800 km from our Kolkata works, with typical road/rail transit of 5–7 days.",
     faqs: [
@@ -98,7 +98,7 @@ export const cities: City[] = [
     ],
     industries: ["aerospace and MRO-linked engineering", "logistics and warehousing equipment", "food processing machinery", "textile machinery fabrication", "general engineering"],
     industrialAreas: ["MIHAN SEZ", "Butibori MIDC", "Hingna MIDC"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["mumbai", "pune", "nashik", "aurangabad", "kolhapur", "solapur", "thane"],
     logisticsNote: "Nagpur sits on NH16/NH6 along one of the most direct road corridors from eastern India, roughly 1,050–1,150 km from our Kolkata works, with typical road/rail transit of 3–5 days.",
     faqs: [
@@ -119,7 +119,7 @@ export const cities: City[] = [
     ],
     industries: ["foundry and auto-parts castings", "sugar-machinery fabrication", "agricultural equipment", "general engineering", "machine guards and frames"],
     industrialAreas: ["Shiroli MIDC", "Kagal-Hatkanangale MIDC", "Gokul Shirgaon MIDC"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f6020-hd", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["pune", "mumbai", "solapur", "nashik", "aurangabad", "nagpur", "thane"],
     logisticsNote: "Kolhapur is reached via NH48, roughly 2,050–2,150 km from our Kolkata works, with typical road/rail transit of 7–9 days.",
     faqs: [
@@ -140,7 +140,7 @@ export const cities: City[] = [
     ],
     industries: ["textile machinery and looms", "hosiery equipment", "general sheet-metal fabrication", "packaging machinery", "general engineering"],
     industrialAreas: ["Solapur MIDC", "Chincholi industrial area"],
-    recommendedProductSlugs: ["ra-f1530", "ra-f3015-pro", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["pune", "kolhapur", "mumbai", "nashik", "aurangabad", "nagpur", "thane"],
     logisticsNote: "Solapur lies on NH65 connecting into the NH16 corridor, roughly 1,700–1,800 km from our Kolkata works, with typical road/rail transit of 6–8 days.",
     faqs: [
@@ -161,7 +161,7 @@ export const cities: City[] = [
     ],
     industries: ["chemical and pharma process equipment", "general engineering fabrication", "electrical and control panel enclosures", "stainless steel fabrication", "structural steel work"],
     industrialAreas: ["Wagle Estate", "Kolshet industrial belt"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-rw6"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["mumbai", "pune", "nashik", "kolhapur", "solapur", "nagpur", "aurangabad"],
     logisticsNote: "Thane shares Mumbai's NH16/NH48 corridor, roughly 1,900–2,050 km from our Kolkata works, with typical road/rail transit of 6–8 days.",
     faqs: [

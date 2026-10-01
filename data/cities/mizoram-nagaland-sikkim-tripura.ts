@@ -12,7 +12,7 @@ export const cities: City[] = [
     ],
     industries: ["bamboo-based industry equipment", "construction-linked fabrication", "general metalwork and repair", "small engineering workshops"],
     industrialAreas: ["Aizawl district industrial centre", "Zuangtui small-scale industrial area"],
-    recommendedProductSlugs: ["ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["lunglei"],
     logisticsNote: "Aizawl is reached via NH27 extended through the Siliguri corridor and onward hill highways, roughly 1,650 km from our Kolkata works, with typical transit of 5–9 days given the terrain and border-area road conditions.",
     faqs: [
@@ -33,7 +33,7 @@ export const cities: City[] = [
     ],
     industries: ["agro-processing equipment", "small-scale engineering workshops", "construction-linked fabrication", "general repair and metalwork"],
     industrialAreas: ["Lunglei district industrial centre", "local small-scale workshop clusters"],
-    recommendedProductSlugs: ["ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["aizawl"],
     logisticsNote: "Lunglei is reached via the same NH27 extended and hill-highway route as Aizawl, roughly 1,740 km from our Kolkata works, with typical transit of 6–9 days given the terrain and onward hill roads to the town.",
     faqs: [
@@ -54,7 +54,7 @@ export const cities: City[] = [
     ],
     industries: ["general engineering fabrication", "construction-linked steelwork", "structural fixtures and gates", "transport and trade-linked repair work"],
     industrialAreas: ["Dimapur Industrial Estate", "Ganeshnagar small-scale industrial area"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["kohima"],
     logisticsNote: "Dimapur is reached via NH27 extended through the Siliguri corridor and onward hill highways, roughly 1,450 km from our Kolkata works, with typical transit of 5–9 days given the terrain and border-area road conditions.",
     faqs: [
@@ -75,7 +75,7 @@ export const cities: City[] = [
     ],
     industries: ["government and construction-linked fabrication", "tourism-linked metalwork", "general repair and small engineering", "structural fixtures and gates"],
     industrialAreas: ["Kohima district industrial centre", "local small-scale workshop clusters"],
-    recommendedProductSlugs: ["ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["dimapur"],
     logisticsNote: "Kohima is reached via the same NH27 extended and hill-highway route as Dimapur, roughly 1,520 km from our Kolkata works, with typical transit of 5–9 days given the terrain and onward hill roads to the capital.",
     faqs: [
@@ -96,7 +96,7 @@ export const cities: City[] = [
     ],
     industries: ["tourism and hospitality-linked fabrication", "construction-linked steelwork", "general signage and metalwork", "small engineering repair work"],
     industrialAreas: ["Gangtok district industrial centre", "Tadong small-scale industrial area"],
-    recommendedProductSlugs: ["ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["rangpo"],
     logisticsNote: "Gangtok is reached via NH10 from Siliguri, roughly 950 km from our Kolkata works, with typical road transit of 4–6 days given the hill route beyond Siliguri.",
     faqs: [
@@ -117,7 +117,7 @@ export const cities: City[] = [
     ],
     industries: ["pharmaceutical plant support fabrication", "general engineering workshops", "storage and process-equipment fixtures", "construction-linked steelwork"],
     industrialAreas: ["Rangpo Industrial Growth Centre", "border-area small-scale units"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["gangtok"],
     logisticsNote: "Rangpo is reached via NH10 from Siliguri, roughly 900 km from our Kolkata works, with typical road transit of 4–6 days.",
     faqs: [
@@ -138,7 +138,7 @@ export const cities: City[] = [
     ],
     industries: ["rubber-processing equipment", "bamboo-based industry equipment", "handloom-linked metalwork", "construction-linked fabrication", "general engineering repair work"],
     industrialAreas: ["Agartala industrial estate", "Bodhjungnagar industrial growth centre"],
-    recommendedProductSlugs: ["ra-f3015-pro", "ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["udaipur-tripura"],
     logisticsNote: "Agartala is reached via NH27 extended through the Siliguri corridor and onward hill highways, roughly 1,650 km from our Kolkata works, with typical transit of 5–9 days given the terrain and border-area road conditions.",
     faqs: [
@@ -159,7 +159,7 @@ export const cities: City[] = [
     ],
     industries: ["rubber and agro-processing equipment", "small-scale fabrication workshops", "construction-linked steelwork", "general repair and metalwork"],
     industrialAreas: ["Udaipur district industrial centre", "local small-scale workshop clusters"],
-    recommendedProductSlugs: ["ra-f1530", "ra-c1390"],
+    recommendedFamilies: ["fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["agartala"],
     logisticsNote: "Udaipur is reached via the same NH27 extended and hill-highway route as Agartala, roughly 1,680 km from our Kolkata works, with typical transit of 5–9 days given the terrain and border-area road conditions.",
     faqs: [
