@@ -17,7 +17,7 @@ export const cities: City[] = [
       "general machine building",
     ],
     industrialAreas: ["Adityapur Industrial Area", "Gamharia industrial belt", "Tata Steel ancillary zone"],
-    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
+    recommendedFamilies: ["cnc-plasma-cutting-machines", "submerged-arc-welding-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["ranchi", "bokaro", "dhanbad"],
     logisticsNote:
       "Jamshedpur is about 250 km from our Kolkata works via NH16 and the South Eastern Railway line, so deliveries are typically completed within 1–2 working days of dispatch.",
@@ -31,8 +31,8 @@ export const cities: City[] = [
         a: "Machines dispatched from Kolkata generally reach Jamshedpur via NH16 within 1–2 working days, after which our engineers complete installation, electrical commissioning and test cuts on-site before handing the machine over.",
       },
       {
-        q: "How quickly can on-site repair or AMC support reach Jamshedpur?",
-        a: "Engineers dispatched from our Kolkata works typically reach Jamshedpur's Adityapur and Gamharia units within 1–2 working days for on-site repair, while remote diagnostics under AMC are usually initiated within a few working hours of a call.",
+        q: "How quickly can on-site repair or service support reach Jamshedpur?",
+        a: "Engineers dispatched from our Kolkata works typically reach Jamshedpur's Adityapur and Gamharia units within 1–2 working days for on-site repair, while remote diagnostics are usually initiated within a few working hours of a call.",
       },
       {
         q: "What operator training options exist for a Jamshedpur heavy-engineering unit?",
@@ -40,7 +40,7 @@ export const cities: City[] = [
       },
       {
         q: "Which machine fits Jamshedpur's steel and heavy-engineering base best?",
-        a: "Given Jamshedpur's concentration of steel-linked heavy engineering, the RA-F6020-HD 6kW and RA-F12K fiber lasers are the most common fits for thick-plate structural cutting, with the RA-RW10 welding cell suited to high-volume ancillary fabrication.",
+        a: "For the structural steel and heavy plate that dominate Jamshedpur's steel-linked fabrication, a CNC plasma cutting machine is the economical cutting choice, and a submerged arc welding machine handles long, heavy-duty seams on beams, girders and plate structures. Adityapur's auto-component suppliers welding repeat parts in volume can add a robotic welding system.",
       },
     ],
   },
@@ -59,7 +59,7 @@ export const cities: City[] = [
       "sheet-metal job-shop work",
     ],
     industrialAreas: ["Namkum industrial area", "Tatisilwai industrial area", "Ranchi Industrial Area, Kokar"],
-    recommendedFamilies: ["fiber-laser-cutting-machines"],
+    recommendedFamilies: ["cnc-plasma-cutting-machines", "fiber-laser-cutting-machines", "mig-tig-arc-welding-machines"],
     nearbyCitySlugs: ["jamshedpur", "bokaro", "dhanbad"],
     logisticsNote:
       "Ranchi is around 400 km from our Kolkata works via NH19 and NH33, so deliveries typically take 1–2 working days from dispatch.",
@@ -73,8 +73,8 @@ export const cities: City[] = [
         a: "Machines dispatched from Kolkata generally reach Ranchi via NH33 within 1–2 working days, after which our engineers complete installation, commissioning and test cuts on-site before handover to the customer's operators.",
       },
       {
-        q: "How does on-site repair or AMC support work for Ranchi customers?",
-        a: "Engineers dispatched from our Kolkata works typically reach Ranchi's Namkum and Tatisilwai units within 1–2 working days for on-site repair, while remote diagnostics under AMC are usually initiated within a few working hours of a service call.",
+        q: "How does on-site repair or service support work for Ranchi customers?",
+        a: "Engineers dispatched from our Kolkata works typically reach Ranchi's Namkum and Tatisilwai units within 1–2 working days for on-site repair, while remote diagnostics are usually initiated within a few working hours of a service call.",
       },
       {
         q: "What operator training options are available for a Ranchi-based team?",
@@ -82,7 +82,7 @@ export const cities: City[] = [
       },
       {
         q: "Which machine fits Ranchi's heavy engineering and general fabrication base best?",
-        a: "For Ranchi's mix of heavy engineering and general fabrication, the RA-F6020-HD 6kW fiber laser suits structural and capital-goods plate work, while the RA-F3015-PRO is well suited to broader general-purpose sheet cutting needs.",
+        a: "Ranchi's capital-goods and structural plate work suits a CNC plasma cutting machine, which keeps the cost of cutting thick mild steel down, while sheet-metal job shops in Namkum and Tatisilwai get finer, more accurate parts from a CNC fiber laser cutting machine. MIG and MMA welding machines cover the general fabrication that follows.",
       },
     ],
   },
@@ -105,7 +105,7 @@ export const cities: City[] = [
       "Bokaro Steel Plant ancillary belt",
       "district industrial centre",
     ],
-    recommendedFamilies: ["fiber-laser-cutting-machines"],
+    recommendedFamilies: ["cnc-plasma-cutting-machines", "submerged-arc-welding-machines", "mig-tig-arc-welding-machines"],
     nearbyCitySlugs: ["jamshedpur", "ranchi", "dhanbad"],
     logisticsNote:
       "Bokaro is about 330 km from our Kolkata works via NH19 and NH23, so deliveries are typically completed within 1–2 working days of dispatch.",
@@ -119,8 +119,8 @@ export const cities: City[] = [
         a: "Machines dispatched from Kolkata generally reach Bokaro via NH23 within 1–2 working days, after which our engineers complete installation, electrical commissioning and test cuts on-site before handing the machine over to the customer.",
       },
       {
-        q: "How quickly can on-site repair or AMC support reach Bokaro?",
-        a: "Engineers dispatched from our Kolkata works typically reach Bokaro's steel-linked fabrication units within 1–2 working days for on-site repair, while remote diagnostics under AMC are usually initiated within a few working hours of a call.",
+        q: "How quickly can on-site repair or service support reach Bokaro?",
+        a: "Engineers dispatched from our Kolkata works typically reach Bokaro's steel-linked fabrication units within 1–2 working days for on-site repair, while remote diagnostics are usually initiated within a few working hours of a call.",
       },
       {
         q: "What operator training options exist for a Bokaro steel-ancillary unit?",
@@ -128,7 +128,7 @@ export const cities: City[] = [
       },
       {
         q: "Which machine fits Bokaro's steel-linked heavy engineering base best?",
-        a: "Given Bokaro's concentration of steel-linked fabrication, the RA-F6020-HD 6kW and RA-F12K fiber lasers are the most suitable choices, handling the thicker plate and structural work typical of the plant's ancillary supply chain.",
+        a: "Bokaro's steel-plant ancillary work is dominated by thick plate and structural sections, so a CNC plasma cutting machine is usually the best value for cutting. On the welding side, a submerged arc welding machine suits long seams on heavy fabrications and plant equipment, while MIG and MMA welding machines handle the smaller structural and maintenance jobs that keep the plant's supply chain busy.",
       },
     ],
   },
@@ -151,7 +151,7 @@ export const cities: City[] = [
       "Jharia coal-belt engineering cluster",
       "district industrial centre",
     ],
-    recommendedFamilies: ["fiber-laser-cutting-machines"],
+    recommendedFamilies: ["cnc-plasma-cutting-machines", "mig-tig-arc-welding-machines", "submerged-arc-welding-machines"],
     nearbyCitySlugs: ["jamshedpur", "ranchi", "bokaro"],
     logisticsNote:
       "Dhanbad is roughly 400 km from our Kolkata works via NH19, so deliveries typically take 1–2 working days from dispatch.",
@@ -165,8 +165,8 @@ export const cities: City[] = [
         a: "Machines dispatched from Kolkata generally reach Dhanbad via NH19 within 1–2 working days, after which our engineers complete installation, commissioning and test cuts on-site before handover to the customer's operators.",
       },
       {
-        q: "How does on-site repair or AMC support work for Dhanbad customers?",
-        a: "Engineers dispatched from our Kolkata works typically reach Dhanbad's Sindri and Jharia-belt units within 1–2 working days for on-site repair, while remote diagnostics under AMC are usually initiated within a few working hours of a service call.",
+        q: "How does on-site repair or service support work for Dhanbad customers?",
+        a: "Engineers dispatched from our Kolkata works typically reach Dhanbad's Sindri and Jharia-belt units within 1–2 working days for on-site repair, while remote diagnostics are usually initiated within a few working hours of a service call.",
       },
       {
         q: "What operator training options are available for a Dhanbad mining-equipment unit?",
@@ -174,7 +174,7 @@ export const cities: City[] = [
       },
       {
         q: "Which machine fits Dhanbad's coal and mining-equipment industry best?",
-        a: "For Dhanbad's mix of mining-equipment and structural fabrication, the RA-F6020-HD 6kW fiber laser is well suited to thicker plate and heavy components, while the RA-F3015-PRO handles general-purpose fabrication for smaller workshops.",
+        a: "Mining-machinery components and structural parts for Dhanbad's coal sector are mostly heavy mild steel plate, which a CNC plasma cutting machine cuts economically. Sindri and Jharia-belt workshops depend on MIG and MMA welding machines for fabrication and the constant rebuild work mining equipment needs, and a submerged arc welding machine suits larger units welding heavy structures.",
       },
     ],
   },
