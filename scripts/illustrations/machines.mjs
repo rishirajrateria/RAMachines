@@ -304,11 +304,11 @@ const FLATBED_PRESETS = {
   "ra-f12k": { bedW: 300, bedD: 108, postH: 162, enclosure: "cabin", label: "RA-F12K" },
 };
 
-/** `label` overrides the preset's nameplate text (family art carries a
- * family label, not a retired model number); omitted → the preset's own. */
+/** `label` overrides the nameplate text. The default is the family label
+ * "FIBER" — never a model number (the per-model range was retired, Oct 2026). */
 export function flatbedMachine(presetKey, { inUse = false, label } = {}) {
   const preset = FLATBED_PRESETS[presetKey] ?? FLATBED_PRESETS["ra-f1530"];
-  const p = label ? { ...preset, label } : preset;
+  const p = { ...preset, label: label ?? "FIBER" };
   const project = stage();
   const baseX = 96;
   const baseY = GROUND_Y - 4;
@@ -737,7 +737,7 @@ export function robotCellMachine(stations = 1, { inUse = false, label } = {}) {
     // Guard fence behind the fixture (ADR-0008 §1: "torch, fixture and fence").
     const fenceLine = fence(project, fixtureX - 6, fixtureX + 98, baseY, 66);
 
-    const cabinet = controlCabinet(project, { x: pedX - 118, yGround: baseY, z: 6, w: 40, h: 84, d: 22 }, label ?? "RA-RW6");
+    const cabinet = controlCabinet(project, { x: pedX - 118, yGround: baseY, z: 6, w: 40, h: 84, d: 22 }, label ?? "ROBOT");
     const feetContent = feet(project, [[pedX, 0], [fixtureX + 10, 10], [fixtureX + 82, 10]], baseY + 2, 6);
     const shadow = contactShadow(pedX + 70, baseY + 10, 190, 16, 0.38);
 
@@ -745,7 +745,7 @@ export function robotCellMachine(stations = 1, { inUse = false, label } = {}) {
     const reflection = floorReflection(content, baseY + 6, 110, 0.15);
     const svg = `<g>${shadow}${reflection}${content}</g>`;
     const bbox = bboxOfPoints([...project.points, [pedX + 70 - 190, baseY + 10], [pedX + 70 + 190, baseY + 10]], 6);
-    return { svg, bbox, tip: arm.tip, detailCrop: cropAround(pedX + 60, baseY - 100, 220, 190), label: label ?? "RA-RW6" };
+    return { svg, bbox, tip: arm.tip, detailCrop: cropAround(pedX + 60, baseY - 100, 220, 190), label: label ?? "ROBOT" };
   }
 
   const cellX = 60;
@@ -793,7 +793,7 @@ export function robotCellMachine(stations = 1, { inUse = false, label } = {}) {
     return `<polygon points="${fmt(p1[0])},${fmt(p1[1])} ${fmt(p2[0])},${fmt(p2[1])} ${fmt(p3[0])},${fmt(p3[1])} ${fmt(p4[0])},${fmt(p4[1])}" fill="${SPARK_AMBER}" opacity="${0.22 + (i % 2) * 0.1}"/>`;
   }).join("");
 
-  const cabinet = controlCabinet(project, { x: cellX - 44, yGround: baseY, z: 8, w: 40, h: 86, d: 22 }, label ?? "RA-RW10");
+  const cabinet = controlCabinet(project, { x: cellX - 44, yGround: baseY, z: 8, w: 40, h: 86, d: 22 }, label ?? "ROBOT");
   const feetContent = feet(project, [[cellX + 10, -6], [cellX + cellW * 0.5, -6], [cellX + cellW - 10, -6]], baseY + 2, 6);
   const shadow = contactShadow(cellX + cellW / 2, baseY + 10, cellW * 0.56, 17, 0.4);
 
@@ -804,7 +804,7 @@ export function robotCellMachine(stations = 1, { inUse = false, label } = {}) {
     [...project.points, [turnP[0] - turnR, turnP[1]], [turnP[0] + turnR, turnP[1]], [cellX - 20, baseY + 10], [cellX + cellW + 10, baseY + 10]],
     6,
   );
-  return { svg, bbox, tip: arm.tip, detailCrop: cropAround(turnCx, baseY - 90, 260, 200), label: label ?? "RA-RW10" };
+  return { svg, bbox, tip: arm.tip, detailCrop: cropAround(turnCx, baseY - 90, 260, 200), label: label ?? "ROBOT" };
 }
 
 // ---------------------------------------------------------------------------

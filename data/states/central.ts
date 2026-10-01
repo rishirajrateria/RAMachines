@@ -70,7 +70,7 @@ export const centralStates: State[] = [
       },
       {
         q: "What is the delivery and installation timeline from Kolkata to Madhya Pradesh?",
-        a: "Given the state's central location, machines typically reach Indore, Pithampur or Bhopal within 2-3 weeks of order confirmation, with road transit of around 3-5 days. RA Machine engineers travel from Kolkata to complete on-site installation, calibration and test cuts, usually finishing within a day or two of arrival.",
+        a: "Machines are built within 8–10 weeks of order confirmation; given the state's central location, road transit to Indore, Pithampur or Bhopal then takes only around 3-5 days. RA Machine engineers travel from Kolkata to complete on-site installation, calibration and test cuts, usually finishing within a day or two of arrival.",
       },
       {
         q: "Is on-site service available in Madhya Pradesh?",
@@ -142,7 +142,7 @@ export const centralStates: State[] = [
       },
       {
         q: "What is the delivery and installation timeline from Kolkata to Chhattisgarh?",
-        a: "Machines typically reach Raipur, Bhilai or Bilaspur within 2-3 weeks of order confirmation, with road transit generally taking 3-4 days along the NH16/NH130 corridor, or by rail freight for heavier equipment. RA Machine engineers travel from Kolkata to complete on-site installation and calibration, usually within a day or two of arrival.",
+        a: "Machines are built within 8–10 weeks of order confirmation, with road transit to Raipur, Bhilai or Bilaspur then generally taking 3-4 days along the NH16/NH130 corridor, or by rail freight for heavier equipment. RA Machine engineers travel from Kolkata to complete on-site installation and calibration, usually within a day or two of arrival.",
       },
       {
         q: "Is on-site service support available in Chhattisgarh?",

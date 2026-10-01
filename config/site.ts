@@ -64,6 +64,7 @@ export const site = {
    */
   stats: [
     { value: "1989", label: "engineering since" },
+    { value: "15+", label: "years of experience" },
     { value: "20+", label: "machines installed" },
     { value: "40+", label: "operators trained" },
   ],

@@ -13,7 +13,7 @@ export function organizationSchema(): object {
     name: site.name,
     legalName: site.legalName,
     url: site.url,
-    logo: absUrl("/logo.svg"),
+    logo: absUrl("/logo.png"),
     foundingDate: String(site.foundedYear),
     description: site.description,
     address: {

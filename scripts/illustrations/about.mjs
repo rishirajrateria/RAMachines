@@ -5,13 +5,14 @@
  * accent (the Kolkata HQ pin, export route dots) — never as a machine fill.
  */
 import { INK, TEAL, ambientLight, lineArt, scene } from "./common.mjs";
-import { flatbedMachine, tubeLaserMachine, co2EngraverMachine, robotCellMachine, BOX_W, GROUND_Y } from "./machines.mjs";
+import { flatbedMachine, plasmaCutterMachine, arcWelderMachine, robotCellMachine, BOX_W, GROUND_Y } from "./machines.mjs";
 
 /** A row of the four machine-family glyphs standing on a single ground line. */
 export function factoryHallSvg(width, height) {
   const { defs, content: orbs } = ambientLight(width, height);
   const floorY = height * 0.76;
-  const builders = [flatbedMachine("ra-f1530"), tubeLaserMachine(), co2EngraverMachine(), robotCellMachine(1)];
+  // The current range (Oct 2026): laser, plasma, MIG/TIG/MMA welding, robotic welding.
+  const builders = [flatbedMachine("ra-f1530"), plasmaCutterMachine(), arcWelderMachine(), robotCellMachine(1)];
   const spacing = width / builders.length;
   const scale = (spacing * 0.82) / BOX_W;
 

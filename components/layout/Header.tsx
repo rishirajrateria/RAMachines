@@ -19,7 +19,10 @@ export default function Header() {
   return (
     <header className="fixed inset-x-0 top-3 z-30 mx-auto max-w-[1100px] px-4">
       <HeaderBar>
-        <Link href={paths.home} className="flex flex-col leading-none">
+        <Link href={paths.home} className="flex items-center gap-2 leading-none">
+          {/* The name sits right beside it, so the mark is decorative here. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/brand/ra-machine-mark.svg" alt="" aria-hidden="true" width={32} height={32} className="h-8 w-8 shrink-0" />
           <span className="font-display text-lg text-ink">{site.name}</span>
         </Link>
 
