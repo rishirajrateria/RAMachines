@@ -7,7 +7,7 @@ export const cities: City[] = [
     name: "Kolkata",
     stateSlug: "west-bengal",
     overview: [
-      "Kolkata is home to RA Machine's own manufacturing works, and the city itself is one of eastern India's most diverse industrial centres, spanning light engineering, leather goods, printing and packaging, and port-linked fabrication feeding the Kolkata and Haldia docks.",
+      "Kolkata is home to RA Machine's own workshop and headquarters, and the city itself is one of eastern India's most diverse industrial centres, spanning light engineering, leather goods, printing and packaging, and port-linked fabrication feeding the Kolkata and Haldia docks.",
       "From workshops around Topsia and Tangra to larger units near Kalyani and Rajarhat, the city's fabricators supply everything from sheet-metal enclosures to structural steel across the state.",
     ],
     industries: [
@@ -23,30 +23,30 @@ export const cities: City[] = [
       "Kalyani Industrial Area",
       "Rajarhat–New Town industrial pockets",
     ],
-    recommendedFamilies: ["fiber-laser-cutting-machines"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "mig-tig-arc-welding-machines", "cnc-plasma-cutting-machines"],
     nearbyCitySlugs: ["howrah", "durgapur", "asansol", "haldia", "siliguri", "kharagpur", "bardhaman"],
     logisticsNote:
-      "As our own works and headquarters are located in Kolkata, machines ordered by Kolkata customers are typically installed within 3–7 days of order confirmation, with no long-haul transport involved.",
+      "As our own works and headquarters are located in Kolkata, machines ordered by Kolkata customers are delivered by local road transport and installed within days of dispatch, with no long-haul transport involved.",
     faqs: [
       {
         q: "How can a Kolkata fabricator get a quote and see a live machine demonstration?",
-        a: "Since our manufacturing works and demonstration floor are located in Kolkata itself, customers can request a quote through the website or phone and generally arrange an in-person demonstration on actual sheet within a few days, without needing to travel outside the city.",
+        a: "Since our workshop and demonstration floor are located in Kolkata itself, customers can request a quote through the website or phone and generally arrange an in-person demonstration on actual sheet within a few days, without needing to travel outside the city.",
       },
       {
         q: "What is the typical delivery and installation timeline for a Kolkata order?",
-        a: "Because the machine is built and dispatched from our own Kolkata works, installation for city-based customers is usually completed within 3–7 working days of order confirmation, covering foundation checks, machine positioning, electrical commissioning and initial test cuts.",
+        a: "Because the machine is dispatched from our own Kolkata works, installation for city-based customers usually follows within a few working days, covering foundation checks, machine positioning, electrical commissioning and initial test cuts.",
       },
       {
-        q: "How quickly can on-site repair or AMC support reach a Kolkata workshop?",
-        a: "Kolkata units are closest to our service base, so remote diagnostics typically begin within a few working hours and an engineer can generally reach workshops in Topsia, Tangra or Kasba for on-site repair or scheduled AMC visits the same day or next working day.",
+        q: "How quickly can on-site repair or service support reach a Kolkata workshop?",
+        a: "Kolkata units are closest to our service base, so remote diagnostics typically begin within a few working hours and an engineer can generally reach workshops in Topsia, Tangra or Kasba for on-site repair or a scheduled service visit the same day or next working day.",
       },
       {
         q: "What operator training options are available for a Kolkata-based team?",
         a: "New operators can be trained hands-on at our Kolkata works during machine commissioning, covering nesting software, cutting parameters and routine maintenance, with refresher sessions and phone or video support available afterward for shift operators and supervisors.",
       },
       {
-        q: "Which RA Machine model suits Kolkata's mixed industrial base best?",
-        a: "Given Kolkata's mix of general fabrication, signage, leather-accessory hardware and light engineering, the RA-F3015-PRO 3kW fiber laser is the most common fit for general sheet work, while the RA-C1390 CO2 machine suits acrylic signage and non-metal cutting needs.",
+        q: "Which RA Machine suits Kolkata's mixed industrial base best?",
+        a: "Kolkata's general fabrication, metal signage, electrical panels and accessory hardware are mostly sheet work, which a CNC fiber laser cutting machine handles cleanly, while MIG, TIG and MMA welding machines cover fabrication and container repair around the docks. For port-linked jobs in thicker plate, a CNC plasma cutting machine is the economical choice.",
       },
     ],
   },
@@ -71,7 +71,7 @@ export const cities: City[] = [
       "Liluah engineering cluster",
       "Howrah Industrial Estate, Bamangachi",
     ],
-    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "mig-tig-arc-welding-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["kolkata", "durgapur", "asansol", "haldia", "siliguri", "kharagpur", "bardhaman"],
     logisticsNote:
       "Howrah sits directly across the river from our Kolkata works, so machines are typically delivered and installed within same-day to 2 working days, with no long-distance transport involved.",
@@ -82,11 +82,11 @@ export const cities: City[] = [
       },
       {
         q: "What is the delivery and installation timeline for a Howrah order?",
-        a: "Because Howrah lies just across the Hooghly from our Kolkata works, dispatch and installation are usually completed within same-day to 2 working days of order confirmation, including electrical commissioning and test cuts on the customer's own material.",
+        a: "Because Howrah lies just across the Hooghly from our Kolkata works, delivery and installation are usually completed within same-day to 2 working days of dispatch, including electrical commissioning and test cuts on the customer's own material.",
       },
       {
-        q: "How fast is on-site repair or AMC support for Howrah units?",
-        a: "Given the short distance, engineers dispatched from our Kolkata works can typically reach Ghusuri, Belur or Liluah units the same day for urgent breakdowns, with remote diagnostics available within a few working hours for less critical faults under AMC.",
+        q: "How fast is on-site repair or service support for Howrah units?",
+        a: "Given the short distance, engineers dispatched from our Kolkata works can typically reach Ghusuri, Belur or Liluah units the same day for urgent breakdowns, with remote diagnostics available within a few working hours for less critical faults on RA Machine equipment.",
       },
       {
         q: "What training is available for operators at a Howrah casting or pump unit?",
@@ -94,7 +94,7 @@ export const cities: City[] = [
       },
       {
         q: "Which machine suits Howrah's foundry and pump-and-valve industry best?",
-        a: "For Howrah's mix of general engineering and pump-and-valve fabrication, the RA-F6020-HD 6kW fiber laser handles heavier plate and structural brackets well, while the RA-RW6 robotic welding cell suits repetitive MIG welding on pump housings and valve assemblies.",
+        a: "For Howrah's pump-and-valve and general engineering fabrication, a CNC fiber laser cutting machine cuts brackets, flanges and enclosure panels accurately, and MIG, TIG and MMA welding machines handle the fabrication around cast components. Units welding the same pump housings and valve assemblies in volume can add a cobot or robotic welding system configured to those parts.",
       },
     ],
     isTop: true,
@@ -119,30 +119,30 @@ export const cities: City[] = [
       "Ranidanga small-scale industrial area",
       "Bamunara industrial growth centre",
     ],
-    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
+    recommendedFamilies: ["cnc-plasma-cutting-machines", "submerged-arc-welding-machines", "fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["kolkata", "howrah", "asansol", "haldia", "siliguri", "kharagpur", "bardhaman"],
     logisticsNote:
       "Durgapur is around 170 km from our Kolkata works via NH19 and the Eastern Railway main line, so most orders are delivered and installed within 2–3 working days of dispatch.",
     faqs: [
       {
         q: "How can a Durgapur fabricator request a quote and see a demonstration?",
-        a: "Durgapur customers can share drawings or sample parts through the website or phone, after which our team quotes the right model and, where feasible, arranges a demonstration cut on comparable plate thickness before the order is confirmed.",
+        a: "Durgapur customers can share drawings or sample parts through the website or phone, after which our team quotes the right machine and, where feasible, arranges a demonstration cut on comparable plate thickness before the order is confirmed.",
       },
       {
         q: "What is the delivery and installation timeline for a Durgapur order?",
         a: "Machines dispatched from our Kolkata works typically reach Durgapur via NH19 within 2–3 working days, with our engineers completing foundation checks, electrical commissioning and test cuts on-site before handover to the customer's operators.",
       },
       {
-        q: "How quickly can on-site repair or AMC support reach Durgapur?",
-        a: "For units near the Durgapur Steel Plant belt or Ranidanga, engineers dispatched from Kolkata generally reach site within 1–2 working days for on-site repair, while remote diagnostics under AMC are typically initiated within a few working hours of a service call.",
+        q: "How quickly can on-site repair or service support reach Durgapur?",
+        a: "For units near the Durgapur Steel Plant belt or Ranidanga, engineers dispatched from Kolkata generally reach site within 1–2 working days for on-site repair, while remote diagnostics are typically initiated within a few working hours of a service call.",
       },
       {
         q: "What operator training is offered for Durgapur's heavy-engineering workforce?",
-        a: "Training is provided during commissioning for cutting parameters on structural steel and plate components typical of Durgapur's ancillary units, with additional on-site or remote sessions available as new operators are inducted at the customer's fabrication shop.",
+        a: "Training is provided during commissioning for cutting and welding parameters on structural steel and plate components typical of Durgapur's ancillary units, with additional on-site or remote sessions available as new operators are inducted at the customer's fabrication shop.",
       },
       {
-        q: "Which RA Machine model suits Durgapur's steel and heavy-engineering base?",
-        a: "Given Durgapur's concentration of structural steel and heavy-engineering work linked to the steel plant, the RA-F6020-HD 6kW fiber laser and RA-F12K are the most common fits for thick-plate cutting, with the RA-RW10 welding cell suited to high-volume fabrication.",
+        q: "Which RA Machine suits Durgapur's steel and heavy-engineering base?",
+        a: "Thick plate dominates the structural and power-plant ancillary work around the Durgapur Steel Plant. A CNC plasma cutting machine, running at 100 A to 200 A, cuts it economically, and a submerged arc welding (SAW) machine lays the long, deep welds that beams, columns and equipment shells need. Machine builders wanting finer profiles can choose a high-power CNC fiber laser cutting machine.",
       },
     ],
   },
@@ -165,30 +165,30 @@ export const cities: City[] = [
       "Hirapur–Kulti industrial belt",
       "Burnpur steel and engineering zone",
     ],
-    recommendedFamilies: ["fiber-laser-cutting-machines", "robotic-welding-systems"],
+    recommendedFamilies: ["cnc-plasma-cutting-machines", "mig-tig-arc-welding-machines", "robotic-welding-systems"],
     nearbyCitySlugs: ["kolkata", "howrah", "durgapur", "haldia", "siliguri", "kharagpur", "bardhaman"],
     logisticsNote:
       "Asansol is roughly 200 km from our Kolkata works along NH19 and the Eastern Railway main line, so deliveries are generally completed within 2–3 working days of dispatch.",
     faqs: [
       {
         q: "How can an Asansol workshop get a quote and see a demonstration?",
-        a: "Asansol customers can send drawings or sample components through the website or phone; our team then recommends a suitable model and, where practical, arranges a demonstration cut on similar material before finalising the order.",
+        a: "Asansol customers can send drawings or sample components through the website or phone; our team then recommends a suitable machine and, where practical, arranges a demonstration cut on similar material before finalising the order.",
       },
       {
         q: "What is the delivery and installation timeline for an Asansol order?",
         a: "Machines dispatched from Kolkata typically reach Asansol along NH19 within 2–3 working days, after which our engineers carry out installation, electrical commissioning and test cuts on-site before handing the machine over to the customer's team.",
       },
       {
-        q: "How fast is on-site repair or AMC response for Asansol units?",
-        a: "Engineers dispatched from our Kolkata works generally reach Asansol, including units around Hirapur and Kulti, within 1–2 working days for on-site repair, while remote diagnostics under AMC are typically started within a few working hours of a call.",
+        q: "How fast is on-site repair or service response for Asansol units?",
+        a: "Engineers dispatched from our Kolkata works generally reach Asansol, including units around Hirapur and Kulti, within 1–2 working days for on-site repair, while remote diagnostics are typically started within a few working hours of a call.",
       },
       {
         q: "What training options exist for operators at an Asansol fabrication unit?",
-        a: "Operators are trained during commissioning on cutting parameters relevant to structural steel and railway-linked components common in Asansol, and further sessions or remote guidance can be arranged as new operators join the customer's shop floor.",
+        a: "Operators are trained during commissioning on cutting and welding parameters relevant to structural steel and railway-linked components common in Asansol, and further sessions or remote guidance can be arranged as new operators join the customer's shop floor.",
       },
       {
         q: "Which machine fits Asansol's coal and railway-linked engineering base best?",
-        a: "For Asansol's mix of coal-belt and railway-linked fabrication, the RA-F6020-HD 6kW fiber laser suits structural and plate cutting well, while the RA-RW6 robotic welding cell is a good fit for repetitive welding on wagon and machinery components.",
+        a: "Asansol's mining-equipment and wagon-component work is mostly mild-steel plate, which a CNC plasma cutting machine cuts economically. MIG and MMA welding machines suit the varied fabrication and repair jobs of the coalfield job-shops, while units welding the same wagon or machinery components repeatedly can move that work to a cobot or robotic welding system configured to the part.",
       },
     ],
   },
@@ -212,30 +212,30 @@ export const cities: City[] = [
       "Haldia Petrochemicals industrial estate",
       "Durgachak industrial area",
     ],
-    recommendedFamilies: ["fiber-laser-cutting-machines"],
+    recommendedFamilies: ["submerged-arc-welding-machines", "cnc-plasma-cutting-machines", "fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["kolkata", "howrah", "durgapur", "asansol", "siliguri", "kharagpur", "bardhaman"],
     logisticsNote:
       "Haldia is about 130 km from our Kolkata works via NH116 and the Kolkata–Haldia rail link, so deliveries are typically completed within 1–3 working days of dispatch.",
     faqs: [
       {
         q: "How can a Haldia fabricator request a quote and demonstration?",
-        a: "Haldia customers can share plate specifications and sample drawings through the website or phone, after which our team recommends a model and, where feasible, arranges a demonstration cut on similar-gauge plate before the order is placed.",
+        a: "Haldia customers can share plate specifications and sample drawings through the website or phone, after which our team recommends a machine and, where feasible, arranges a demonstration cut on similar-gauge plate before the order is placed.",
       },
       {
         q: "What is the delivery and installation timeline for a Haldia order?",
         a: "Machines dispatched from Kolkata generally reach Haldia via NH116 within 1–3 working days, with our engineers then completing foundation checks, electrical commissioning and test cuts on customer plate before handover.",
       },
       {
-        q: "How quickly can on-site repair or AMC support reach Haldia?",
-        a: "Given the proximity to Kolkata, engineers can typically reach Haldia's port and petrochemical-linked units within 1–2 working days for on-site repair, with remote diagnostics under AMC usually starting within a few working hours of a service request.",
+        q: "How quickly can on-site repair or service support reach Haldia?",
+        a: "Given the proximity to Kolkata, engineers can typically reach Haldia's port and petrochemical-linked units within 1–2 working days for on-site repair, with remote diagnostics usually starting within a few working hours of a service request.",
       },
       {
         q: "What operator training is available for a Haldia tank or vessel fabrication unit?",
-        a: "Training is provided during commissioning on cutting parameters for thicker plate typical of tank and vessel work, with additional on-site visits or remote support available as Haldia customers bring on new operators.",
+        a: "Training is provided during commissioning on cutting and welding parameters for the thicker plate typical of tank and vessel work, with additional on-site visits or remote support available as Haldia customers bring on new operators.",
       },
       {
         q: "Which machine suits Haldia's port and petrochemical fabrication work best?",
-        a: "Given the thicker plate common in Haldia's tank, vessel and structural fabrication work, the RA-F6020-HD 6kW and RA-F12K fiber lasers are the most suitable, handling heavy-plate cutting for port and petrochemical ancillary equipment.",
+        a: "Storage tanks, pressure vessels and pipe spools are Haldia's core work, and their long shell and circumferential seams are what a submerged arc welding (SAW) machine is built for. A CNC plasma cutting machine prepares the plate economically, and a CNC fiber laser cutting machine suits fabricators who want cleaner cuts on process-equipment parts for the port and petrochemical units.",
       },
     ],
   },
@@ -258,30 +258,30 @@ export const cities: City[] = [
       "Siliguri Regulated Market industrial belt",
       "Fulbari industrial growth centre",
     ],
-    recommendedFamilies: ["fiber-laser-cutting-machines"],
+    recommendedFamilies: ["mig-tig-arc-welding-machines", "fiber-laser-cutting-machines"],
     nearbyCitySlugs: ["kolkata", "howrah", "durgapur", "asansol", "haldia", "kharagpur", "bardhaman"],
     logisticsNote:
       "Siliguri is roughly 560 km from our Kolkata works via NH12 and the Barsoi rail corridor, so deliveries typically take 3–5 working days depending on season and hill-route conditions.",
     faqs: [
       {
         q: "How can a Siliguri business get a quote and see a demonstration?",
-        a: "Siliguri customers can share their material and part requirements through the website or phone; our team then quotes a suitable model and, where practical, arranges a demonstration cut before goods are dispatched north.",
+        a: "Siliguri customers can share their material and part requirements through the website or phone; our team then quotes a suitable machine and, where practical, arranges a demonstration cut before goods are dispatched north.",
       },
       {
         q: "What is the delivery and installation timeline for a Siliguri order?",
         a: "Machines dispatched from Kolkata generally reach Siliguri via NH12 within 3–5 working days, after which our engineers carry out installation, commissioning and test cuts on-site before the machine is handed over.",
       },
       {
-        q: "How fast can on-site repair or AMC support reach Siliguri?",
-        a: "Because Siliguri is further from our Kolkata base, engineers are typically dispatched to reach site within 2–4 working days for on-site repair, while remote diagnostics under AMC generally begin within a few working hours of a call.",
+        q: "How fast can on-site repair or service support reach Siliguri?",
+        a: "Because Siliguri is further from our Kolkata base, engineers are typically dispatched to reach site within 2–4 working days for on-site repair, while remote diagnostics generally begin within a few working hours of a call.",
       },
       {
         q: "What training options are available for Siliguri-based operators?",
-        a: "Operators are trained hands-on during commissioning, covering nesting software and cutting parameters for general engineering and tea-industry components, with phone or video follow-up support available given the distance from our Kolkata works.",
+        a: "Operators are trained hands-on during commissioning, covering nesting software, cutting parameters and welding setup for general engineering and tea-industry components, with phone or video follow-up support available given the distance from our Kolkata works.",
       },
       {
         q: "Which machine fits Siliguri's general engineering and trade-linked base best?",
-        a: "For Siliguri's mix of general engineering, transport fabrication and signage work, the RA-F3015-PRO 3kW fiber laser is the most versatile fit, with the RA-C1390 CO2 machine suited to acrylic and non-metal signage cutting.",
+        a: "Siliguri's transport-body builders and general engineering shops do a great deal of welding, so MIG, TIG and MMA (arc) welding machines, available in 220 V and 440 V versions, are often the first purchase. A CNC fiber laser cutting machine then handles tea-industry fittings, machine parts and metal signage, cutting cleanly enough to reduce finishing work.",
       },
     ],
   },
@@ -304,22 +304,22 @@ export const cities: City[] = [
       "Kharagpur industrial growth centre",
       "Nimpura industrial area",
     ],
-    recommendedFamilies: ["fiber-laser-cutting-machines"],
+    recommendedFamilies: ["fiber-laser-cutting-machines", "cnc-plasma-cutting-machines", "mig-tig-arc-welding-machines"],
     nearbyCitySlugs: ["kolkata", "howrah", "durgapur", "asansol", "haldia", "siliguri", "bardhaman"],
     logisticsNote:
       "Kharagpur is about 120 km from our Kolkata works via NH16 and the South Eastern Railway main line, so deliveries are usually completed within 1–2 working days of dispatch.",
     faqs: [
       {
         q: "How can a Kharagpur fabricator request a quote and demonstration?",
-        a: "Kharagpur customers can share their material specifications through the website or phone, after which our team recommends a model and, where feasible, arranges a demonstration cut before the order is confirmed.",
+        a: "Kharagpur customers can share their material specifications through the website or phone, after which our team recommends a machine and, where feasible, arranges a demonstration cut before the order is confirmed.",
       },
       {
         q: "What is the delivery and installation timeline for a Kharagpur order?",
         a: "Machines dispatched from Kolkata typically reach Kharagpur via NH16 within 1–2 working days, with our engineers completing installation, electrical commissioning and test cuts on-site before handover to the customer's operators.",
       },
       {
-        q: "How quickly can on-site repair or AMC support reach Kharagpur?",
-        a: "Given the short distance from Kolkata, engineers can generally reach Kharagpur's railway-linked and general engineering units within a day for on-site repair, with remote diagnostics under AMC typically starting within a few working hours.",
+        q: "How quickly can on-site repair or service support reach Kharagpur?",
+        a: "Given the short distance from Kolkata, engineers can generally reach Kharagpur's railway-linked and general engineering units within a day for on-site repair, with remote diagnostics typically starting within a few working hours.",
       },
       {
         q: "What operator training is available for a Kharagpur workshop?",
@@ -327,7 +327,7 @@ export const cities: City[] = [
       },
       {
         q: "Which machine fits Kharagpur's railway and general engineering base best?",
-        a: "For Kharagpur's mix of railway-linked and general fabrication, the RA-F3015-PRO 3kW fiber laser is the most common choice, while the RA-T6000 tube laser suits chassis and tubular structural work for equipment manufacturers.",
+        a: "For Kharagpur's railway-linked and general fabrication, a CNC fiber laser cutting machine is the versatile choice for sheet and medium-plate parts, while a CNC plasma cutting machine handles heavier railway-ancillary and agricultural-equipment plate more economically. MIG and MMA welding machines complete the set for frame and chassis assembly.",
       },
     ],
   },
@@ -350,30 +350,30 @@ export const cities: City[] = [
       "Palashdiha industrial area",
       "district industrial centre",
     ],
-    recommendedFamilies: ["fiber-laser-cutting-machines"],
+    recommendedFamilies: ["mig-tig-arc-welding-machines", "fiber-laser-cutting-machines", "cnc-plasma-cutting-machines"],
     nearbyCitySlugs: ["kolkata", "howrah", "durgapur", "asansol", "haldia", "siliguri", "kharagpur"],
     logisticsNote:
       "Bardhaman is around 100 km from our Kolkata works via NH19 and the Eastern Railway main line, so deliveries are typically completed within 1–2 working days of dispatch.",
     faqs: [
       {
         q: "How can a Bardhaman fabricator get a quote and see a demonstration?",
-        a: "Bardhaman customers can share their part drawings or sample material through the website or phone; our team then quotes a suitable model and, where practical, arranges a demonstration cut before the order is confirmed.",
+        a: "Bardhaman customers can share their part drawings or sample material through the website or phone; our team then quotes a suitable machine and, where practical, arranges a demonstration cut before the order is confirmed.",
       },
       {
         q: "What is the delivery and installation timeline for a Bardhaman order?",
         a: "Machines dispatched from Kolkata generally reach Bardhaman via NH19 within 1–2 working days, after which our engineers complete installation, electrical commissioning and test cuts on-site before handover.",
       },
       {
-        q: "How quickly can on-site repair or AMC support reach Bardhaman?",
-        a: "Engineers dispatched from our Kolkata works can typically reach Bardhaman's agro-processing and general engineering units within a day for on-site repair, with remote diagnostics under AMC usually starting within a few working hours of a call.",
+        q: "How quickly can on-site repair or service support reach Bardhaman?",
+        a: "Engineers dispatched from our Kolkata works can typically reach Bardhaman's agro-processing and general engineering units within a day for on-site repair, with remote diagnostics usually starting within a few working hours of a call.",
       },
       {
         q: "What operator training is available for a Bardhaman fabrication unit?",
-        a: "Operators are trained during commissioning on cutting parameters for the sheet-metal and mild-steel components typical of agro-processing and rice mill equipment, with follow-up visits or remote support available as needed.",
+        a: "Operators are trained during commissioning on cutting and welding parameters for the sheet-metal and mild-steel components typical of agro-processing and rice mill equipment, with follow-up visits or remote support available as needed.",
       },
       {
         q: "Which machine suits Bardhaman's agro-processing and general engineering base best?",
-        a: "For Bardhaman's mix of agro-processing machinery and general fabrication, the RA-F1530 1.5kW fiber laser suits thinner sheet and entry-level general work, while the RA-F3015-PRO is a good fit for heavier general-purpose fabrication needs.",
+        a: "Rice-mill equipment, farm implements and agro-processing machinery in Bardhaman are largely welded mild-steel fabrications, so MIG and MMA welding machines are the core investment. A CNC fiber laser cutting machine speeds up the sheet-metal parts for hoppers and elevators, and units working heavier implement plate can add a CNC plasma cutting machine for economical cutting.",
       },
     ],
   },
