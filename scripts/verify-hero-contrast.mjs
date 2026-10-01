@@ -52,6 +52,7 @@ const ROUTES = [
   ["/contact", "contact"],
   ["/certifications", "certifications"],
   ["/services/machine-repair", "service"],
+  ["/services/operator-training", "training"],
 ];
 
 const TARGETS = [
@@ -65,6 +66,12 @@ const TARGETS = [
   { sel: ".header-pill .font-display", label: "wordmark", large: false },
   { sel: ".hero-copy a.glass-pill", label: "2nd button", large: false },
   { sel: ".hero-copy a.bg-teal", label: "1st button", large: false },
+  // Hero fact rows and the Contact address. These were invisible in production
+  // (dark ink on the darkened photo) and this checker did not sample them, so
+  // nothing caught it — the client did.
+  { sel: ".hero-copy span.text-ink:not(.glass-pill)", label: "fact value", large: false },
+  { sel: ".hero-copy span.text-grey-600", label: "fact label", large: false },
+  { sel: ".hero-copy address", label: "address", large: false },
 ];
 
 const srgb = (c) => {

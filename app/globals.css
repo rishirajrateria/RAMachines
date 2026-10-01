@@ -1305,6 +1305,21 @@ main > .page-hero:first-child {
 .hero-copy strong {
   color: #fff;
 }
+/* Hero fact rows ("Manufactured: India", "Delivery: Pan-India + export") and the
+   Contact hero's address are <span>/<address> elements carrying the light-page
+   colour utilities `text-ink` / `text-grey-600`. The rules above only reached
+   headings, paragraphs and <strong>, so these stayed dark ink on a darkened
+   photograph — the client's screenshot showed them as invisible. 14 heroes use
+   this pattern. `:not(.glass-pill)` leaves the secondary button alone: it is a
+   light pill that legitimately keeps its ink text. */
+.hero-copy .text-ink:not(.glass-pill) {
+  color: #fff;
+}
+.hero-copy .text-grey-600,
+.hero-copy .text-grey-500,
+.hero-copy address {
+  color: rgba(255, 255, 255, 0.78);
+}
 /* On a centred hero (home) the breadcrumb's own flex row doesn't inherit the
    panel's `text-center`, so it sat left while everything above and below it was
    centred. */

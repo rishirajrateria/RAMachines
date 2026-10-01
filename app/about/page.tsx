@@ -31,11 +31,23 @@ export const metadata: Metadata = buildMetadata({
   path: paths.about,
 });
 
+/**
+ * Looked up by LABEL, never by position. This used to read `site.stats[0]`,
+ * `[1]` and `[3]`; when the owner's real figures were added, "1989 engineering
+ * since" became the first entry and every value here moved one slot — the page
+ * showed "1989 machines installed" until the client spotted it. A missing label
+ * now fails the build instead of quietly showing the wrong number.
+ */
+function stat(label: string): string {
+  const found = site.stats.find((s) => s.label === label);
+  if (!found) throw new Error(`config/site.ts has no stat labelled "${label}"`);
+  return found.value;
+}
+
 const aboutFacts = [
   { label: "Founded", value: String(site.foundedYear) },
-  { label: "Machines installed", value: site.stats[0].value },
-  { label: "Countries served", value: site.stats[1].value },
-  { label: "Operators trained", value: site.stats[3].value },
+  { label: "Machines installed", value: stat("machines installed") },
+  { label: "Operators trained", value: stat("operators trained") },
 ];
 
 export default function AboutPage() {
