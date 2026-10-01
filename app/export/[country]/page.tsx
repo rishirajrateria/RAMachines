@@ -25,14 +25,15 @@ import Faq from "@/components/ui/Faq";
 import JsonLd from "@/components/ui/JsonLd";
 import PageHero from "@/components/layout/PageHero";
 import { FactStrip, Steps, DividedList, ImageSlot } from "@/components/ui/glass";
-import ProductCard from "@/components/cards/ProductCard";
+import CategoryCard from "@/components/cards/CategoryCard";
+import { familiesFor, familyListSchema } from "@/lib/families";
 import ExportForm from "@/components/forms/ExportForm";
-import { absUrl, buildMetadata, truncate } from "@/lib/seo";
+import { buildMetadata, truncate } from "@/lib/seo";
 import { paths } from "@/lib/urls";
 import { photos } from "@/lib/photos";
 import { organizationSchema } from "@/lib/schema";
 import { countrySections } from "@/lib/copy/country";
-import { countries, getCountry, products } from "@/data";
+import { countries, getCountry } from "@/data";
 import type { Country } from "@/data";
 import { exportProcessSteps } from "../copy";
 import { countryFacts, whyIndiaTitleCycle } from "../visuals";
@@ -58,26 +59,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return buildMetadata({
     title: countryTitle(country.name),
-    description: `RA Machine exports CE-marked, ISO 9001:2015-certified fiber laser cutting machines and robotic welding systems to ${country.name}, with pre-shipment inspection, installation, training and warranty support.`,
+    description: `CE-marked, ISO 9001:2015-certified CNC laser, plasma and welding machines from India for ${country.name}, with installation, training and warranty.`,
     path: paths.country(country.slug),
   });
 }
 
-/** The top 3 distinct products recommended across a country's sectors, in the
- * order they first appear, for the "Recommended machines" tiles. */
-function topProducts(country: Country) {
-  const seen = new Set<string>();
-  const slugs: string[] = [];
-  for (const sector of country.sectors) {
-    for (const slug of sector.recommendedProductSlugs) {
-      if (seen.has(slug)) continue;
-      seen.add(slug);
-      slugs.push(slug);
-      if (slugs.length === 3) break;
-    }
-    if (slugs.length === 3) break;
-  }
-  return slugs.map((slug) => products.find((p) => p.slug === slug)).filter((p): p is NonNullable<typeof p> => Boolean(p));
+/** The top 3 distinct machine families recommended across a country's sectors,
+ * in the order they first appear, for the "Recommended machines" tiles. */
+function topFamilies(country: Country) {
+  return familiesFor(country.sectors.flatMap((s) => s.recommendedFamilies));
 }
 
 export default async function CountryExportPage({ params }: Props) {
@@ -85,7 +75,7 @@ export default async function CountryExportPage({ params }: Props) {
   const country = getCountry(slug);
   if (!country) notFound();
 
-  const sections = countrySections(country, products);
+  const sections = countrySections(country);
   const byId = (id: string) => sections.find((s) => s.id === id)!;
 
   const breadcrumbItems = [
@@ -94,7 +84,7 @@ export default async function CountryExportPage({ params }: Props) {
     { name: country.name, href: paths.country(country.slug) },
   ];
 
-  const recommended = topProducts(country);
+  const recommended = topFamilies(country);
 
   /** Other export markets in this country's region — see the section below. */
   const regionSiblings = countries
@@ -109,10 +99,6 @@ export default async function CountryExportPage({ params }: Props) {
 
   const proseSections = [byId("demand"), byId("shipping"), byId("warranty-spares"), byId("regulatory")];
 
-  const schemaProducts = products.filter((p) =>
-    recommended.some((r) => r.slug === p.slug) ||
-    country.sectors.some((s) => s.recommendedProductSlugs[0] === p.slug),
-  );
 
   return (
     <>
@@ -120,7 +106,7 @@ export default async function CountryExportPage({ params }: Props) {
         <Breadcrumbs items={breadcrumbItems} />
         <p className="eyebrow mb-3">Export to {country.name}</p>
         <h1 className="max-w-3xl font-display text-display-lg text-ink">
-          Laser Cutting Machine Exporter to {country.name} — Fiber Laser &amp; Robotic Welding from India
+          CNC Laser, Plasma &amp; Welding Machines for {country.name} — Shipped from India
         </h1>
         <p className="mt-4 max-w-2xl text-grey-600">
           Export documentation, installation and warranty support built around {country.name}&apos;s ports,
@@ -170,26 +156,15 @@ export default async function CountryExportPage({ params }: Props) {
           <div>
             <DividedList
               items={country.sectors.map((sector) => {
-                const productSlug = sector.recommendedProductSlugs[0];
-                const product = productSlug ? products.find((p) => p.slug === productSlug) : undefined;
+                const [family] = familiesFor(sector.recommendedFamilies, 1);
                 return {
                   title: sector.name,
                   text: `${sector.zones.join(", ")} — ${sector.note}`,
-                  href: product ? paths.product(product.category, product.slug) : undefined,
-                  meta: product?.name,
+                  href: family ? paths.category(family.slug) : undefined,
+                  meta: family?.name,
                 };
               })}
             />
-            {recommended.length > 0 && (
-              <div className="mt-10">
-                <p className="eyebrow mb-4">Recommended machines</p>
-                <div className="grid gap-5 sm:grid-cols-3">
-                  {recommended.map((product) => (
-                    <ProductCard key={product.slug} product={product} compact />
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
           <ImageSlot
             image={photos["slot-cutting-head"]}
@@ -197,6 +172,18 @@ export default async function CountryExportPage({ params }: Props) {
             label="Photo: laser cutting head close-up"
           />
         </div>
+        {/* Full width below the sector rows: inside the half-width column three
+            tiles were too narrow to show their machine art properly. */}
+        {recommended.length > 0 && (
+          <div className="mt-12">
+            <p className="eyebrow mb-4">Recommended machines</p>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {recommended.map((family) => (
+                <CategoryCard key={family.slug} category={family} />
+              ))}
+            </div>
+          </div>
+        )}
       </Section>
 
       <Section title="Export process">
@@ -267,15 +254,7 @@ export default async function CountryExportPage({ params }: Props) {
       <JsonLd
         data={[
           { ...organizationSchema(), areaServed: country.name },
-          {
-            "@type": "ItemList",
-            itemListElement: schemaProducts.map((p, i) => ({
-              "@type": "ListItem",
-              position: i + 1,
-              name: p.name,
-              url: absUrl(`/products/${p.category}/${p.slug}`),
-            })),
-          },
+          familyListSchema(recommended),
         ]}
       />
     </>

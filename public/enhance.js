@@ -15,7 +15,6 @@
  *   [data-herovideo]           -> <template> inside is mounted when near view
  *   [data-map]                 -> button swaps in the <template>'d iframe
  *   [data-cert]                -> opens <dialog id="cert-dialog">, shows [data-cert-panel]
- *   [data-filter]              -> toggles [hidden] on [data-category] cards
  *
  * No feature here is required for the page to work — see ADR-0010 "Consequences".
  */
@@ -281,41 +280,6 @@
     // Click on the backdrop (the dialog element itself) closes it.
     certDialog.addEventListener("click", function (e) {
       if (e.target === certDialog) certDialog.close();
-    });
-  }
-
-  /* ---------------------------------------------------------- product filter
-   * Chips are real links to the category pages without JS; here they filter in
-   * place instead. Because that changes what they ARE, promote them from link
-   * to button semantics at the same moment we take the clicks over —
-   * `aria-pressed` is not valid on a link, and a screen reader should not be
-   * told "link" for a control that no longer navigates.
-   */
-  var chips = doc.querySelectorAll("[data-filter]");
-  if (chips.length) {
-    each("[data-filter]", function (chip, i) {
-      chip.setAttribute("role", "button");
-      chip.setAttribute("aria-pressed", i === 0 ? "true" : "false");
-    });
-    var activeClasses = ["!border-teal", "!bg-teal", "!text-white", "[&_svg]:!text-white"];
-    var idleClasses = ["border-transparent", "hover:!border-teal", "hover:!text-teal-hover"];
-    var setFilter = function (slug) {
-      each("[data-category]", function (card) {
-        card.hidden = slug !== "all" && card.getAttribute("data-category") !== slug;
-      });
-      each("[data-filter]", function (chip) {
-        var on = chip.getAttribute("data-filter") === slug;
-        chip.setAttribute("aria-pressed", on ? "true" : "false");
-        chip.classList.toggle("is-active", on);
-        activeClasses.forEach(function (c) { chip.classList.toggle(c, on); });
-        idleClasses.forEach(function (c) { chip.classList.toggle(c, !on); });
-      });
-    };
-    each("[data-filter]", function (chip) {
-      chip.addEventListener("click", function (e) {
-        e.preventDefault();
-        setFilter(chip.getAttribute("data-filter"));
-      });
     });
   }
 })();

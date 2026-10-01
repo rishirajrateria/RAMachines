@@ -44,7 +44,8 @@ const BASE = process.env.BASE || "http://localhost:3000";
 const ROUTES = [
   ["/", "home (centred, full height)"],
   ["/products", "products hub"],
-  ["/products/fiber-laser-cutting-machines/ra-f3015-pro", "product detail"],
+  ["/products/cnc-plasma-cutting-machines", "plasma family"],
+  ["/products/submerged-arc-welding-machines", "SAW family"],
   ["/india/west-bengal/kolkata", "city"],
   ["/india/west-bengal", "state"],
   ["/export/united-states", "export country"],

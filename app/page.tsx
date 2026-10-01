@@ -2,19 +2,18 @@
  * app/page.tsx — Home. ADR-0008 §3: the same 7-section spirit as ADR-0005 §6
  * (image hero, trust strip, Machines, Why RA Machine, Where we work,
  * Certifications, Faq + CTA) but with real editorial hierarchy — a deep,
- * bento-grid "Machines" showcase led by one flagship machine, and a deep CTA
+ * bento-grid "Machines" showcase led by the CNC laser family, and a deep CTA
  * closing section, per the value-rhythm rule ("at least two dark sections").
  * Long copy lives in ./_home/copy.ts.
  */
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { buildMetadata } from "@/lib/seo";
 import { paths } from "@/lib/urls";
 import { localBusinessSchema } from "@/lib/schema";
 import { site } from "@/config/site";
 import { photos } from "@/lib/photos";
-import { categories, products, topStates, topCountries, homeFaqs, getProduct } from "@/data";
+import { categories, topStates, topCountries, homeFaqs } from "@/data";
 import JsonLd from "@/components/ui/JsonLd";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AboutBlurb from "@/components/ui/AboutBlurb";
@@ -22,6 +21,7 @@ import Section from "@/components/ui/Section";
 import Button from "@/components/ui/Button";
 import Faq from "@/components/ui/Faq";
 import { Icon, ArrowRight } from "@/components/ui/Icons";
+import Img from "@/components/media/Img";
 import GlassCard from "@/components/ui/GlassCard";
 import PageHero from "@/components/layout/PageHero";
 import BentoGrid from "@/components/ui/BentoGrid";
@@ -31,7 +31,6 @@ import CertStrip from "@/components/sections/CertStrip";
 import WorldReach from "@/components/sections/WorldReach";
 import HeroVideo from "@/components/media/HeroVideo";
 import CategoryCard from "@/components/cards/CategoryCard";
-import ProductCard from "@/components/cards/ProductCard";
 import QuoteForm from "@/components/forms/QuoteForm";
 import {
   heroSentence,
@@ -40,42 +39,34 @@ import {
   machinesHeadingLines,
   machinesIntro,
   flagshipPitch,
+  customBuild,
   whyPoints,
   ctaText,
 } from "./_home/copy";
 import { glueUnits, statSizeForGroup } from "@/components/ui/statValue";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Laser Cutting Machine Manufacturer India | RA Machine",
+  title: "CNC Laser, Plasma & Welding Machines India | RA Machine",
   description:
-    "RA Machine designs, manufactures and exports fiber laser, tube laser, CO2 laser and robotic welding machines from Kolkata, with installation, training and service across India and worldwide.",
+    "CNC fiber laser and plasma cutting machines, MIG/TIG/MMA and SAW welding machines and cobot welding systems, built in India with installation and training.",
   path: paths.home,
 });
 
 const whyImageKeys = ["slot-quality-check", "slot-engineer-service", "slot-installation"] as const;
 const whyImageLabels = ["Photo: quality check", "Photo: service engineer", "Photo: installation"];
 
-// The Machines showcase leads with this flagship model — the best-selling fiber
-// laser — plus one machine each from the tube, CO2 and robotic-welding lines.
-const flagship = getProduct("ra-f3015-pro")!;
-const spotlightSlugs = ["ra-t6000", "ra-rw6"] as const;
-const spotlightMachines = spotlightSlugs.map((slug) => getProduct(slug)).filter((p): p is NonNullable<typeof p> => Boolean(p));
-
-const flagshipStats = [
-  { label: flagship.specs[0].label, value: "3 kW" },
-  { label: flagship.specs[1].label, value: "1.5 × 3 m" },
-  { label: flagship.specs[2].label, value: "25 mm" },
-];
+// The Machines showcase leads with the CNC laser family (the large tile, with
+// the client's laser-power range as its figure), then the other four families,
+// then a "built to your requirement" tile: welding sets are customisable and
+// cobot/robot cells are configured to the buyer's brief.
+const [flagship, ...otherFamilies] = categories;
 
 /**
- * One size for the flagship spec row, from ITS OWN longest value.
- *
- * This previously sized itself from `site.stats` — the trust-strip numbers
- * ("1989", "20+"), which are all short, so every value here was set at the
- * largest step. "1.5 × 3 m" is bound together with non-breaking spaces so a
- * measurement can never split from its unit, which meant it could not wrap
- * either: it simply overflowed its column and collided with "25 mm" next to it.
+ * The flagship figures are the client's own ranges for the family. One size for
+ * the row, from ITS OWN longest value (sizing from `site.stats` once set every
+ * value at the largest step and made a long one overflow into its neighbour).
  */
+const flagshipStats = flagship.ranges.map((range) => ({ label: range.label, value: range.value }));
 const flagshipStatSize = statSizeForGroup(flagshipStats.map((s) => s.value));
 
 export default function HomePage() {
@@ -92,14 +83,14 @@ export default function HomePage() {
         overlay={
           <HeroVideo
             poster={{ src: "/hero-poster.webp", width: 1920, height: 1080 }}
-            posterAlt="Soft teal light forms with a faint outline of a fiber laser cutting gantry"
+            posterAlt="Soft teal light forms with a faint outline of a CNC laser cutting gantry"
           />
         }
       >
         <Breadcrumbs items={[{ name: "Home", href: paths.home }]} />
-        <p className="eyebrow justify-center">Manufactured in Kolkata · Exported worldwide</p>
+        <p className="eyebrow justify-center">Manufactured in India · Ships worldwide</p>
         <h1 className="mt-4 font-display text-display-xl text-ink">
-          Laser Cutting Machines Built in India, Trusted Worldwide
+          CNC Laser, Plasma &amp; Welding Machines — Built in India
         </h1>
         <p className="mx-auto mt-5 max-w-xl text-base text-grey-600 sm:text-lg">{heroSentence}</p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
@@ -127,12 +118,12 @@ export default function HomePage() {
 
       <ImageBand
         image={photos["slot-factory"]}
-        overlayText="Built and tested at our Kolkata works"
+        overlayText="Built and tested at our works in India"
         label="Photo: factory floor"
       />
 
-      {/* 3. Machines — the centrepiece: a deep bento grid led by the flagship
-          RA-F3015 Pro, then the 4 categories and 3 more machines. */}
+      {/* 3. Machines — the centrepiece: a deep bento grid led by the CNC laser
+          family, then the other four families and a custom-build tile. */}
       <Section id="machines" tone="dark">
         <div className="mb-10 max-w-2xl md:mb-14">
           <p className="eyebrow mb-3">
@@ -150,26 +141,23 @@ export default function HomePage() {
         <BentoGrid>
           <BentoTile span="feature">
             <GlassCard
-              href={paths.product(flagship.category, flagship.slug)}
+              href={paths.category(flagship.slug)}
               strong
               className="h-full shadow-lift"
               artwork={
                 <div className="pedestal relative aspect-[4/3] w-full overflow-hidden bg-[radial-gradient(circle_at_50%_38%,rgba(45,212,191,0.18),transparent_70%)] lg:aspect-auto lg:h-52">
-                  <Image
-                    src={flagship.images[0].src}
-                    alt={flagship.images[0].alt}
-                    width={flagship.images[0].width}
-                    height={flagship.images[0].height}
-                    priority
+                  <Img
+                    image={flagship.image}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
                     className="pedestal-render mx-auto h-full w-4/5 object-contain"
                   />
                 </div>
               }
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.08em] text-grey-500">Flagship machine</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.08em] text-grey-500">{flagship.shortName}</p>
               <h3 className="mt-1 font-display text-xl text-ink">{flagship.name}</h3>
-              <p className="mt-1.5 line-clamp-1 text-sm text-grey-600">{flagshipPitch}</p>
-              <dl className="mt-4 grid grid-cols-3 gap-3 border-t border-[color:var(--hairline)] pt-4">
+              <p className="mt-1.5 line-clamp-2 text-sm text-grey-600">{flagshipPitch}</p>
+              <dl className="mt-4 grid grid-cols-2 gap-3 border-t border-[color:var(--hairline)] pt-4">
                 {flagshipStats.map((stat) => (
                   <div key={stat.label}>
                     <dd className={`${flagshipStatSize} text-ink`}>{glueUnits(stat.value)}</dd>
@@ -178,26 +166,31 @@ export default function HomePage() {
                 ))}
               </dl>
               <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-teal">
-                View machine
+                View the range
                 <ArrowRight width={14} height={14} className="transition-transform group-hover:translate-x-0.5" />
               </span>
             </GlassCard>
           </BentoTile>
 
-          {categories.map((category) => (
+          {otherFamilies.map((category) => (
             <BentoTile key={category.slug} className="lg:row-span-2">
-              <CategoryCard
-                category={category}
-                count={products.filter((p) => p.category === category.slug).length}
-              />
+              <CategoryCard category={category} />
             </BentoTile>
           ))}
 
-          {spotlightMachines.map((product) => (
-            <BentoTile key={product.slug} className="lg:row-span-2">
-              <ProductCard product={product} compact />
-            </BentoTile>
-          ))}
+          <BentoTile span="feature">
+            <GlassCard href="#quote" className="h-full">
+              <span className="icon-pill inline-flex h-10 w-10 text-teal">
+                <Icon name="Gear" size={20} />
+              </span>
+              <h3 className="mt-4 font-display text-xl text-ink">{customBuild.title}</h3>
+              <p className="mt-2 max-w-md text-sm text-grey-600">{customBuild.text}</p>
+              <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-teal">
+                Tell us about your job
+                <ArrowRight width={14} height={14} className="transition-transform group-hover:translate-x-0.5" />
+              </span>
+            </GlassCard>
+          </BentoTile>
         </BentoGrid>
       </Section>
 
@@ -220,8 +213,8 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* 5. Where we work — the claim drawn as a map, on a deep band. */}
-      <Section tone="dark" eyebrow="Reach" icon="Globe" title="Where we work">
+      {/* 5. Markets we serve — reach drawn as a map, on a deep band. */}
+      <Section tone="dark" eyebrow="Reach" icon="Globe" title="Markets we serve">
         <WorldReach states={states} countries={countries} />
       </Section>
 

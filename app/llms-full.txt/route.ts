@@ -1,15 +1,14 @@
 /**
  * app/llms-full.txt/route.ts — the extended companion to /llms.txt: everything an
  * LLM answer engine needs to cite RA Machine in depth (SPEC §6), generated from
- * config/site.ts and data/index.ts. Adds, on top of /llms.txt: full product spec
- * and materials tables, category intros, repair/training summaries, every India
+ * config/site.ts and data/index.ts. Adds, on top of /llms.txt: each machine
+ * family's ranges, intro and buyer guide, repair/training summaries, every India
  * state + city URL, every export country URL, and the FAQ sets from data/faqs.ts
  * (excluding the job-work FAQs — that page is noindex and its wording is kept off
  * every other indexable surface per SPEC §6 / ADR §2).
  */
 import { site } from "@/config/site";
 import {
-  products,
   categories,
   states,
   cities,
@@ -41,7 +40,7 @@ function companyFacts(): string[] {
   const lines: string[] = [];
   lines.push(`# ${site.name} — full reference`, "");
   lines.push(
-    `${site.name} designs, fabricates and assembles laser cutting machines and robotic welding systems at its facility in ${site.address.locality}, ${site.address.region}, India, and supplies them across India and to export markets worldwide. ${site.name} is a brand of ${site.parent}; its sister brand ${site.raAuto.name} (${site.raAuto.url}) is the Group's automotive division.`,
+    `${site.name} designs, fabricates and assembles CNC laser and plasma cutting machines, MIG/TIG/MMA and submerged arc welding machines, and cobot and robotic welding systems at its works in ${site.address.locality}, ${site.address.region}, India. It supplies them across India and can ship and support them abroad. ${site.name} is a brand of ${site.parent}; its sister brand ${site.raAuto.name} (${site.raAuto.url}) is the Group's automotive division.`,
     "",
   );
   lines.push("## Company facts");
@@ -62,30 +61,22 @@ function companyFacts(): string[] {
   return lines;
 }
 
+/**
+ * One section per machine family: the client's own ranges (the only specs the
+ * site states — machines are configured per job, there are no model numbers),
+ * then the intro, buyer guide and FAQs.
+ */
 function categorySections(): string[] {
-  const lines = ["## Product categories", ""];
+  const lines = ["## Machines — five technologies", ""];
   for (const cat of categories) {
     lines.push(`### ${cat.name}`);
     lines.push(`URL: ${absUrl(paths.category(cat.slug))}`);
-    lines.push(cat.intro, "");
-  }
-  return lines;
-}
-
-function productSections(): string[] {
-  const lines = ["## Products — full specifications", ""];
-  for (const p of products) {
-    const categoryName = categories.find((c) => c.slug === p.category)?.name ?? p.category;
-    lines.push(`### ${p.name} (${p.sku})`);
-    lines.push(`Category: ${categoryName}`);
-    lines.push(`Headline: ${p.headline}`);
-    lines.push(p.shortDescription);
-    lines.push(`URL: ${absUrl(paths.product(p.category, p.slug))}`);
-    lines.push("Specifications:");
-    for (const spec of p.specs) lines.push(`- ${spec.label}: ${spec.value}`);
-    lines.push("Materials & maximum thickness:");
-    for (const m of p.materials) lines.push(`- ${m.material}: ${m.maxThickness}`);
-    lines.push("");
+    lines.push("Range:");
+    for (const range of cat.ranges) lines.push(`- ${range.label}: ${range.value}`);
+    lines.push("", cat.intro, "");
+    lines.push(...cat.longCopy.flatMap((paragraph) => [paragraph, ""]));
+    lines.push(`Applications: ${cat.applications.join("; ")}.`, "");
+    for (const faq of cat.faqs) lines.push(`Q: ${faq.q}`, `A: ${faq.a}`, "");
   }
   return lines;
 }
@@ -94,7 +85,7 @@ function serviceSections(): string[] {
   const lines: string[] = [];
   lines.push("## Machine repair & CNC maintenance");
   lines.push(
-    `${site.name} repairs fiber laser, CO2 laser, plasma, tube laser and robotic welding equipment of any manufacturer, not only its own machines. Coverage is pan-India, with engineers dispatched from the Kolkata headquarters, remote diagnostics, Basic / Standard / Premium AMC plans, and stocked spares for common wear parts (nozzles, lenses, filters, drive components).`,
+    `${site.name} repairs and maintains the machines it builds — its own CNC laser and plasma cutting machines, welding machines and robotic welding systems. It does not service other manufacturers' machines and does not currently offer annual maintenance contracts. Coverage is pan-India, with engineers travelling from the Kolkata workshop, remote diagnostics, and stocked spares for common wear parts.`,
   );
   lines.push(`URL: ${absUrl(paths.repair)}`, "");
   lines.push("## Operator & CNC training");
@@ -131,7 +122,6 @@ function buildLlmsFullTxt(): string {
   return [
     ...companyFacts(),
     ...categorySections(),
-    ...productSections(),
     ...serviceSections(),
     ...indiaSections(),
     ...exportSections(),

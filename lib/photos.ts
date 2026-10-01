@@ -13,10 +13,10 @@ export type PhotoKey =
   | "hero-home"
   | "hero-products"
   | "hero-fiber"
-  | "hero-tube"
-  | "hero-co2"
   | "hero-welding"
-  | "hero-product"
+  | "hero-plasma"
+  | "hero-arc-welding"
+  | "hero-saw"
   | "hero-repair"
   | "hero-training"
   | "hero-jobwork"
@@ -32,7 +32,6 @@ export type PhotoKey =
   | "slot-assembly"
   | "slot-cutting-head"
   | "slot-sparks"
-  | "slot-tube-cutting"
   | "slot-robot-weld"
   | "slot-control-panel"
   | "slot-engineer-service"
@@ -55,11 +54,11 @@ function img(key: PhotoKey, alt: string, size: { width: number; height: number }
 export const photos: Record<PhotoKey, Img> = {
   "hero-home": img("hero-home", "Wide industrial photograph of the RA Machine factory floor in soft teal-tinted light", HERO),
   "hero-products": img("hero-products", "Photograph of the RA Machine product range on the factory floor, graphite and teal light", HERO),
-  "hero-fiber": img("hero-fiber", "Photograph of a fiber laser cutting machine gantry under industrial light", HERO),
-  "hero-tube": img("hero-tube", "Photograph of a tube laser cutting machine with round stock loaded, workshop light", HERO),
-  "hero-co2": img("hero-co2", "Photograph of a CO2 laser cutting and engraving machine cabinet, soft studio light", HERO),
-  "hero-welding": img("hero-welding", "Photograph of a robotic welding cell mid-weld with bright arc sparks", HERO),
-  "hero-product": img("hero-product", "Photograph of a single RA Machine product on the shop floor, backlit", HERO),
+  "hero-fiber": img("hero-fiber", "Illustration of a fiber laser cutting machine gantry under industrial light", HERO),
+  "hero-welding": img("hero-welding", "Illustration of a robotic welding cell mid-weld with bright arc sparks", HERO),
+  "hero-plasma": img("hero-plasma", "Illustration of a CNC plasma cutting table with the torch cutting steel plate", HERO),
+  "hero-arc-welding": img("hero-arc-welding", "Illustration of a MIG welding set on a trolley with the torch welding a workpiece", HERO),
+  "hero-saw": img("hero-saw", "Illustration of a submerged arc welding tractor running along a plate seam", HERO),
   "hero-repair": img("hero-repair", "Photograph of a service engineer working on a machine control panel", HERO),
   "hero-training": img("hero-training", "Photograph of an operator training session beside a laser cutting machine", HERO),
   "hero-jobwork": img("hero-jobwork", "Photograph of contract job-work fabrication in progress on the shop floor", HERO),
@@ -75,7 +74,6 @@ export const photos: Record<PhotoKey, Img> = {
   "slot-assembly": img("slot-assembly", "Photograph of technicians assembling a machine on the shop floor", SLOT),
   "slot-cutting-head": img("slot-cutting-head", "Close-up photograph of a laser cutting head and nozzle", SLOT),
   "slot-sparks": img("slot-sparks", "Photograph of bright sparks flying during metal cutting", SLOT),
-  "slot-tube-cutting": img("slot-tube-cutting", "Photograph of round tube stock being loaded into a tube laser machine", SLOT),
   "slot-robot-weld": img("slot-robot-weld", "Photograph of a robotic welding arm at work on a fixture", SLOT),
   "slot-control-panel": img("slot-control-panel", "Photograph of a machine control panel and touchscreen interface", SLOT),
   "slot-engineer-service": img("slot-engineer-service", "Photograph of a service engineer servicing a machine on-site", SLOT),

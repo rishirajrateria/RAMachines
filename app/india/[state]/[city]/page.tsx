@@ -1,7 +1,7 @@
 /**
  * app/india/[state]/[city]/page.tsx — /india/[state]/[city]: one of ~170 static
  * city pages. ADR-0005 §6 anatomy: hero panel (H1, one sentence, three tiny
- * facts) → FactStrip → industries DividedList + up to 3 recommended product
+ * facts) → FactStrip → industries DividedList + up to 3 recommended machine-family
  * tiles → delivery Steps → nearby-cities DividedList → prose column
  * (lib/copy/city.ts, .prose-calm, ≥ 700 words) → Faq → CTA panel with the
  * QuoteForm. Presentation-only facts come from app/india/_lib/cityVisuals.ts;
@@ -10,17 +10,17 @@
  */
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { absUrl, buildMetadata, truncate } from "@/lib/seo";
+import { buildMetadata, truncate } from "@/lib/seo";
 import { paths } from "@/lib/urls";
 import { localBusinessSchema, serviceSchema } from "@/lib/schema";
-import { cities, getCity, getState, citiesByState, products } from "@/data";
-import type { Product } from "@/data/types";
+import { cities, getCity, getState, citiesByState } from "@/data";
+import { familyListSchema } from "@/lib/families";
 import { citySections, cityH1 } from "@/lib/copy/city";
 import {
   cityHeroFacts,
   cityFactStripFacts,
   cityIndustryItems,
-  cityProductTiles,
+  cityFamilyTiles,
   citySteps,
   cityNearbyLinks,
 } from "../../_lib/cityVisuals";
@@ -30,7 +30,7 @@ import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AboutBlurb from "@/components/ui/AboutBlurb";
 import Button from "@/components/ui/Button";
 import Faq from "@/components/ui/Faq";
-import ProductCard from "@/components/cards/ProductCard";
+import CategoryCard from "@/components/cards/CategoryCard";
 import QuoteForm from "@/components/forms/QuoteForm";
 import JsonLd from "@/components/ui/JsonLd";
 import { FactStrip, Steps, DividedList, ImageSlot } from "@/components/ui/glass";
@@ -53,19 +53,6 @@ function cityTitle(name: string, stateName?: string): string {
   return truncate(noSuffix, 60);
 }
 
-/** ItemList JSON-LD of the machines recommended for this city (brand/sku, no price). */
-function productListSchema(list: Product[]): object {
-  return {
-    "@type": "ItemList",
-    itemListElement: list.map((product, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      name: product.name,
-      url: absUrl(`/products/${product.category}/${product.slug}`),
-    })),
-  };
-}
-
 export async function generateMetadata({
   params,
 }: {
@@ -78,7 +65,7 @@ export async function generateMetadata({
 
   return buildMetadata({
     title: cityTitle(city.name, state.name),
-    description: `Fiber laser cutting machine sales, installation, repair and operator training in ${city.name}, ${state.name}, from RA Machine, Kolkata.`,
+    description: `CNC laser and plasma cutting machines and welding machines in ${city.name}, ${state.name}: sales, installation, repair and operator training from RA Machine.`,
     path: paths.city(state.slug, city.slug),
   });
 }
@@ -96,7 +83,7 @@ export default async function CityPage({
   const siblings = citiesByState(state.slug);
   const sections = citySections(city, state);
   const nearby = siblings.filter((s) => city.nearbyCitySlugs.includes(s.slug)).slice(0, 6);
-  const productTiles = cityProductTiles(city, products);
+  const familyTiles = cityFamilyTiles(city);
 
   return (
     <>
@@ -112,8 +99,8 @@ export default async function CityPage({
         <p className="eyebrow mb-3">{state.name}</p>
         <h1 className="max-w-3xl font-display text-display-lg text-ink">{cityH1(city.name, state.name)}</h1>
         <p className="mt-4 max-w-2xl text-grey-600">
-          Laser cutting and robotic welding machines for {city.name}&apos;s fabricators, delivered, installed and
-          serviced from our Kolkata works.
+          CNC laser and plasma cutting machines, welding machines and robotic welding systems for {city.name}&apos;s
+          fabricators — built in India, delivered, installed and serviced by our own engineers.
         </p>
         <p className="mt-5 flex flex-wrap gap-x-6 gap-y-1.5 text-xs text-grey-500">
           {cityHeroFacts(city, state).map((fact) => (
@@ -141,12 +128,12 @@ export default async function CityPage({
 
       <Section eyebrow="Industries" title="Industries" intro={`Industries we regularly serve in ${city.name}.`}>
         <DividedList items={cityIndustryItems(city)} />
-        {productTiles.length > 0 && (
+        {familyTiles.length > 0 && (
           <>
             <p className="mt-10 text-sm text-grey-600">Machines we recommend most often for {city.name}:</p>
-            <div className="mt-4 grid gap-6 sm:grid-cols-3">
-              {productTiles.map((product) => (
-                <ProductCard key={product.slug} product={product} compact />
+            <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {familyTiles.map((family) => (
+                <CategoryCard key={family.slug} category={family} />
               ))}
             </div>
           </>
@@ -202,12 +189,12 @@ export default async function CityPage({
         data={[
           localBusinessSchema({ areaServed: city.name }),
           serviceSchema({
-            name: `Laser cutting machine sales, installation and repair in ${city.name}`,
-            description: `Fiber laser, CO2 laser, tube laser and robotic welding machine sales, installation, AMC service and operator training in ${city.name}, ${state.name}.`,
+            name: `Cutting and welding machine sales, installation and repair in ${city.name}`,
+            description: `CNC laser and plasma cutting, MIG/TIG/MMA, SAW and robotic welding machine sales, installation, service and operator training in ${city.name}, ${state.name}.`,
             path: paths.city(state.slug, city.slug),
             areaServed: city.name,
           }),
-          productListSchema(productTiles),
+          familyListSchema(familyTiles),
         ]}
       />
     </>

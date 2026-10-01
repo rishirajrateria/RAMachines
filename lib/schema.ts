@@ -4,7 +4,7 @@
  */
 import { site } from "@/config/site";
 import { absUrl } from "@/lib/seo";
-import type { Product } from "@/data/types";
+import type { Category } from "@/data/types";
 
 export function organizationSchema(): object {
   return {
@@ -105,50 +105,37 @@ export function faqSchema(items: { q: string; a: string }[]): object {
 }
 
 /**
- * Product entity for a machine.
+ * Product entity for a machine FAMILY (e.g. "CNC Plasma Cutting Machines").
  *
- * `offers` carries no price, and that is deliberate: these are made-to-order
- * capital machines quoted per configuration, so any number here would be
- * invented. An earlier version tried to say so with
- * `priceSpecification: "Contact for price"` — which is invalid, because
- * `priceSpecification` takes a PriceSpecification object, not a string, and a
- * validator simply rejects it. Stating availability, seller and currency
- * honestly, and leaving price out, is worth more than a field that fails
- * validation. (Google will note the missing price; without a public price that
- * is the correct outcome, and the rest of the entity still resolves.)
+ * RA Machine sells by technology and configures each machine to the job, so
+ * there is no SKU, model number or list price to publish — and none is
+ * invented here. `offers` is deliberately absent: an Offer with no price, or an
+ * "InStock" claim for made-to-order capital equipment, would be inaccurate.
+ * (Google will not show a product rich result without a price or reviews; the
+ * entity still tells search and answer engines exactly what the family is,
+ * who makes it, and the ranges it is built in.)
  *
- * `additionalProperty` publishes the real spec table — laser power, bed size,
- * cutting thickness and so on — as machine-readable values, which is what
- * actually helps a search or answer engine match this machine to a query like
- * "3 kW fiber laser 1500x3000".
+ * `additionalProperty` publishes the client's own ranges (`category.ranges`)
+ * as machine-readable values — the only specifications the site states.
  */
-export function productSchema(p: Product): object {
+export function familySchema(c: Category): object {
+  const url = absUrl(`/products/${c.slug}`);
   return {
     "@type": "Product",
-    name: p.name,
-    sku: p.sku,
-    mpn: p.sku,
-    category: p.category,
+    "@id": `${url}#product`,
+    name: c.name,
+    category: c.shortName,
     brand: { "@type": "Brand", name: site.name },
     manufacturer: { "@id": `${site.url}/#organization` },
-    itemCondition: "https://schema.org/NewCondition",
-    description: p.shortDescription,
-    image: p.images.map((img) => absUrl(img.src)),
-    url: absUrl(`/products/${p.category}/${p.slug}`),
-    additionalProperty: p.specs.map((spec) => ({
+    countryOfOrigin: { "@type": "Country", name: "India" },
+    description: c.description,
+    image: absUrl(c.image.src),
+    url,
+    additionalProperty: c.ranges.map((range) => ({
       "@type": "PropertyValue",
-      name: spec.label,
-      value: spec.value,
+      name: range.label,
+      value: range.value,
     })),
-    material: p.materials.map((m) => m.material),
-    offers: {
-      "@type": "Offer",
-      availability: "https://schema.org/InStock",
-      priceCurrency: "INR",
-      url: absUrl(`/products/${p.category}/${p.slug}`),
-      seller: { "@id": `${site.url}/#organization` },
-      areaServed: "Worldwide",
-    },
   };
 }
 

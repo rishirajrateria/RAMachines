@@ -1,16 +1,17 @@
 /**
  * app/india/_lib/cityVisuals.ts — presentation-layer facts for
  * /india/[state]/[city] (ADR-0005 §6 anatomy), derived from the same
- * `City`/`State`/`Product` objects lib/copy/city.ts composes prose from: the
+ * `City`/`State` objects lib/copy/city.ts composes prose from: the
  * three tiny hero facts, the FactStrip, the industries DividedList +
- * recommended product tiles, the delivery Steps and the nearby-cities
+ * recommended machine-family tiles, the delivery Steps and the nearby-cities
  * DividedList. Kept out of lib/copy/city.ts so that file stays focused on
  * the composed prose. None of these repeat a fact shown elsewhere on the
  * page (ADR-0005: a fact appears once).
  */
 import type { StepItem } from "@/components/ui/glass";
 import type { IconName } from "@/components/ui/Icons";
-import type { City, State, Product } from "@/data/types";
+import type { City, State, Category } from "@/data/types";
+import { familiesFor } from "@/lib/families";
 import { deliveryWindowLabel } from "@/lib/copy/city";
 import { paths } from "@/lib/urls";
 
@@ -39,12 +40,9 @@ export function cityIndustryItems(city: City): { title: string }[] {
   return city.industries.map((name) => ({ title: name }));
 }
 
-/** Up to 3 recommended machines to show as tiles. */
-export function cityProductTiles(city: City, products: Product[]): Product[] {
-  return city.recommendedProductSlugs
-    .map((slug) => products.find((p) => p.slug === slug))
-    .filter((p): p is Product => Boolean(p))
-    .slice(0, 3);
+/** Up to 3 recommended machine families to show as tiles. */
+export function cityFamilyTiles(city: City): Category[] {
+  return familiesFor(city.recommendedFamilies);
 }
 
 /** The 5-step "how delivery works" line (same structure as the state page). */

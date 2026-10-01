@@ -1,35 +1,47 @@
+/**
+ * app/products/[category]/page.tsx — one page per machine family (client brief,
+ * Oct 2026): CNC laser, CNC plasma, MIG/TIG/MMA welding, SAW, cobot/robotic
+ * welding. There are no per-model pages; RA Machine configures each machine to
+ * the buyer's job, so the page states only the client's own ranges
+ * (`category.ranges`) and asks for the job details instead of listing SKUs.
+ *
+ * Anatomy: image hero (range facts) → AboutBlurb → "The range" (intro + range
+ * table beside a sticky QuoteBlock) → applications → engineering long copy →
+ * the other four families → FAQ → CTA.
+ */
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { buildMetadata } from "@/lib/seo";
 import { paths } from "@/lib/urls";
 import { site } from "@/config/site";
 import { categories } from "@/data/categories";
-import { productsByCategory } from "@/data/products";
 import type { CategorySlug } from "@/data/types";
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AboutBlurb from "@/components/ui/AboutBlurb";
 import Button from "@/components/ui/Button";
-import { FactStrip, DividedList } from "@/components/ui/glass";
+import { DividedList } from "@/components/ui/glass";
 import Faq from "@/components/ui/Faq";
+import JsonLd from "@/components/ui/JsonLd";
 import CtaBand from "@/components/sections/CtaBand";
+import QuoteBlock from "@/components/sections/QuoteBlock";
+import CategoryCard from "@/components/cards/CategoryCard";
 import PageHero from "@/components/layout/PageHero";
 import { photos } from "@/lib/photos";
 import type { PhotoKey } from "@/lib/photos";
+import { familySchema } from "@/lib/schema";
 import { Icon } from "@/components/ui/Icons";
-import ProductTile from "../ProductTile";
-import ComparisonTable from "./ComparisonTable";
 import LongCopySections from "./LongCopySections";
 import { categoryTitles } from "../meta";
 import { categoryIcon } from "../category-icons";
-import { categoryGlance } from "./glance";
 
-// ADR-0007 §4: each category gets its own hero photo.
+// ADR-0007 §4: each family gets its own hero image.
 const categoryHero: Record<CategorySlug, PhotoKey> = {
   "fiber-laser-cutting-machines": "hero-fiber",
-  "tube-laser-cutting-machines": "hero-tube",
-  "co2-laser-machines": "hero-co2",
+  "cnc-plasma-cutting-machines": "hero-plasma",
+  "mig-tig-arc-welding-machines": "hero-arc-welding",
+  "submerged-arc-welding-machines": "hero-saw",
   "robotic-welding-systems": "hero-welding",
 };
 
@@ -53,7 +65,7 @@ export async function generateMetadata({
   if (!category) return {};
 
   return buildMetadata({
-    title: categoryTitles[category.slug as CategorySlug] ?? `${category.name} | RA Machine`,
+    title: categoryTitles[category.slug] ?? `${category.name} | RA Machine`,
     description: category.description,
     path: paths.category(category.slug),
   });
@@ -68,12 +80,8 @@ export default async function CategoryPage({
   const category = findCategory(slug);
   if (!category) notFound();
 
-  const categoryProducts = productsByCategory(category.slug);
   const icon = categoryIcon[category.slug];
-  const facts = [
-    ...categoryGlance[category.slug],
-    { icon: "Factory" as const, label: "Machines", value: `${categoryProducts.length} in the range` },
-  ];
+  const others = categories.filter((c) => c.slug !== category.slug);
 
   return (
     <>
@@ -91,7 +99,8 @@ export default async function CategoryPage({
         </p>
         <h1 className="font-display text-display-lg text-ink">{category.name}</h1>
         <p className="mt-4 max-w-prose text-grey-700">
-          {category.shortName} machines engineered and manufactured in Kolkata, for delivery and installation across India and export.
+          Engineered, built and tested in India and configured to your job, with installation, operator training and
+          service from the team that built it.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Button href="#quote" variant="solid" icon="ArrowRight">
@@ -102,11 +111,11 @@ export default async function CategoryPage({
           </Button>
         </div>
         <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm">
-          {categoryGlance[category.slug].map((fact) => (
-            <div key={fact.label} className="flex items-center gap-2">
-              <Icon name={fact.icon} size={16} className="text-teal" />
-              <span className="text-grey-600">{fact.label}:</span>
-              <span className="font-semibold text-ink">{fact.value}</span>
+          {category.ranges.map((range) => (
+            <div key={range.label} className="flex items-center gap-2">
+              <Icon name={icon} size={16} className="text-teal" />
+              <span className="text-grey-600">{range.label}:</span>
+              <span className="font-semibold text-ink">{range.value}</span>
             </div>
           ))}
         </div>
@@ -114,19 +123,28 @@ export default async function CategoryPage({
 
       <Container>
         <AboutBlurb
-          context={`Our ${category.shortName.toLowerCase()} range is designed, assembled and supported from our Kolkata facility, for buyers across India and for export.`}
+          context={`Our ${category.name} are designed, built and supported by our own team in India, for buyers across India and abroad.`}
         />
       </Container>
 
-      <Section eyebrow="At a glance" title="Key figures">
-        <FactStrip facts={facts} />
-      </Section>
-
-      <Section eyebrow="In our range" title="The machines" intro={category.intro}>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {categoryProducts.map((product) => (
-            <ProductTile key={product.slug} product={product} />
-          ))}
+      <Section eyebrow="Specifications" title="The range">
+        <div className="grid gap-10 lg:grid-cols-[3fr_2fr] lg:items-start">
+          <div>
+            <p className="max-w-prose text-grey-700">{category.intro}</p>
+            <dl className="glass mt-8 divide-y divide-[color:var(--hairline)] px-6">
+              {category.ranges.map((range) => (
+                <div key={range.label} className="grid gap-1 py-4 sm:grid-cols-[12rem_1fr] sm:gap-6">
+                  <dt className="text-sm font-semibold text-grey-600">{range.label}</dt>
+                  <dd className="font-semibold text-ink">{range.value}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="mt-4 max-w-prose text-sm text-grey-600">
+              Every machine is configured to the job it will do. Send us your material, thickness and production
+              volume and we will recommend and quote the right configuration.
+            </p>
+          </div>
+          <QuoteBlock family={category} sticky />
         </div>
       </Section>
 
@@ -134,22 +152,28 @@ export default async function CategoryPage({
         <DividedList items={category.applications.map((application) => ({ title: application }))} />
       </Section>
 
-      <Section eyebrow="Compare" title="Compare specs">
-        <ComparisonTable products={categoryProducts} specLabels={category.comparisonSpecs} categoryName={category.name} />
-      </Section>
-
       <Section eyebrow="How it works" title="The engineering">
         <LongCopySections category={category} />
       </Section>
 
+      <Section eyebrow="Our range" title="Other technologies">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {others.map((other) => (
+            <CategoryCard key={other.slug} category={other} />
+          ))}
+        </div>
+      </Section>
+
       <Section>
-        <Faq items={category.faqs} title={`Questions about ${category.shortName.toLowerCase()}`} />
+        <Faq items={category.faqs} title={`Questions about ${category.name}`} />
       </Section>
 
       <CtaBand
-        title={`Talk to us about a ${category.shortName.toLowerCase()} machine`}
-        text="Tell us your material, thickness and production volume and we will recommend the right machine and configuration."
+        title={`Talk to us about ${category.name}`}
+        text="Tell us your material, thickness and production volume and we will recommend the right configuration."
       />
+
+      <JsonLd data={familySchema(category)} />
     </>
   );
 }

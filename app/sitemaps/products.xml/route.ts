@@ -1,8 +1,9 @@
 /**
- * app/sitemaps/products.xml/route.ts — child sitemap covering the 4 category
- * landing pages and 8 product pages (12 URLs total), sourced from data/index.ts.
+ * app/sitemaps/products.xml/route.ts — child sitemap covering the products
+ * index and the five machine-family pages, sourced from data/index.ts. (There
+ * are no per-model pages; the old ones 301 to their family — vercel.json.)
  */
-import { categories, products } from "@/data";
+import { categories } from "@/data";
 import { paths } from "@/lib/urls";
 import { absUrl } from "@/lib/seo";
 import { buildDate, urlsetXml, xmlHeaders, type SitemapUrlEntry } from "../_shared";
@@ -15,10 +16,5 @@ export async function GET(): Promise<Response> {
     lastmod: buildDate,
     priority: 0.8,
   }));
-  const productUrls: SitemapUrlEntry[] = products.map((p) => ({
-    loc: absUrl(paths.product(p.category, p.slug)),
-    lastmod: buildDate,
-    priority: 0.8,
-  }));
-  return new Response(urlsetXml([...categoryUrls, ...productUrls]), { headers: xmlHeaders });
+  return new Response(urlsetXml(categoryUrls), { headers: xmlHeaders });
 }
