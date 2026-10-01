@@ -87,38 +87,38 @@
       ]
     }
   },
-  "/categories/co2-laser-machines-1200.webp": {
-    "hash": "c13d08067f3a94f1",
+  "/categories/cnc-plasma-cutting-machines-1200.webp": {
+    "hash": "2b138dc1fb5756c0",
     "width": 1200,
     "height": 800,
-    "lqip": "data:image/webp;base64,UklGRt4AAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSGEAAAABcBMAAJrM/dsrDdxdkVsrEAga8BGDCjSggLu7EyAiJgD445x+yz9gnGa7Nzzdbd2rHE8Pj6dT9x52enr7ls0btqf+PXw1n88Xi/lsPWh09HusKFtxuRDolkACtzhBgMDLAFZQOCBWAAAAMAMAnQEqFAANAD7tZKlNqaWkIjAIATAdiUAYmwGwJZlIAAD51otwWtZJglvf/k3AnMnQOSkPj8Pd32YtaOL+Cc0GykEjFuvF9v5KA/+3NmutmeEJAAA=",
+    "lqip": "data:image/webp;base64,UklGRvQAAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSHMAAAABcFpt27K8v/v/Y4mm0aW5S7LEGhwSlV10BhmBLby5O7yQ6BExAfBXCYvDWUkZvlNHp/5qOLjaMV/NlL7tevvx9D5tIdVmrndHF0hldv+8nN3rSOOw2532+/0yUcixnwyOYCBULGRiKZfDzAAAx/MCA78CAFZQOCBaAAAAcAMAnQEqFAANAD7tYqpNqaWkIjAIATAdiWUAAFqfx7eh8/eAAP7wvCXgxsak/pOK7xM+mZLtUIo4GSHwBgHmVgjmefurASBDo+8/k6///z+NNxcCiJ1wAAAA",
     "variants": {
       "avif": [
         {
           "w": 640,
-          "src": "/_img/categories/co2-laser-machines-1200-640.avif"
+          "src": "/_img/categories/cnc-plasma-cutting-machines-1200-640.avif"
         },
         {
           "w": 1024,
-          "src": "/_img/categories/co2-laser-machines-1200-1024.avif"
+          "src": "/_img/categories/cnc-plasma-cutting-machines-1200-1024.avif"
         },
         {
           "w": 1200,
-          "src": "/_img/categories/co2-laser-machines-1200-1200.avif"
+          "src": "/_img/categories/cnc-plasma-cutting-machines-1200-1200.avif"
         }
       ],
       "webp": [
         {
           "w": 640,
-          "src": "/_img/categories/co2-laser-machines-1200-640.webp"
+          "src": "/_img/categories/cnc-plasma-cutting-machines-1200-640.webp"
         },
         {
           "w": 1024,
-          "src": "/_img/categories/co2-laser-machines-1200-1024.webp"
+          "src": "/_img/categories/cnc-plasma-cutting-machines-1200-1024.webp"
         },
         {
           "w": 1200,
-          "src": "/_img/categories/co2-laser-machines-1200-1200.webp"
+          "src": "/_img/categories/cnc-plasma-cutting-machines-1200-1200.webp"
         }
       ]
     }
@@ -167,44 +167,44 @@
       ]
     }
   },
-  "/categories/co2-laser-machines.webp": {
-    "hash": "d40391e98ed151b3",
+  "/categories/cnc-plasma-cutting-machines.webp": {
+    "hash": "4c28364cae7c7c28",
     "width": 1200,
     "height": 800,
-    "lqip": "data:image/webp;base64,UklGRt4AAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSGEAAAABcBMAAJrM/dsrDdxdkVsrEAga8BGDCjSggLu7EyAiJgD445x+yz9gnGa7Nzzdbd2rHE8Pj6dT9x52enr7ls0btqf+PXw1n88Xi/lsPWh09HusKFtxuRDolkACtzhBgMDLAFZQOCBWAAAAUAMAnQEqFAANAD7tZKlNqaWkIjAIATAdiUAYmwLfMt47TwAA+daLcFqyXOu2L/ocZRkJ77LF5d/Pv53XwhFczfMtSmeBjJ4sQPL/f/25s11szwhIAAA=",
+    "lqip": "data:image/webp;base64,UklGRvIAAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSHMAAAABcFpt27K8v/v/Y4mm0aW5S7LEGhwSlV10BhmBLby5O7yQ6BExAfBXCYvDWUkZvlNHp/5qOLjaMV/NlL7tevvx9D5tIdVmrndHF0hldv+8nN3rSOOw2532+/0yUcixnwyOYCBULGRiKZfDzAAAx/MCA78CAFZQOCBYAAAAUAMAnQEqFAANAD7tZKtOKaWkIjAIATAdiWUAAFqfeKQIQwAA/vC8muxAtZw4kLjzKd9HIc0RVs7oeZwWgrsB0Mum8Bs3c+cT4Wfydf//5q9yEQAHv0AAAA==",
     "variants": {
       "avif": [
         {
           "w": 640,
-          "src": "/_img/categories/co2-laser-machines-640.avif"
+          "src": "/_img/categories/cnc-plasma-cutting-machines-640.avif"
         },
         {
           "w": 1024,
-          "src": "/_img/categories/co2-laser-machines-1024.avif"
+          "src": "/_img/categories/cnc-plasma-cutting-machines-1024.avif"
         },
         {
           "w": 1200,
-          "src": "/_img/categories/co2-laser-machines-1200.avif"
+          "src": "/_img/categories/cnc-plasma-cutting-machines-1200.avif"
         }
       ],
       "webp": [
         {
           "w": 640,
-          "src": "/_img/categories/co2-laser-machines-640.webp"
+          "src": "/_img/categories/cnc-plasma-cutting-machines-640.webp"
         },
         {
           "w": 1024,
-          "src": "/_img/categories/co2-laser-machines-1024.webp"
+          "src": "/_img/categories/cnc-plasma-cutting-machines-1024.webp"
         },
         {
           "w": 1200,
-          "src": "/_img/categories/co2-laser-machines-1200.webp"
+          "src": "/_img/categories/cnc-plasma-cutting-machines-1200.webp"
         }
       ]
     }
   },
   "/categories/fiber-laser-cutting-machines-1200.webp": {
-    "hash": "f78a20ee78363f6d",
+    "hash": "67bbd4a89ca0d2e6",
     "width": 1200,
     "height": 800,
     "lqip": "data:image/webp;base64,UklGRhQBAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSIgAAAANcFpt27I8uLu7+wSs4DIBh8gh0RnBYQWyZZaApJXk7vD/aGKAiJgA/G0K5QNB/ODOJqfixYXgZBo/EJd7Xj0hbo4Eft1zDXwZQVv6Aqn7F7sFaWjZVLA59ccHSQff2xEC7/7S9QoK5QFQuz0uPvZzIzaHwzueT3S1rgaASaGsxjgdDzsAF3wEVlA4IGYAAABwAwCdASoUAA0APu1kqk4ppaQiMAgBMB2JZQDCgBI6l0NqLAAA7Fnz+8r711+SkOW015d2gMLIrQNrYOoBvC87VaRxRwQeoMo6F14chWxQBZHmLj/edpCAe3IAGKThJXbnOEtoAAA=",
@@ -240,7 +240,7 @@
     }
   },
   "/categories/fiber-laser-cutting-machines.webp": {
-    "hash": "a608f46df038d257",
+    "hash": "508711f5605eb1f0",
     "width": 1200,
     "height": 800,
     "lqip": "data:image/webp;base64,UklGRhQBAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSIgAAAANcFpt27I8uLu7+wSs4DIBh8gh0RnBYQWyZZaApJXk7vD/aGKAiJgA/G0K5QNB/ODOJqfixYXgZBo/EJd7Xj0hbo4Eft1zDXwZQVv6Aqn7F7sFaWjZVLA59ccHSQff2xEC7/7S9QoK5QFQuz0uPvZzIzaHwzueT3S1rgaASaGsxjgdDzsAF3wEVlA4IGYAAABwAwCdASoUAA0APu1kqk4ppaQiMAgBMB2JZQDCgBI6l0NqLAAA7Fnz+8r711+SkOW015d2gMLIrQNrYOoBvC87VaRxRwQeoMo6F14chWxQBZHmLj/edpCAe3IAGKThJXbnOEtoAAA=",
@@ -275,11 +275,83 @@
       ]
     }
   },
-  "/categories/robotic-welding-systems-1200.webp": {
-    "hash": "aec2f3f8e3241f90",
+  "/categories/mig-tig-arc-welding-machines-1200.webp": {
+    "hash": "a51e4ceb0fc25d0d",
     "width": 1200,
     "height": 800,
-    "lqip": "data:image/webp;base64,UklGRvYAAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSG0AAAABcFNt27I8vwuWgAK6u7u7B4ACulOACLY5GVjp4DsF3C1AREwA/rmySL9mGFiaqlcUCwmgeyT1tvqUZLBt49ny6XRSDE6n43S2m3eIJ/anh1XcyjuH05NL/g7hs3ojqXyllI0HXXoGACcIHF4GAFZQOCBiAAAAUAMAnQEqFAANAD7tYqlNqaWjojAIATAdiWcAAFqfrQTwbAAA/u6ITs1KomWYNS5ENu/qUa2fELbl61jJ//2XftVNS13PPqS13c2gV+GntZx//2JwMZ/etM/18/LzHC9AAAA=",
+    "lqip": "data:image/webp;base64,UklGRhIBAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSJYAAAAFgFvb1rLo4u7ukNOBa+bWAQ0QE1GBO+RkRE4uM1OCu7u7uxQQEROA/1Fcjn2F5DWw7e4vDE1MNAxuHhUHjx9wd6kENKXxkRKbM6H31GtPBLRtDDJwlU6+J90B1gkpTwxYsy29Z6wTWgVdQnB8Reh38C6TK1b4F4fa2fvbO/L2e3wBmyieP2MzSNcXZ5cAaAQCcP2EzwNWUDggVgAAAFADAJ0BKhQADQA+7WKqTimlpCIwCAEwHYlnAABaURWcBMwAAP7LPCFEzP85adDjXbSuxYhpRirgIPfz1adw8aJbYA+3Bl725TTabm3Pup9//6Ccy9AA",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/categories/mig-tig-arc-welding-machines-1200-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/categories/mig-tig-arc-welding-machines-1200-1024.avif"
+        },
+        {
+          "w": 1200,
+          "src": "/_img/categories/mig-tig-arc-welding-machines-1200-1200.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/categories/mig-tig-arc-welding-machines-1200-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/categories/mig-tig-arc-welding-machines-1200-1024.webp"
+        },
+        {
+          "w": 1200,
+          "src": "/_img/categories/mig-tig-arc-welding-machines-1200-1200.webp"
+        }
+      ]
+    }
+  },
+  "/categories/mig-tig-arc-welding-machines.webp": {
+    "hash": "dda2287cfa309c87",
+    "width": 1200,
+    "height": 800,
+    "lqip": "data:image/webp;base64,UklGRhQBAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSJYAAAAFgFvb1rLo4u7ukNOBa+bWAQ0QE1GBO+RkRE4uM1OCu7u7uxQQEROA/1Fcjn2F5DWw7e4vDE1MNAxuHhUHjx9wd6kENKXxkRKbM6H31GtPBLRtDDJwlU6+J90B1gkpTwxYsy29Z6wTWgVdQnB8Reh38C6TK1b4F4fa2fvbO/L2e3wBmyieP2MzSNcXZ5cAaAQCcP2EzwNWUDggWAAAAFADAJ0BKhQADQA+7WKqTimlpCIwCAEwHYlpAABaUTBvrRPAAP7LPCFEzP85adDjXbSuxYhpRirgIPfz1aZsh9hReDCJ+GnMq/lNCXWhX+/Cf/+gnMvQAAA=",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/categories/mig-tig-arc-welding-machines-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/categories/mig-tig-arc-welding-machines-1024.avif"
+        },
+        {
+          "w": 1200,
+          "src": "/_img/categories/mig-tig-arc-welding-machines-1200.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/categories/mig-tig-arc-welding-machines-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/categories/mig-tig-arc-welding-machines-1024.webp"
+        },
+        {
+          "w": 1200,
+          "src": "/_img/categories/mig-tig-arc-welding-machines-1200.webp"
+        }
+      ]
+    }
+  },
+  "/categories/robotic-welding-systems-1200.webp": {
+    "hash": "630b4f1a024d4595",
+    "width": 1200,
+    "height": 800,
+    "lqip": "data:image/webp;base64,UklGRvgAAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSG4AAAABcFNt27I8vwuWgAK6u7u7B4ACulOACLY5GVjp4DsF3C1AREwA/rmySL9mGFiaqlcUCwmgeyT1tvqUZLBt49ny6XRSDE6n43S2m3eIJ/anh1XcyjuH05NL/g7hs3ojqXyllI0HXXoGAMcJAk/gRVZQOCBkAAAAcAMAnQEqFAANAD7tYqpOKaWkIjAIATAdiWcAAFqfr3BDBOJgAP7uiE7NSqJlmDUuRDbvm5/qwQC2HtkF0uOtdAucVj+hCuYzI69px6YkZf/l7H//sTgYz+9aZ/r5+Xmhr0AAAA==",
     "variants": {
       "avif": [
         {
@@ -312,10 +384,10 @@
     }
   },
   "/categories/robotic-welding-systems.webp": {
-    "hash": "8ca86467eec92fb1",
+    "hash": "0917a05d6581de04",
     "width": 1200,
     "height": 800,
-    "lqip": "data:image/webp;base64,UklGRvgAAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSG0AAAABcFNt27I8vwuWgAK6u7u7B4ACulOACLY5GVjp4DsF3C1AREwA/rmySL9mGFiaqlcUCwmgeyT1tvqUZLBt49ny6XRSDE6n43S2m3eIJ/anh1XcyjuH05NL/g7hs3ojqXyllI0HXXoGACcIHF4GAFZQOCBkAAAAUAMAnQEqFAANAD7tYqlNqaWjojAIATAdiWcAAFqfrQTwbAAA/u6ITs1KomWYNS5ENu/qUa2fELbl61jJ//2XftVNS13PPqS13c2gV+Gntv5//2J2FN/3rTP9pianiCeeRQAAAA==",
+    "lqip": "data:image/webp;base64,UklGRvgAAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSG4AAAABcFNt27I8vwuWgAK6u7u7B4ACulOACLY5GVjp4DsF3C1AREwA/rmySL9mGFiaqlcUCwmgeyT1tvqUZLBt49ny6XRSDE6n43S2m3eIJ/anh1XcyjuH05NL/g7hs3ojqXyllI0HXXoGAMcJAk/gRVZQOCBkAAAAcAMAnQEqFAANAD7tYqpOKaWkIjAIATAdiWcAAFqfr3BDBOJgAP7uiE7NSqJlmDUuRDbvm5/qwQC2HtkF0uOtdAucVj+hCuYzI69px6YkZf/mbT//re1S/+9aZ/tMTU8TRnkUAA==",
     "variants": {
       "avif": [
         {
@@ -347,74 +419,74 @@
       ]
     }
   },
-  "/categories/tube-laser-cutting-machines-1200.webp": {
-    "hash": "8d8b926ea87496b8",
+  "/categories/submerged-arc-welding-machines-1200.webp": {
+    "hash": "91cd24c26605a02a",
     "width": 1200,
     "height": 800,
-    "lqip": "data:image/webp;base64,UklGRu4AAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSG8AAAANcGLbttrccFJmkPFltB1EOwQcWyXpToBBoWdmCMv6iJgA/P0Ct8TlnV3uB3recPsXindQzUmiPalXN00tP+ShK+mE1yjCeAIt0bpuCIJgpI8krWoLHSlmZnme4/B8PoKiCwBLELsl7vfHBQC+0AIAVlA4IFgAAABwAwCdASoUAA0APu1kq04ppaQiMAgBMB2JYwAAWp9xUJpTWAAA/uvimlAAcVZ8jgIce64yT01pNI6KKbuGihajuaJaV/0zXrFEzzoF/3bZ9v1emAFmTgAA",
+    "lqip": "data:image/webp;base64,UklGRvwAAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSHwAAAABcBwAgIFctp62jZ/Ndyu0QV+bUzRDK9QXI9jWz64FImICwB9iSlnYe4Hz2f0ee9ihvOVsHgdt9huO6vi0OeveiJxn5/M5TEW+ICkvzw+H9Ee4UOP8dKECjxXDeiJTqFQKrZoFDXlEM/AVeqPdbgwq+TQCAACFRmPQEPAmVlA4IFoAAAAwAwCdASoUAA0APu1kqU2ppaQiMAgBMB2JaQAAWlW1rxSQAP70JOqhoJNP3vxUUnjWDqSIxbCpYq1e/EoGs8IitlOlCwifl8YkZMNGmxTadtyQ9zebxmwAAAA=",
     "variants": {
       "avif": [
         {
           "w": 640,
-          "src": "/_img/categories/tube-laser-cutting-machines-1200-640.avif"
+          "src": "/_img/categories/submerged-arc-welding-machines-1200-640.avif"
         },
         {
           "w": 1024,
-          "src": "/_img/categories/tube-laser-cutting-machines-1200-1024.avif"
+          "src": "/_img/categories/submerged-arc-welding-machines-1200-1024.avif"
         },
         {
           "w": 1200,
-          "src": "/_img/categories/tube-laser-cutting-machines-1200-1200.avif"
+          "src": "/_img/categories/submerged-arc-welding-machines-1200-1200.avif"
         }
       ],
       "webp": [
         {
           "w": 640,
-          "src": "/_img/categories/tube-laser-cutting-machines-1200-640.webp"
+          "src": "/_img/categories/submerged-arc-welding-machines-1200-640.webp"
         },
         {
           "w": 1024,
-          "src": "/_img/categories/tube-laser-cutting-machines-1200-1024.webp"
+          "src": "/_img/categories/submerged-arc-welding-machines-1200-1024.webp"
         },
         {
           "w": 1200,
-          "src": "/_img/categories/tube-laser-cutting-machines-1200-1200.webp"
+          "src": "/_img/categories/submerged-arc-welding-machines-1200-1200.webp"
         }
       ]
     }
   },
-  "/categories/tube-laser-cutting-machines.webp": {
-    "hash": "cbe4c3df04e10992",
+  "/categories/submerged-arc-welding-machines.webp": {
+    "hash": "52c1d134c882313e",
     "width": 1200,
     "height": 800,
-    "lqip": "data:image/webp;base64,UklGRu4AAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSG8AAAANcGLbttrccFJmkPFltB1EOwQcWyXpToBBoWdmCMv6iJgA/P0Ct8TlnV3uB3recPsXindQzUmiPalXN00tP+ShK+mE1yjCeAIt0bpuCIJgpI8krWoLHSlmZnme4/B8PoKiCwBLELsl7vfHBQC+0AIAVlA4IFgAAABwAwCdASoUAA0APu1kqU2ppaQiMAgBMB2JYwAAWp9maYHNgAAA/uvimlAAcVZ8kaKQocqNPwYFwFl17CH9OyS2nOuyazEf9YomebQn/Kjt7y3FwA9+gAAA",
+    "lqip": "data:image/webp;base64,UklGRv4AAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSHwAAAABcBwAgIFctp62jZ/Ndyu0QV+bUzRDK9QXI9jWz64FImICwB9iSlnYe4Hz2f0ee9ihvOVsHgdt9huO6vi0OeveiJxn5/M5TEW+ICkvzw+H9Ee4UOP8dKECjxXDeiJTqFQKrZoFDXlEM/AVeqPdbgwq+TQCAACFRmPQEPAmVlA4IFwAAAAwAwCdASoUAA0APu1iqU2ppaQiMAgBMB2JaQAAWlei7gKwAP70JOqhoJNP3vxUUnjZO2zEUyw/LkAkLZJLqisKKQvmUoZLrG8Yz7RNsYQ4IjnbckV1/v1ykAAAAA==",
     "variants": {
       "avif": [
         {
           "w": 640,
-          "src": "/_img/categories/tube-laser-cutting-machines-640.avif"
+          "src": "/_img/categories/submerged-arc-welding-machines-640.avif"
         },
         {
           "w": 1024,
-          "src": "/_img/categories/tube-laser-cutting-machines-1024.avif"
+          "src": "/_img/categories/submerged-arc-welding-machines-1024.avif"
         },
         {
           "w": 1200,
-          "src": "/_img/categories/tube-laser-cutting-machines-1200.avif"
+          "src": "/_img/categories/submerged-arc-welding-machines-1200.avif"
         }
       ],
       "webp": [
         {
           "w": 640,
-          "src": "/_img/categories/tube-laser-cutting-machines-640.webp"
+          "src": "/_img/categories/submerged-arc-welding-machines-640.webp"
         },
         {
           "w": 1024,
-          "src": "/_img/categories/tube-laser-cutting-machines-1024.webp"
+          "src": "/_img/categories/submerged-arc-welding-machines-1024.webp"
         },
         {
           "w": 1200,
-          "src": "/_img/categories/tube-laser-cutting-machines-1200.webp"
+          "src": "/_img/categories/submerged-arc-welding-machines-1200.webp"
         }
       ]
     }
@@ -815,50 +887,6 @@
       ]
     }
   },
-  "/certs/indian-railways-vendor.webp": {
-    "hash": "9921d3e16299be11",
-    "width": 1833,
-    "height": 2444,
-    "lqip": "data:image/webp;base64,UklGRsAAAABXRUJQVlA4WAoAAAAQAAAAEwAAGgAAQUxQSGsAAAABcBzZbts8ZxsABTiHDnLovzyJ4Mk+R8QE8Esj3CNyk+1SVXW5nWQ2MgOYySZhMmdwLlZzpaqeEGC7BSSjQASgiegNatTmZkNm8xoupVfEyXZFVbV05KfhHlMay/v6fWgLPO+0n86Xfdt/CABWUDggLgAAAPACAJ0BKhQAGwA+7W6rUSmmI6KoCqkwHYlpAAA+VGuAAP7w1sE0aq2h9XIAAAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/certs/indian-railways-vendor-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/certs/indian-railways-vendor-1024.avif"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/certs/indian-railways-vendor-1600.avif"
-        },
-        {
-          "w": 1833,
-          "src": "/_img/certs/indian-railways-vendor-1833.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/certs/indian-railways-vendor-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/certs/indian-railways-vendor-1024.webp"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/certs/indian-railways-vendor-1600.webp"
-        },
-        {
-          "w": 1833,
-          "src": "/_img/certs/indian-railways-vendor-1833.webp"
-        }
-      ]
-    }
-  },
   "/certs/iso-9001-2015.webp": {
     "hash": "0fd084f48f632afd",
     "width": 1833,
@@ -899,6 +927,50 @@
         {
           "w": 1833,
           "src": "/_img/certs/iso-9001-2015-1833.webp"
+        }
+      ]
+    }
+  },
+  "/certs/indian-railways-vendor.webp": {
+    "hash": "9921d3e16299be11",
+    "width": 1833,
+    "height": 2444,
+    "lqip": "data:image/webp;base64,UklGRsAAAABXRUJQVlA4WAoAAAAQAAAAEwAAGgAAQUxQSGsAAAABcBzZbts8ZxsABTiHDnLovzyJ4Mk+R8QE8Esj3CNyk+1SVXW5nWQ2MgOYySZhMmdwLlZzpaqeEGC7BSSjQASgiegNatTmZkNm8xoupVfEyXZFVbV05KfhHlMay/v6fWgLPO+0n86Xfdt/CABWUDggLgAAAPACAJ0BKhQAGwA+7W6rUSmmI6KoCqkwHYlpAAA+VGuAAP7w1sE0aq2h9XIAAAA=",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/certs/indian-railways-vendor-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/certs/indian-railways-vendor-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/certs/indian-railways-vendor-1600.avif"
+        },
+        {
+          "w": 1833,
+          "src": "/_img/certs/indian-railways-vendor-1833.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/certs/indian-railways-vendor-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/certs/indian-railways-vendor-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/certs/indian-railways-vendor-1600.webp"
+        },
+        {
+          "w": 1833,
+          "src": "/_img/certs/indian-railways-vendor-1833.webp"
         }
       ]
     }
@@ -1211,6 +1283,50 @@
       ]
     }
   },
+  "/photos/hero-arc-welding.webp": {
+    "hash": "5b143178a2470dad",
+    "width": 1920,
+    "height": 1080,
+    "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAACwAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JYwAAUqUQ+XHSgHz9gAD+7L78uZQr9yX/tcXUFl3QHqfIMjqcT/fDNpviz8hENP3EONlCysu5TcOwh0wAAA==",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-arc-welding-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-arc-welding-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-arc-welding-1600.avif"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-arc-welding-1920.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-arc-welding-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-arc-welding-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-arc-welding-1600.webp"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-arc-welding-1920.webp"
+        }
+      ]
+    }
+  },
   "/photos/hero-certifications.webp": {
     "hash": "61735f30f98f6843",
     "width": 1920,
@@ -1343,50 +1459,6 @@
       ]
     }
   },
-  "/photos/hero-country.webp": {
-    "hash": "1507bcde4e479d0c",
-    "width": 1920,
-    "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JYwAAW+vwdzRISZwesoAA/uzVNW7fp3oF4AQaCyfnXDrR/UQ3jD2Fshsi/Tuj9LvEzPpUP3AO1YQIFzwAAA==",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/photos/hero-country-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/hero-country-1024.avif"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/hero-country-1600.avif"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-country-1920.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/photos/hero-country-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/hero-country-1024.webp"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/hero-country-1600.webp"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-country-1920.webp"
-        }
-      ]
-    }
-  },
   "/photos/hero-contact.webp": {
     "hash": "1baecf13f4d1d443",
     "width": 1920,
@@ -1427,6 +1499,50 @@
         {
           "w": 1920,
           "src": "/_img/photos/hero-contact-1920.webp"
+        }
+      ]
+    }
+  },
+  "/photos/hero-country.webp": {
+    "hash": "1507bcde4e479d0c",
+    "width": 1920,
+    "height": 1080,
+    "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JYwAAW+vwdzRISZwesoAA/uzVNW7fp3oF4AQaCyfnXDrR/UQ3jD2Fshsi/Tuj9LvEzPpUP3AO1YQIFzwAAA==",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-country-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-country-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-country-1600.avif"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-country-1920.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-country-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-country-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-country-1600.webp"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-country-1920.webp"
         }
       ]
     }
@@ -1519,50 +1635,6 @@
       ]
     }
   },
-  "/photos/hero-india.webp": {
-    "hash": "398f8b2aca7d2234",
-    "width": 1920,
-    "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAACwAwCdASoUAAsAPu1kqk4ppaQiMAgBMB2JQBdgA9HInkCZFb30AAD+70vM7Cyms6bzz2OcbRByX2AT+DG3KSgfEUcq1zi90hx9dBqY9x1sl4AA",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/photos/hero-india-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/hero-india-1024.avif"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/hero-india-1600.avif"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-india-1920.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/photos/hero-india-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/hero-india-1024.webp"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/hero-india-1600.webp"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-india-1920.webp"
-        }
-      ]
-    }
-  },
   "/photos/hero-home.webp": {
     "hash": "172b4db0a0a3fd74",
     "width": 1920,
@@ -1607,6 +1679,50 @@
       ]
     }
   },
+  "/photos/hero-india.webp": {
+    "hash": "398f8b2aca7d2234",
+    "width": 1920,
+    "height": 1080,
+    "lqip": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAACwAwCdASoUAAsAPu1kqk4ppaQiMAgBMB2JQBdgA9HInkCZFb30AAD+70vM7Cyms6bzz2OcbRByX2AT+DG3KSgfEUcq1zi90hx9dBqY9x1sl4AA",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-india-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-india-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-india-1600.avif"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-india-1920.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-india-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-india-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-india-1600.webp"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-india-1920.webp"
+        }
+      ]
+    }
+  },
   "/photos/hero-jobwork.webp": {
     "hash": "8bfdfebb5ae5acad",
     "width": 1920,
@@ -1647,6 +1763,50 @@
         {
           "w": 1920,
           "src": "/_img/photos/hero-jobwork-1920.webp"
+        }
+      ]
+    }
+  },
+  "/photos/hero-plasma.webp": {
+    "hash": "b2bbc611902d025d",
+    "width": 1920,
+    "height": 1080,
+    "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAACQAwCdASoUAAsAPu1iqU2ppaQiMAgBMB2JYwAAUqI+nOsOQDwAAP7svvv2NlEwqDUGjq96f3LMh/8JR7RWN/27WQLtilb3D3WEQe1mlU0Dcs8AAAA=",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-plasma-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-plasma-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-plasma-1600.avif"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-plasma-1920.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-plasma-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-plasma-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-plasma-1600.webp"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-plasma-1920.webp"
         }
       ]
     }
@@ -1783,6 +1943,50 @@
       ]
     }
   },
+  "/photos/hero-saw.webp": {
+    "hash": "1bbd021e482d49bb",
+    "width": 1920,
+    "height": 1080,
+    "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAACwAwCdASoUAAsAPu1iqU2ppaQiMAgBMB2JYwAAUqpGPG0FMwWY8AD+7L78uQWs1U1nHUIprwrLg+YsQ4UVc++Hd2C9XDUQicAXyU0LPXpYRYsELUx4AA==",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-saw-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-saw-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-saw-1600.avif"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-saw-1920.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-saw-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-saw-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-saw-1600.webp"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-saw-1920.webp"
+        }
+      ]
+    }
+  },
   "/photos/hero-state.webp": {
     "hash": "617e05da1d94be75",
     "width": 1920,
@@ -1871,50 +2075,6 @@
       ]
     }
   },
-  "/photos/hero-welding.webp": {
-    "hash": "e74d2d845ac1fcb5",
-    "width": 1920,
-    "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAACQAwCdASoUAAsAPu1kqU2ppaOiMAgBMB2JYwAAUvp2p0GuilOAAP7vS88NHvZEUF2CUYPqTpTKiz39Vg0/yc+2s44L/TujqI/YxzmJP1aMeindGxGgLngAAAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/photos/hero-welding-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/hero-welding-1024.avif"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/hero-welding-1600.avif"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-welding-1920.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/photos/hero-welding-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/hero-welding-1024.webp"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/hero-welding-1600.webp"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-welding-1920.webp"
-        }
-      ]
-    }
-  },
   "/photos/hero-tube.webp": {
     "hash": "6f90693a722a4b03",
     "width": 1920,
@@ -1955,6 +2115,50 @@
         {
           "w": 1920,
           "src": "/_img/photos/hero-tube-1920.webp"
+        }
+      ]
+    }
+  },
+  "/photos/hero-welding.webp": {
+    "hash": "e74d2d845ac1fcb5",
+    "width": 1920,
+    "height": 1080,
+    "lqip": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAACQAwCdASoUAAsAPu1kqU2ppaOiMAgBMB2JYwAAUvp2p0GuilOAAP7vS88NHvZEUF2CUYPqTpTKiz39Vg0/yc+2s44L/TujqI/YxzmJP1aMeindGxGgLngAAAA=",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-welding-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-welding-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-welding-1600.avif"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-welding-1920.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-welding-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-welding-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-welding-1600.webp"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-welding-1920.webp"
         }
       ]
     }
@@ -2391,42 +2595,6 @@
       ]
     }
   },
-  "/photos/slot-training-room.webp": {
-    "hash": "dda7636faa9ddc49",
-    "width": 1600,
-    "height": 1200,
-    "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAwCdASoUAA8APu1iqU2ppaOiMAgBMB2JQAALU/4t5Ly1wqmhwqAAAP7s1YPSfOGx8ApwEHNboKUGZD6fVzfCgD/d2PUd+A9VX9O7DoVHdGYNGRrKmXqRRzQ9R+K0K76gAA==",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/photos/slot-training-room-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/slot-training-room-1024.avif"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/slot-training-room-1600.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/photos/slot-training-room-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/slot-training-room-1024.webp"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/slot-training-room-1600.webp"
-        }
-      ]
-    }
-  },
   "/photos/slot-team.webp": {
     "hash": "5c958ed0fdf87f3e",
     "width": 1600,
@@ -2459,6 +2627,42 @@
         {
           "w": 1600,
           "src": "/_img/photos/slot-team-1600.webp"
+        }
+      ]
+    }
+  },
+  "/photos/slot-training-room.webp": {
+    "hash": "dda7636faa9ddc49",
+    "width": 1600,
+    "height": 1200,
+    "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAwCdASoUAA8APu1iqU2ppaOiMAgBMB2JQAALU/4t5Ly1wqmhwqAAAP7s1YPSfOGx8ApwEHNboKUGZD6fVzfCgD/d2PUd+A9VX9O7DoVHdGYNGRrKmXqRRzQ9R+K0K76gAA==",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/photos/slot-training-room-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/slot-training-room-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/slot-training-room-1600.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/photos/slot-training-room-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/slot-training-room-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/slot-training-room-1600.webp"
         }
       ]
     }
@@ -2531,1734 +2735,6 @@
         {
           "w": 1600,
           "src": "/_img/photos/slot-warehouse-spares-1600.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-c1390-1-1200.webp": {
-    "hash": "eb4ca52ccd2b0261",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRvwAAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSG0AAAANcFpt27I8v7vjDlWnYAEqQ7ACK3DoJLLuQobq7u5Oj4gJwH8lIz7iqtm6ocQTyWQUt4slAOlcAM+XM3g8m8cL2c0rXtm36lfElNyAII44EnSha+9emakxKfLMfrVc7TxUAwBL9fptZjHbHfEgAFZQOCBoAAAA0AMAnQEqFAAPAD7tZKpOKaWkIjAIATAdiUAAC3nxjldi9G5XojoAAP6dEI7pYClKNcfu7+sDulTUkw+mG2RMpMVyGfRNYTZjria+jD0+PYYvCOHeuVwyUVaCobFfTCDUb4vsf6rQAAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-c1390-1-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-c1390-1-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-c1390-1-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-c1390-1-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-c1390-1-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-c1390-1-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-c1390-1.webp": {
-    "hash": "6ab82b267bddced9",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRvwAAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSG0AAAANcFpt27I8v7vjDlWnYAEqQ7ACK3DoJLLuQobq7u5Oj4gJwH8lIz7iqtm6ocQTyWQUt4slAOlcAM+XM3g8m8cL2c0rXtm36lfElNyAII44EnSha+9emakxKfLMfrVc7TxUAwBL9fptZjHbHfEgAFZQOCBoAAAA0AMAnQEqFAAPAD7tYqlNqaWjojAIATAdiUAAC3nxjldi9G5XojoAAP6dEI7pYClKNcfu7+sDulTUkw+mG2RMpMVyGfRNYTZjria+jD0+PYYvCOHeuVz9G4oNcSilU36hw+L7H+q0AAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-c1390-1-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-c1390-1-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-c1390-1-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-c1390-1-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-c1390-1-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-c1390-1-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-c1390-2-1200.webp": {
-    "hash": "822479973c3d7553",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRsQAAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSDYAAAABYBMAICT/00QIOcyamKTQQgGzQObf/bdHxASAj8bK+JiWdqFDLvWgW7h6/O8uZFIIISUV5AhWUDggaAAAABADAJ0BKhQADwA+7WiqTqmmJCIwCAEwHYlAAAbk4S3eAAD51Ir7yvzQdhOs3stQsOnNFvIn7CHRgTWssEdTzaugfl6gcRACLYiOh9kI/9+p8y9OpLWF3ev8LO1j4JHkG10L5vsQ/AAA",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-c1390-2-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-c1390-2-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-c1390-2-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-c1390-2-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-c1390-2-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-c1390-2-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-c1390-2.webp": {
-    "hash": "b9cd6b44e497c9cb",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRsQAAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSDYAAAABYBMAICT/00QIOcyamKTQQgGzQObf/bdHxASAj8bK+JiWdqFDLvWgW7h6/O8uZFIIISUV5AhWUDggaAAAABADAJ0BKhQADwA+7WiqTqmmJCIwCAEwHYlAAAbk4S3eAAD51Ir7yvzQdhOs3stQsOnNFvIn7CHRgTWssEdTzaugfl6gcRACLYiOh9kI/9+p8y9OpLWF3ev8LO1j4JHkG10L5vsQ/AAA",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-c1390-2-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-c1390-2-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-c1390-2-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-c1390-2-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-c1390-2-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-c1390-2-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-c1390-3-1200.webp": {
-    "hash": "052d8aa89edf43e2",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRvwAAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSG0AAAANcFpt27I8v7vjDlWnYAEqQ7ACK3DoJLLuQobq7u5Oj4gJwH8lIz7iqtm6ocQTyWQUt4slAOlcAM+XM3g8m8cL2c0rXtm36lfElNyAII44EnSha+9emakxKfLMfrVc7TxUAwBL9fptZjHbHPAgAFZQOCBoAAAAEAQAnQEqFAAPAD7tYqpOKaWkIjAIATAdiUAYUAQ6wANvZLENucfWTQAA/p0QjulgKUo1x+7v6wO6VNSTD6YbZEykxXIZ+l4iUaHfjhUNFmOXVWYftuHLFBsJbofgPBUj9jDllpQ78AA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-c1390-3-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-c1390-3-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-c1390-3-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-c1390-3-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-c1390-3-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-c1390-3-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-c1390-3.webp": {
-    "hash": "cdf74e1978d1e6e8",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRvwAAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSG0AAAANcFpt27I8v7vjDlWnYAEqQ7ACK3DoJLLuQobq7u5Oj4gJwH8lIz7iqtm6ocQTyWQUt4slAOlcAM+XM3g8m8cL2c0rXtm36lfElNyAII44EnSha+9emakxKfLMfrVc7TxUAwBL9fptZjHbHPAgAFZQOCBoAAAAEAQAnQEqFAAPAD7tYqlNqaWkIjAIATAdiUAYUAQ6wANvZLENucfWTQAA/p0QjulgKUo1x+7v6wO6VNSTD6YbZEykxXIZ+l4iUaHfjhUNFmOXVWYftuHLKNQlaCAc6GmfUjkmlaUO/AA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-c1390-3-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-c1390-3-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-c1390-3-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-c1390-3-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-c1390-3-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-c1390-3-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-f12k-1-1200.webp": {
-    "hash": "3f5753962fa9c49e",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRioBAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSJEAAAANgGJt27Lowd0dGlS3RNKVuCyCQ7dNOJHkXtkAh2TJdXwGhzY9IiYA/7ytmrP0T1Ra9KXTJqbagJbR/7aPzwCwGTj/NOd4UXqqwAOglIAg/sDmF0CD+3N6eMjdpe14vDoLieq/2R+I3e9vAgFngBBxjN9Zc+ofTt4BkymknT6/oS2/4w8AjTg6vX2s3qhEnPEUAFZQOCByAAAAMAQAnQEqFAAPAD7tYqlNqaWjojAIATAdiWMAA+PCDgUIlv6ZrVwgNowQAP5vPhCrPpCV/8F2/4ohaPK5nWcb9AXqKqWta7vWxr1vLq/JzfK0c57k/ZlxYD+PWANESvOAGGtN0ooWQj7IvLrFbpP0AAAA",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f12k-1-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f12k-1-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f12k-1-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f12k-1-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f12k-1-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f12k-1-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-f12k-1.webp": {
-    "hash": "39621f6441180f28",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRioBAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSJEAAAANgGJt27Lowd0dGlS3RNKVuCyCQ7dNOJHkXtkAh2TJdXwGhzY9IiYA/7ytmrP0T1Ra9KXTJqbagJbR/7aPzwCwGTj/NOd4UXqqwAOglIAg/sDmF0CD+3N6eMjdpe14vDoLieq/2R+I3e9vAgFngBBxjN9Zc+ofTt4BkymknT6/oS2/4w8AjTg6vX2s3qhEnPEUAFZQOCByAAAAMAQAnQEqFAAPAD7tYqlNqaWjojAIATAdiWMAA+PCDgUIlv6ZrVwgNowQAP5vPhCrPpCV/8F2/4ohaPK5nWcb9AXqKqWta7vWxr1vLq/JzfK0c57k/ZlxYD+PWANESvOAGGtN0bushH2ReXWK3SfoAAAA",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f12k-1-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f12k-1-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f12k-1-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f12k-1-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f12k-1-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f12k-1-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-f12k-2-1200.webp": {
-    "hash": "494bb07a4992d8d4",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRvgAAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSFQAAAABcFPbthM9MrhgoSHjIZU5aMAANZTRAwLwgRAWHW3OzAiIiAmAfxypBy4LAG1+lGjA8KJYW6Iojh13FGf9fDE5mq//maF5YDLTkwcphqYphiFp9ApWUDggfgAAAHADAJ0BKhQADwA+7WKpTamlo6IwCAEwHYljAABcL8ZH2CAxwAD+bprPhx+FzvFNosEzXbeLlXojdmPSPTSRJ1W3gsChegHkDt1Z+8LJxp6FTgXKoWBeQKjVdaOXejYMua0sue031Mb//0jd3efj+xa6/2BfQl3JIIiXzFVMAA==",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f12k-2-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f12k-2-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f12k-2-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f12k-2-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f12k-2-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f12k-2-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-f12k-2.webp": {
-    "hash": "cd5063cb388b71c2",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRvgAAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSFQAAAABcFPbthM9MrhgoSHjIZU5aMAANZTRAwLwgRAWHW3OzAiIiAmAfxypBy4LAG1+lGjA8KJYW6Iojh13FGf9fDE5mq//maF5YDLTkwcphqYphiFp9ApWUDggfgAAAHADAJ0BKhQADwA+7WKpTamlpCIwCAEwHYljAABcL8ZH2CAxwAD+bprPhx+FzvFNosEzXbeLlXojdmPSPTSRJ1W3gsChegHkDt1Z+8LJxp6FTgXKoWBeQKjVdaOXejYMua0sue031Mb//0jd3efj+xa6/2BfQl3JIIiXzFVMAA==",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f12k-2-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f12k-2-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f12k-2-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f12k-2-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f12k-2-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f12k-2-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-f12k-3-1200.webp": {
-    "hash": "7e1af6dd22ea163d",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRiwBAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSI0AAAANcGLb1rLc39Dk2V0aicRYXEbBotocXCLJrTMBFsmSu7s2ekRMAP68tRS/6wYbduCn2zwEwYFJWi6NzTcAohuFc22EH6W3ogwKNvJhCIIfrC4BlHi/xzrr9FvMhs/Tu5BUXIdXkK3TiSBwBwi/vbfjj1hX3BxtHk/Ivh1OMBV2uAJgk93bdj/dksAdXwEAVlA4IHgAAAAwBACdASoUAA8APu1iqU2ppaQiMAgBMB2JYwDImYuG32wt8612u010SgAA/m9rzcXRgcPpOK8BzFfyYCL0QWHDXN4noZ00zGyQUNObVoQxRi9XRr4jxh5koVdKtEu55jv3YZ9qXFefanVHsH3ZVuPtd2upfMVUwAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f12k-3-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f12k-3-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f12k-3-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f12k-3-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f12k-3-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f12k-3-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-f12k-3.webp": {
-    "hash": "d127fae3cb67a76a",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRiwBAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSI0AAAANcGLb1rLc39Dk2V0aicRYXEbBotocXCLJrTMBFsmSu7s2ekRMAP68tRS/6wYbduCn2zwEwYFJWi6NzTcAohuFc22EH6W3ogwKNvJhCIIfrC4BlHi/xzrr9FvMhs/Tu5BUXIdXkK3TiSBwBwi/vbfjj1hX3BxtHk/Ivh1OMBV2uAJgk93bdj/dksAdXwEAVlA4IHgAAAAwBACdASoUAA8APu1iqU2ppaQiMAgBMB2JYwAD5CIN/XsH1A8zBKYKJ4AA/m9rzcXRwO9jjXd69qNvmu97EXA2+HcYi6x0zGyQUNOp05CADXdXR13fV5CXiZi84y9O4D+DWKhV7fsjCSyr5zA7ah9tlxXcV9AAAAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f12k-3-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f12k-3-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f12k-3-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f12k-3-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f12k-3-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f12k-3-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-f1530-1-1200.webp": {
-    "hash": "97906c9e66abe9ed",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRg4BAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSIUAAAABgCMAoIHqZdtcW9ts23bNNXeKjtAdamt1Y5MnTd/amN0BImICwL2m+fN7j/OsZstKufp/nPO/VADAfVqRQIj8Dxaso3ovq73cA3BXY3X4AGe5OvKLvEdZW+1/qa++LWCX9djpD1/H04eRThPXg/1EgkjiCaQyXo1YCN1BYVBoDAqFAEcDAFZQOCBiAAAAcAMAnQEqFAAPAD7taKpOqaYkIjAIATAdiUAZEwQtflRiF9EAAP7Y4rg+KWcS9aokcSwstDrXULKcgWF3BMb/FSqu0wD+Dgo/xDmpjIEGBGQ286Bf5keomH6GzX2ARWXAAAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f1530-1-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f1530-1-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f1530-1-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f1530-1-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f1530-1-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f1530-1-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-f1530-1.webp": {
-    "hash": "af6f28ba16d729bb",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRhABAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSIUAAAABgCMAoIHqZdtcW9ts23bNNXeKjtAdamt1Y5MnTd/amN0BImICwL2m+fN7j/OsZstKufp/nPO/VADAfVqRQIj8Dxaso3ovq73cA3BXY3X4AGe5OvKLvEdZW+1/qa++LWCX9djpD1/H04eRThPXg/1EgkjiCaQyXo1YCN1BYVBoDAqFAEcDAFZQOCBkAAAAEAQAnQEqFAAPAD7tZqtOKaWkIjAIATAdiUAYZoQtfltxFMS8yd12VgAA/tjiuD4pZxL1qiRxLCy0OtdQspyBYXTkdQjDigWUnxI7lQotEbpupm1C/4l+IdOdbkaZh5qpTMYAAA==",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f1530-1-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f1530-1-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f1530-1-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f1530-1-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f1530-1-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f1530-1-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-f1530-2-1200.webp": {
-    "hash": "06c12fbd7dfc3591",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRvYAAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSGUAAAABcFpr29p84cRGRSYF2TXqq9CxY2bcoaor8AAMQ4UZB4iICYBIbt/vLECRh+y9kU5a7RWVA3Sawgaqoi4dlG6Sam1zUB1b1SVHitVS9U11dfqoqpJxJs6p3fFfBq8phqIZiiadAQBWUDggagAAAFADAJ0BKhQADwA+7WKqTamlpCIwCAEwHYlAAAbqLUeFW18AAPnWhshWBbWn+5IXxvo8hNTUHb6KNKT2F5yvJc4qB6KFm7FkMTeNSCJk7fHtOBpD7lCv7sBe5SK9r7JHEnlBz/8BYWSLgAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f1530-2-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f1530-2-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f1530-2-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f1530-2-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f1530-2-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f1530-2-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-f1530-2.webp": {
-    "hash": "eb2d00ff388d0f46",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRvYAAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSGUAAAABcFpr29p84cRGRSYF2TXqq9CxY2bcoaor8AAMQ4UZB4iICYBIbt/vLECRh+y9kU5a7RWVA3Sawgaqoi4dlG6Sam1zUB1b1SVHitVS9U11dfqoqpJxJs6p3fFfBq8phqIZiiadAQBWUDggagAAAHADAJ0BKhQADwA+7WKqTamlpCIwCAEwHYlAF8kCkl1L07kcsAD51obIVgW1p/uSF8b6PITU1B2+ijSk9hecryXOKgeihZuxZDE3jUgiWHf7pcXQ/D63+7AXuUiva+yRxHIBkmsn3+YAAAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f1530-2-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f1530-2-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f1530-2-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f1530-2-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f1530-2-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f1530-2-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-f1530-3-1200.webp": {
-    "hash": "2fa13b0acd8a2da0",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRgYBAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSIIAAAABgCMAoIHqZdtcW9ts23ZdosN0CMxN5sfkzfbfmN0BImICwK6m+fMzF/MMB8WbUvl/Med/AXh57uWgUVHk/+iStVDnYjiTOwfuqg3nz+FcDRf8Is9QVoazP6rDbwuYZj22Do9fT88fTsyauB7MJhJEEk8glfFqxELoFAqDQmNQKLA4VlA4IF4AAABQAwCdASoUAA8APu1kqU2ppaQiMAgBMB2JYwAAWp9bHz/wQAD+2OuhQgd3W+Z+5uP8ru5ByfydA6KJ4GAlszNRqnhW5MBDSxW3mIuRn+A+pHH952kIB7LMrAAHv0AA",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f1530-3-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f1530-3-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f1530-3-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f1530-3-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f1530-3-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f1530-3-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-f1530-3.webp": {
-    "hash": "d21d371b101f1b2c",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRggBAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSIIAAAABgCMAoIHqZdtcW9ts23ZdosN0CMxN5sfkzfbfmN0BImICwK6m+fMzF/MMB8WbUvl/Med/AXh57uWgUVHk/+iStVDnYjiTOwfuqg3nz+FcDRf8Is9QVoazP6rDbwuYZj22Do9fT88fTsyauB7MJhJEEk8glfFqxELoFAqDQmNQKLA4VlA4IGAAAABQAwCdASoUAA8APu1kqU2ppaQiMAgBMB2JYwAAWp93LDSmAAD+2OuhQgd3W+Z+50kjv4EdfCPfjDdRbsf/5DU06WAfwrcmAhpYrb64zq9z1X4pwfzI9RMP0Nm5QAsycAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f1530-3-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f1530-3-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f1530-3-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f1530-3-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f1530-3-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f1530-3-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-f3015-pro-1-1200.webp": {
-    "hash": "b52eb7157169bfc1",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRiQBAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSI8AAAABgGJb27LqxR0Szd1tAC4JojuJAZDcM81HwQToVHe4Et2i4tcHEBETAP82zeo4SviUbdOZV8vld8anLB/2GAC8fo1MJr9Wsp+Qtjad683h4zFuorf55BFJ92Pz6auDcnb2cqq92fgPmNHb0WL1fH558Vzix0NwFEFnq3ROZ8DtNmj5BADAEfA4AgGDR8BnAQBWUDggbgAAAPADAJ0BKhQADwA+7WKqTamlpCIwCAEwHYljAMoAIWvtRnyWCSoHdAAA/vQixYVtrXjXD+fNC3auif4N29j053qIdl9UWPe7XaSCH/gZut8U093+LkUUTkSwtU+v3vc4r86sd9vFuQ7YUX9T9AAA",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f3015-pro-1-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f3015-pro-1-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f3015-pro-1-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f3015-pro-1-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f3015-pro-1-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f3015-pro-1-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-f3015-pro-1.webp": {
-    "hash": "27b3d0208bd4b4ec",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRiABAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSI8AAAABgGJb27LqxR0Szd1tAC4JojuJAZDcM81HwQToVHe4Et2i4tcHEBETAP82zeo4SviUbdOZV8vld8anLB/2GAC8fo1MJr9Wsp+Qtjad683h4zFuorf55BFJ92Pz6auDcnb2cqq92fgPmNHb0WL1fH558Vzix0NwFEFnq3ROZ8DtNmj5BADAEfA4AgGDR8BnAQBWUDggagAAAPADAJ0BKhQADwA+7WSpTimlo6IwCAEwHYljAMssIWv2/L85ZGqY9gAA/vQixYNtcKawVOUoGfkB6KC+fYO5t0UWHRHbIC19wwaH/gZut8U091DE2vlNS9UK+Vw/drW2lqxomC47+TdMAAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f3015-pro-1-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f3015-pro-1-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f3015-pro-1-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f3015-pro-1-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f3015-pro-1-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f3015-pro-1-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-f3015-pro-2-1200.webp": {
-    "hash": "2bbcf25b6122fc86",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRvoAAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSGAAAAABcFpt25K9uI3glQlcF2ABOpkNqHQdhfiNQobfmrvrABExAfCPdYRsAEg0EFDxwDieYmDFIhL149Bnd+LTqS0Xp4f5nfz0/Ncc33J6adm9Ye6n++2o3Xkjw7EMx9Es/hRWUDggdAAAADADAJ0BKhQADwA+7WKpTamlo6IwCAEwHYlAF8kBkwdJHgAA/RwTfqFsh1IiioxkYDl81wYDao/1o5KiObo06gbPzYvk1MxZtAZ1m7WzsBuwhe0POUo0OFPEzofA5P/5rwvbL/zS2zKcMoVSvzUsuPDKgAAA",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f3015-pro-2-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f3015-pro-2-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f3015-pro-2-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f3015-pro-2-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f3015-pro-2-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f3015-pro-2-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-f3015-pro-2.webp": {
-    "hash": "d263db2daa458f49",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRvoAAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSGAAAAABcFpt25K9uI3glQlcF2ABOpkNqHQdhfiNQobfmrvrABExAfCPdYRsAEg0EFDxwDieYmDFIhL149Bnd+LTqS0Xp4f5nfz0/Ncc33J6adm9Ye6n++2o3Xkjw7EMx9Es/hRWUDggdAAAADADAJ0BKhQADwA+7WKpTamlpCIwCAEwHYlAF8kBkwdJHgAA/RwTfqFsh1IiioxkYDl81wYDao/1o5KiObo06gbPzYvk1MxZtAZ1m7WzsBuwhe0POUo0OFPEzofA5P/5rwvbL/zS2zKcMoVSvzUsuPDKgAAA",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f3015-pro-2-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f3015-pro-2-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f3015-pro-2-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f3015-pro-2-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f3015-pro-2-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f3015-pro-2-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-f3015-pro-3-1200.webp": {
-    "hash": "97c7282c09bab87b",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRh4BAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSI0AAAABgCMAoIHqZdfUZlsHMKYa7c7QZM8doFtgbq7Vdk3+GJm/DxAREwD+bZLRchPzKdOxlK8Wc++UTxk+zEDPBq9fgpql+Nd84hPCwrGyOl4/3mKG68dP3hDUPo6fXl/lEv2Xe+Xj0X1FDe7aw/HzbDF/zrJDPnATQqbLVFarx27XKNkYAAAKg0ZhMAg4+DQAVlA4IGoAAADQAwCdASoUAA8APu1kqk4ppaQiMAgBMB2JYwAAWp+yPUrM7obbkAAA/vQah1k3BE8SfAGd+asSEzbkvo59g7m3ROZnPlJdkIYOhvUHnrMEWCnTYJfMAQ64s/1X97m93RrFxdHK7V9cbAAA",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f3015-pro-3-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f3015-pro-3-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f3015-pro-3-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f3015-pro-3-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f3015-pro-3-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f3015-pro-3-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-f3015-pro-3.webp": {
-    "hash": "cc3d9fbc817077e3",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRiABAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSI0AAAABgCMAoIHqZdfUZlsHMKYa7c7QZM8doFtgbq7Vdk3+GJm/DxAREwD+bZLRchPzKdOxlK8Wc++UTxk+zEDPBq9fgpql+Nd84hPCwrGyOl4/3mKG68dP3hDUPo6fXl/lEv2Xe+Xj0X1FDe7aw/HzbDF/zrJDPnATQqbLVFarx27XKNkYAAAKg0ZhMAg4+DQAVlA4IGwAAADQAwCdASoUAA8APu1iqU2ppaOiMAgBMB2JYwAAWp+yPUrM7m9EsAAA/vQah1k3BE8SfAGd+asSEzbkvo59g7m3ROZnPlJdkIYOhvUHnrMEWCnTYJfMAQ64s/1ZCtWET8q8euS5+IA90+4mAAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f3015-pro-3-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f3015-pro-3-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f3015-pro-3-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f3015-pro-3-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f3015-pro-3-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f3015-pro-3-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-f6020-hd-1-1200.webp": {
-    "hash": "1fecf7c645f5d272",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRigBAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSJYAAAANgFxt2/HoiW3bNlbZJi2wCVWR6WC6mALMAmzbNn//u9lHxATgX5UK2L4IrnY/dmt4fCEIe+SR681yMqr8/v37q+jBTdyKFhwf7wQRKfinuFTWAdx2sRhDfzUWRT0BCMB6ZwRTNgeeB5tVRmbk/V0AIQgCEA2XVxinnRO5XK4Vf3x9fIrjn/OATHSzq/h4+br8BoBPMAFWUDggbAAAADADAJ0BKhQADwA+7WKpTamlpCIwCAEwHYllAAAwH/9u1AAA9wctqGgG+Fabli1i6pVxUPAEOnQK5sHvehydLzNxwiOF0o6g5TVOicmnAlhPpJZ//yiZz5EKQP91CXYSdTJKbMlIwt/CXbsAAA==",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f6020-hd-1-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f6020-hd-1-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f6020-hd-1-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f6020-hd-1-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f6020-hd-1-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f6020-hd-1-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-f6020-hd-1.webp": {
-    "hash": "ab17e02711b43451",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRiYBAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSJYAAAANgFxt2/HoiW3bNlbZJi2wCVWR6WC6mALMAmzbNn//u9lHxATgX5UK2L4IrnY/dmt4fCEIe+SR681yMqr8/v37q+jBTdyKFhwf7wQRKfinuFTWAdx2sRhDfzUWRT0BCMB6ZwRTNgeeB5tVRmbk/V0AIQgCEA2XVxinnRO5XK4Vf3x9fIrjn/OATHSzq/h4+br8BoBPMAFWUDggagAAADADAJ0BKhQADwA+7WKpTamlpCIwCAEwHYllAAAwH/9u1AAA9wctqGgG+Fabli1i6pVxUPAEOnQK5sHvehydLzNxwiOF0o6g5TVOicmnAfqgb//yiZz5EKQP91CXYSdTJKbMlIwt/CXbsAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f6020-hd-1-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f6020-hd-1-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f6020-hd-1-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f6020-hd-1-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f6020-hd-1-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f6020-hd-1-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-f6020-hd-2-1200.webp": {
-    "hash": "279258e4055f3d77",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRvIAAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSGMAAAANcFtr29K8uHfuMAFb2AwMQgujZACfImXKlD5BOiTuyQARMQH4x7Z1PIqHY7LYn47Hcj644b2IOOHUEcQJRL9a3eQFCCgUYpskCSxxq+J/Nu/oh++Y4W5dPXXLUUcQ6Mnm+AwAVlA4IGgAAABwAwCdASoUAA8APu1mqk4ppaOiMAgBMB2JQAAJSuGuaGJaiAAA/FQKaytyF2kHuu70h70yb90G+yPtYfahKuH57WuC8SW4NPxn+2tfSRcSAwgxWsd3M8T8a3IjBmhjHtIKCN3dPYGAAA==",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f6020-hd-2-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f6020-hd-2-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f6020-hd-2-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f6020-hd-2-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f6020-hd-2-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f6020-hd-2-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-f6020-hd-2.webp": {
-    "hash": "63ef1010cf503d0b",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRvIAAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSGMAAAANcFtr29K8uHfuMAFb2AwMQgujZACfImXKlD5BOiTuyQARMQH4x7Z1PIqHY7LYn47Hcj644b2IOOHUEcQJRL9a3eQFCCgUYpskCSxxq+J/Nu/oh++Y4W5dPXXLUUcQ6Mnm+AwAVlA4IGgAAABwAwCdASoUAA8APu1iqk2ppaQiMAgBMB2JQAAJSuGuaGj/xoAA/FQKaytyF2kHuu70h70yb90G+yPtYfahKuH57WuC8SW4NPxn+2tfSRcSAwgxWsljc/yfZj5QbwKxqEQvqKHqQfgAAA==",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f6020-hd-2-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f6020-hd-2-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f6020-hd-2-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f6020-hd-2-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f6020-hd-2-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f6020-hd-2-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-f6020-hd-3-1200.webp": {
-    "hash": "7782e00fc1727d93",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRiIBAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSJQAAAANgFxb2/HqiW3PbGOkUdICm1AVSQfpIiU4BVzbtq3f/+zOI2IC8K9KBWxfBFejE7gEHMc/dt8j15vlZEgQ8mdBTg9u4la0oCG0t4Qv5RxxqaxdoRBFMXp/ZRZFJQQIwHpnBFM2A8+DzRIjNnh/F0AIggBE/ewK47R5IpfLteKPr49PcfBzDshEN7uKj+f3mx8A+AQTVlA4IGgAAACwAwCdASoUAA8APu1iqk4ppaQiMAgBMB2JZQAAMGFYMqgeDbWe4AD3By2oaAb4VpuWLWLqlXFQ8ASPIXl1waEdbXWSnbTdESnXrDWjG7dv5dwH+qls8EmRbUObnyH+Zu1tFzJZV+AAAA==",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f6020-hd-3-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f6020-hd-3-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f6020-hd-3-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f6020-hd-3-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f6020-hd-3-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f6020-hd-3-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-f6020-hd-3.webp": {
-    "hash": "e7e3fd111d94b0b5",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRiIBAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSJQAAAANgFxb2/HqiW3PbGOkUdICm1AVSQfpIiU4BVzbtq3f/+zOI2IC8K9KBWxfBFejE7gEHMc/dt8j15vlZEgQ8mdBTg9u4la0oCG0t4Qv5RxxqaxdoRBFMXp/ZRZFJQQIwHpnBFM2A8+DzRIjNnh/F0AIggBE/ewK47R5IpfLteKPr49PcfBzDshEN7uKj+f3mx8A+AQTVlA4IGgAAACwAwCdASoUAA8APu1iqk4ppaQiMAgBMB2JZQAAMGFYMqgeDbWe4AD3By2oaAb4VpuWLWLqlXFQ8ASPIXl1waEdbXWSnbTdESnXrDWjG7dv5dwH+qls8EmRbUObnyH+Zu1tFzJZV+AAAA==",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f6020-hd-3-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f6020-hd-3-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f6020-hd-3-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-f6020-hd-3-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-f6020-hd-3-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-f6020-hd-3-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-rw10-1-1200.webp": {
-    "hash": "87cb44a00a04398e",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRiABAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSIEAAAABcFpt27K8uLOAuyW35O7u7pH2VyorcBiBwwwcGiPoIvorkOgRMQHwb0VLzW+KfRxZ0H4QnKwAEu8nkc8MjN7NJoLPluMdXcMIRdGhKTh0GUlp9I1uV+jnAwDQ8+j3bw8AiDfP73ZALkbS5WZ/jsxH3Vq+ZmQAcHhcPo/HY3Np8CUAVlA4IHgAAAAQBACdASoUAA8APu1iqU2ppaQiMAgBMB2JZwAAWp9+n/phWNuF6HBoAAD+9CUlQMAQVJyau+i/eehV+a6uvZhpg/qWyDDmYFQnwbL7Wo29zXJf3s48WlYoFw0+5568DLPx6v2BjZo2i+vZnZOf/D9RxufZuzA1AAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw10-1-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw10-1-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw10-1-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw10-1-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw10-1-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw10-1-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-rw10-1.webp": {
-    "hash": "fade7e9f442e2402",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRiABAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSIEAAAABcFpt27K8uLOAuyW35O7u7pH2VyorcBiBwwwcGiPoIvorkOgRMQHwb0VLzW+KfRxZ0H4QnKwAEu8nkc8MjN7NJoLPluMdXcMIRdGhKTh0GUlp9I1uV+jnAwDQ8+j3bw8AiDfP73ZALkbS5WZ/jsxH3Vq+ZmQAcHhcPo/HY3Np8CUAVlA4IHgAAAAQBACdASoUAA8APu1iqU2ppaQiMAgBMB2JZwAAWp9+n/phWNuF6HBoAAD+9CUlQMAQVJyau+i/eehV+a6uvZhpg/qWyDDmX1ymzJ9ZR9J2q6+s63+ORYki/qPlF3k+QJ+49QiOmT7uLxs8z7c/+H6jjc+zdmBqAAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw10-1-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw10-1-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw10-1-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw10-1-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw10-1-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw10-1-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-rw10-2-1200.webp": {
-    "hash": "f99eed6325bbf0b6",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRhoBAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSGgAAAABcFvbtqLccQkttiIMyCCjApdQQ+LJiRzKoQt68XGfAiJiAtDY/UcXIDcDk8jQ+e4AgLxepQyLPxWDbjEp1OHp3/castt+3AGkSU9N2r4S3q/X1/e9hOXPz5zk+VUpkBN4URAEliezAFZQOCCMAAAAMAQAnQEqFAAPAD7tZKlNqaWkIjAIATAdiWMAA+OqDgCnUyuz1eaMJ30AAP6dlG2vz2b8s4l4Kv4CQweX6zpaX2LQJMLxXV5kk+RwJuju42ut7guqLcoLrUKh7+lpaEQKkSQSYGvGCjLR7Y2gQ8FCnwbQz1YW3eeF2lTUhK9bPj5ny/+PyeabZwEAAAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw10-2-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw10-2-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw10-2-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw10-2-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw10-2-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw10-2-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-rw10-2.webp": {
-    "hash": "16c670858cdd8aa3",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRhoBAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSGgAAAABcFvbtqLccQkttiIMyCCjApdQQ+LJiRzKoQt68XGfAiJiAtDY/UcXIDcDk8jQ+e4AgLxepQyLPxWDbjEp1OHp3/castt+3AGkSU9N2r4S3q/X1/e9hOXPz5zk+VUpkBN4URAEliezAFZQOCCMAAAAEAQAnQEqFAAPAD7tYqlNqaWjojAIATAdiWMAA+N6DgCnT9cIuClwnBAA/p2Uba/PZuqDWLgSuSrDB3fblhmwy9Xpri5tu9SeQX3Xcd3G11vTrVyxHuxrXNS1MxYr36mC6I8ZGa3KCKdOP9sfQuAFH9/g2hnqwtu88BEVUI4vxqiPd+ar2dn5KalIwAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw10-2-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw10-2-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw10-2-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw10-2-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw10-2-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw10-2-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-rw10-3-1200.webp": {
-    "hash": "8979a0ff9d040d37",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRh4BAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSIUAAAABgGJt27Lowd0X4J5cmru7u0calUoncVgChzVwaCxBNwIzg0OaHhETgP+WM5F/J14HxyPaF6ydAVDMBG84Dh1IjZORA4iIL/Tb83WOzvV6bWvdbavmKXr9uy6n1/cbAMTk9fM/OwDu4uezFZ7Tvmi23ByOh516IVnQkAAag85kMBgUMj4FAFZQOCByAAAAEAQAnQEqFAAPAD7tYqlNqaWkIjAIATAdiWUAA+SyBr3sr+vakJZeMAAA/vQj4f5gdWvQtxpaWh6iJXBibfdcj5iF9ai5I5wgXizLe6iQnWU6yQonl1CdSdOWr0YNVPBcxb57vdF3Z/ygz6d/Sacs5AAA",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw10-3-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw10-3-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw10-3-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw10-3-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw10-3-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw10-3-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-rw10-3.webp": {
-    "hash": "a0e00981c109d6e8",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRiABAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSIUAAAABgGJt27Lowd0X4J5cmru7u0calUoncVgChzVwaCxBNwIzg0OaHhETgP+WM5F/J14HxyPaF6ydAVDMBG84Dh1IjZORA4iIL/Tb83WOzvV6bWvdbavmKXr9uy6n1/cbAMTk9fM/OwDu4uezFZ7Tvmi23ByOh516IVnQkAAag85kMBgUMj4FAFZQOCB0AAAA8AMAnQEqFAAPAD7tYqlNqaWkIjAIATAdiWUAAFqfdpz+rKwfYzHgAAD+9CPh/mB7qkL7OtrKj5adUeo2BXBJORbNpbwrkWZGpvg+D7/5veswZjKy+w28DLzG79b3HcSL8qDMbfCvEd8u16rMP4kWoBqAAAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw10-3-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw10-3-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw10-3-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw10-3-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw10-3-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw10-3-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-rw6-1-1200.webp": {
-    "hash": "d57020a2f8622144",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRigBAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSJUAAAABgGLb1vLmhZmZmZmZmcFFoowrqK5ankNVB/BXdia1dcwM4UTVR8QEwD9bO9WtN0LkO8N1ts8IAI7ACmhXnYJUYF5m0uPmTq7G46uf5xcTgPni+4oxd/83nv9UQ+d5/NeFBePx+G98bgTMeDxGYN5wvLf7ermhkAq53WSTu4CjsQUqxWa7mo24jVIcABBIJBIJT4TVAQBWUDggbAAAAPADAJ0BKhQADwA+7WKpTamlo6IwCAEwHYlnAABan7z7b6OW2uR/UQAA/vQk9hCijvuijpDdq9NE7JBl2RqUce3eaUaonDSN9V1fYCUULxEP715SeP6JmmX+qHW7NisKTDJ9MCUGBe80b5wCAA==",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw6-1-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw6-1-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw6-1-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw6-1-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw6-1-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw6-1-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-rw6-1.webp": {
-    "hash": "3c074a2e9f057b34",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRigBAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSJUAAAABgGLb1vLmhZmZmZmZmcFFoowrqK5ankNVB/BXdia1dcwM4UTVR8QEwD9bO9WtN0LkO8N1ts8IAI7ACmhXnYJUYF5m0uPmTq7G46uf5xcTgPni+4oxd/83nv9UQ+d5/NeFBePx+G98bgTMeDxGYN5wvLf7ermhkAq53WSTu4CjsQUqxWa7mo24jVIcABBIJBIJT4TVAQBWUDggbAAAAPADAJ0BKhQADwA+7WKpTamlo6IwCAEwHYlnAABan7z7b6OW2uR/UQAA/vQk9hCijvuijpDdq9NE7JBl2RqUce3eaUaonDSN9V1fXGiY7EwuvlBccfy0up/9UOt2bFYUmGT6YEoMC95o3zgEAA==",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw6-1-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw6-1-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw6-1-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw6-1-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw6-1-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw6-1-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-rw6-2-1200.webp": {
-    "hash": "1a76ed19231b04ae",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRtQAAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSGEAAAABcFtr29K8OB90LEFN6z0TMIGXlA7ZIHOktC5ltsgc7m4DRMQE4I+zg7kJKPpTNDpmeDk45XieNBXJyXvKX+xO43x2GhaF8ag5PRl+y9IA2GeOp9OqJQDqnTdKRESizDwHAFZQOCBMAAAAMAMAnQEqFAAPAD7tYqlNqaWkIzAIATAdiWcAAFqfhWK8AAD+8qPlstUpyZnqTP1YctRz584htCCdYmG+g0p7Wrq7AlizoPz0gjWoAA==",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw6-2-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw6-2-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw6-2-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw6-2-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw6-2-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw6-2-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-rw6-2.webp": {
-    "hash": "efbfd2792f0059ce",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRtQAAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSGEAAAABcFtr29K8OB90LEFN6z0TMIGXlA7ZIHOktC5ltsgc7m4DRMQE4I+zg7kJKPpTNDpmeDk45XieNBXJyXvKX+xO43x2GhaF8ag5PRl+y9IA2GeOp9OqJQDqnTdKRESizDwHAFZQOCBMAAAAMAMAnQEqFAAPAD7tZKlNqaWjozAIATAdiWcAAFqfhWK8AAD+8qPlstUpyZnqTP1YctRz584htCCdYmG+g0p7Wrq7AlizoPz0gjWoAA==",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw6-2-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw6-2-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw6-2-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw6-2-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw6-2-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw6-2-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-rw6-3-1200.webp": {
-    "hash": "aeff61bc8f85a90f",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRi4BAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSJkAAAABgKpt+/rkm7u7u7u7u0tb3IBIs8RFdTsDEgfwJ3ImVJq7y3xL9IiYAPhna6e6+ZYR+cYSdo71MwJA4pg+De2qU5AKAGA0KpMeN3Zy1e9f/Ty/mADMF99XjLH7v/74pxo6z/2/Lkzo9/t//XMjYPr9PgLjhv2tzdfLFYVUyO0mm9wJHI0tUCk229VsxG2U4gCAQCKRSDgszA4AVlA4IG4AAAAQBACdASoUAA8APu1kqk4ppaQiMAgBMB2JYwAD4tIGvmsV3DxaFf+yAAD+9Br7ozKW10Uac4k+uL43nCDHhOIH3pfXe03bzgqVem8mWcVUbBG5AIQ5QXAv+47QOfMB60flurrd9FR0p4vNRtSAAA==",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw6-3-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw6-3-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw6-3-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw6-3-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw6-3-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw6-3-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-rw6-3.webp": {
-    "hash": "b0c7a9fcf50776f7",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRi4BAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSJkAAAABgKpt+/rkm7u7u7u7u0tb3IBIs8RFdTsDEgfwJ3ImVJq7y3xL9IiYAPhna6e6+ZYR+cYSdo71MwJA4pg+De2qU5AKAGA0KpMeN3Zy1e9f/Ty/mADMF99XjLH7v/74pxo6z/2/Lkzo9/t//XMjYPr9PgLjhv2tzdfLFYVUyO0mm9wJHI0tUCk229VsxG2U4gCAQCKRSDgszA4AVlA4IG4AAAAQBACdASoUAA8APu1kqU4ppaOiMAgBMB2JYwAD4tIGvmsV3DxaFf+yAAD+9Br7ozKW10Uac4k+uL43nCDHhOIH3pfXe03bzgqVem7A+o/7RDVYAhDlBcC/7jtA58wHrR+W6ut30VHSni81G1IAAA==",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw6-3-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw6-3-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw6-3-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-rw6-3-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-rw6-3-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-rw6-3-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-t6000-1-1200.webp": {
-    "hash": "2e19ff6b8ff5c2e5",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRg4BAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSIEAAAANcFpt27I8/49LcvcpLJNpMAFMQHSXxAgsAAPQdAKt7u7uEMkRMQH4R/U63gzHvJA72v4gS7uSsEUt9z1L/2ZJZdzqxj2EKwD1fvjmgNUJgIJf7RWQCvyYffOuewRBEIz76X4nc2Xam5nGZDKZDDqOp8PBoOcBDMqoSTtsjusFfgQAVlA4IGYAAABwAwCdASoUAA8APu1kqk4ppaQiMAgBMB2JYwAAWp8TQ9MzlgAA/uvjSVGKtMb4N0ehLLGk5dCNjwyPU4HOdkvilrEYuRNWqicABNMd7Ca/Tlx/7v28jsuq5lT3b/uH9nm43zFPwAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-t6000-1-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-t6000-1-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-t6000-1-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-t6000-1-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-t6000-1-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-t6000-1-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-t6000-1.webp": {
-    "hash": "4518f53746f18ae3",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRg4BAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSIEAAAANcFpt27I8/49LcvcpLJNpMAFMQHSXxAgsAAPQdAKt7u7uEMkRMQH4R/U63gzHvJA72v4gS7uSsEUt9z1L/2ZJZdzqxj2EKwD1fvjmgNUJgIJf7RWQCvyYffOuewRBEIz76X4nc2Xam5nGZDKZDDqOp8PBoOcBDMqoSTtsjusFfgQAVlA4IGYAAABwAwCdASoUAA8APu1iqk4ppaQiMAgBMB2JYwAAWp8TQ9MzlgAA/uvjSVGKtMb4N0ehLLGk5dCNjwyPU4HOdkvilrEYuRNWqicABNMd7Ca/Tlx/7v28jsuq5lT3b/uH9nm43zFPwAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-t6000-1-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-t6000-1-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-t6000-1-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-t6000-1-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-t6000-1-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-t6000-1-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-t6000-2-1200.webp": {
-    "hash": "27fddbb410a6dce1",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRgYBAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSG0AAAABcFpr29p8YU5cVoiMzQoFVcXcBaoYFukeXQM9MzMzo4+ICYC/a3Y4vA71GRPQUQ19QJYAIKQLFtLavcB+YQSlfTwej8l7jeOxWDjevIdljg/e8deOL0gNtpPJdDqdzZabWeTW8xRL0TRD0vhDAFZQOCByAAAA8AMAnQEqFAAPAD7tYqlNqaWjojAIATAdiWQAxvQhUth7pf6wDH/jCAD+6NAkX+kx3Wj1P5tUDPMTzR7pV+wpNtlttpDBLm+vW+ECMgny30aLLoGFcNvw8V25rzz5rMmgLNXqzYuJ4FmeQg1AvIPZAAAA",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-t6000-2-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-t6000-2-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-t6000-2-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-t6000-2-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-t6000-2-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-t6000-2-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-t6000-2.webp": {
-    "hash": "cc16625c613b7e7d",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRgwBAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSG0AAAABcFpr29p8YU5cVoiMzQoFVcXcBaoYFukeXQM9MzMzo4+ICYC/a3Y4vA71GRPQUQ19QJYAIKQLFtLavcB+YQSlfTwej8l7jeOxWDjevIdljg/e8deOL0gNtpPJdDqdzZabWeTW8xRL0TRD0vhDAFZQOCB4AAAAcAMAnQEqFAAPAD7tZqtOKaWkIjAIATAdiWQAxvQhUth7pgE8AP7o0CRf6THdaPU/mkLEMQ1G+CGyOrpJCClu2uIfkt+8LNBYVnKNiQ3QI/7fn//Xv+T+DXvA0H8hTTey79wrtn+0Xg/3A+eS2jzNKeCDUC8g9kAA",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-t6000-2-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-t6000-2-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-t6000-2-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-t6000-2-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-t6000-2-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-t6000-2-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-t6000-3-1200.webp": {
-    "hash": "954fb975b925aee5",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRhABAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSIEAAAANcFpt27I8vwskd4chLJOJTAAjkDg0i4zAAjAATSfQ6u7uDpEcEROAf9Rug3y+zyulo+0PurQznHTFffe9YH/zpTIRc+N6j10BmPfDtyD8IQAg8WOgAtLw9jn7Fl33CIIguPvpfidzZebNy/A8z3MsjqfDwWWXARw1ajKHzX61xo8AVlA4IGgAAABwAwCdASoUAA8APu1iqk4ppaQiMAgBMB2JYwAAWp8USt2YQAAA/uvi6A4cNR3PTcY9Q/6Rb37H1tNoKKGmfvGkRqmJ8pXTi964ACZEsKMh8o6f/yZXktKL+yn9VmOizt17j034IwAAAA==",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-t6000-3-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-t6000-3-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-t6000-3-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-t6000-3-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-t6000-3-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-t6000-3-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/products/ra-t6000-3.webp": {
-    "hash": "0b109b4d1f3b840b",
-    "width": 1200,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRhABAABXRUJQVlA4WAoAAAAQAAAAEwAADgAAQUxQSIEAAAANcFpt27I8vwskd4chLJOJTAAjkDg0i4zAAjAATSfQ6u7uDpEcEROAf9Rug3y+zyulo+0PurQznHTFffe9YH/zpTIRc+N6j10BmPfDtyD8IQAg8WOgAtLw9jn7Fl33CIIguPvpfidzZebNy/A8z3MsjqfDwWWXARw1ajKHzX61xo8AVlA4IGgAAABwAwCdASoUAA8APu1iqk4ppaQiMAgBMB2JYwAAWp8USt2YQAAA/uvi6A4cNR3PTcY9Q/6Rb37H1tNoKKGmfvGkRqmJ8pXTi964ACZEsKMh8o6f/yZXktKL+yn9VmOizt17j034IwAAAA==",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-t6000-3-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-t6000-3-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-t6000-3-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/products/ra-t6000-3-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/products/ra-t6000-3-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/products/ra-t6000-3-1200.webp"
         }
       ]
     }

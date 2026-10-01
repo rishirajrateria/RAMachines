@@ -66,7 +66,12 @@ const [flagship, ...otherFamilies] = categories;
  * the row, from ITS OWN longest value (sizing from `site.stats` once set every
  * value at the largest step and made a long one overflow into its neighbour).
  */
-const flagshipStats = flagship.ranges.map((range) => ({ label: range.label, value: range.value }));
+const flagshipStats = [
+  { label: flagship.ranges[0].label, value: flagship.ranges[0].value },
+  // The second range ("Cutting; laser can also be fitted for welding") is a
+  // sentence, not a figure — the pitch line above says it in full.
+  { label: "Process", value: "Cutting · welding" },
+];
 const flagshipStatSize = statSizeForGroup(flagshipStats.map((s) => s.value));
 
 export default function HomePage() {

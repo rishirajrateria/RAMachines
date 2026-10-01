@@ -2,24 +2,25 @@
 /**
  * scripts/generate-placeholders.mjs — generates every placeholder binary asset the
  * site references (`node scripts/generate-placeholders.mjs`), so a static export
- * never 404s on an image/brochure/logo. ADR-0005 "Liquid Glass" §7: draws
- * stroke-only line-art machine glyphs (ink, 1.75px, no fills) on **transparent**
- * backgrounds for product/category art — the card's own glass surface + a soft
- * radial-teal CSS backdrop (components/cards/ProductCard.tsx,
- * components/cards/CategoryCard.tsx) supplies the "soft light form" behind them —
- * rasterises them with sharp at the existing filenames/sizes (WebP q88, alpha
+ * never 404s on an image/logo. Draws the ADR-0008 §1 solid-shaded machine renders
+ * (scripts/illustrations/machines.mjs) on **transparent** backgrounds for the five
+ * product-family cards — the card's own glass surface + a soft radial-teal CSS
+ * backdrop (components/cards/CategoryCard.tsx) supplies the light behind them —
+ * rasterises them with sharp at the existing filenames/sizes (WebP, alpha
  * preserved, kept small), and writes each SVG source under /public/illustrations
- * for reuse. Regenerating is always safe (deterministic); drop a same-named real
- * photo into /public later and stop regenerating that one file to replace it
- * permanently.
+ * for reuse. Per-model product art and brochures were retired with the move to
+ * five machine families. Regenerating is always safe (deterministic); drop a
+ * same-named real photo into /public later and stop regenerating that one file
+ * to replace it permanently.
  */
 import { mkdir, writeFile, stat } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import sharp from "sharp";
 
 import { makeEmit, scene } from "./illustrations/common.mjs";
-import { machineForProduct, machineForCategory, BOX_W, BOX_H, GROUND_Y, placeToFit } from "./illustrations/machines.mjs";
+import { machineForCategory, placeToFit } from "./illustrations/machines.mjs";
 import { heroPosterSvg } from "./illustrations/hero.mjs";
 import { factoryHallSvg, indiaReachSvg, worldReachSvg } from "./illustrations/about.mjs";
 import { certBadgeSvg } from "./illustrations/certs.mjs";
@@ -29,23 +30,13 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const PUBLIC = join(ROOT, "public");
 const emit = makeEmit(PUBLIC);
 
-// ---- Fixed slugs (must match data/*.ts and the product/category catalogue) ----
-const PRODUCTS = [
-  { slug: "ra-f1530", name: "RA-F1530 Fiber Laser Cutting Machine", category: "fiber" },
-  { slug: "ra-f3015-pro", name: "RA-F3015 Pro Fiber Laser Cutting Machine", category: "fiber" },
-  { slug: "ra-f6020-hd", name: "RA-F6020 HD Fiber Laser Cutting Machine", category: "fiber" },
-  { slug: "ra-f12k", name: "RA-F12K Heavy Duty Fiber Laser Cutting Machine", category: "fiber" },
-  { slug: "ra-t6000", name: "RA-T6000 Fiber Laser Tube Cutting Machine", category: "tube" },
-  { slug: "ra-c1390", name: "RA-C1390 CO2 Laser Cutting & Engraving Machine", category: "co2" },
-  { slug: "ra-rw6", name: "RA-RW6 Robotic MIG Welding Cell", category: "robot" },
-  { slug: "ra-rw10", name: "RA-RW10 Robotic MIG/MAG Welding Workstation", category: "robot" },
-];
-
+// ---- Fixed slugs (must match data/categories.ts — the five machine families) ----
 const CATEGORIES = [
-  { slug: "fiber-laser-cutting-machines", name: "Fiber Laser Cutting Machines", category: "fiber" },
-  { slug: "tube-laser-cutting-machines", name: "Tube Laser Cutting Machines", category: "tube" },
-  { slug: "co2-laser-machines", name: "CO2 Laser Machines", category: "co2" },
-  { slug: "robotic-welding-systems", name: "Robotic Welding Systems", category: "robot" },
+  { slug: "fiber-laser-cutting-machines", name: "Fiber Laser Cutting Machines" },
+  { slug: "cnc-plasma-cutting-machines", name: "CNC Plasma Cutting Machines" },
+  { slug: "mig-tig-arc-welding-machines", name: "MIG / TIG / MMA Welding Machines" },
+  { slug: "submerged-arc-welding-machines", name: "Submerged Arc Welding Machines" },
+  { slug: "robotic-welding-systems", name: "Robotic & Cobot Welding Systems" },
 ];
 
 const CERTS = [
@@ -60,74 +51,19 @@ const CERTS = [
   { slug: "bis", name: "BIS", issuer: "Bureau of Indian Standards" },
 ];
 
-/** front / detail (cropped, zoomed-in) / in-use (faint dashed motion trace)
- * angles for one product, composed transparently into a 1200×900 scene. */
 // Render at 2× the target raster (ADR-0008 §1 "Method that works") — crisper
 // edges/gradients than authoring straight at final size; emit() downsamples.
 const SS = 2;
 
-function productAngleSvg(product, angle) {
-  // "detail" is a close-up of the head mid-cut (ADR-0008 §1 critique pass 2
-  // §8) — it needs the spark/beam active just like "in-use", not a static
-  // idle head.
-  const machine = machineForProduct(product.slug, { inUse: angle === "in-use" || angle === "detail" });
-  let placed;
-  if (angle === "detail") {
-    const [vx, vy, vw, vh] = machine.detailCrop;
-    const cropped = `<svg x="0" y="0" width="${BOX_W}" height="${BOX_H}" viewBox="${vx} ${vy} ${vw} ${vh}" preserveAspectRatio="xMidYMid slice">${machine.svg}</svg>`;
-    placed = `<g transform="translate(${210 * SS} ${255 * SS}) scale(${1.75 * SS})">${cropped}</g>`;
-  } else {
-    // Render fills ~80% of the tile (ADR-0008 §3), up from the old ~35%,
-    // fitted to the machine's actual projected bounding box.
-    placed = placeToFit(machine.svg, machine.bbox, 1200 * SS, 900 * SS, { fillRatio: 0.82, bottomMargin: 0.1 });
-  }
-  return scene({
-    width: 1200 * SS,
-    height: 900 * SS,
-    content: placed,
-    caption: `${product.name} — ${angle === "front" ? "front view" : angle === "detail" ? "detail view" : "in use"}`,
-  });
-}
-
 function categorySvg(category) {
-  const machine = machineForCategory(category.category);
+  const machine = machineForCategory(category.slug);
   return scene({
     width: 1200 * SS,
     height: 800 * SS,
-    // Slightly wider composition than a product tile (more headroom/margin).
+    // ~72% fill with generous headroom/margin around the machine.
     content: placeToFit(machine.svg, machine.bbox, 1200 * SS, 800 * SS, { fillRatio: 0.72, bottomMargin: 0.12 }),
     caption: category.name,
   });
-}
-
-/** Hand-written minimal single-page PDF (no library) with the product name on it. */
-function buildPlaceholderPdf(title) {
-  const safeTitle = title.replace(/[()\\]/g, "");
-  const streamContent = [
-    "BT /F1 22 Tf 72 700 Td (RA Machine) Tj ET",
-    `BT /F1 16 Tf 72 668 Td (${safeTitle}) Tj ET`,
-    "BT /F1 11 Tf 72 630 Td (Placeholder brochure. Replace with the final PDF before launch.) Tj ET",
-    "BT /F1 11 Tf 72 612 Td (Specifications, applications and certification details will appear here.) Tj ET",
-  ].join("\n");
-  const objects = [
-    "1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n",
-    "2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n",
-    "3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 5 0 R >> >> /Contents 4 0 R >>\nendobj\n",
-    `4 0 obj\n<< /Length ${Buffer.byteLength(streamContent, "latin1")} >>\nstream\n${streamContent}\nendstream\nendobj\n`,
-    "5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\nendobj\n",
-  ];
-  let pdf = "%PDF-1.4\n";
-  const offsets = [];
-  for (const obj of objects) {
-    offsets.push(Buffer.byteLength(pdf, "latin1"));
-    pdf += obj;
-  }
-  const xrefStart = Buffer.byteLength(pdf, "latin1");
-  let xref = `xref\n0 ${objects.length + 1}\n0000000000 65535 f \n`;
-  for (const offset of offsets) xref += `${String(offset).padStart(10, "0")} 00000 n \n`;
-  pdf += xref;
-  pdf += `trailer\n<< /Size ${objects.length + 1} /Root 1 0 R >>\nstartxref\n${xrefStart}\n%%EOF`;
-  return Buffer.from(pdf, "latin1");
 }
 
 async function main() {
@@ -137,20 +73,15 @@ async function main() {
     written.push(await emit(`certs/${cert.slug}.webp`, certBadgeSvg(600, 800, cert.name, cert.issuer, cert.slug)));
   }
 
-  for (const product of PRODUCTS) {
-    const angles = [
-      ["1", "front"],
-      ["2", "detail"],
-      ["3", "in-use"],
-    ];
-    for (const [index, angle] of angles) {
-      const svg = productAngleSvg(product, angle);
-      written.push(await emit(`products/${product.slug}-${index}.webp`, svg, { superSample: [1200, 900] }));
-    }
-  }
-
   for (const category of CATEGORIES) {
-    written.push(await emit(`categories/${category.slug}.webp`, categorySvg(category), { superSample: [1200, 800] }));
+    const full = await emit(`categories/${category.slug}.webp`, categorySvg(category), { superSample: [1200, 800] });
+    written.push(full);
+    // `<slug>-1200.webp` mirrors the legacy 1200w WebP q72 variant that sits
+    // beside every category source (same encode the older in-place
+    // optimize-images pass produced), so nothing that still points at it 404s.
+    const variant = full.replace(/\.webp$/, "-1200.webp");
+    await sharp(full).resize({ width: 1200 }).webp({ quality: 72 }).toFile(variant);
+    written.push(variant);
   }
 
   written.push(await emit("hero-poster.webp", heroPosterSvg(1920 * SS, 1080 * SS), { superSample: [1920, 1080] }));
@@ -158,14 +89,6 @@ async function main() {
   written.push(await emit("about/india-reach.webp", indiaReachSvg(1200, 750)));
   written.push(await emit("about/world-reach.webp", worldReachSvg(1200, 750)));
   written.push(await emit("og-fallback.png", ogFallbackSvg(1200, 630), { format: "png" }));
-
-  // Brochures — one-page placeholder PDFs
-  for (const product of PRODUCTS) {
-    const path = join(PUBLIC, "brochures", `${product.slug}.pdf`);
-    await mkdir(dirname(path), { recursive: true });
-    await writeFile(path, buildPlaceholderPdf(product.name));
-    written.push(path);
-  }
 
   // Logo (public, used in Organization schema `logo`) — a plain ink wordmark, no
   // orange square, no gradient (ADR-0005 §4).
