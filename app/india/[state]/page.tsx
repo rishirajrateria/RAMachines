@@ -49,6 +49,7 @@ function stateTitle(name: string): string {
     `Laser, Plasma & Welding Machines in ${name}`,
     `Laser, Plasma & Welding Machines, ${name}`,
     `Cutting & Welding Machines in ${name}`,
+    `Laser & Welding, ${name}`,
   ]);
 }
 
