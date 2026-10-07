@@ -144,3 +144,32 @@ export interface Certification {
    */
   status?: "pending";
 }
+
+/**
+ * A buyer guide (/guides/[slug]) — an informational article answering a real
+ * question buyers (and AI answer engines) ask before choosing a machine.
+ * Written answer-first: `summary` is the direct answer in 2–3 sentences, then
+ * sections expand on it. Like the rest of the site, guides state no
+ * RA-specific figures beyond the client's own (see data/categories.ts ranges
+ * and config/site.ts service terms); general engineering facts are fine.
+ */
+export interface GuideSection {
+  h2: string;
+  paragraphs: string[];
+  /** Optional short list (3–7 items), rendered after the paragraphs. */
+  bullets?: string[];
+}
+
+export interface Guide {
+  slug: string; // "laser-vs-plasma-cutting"
+  title: string; // <title>, ≤60 chars, keyword-first
+  description: string; // meta description, 120–155 chars
+  h1: string; // the on-page headline (may be longer than title)
+  summary: string; // the direct answer, 40–70 words — shown in a "Short answer" box
+  sections: GuideSection[]; // 5–8 sections, 900–1,400 words total
+  faqs: FaqItem[]; // 4–6, answers 40–90 words
+  families: CategorySlug[]; // 1–3 machine families this guide leads to (internal links)
+  related: string[]; // 2–3 other guide slugs
+  published: string; // ISO date, e.g. "2026-10-07"
+  updated: string; // ISO date
+}
