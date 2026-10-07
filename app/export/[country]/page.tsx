@@ -28,7 +28,7 @@ import { FactStrip, Steps, DividedList, ImageSlot } from "@/components/ui/glass"
 import CategoryCard from "@/components/cards/CategoryCard";
 import { familiesFor, familyListSchema } from "@/lib/families";
 import ExportForm from "@/components/forms/ExportForm";
-import { buildMetadata, truncate } from "@/lib/seo";
+import { buildMetadata, pickTitle } from "@/lib/seo";
 import { paths } from "@/lib/urls";
 import { photos } from "@/lib/photos";
 import { organizationSchema } from "@/lib/schema";
@@ -46,10 +46,13 @@ export function generateStaticParams() {
 
 export const dynamicParams = false;
 
-/** Root layout appends " | RA Machine" (13 chars) via its title template. */
+/** The whole range; buildMetadata adds " | RA Machine" when it fits. */
 function countryTitle(name: string): string {
-  const base = `Laser Cutting Machine Exporter to ${name}`;
-  return base.length + 13 <= 60 ? base : truncate(base, 60 - 13);
+  return pickTitle([
+    `Laser, Plasma & Welding Machine Exporter to ${name}`,
+    `Laser, Plasma & Welding Machines for ${name}`,
+    `Cutting & Welding Machines for ${name}`,
+  ]);
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -59,7 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return buildMetadata({
     title: countryTitle(country.name),
-    description: `CE-marked, ISO 9001:2015-certified CNC laser, plasma and welding machines from India for ${country.name}, with installation, training and warranty.`,
+    description: `CNC laser, plasma and welding machines from India for ${country.name}, with export documentation, installation, training and warranty support.`,
     path: paths.country(country.slug),
   });
 }

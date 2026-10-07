@@ -4,8 +4,8 @@
  * instead; this file only covers the hub's general export-process content.
  *
  * ADR-0005 "Liquid Glass": the hub's FactStrip already shows markets, warranty,
- * lead time and Incoterms, and AboutBlurb already states ISO 9001:2015, CE
- * marking, MSME/Udyam, IEC registration and Indian Railways vendor status — so
+ * lead time and Incoterms, and AboutBlurb already states GST and IEC
+ * registration and Indian Railways vendor status — so
  * `hubSections` no longer repeats a "certifications" paragraph, and its
  * quotation paragraph no longer restates FOB/CIF (that is the Incoterms fact,
  * shown once in FactStrip). What is left is prose that adds something neither
@@ -46,8 +46,8 @@ export const exportProcessSteps: { title: string; text: string }[] = [
 ];
 
 export const hubIntro: string[] = [
-  "RA Machine builds CNC laser and plasma cutting machines, MIG, TIG, MMA and submerged arc welding machines, and cobot and robotic welding systems in India, and can ship the full range to fabricators, job shops and OEM manufacturers worldwide. Export is built into how every machine is engineered and shipped, from the CE marking on the control cabinet to the pre-shipment inspection video every buyer receives before their machine leaves our works.",
-  "Every export order carries a full documentation set — CE declaration of conformity, ISO 9001:2015 certificate, commercial invoice, packing list, bill of lading and certificate of origin — so your customs broker has everything needed to clear the shipment. For country-specific detail on voltage, ports, sectors and shipping terms in your market, open the relevant country page below.",
+  "RA Machine builds CNC laser and plasma cutting machines, MIG, TIG, MMA and submerged arc welding machines, and cobot and robotic welding systems in India, and can ship the full range to fabricators, job shops and OEM manufacturers worldwide. Export is built into how every machine is engineered and shipped, from configuring it for your local power supply to the pre-shipment inspection video every buyer receives before their machine leaves our works.",
+  "Every export order carries a full shipping documentation set — commercial invoice, packing list, bill of lading and certificate of origin — and we confirm the conformity marking and documentation your market requires at the quotation stage, before production begins, so your customs broker has what is needed to clear the shipment. For country-specific detail on voltage, ports, sectors and shipping terms in your market, open the relevant country page below.",
 ];
 
 export const hubSections: { h2: string; paragraphs: string[] }[] = [
@@ -89,8 +89,8 @@ export const exportHubFaqs: FaqItem[] = [
     a: "We can ship across North America, South America, Europe, the Middle East, South Asia, South-East Asia, Central Asia, Africa and Oceania, and keep a dedicated page for each market we serve. If your country is not listed, send us an enquiry — we quote and ship to markets beyond this list on request.",
   },
   {
-    q: "Are your machines CE marked and ISO certified?",
-    a: "Yes. Every machine we export carries CE marking, and our manufacturing is certified to ISO 9001:2015. We supply a CE declaration of conformity and ISO certificate with every export order, alongside the commercial invoice, packing list, bill of lading and certificate of origin your customs broker will need.",
+    q: "What certification will my machine need for my country?",
+    a: "That depends on the destination: the EU expects CE marking, the UK UKCA, and some markets have their own conformity schemes. We confirm what your market requires, and the documentation we can supply for it, at the quotation stage, before production begins, so there are no surprises at customs. Our Import Export Code covers the export paperwork itself.",
   },
   {
     q: "What is your standard Incoterm for export shipments?",

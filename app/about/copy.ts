@@ -21,7 +21,7 @@ export const manufacturingParagraphs: string[] = [
 ];
 
 export const certSummary =
-  "RA Machine holds ISO 9001:2015 quality management certification, CE marking on applicable machines, GST and MSME/Udyam registration, an Import Export Code from the DGFT, Indian Railways vendor listing, and alignment with the Government of India's Make in India initiative.";
+  "R.A. Auto Engineering Works is GST registered, holds an Import Export Code from the DGFT, and has supplied Indian Railways since 2022 as a preferred vendor for certain safety-critical items.";
 
 /** The real management team — maintained in config/site.ts. */
 export const leadership: { role: string; name: string; bio: string }[] = site.leadership.map(

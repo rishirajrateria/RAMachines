@@ -6,9 +6,9 @@
  * to append one page-specific sentence (e.g. naming a state or country).
  *
  * Reworded after the Oct 2026 client review ("rewording, punctuation"): the
- * five technologies replace the old CO2/tube list, the certifications read as
- * one sentence instead of a five-item run-on, and CE marking is stated "where
- * applicable", matching the certifications page.
+ * five technologies replace the old CO2/tube list. Credentials: only what the
+ * owner has confirmed (GST, IEC, Indian Railways supply) — ISO 9001, CE, MSME
+ * etc. are not claimed until confirmed (see data/certifications.ts).
  */
 import Link from "next/link";
 import { site } from "@/config/site";
@@ -34,9 +34,8 @@ export default function AboutBlurb({
       {site.legalName}, an engineering company in Kolkata, India, founded in {site.foundedYear} and
       building machines since {site.machineDivisionSince}. We make CNC laser and plasma cutting machines,
       MIG, TIG, MMA and submerged arc welding machines, and cobot and robotic welding systems, and supply
-      them across India and abroad. We are ISO 9001:2015 certified, MSME (Udyam) registered and a listed
-      Indian Railways vendor; our machines carry CE marking where applicable, and we hold an Import Export
-      Code for export.
+      them across India and abroad. We are GST registered, hold an Import Export Code for export, and have
+      supplied Indian Railways since 2022 as a preferred vendor for certain safety-critical items.
       {context ? ` ${context}` : ""}{" "}
       {linkToAbout && (
         <Link href={paths.about} className="font-semibold text-teal underline-offset-2 hover:underline">
