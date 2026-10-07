@@ -13,11 +13,11 @@ export const africaCountries: Country[] = [
     overview: [
       "South Africa has the continent's most developed manufacturing base, with Gauteng's Johannesburg-Ekurhuleni industrial belt, Durban's port-linked industry, and Cape Town's Western Cape manufacturing cluster together forming a diversified metalworking and engineering sector. Import demand for fiber laser cutting equipment has grown as South African fabricators, long dependent on ageing cutting equipment, look to modernise with CNC fiber laser and plasma capacity for automotive, mining equipment and general engineering work.",
       "South Africa also functions as a manufacturing and distribution gateway for the wider Southern African Development Community region, meaning equipment purchased in Johannesburg or Durban often supports fabrication that ultimately serves neighbouring countries as well.",
-      "Currency volatility and high local financing costs make South African buyers particularly attentive to total landed cost, and competitively priced Indian machines with credible CE and ISO documentation are increasingly considered alongside established European and Chinese suppliers.",
+      "Currency volatility and high local financing costs make South African buyers particularly attentive to total landed cost, and competitively priced Indian machines with clear technical documentation and English-language support are increasingly considered alongside established European and Chinese suppliers.",
     ],
     whyIndia: [
       "Competitive pricing against European brands and better documentation than typical Chinese alternatives suits South African buyers managing currency and financing cost pressure.",
-      "CE marking and ISO 9001:2015 certification meet the quality-assurance expectations of South Africa's automotive and mining equipment supply chains.",
+      "Machines can be configured for South Africa's 400 V 3-phase industrial supply, with English-language manuals and wiring diagrams suited to automotive and mining equipment supply chains.",
       "A 3.5-hour time difference from India supports convenient same-day scheduling for remote diagnostics and support.",
       "Shipping from Indian ports to Durban is a well-established Indian Ocean trade route with regular vessel frequency, keeping freight options reliable.",
     ],
@@ -60,7 +60,7 @@ export const africaCountries: Country[] = [
       { q: "What warranty and spares support do you provide?", a: "Every machine carries a 12-month warranty on the laser or welding power source, drive and control system, with wear spares such as nozzles, lenses and torch consumables stocked for prompt dispatch." },
       { q: "What payment terms apply to South African orders?", a: "Standard terms are 30 percent advance with the purchase order and 70 percent against pre-shipment inspection video and shipping documents, settled by wire transfer in US dollars." },
       { q: "What is the typical lead time before shipment?", a: "Production lead time is typically 6 to 8 weeks from confirmed order and specification, with an exact shipping date confirmed once the vessel is booked." },
-      { q: "What documents will our customs agent need for clearance?", a: "We supply a CE declaration of conformity, ISO 9001:2015 certificate, commercial invoice, packing list, bill of lading and certificate of origin, sufficient for your customs clearing agent to classify and clear the shipment." },
+      { q: "What documents will our customs agent need for clearance?", a: "We supply a commercial invoice, packing list, bill of lading and certificate of origin for your customs clearing agent to classify and clear the shipment, and confirm any conformity documentation your machine category needs at the quotation stage." },
     ],
   },
   {
@@ -76,7 +76,7 @@ export const africaCountries: Country[] = [
     whyIndia: [
       "A well-established Kenyan-Indian business and technical community across Nairobi's industrial sector gives Indian machinery suppliers a familiar and trusted starting point with Kenyan buyers.",
       "Competitive Indian pricing relative to European brands suits Kenya's cost-conscious fabrication and construction sector.",
-      "CE marking and ISO 9001:2015 documentation help Kenyan buyers meet the quality expectations of regional infrastructure and government-linked projects.",
+      "Machines can be configured for Kenya's 415 V 3-phase supply, and established Indian Ocean shipping to Mombasa keeps delivery for regional infrastructure and government-linked projects predictable.",
       "A 2.5-hour time difference from India supports convenient same-day scheduling for remote diagnostics and support.",
     ],
     sectors: [
@@ -109,7 +109,7 @@ export const africaCountries: Country[] = [
     currency: "KES (Kenyan Shilling)",
     currencyNote: "Quotations are issued in US dollars, the standard invoicing currency for Kenyan import transactions.",
     shippingNote: "Sea freight from Kolkata or Haldia to Mombasa is a direct Indian Ocean route with an indicative transit of 14–20 days. CIF delivery to Mombasa is available alongside standard FOB Kolkata or Delhi terms, with onward road transit to Nairobi and regional destinations.",
-    regulatoryNote: "Kenya applies standard import duty under the East African Community common external tariff, with pre-shipment or destination conformity verification required for certain goods categories; CE documentation supports the import process and buyers should confirm current PVoC (Pre-Export Verification of Conformity) requirements with their customs clearing agent.",
+    regulatoryNote: "Kenya applies standard import duty under the East African Community common external tariff, with pre-shipment or destination conformity verification required for certain goods categories; we confirm the conformity documentation your machine category needs at the quotation stage, and buyers should confirm current PVoC (Pre-Export Verification of Conformity) requirements with their customs clearing agent.",
     faqs: [
       { q: "How do we request a quotation for delivery to Kenya?", a: "Send your required cutting or welding specification through our enquiry form and we will issue a US-dollar quotation with FOB Kolkata or Delhi and CIF options to Mombasa, along with confirmed lead time." },
       { q: "What shipping terms and transit time apply to Kenya?", a: "We ship FOB Kolkata or Delhi as standard with CIF available to Mombasa. Transit is indicatively 14 to 20 days on this direct Indian Ocean route, with onward road transit to Nairobi." },
@@ -118,7 +118,7 @@ export const africaCountries: Country[] = [
       { q: "What warranty and spares support do you provide?", a: "Every machine carries a 12-month warranty on the laser or welding power source, drive and control system, with wear spares such as nozzles, lenses and torch consumables stocked for prompt dispatch to Nairobi." },
       { q: "What payment terms apply to Kenyan orders?", a: "Standard terms are 30 percent advance with the purchase order and 70 percent against pre-shipment inspection video and shipping documents, settled by wire transfer in US dollars." },
       { q: "What is the typical lead time before shipment?", a: "Production lead time is typically 6 to 8 weeks from confirmed order and specification, with an exact shipping date confirmed once the vessel is booked." },
-      { q: "What is required for PVoC and customs clearance in Kenya?", a: "We supply a CE declaration of conformity, ISO 9001:2015 certificate, commercial invoice, packing list, bill of lading and certificate of origin; your customs clearing agent will confirm current PVoC requirements for your machine category." },
+      { q: "What is required for PVoC and customs clearance in Kenya?", a: "We supply a commercial invoice, packing list, bill of lading and certificate of origin, and confirm at quotation which conformity documents apply to your order; your customs clearing agent will confirm current PVoC requirements for your machine category." },
     ],
     isTop: true,
   },
@@ -135,7 +135,7 @@ export const africaCountries: Country[] = [
     whyIndia: [
       "A long-standing India-Nigeria trading relationship and an established Indian business community in Lagos give Indian machinery brands strong existing recognition and trust.",
       "Competitive pricing relative to European brands suits Nigerian buyers managing currency volatility and financing cost pressure.",
-      "CE marking and ISO 9001:2015 documentation help Nigerian buyers meet the quality expectations of oil and gas and government-linked infrastructure projects.",
+      "Machines can be configured for Nigeria's 415 V 3-phase industrial supply, and English-language documentation suits the paperwork trail expected on oil and gas and government-linked infrastructure projects.",
       "A 4.5-hour time difference from India supports workable scheduling for remote diagnostics within the same extended working day.",
     ],
     sectors: [
@@ -168,11 +168,11 @@ export const africaCountries: Country[] = [
     currency: "NGN (Nigerian Naira)",
     currencyNote: "Quotations are issued in US dollars, the standard invoicing currency for Nigerian import transactions given naira volatility.",
     shippingNote: "Sea freight from Kolkata or Haldia to Lagos typically routes via the Suez Canal and around West Africa, or via the Cape route, with an indicative transit of 30–40 days. CIF delivery to Lagos is available alongside standard FOB Kolkata or Delhi terms.",
-    regulatoryNote: "Nigeria requires SONCAP (Standards Organisation of Nigeria Conformity Assessment Programme) certification for many imported goods categories, and CE documentation supports this process; buyers should initiate SONCAP registration with their customs clearing agent well before shipment to avoid port delays.",
+    regulatoryNote: "Nigeria requires SONCAP (Standards Organisation of Nigeria Conformity Assessment Programme) certification for many imported goods categories, and we confirm the technical documentation SONCAP needs for your machine at the quotation stage; buyers should initiate SONCAP registration with their customs clearing agent well before shipment to avoid port delays.",
     faqs: [
       { q: "How do we request a quotation for delivery to Nigeria?", a: "Send your required cutting or welding specification through our enquiry form and we will issue a US-dollar quotation with FOB Kolkata or Delhi and CIF options to Lagos, along with confirmed lead time." },
       { q: "What shipping terms and transit time apply to Nigeria?", a: "We ship FOB Kolkata or Delhi as standard with CIF available to Lagos. Transit is indicatively 30 to 40 days, routing via the Suez Canal or the Cape depending on vessel availability." },
-      { q: "What is required for SONCAP certification?", a: "We supply the CE declaration of conformity, technical documentation and product certificate your customs agent needs to complete SONCAP registration; we recommend starting this process as soon as the order is confirmed to avoid port delays." },
+      { q: "What is required for SONCAP certification?", a: "We supply the technical documentation, commercial invoice and certificate of origin, and confirm at quotation exactly what your customs agent needs to complete SONCAP registration; we recommend starting this process as soon as the order is confirmed to avoid port delays." },
       { q: "Will the machine run on Nigerian industrial power?", a: "Our machines can be configured for 415 V 3-phase 50 Hz supply, the standard across Nigerian industrial facilities, so no additional transformer is required." },
       { q: "How is installation and operator training carried out?", a: "We begin with remote video commissioning by our engineering team, followed by an on-site engineer visit for final calibration, safety checks and hands-on operator training." },
       { q: "What warranty and spares support do you provide?", a: "Every machine carries a 12-month warranty on the laser or welding power source, drive and control system, with wear spares such as nozzles, lenses and torch consumables stocked for prompt dispatch to Lagos." },
@@ -227,7 +227,7 @@ export const africaCountries: Country[] = [
     currency: "TZS (Tanzanian Shilling)",
     currencyNote: "Quotations are issued in US dollars, the standard invoicing currency for Tanzanian import transactions.",
     shippingNote: "Sea freight from Kolkata or Haldia to Dar es Salaam is a direct Indian Ocean route with an indicative transit of 12–18 days. CIF delivery to Dar es Salaam is available alongside standard FOB Kolkata or Delhi terms.",
-    regulatoryNote: "Tanzania applies standard import duty under the East African Community common external tariff, with pre-shipment or destination conformity verification required for certain goods categories; CE documentation supports the import process and buyers should confirm current PVoC requirements with their customs clearing agent.",
+    regulatoryNote: "Tanzania applies standard import duty under the East African Community common external tariff, with pre-shipment or destination conformity verification required for certain goods categories; conformity paperwork for your machine is confirmed with you at the quotation stage, and buyers should confirm current PVoC requirements with their customs clearing agent.",
     faqs: [
       { q: "How do we request a quotation for delivery to Tanzania?", a: "Send your required cutting or welding specification through our enquiry form and we will issue a US-dollar quotation with FOB Kolkata or Delhi and CIF options to Dar es Salaam, along with confirmed lead time." },
       { q: "What shipping terms and transit time apply to Tanzania?", a: "We ship FOB Kolkata or Delhi as standard with CIF available to Dar es Salaam. Transit is indicatively 12 to 18 days on this direct Indian Ocean route." },
@@ -236,7 +236,7 @@ export const africaCountries: Country[] = [
       { q: "What warranty and spares support do you provide?", a: "Every machine carries a 12-month warranty on the laser or welding power source, drive and control system, with wear spares such as nozzles, lenses and torch consumables stocked for prompt dispatch." },
       { q: "What payment terms apply to Tanzanian orders?", a: "Standard terms are 30 percent advance with the purchase order and 70 percent against pre-shipment inspection video and shipping documents, settled by wire transfer in US dollars." },
       { q: "What is the typical lead time before shipment?", a: "Production lead time is typically 6 to 8 weeks from confirmed order and specification, with an exact shipping date confirmed once the vessel is booked." },
-      { q: "What is required for PVoC and customs clearance?", a: "We supply a CE declaration of conformity, ISO 9001:2015 certificate, commercial invoice, packing list, bill of lading and certificate of origin; your customs clearing agent will confirm current PVoC requirements for your machine category." },
+      { q: "What is required for PVoC and customs clearance?", a: "We supply a commercial invoice, packing list, bill of lading and certificate of origin, and agree any conformity documentation with you before production; your customs clearing agent will confirm current PVoC requirements for your machine category." },
     ],
   },
   {
@@ -251,7 +251,7 @@ export const africaCountries: Country[] = [
     ],
     whyIndia: [
       "Competitive Indian pricing suits Ethiopia's cost-conscious industrialisation programme and its developing base of fabrication workshops.",
-      "CE marking and ISO 9001:2015 documentation help Ethiopian buyers meet the quality expectations of government-backed industrial park projects.",
+      "Machines can be configured for Ethiopia's 380 V 3-phase supply, and English-language documentation suits the procurement paperwork of government-backed industrial park projects.",
       "A 2.5-hour time difference from India supports convenient same-day scheduling for remote diagnostics and support.",
       "The Djibouti-Addis Ababa logistics corridor used for most of Ethiopia's imports is a well-used route for goods from India, and an Indian supplier can plan the sea and inland legs together for Ethiopian buyers.",
     ],
@@ -285,7 +285,7 @@ export const africaCountries: Country[] = [
     currency: "ETB (Ethiopian Birr)",
     currencyNote: "Quotations are issued in US dollars, the standard invoicing currency for Ethiopian import transactions.",
     shippingNote: "As Ethiopia is landlocked, machinery ships by sea from Kolkata or Haldia to the Port of Djibouti, typically transshipping via Colombo or Singapore, followed by road or rail transit to Addis Ababa, with an indicative total transit of 25–35 days. Our export team can coordinate the onward inland leg as part of the shipment plan.",
-    regulatoryNote: "Ethiopia applies standard import duty and requires conformity documentation for certain imported machinery categories; CE documentation supports the import process and buyers should confirm current requirements, including any foreign exchange allocation considerations, with their customs clearing agent given Ethiopia's managed import environment.",
+    regulatoryNote: "Ethiopia applies standard import duty and requires conformity documentation for certain imported machinery categories; we confirm the documentation your order requires at the quotation stage, and buyers should confirm current requirements, including any foreign exchange allocation considerations, with their customs clearing agent given Ethiopia's managed import environment.",
     faqs: [
       { q: "How do we request a quotation for delivery to Ethiopia?", a: "Send your required cutting or welding specification through our enquiry form and we will issue a US-dollar quotation covering the Djibouti-Addis Ababa routing, along with confirmed lead time." },
       { q: "How does delivery work since Ethiopia is landlocked?", a: "Machinery ships by sea to the Port of Djibouti, typically transshipping via Colombo or Singapore, followed by road or rail transit to Addis Ababa; we can coordinate this onward inland leg as part of the shipment plan." },
@@ -294,7 +294,7 @@ export const africaCountries: Country[] = [
       { q: "What warranty and spares support do you provide?", a: "Every machine carries a 12-month warranty on the laser or welding power source, drive and control system, with wear spares dispatched via the Djibouti-Addis Ababa route or by air freight where urgent." },
       { q: "What payment terms apply to Ethiopian orders?", a: "Standard terms are 30 percent advance with the purchase order and 70 percent against pre-shipment inspection video and shipping documents, settled by wire transfer in US dollars." },
       { q: "What is the typical lead time before delivery?", a: "Production lead time is typically 6 to 8 weeks from confirmed order and specification, plus the sea and inland transit time to Addis Ababa." },
-      { q: "What documents will we receive for customs clearance?", a: "We supply a CE declaration of conformity, ISO 9001:2015 certificate, commercial invoice, packing list and certificate of origin; your customs clearing agent will confirm any additional requirements given Ethiopia's import regulations." },
+      { q: "What documents will we receive for customs clearance?", a: "We supply a commercial invoice, packing list and certificate of origin, and confirm any conformity paperwork needed for your order at quotation; your customs clearing agent will confirm any additional requirements given Ethiopia's import regulations." },
     ],
   },
 ];

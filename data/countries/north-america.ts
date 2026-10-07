@@ -14,12 +14,12 @@ export const northAmericaCountries: Country[] = [
     adjective: "American",
     overview: [
       "The United States remains the world's largest single market for industrial capital equipment, with metal fabrication job shops, automotive suppliers and heavy equipment manufacturers spread across the Midwest, Southeast and Texas Gulf Coast. Demand for fiber laser cutting and robotic welding capacity has grown steadily as US manufacturers reshore production and small to mid-sized job shops replace ageing cutting systems with fiber laser and modern CNC plasma lines.",
-      "Tariff measures on Chinese-origin machine tools have pushed many American buyers to look beyond China for competitively priced fiber laser and welding equipment, and Indian manufacturers with CE-marked, ISO-certified machines are increasingly considered a credible middle ground between premium European brands and Chinese suppliers now carrying additional duty exposure.",
+      "Tariff measures on Chinese-origin machine tools have pushed many American buyers to look beyond China for competitively priced fiber laser and welding equipment, and Indian manufacturers offering well-documented, competitively priced machines are increasingly considered a credible middle ground between premium European brands and Chinese suppliers now carrying additional duty exposure.",
       "Small and mid-sized fabricators — typically 10 to 150 employees — make up much of the US fabrication base, often buying one or two machines rather than full production lines, which suits RA Machine's approach of configuring each cutting or welding machine to the job.",
     ],
     whyIndia: [
       "Section 301 and related duties on Chinese-origin machine tools do not apply to Indian-manufactured equipment, giving Indian suppliers a landed-cost advantage over Chinese competitors for the same specification.",
-      "Pricing typically sits well below Trumpf, Bystronic or Amada equivalents while still carrying CE marking and ISO 9001:2015 documentation that US buyers can present to their own insurers and auditors.",
+      "Pricing typically sits well below Trumpf, Bystronic or Amada equivalents, with written specifications and a pre-shipment inspection video that US buyers can present to their own insurers and auditors.",
       "English-language technical documentation, user manuals and engineer communication remove the translation friction common with Chinese and some East Asian suppliers.",
       "Remote diagnostics scheduled across the time zone gap (India is 9.5 to 13 hours ahead of the continental US) is handled with structured working-hours overlap windows, and an on-site engineer visit can be arranged for installation and commissioning.",
     ],
@@ -67,7 +67,7 @@ export const northAmericaCountries: Country[] = [
     currency: "USD (United States Dollar)",
     currencyNote: "All quotations are invoiced in US dollars; a step-down or step-up transformer is supplied where a facility's incoming supply does not match the machine's rated voltage.",
     shippingNote: "Machines are shipped by sea from Kolkata or Haldia, typically transshipped via Colombo or Singapore, with West Coast transit of roughly 35–45 days and East Coast (via the Suez route) of roughly 30–40 days, both indicative. CIF delivery to the buyer's nearest major port is available alongside standard FOB Kolkata or Delhi terms.",
-    regulatoryNote: "Industrial machine tools are not subject to mandatory UL listing, though some insurers and facilities request NRTL-certified electrical panels, which can be arranged on request; CE documentation is supplied as standard and import duty on capital machinery under the relevant HTS heading is generally low but should be confirmed with the buyer's customs broker.",
+    regulatoryNote: "Industrial machine tools are not subject to mandatory UL listing, though some insurers and facilities request NRTL-certified electrical panels, which can be arranged on request; other documentation requirements are confirmed at the quotation stage and import duty on capital machinery under the relevant HTS heading is generally low but should be confirmed with the buyer's customs broker.",
     faqs: [
       { q: "How do we get a price for a machine shipped to the US?", a: "Send us your required cutting or welding capacity, material thickness and bed size through the enquiry form and we will issue a formal quotation in US dollars covering FOB Kolkata or Delhi and CIF options to your nearest port, along with lead time and payment terms." },
       { q: "What shipping and Incoterms do you offer to the United States?", a: "We ship FOB Kolkata or Delhi as standard and can arrange CIF to Los Angeles, Savannah, New York or Houston on request. Sea freight transit is indicative and confirmed at booking; air freight is available for urgent spares." },
@@ -76,7 +76,7 @@ export const northAmericaCountries: Country[] = [
       { q: "What warranty and spares support do you provide?", a: "Every machine carries a 12-month warranty on the laser or welding power source, drive and control system. Common wear spares such as nozzles, lenses, protective glass and torch consumables are stocked for fast air-freight dispatch to US addresses." },
       { q: "What are your payment terms for US buyers?", a: "Standard terms are 30 percent advance with the purchase order and 70 percent against pre-shipment inspection video and shipping documents, payable by wire transfer in US dollars." },
       { q: "What is the typical lead time from order to shipment?", a: "Production lead time is typically 6 to 8 weeks from confirmed order and finalised specification, depending on machine configuration and current factory schedule; we confirm an exact date at order confirmation." },
-      { q: "What certification and import documents will we receive?", a: "You receive a CE declaration of conformity, ISO 9001:2015 certificate, commercial invoice, packing list, bill of lading and a certificate of origin, which your customs broker can use for HTS classification and clearance." },
+      { q: "What import documents will we receive?", a: "You receive a commercial invoice, packing list, bill of lading and a certificate of origin, which your customs broker can use for HTS classification and clearance; any further documentation your insurer or facility requests is confirmed at quotation." },
     ],
     isTop: true,
   },
@@ -87,11 +87,11 @@ export const northAmericaCountries: Country[] = [
     adjective: "Canadian",
     overview: [
       "Canada's metal fabrication base is concentrated in southern Ontario and the Prairie provinces, supplying the automotive, construction and oil and gas equipment industries. Import demand for fiber laser cutting machines has risen as Ontario job shops upgrade from older cutting systems, while Alberta fabricators serving the energy sector look for heavier-duty machines able to cut thick structural plate.",
-      "Canadian buyers are typically price-sensitive relative to their US neighbours, and many compare Indian fiber laser offerings directly against Chinese and Korean imports, so a documented CE and ISO quality trail combined with English-language support gives Indian suppliers a clear edge in vendor evaluation.",
+      "Canadian buyers are typically price-sensitive relative to their US neighbours, and many compare Indian fiber laser offerings directly against Chinese and Korean imports, so clear technical documentation combined with English-language support gives Indian suppliers a clear edge in vendor evaluation.",
       "Winter operating conditions and the country's dispersed industrial base mean buyers place particular weight on reliable remote diagnostics and a straightforward spares supply chain, since on-site visits from any overseas supplier involve longer scheduling lead times.",
     ],
     whyIndia: [
-      "CE-marked machines with full ISO 9001:2015 documentation satisfy the due-diligence expectations of Canadian procurement teams used to European suppliers, at a materially lower price point.",
+      "Written specifications and a pre-shipment inspection video support the due-diligence expectations of Canadian procurement teams used to European suppliers, at a materially lower price point.",
       "English is the working language for both Ontario and Western Canada, so specifications, manuals and remote support calls proceed without translation delays.",
       "The overlap between Indian Standard Time and Eastern/Pacific time zones allows scheduled video commissioning calls during the Canadian afternoon, which is Indian late evening or night, and this is planned in advance rather than left ad hoc.",
       "Shipping via Vancouver on the Pacific route is often faster than equivalent European-sourced freight, since it avoids the longer round-the-world routing some European exporters use for Western Canadian deliveries.",
@@ -133,7 +133,7 @@ export const northAmericaCountries: Country[] = [
     currency: "CAD (Canadian Dollar)",
     currencyNote: "Quotations are issued in US dollars for consistency with our export documentation; buyers may arrange conversion to Canadian dollars with their bank at the time of transfer.",
     shippingNote: "Sea freight to Vancouver from Kolkata or Haldia typically transships via Colombo or Singapore with an indicative transit of 30–38 days, while Eastern Canada via Montreal or Halifax routes through the Suez Canal with an indicative transit of 35–42 days. Both FOB Kolkata or Delhi and CIF nearest port terms are available.",
-    regulatoryNote: "Canadian provinces generally expect CSA-marked electrical panels for permanent installation, which we can supply on request alongside the standard CE documentation, and import duty on industrial machine tools under Canada's tariff schedule is typically low but should be confirmed by the buyer's customs broker.",
+    regulatoryNote: "Canadian provinces generally expect CSA-marked electrical panels for permanent installation, which we can supply on request, and import duty on industrial machine tools under Canada's tariff schedule is typically low but should be confirmed by the buyer's customs broker.",
     faqs: [
       { q: "Can you quote a machine delivered to a Canadian address?", a: "Yes. Send your cutting thickness, bed size and welding requirements through our enquiry form and we will issue a US-dollar quotation covering FOB Kolkata or Delhi and CIF options to Vancouver, Montreal or Halifax, along with confirmed lead time." },
       { q: "What Incoterms and shipping routes do you use for Canada?", a: "We ship FOB Kolkata or Delhi as standard, with CIF available to your nearest port. Western Canada typically routes via Vancouver on the Pacific corridor, while Eastern Canada routes via the Suez Canal to Montreal or Halifax." },
@@ -142,7 +142,7 @@ export const northAmericaCountries: Country[] = [
       { q: "What warranty applies and how are spares supplied?", a: "Every machine carries a 12-month warranty covering the laser or welding power source, drive and control system. Wear spares such as nozzles, lenses and torch consumables are kept in stock for prompt air-freight dispatch to Canadian addresses." },
       { q: "What payment terms do you offer Canadian buyers?", a: "Standard terms are 30 percent advance with the order and 70 percent against pre-shipment inspection video and shipping documents, settled by wire transfer in US dollars." },
       { q: "How long does production and shipping take?", a: "Production lead time is typically 6 to 8 weeks from confirmed specification and order, and we provide a firm shipping date at order confirmation along with the vessel booking once cargo is ready." },
-      { q: "What documents does your customs broker need for import?", a: "We supply a CE declaration of conformity, ISO 9001:2015 certificate, commercial invoice, packing list, bill of lading and certificate of origin, sufficient for your broker to classify and clear the shipment under Canada's tariff schedule." },
+      { q: "What documents does your customs broker need for import?", a: "We supply a commercial invoice, packing list, bill of lading and certificate of origin, sufficient for your broker to classify and clear the shipment under Canada's tariff schedule; any CSA or conformity documentation is confirmed at quotation." },
     ],
   },
   {
@@ -157,7 +157,7 @@ export const northAmericaCountries: Country[] = [
     ],
     whyIndia: [
       "Pricing well below US, German and Japanese machine tool brands allows Mexican tier-2 and tier-3 suppliers to add fiber laser capacity without the capital outlay of premium Western equipment.",
-      "CE documentation and ISO 9001:2015 certification are recognised by the multinational OEMs auditing Mexican suppliers under USMCA-linked supply chains, helping buyers satisfy their own customer quality requirements.",
+      "Specifications agreed in writing and a pre-shipment inspection video give Mexican suppliers a clear record for the multinational OEMs auditing them under USMCA-linked supply chains.",
       "English-language technical support bridges the common gap where Mexican engineering teams communicate in English with their US and Canadian customers but prefer not to rely on Mandarin-only Chinese supplier documentation.",
       "Remote diagnostics scheduling works well across the roughly 11 to 13-hour time difference from India, with structured appointment windows agreed at commissioning.",
     ],
@@ -198,7 +198,7 @@ export const northAmericaCountries: Country[] = [
     currency: "MXN (Mexican Peso)",
     currencyNote: "Quotations are issued in US dollars, which is the standard invoicing currency for Mexican import transactions and simplifies customs valuation.",
     shippingNote: "Shipments to Pacific-coast Manzanillo or Lázaro Cárdenas from Kolkata or Haldia typically transship via Colombo or Singapore with an indicative transit of 35–45 days, while Gulf-coast Veracruz or Altamira route through the Suez Canal with an indicative transit of 38–48 days. FOB Kolkata or Delhi and CIF nearest port terms are both available.",
-    regulatoryNote: "Mexican import of industrial machinery generally requires NOM conformity assessment for certain equipment categories, and buyers should confirm applicability with their customs broker; CE documentation is supplied as standard and IMMEX-registered maquiladoras typically benefit from reduced import duty on production machinery.",
+    regulatoryNote: "Mexican import of industrial machinery generally requires NOM conformity assessment for certain equipment categories, and buyers should confirm applicability with their customs broker; the documentation required for your machine is confirmed at the quotation stage, and IMMEX-registered maquiladoras typically benefit from reduced import duty on production machinery.",
     faqs: [
       { q: "How can we request a quotation for delivery to Mexico?", a: "Submit your required cutting or welding specification through our enquiry form and we will issue a US-dollar quotation with FOB Kolkata or Delhi and CIF options to Manzanillo, Lázaro Cárdenas, Veracruz or Altamira, along with lead time." },
       { q: "What shipping terms and routes apply to Mexican ports?", a: "We ship FOB Kolkata or Delhi as standard with CIF available to your nearest port. Pacific ports route via Colombo or Singapore, while Gulf ports route via the Suez Canal, both with indicative transit windows confirmed at booking." },
@@ -207,7 +207,7 @@ export const northAmericaCountries: Country[] = [
       { q: "What warranty and spares support is available in Mexico?", a: "Every machine carries a 12-month warranty on the laser or welding power source, drive and control system, and wear spares such as nozzles, lenses and torch consumables are stocked for rapid air-freight dispatch to Mexican addresses." },
       { q: "What are the standard payment terms?", a: "We work on 30 percent advance with the purchase order and 70 percent against pre-shipment inspection video and shipping documents, payable by wire transfer in US dollars." },
       { q: "What is the typical lead time from order to shipment?", a: "Production lead time is typically 6 to 8 weeks from confirmed order and specification, with an exact shipping date confirmed once the vessel booking is made." },
-      { q: "What documents do we need for NOM and customs clearance?", a: "We provide a CE declaration of conformity, ISO 9001:2015 certificate, commercial invoice, packing list, bill of lading and certificate of origin; your customs broker will confirm whether NOM conformity assessment applies to your specific machine." },
+      { q: "What documents do we need for NOM and customs clearance?", a: "We provide a commercial invoice, packing list, bill of lading and certificate of origin, and confirm conformity documentation at quotation; your customs broker will confirm whether NOM conformity assessment applies to your specific machine." },
     ],
   },
 ];

@@ -13,12 +13,12 @@ export const oceaniaCountries: Country[] = [
     overview: [
       "Australia's manufacturing sector, though smaller relative to its resources industry, is well capitalised and geographically concentrated around Western Sydney, Melbourne's Dandenong corridor and Brisbane, spanning general engineering, mining equipment fabrication and construction-linked metalwork. High local labour costs have made automation, including fiber laser cutting and robotic welding, a priority investment area for Australian fabricators seeking to remain competitive.",
       "Australian buyers are accustomed to importing capital equipment from Europe, Japan and China, and the Australia-India Economic Cooperation and Trade Agreement (ECTA) has meaningfully improved the commercial and tariff environment for Indian exporters entering the Australian market.",
-      "Australia's strict workplace health and safety culture means documentation and machine safety features are closely scrutinised, and Indian manufacturers who supply full CE technical files alongside clear operating and safety documentation are well positioned to meet these expectations.",
+      "Australia's strict workplace health and safety culture means documentation and machine safety features are closely scrutinised, and Indian manufacturers who supply clear operating, maintenance and safety documentation are well positioned to meet these expectations.",
     ],
     whyIndia: [
       "The Australia-India ECTA has reduced tariff and trade friction, giving Indian machinery a clearer commercial pathway into the Australian market than before the agreement.",
       "Pricing well below European and Japanese brands suits Australian fabricators facing high local labour costs and seeking automation investment with a faster payback period.",
-      "CE marking and full technical documentation meet the rigorous workplace health and safety documentation expectations of Australian industrial buyers and regulators.",
+      "Detailed English-language operating and safety documentation supports the rigorous workplace health and safety expectations of Australian industrial buyers, with any further conformity requirements confirmed at quotation.",
       "A relatively close time zone (4.5 to 5.5 hours ahead of India depending on the Australian state and daylight saving) supports convenient scheduling for remote diagnostics within a shared working window.",
     ],
     sectors: [
