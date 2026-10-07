@@ -18,7 +18,7 @@ export const centralAsiaCountries: Country[] = [
     whyIndia: [
       "Growing India-Uzbekistan trade cooperation and diplomatic engagement provide a positive commercial backdrop for Indian exporters entering the Central Asian market.",
       "Competitive Indian pricing relative to Russian, Turkish and European alternatives suits Uzbekistan's cost-conscious industrial modernisation programme.",
-      "CE marking and ISO 9001:2015 documentation give Uzbek buyers the quality assurance paperwork increasingly expected for state-linked procurement and modernisation projects.",
+      "Machines can be configured for Uzbekistan's 380 V 3-phase supply, and English-language technical documentation supports the paperwork increasingly expected for state-linked procurement and modernisation projects.",
       "A 1.5-hour time difference from India supports convenient same-day scheduling for remote diagnostics and support.",
     ],
     sectors: [
@@ -51,7 +51,7 @@ export const centralAsiaCountries: Country[] = [
     currency: "UZS (Uzbekistani Som)",
     currencyNote: "Quotations are issued in US dollars, the standard invoicing currency for Uzbek import transactions.",
     shippingNote: "As Uzbekistan is landlocked, machinery typically moves by sea to a regional port followed by rail or road transit, or by direct air freight to Tashkent or the Navoi cargo hub for time-sensitive shipments, with an indicative total transit of 30–45 days by sea-and-land routing. Our export team confirms the most efficient current routing at enquiry stage.",
-    regulatoryNote: "Uzbekistan applies standard import duty and conformity requirements on industrial machinery, with import procedures continuing to be simplified under the country's ongoing trade liberalisation programme; CE documentation supports the import process and buyers should confirm current requirements with their customs clearing agent.",
+    regulatoryNote: "Uzbekistan applies standard import duty and conformity requirements on industrial machinery, with import procedures continuing to be simplified under the country's ongoing trade liberalisation programme; we confirm the conformity documentation your order requires at the quotation stage, and buyers should confirm current requirements with their customs clearing agent.",
     faqs: [
       { q: "How do we request a quotation for delivery to Uzbekistan?", a: "Send your required cutting or welding specification through our enquiry form and we will issue a US-dollar quotation covering the most efficient routing to Tashkent or Navoi at the time of enquiry, along with confirmed lead time." },
       { q: "How does delivery work since Uzbekistan is landlocked?", a: "Machinery moves by sea to a regional port and then by rail or road, or by direct air freight for time-sensitive shipments to Tashkent or the Navoi cargo hub; our export team confirms the fastest current route when you enquire." },
@@ -60,7 +60,7 @@ export const centralAsiaCountries: Country[] = [
       { q: "What warranty and spares support do you offer?", a: "Every machine carries a 12-month warranty on the laser or welding power source, drive and control system, with wear spares dispatched by the most reliable available air or rail route." },
       { q: "What payment terms do you offer Uzbek buyers?", a: "Standard terms are 30 percent advance with the purchase order and 70 percent against pre-shipment inspection video and shipping documents, settled by wire transfer in US dollars." },
       { q: "What is the typical lead time before shipment?", a: "Production lead time is typically 6 to 8 weeks from confirmed order and specification, plus onward transit time once the routing is confirmed." },
-      { q: "What documents will we receive for customs clearance?", a: "We supply a CE declaration of conformity, ISO 9001:2015 certificate, commercial invoice, packing list and certificate of origin for your customs clearing agent." },
+      { q: "What documents will we receive for customs clearance?", a: "We supply a commercial invoice, packing list and certificate of origin for your customs clearing agent, and confirm any conformity documentation required for your machine at the quotation stage." },
     ],
   },
 ];

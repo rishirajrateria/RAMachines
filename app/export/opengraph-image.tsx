@@ -8,6 +8,6 @@ export default function Image() {
   return renderOg({
     eyebrow: "Export",
     title: "CNC Laser, Plasma & Welding Machines from India",
-    subtitle: "CE-marked, ISO 9001:2015-certified machines shipped worldwide, with installation, training and warranty support.",
+    subtitle: "Built in India and shipped worldwide, with export documentation, installation, training and warranty support.",
   });
 }

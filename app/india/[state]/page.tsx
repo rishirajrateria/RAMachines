@@ -11,7 +11,7 @@
  */
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { buildMetadata, truncate } from "@/lib/seo";
+import { buildMetadata, pickTitle } from "@/lib/seo";
 import { paths } from "@/lib/urls";
 import { localBusinessSchema, serviceSchema } from "@/lib/schema";
 import { states, getState, citiesByState } from "@/data";
@@ -42,12 +42,15 @@ export function generateStaticParams() {
   return states.map((state) => ({ state: state.slug }));
 }
 
+/** The whole range, not just laser: each state page competes for laser, plasma
+ * and welding searches (owner decision, Oct 2026). */
 function stateTitle(name: string): string {
-  const withSuffix = `Laser Cutting Machine in ${name} | RA Machine`;
-  if (withSuffix.length <= 60) return withSuffix;
-  const noSuffix = `Laser Cutting Machine in ${name}`;
-  if (noSuffix.length <= 60) return noSuffix;
-  return truncate(noSuffix, 60);
+  return pickTitle([
+    `Laser, Plasma & Welding Machines in ${name}`,
+    `Laser, Plasma & Welding Machines, ${name}`,
+    `Cutting & Welding Machines in ${name}`,
+    `Laser & Welding, ${name}`,
+  ]);
 }
 
 export async function generateMetadata({

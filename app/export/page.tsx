@@ -30,7 +30,7 @@ import HubForm from "./HubForm";
 export const metadata = buildMetadata({
   title: "CNC Laser, Plasma & Welding Machine Exporter, India",
   description:
-    "CE-marked, ISO 9001:2015-certified CNC laser, plasma and welding machines built in India and shipped worldwide, with inspection, installation and training.",
+    "CNC laser, plasma and welding machines built in India and shipped worldwide, with export documentation, pre-shipment inspection, installation and training.",
   path: paths.exportHub,
 });
 
@@ -48,8 +48,8 @@ export default function ExportHubPage() {
           CNC Laser, Plasma &amp; Welding Machines — Exported from India
         </h1>
         <p className="mt-4 max-w-2xl text-grey-600">
-          IEC-registered, CE marked and ISO 9001:2015 certified, with pre-shipment video inspection,
-          installation, training and warranty support for buyers wherever we ship.
+          A licensed (IEC-registered) Indian exporter, with pre-shipment video inspection, installation,
+          training and warranty support for buyers wherever we ship.
         </p>
         <p className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-grey-600 md:text-base">
           {heroFacts.map((fact, i) => (

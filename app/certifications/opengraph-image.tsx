@@ -8,6 +8,6 @@ export default function Image() {
   return renderOg({
     eyebrow: "Certifications",
     title: "Licences & Certifications",
-    subtitle: "ISO 9001:2015, CE marking, GST, MSME, IEC and Indian Railways vendor status.",
+    subtitle: "GST registration, Import Export Code and Indian Railways vendor status.",
   });
 }

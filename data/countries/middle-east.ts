@@ -20,7 +20,7 @@ export const middleEastCountries: Country[] = [
       "A large Indian and South Asian diaspora of technicians and workshop owners across Dubai and Sharjah's free zones already understands Indian manufacturing quality, easing procurement decisions.",
       "Shipping from Kolkata or Haldia to Jebel Ali is short and direct compared with most other export destinations, keeping transit time and freight cost low.",
       "Time zone overlap is close to complete — the UAE is only 1.5 hours behind India — so remote diagnostics and support calls happen in real time during the same working day.",
-      "CE and ISO documentation is well understood by UAE free-zone authorities and re-export customers across the wider Gulf and East Africa.",
+      "Machines can be configured for the UAE's 415 V 3-phase supply, and English-language documentation is easily shared with free-zone authorities and re-export customers across the wider Gulf and East Africa.",
     ],
     sectors: [
       {
@@ -84,7 +84,7 @@ export const middleEastCountries: Country[] = [
     ],
     whyIndia: [
       "Growing India-Saudi trade and investment cooperation gives Indian exporters a favourable commercial backdrop and increasing buyer familiarity.",
-      "CE marking and ISO 9001:2015 documentation meet the quality-assurance expectations of Aramco-linked and government project supply chains.",
+      "Machines can be configured for Saudi Arabia's 380 V 3-phase supply, with detailed English-language technical documentation for the vendor evaluations of Aramco-linked and government project supply chains.",
       "A close time zone overlap, with Saudi Arabia only 2.5 hours behind India, supports real-time remote diagnostics within the same working day.",
       "Competitive pricing relative to European and American brands helps Saudi fabricators meet local content and cost targets simultaneously.",
     ],
@@ -129,7 +129,7 @@ export const middleEastCountries: Country[] = [
     faqs: [
       { q: "How do we request a quotation for delivery to Saudi Arabia?", a: "Send your required cutting or welding specification through our enquiry form and we will issue a US-dollar quotation with FOB Kolkata or Delhi and CIF options to Jeddah or Dammam, along with confirmed lead time." },
       { q: "What shipping terms and transit time apply to Saudi Arabia?", a: "We ship FOB Kolkata or Delhi as standard with CIF available to Jeddah or Dammam. Transit is indicatively 10 to 16 days via the Gulf or Red Sea route." },
-      { q: "What is required for SASO and SABER registration?", a: "We supply the CE declaration of conformity, technical file and supporting documentation your customs agent needs to register the shipment on the SABER platform for SASO conformity; we recommend starting this process before the goods ship." },
+      { q: "What is required for SASO and SABER registration?", a: "We supply technical specifications and supporting documentation, and confirm at quotation what your customs agent needs to register the shipment on the SABER platform for SASO conformity; we recommend starting this process before the goods ship." },
       { q: "Will the machine run on Saudi industrial power?", a: "Our machines can be configured for 380 V 3-phase 60 Hz supply, the Saudi industrial standard, so no additional transformer is required." },
       { q: "How is installation and operator training carried out?", a: "We begin with remote video commissioning by our engineering team, followed by an on-site engineer visit for final calibration, safety checks and hands-on operator training." },
       { q: "What warranty and spares support do you provide?", a: "Every machine carries a 12-month warranty on the laser or welding power source, drive and control system, with wear spares such as nozzles, lenses and torch consumables stocked for prompt dispatch." },
@@ -149,7 +149,7 @@ export const middleEastCountries: Country[] = [
       "The relatively small number of large fabrication contractors in Qatar means individual machine purchases can be significant, and buyers typically expect a thorough quotation process with clear specification, delivery and support commitments before committing.",
     ],
     whyIndia: [
-      "CE and ISO 9001:2015 documentation meets the quality standards expected by Qatar's energy-sector and infrastructure-linked fabrication contractors.",
+      "English-language technical documentation and a pre-shipment inspection video support the project paperwork of Qatar's energy-sector and infrastructure-linked fabrication contractors.",
       "Shipping from Kolkata or Haldia to Hamad Port is a short, direct Gulf route, keeping delivery times and freight costs competitive.",
       "A 2.5-hour time difference from India supports real-time remote diagnostics within the same working day.",
       "Competitive Indian pricing relative to European machine tool brands suits Qatari contractors managing project margins on fixed-price contracts.",
@@ -193,7 +193,7 @@ export const middleEastCountries: Country[] = [
       { q: "What warranty and spares support do you offer?", a: "Every machine carries a 12-month warranty on the laser or welding power source, drive and control system, with wear spares such as nozzles, lenses and torch consumables stocked for prompt dispatch." },
       { q: "What payment terms do you offer Qatari buyers?", a: "Standard terms are 30 percent advance with the purchase order and 70 percent against pre-shipment inspection video and shipping documents, settled by wire transfer in US dollars." },
       { q: "What is the typical lead time before shipment?", a: "Production lead time is typically 6 to 8 weeks from confirmed order and specification, with an exact shipping date confirmed once the vessel is booked." },
-      { q: "What certification documents will we receive?", a: "We supply a CE declaration of conformity, ISO 9001:2015 certificate, commercial invoice, packing list, bill of lading and certificate of origin to support customs clearance and project documentation requirements." },
+      { q: "What documents will we receive with the machine?", a: "We supply a commercial invoice, packing list, bill of lading and certificate of origin to support customs clearance, and confirm at quotation any conformity or project-specific documentation your client requires." },
     ],
   },
   {
@@ -203,7 +203,7 @@ export const middleEastCountries: Country[] = [
     adjective: "Omani",
     overview: [
       "Oman's industrial diversification strategy has grown fabrication and manufacturing activity around Sohar, Salalah and Muscat's industrial estates, supporting the country's ports, logistics and energy sectors. Demand for laser cutting and welding equipment comes largely from workshops serving industrial maintenance, construction and the growing free-zone manufacturing base around Sohar and Salalah's ports.",
-      "Omani fabricators often work alongside larger Gulf contractors and increasingly source machinery directly rather than through regional distributors, particularly where an Indian supplier can offer competitive pricing with recognised CE and ISO documentation.",
+      "Omani fabricators often work alongside larger Gulf contractors and increasingly source machinery directly rather than through regional distributors, particularly where an Indian supplier can offer competitive pricing with clear technical documentation and support.",
       "Oman's close historical trading relationship with India, including a significant Indian expatriate business and technical community, makes Indian manufacturing brands familiar and trusted among Omani buyers.",
     ],
     whyIndia: [
@@ -251,7 +251,7 @@ export const middleEastCountries: Country[] = [
       { q: "What warranty and spares support do you offer?", a: "Every machine carries a 12-month warranty on the laser or welding power source, drive and control system, with wear spares such as nozzles, lenses and torch consumables stocked for rapid dispatch." },
       { q: "What payment terms do you offer Omani buyers?", a: "Standard terms are 30 percent advance with the purchase order and 70 percent against pre-shipment inspection video and shipping documents, settled by wire transfer in US dollars." },
       { q: "What is the typical lead time before shipment?", a: "Production lead time is typically 6 to 8 weeks from confirmed order and specification, with an exact shipping date confirmed once the vessel is booked." },
-      { q: "What documents will we receive for customs clearance?", a: "We supply a CE declaration of conformity, ISO 9001:2015 certificate, commercial invoice, packing list, bill of lading and certificate of origin for your customs clearing agent." },
+      { q: "What documents will we receive for customs clearance?", a: "We supply a commercial invoice, packing list, bill of lading and certificate of origin for your customs clearing agent, and confirm any conformity documentation needed for your machine when we quote." },
     ],
   },
   {
@@ -261,14 +261,14 @@ export const middleEastCountries: Country[] = [
     adjective: "Kuwaiti",
     overview: [
       "Kuwait's manufacturing sector is modest relative to its Gulf neighbours but steady, concentrated around the Shuwaikh and Sabhan industrial areas, supplying the oil and gas, construction and general engineering sectors. Fabrication workshops here typically serve domestic infrastructure and maintenance needs rather than large-scale export manufacturing.",
-      "Kuwaiti buyers, many with existing commercial links to India through trade and a long-established Indian expatriate community, are generally comfortable evaluating Indian machinery suppliers directly, particularly where CE documentation and clear warranty terms are provided.",
+      "Kuwaiti buyers, many with existing commercial links to India through trade and a long-established Indian expatriate community, are generally comfortable evaluating Indian machinery suppliers directly, particularly where clear technical documentation and warranty terms are provided.",
       "Given the relatively small number of active fabrication businesses in Kuwait, machine purchases tend to be considered decisions with a strong emphasis on after-sales support and spares availability given the country's distance from major machine tool manufacturing centres.",
     ],
     whyIndia: [
       "A well-established Indian expatriate business and technical community in Kuwait gives Indian machinery suppliers immediate familiarity with Kuwaiti buyers.",
       "Competitive Indian pricing relative to European and American brands suits Kuwait's cost-conscious contracting and fabrication sector.",
       "A 2.5-hour time difference from India supports convenient same-day scheduling for remote diagnostics and support.",
-      "CE and ISO 9001:2015 documentation gives Kuwaiti buyers the quality assurance paperwork expected for government and oil-sector linked procurement.",
+      "Documentation scope is agreed in writing at the quotation stage, helping Kuwaiti buyers assemble the paperwork expected for government and oil-sector linked procurement.",
     ],
     sectors: [
       {
@@ -309,7 +309,7 @@ export const middleEastCountries: Country[] = [
       { q: "What warranty and spares support do you offer?", a: "Every machine carries a 12-month warranty on the laser or welding power source, drive and control system, with wear spares such as nozzles, lenses and torch consumables stocked for prompt dispatch." },
       { q: "What payment terms do you offer Kuwaiti buyers?", a: "Standard terms are 30 percent advance with the purchase order and 70 percent against pre-shipment inspection video and shipping documents, settled by wire transfer in US dollars." },
       { q: "What is the typical lead time before shipment?", a: "Production lead time is typically 6 to 8 weeks from confirmed order and specification, with an exact shipping date confirmed once the vessel is booked." },
-      { q: "What documents will we receive for customs clearance?", a: "We supply a CE declaration of conformity, ISO 9001:2015 certificate, commercial invoice, packing list, bill of lading and certificate of origin for your customs clearing agent." },
+      { q: "What documents will we receive for customs clearance?", a: "We supply a commercial invoice, packing list, bill of lading and certificate of origin for your customs clearing agent; any conformity documentation your order needs is confirmed at the quotation stage." },
     ],
   },
   {
@@ -325,7 +325,7 @@ export const middleEastCountries: Country[] = [
     whyIndia: [
       "Egypt sits directly on the Suez Canal shipping corridor used for most Indian exports to the Mediterranean and Europe, so shipments to Egyptian ports add minimal extra transit time.",
       "Pricing well below European machine tool brands suits Egyptian buyers managing significant currency and import-cost pressure.",
-      "CE marking and ISO 9001:2015 documentation are well recognised by Egyptian customs and industrial buyers accustomed to European trade relationships.",
+      "Machines can be configured for Egypt's 380 V 3-phase supply, and English-language documentation suits Egyptian industrial buyers accustomed to European trade relationships.",
       "A 2.5-hour time difference from India supports convenient same-day scheduling for remote diagnostics and support calls.",
     ],
     sectors: [
@@ -358,7 +358,7 @@ export const middleEastCountries: Country[] = [
     currency: "EGP (Egyptian Pound)",
     currencyNote: "Quotations are issued in US dollars, the standard invoicing currency for Egyptian import transactions given local currency volatility.",
     shippingNote: "Sea freight from Kolkata or Haldia to Alexandria or Port Said routes directly through the Suez Canal with an indicative transit of 18–25 days, one of the more efficient sea routes from India. CIF delivery is available to your nearest Egyptian port alongside standard FOB Kolkata or Delhi terms.",
-    regulatoryNote: "Egypt requires registration of imported machinery with relevant authorities in some cases and applies import duty and value-added tax under its customs regime; CE documentation supports the import process, and buyers should confirm current requirements and any import licence needs with their customs clearing agent given periodic changes to import controls.",
+    regulatoryNote: "Egypt requires registration of imported machinery with relevant authorities in some cases and applies import duty and value-added tax under its customs regime; conformity documentation for your order is confirmed at the quotation stage, and buyers should confirm current requirements and any import licence needs with their customs clearing agent given periodic changes to import controls.",
     faqs: [
       { q: "How do we request a quotation for delivery to Egypt?", a: "Send your required cutting or welding specification through our enquiry form and we will issue a US-dollar quotation with FOB Kolkata or Delhi and CIF options to Alexandria or Port Said, along with confirmed lead time." },
       { q: "What shipping terms and transit time apply to Egypt?", a: "We ship FOB Kolkata or Delhi as standard with CIF available to your nearest Egyptian port. Transit is indicatively 18 to 25 days via the direct Suez Canal route." },
@@ -367,7 +367,7 @@ export const middleEastCountries: Country[] = [
       { q: "What warranty and spares support do you provide?", a: "Every machine carries a 12-month warranty on the laser or welding power source, drive and control system, with wear spares such as nozzles, lenses and torch consumables stocked for prompt dispatch." },
       { q: "What payment terms apply to Egyptian orders?", a: "Standard terms are 30 percent advance with the purchase order and 70 percent against pre-shipment inspection video and shipping documents, settled by wire transfer in US dollars." },
       { q: "What is the typical lead time before shipment?", a: "Production lead time is typically 6 to 8 weeks from confirmed order and specification, with an exact shipping date confirmed once the vessel is booked." },
-      { q: "What import documents will we receive?", a: "We supply a CE declaration of conformity, ISO 9001:2015 certificate, commercial invoice, packing list, bill of lading and certificate of origin; your customs agent will confirm any additional local registration required." },
+      { q: "What import documents will we receive?", a: "We supply a commercial invoice, packing list, bill of lading and certificate of origin, and confirm any conformity documentation at quotation; your customs agent will confirm any additional local registration required." },
     ],
   },
 ];

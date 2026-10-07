@@ -125,7 +125,7 @@ export function stateSections(state: State): StateSection[] {
       id: "export",
       h3: `Export support for ${state.name} manufacturers`,
       paragraphs: [
-        `Export-ready shipments from ${state.name} typically move through ${joinList(ports)}, and as an IEC-registered exporter with CE-marked, ISO 9001:2015-certified machines, we can handle export documentation for machines shipped through the same gateways.`,
+        `Export-ready shipments from ${state.name} typically move through ${joinList(ports)}, and as an IEC-registered exporter we can handle export documentation for machines shipped through the same gateways.`,
       ],
     });
   }

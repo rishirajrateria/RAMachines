@@ -10,7 +10,7 @@
  */
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { buildMetadata, truncate } from "@/lib/seo";
+import { buildMetadata, pickTitle } from "@/lib/seo";
 import { paths } from "@/lib/urls";
 import { localBusinessSchema, serviceSchema } from "@/lib/schema";
 import { cities, getCity, getState, citiesByState } from "@/data";
@@ -45,12 +45,15 @@ export function generateStaticParams() {
 function cityTitle(name: string, stateName?: string): string {
   // A city that shares its name with its state/UT (Chandigarh, Puducherry) would otherwise
   // duplicate the state page title, so the city page takes the "dealer" keyword variant.
-  if (stateName && stateName === name) return `Laser Cutting Machine Dealer in ${name} | RA Machine`;
-  const withSuffix = `Laser Cutting Machine in ${name} | RA Machine`;
-  if (withSuffix.length <= 60) return withSuffix;
-  const noSuffix = `Laser Cutting Machine in ${name}`;
-  if (noSuffix.length <= 60) return noSuffix;
-  return truncate(noSuffix, 60);
+  if (stateName && stateName === name) {
+    return pickTitle([`Laser, Plasma & Welding Machine Dealer in ${name}`, `Cutting & Welding Machine Dealer, ${name}`]);
+  }
+  return pickTitle([
+    `Laser, Plasma & Welding Machines in ${name}`,
+    `Laser, Plasma & Welding Machines, ${name}`,
+    `Cutting & Welding Machines in ${name}`,
+    `Laser & Welding, ${name}`,
+  ]);
 }
 
 export async function generateMetadata({

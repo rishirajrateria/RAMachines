@@ -137,4 +137,10 @@ export interface Certification {
   description: string; // 60–100 words, what it means for the buyer
   image: Img; // /certs/*.webp placeholder, 3:4 aspect
   optional?: boolean;
+  /**
+   * "pending" = not yet confirmed by the owner: kept here with its copy, but NOT
+   * shown anywhere on the site. Delete the field once the client confirms it and
+   * sends a scan of the certificate.
+   */
+  status?: "pending";
 }

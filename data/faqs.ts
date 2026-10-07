@@ -194,8 +194,8 @@ export const aboutFaqs: FaqItem[] = [
     a: "RA Machine and RA Auto are sister businesses under RA Group. RA Machine builds CNC laser and plasma cutting machines, welding machines and robotic welding systems, while RA Auto is the Group's automotive division. The two operate independently in their respective markets but share the same ownership, engineering culture and commitment to Indian manufacturing.",
   },
   {
-    q: "What certifications does RA Machine hold?",
-    a: "We hold ISO 9001:2015 quality management certification, CE marking on applicable machines, GST registration, MSME/Udyam registration, an Import Export Code from the DGFT, Indian Railways vendor listing, and alignment with the Make in India initiative, with Startup India and BIS conformity applicable to specific machines and components. See our certifications page for full details.",
+    q: "What certifications and registrations does RA Machine hold?",
+    a: "R.A. Auto Engineering Works, the company behind RA Machine, is GST registered, holds an Import Export Code (IEC) from the DGFT, and has supplied Indian Railways since 2022 as a preferred vendor for certain safety-critical items. For export orders, we confirm the conformity marking and documentation your market requires at the quotation stage, before production begins. See our certifications page for details.",
   },
   {
     q: "Do you manufacture machines in-house or resell imported units?",
@@ -206,19 +206,19 @@ export const aboutFaqs: FaqItem[] = [
 /** /certifications — 4 questions. */
 export const certificationFaqs: FaqItem[] = [
   {
-    q: "Can I verify the original certificates before placing an order?",
-    a: "Yes. We are glad to share verifiable copies of our certificates, including certificate numbers and issuing body details, during the quotation process so your procurement or compliance team can independently confirm them before you place an order or open a tender file.",
+    q: "Can I verify your registrations before placing an order?",
+    a: "Yes. We are glad to share copies of our registrations, with their numbers and issuing authority, during the quotation process so your procurement or compliance team can confirm them independently before you place an order or open a tender file.",
   },
   {
     q: "Which certifications are most relevant for export orders?",
-    a: "CE marking and ISO 9001:2015 are typically the most relevant for export customers, since they address machine safety compliance and documented manufacturing quality respectively. Our Import Export Code confirms we are a legally licensed exporter. Specific markets or tenders may also ask about BIS conformity for individual components.",
+    a: "Our Import Export Code confirms we are a licensed exporter able to file shipping bills and export paperwork correctly. Beyond that, requirements depend on the destination: the EU expects CE marking, the UK UKCA, and some markets their own conformity schemes. We confirm what your market requires, and what we can supply for it, at the quotation stage, before production begins.",
   },
   {
-    q: "Are all RA Machine products covered under the same certifications?",
-    a: "Our quality management certification (ISO 9001:2015) and business registrations apply across the entire product range. CE marking and BIS conformity are assessed and applied at the machine or component level, so we confirm exact applicability for the specific model you are enquiring about at the quotation stage.",
+    q: "Do your registrations cover every machine you build?",
+    a: "Our GST and IEC registrations and our Indian Railways vendor status belong to the company, so they apply to everything we supply. Product-level conformity marks depend on the machine and the destination market, so we confirm exactly what applies to the machine you are enquiring about at the quotation stage.",
   },
   {
-    q: "How often are these certifications renewed or audited?",
-    a: "ISO 9001:2015 and CE conformity are subject to periodic surveillance audits and renewal cycles set by the respective certifying bodies, and our government registrations are maintained in line with statutory renewal requirements. We keep all certificates current and can confirm the latest validity dates on request.",
+    q: "Are your registrations kept up to date?",
+    a: "Our statutory registrations are kept current in line with their renewal requirements, and we can confirm the latest status and validity on request, alongside copies of the documents, before you place an order.",
   },
 ];

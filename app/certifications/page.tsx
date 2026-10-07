@@ -22,7 +22,7 @@ import CertModal from "./CertModal";
 export const metadata: Metadata = buildMetadata({
   title: "Licences & Certifications | RA Machine",
   description:
-    "RA Machine's quality, safety and export certifications: ISO 9001:2015, CE marking, GST, MSME/Udyam, IEC, Indian Railways vendor listing and Make in India.",
+    "RA Machine's registrations: GST, Import Export Code (IEC) and Indian Railways vendor status, with copies available on request for tenders and export orders.",
   path: paths.certifications,
 });
 
@@ -35,8 +35,8 @@ export default function CertificationsPage() {
         <p className="eyebrow">Licences & compliance</p>
         <h1 className="mt-4 font-display text-display-lg text-ink">Licences & Certifications</h1>
         <p className="mt-4 max-w-prose text-grey-600">
-          Every RA Machine unit is built under a documented, audited quality system and shipped with the
-          licences global buyers check first.
+          The registrations buyers and tender committees check first, with copies available on request
+          before you order.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <Button href="#certificates" variant="solid">
@@ -47,9 +47,9 @@ export default function CertificationsPage() {
           </Button>
         </div>
         <div className="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold text-teal">
-          <span>ISO 9001:2015</span>
-          <span>CE Marking</span>
-          <span>MSME/Udyam</span>
+          <span>GST registered</span>
+          <span>IEC exporter</span>
+          <span>Indian Railways vendor</span>
         </div>
       </PageHero>
 
@@ -70,13 +70,14 @@ export default function CertificationsPage() {
         <div className="grid items-center gap-10 md:grid-cols-2">
           <Prose>
             <p>
-              Our quality management system builds every machine against a repeatable, documented
-              checklist rather than depending on any one technician&rsquo;s memory, whether it is bound
-              for a workshop near Kolkata or a container for export.
+              Every machine is built against a documented build sheet and test-run before it leaves the
+              works, rather than depending on any one technician&rsquo;s memory, whether it is bound for a
+              workshop near Kolkata or a container for export.
             </p>
             <p>
-              Many markets outside the EU also treat CE marking as a recognised safety benchmark during
-              customs clearance and plant safety audits, which simplifies onboarding at the destination.
+              Export markets set their own conformity requirements, such as CE marking in the EU. We
+              confirm what your market requires, and what we can supply for it, at the quotation stage,
+              before production begins.
             </p>
             <p>
               Our statutory registrations are frequently mandatory pre-qualification requirements in

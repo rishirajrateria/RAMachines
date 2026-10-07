@@ -46,7 +46,7 @@ export default function ReachSection() {
             height: 750,
           }}
           title="Exporting worldwide"
-          text="CE-marked machines shipped and installed across established and emerging manufacturing markets, with remote support and training."
+          text="Machines shipped and installed for buyers in established and emerging manufacturing markets, with remote support and training."
           href={paths.exportHub}
         />
         <div className="mt-4">

@@ -51,7 +51,7 @@ export const southAsiaCountries: Country[] = [
     currency: "BDT (Bangladeshi Taka)",
     currencyNote: "Quotations are issued in US dollars as our standard export currency; buyers arrange conversion through their bank at the time of payment.",
     shippingNote: "Sea freight from Kolkata or Haldia to Chattogram is a short, direct Bay of Bengal route with an indicative transit of 4–8 days, one of the shortest sea routes from India. CIF delivery to Chattogram or Mongla is available alongside standard FOB Kolkata or Delhi terms.",
-    regulatoryNote: "Machinery imports into Bangladesh generally attract standard customs duty with SAFTA preferential treatment available for qualifying goods of Indian origin; CE documentation supports the import process and buyers should confirm current SAFTA certificate of origin requirements with their customs clearing agent.",
+    regulatoryNote: "Machinery imports into Bangladesh generally attract standard customs duty with SAFTA preferential treatment available for qualifying goods of Indian origin; we confirm the conformity documentation your order needs at the quotation stage, and buyers should confirm current SAFTA certificate of origin requirements with their customs clearing agent.",
     faqs: [
       { q: "How quickly can we get a quotation and shipment to Bangladesh?", a: "Send your required cutting or welding specification through our enquiry form and we will issue a US-dollar quotation with FOB Kolkata or Delhi and CIF options to Chattogram, typically within one working day given the short time difference and route." },
       { q: "What shipping terms and transit time apply to Bangladesh?", a: "We ship FOB Kolkata or Delhi as standard with CIF available to Chattogram or Mongla. This is one of the shortest sea routes from India, with an indicative transit of 4 to 8 days." },
@@ -110,7 +110,7 @@ export const southAsiaCountries: Country[] = [
     currency: "NPR (Nepali Rupee)",
     currencyNote: "Quotations are issued in US dollars for formal export documentation; the fixed peg between the Indian and Nepali rupee also allows straightforward rupee-based commercial arrangements where preferred.",
     shippingNote: "As Nepal is landlocked, machinery moves by sea to Kolkata or Haldia and then overland by truck through the Birgunj-Raxaul border crossing to Kathmandu and other destinations, with an indicative total transit of 10–18 days from factory to the Nepal border. This overland route from India is significantly faster than any alternative sea-and-land route from other supplier countries.",
-    regulatoryNote: "Nepal applies standard customs duty on imported machinery with preferential treatment available for goods of Indian origin under bilateral trade arrangements; CE documentation supports the import process and buyers should confirm current requirements with their customs clearing agent at the border.",
+    regulatoryNote: "Nepal applies standard customs duty on imported machinery with preferential treatment available for goods of Indian origin under bilateral trade arrangements; supporting documentation for your machine is confirmed at quotation, and buyers should confirm current requirements with their customs clearing agent at the border.",
     faqs: [
       { q: "How do we request a quotation for delivery to Nepal?", a: "Send your required cutting or welding specification through our enquiry form and we will issue a US-dollar quotation covering delivery via Kolkata and overland through the Birgunj-Raxaul border, along with confirmed lead time." },
       { q: "How does delivery work since Nepal has no sea port?", a: "Machinery ships by sea or is trucked directly to Kolkata or Haldia, then moves overland by truck across the Birgunj-Raxaul border to Kathmandu or your destination city, a route significantly faster than any alternative supplier's shipping option." },
@@ -119,7 +119,7 @@ export const southAsiaCountries: Country[] = [
       { q: "What warranty and spares support do you offer?", a: "Every machine carries a 12-month warranty on the laser or welding power source, drive and control system, with wear spares dispatched by road from India for fast delivery to Nepali workshops." },
       { q: "What payment terms and currency do you accept?", a: "Standard terms are 30 percent advance with the purchase order and 70 percent against pre-shipment inspection video and shipping documents; payment can be arranged in US dollars or, where preferred, Indian rupees given the fixed currency peg." },
       { q: "What is the typical lead time before delivery?", a: "Production lead time is typically 6 to 8 weeks from confirmed order and specification, plus the overland transit time to your Nepal destination once the machine reaches the border." },
-      { q: "What documents are needed for Nepali customs clearance?", a: "We supply a CE declaration of conformity, ISO 9001:2015 certificate, commercial invoice, packing list and certificate of origin, which your customs agent uses for clearance at the Birgunj-Raxaul border." },
+      { q: "What documents are needed for Nepali customs clearance?", a: "We supply a commercial invoice, packing list and certificate of origin, which your customs agent uses for clearance at the Birgunj-Raxaul border, and confirm any additional documentation at quotation." },
     ],
     isTop: true,
   },
@@ -169,7 +169,7 @@ export const southAsiaCountries: Country[] = [
     currency: "LKR (Sri Lankan Rupee)",
     currencyNote: "Quotations are issued in US dollars as our standard export currency; buyers arrange conversion through their bank at the time of payment.",
     shippingNote: "Sea freight from Kolkata or Haldia to Colombo is a short, direct route with an indicative transit of 5–9 days, benefiting from Colombo's position as a major regional transshipment hub. CIF delivery to Colombo is available alongside standard FOB Kolkata or Delhi terms.",
-    regulatoryNote: "Machinery imports into Sri Lanka generally attract standard customs duty with SAFTA preferential treatment available for qualifying goods of Indian origin; CE documentation supports the import process and buyers should confirm current requirements with their customs clearing agent.",
+    regulatoryNote: "Machinery imports into Sri Lanka generally attract standard customs duty with SAFTA preferential treatment available for qualifying goods of Indian origin; we confirm any conformity paperwork your machine needs before production, and buyers should confirm current requirements with their customs clearing agent.",
     faqs: [
       { q: "How do we request a quotation for delivery to Sri Lanka?", a: "Send your required cutting or welding specification through our enquiry form and we will issue a US-dollar quotation with FOB Kolkata or Delhi and CIF options to Colombo, along with confirmed lead time." },
       { q: "What shipping terms and transit time apply to Sri Lanka?", a: "We ship FOB Kolkata or Delhi as standard with CIF available to Colombo. Transit is indicatively 5 to 9 days, a short and frequent route given Colombo's transshipment hub status." },

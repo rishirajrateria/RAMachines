@@ -13,10 +13,10 @@ export const southEastAsiaCountries: Country[] = [
     overview: [
       "Vietnam has become one of the world's fastest-growing manufacturing destinations, absorbing substantial electronics, machinery and light industrial investment as companies diversify supply chains away from China. Bac Ninh and Hai Phong's electronics clusters, alongside the Dong Nai and Binh Duong industrial parks near Ho Chi Minh City, have created strong demand for precise, reliable metal fabrication equipment feeding component and enclosure manufacturing.",
       "Vietnamese fabricators supplying multinational electronics and machinery OEMs must meet exacting quality and delivery standards, and many are actively upgrading from older cutting technologies to fiber laser systems to keep pace with rising production volumes and tighter tolerances.",
-      "Vietnam's own machine tool manufacturing base remains limited, and while Chinese suppliers dominate on price, Vietnamese buyers increasingly value the documentation and quality assurance that Indian, CE-marked machines offer, particularly for suppliers whose end customers audit their equipment provenance.",
+      "Vietnam's own machine tool manufacturing base remains limited, and while Chinese suppliers dominate on price, Vietnamese buyers increasingly value the clear documentation and engineering support that Indian suppliers offer, particularly for suppliers whose end customers audit their equipment provenance.",
     ],
     whyIndia: [
-      "As global buyers diversify away from Chinese-sourced capital equipment for supply-chain risk reasons, India offers a documented, CE-marked alternative that satisfies the same audit expectations electronics OEMs apply to their component suppliers.",
+      "As global buyers diversify away from Chinese-sourced capital equipment for supply-chain risk reasons, India offers a well-documented alternative source that helps Vietnamese suppliers answer the provenance questions electronics OEMs ask of their component suppliers.",
       "Pricing remains competitive against Japanese and Korean-brand machines commonly sold in Vietnam, while offering better documentation than typical Chinese imports.",
       "A 2.5-hour time difference from India supports convenient same-day scheduling for remote diagnostics and support calls.",
       "India's growing trade engagement with ASEAN economies, including Vietnam, provides an increasingly well-trodden commercial and logistics path for Indian exporters.",
@@ -58,7 +58,7 @@ export const southEastAsiaCountries: Country[] = [
     currency: "VND (Vietnamese Đồng)",
     currencyNote: "Quotations are issued in US dollars, the standard invoicing currency for Vietnamese import transactions.",
     shippingNote: "Sea freight from Kolkata or Haldia to Hai Phong or Ho Chi Minh City typically transships via Singapore or Colombo with an indicative transit of 14–20 days. CIF delivery is available to either port alongside standard FOB Kolkata or Delhi terms.",
-    regulatoryNote: "Vietnam applies standard import duty on industrial machinery with a relatively straightforward customs process for capital equipment, and CE documentation supports the import process; buyers should confirm current duty rates and any registration requirements with their customs clearing agent.",
+    regulatoryNote: "Vietnam applies standard import duty on industrial machinery with a relatively straightforward customs process for capital equipment, and the documentation required for your machine is confirmed at the quotation stage; buyers should confirm current duty rates and any registration requirements with their customs clearing agent.",
     faqs: [
       { q: "How do we request a quotation for delivery to Vietnam?", a: "Send your required cutting or welding specification through our enquiry form and we will issue a US-dollar quotation with FOB Kolkata or Delhi and CIF options to Hai Phong or Ho Chi Minh City, along with confirmed lead time." },
       { q: "What shipping terms and transit time apply to Vietnam?", a: "We ship FOB Kolkata or Delhi as standard with CIF available to your nearest Vietnamese port. Transit is indicatively 14 to 20 days, typically transshipping via Singapore or Colombo." },
@@ -67,7 +67,7 @@ export const southEastAsiaCountries: Country[] = [
       { q: "What warranty and spares support do you provide?", a: "Every machine carries a 12-month warranty on the laser or welding power source, drive and control system, with wear spares such as nozzles, lenses and torch consumables stocked for prompt dispatch to Vietnamese addresses." },
       { q: "What payment terms apply to Vietnamese orders?", a: "Standard terms are 30 percent advance with the purchase order and 70 percent against pre-shipment inspection video and shipping documents, settled by wire transfer in US dollars." },
       { q: "What is the typical lead time before shipment?", a: "Production lead time is typically 6 to 8 weeks from confirmed order and specification, with an exact shipping date confirmed once the vessel is booked." },
-      { q: "What certification and import documents will we receive?", a: "We supply a CE declaration of conformity, ISO 9001:2015 certificate, commercial invoice, packing list, bill of lading and certificate of origin, sufficient for your customs broker to classify and clear the shipment." },
+      { q: "What import documents will we receive?", a: "We supply a commercial invoice, packing list, bill of lading and certificate of origin, sufficient for your customs broker to classify and clear the shipment; any conformity documentation is confirmed at quotation." },
     ],
     isTop: true,
   },
@@ -83,7 +83,7 @@ export const southEastAsiaCountries: Country[] = [
     ],
     whyIndia: [
       "Competitive pricing against Japanese and Korean-brand machines common in Indonesia's automotive supply chain, while offering better documentation than typical Chinese alternatives.",
-      "CE marking and ISO 9001:2015 certification meet the quality-assurance expectations of Indonesia's automotive and electronics OEM-linked supply chains.",
+      "Written specifications and a pre-shipment inspection video support the supplier audits common in Indonesia's automotive and electronics OEM-linked supply chains.",
       "A 2.5-hour time difference from India supports convenient same-day scheduling for remote diagnostics and support.",
       "Established air-freight routes into Jakarta support fast spares dispatch, an important consideration given Indonesia's dispersed island geography.",
     ],
@@ -117,7 +117,7 @@ export const southEastAsiaCountries: Country[] = [
     currency: "IDR (Indonesian Rupiah)",
     currencyNote: "Quotations are issued in US dollars, the standard invoicing currency for Indonesian import transactions.",
     shippingNote: "Sea freight from Kolkata or Haldia to Tanjung Priok typically transships via Singapore or Colombo with an indicative transit of 16–22 days. CIF delivery is available to Jakarta or Surabaya alongside standard FOB Kolkata or Delhi terms.",
-    regulatoryNote: "Indonesia requires certain imported machinery categories to be registered and may apply local content or import licensing considerations depending on end use; CE documentation supports the import process, and buyers should confirm current requirements with their customs clearing agent (PPJK) before shipment.",
+    regulatoryNote: "Indonesia requires certain imported machinery categories to be registered and may apply local content or import licensing considerations depending on end use; we confirm the conformity documentation your order requires at quotation, and buyers should confirm current requirements with their customs clearing agent (PPJK) before shipment.",
     faqs: [
       { q: "How do we request a quotation for delivery to Indonesia?", a: "Send your required cutting or welding specification through our enquiry form and we will issue a US-dollar quotation with FOB Kolkata or Delhi and CIF options to Jakarta or Surabaya, along with confirmed lead time." },
       { q: "What shipping terms and transit time apply to Indonesia?", a: "We ship FOB Kolkata or Delhi as standard with CIF available to Tanjung Priok or Tanjung Perak. Transit is indicatively 16 to 22 days, typically transshipping via Singapore or Colombo." },
@@ -126,7 +126,7 @@ export const southEastAsiaCountries: Country[] = [
       { q: "What warranty and spares support do you provide?", a: "Every machine carries a 12-month warranty on the laser or welding power source, drive and control system, with wear spares such as nozzles, lenses and torch consumables stocked for prompt air-freight dispatch to Jakarta." },
       { q: "What payment terms apply to Indonesian orders?", a: "Standard terms are 30 percent advance with the purchase order and 70 percent against pre-shipment inspection video and shipping documents, settled by wire transfer in US dollars." },
       { q: "What is the typical lead time before shipment?", a: "Production lead time is typically 6 to 8 weeks from confirmed order and specification, with an exact shipping date confirmed once the vessel is booked." },
-      { q: "What documents will our PPJK need for customs clearance?", a: "We supply a CE declaration of conformity, ISO 9001:2015 certificate, commercial invoice, packing list, bill of lading and certificate of origin; your customs broker will confirm any additional registration required for your machine category." },
+      { q: "What documents will our PPJK need for customs clearance?", a: "We supply a commercial invoice, packing list, bill of lading and certificate of origin, and confirm conformity documentation at the quotation stage; your customs broker will confirm any additional registration required for your machine category." },
     ],
   },
   {
@@ -140,7 +140,7 @@ export const southEastAsiaCountries: Country[] = [
       "As an established trading nation with a sophisticated import infrastructure, Malaysia represents a market where Indian suppliers with strong documentation and consistent quality can compete credibly against Japanese, Korean and Taiwanese machine tool brands.",
     ],
     whyIndia: [
-      "CE marking and ISO 9001:2015 documentation meet the quality-assurance expectations of Malaysia's electronics and semiconductor-linked manufacturing base.",
+      "Machines can be configured for Malaysia's 415 V 3-phase supply, with English-language documentation suited to Malaysia's electronics and semiconductor-linked manufacturing base.",
       "Competitive pricing against Japanese, Korean and Taiwanese brands widely sold in Malaysia gives Indian machines a clear value position.",
       "A 2.5-hour time difference from India supports convenient same-day scheduling for remote diagnostics and support.",
       "Malaysia's efficient port infrastructure at Port Klang keeps shipping predictable and well-scheduled from Indian east coast ports.",
@@ -175,7 +175,7 @@ export const southEastAsiaCountries: Country[] = [
     currency: "MYR (Malaysian Ringgit)",
     currencyNote: "Quotations are issued in US dollars, the standard invoicing currency for Malaysian import transactions.",
     shippingNote: "Sea freight from Kolkata or Haldia to Port Klang typically transships via Singapore or Colombo with an indicative transit of 12–18 days. CIF delivery is available to Port Klang or Penang alongside standard FOB Kolkata or Delhi terms.",
-    regulatoryNote: "Malaysia applies standard import duty on industrial machinery under its customs tariff with generally low rates for capital equipment, and CE documentation supports the import process; buyers should confirm current duty treatment with their licensed customs agent.",
+    regulatoryNote: "Malaysia applies standard import duty on industrial machinery under its customs tariff with generally low rates for capital equipment, and any conformity documentation is agreed with you at quotation; buyers should confirm current duty treatment with their licensed customs agent.",
     faqs: [
       { q: "How do we request a quotation for delivery to Malaysia?", a: "Send your required cutting or welding specification through our enquiry form and we will issue a US-dollar quotation with FOB Kolkata or Delhi and CIF options to Port Klang or Penang, along with confirmed lead time." },
       { q: "What shipping terms and transit time apply to Malaysia?", a: "We ship FOB Kolkata or Delhi as standard with CIF available to Port Klang or Penang. Transit is indicatively 12 to 18 days, typically transshipping via Singapore or Colombo." },
@@ -184,7 +184,7 @@ export const southEastAsiaCountries: Country[] = [
       { q: "What warranty and spares support do you provide?", a: "Every machine carries a 12-month warranty on the laser or welding power source, drive and control system, with wear spares such as nozzles, lenses and torch consumables stocked for prompt dispatch." },
       { q: "What payment terms apply to Malaysian orders?", a: "Standard terms are 30 percent advance with the purchase order and 70 percent against pre-shipment inspection video and shipping documents, settled by wire transfer in US dollars." },
       { q: "What is the typical lead time before shipment?", a: "Production lead time is typically 6 to 8 weeks from confirmed order and specification, with an exact shipping date confirmed once the vessel is booked." },
-      { q: "What documents will our customs agent need for clearance?", a: "We supply a CE declaration of conformity, ISO 9001:2015 certificate, commercial invoice, packing list, bill of lading and certificate of origin, sufficient for your licensed customs agent to classify and clear the shipment." },
+      { q: "What documents will our customs agent need for clearance?", a: "We supply a commercial invoice, packing list, bill of lading and certificate of origin, sufficient for your licensed customs agent to classify and clear the shipment, and confirm any conformity documentation when we quote." },
     ],
   },
   {
@@ -194,11 +194,11 @@ export const southEastAsiaCountries: Country[] = [
     adjective: "Philippine",
     overview: [
       "The Philippines' manufacturing base is centred around Metro Manila, Laguna and Cavite's export processing zones, and Cebu in the central Visayas, supplying electronics, automotive parts and general fabrication industries. Continued growth in electronics and semiconductor assembly, alongside a steady construction sector, has sustained demand for metal cutting equipment among local fabricators.",
-      "Filipino manufacturers commonly source machine tools from Japan, Korea and China, and increasingly evaluate Indian equipment as CE-marked machines gain broader recognition among Philippine industrial buyers seeking documented quality without premium Japanese or Korean pricing.",
+      "Filipino manufacturers commonly source machine tools from Japan, Korea and China, and increasingly evaluate Indian equipment as Indian suppliers gain broader recognition among Philippine industrial buyers seeking documented quality without premium Japanese or Korean pricing.",
       "As an archipelago nation, the Philippines places a premium on suppliers who can support reliable spares logistics, given that inter-island freight adds complexity beyond the initial international shipment.",
     ],
     whyIndia: [
-      "Competitive pricing against Japanese and Korean-brand machines common in Philippine electronics and automotive supply chains, with full CE and ISO documentation.",
+      "Competitive pricing against Japanese and Korean-brand machines common in Philippine electronics and automotive supply chains, with written specifications and a pre-shipment inspection video.",
       "A 2.5-hour time difference from India supports convenient same-day scheduling for remote diagnostics and support.",
       "English is an official language and the standard language of Philippine business and engineering communication, removing translation friction entirely.",
       "Established air-freight routes into Manila support fast spares dispatch, important given the logistics of onward inter-island distribution.",
@@ -233,7 +233,7 @@ export const southEastAsiaCountries: Country[] = [
     currency: "PHP (Philippine Peso)",
     currencyNote: "Quotations are issued in US dollars, the standard invoicing currency for Philippine import transactions.",
     shippingNote: "Sea freight from Kolkata or Haldia to Manila typically transships via Singapore with an indicative transit of 16–22 days. CIF delivery is available to Manila or Cebu alongside standard FOB Kolkata or Delhi terms.",
-    regulatoryNote: "The Philippines applies standard import duty on industrial machinery under its customs tariff with generally low rates for capital equipment, and CE documentation supports the import process; buyers should confirm current duty treatment and any Bureau of Import Services requirements with their licensed customs broker.",
+    regulatoryNote: "The Philippines applies standard import duty on industrial machinery under its customs tariff with generally low rates for capital equipment, and the documentation your machine needs is confirmed at the quotation stage; buyers should confirm current duty treatment and any Bureau of Import Services requirements with their licensed customs broker.",
     faqs: [
       { q: "How do we request a quotation for delivery to the Philippines?", a: "Send your required cutting or welding specification through our enquiry form and we will issue a US-dollar quotation with FOB Kolkata or Delhi and CIF options to Manila or Cebu, along with confirmed lead time." },
       { q: "What shipping terms and transit time apply to the Philippines?", a: "We ship FOB Kolkata or Delhi as standard with CIF available to Manila or Cebu. Transit is indicatively 16 to 22 days, typically transshipping via Singapore." },
@@ -242,7 +242,7 @@ export const southEastAsiaCountries: Country[] = [
       { q: "What warranty and spares support do you provide?", a: "Every machine carries a 12-month warranty on the laser or welding power source, drive and control system, with wear spares such as nozzles, lenses and torch consumables stocked for prompt air-freight dispatch to Manila." },
       { q: "What payment terms apply to Philippine orders?", a: "Standard terms are 30 percent advance with the purchase order and 70 percent against pre-shipment inspection video and shipping documents, settled by wire transfer in US dollars." },
       { q: "What is the typical lead time before shipment?", a: "Production lead time is typically 6 to 8 weeks from confirmed order and specification, with an exact shipping date confirmed once the vessel is booked." },
-      { q: "What documents will our customs broker need for clearance?", a: "We supply a CE declaration of conformity, ISO 9001:2015 certificate, commercial invoice, packing list, bill of lading and certificate of origin, sufficient for your licensed customs broker to classify and clear the shipment." },
+      { q: "What documents will our customs broker need for clearance?", a: "We supply a commercial invoice, packing list, bill of lading and certificate of origin, sufficient for your licensed customs broker to classify and clear the shipment; conformity documentation is confirmed at quotation." },
     ],
   },
 ];

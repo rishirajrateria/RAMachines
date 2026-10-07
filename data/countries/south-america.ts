@@ -16,7 +16,7 @@ export const southAmericaCountries: Country[] = [
       "Brazil's large agricultural machinery and implement sector, centred on the south, and its automotive supply base around São Paulo both require robust structural steel cutting alongside precision sheet work, giving Indian suppliers with a broad product range a genuine opportunity across multiple segments.",
     ],
     whyIndia: [
-      "Competitive pricing against both premium European brands and Brazil's domestic machine tool industry, while still offering CE marking and ISO 9001:2015 documentation for quality audits.",
+      "Competitive pricing against both premium European brands and Brazil's domestic machine tool industry, with written specifications and a pre-shipment inspection video to support buyers' quality audits.",
       "India and Brazil share a working relationship through forums such as BRICS and IBSA, and Brazilian industrial buyers are increasingly comfortable dealing directly with Indian exporters rather than only through European or Chinese intermediaries.",
       "English-language technical support and documentation suit the many Brazilian engineering teams who work in English with international OEM customers, even though Portuguese remains the local working language.",
       "A structured remote diagnostics programme, with scheduled calls that account for the roughly 8 to 9-hour time difference from India, keeps support responsive without requiring a local office.",
@@ -67,7 +67,7 @@ export const southAmericaCountries: Country[] = [
       { q: "What warranty and spares support do you offer?", a: "Every machine carries a 12-month warranty covering the laser or welding power source, drive and control system, with wear spares such as nozzles, lenses and torch consumables stocked for prompt air-freight dispatch to Brazilian addresses." },
       { q: "What payment terms apply to Brazilian orders?", a: "Standard terms are 30 percent advance with the purchase order and 70 percent against pre-shipment inspection video and shipping documents, settled by wire transfer in US dollars." },
       { q: "What is the typical lead time before shipment?", a: "Production lead time is typically 6 to 8 weeks from confirmed order and specification, with an exact shipping date confirmed once the vessel is booked and cargo is ready." },
-      { q: "What documents will our despachante need for INMETRO and customs?", a: "We supply a CE declaration of conformity, ISO 9001:2015 certificate, commercial invoice, packing list, bill of lading and certificate of origin, which your despachante can use to confirm INMETRO applicability and clear the shipment." },
+      { q: "What documents will our despachante need for INMETRO and customs?", a: "We supply a commercial invoice, packing list, bill of lading, certificate of origin and technical specifications, which your despachante can use to confirm INMETRO applicability and clear the shipment; any conformity documentation is agreed at quotation." },
     ],
   },
   {
@@ -77,12 +77,12 @@ export const southAmericaCountries: Country[] = [
     adjective: "Peruvian",
     overview: [
       "Peru's manufacturing base is smaller than Brazil's but growing steadily around Lima and Callao, driven by metalworking tied to mining equipment maintenance, construction and general fabrication. Mining remains the backbone of the Peruvian economy, and workshops that fabricate and repair mining equipment components represent a distinct and steady source of demand for cutting and welding machinery.",
-      "Most industrial machine tools in Peru are imported, with buyers historically relying on used European equipment or Chinese imports; competitively priced new Indian fiber laser and robotic welding machines with CE and ISO documentation offer a credible upgrade path for Peruvian fabricators looking to modernise without the cost of premium European brands.",
+      "Most industrial machine tools in Peru are imported, with buyers historically relying on used European equipment or Chinese imports; competitively priced new Indian fiber laser and robotic welding machines with full technical documentation offer a credible upgrade path for Peruvian fabricators looking to modernise without the cost of premium European brands.",
       "Lima's concentration of general engineering workshops, combined with growing infrastructure investment across the country, supports demand for mid-power fiber laser machines suited to structural steel and general fabrication work.",
     ],
     whyIndia: [
       "New machines at a price point well below premium European brands give Peruvian workshops an alternative to buying used equipment of uncertain condition.",
-      "CE marking and ISO 9001:2015 certification provide the documentation Peruvian buyers increasingly ask for when comparing suppliers against Chinese alternatives.",
+      "A pre-shipment inspection video and written machine specifications give Peruvian buyers the documentation they increasingly ask for when comparing suppliers against Chinese alternatives.",
       "English-language support works well for Peru's internationally connected engineering and mining-services firms, many of which already coordinate with English-speaking equipment suppliers.",
       "Shipping via the Pacific route to Callao is relatively direct from Indian ports compared with some Atlantic-routed South American destinations, keeping transit times reasonable.",
     ],
@@ -116,7 +116,7 @@ export const southAmericaCountries: Country[] = [
     currency: "PEN (Peruvian Sol)",
     currencyNote: "Quotations are issued in US dollars, which is widely used for import transactions in Peru and simplifies customs valuation.",
     shippingNote: "Sea freight from Kolkata or Haldia to Callao typically transships via Colombo or Singapore before crossing the Pacific, with an indicative transit of 40–48 days. CIF delivery to Callao is available alongside standard FOB Kolkata or Delhi terms.",
-    regulatoryNote: "Peru applies standard ad valorem import duty on industrial machinery under its general customs tariff, with no mandatory local conformity marking beyond commercial documentation for most machine tool categories; CE documentation is supplied as standard and buyers should confirm current duty rates with their customs agent.",
+    regulatoryNote: "Peru applies standard ad valorem import duty on industrial machinery under its general customs tariff, with no mandatory local conformity marking beyond commercial documentation for most machine tool categories; any documentation your importer needs is confirmed at the quotation stage and buyers should confirm current duty rates with their customs agent.",
     faqs: [
       { q: "How can we get a quotation for a machine delivered to Peru?", a: "Send your required cutting or welding specification through our enquiry form and we will issue a US-dollar quotation with FOB Kolkata or Delhi and CIF options to Callao, along with confirmed lead time and payment terms." },
       { q: "What shipping terms do you offer for Peru?", a: "We ship FOB Kolkata or Delhi as standard with CIF available to Callao. Transit is indicative, routing across the Pacific via Colombo or Singapore, and is confirmed at the time of vessel booking." },
@@ -125,7 +125,7 @@ export const southAmericaCountries: Country[] = [
       { q: "What warranty and spares support is available?", a: "Every machine carries a 12-month warranty on the laser or welding power source, drive and control system, and wear spares such as nozzles, lenses and torch consumables are stocked for prompt air-freight dispatch to Peru." },
       { q: "What payment terms do you offer?", a: "Standard terms are 30 percent advance with the purchase order and 70 percent against pre-shipment inspection video and shipping documents, settled by wire transfer in US dollars." },
       { q: "What is the typical lead time from order to shipment?", a: "Production lead time is typically 6 to 8 weeks from confirmed order and specification, with an exact shipping date confirmed once the vessel booking is made." },
-      { q: "What import documents will we receive?", a: "We supply a CE declaration of conformity, ISO 9001:2015 certificate, commercial invoice, packing list, bill of lading and certificate of origin, sufficient for your customs agent to classify and clear the shipment in Peru." },
+      { q: "What import documents will we receive?", a: "We supply a commercial invoice, packing list, bill of lading and certificate of origin, sufficient for your customs agent to classify and clear the shipment in Peru, with any further documentation confirmed at quotation." },
     ],
   },
 ];

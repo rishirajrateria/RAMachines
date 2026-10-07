@@ -1,6 +1,6 @@
 /**
- * data/certifications.ts — the 9 licences/certifications shown on the home page
- * strip, the /certifications page and product footers.
+ * data/certifications.ts — licences/certifications for the home page strip and the
+ * /certifications page. Only entries WITHOUT `status: "pending"` are shown.
  *
  * To edit: change the fields below and swap the image at /public/certs/<slug>.webp
  * (600×800, same aspect ratio for every card). Order here is the display order —
@@ -10,9 +10,10 @@
  */
 import type { Certification } from "./types";
 
-export const certifications: Certification[] = [
+export const allCertifications: Certification[] = [
   {
     slug: "iso-9001-2015",
+    status: "pending",
     name: "ISO 9001:2015",
     issuer: "Accredited third-party certification body",
     oneLiner: "Certified quality management system covering design, manufacture and after-sales support.",
@@ -22,6 +23,7 @@ export const certifications: Certification[] = [
   },
   {
     slug: "ce-marking",
+    status: "pending",
     name: "CE Marking",
     issuer: "Self-declared conformity under applicable EU directives",
     oneLiner: "Declares conformity with EU machinery safety, low-voltage and EMC directives.",
@@ -40,6 +42,7 @@ export const certifications: Certification[] = [
   },
   {
     slug: "msme-udyam",
+    status: "pending",
     name: "MSME / Udyam Registered",
     issuer: "Ministry of Micro, Small & Medium Enterprises, Government of India",
     oneLiner: "Registered as a Micro, Small and Medium Enterprise under the Udyam scheme.",
@@ -60,13 +63,14 @@ export const certifications: Certification[] = [
     slug: "indian-railways-vendor",
     name: "Indian Railways Listed Vendor",
     issuer: "Ministry of Railways / concerned railway zone or production unit",
-    oneLiner: "Approved vendor for supply of machinery to Indian Railways workshops and production units.",
+    oneLiner: "Supplier to Indian Railways since 2022, and a preferred vendor for certain safety-critical items.",
     description:
-      "Listing as an Indian Railways vendor follows a vendor-approval process that examines technical capability, manufacturing quality and financial standing before a supplier is added to the approved panel. For a buyer, this is meaningful evidence beyond our own claims: it means our machines have been assessed against the demanding duty cycles and fabrication tolerances expected in railway coach, wagon and component workshops, one of the most rigorous industrial buyer categories in India.",
+      "R.A. Auto Engineering Works, the company behind RA Machine, has supplied Indian Railways since 2022 and is a preferred vendor for certain safety-critical items. Railway vendor approval looks at technical capability, manufacturing quality and documented processes before a supplier is accepted, and safety-critical supply is held to the strictest of those standards. The same shop-floor discipline, the same people and the same works now build RA Machine's cutting and welding machines.",
     image: { src: "/certs/indian-railways-vendor.webp", alt: "Indian Railways approved vendor listing", width: 600, height: 800 },
   },
   {
     slug: "make-in-india",
+    status: "pending",
     name: "Make in India",
     issuer: "Department for Promotion of Industry and Internal Trade (DPIIT), Government of India",
     oneLiner: "Machines are designed, fabricated and assembled at our Kolkata manufacturing facility.",
@@ -76,6 +80,7 @@ export const certifications: Certification[] = [
   },
   {
     slug: "startup-india",
+    status: "pending",
     name: "Startup India",
     issuer: "Department for Promotion of Industry and Internal Trade (DPIIT), Government of India",
     oneLiner: "Recognised under the Government of India's Startup India initiative.",
@@ -86,6 +91,7 @@ export const certifications: Certification[] = [
   },
   {
     slug: "bis",
+    status: "pending",
     name: "BIS",
     issuer: "Bureau of Indian Standards",
     oneLiner: "Conformity of applicable components and safety systems to relevant Indian national standards.",
@@ -95,3 +101,13 @@ export const certifications: Certification[] = [
     optional: true,
   },
 ];
+
+/**
+ * What the site shows: only certifications the owner has confirmed. Oct 2026:
+ * the original spec listed nine, but the client's brief confirms only the Indian
+ * Railways vendor status; GST and IEC are registrations every exporting
+ * manufacturer holds. The other six stay above as "pending" until the client
+ * confirms each one and sends a scan (the badge images are generated
+ * placeholders, not certificates).
+ */
+export const certifications: Certification[] = allCertifications.filter((c) => c.status !== "pending");

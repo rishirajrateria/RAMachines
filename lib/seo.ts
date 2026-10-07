@@ -17,6 +17,18 @@ export function truncate(s: string, n: number): string {
   return `${cut}…`;
 }
 
+/**
+ * The first candidate title that fits within `max` characters (Google shows
+ * about 60), else the last one truncated at a word boundary. Callers list
+ * phrasings from most to least descriptive, so a long place name gets a shorter
+ * wording instead of a title cut off mid-word. buildMetadata then adds the
+ * " | RA Machine" suffix only if it still fits.
+ */
+export function pickTitle(candidates: string[], max = 60): string {
+  const fit = candidates.find((c) => c.length <= max);
+  return fit ?? truncate(candidates[candidates.length - 1], max);
+}
+
 export function buildMetadata(o: {
   title: string;
   description: string;
