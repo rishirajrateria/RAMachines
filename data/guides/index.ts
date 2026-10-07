@@ -7,9 +7,29 @@
  * lists on machine-family pages all read from here.
  */
 import type { CategorySlug, Guide } from "../types";
+import { guide as laserVsPlasma } from "./laser-vs-plasma-cutting";
+import { guide as fiberLaserPower } from "./fiber-laser-power-guide";
+import { guide as plasmaCutter } from "./cnc-plasma-cutter-guide";
+import { guide as migTigMma } from "./mig-vs-tig-vs-mma-welding";
+import { guide as saw } from "./submerged-arc-welding-guide";
+import { guide as cobotVsRobot } from "./cobot-vs-robot-welding";
+import { guide as voltage } from "./welding-machine-220v-vs-440v";
+import { guide as importing } from "./importing-cnc-machines-from-india";
+import { guide as factoryPrep } from "./preparing-factory-for-cnc-machine";
+import { guide as checklist } from "./cnc-machine-buying-checklist";
 
-// Guide files are added in the next commit.
-export const guides: Guide[] = [];
+export const guides: Guide[] = [
+  laserVsPlasma,
+  fiberLaserPower,
+  plasmaCutter,
+  migTigMma,
+  saw,
+  cobotVsRobot,
+  voltage,
+  checklist,
+  factoryPrep,
+  importing,
+];
 
 export function getGuide(slug: string): Guide | undefined {
   return guides.find((g) => g.slug === slug);
