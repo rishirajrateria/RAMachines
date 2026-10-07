@@ -1139,7 +1139,7 @@ html:not(.js) .mobilenav-panel:target + .mobilenav-backdrop {
 
 /* ---------------------------------------------------------------------------
  * ADR-0010 — form success state, with no JavaScript.
- * Web3Forms redirects a completed submission back to `…?sent=1#sent`, which
+ * FormSubmit redirects a completed submission back to `…?sent=1#sent`, which
  * makes the pre-rendered confirmation panel `:target`. The panel is hidden
  * until then, and the form itself is swapped out for it, so the visitor sees a
  * real confirmation instead of the page they just submitted from. Reverting to

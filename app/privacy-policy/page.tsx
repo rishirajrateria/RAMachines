@@ -1,6 +1,6 @@
 /**
  * app/privacy-policy/page.tsx — short, static privacy policy for a B2B
- * marketing site whose only data collection is through Web3Forms-powered
+ * marketing site whose only data collection is through FormSubmit-powered
  * enquiry forms. No analytics or tracking scripts are used on this site.
  */
 import type { Metadata } from "next";
@@ -52,8 +52,8 @@ export default function PrivacyPolicyPage() {
         </p>
         <h2>Third-party form processing</h2>
         <p>
-          Our website forms are submitted through Web3Forms, a third-party form-delivery service that
-          receives your submission and forwards it to our email address. Web3Forms processes this data
+          Our website forms are submitted through FormSubmit (formsubmit.co), a third-party form-delivery
+          service that receives your submission and forwards it to our email address. FormSubmit processes this data
           solely to deliver your message to us and operates under its own privacy practices; we do not
           store form submissions in a database on this website, since the site itself has no backend
           or server-side storage.

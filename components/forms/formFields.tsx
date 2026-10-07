@@ -57,16 +57,18 @@ export function HiddenFields({
 }) {
   return (
     <>
-      {/* Web3Forms' documented honeypot convention: a hidden checkbox named
-          "botcheck" — submissions where it comes back checked are dropped
-          server-side, no application code involved. */}
-      <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
-      <input type="hidden" name="access_key" value={site.web3formsKey} />
-      <input type="hidden" name="subject" value={`New ${formName} enquiry — ${site.name}`} />
-      <input type="hidden" name="from_name" value={site.name} />
-      {/* Only meaningful for the plain-POST (no-JS) path: FormClient always
-          intercepts submit and never lets the browser navigate. */}
-      <input type="hidden" name="redirect" value={redirectTo} />
+      {/* FormSubmit's honeypot: a field people never see. Bots that fill it
+          in are discarded by FormSubmit, with no application code involved. */}
+      <input type="text" name="_honey" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
+      {/* The email the sales team receives: a clear subject per form, a tidy
+          table layout, and no FormSubmit captcha page in front of customers
+          (the honeypot above handles spam). */}
+      <input type="hidden" name="_subject" value={`New ${formName} enquiry — ${site.name} website`} />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_captcha" value="false" />
+      {/* After sending, FormSubmit returns the visitor to the same page with
+          ?sent=1#sent, which reveals the on-page confirmation (no JS needed). */}
+      <input type="hidden" name="_next" value={redirectTo} />
       {hidden && Object.entries(hidden).map(([key, value]) => <input key={key} type="hidden" name={key} value={value} />)}
     </>
   );
