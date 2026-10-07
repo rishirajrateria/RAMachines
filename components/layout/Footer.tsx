@@ -22,6 +22,7 @@ const quickLinks = [
   { name: "Machine Repair", href: paths.repair },
   { name: "Operator Training", href: paths.training },
   { name: "Export Enquiry", href: paths.exportHub },
+  { name: "Buyer Guides", href: paths.guides },
   { name: "Job Work on Our Machines", href: paths.jobWork },
   { name: "About", href: paths.about },
   { name: "Contact", href: paths.contact },

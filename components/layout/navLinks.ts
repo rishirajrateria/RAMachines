@@ -10,6 +10,7 @@ export const navLinks: { name: string; href: string; icon: IconName }[] = [
   { name: "Repair", href: paths.repair, icon: "Wrench" },
   { name: "Training", href: paths.training, icon: "GraduationCap" },
   { name: "Export", href: paths.exportHub, icon: "Globe" },
+  { name: "Guides", href: paths.guides, icon: "Certificate" },
   { name: "About", href: paths.about, icon: "Building" },
   { name: "Contact", href: paths.contact, icon: "Headset" },
 ];

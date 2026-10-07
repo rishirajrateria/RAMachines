@@ -120,7 +120,13 @@ export const site = {
     facebook: "",
     instagram: "",
   },
-  web3formsKey: process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "",
+  /**
+   * Where every website enquiry is emailed (quote, contact, export, repair,
+   * training, job work). Forms post to FormSubmit (formsubmit.co): free, no
+   * account and no API key. The FIRST submission sends a one-time "Activate"
+   * email to this address; after someone clicks it, every enquiry arrives here.
+   */
+  leadEmail: "salesraauto@gmail.com",
 } as const;
 
 export type Site = typeof site;

@@ -12,6 +12,8 @@ export const paths = {
   about: "/about",
   contact: "/contact",
   certifications: "/certifications",
+  guides: "/guides",
+  guide: (s: string) => `/guides/${s}`,
   state: (s: string) => `/india/${s}`,
   city: (s: string, c: string) => `/india/${s}/${c}`,
   exportHub: "/export",

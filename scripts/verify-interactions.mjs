@@ -100,6 +100,16 @@ const tableLinks = await page.$$eval('table a[href^="/products/"]', (a) => a.map
 ok("range table links every family", tableLinks.length === 5 && tableLinks.every((h) => familyLinks.includes(h)));
 ok("no product filter left on the index", (await page.$$("[data-filter]")).length === 0);
 
+// ------------------------------------------------------------- buyer guides
+await page.goto(`${BASE}/guides`, { waitUntil: "networkidle" });
+const guideLinks = await page.$$eval('main a[href^="/guides/"]', (a) => [...new Set(a.map((x) => x.getAttribute("href")))]);
+ok("guides index lists all ten guides", guideLinks.length === 10, String(guideLinks.length));
+await page.goto(`${BASE}${guideLinks[0]}`, { waitUntil: "networkidle" });
+ok("a guide shows its short answer, a family card and an FAQ",
+  await page.evaluate(() => Boolean(document.querySelector('aside[aria-label="Short answer"]')) &&
+    document.querySelectorAll('main a[href^="/products/"]').length > 0 &&
+    [...document.querySelectorAll('script[type="application/ld+json"]')].some((s) => s.textContent.includes('"Article"'))));
+
 // ------------------------------------------------------------- cert modal
 await page.goto(`${BASE}/certifications`, { waitUntil: "networkidle" });
 const certSlug = await page.evaluate(() => document.querySelector("[data-cert]")?.dataset.cert);
@@ -286,7 +296,7 @@ const hiddenReveals = await np.$$eval(".reveal", (els) =>
   els.filter((e) => parseFloat(getComputedStyle(e).opacity) < 0.9).length);
 ok("no-JS: no content is left hidden", hiddenReveals === 0, `${hiddenReveals} hidden`);
 ok("no-JS: html has no .js class", (await np.getAttribute("html", "class") || "").includes("js") === false);
-ok("no-JS: quote form posts to Web3Forms", await np.$eval('form[action*="web3forms"]', (f) => f.method.toLowerCase()) === "post");
+ok("no-JS: quote form posts to FormSubmit for the sales inbox", await np.$eval('form[action*="formsubmit.co"]', (f) => f.method.toLowerCase() === "post" && f.action.endsWith("/salesraauto@gmail.com") && Boolean(f.querySelector('input[name="_next"]')) && Boolean(f.querySelector('input[name="_honey"]'))));
 ok("no-JS: countup shows the real value", (await np.$$eval("[data-countup]", (e) => e.map((x) => x.textContent))).every((t) => t.trim().length));
 // mobile nav :target fallback
 await np.goto(`${BASE}/#mobile-nav-panel`, { waitUntil: "domcontentloaded" });
@@ -300,7 +310,7 @@ ok("no-JS: every family card is a visible link", await np.$$eval('#range a[href^
 // Form success state — the `?sent=1#sent` round trip, with JS off entirely.
 await np.goto(`${BASE}/contact`, { waitUntil: "domcontentloaded" });
 ok("no-JS: success panel hidden before submit", await np.$eval("#sent", (e) => getComputedStyle(e).display === "none"));
-ok("no-JS: form redirects back to #sent", await np.$eval('input[name="redirect"]', (e) => e.value.endsWith("?sent=1#sent")));
+ok("no-JS: form redirects back to #sent", await np.$eval('input[name="_next"]', (e) => e.value.endsWith("?sent=1#sent")));
 await np.goto(`${BASE}/contact?sent=1#sent`, { waitUntil: "domcontentloaded" });
 await np.waitForTimeout(400);
 ok("no-JS: success panel shows on ?sent=1#sent", await np.$eval("#sent", (e) => getComputedStyle(e).display !== "none"));

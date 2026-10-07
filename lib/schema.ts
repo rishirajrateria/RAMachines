@@ -4,7 +4,7 @@
  */
 import { site } from "@/config/site";
 import { absUrl } from "@/lib/seo";
-import type { Category } from "@/data/types";
+import type { Category, Guide } from "@/data/types";
 
 export function organizationSchema(): object {
   return {
@@ -136,6 +136,29 @@ export function familySchema(c: Category): object {
       name: range.label,
       value: range.value,
     })),
+  };
+}
+
+/**
+ * Article entity for a buyer guide. Author and publisher are the organisation
+ * itself (no invented bylines); dates are the guide's own published/updated.
+ */
+export function articleSchema(g: Guide): object {
+  const url = absUrl(`/guides/${g.slug}`);
+  return {
+    "@type": "Article",
+    "@id": `${url}#article`,
+    headline: g.h1,
+    description: g.description,
+    abstract: g.summary,
+    datePublished: g.published,
+    dateModified: g.updated,
+    inLanguage: "en",
+    author: { "@id": `${site.url}/#organization` },
+    publisher: { "@id": `${site.url}/#organization` },
+    mainEntityOfPage: url,
+    url,
+    about: g.families.map((slug) => ({ "@id": `${absUrl(`/products/${slug}`)}#product` })),
   };
 }
 

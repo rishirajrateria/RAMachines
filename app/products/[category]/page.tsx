@@ -15,7 +15,6 @@ import { buildMetadata } from "@/lib/seo";
 import { paths } from "@/lib/urls";
 import { site } from "@/config/site";
 import { categories } from "@/data/categories";
-import type { CategorySlug } from "@/data/types";
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
@@ -29,21 +28,15 @@ import QuoteBlock from "@/components/sections/QuoteBlock";
 import CategoryCard from "@/components/cards/CategoryCard";
 import PageHero from "@/components/layout/PageHero";
 import { photos } from "@/lib/photos";
-import type { PhotoKey } from "@/lib/photos";
 import { familySchema } from "@/lib/schema";
 import { Icon } from "@/components/ui/Icons";
 import LongCopySections from "./LongCopySections";
+import { guidesForFamily } from "@/data/guides";
+import Link from "next/link";
+import { ArrowRight } from "@/components/ui/Icons";
 import { categoryTitles } from "../meta";
 import { categoryIcon } from "../category-icons";
-
-// ADR-0007 §4: each family gets its own hero image.
-const categoryHero: Record<CategorySlug, PhotoKey> = {
-  "fiber-laser-cutting-machines": "hero-fiber",
-  "cnc-plasma-cutting-machines": "hero-plasma",
-  "mig-tig-arc-welding-machines": "hero-arc-welding",
-  "submerged-arc-welding-machines": "hero-saw",
-  "robotic-welding-systems": "hero-welding",
-};
+import { categoryHero } from "../category-heroes";
 
 export const dynamicParams = false;
 
@@ -82,6 +75,7 @@ export default async function CategoryPage({
 
   const icon = categoryIcon[category.slug];
   const others = categories.filter((c) => c.slug !== category.slug);
+  const familyGuides = guidesForFamily(category.slug);
 
   return (
     <>
@@ -163,6 +157,25 @@ export default async function CategoryPage({
           ))}
         </div>
       </Section>
+
+      {familyGuides.length > 0 && (
+        <Section eyebrow="Buyer guides" title="Before you choose">
+          <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {familyGuides.map((g) => (
+              <li key={g.slug}>
+                <Link href={paths.guide(g.slug)} prefetch={false} className="glass group flex h-full flex-col p-5">
+                  <span className="font-semibold text-ink">{g.h1}</span>
+                  <span className="mt-2 line-clamp-3 text-sm text-grey-600">{g.summary}</span>
+                  <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-semibold text-teal">
+                    Read the guide
+                    <ArrowRight width={14} height={14} className="transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )}
 
       <Section>
         <Faq items={category.faqs} title={`Questions about ${category.name}`} />
