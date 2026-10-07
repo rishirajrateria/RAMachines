@@ -15,6 +15,7 @@ export async function GET(): Promise<Response> {
     { loc: absUrl("/sitemaps/products.xml"), lastmod: buildDate },
     { loc: absUrl("/sitemaps/india.xml"), lastmod: buildDate },
     { loc: absUrl("/sitemaps/export.xml"), lastmod: buildDate },
+    { loc: absUrl("/sitemaps/guides.xml"), lastmod: buildDate },
   ]);
   return new Response(xml, { headers: xmlHeaders });
 }

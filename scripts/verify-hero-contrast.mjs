@@ -46,6 +46,8 @@ const ROUTES = [
   ["/products", "products hub"],
   ["/products/cnc-plasma-cutting-machines", "plasma family"],
   ["/products/submerged-arc-welding-machines", "SAW family"],
+  ["/guides", "guides index"],
+  ["/guides/laser-vs-plasma-cutting", "guide"],
   ["/india/west-bengal/kolkata", "city"],
   ["/india/west-bengal", "state"],
   ["/export/united-states", "export country"],

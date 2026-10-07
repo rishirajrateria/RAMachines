@@ -6,6 +6,7 @@
  */
 import { site } from "@/config/site";
 import { categories, states, countries, certifications } from "@/data";
+import { guides } from "@/data/guides";
 import { paths } from "@/lib/urls";
 import { absUrl } from "@/lib/seo";
 
@@ -38,6 +39,12 @@ function buildLlmsTxt(): string {
   }
   lines.push("");
 
+  lines.push(`## Buyer guides (${guides.length})`);
+  for (const g of guides) {
+    lines.push(`- ${g.h1}: ${g.summary} ${absUrl(paths.guide(g.slug))}`);
+  }
+  lines.push("");
+
   lines.push("## Services");
   lines.push(
     `- Repair and maintenance of RA Machine's own machines, pan-India: ${absUrl(paths.repair)}`,
@@ -59,6 +66,7 @@ function buildLlmsTxt(): string {
   lines.push("## Key URLs");
   lines.push(`- Home: ${absUrl(paths.home)}`);
   lines.push(`- All products: ${absUrl(paths.products)}`);
+  lines.push(`- Buyer guides: ${absUrl(paths.guides)}`);
   lines.push(`- Export hub: ${absUrl(paths.exportHub)}`);
   lines.push(`- About: ${absUrl(paths.about)}`);
   lines.push(`- Contact: ${absUrl(paths.contact)}`);

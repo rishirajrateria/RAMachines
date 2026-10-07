@@ -8,6 +8,7 @@
  * every other indexable surface per SPEC §6 / ADR §2).
  */
 import { site } from "@/config/site";
+import { guides } from "@/data/guides";
 import {
   categories,
   states,
@@ -81,6 +82,20 @@ function categorySections(): string[] {
   return lines;
 }
 
+/** Every buyer guide in full: answer first, then sections and FAQs. */
+function guideSections(): string[] {
+  const lines = ["## Buyer guides", ""];
+  for (const g of guides) {
+    lines.push(`### ${g.h1}`, `URL: ${absUrl(paths.guide(g.slug))}`, `Updated: ${g.updated}`, "", `Short answer: ${g.summary}`, "");
+    for (const section of g.sections) {
+      lines.push(`#### ${section.h2}`, ...section.paragraphs.flatMap((p) => [p, ""]));
+      if (section.bullets) lines.push(...section.bullets.map((b) => `- ${b}`), "");
+    }
+    for (const faq of g.faqs) lines.push(`Q: ${faq.q}`, `A: ${faq.a}`, "");
+  }
+  return lines;
+}
+
 function serviceSections(): string[] {
   const lines: string[] = [];
   lines.push("## Machine repair & CNC maintenance");
@@ -122,6 +137,7 @@ function buildLlmsFullTxt(): string {
   return [
     ...companyFacts(),
     ...categorySections(),
+    ...guideSections(),
     ...serviceSections(),
     ...indiaSections(),
     ...exportSections(),

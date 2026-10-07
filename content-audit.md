@@ -1,7 +1,7 @@
 # Content audit
 
-Generated: 2026-10-07T06:29:31.059Z
-Total pages: 253
+Generated: 2026-10-07T09:59:20.619Z
+Total pages: 254
 
 ## Summary by section
 
@@ -18,7 +18,7 @@ Total pages: 253
 | india-state | 36 | 1196 | 1355 | 1546 |
 | job-work | 1 | 721 | 721 | 721 |
 | legal | 2 | 475 | 481 | 487 |
-| other | 1 | 338 | 338 | 338 |
+| other | 2 | 158 | 248 | 338 |
 | products-index | 1 | 579 | 579 | 579 |
 | repair | 1 | 1769 | 1769 | 1769 |
 | training | 1 | 1056 | 1056 | 1056 |
@@ -69,6 +69,7 @@ Total pages: 253
 | /export/united-states | Laser, Plasma & Welding Machine Exporter to United States | CNC Laser, Plasma & Welding Machines for United States — Shipped from India | 1681 |
 | /export/uzbekistan | Laser, Plasma & Welding Machine Exporter to Uzbekistan | CNC Laser, Plasma & Welding Machines for Uzbekistan — Shipped from India | 1408 |
 | /export/vietnam | Laser, Plasma & Welding Machine Exporter to Vietnam | CNC Laser, Plasma & Welding Machines for Vietnam — Shipped from India | 1461 |
+| /guides | CNC Cutting & Welding Machine Buyer Guides \| RA Machine | Cutting & Welding Machine Guides | 158 |
 | / | CNC Laser, Plasma & Welding Machines India \| RA Machine | CNC Laser, Plasma & Welding Machines — Built in India | 1342 |
 | /india | Laser Cutting Machine Manufacturer in India \| RA Machine | CNC Laser, Plasma & Welding Machine Supplier Across India | 338 |
 | /india/andaman-and-nicobar-islands | Cutting & Welding Machines in Andaman and Nicobar Islands | CNC Laser, Plasma & Welding Machines in Andaman and Nicobar Islands — Manufacturer, Supplier & Service | 1437 |

@@ -100,6 +100,16 @@ const tableLinks = await page.$$eval('table a[href^="/products/"]', (a) => a.map
 ok("range table links every family", tableLinks.length === 5 && tableLinks.every((h) => familyLinks.includes(h)));
 ok("no product filter left on the index", (await page.$$("[data-filter]")).length === 0);
 
+// ------------------------------------------------------------- buyer guides
+await page.goto(`${BASE}/guides`, { waitUntil: "networkidle" });
+const guideLinks = await page.$$eval('main a[href^="/guides/"]', (a) => [...new Set(a.map((x) => x.getAttribute("href")))]);
+ok("guides index lists all ten guides", guideLinks.length === 10, String(guideLinks.length));
+await page.goto(`${BASE}${guideLinks[0]}`, { waitUntil: "networkidle" });
+ok("a guide shows its short answer, a family card and an FAQ",
+  await page.evaluate(() => Boolean(document.querySelector('aside[aria-label="Short answer"]')) &&
+    document.querySelectorAll('main a[href^="/products/"]').length > 0 &&
+    [...document.querySelectorAll('script[type="application/ld+json"]')].some((s) => s.textContent.includes('"Article"'))));
+
 // ------------------------------------------------------------- cert modal
 await page.goto(`${BASE}/certifications`, { waitUntil: "networkidle" });
 const certSlug = await page.evaluate(() => document.querySelector("[data-cert]")?.dataset.cert);
