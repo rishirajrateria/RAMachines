@@ -8,17 +8,6 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "ra-machines.vercel.app"
-        }
-      ],
-      "destination": "https://www.ramachines.com/:path*",
-      "permanent": true
-    },
-    {
       "source": "/products/fiber-laser-cutting-machines/:slug(ra-[a-z0-9-]+)",
       "destination": "/products/fiber-laser-cutting-machines",
       "permanent": true

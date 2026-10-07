@@ -20,11 +20,11 @@ export const site = {
    * pointed at a host that does not serve the site, so pasting the URL into
    * WhatsApp or LinkedIn produced no preview card at all.
    *
-   * The custom domain (Oct 2026), bought at Wix and pointed at Vercel; the apex
-   * ramachines.com redirects to www in Vercel's domain settings, and the old
-   * ra-machines.vercel.app address 301s here (vercel.json). No trailing slash.
+   * Change this one line when a custom domain is ready, and add a redirect from
+   * this Vercel address to it so nothing that has been shared breaks. No
+   * trailing slash.
    */
-  url: "https://www.ramachines.com",
+  url: "https://ra-machines.vercel.app",
   /** R.A. Auto Engineering Works was established in 1989; CNC machine assembly began in 2008. */
   foundedYear: 1989,
   machineDivisionSince: 2008,
