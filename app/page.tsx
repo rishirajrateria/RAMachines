@@ -68,9 +68,8 @@ const [flagship, ...otherFamilies] = categories;
  */
 const flagshipStats = [
   { label: flagship.ranges[0].label, value: flagship.ranges[0].value },
-  // The second range ("Cutting; laser can also be fitted for welding") is a
-  // sentence, not a figure — the pitch line above says it in full.
-  { label: "Process", value: "Cutting · welding" },
+  // The second range ("Cutting only") is a statement, not a figure.
+  { label: "Process", value: "Cutting only" },
 ];
 const flagshipStatSize = statSizeForGroup(flagshipStats.map((s) => s.value));
 

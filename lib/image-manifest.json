@@ -123,6 +123,50 @@
       ]
     }
   },
+  "/about/factory.webp": {
+    "hash": "8f70ee5be088ffb6",
+    "width": 4889,
+    "height": 3056,
+    "lqip": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADQAwCdASoUAA0APu1kqU2ppaQiMAgBMB2JZwDDNCHhS/Oq0TCRzoAA/u1PVBJJ+DLaNZNC6pESOkB7CZBdyPsACDoD9EW4Qk8nYApTS9OwAA==",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/about/factory-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/about/factory-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/about/factory-1600.avif"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/about/factory-1920.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/about/factory-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/about/factory-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/about/factory-1600.webp"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/about/factory-1920.webp"
+        }
+      ]
+    }
+  },
   "/categories/cnc-plasma-cutting-machines.webp": {
     "hash": "4c28364cae7c7c28",
     "width": 1200,
@@ -155,78 +199,6 @@
         {
           "w": 1200,
           "src": "/_img/categories/cnc-plasma-cutting-machines-1200.webp"
-        }
-      ]
-    }
-  },
-  "/categories/fiber-laser-cutting-machines-1200.webp": {
-    "hash": "67bbd4a89ca0d2e6",
-    "width": 1200,
-    "height": 800,
-    "lqip": "data:image/webp;base64,UklGRhQBAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSIgAAAANcFpt27I8uLu7+wSs4DIBh8gh0RnBYQWyZZaApJXk7vD/aGKAiJgA/G0K5QNB/ODOJqfixYXgZBo/EJd7Xj0hbo4Eft1zDXwZQVv6Aqn7F7sFaWjZVLA59ccHSQff2xEC7/7S9QoK5QFQuz0uPvZzIzaHwzueT3S1rgaASaGsxjgdDzsAF3wEVlA4IGYAAABwAwCdASoUAA0APu1kqk4ppaQiMAgBMB2JZQDCgBI6l0NqLAAA7Fnz+8r711+SkOW015d2gMLIrQNrYOoBvC87VaRxRwQeoMo6F14chWxQBZHmLj/edpCAe3IAGKThJXbnOEtoAAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/categories/fiber-laser-cutting-machines-1200-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/categories/fiber-laser-cutting-machines-1200-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/categories/fiber-laser-cutting-machines-1200-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/categories/fiber-laser-cutting-machines-1200-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/categories/fiber-laser-cutting-machines-1200-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/categories/fiber-laser-cutting-machines-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/categories/fiber-laser-cutting-machines.webp": {
-    "hash": "508711f5605eb1f0",
-    "width": 1200,
-    "height": 800,
-    "lqip": "data:image/webp;base64,UklGRhQBAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSIgAAAANcFpt27I8uLu7+wSs4DIBh8gh0RnBYQWyZZaApJXk7vD/aGKAiJgA/G0K5QNB/ODOJqfixYXgZBo/EJd7Xj0hbo4Eft1zDXwZQVv6Aqn7F7sFaWjZVLA59ccHSQff2xEC7/7S9QoK5QFQuz0uPvZzIzaHwzueT3S1rgaASaGsxjgdDzsAF3wEVlA4IGYAAABwAwCdASoUAA0APu1kqk4ppaQiMAgBMB2JZQDCgBI6l0NqLAAA7Fnz+8r711+SkOW015d2gMLIrQNrYOoBvC87VaRxRwQeoMo6F14chWxQBZHmLj/edpCAe3IAGKThJXbnOEtoAAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/categories/fiber-laser-cutting-machines-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/categories/fiber-laser-cutting-machines-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/categories/fiber-laser-cutting-machines-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/categories/fiber-laser-cutting-machines-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/categories/fiber-laser-cutting-machines-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/categories/fiber-laser-cutting-machines-1200.webp"
         }
       ]
     }
@@ -304,10 +276,10 @@
     }
   },
   "/categories/robotic-welding-systems-1200.webp": {
-    "hash": "630b4f1a024d4595",
+    "hash": "54757d7cc47a2c6e",
     "width": 1200,
     "height": 800,
-    "lqip": "data:image/webp;base64,UklGRvgAAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSG4AAAABcFNt27I8vwuWgAK6u7u7B4ACulOACLY5GVjp4DsF3C1AREwA/rmySL9mGFiaqlcUCwmgeyT1tvqUZLBt49ny6XRSDE6n43S2m3eIJ/anh1XcyjuH05NL/g7hs3ojqXyllI0HXXoGAMcJAk/gRVZQOCBkAAAAcAMAnQEqFAANAD7tYqpOKaWkIjAIATAdiWcAAFqfr3BDBOJgAP7uiE7NSqJlmDUuRDbvm5/qwQC2HtkF0uOtdAucVj+hCuYzI69px6YkZf/l7H//sTgYz+9aZ/r5+Xmhr0AAAA==",
+    "lqip": "data:image/webp;base64,UklGRuQAAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSGsAAAABcFpt27J8P+66Acmbu1vTxgDuEnWAv1Kdyr8J1R1moLm9sEFETAD6I9UcVUmDGEC3GI1Pty3+XYCHWNPrPv7dK5GTIDD3QEVwJ4F+2F7UOrD8+TaBIfxSBWA0Jnt4bWHfidUOT6oUE38HBQBWUDggUgAAANACAJ0BKhQADQA+7WKpTamlo6IwCAEwHYllAACEWAAA/u63/r/yUwJ44Hu0Q8EINp/aEw284X07uVei5fFYkT8dr1D369z1pDc+RVv8Jd/QAAA=",
     "variants": {
       "avif": [
         {
@@ -335,42 +307,6 @@
         {
           "w": 1200,
           "src": "/_img/categories/robotic-welding-systems-1200-1200.webp"
-        }
-      ]
-    }
-  },
-  "/categories/robotic-welding-systems.webp": {
-    "hash": "0917a05d6581de04",
-    "width": 1200,
-    "height": 800,
-    "lqip": "data:image/webp;base64,UklGRvgAAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSG4AAAABcFNt27I8vwuWgAK6u7u7B4ACulOACLY5GVjp4DsF3C1AREwA/rmySL9mGFiaqlcUCwmgeyT1tvqUZLBt49ny6XRSDE6n43S2m3eIJ/anh1XcyjuH05NL/g7hs3ojqXyllI0HXXoGAMcJAk/gRVZQOCBkAAAAcAMAnQEqFAANAD7tYqpOKaWkIjAIATAdiWcAAFqfr3BDBOJgAP7uiE7NSqJlmDUuRDbvm5/qwQC2HtkF0uOtdAucVj+hCuYzI69px6YkZf/mbT//re1S/+9aZ/tMTU8TRnkUAA==",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/categories/robotic-welding-systems-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/categories/robotic-welding-systems-1024.avif"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/categories/robotic-welding-systems-1200.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/categories/robotic-welding-systems-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/categories/robotic-welding-systems-1024.webp"
-        },
-        {
-          "w": 1200,
-          "src": "/_img/categories/robotic-welding-systems-1200.webp"
         }
       ]
     }
@@ -1107,46 +1043,46 @@
       ]
     }
   },
-  "/photos/hero-about.webp": {
-    "hash": "71ada383c1b13a65",
-    "width": 1920,
-    "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAQBACdASoUAAsAPu1kqU4ppaOiMAgBMB2JYwC7AB6RtMZc0vU7eVw+YAD+7L78uZV5PcIPtPp01UZGqNeDUkBjM92uUkv6qBAzOlbs96yJQluoIAA=",
+  "/certs/startup-india-1833.webp": {
+    "hash": "3e2770f30b203a16",
+    "width": 1833,
+    "height": 2444,
+    "lqip": "data:image/webp;base64,UklGRr4AAABXRUJQVlA4WAoAAAAQAAAAEwAAGgAAQUxQSGgAAAABcBzZbtt8Zww+wFiDs91/gSLBk32OiAnALy0l51Jihy4kKf0QaXoCgJO2gOkZw7PaLBNT5oACqBWARghABAADZTNkmZ3NRmbnGbL6xjUjmpwkPSF+LDmXI1af3+sby60mXxPJuvYfAlZQOCAwAAAA8AIAnQEqFAAbAD7tbq9SqaYkIqgIATAdiWcAAD21XAAA/vDJIgMzWBuq6Y+rkAAA",
     "variants": {
       "avif": [
         {
           "w": 640,
-          "src": "/_img/photos/hero-about-640.avif"
+          "src": "/_img/certs/startup-india-1833-640.avif"
         },
         {
           "w": 1024,
-          "src": "/_img/photos/hero-about-1024.avif"
+          "src": "/_img/certs/startup-india-1833-1024.avif"
         },
         {
           "w": 1600,
-          "src": "/_img/photos/hero-about-1600.avif"
+          "src": "/_img/certs/startup-india-1833-1600.avif"
         },
         {
-          "w": 1920,
-          "src": "/_img/photos/hero-about-1920.avif"
+          "w": 1833,
+          "src": "/_img/certs/startup-india-1833-1833.avif"
         }
       ],
       "webp": [
         {
           "w": 640,
-          "src": "/_img/photos/hero-about-640.webp"
+          "src": "/_img/certs/startup-india-1833-640.webp"
         },
         {
           "w": 1024,
-          "src": "/_img/photos/hero-about-1024.webp"
+          "src": "/_img/certs/startup-india-1833-1024.webp"
         },
         {
           "w": 1600,
-          "src": "/_img/photos/hero-about-1600.webp"
+          "src": "/_img/certs/startup-india-1833-1600.webp"
         },
         {
-          "w": 1920,
-          "src": "/_img/photos/hero-about-1920.webp"
+          "w": 1833,
+          "src": "/_img/certs/startup-india-1833-1833.webp"
         }
       ]
     }
@@ -1195,90 +1131,46 @@
       ]
     }
   },
-  "/certs/startup-india-1833.webp": {
-    "hash": "3e2770f30b203a16",
-    "width": 1833,
-    "height": 2444,
-    "lqip": "data:image/webp;base64,UklGRr4AAABXRUJQVlA4WAoAAAAQAAAAEwAAGgAAQUxQSGgAAAABcBzZbtt8Zww+wFiDs91/gSLBk32OiAnALy0l51Jihy4kKf0QaXoCgJO2gOkZw7PaLBNT5oACqBWARghABAADZTNkmZ3NRmbnGbL6xjUjmpwkPSF+LDmXI1af3+sby60mXxPJuvYfAlZQOCAwAAAA8AIAnQEqFAAbAD7tbq9SqaYkIqgIATAdiWcAAD21XAAA/vDJIgMzWBuq6Y+rkAAA",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/certs/startup-india-1833-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/certs/startup-india-1833-1024.avif"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/certs/startup-india-1833-1600.avif"
-        },
-        {
-          "w": 1833,
-          "src": "/_img/certs/startup-india-1833-1833.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/certs/startup-india-1833-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/certs/startup-india-1833-1024.webp"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/certs/startup-india-1833-1600.webp"
-        },
-        {
-          "w": 1833,
-          "src": "/_img/certs/startup-india-1833-1833.webp"
-        }
-      ]
-    }
-  },
-  "/photos/hero-certifications.webp": {
-    "hash": "9ec51a54270fc5bb",
+  "/photos/hero-about.webp": {
+    "hash": "71ada383c1b13a65",
     "width": 1920,
     "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADwAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JYwC7AB6PVS8IiWK75PMAAP7svvlexo3nj+VFhc1SK1wJxdK0dfZCDDPxn+9yRQ4Grguv+CoAx5328ISg7PAAAAA=",
+    "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAQBACdASoUAAsAPu1kqU4ppaOiMAgBMB2JYwC7AB6RtMZc0vU7eVw+YAD+7L78uZV5PcIPtPp01UZGqNeDUkBjM92uUkv6qBAzOlbs96yJQluoIAA=",
     "variants": {
       "avif": [
         {
           "w": 640,
-          "src": "/_img/photos/hero-certifications-640.avif"
+          "src": "/_img/photos/hero-about-640.avif"
         },
         {
           "w": 1024,
-          "src": "/_img/photos/hero-certifications-1024.avif"
+          "src": "/_img/photos/hero-about-1024.avif"
         },
         {
           "w": 1600,
-          "src": "/_img/photos/hero-certifications-1600.avif"
+          "src": "/_img/photos/hero-about-1600.avif"
         },
         {
           "w": 1920,
-          "src": "/_img/photos/hero-certifications-1920.avif"
+          "src": "/_img/photos/hero-about-1920.avif"
         }
       ],
       "webp": [
         {
           "w": 640,
-          "src": "/_img/photos/hero-certifications-640.webp"
+          "src": "/_img/photos/hero-about-640.webp"
         },
         {
           "w": 1024,
-          "src": "/_img/photos/hero-certifications-1024.webp"
+          "src": "/_img/photos/hero-about-1024.webp"
         },
         {
           "w": 1600,
-          "src": "/_img/photos/hero-certifications-1600.webp"
+          "src": "/_img/photos/hero-about-1600.webp"
         },
         {
           "w": 1920,
-          "src": "/_img/photos/hero-certifications-1920.webp"
+          "src": "/_img/photos/hero-about-1920.webp"
         }
       ]
     }
@@ -1323,6 +1215,50 @@
         {
           "w": 1920,
           "src": "/_img/photos/hero-arc-welding-1920.webp"
+        }
+      ]
+    }
+  },
+  "/photos/hero-certifications.webp": {
+    "hash": "9ec51a54270fc5bb",
+    "width": 1920,
+    "height": 1080,
+    "lqip": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADwAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JYwC7AB6PVS8IiWK75PMAAP7svvlexo3nj+VFhc1SK1wJxdK0dfZCDDPxn+9yRQ4Grguv+CoAx5328ISg7PAAAAA=",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-certifications-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-certifications-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-certifications-1600.avif"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-certifications-1920.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-certifications-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-certifications-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-certifications-1600.webp"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-certifications-1920.webp"
         }
       ]
     }
@@ -1503,90 +1439,74 @@
       ]
     }
   },
-  "/photos/hero-fiber.webp": {
-    "hash": "856730d79a33b0e0",
-    "width": 1920,
-    "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADQAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JYwAAW+uEimtPTZzuXNAA/uyvy9hrAfd6uHh3WENspE2Lro/fDW10k7heXFsCvaFShXaf1Z7KOq8sAAA=",
+  "/categories/robotic-welding-systems.webp": {
+    "hash": "54757d7cc47a2c6e",
+    "width": 1200,
+    "height": 800,
+    "lqip": "data:image/webp;base64,UklGRuQAAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSGsAAAABcFpt27J8P+66Acmbu1vTxgDuEnWAv1Kdyr8J1R1moLm9sEFETAD6I9UcVUmDGEC3GI1Pty3+XYCHWNPrPv7dK5GTIDD3QEVwJ4F+2F7UOrD8+TaBIfxSBWA0Jnt4bWHfidUOT6oUE38HBQBWUDggUgAAANACAJ0BKhQADQA+7WKpTamlo6IwCAEwHYllAACEWAAA/u63/r/yUwJ44Hu0Q8EINp/aEw284X07uVei5fFYkT8dr1D369z1pDc+RVv8Jd/QAAA=",
     "variants": {
       "avif": [
         {
           "w": 640,
-          "src": "/_img/photos/hero-fiber-640.avif"
+          "src": "/_img/categories/robotic-welding-systems-640.avif"
         },
         {
           "w": 1024,
-          "src": "/_img/photos/hero-fiber-1024.avif"
+          "src": "/_img/categories/robotic-welding-systems-1024.avif"
         },
         {
-          "w": 1600,
-          "src": "/_img/photos/hero-fiber-1600.avif"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-fiber-1920.avif"
+          "w": 1200,
+          "src": "/_img/categories/robotic-welding-systems-1200.avif"
         }
       ],
       "webp": [
         {
           "w": 640,
-          "src": "/_img/photos/hero-fiber-640.webp"
+          "src": "/_img/categories/robotic-welding-systems-640.webp"
         },
         {
           "w": 1024,
-          "src": "/_img/photos/hero-fiber-1024.webp"
+          "src": "/_img/categories/robotic-welding-systems-1024.webp"
         },
         {
-          "w": 1600,
-          "src": "/_img/photos/hero-fiber-1600.webp"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-fiber-1920.webp"
+          "w": 1200,
+          "src": "/_img/categories/robotic-welding-systems-1200.webp"
         }
       ]
     }
   },
-  "/photos/hero-home.webp": {
-    "hash": "60ab5e8d578d9a5c",
-    "width": 1920,
-    "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAwCdASoUAAsAPu1iqk2ppaQiMAgBMB2JQAAKVUgXlPT9se+YKAAA/u9KIkyjMDuPC1jUtkGd5SToXkl1/7u7opPoPJ7NT6cPyX8AASSE2/7IHYAAAA==",
+  "/categories/fiber-laser-cutting-machines.webp": {
+    "hash": "7c68553ca15f76f8",
+    "width": 1200,
+    "height": 800,
+    "lqip": "data:image/webp;base64,UklGRjABAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSIUAAAABcBtt/5p88ZTpAlT/CXB3X4GjYgAqjsrGIBUuNVSpOCovtWUCjgncdYGImAD8O0cs8VSu1J2NlSj3QEL2/OqubKOAorp+6XzeckDr/O4pDVTeOncA5S1VB3in0/58/2B/Pg5CuKdZXpST1c3pPOzZeI4GwBG9wxeKxuKJTCzkc+gJh88CAFZQOCCEAAAAcAQAnQEqFAANAD7tYqlNqaWjojAIATAdiUAWIY4EFMMtFhe0BD1Dk8NftjAA9AufZXVIVVqjm1B7YcWnAiAFpgs/mGX/evaWDs6DQH48mMp9Qi05qzawS+r4v4GEzMFUwRUxe0oBQuoNhVOJ/CNz/+rKYh3GyCTb9TLke4oXqWUAAAAA",
     "variants": {
       "avif": [
         {
           "w": 640,
-          "src": "/_img/photos/hero-home-640.avif"
+          "src": "/_img/categories/fiber-laser-cutting-machines-640.avif"
         },
         {
           "w": 1024,
-          "src": "/_img/photos/hero-home-1024.avif"
+          "src": "/_img/categories/fiber-laser-cutting-machines-1024.avif"
         },
         {
-          "w": 1600,
-          "src": "/_img/photos/hero-home-1600.avif"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-home-1920.avif"
+          "w": 1200,
+          "src": "/_img/categories/fiber-laser-cutting-machines-1200.avif"
         }
       ],
       "webp": [
         {
           "w": 640,
-          "src": "/_img/photos/hero-home-640.webp"
+          "src": "/_img/categories/fiber-laser-cutting-machines-640.webp"
         },
         {
           "w": 1024,
-          "src": "/_img/photos/hero-home-1024.webp"
+          "src": "/_img/categories/fiber-laser-cutting-machines-1024.webp"
         },
         {
-          "w": 1600,
-          "src": "/_img/photos/hero-home-1600.webp"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-home-1920.webp"
+          "w": 1200,
+          "src": "/_img/categories/fiber-laser-cutting-machines-1200.webp"
         }
       ]
     }
@@ -1635,50 +1555,6 @@
       ]
     }
   },
-  "/photos/hero-plasma.webp": {
-    "hash": "b2bbc611902d025d",
-    "width": 1920,
-    "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAACQAwCdASoUAAsAPu1iqU2ppaQiMAgBMB2JYwAAUqI+nOsOQDwAAP7svvv2NlEwqDUGjq96f3LMh/8JR7RWN/27WQLtilb3D3WEQe1mlU0Dcs8AAAA=",
-    "variants": {
-      "avif": [
-        {
-          "w": 640,
-          "src": "/_img/photos/hero-plasma-640.avif"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/hero-plasma-1024.avif"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/hero-plasma-1600.avif"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-plasma-1920.avif"
-        }
-      ],
-      "webp": [
-        {
-          "w": 640,
-          "src": "/_img/photos/hero-plasma-640.webp"
-        },
-        {
-          "w": 1024,
-          "src": "/_img/photos/hero-plasma-1024.webp"
-        },
-        {
-          "w": 1600,
-          "src": "/_img/photos/hero-plasma-1600.webp"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-plasma-1920.webp"
-        }
-      ]
-    }
-  },
   "/photos/hero-jobwork.webp": {
     "hash": "747991a1a7cf56eb",
     "width": 1920,
@@ -1719,6 +1595,50 @@
         {
           "w": 1920,
           "src": "/_img/photos/hero-jobwork-1920.webp"
+        }
+      ]
+    }
+  },
+  "/photos/hero-plasma.webp": {
+    "hash": "b2bbc611902d025d",
+    "width": 1920,
+    "height": 1080,
+    "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAACQAwCdASoUAAsAPu1iqU2ppaQiMAgBMB2JYwAAUqI+nOsOQDwAAP7svvv2NlEwqDUGjq96f3LMh/8JR7RWN/27WQLtilb3D3WEQe1mlU0Dcs8AAAA=",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-plasma-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-plasma-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-plasma-1600.avif"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-plasma-1920.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-plasma-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-plasma-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-plasma-1600.webp"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-plasma-1920.webp"
         }
       ]
     }
@@ -1943,46 +1863,38 @@
       ]
     }
   },
-  "/photos/hero-welding.webp": {
-    "hash": "2b04d93e609867b4",
-    "width": 1920,
-    "height": 1080,
-    "lqip": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAACQAwCdASoUAAsAPu1kqU2ppaOiMAgBMB2JYwAAUvp2p0GuilOAAP7vS88NHvZEUF2CUYPqTpTKiz39Vg0/yc+2s44L/TujqI/YxzmJP1aMeindGxGgLngAAAA=",
+  "/categories/fiber-laser-cutting-machines-1200.webp": {
+    "hash": "7c68553ca15f76f8",
+    "width": 1200,
+    "height": 800,
+    "lqip": "data:image/webp;base64,UklGRjABAABXRUJQVlA4WAoAAAAQAAAAEwAADAAAQUxQSIUAAAABcBtt/5p88ZTpAlT/CXB3X4GjYgAqjsrGIBUuNVSpOCovtWUCjgncdYGImAD8O0cs8VSu1J2NlSj3QEL2/OqubKOAorp+6XzeckDr/O4pDVTeOncA5S1VB3in0/58/2B/Pg5CuKdZXpST1c3pPOzZeI4GwBG9wxeKxuKJTCzkc+gJh88CAFZQOCCEAAAAcAQAnQEqFAANAD7tYqlNqaWjojAIATAdiUAWIY4EFMMtFhe0BD1Dk8NftjAA9AufZXVIVVqjm1B7YcWnAiAFpgs/mGX/evaWDs6DQH48mMp9Qi05qzawS+r4v4GEzMFUwRUxe0oBQuoNhVOJ/CNz/+rKYh3GyCTb9TLke4oXqWUAAAAA",
     "variants": {
       "avif": [
         {
           "w": 640,
-          "src": "/_img/photos/hero-welding-640.avif"
+          "src": "/_img/categories/fiber-laser-cutting-machines-1200-640.avif"
         },
         {
           "w": 1024,
-          "src": "/_img/photos/hero-welding-1024.avif"
+          "src": "/_img/categories/fiber-laser-cutting-machines-1200-1024.avif"
         },
         {
-          "w": 1600,
-          "src": "/_img/photos/hero-welding-1600.avif"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-welding-1920.avif"
+          "w": 1200,
+          "src": "/_img/categories/fiber-laser-cutting-machines-1200-1200.avif"
         }
       ],
       "webp": [
         {
           "w": 640,
-          "src": "/_img/photos/hero-welding-640.webp"
+          "src": "/_img/categories/fiber-laser-cutting-machines-1200-640.webp"
         },
         {
           "w": 1024,
-          "src": "/_img/photos/hero-welding-1024.webp"
+          "src": "/_img/categories/fiber-laser-cutting-machines-1200-1024.webp"
         },
         {
-          "w": 1600,
-          "src": "/_img/photos/hero-welding-1600.webp"
-        },
-        {
-          "w": 1920,
-          "src": "/_img/photos/hero-welding-1920.webp"
+          "w": 1200,
+          "src": "/_img/categories/fiber-laser-cutting-machines-1200-1200.webp"
         }
       ]
     }
@@ -2527,46 +2439,134 @@
       ]
     }
   },
-  "/about/factory.webp": {
-    "hash": "8f70ee5be088ffb6",
-    "width": 4889,
-    "height": 3056,
-    "lqip": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADQAwCdASoUAA0APu1kqU2ppaQiMAgBMB2JZwDDNCHhS/Oq0TCRzoAA/u1PVBJJ+DLaNZNC6pESOkB7CZBdyPsACDoD9EW4Qk8nYApTS9OwAA==",
+  "/photos/hero-welding.webp": {
+    "hash": "f6f06c28f7f6f505",
+    "width": 1920,
+    "height": 1080,
+    "lqip": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADQAwCdASoUAAsAPu1iqk4ppaQiMAgBMB2JQBOl65A6NGRc9Z35/4AA/vDMs0anXdgP3NS6vAgce3Q8HvpsgfeMfU0AxbJSWz5xt0Aae+NpAAAA",
     "variants": {
       "avif": [
         {
           "w": 640,
-          "src": "/_img/about/factory-640.avif"
+          "src": "/_img/photos/hero-welding-640.avif"
         },
         {
           "w": 1024,
-          "src": "/_img/about/factory-1024.avif"
+          "src": "/_img/photos/hero-welding-1024.avif"
         },
         {
           "w": 1600,
-          "src": "/_img/about/factory-1600.avif"
+          "src": "/_img/photos/hero-welding-1600.avif"
         },
         {
           "w": 1920,
-          "src": "/_img/about/factory-1920.avif"
+          "src": "/_img/photos/hero-welding-1920.avif"
         }
       ],
       "webp": [
         {
           "w": 640,
-          "src": "/_img/about/factory-640.webp"
+          "src": "/_img/photos/hero-welding-640.webp"
         },
         {
           "w": 1024,
-          "src": "/_img/about/factory-1024.webp"
+          "src": "/_img/photos/hero-welding-1024.webp"
         },
         {
           "w": 1600,
-          "src": "/_img/about/factory-1600.webp"
+          "src": "/_img/photos/hero-welding-1600.webp"
         },
         {
           "w": 1920,
-          "src": "/_img/about/factory-1920.webp"
+          "src": "/_img/photos/hero-welding-1920.webp"
+        }
+      ]
+    }
+  },
+  "/photos/hero-fiber.webp": {
+    "hash": "118c202b282c4671",
+    "width": 1920,
+    "height": 1080,
+    "lqip": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAwCdASoUAAsAPu1kq04ppaQiMAgBMB2JYwCdACHfh+JP3H+L8AAA/vDMnzVZoE+Zpi382eLSuDvidL/9NBo6Inzp0sCf79bqiO6VoqqUtRlkcQiFIAAA",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-fiber-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-fiber-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-fiber-1600.avif"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-fiber-1920.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-fiber-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-fiber-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-fiber-1600.webp"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-fiber-1920.webp"
+        }
+      ]
+    }
+  },
+  "/photos/hero-home.webp": {
+    "hash": "5b775372a969e747",
+    "width": 1920,
+    "height": 1080,
+    "lqip": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADQAwCdASoUAAsAPu1kqk4ppaQiMAgBMB2JYwCdACHgHHWQrFYImAgA/vDMn1ddRgXa8uuvUc20EaNNV3J2UqVXg8r0iOxA1iSH8v6Z4QEJCZYBCkiuKWSOAAA=",
+    "variants": {
+      "avif": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-home-640.avif"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-home-1024.avif"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-home-1600.avif"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-home-1920.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "src": "/_img/photos/hero-home-640.webp"
+        },
+        {
+          "w": 1024,
+          "src": "/_img/photos/hero-home-1024.webp"
+        },
+        {
+          "w": 1600,
+          "src": "/_img/photos/hero-home-1600.webp"
+        },
+        {
+          "w": 1920,
+          "src": "/_img/photos/hero-home-1920.webp"
         }
       ]
     }

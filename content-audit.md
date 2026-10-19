@@ -1,6 +1,6 @@
 # Content audit
 
-Generated: 2026-10-07T10:40:47.153Z
+Generated: 2026-10-19T04:33:13.619Z
 Total pages: 264
 
 ## Summary by section
@@ -8,18 +8,18 @@ Total pages: 264
 | Section | Pages | Min words | Median words | Max words |
 |---|---|---|---|---|
 | about | 1 | 807 | 807 | 807 |
-| category | 5 | 1683 | 1893 | 2051 |
+| category | 5 | 1683 | 1893 | 2023 |
 | certifications | 1 | 786 | 786 | 786 |
 | contact | 1 | 211 | 211 | 211 |
 | export-country | 30 | 1337 | 1435 | 1681 |
 | export-hub | 1 | 1131 | 1131 | 1131 |
-| home | 1 | 1342 | 1342 | 1342 |
+| home | 1 | 1341 | 1341 | 1341 |
 | india-city | 170 | 877 | 965 | 1072 |
 | india-state | 36 | 1196 | 1355 | 1546 |
 | job-work | 1 | 721 | 721 | 721 |
 | legal | 2 | 475 | 482 | 488 |
 | other | 12 | 338 | 1629 | 1736 |
-| products-index | 1 | 579 | 579 | 579 |
+| products-index | 1 | 631 | 631 | 631 |
 | repair | 1 | 1769 | 1769 | 1769 |
 | training | 1 | 1056 | 1056 | 1056 |
 
@@ -73,14 +73,14 @@ Total pages: 264
 | /guides/cnc-machine-buying-checklist | CNC Machine Buying Checklist: 12 Questions Before You Order | CNC Machine Buying Checklist: 12 Questions to Ask Before You Order | 1626 |
 | /guides/cnc-plasma-cutter-guide | CNC Plasma Cutter Guide: 100 A vs 200 A Explained | Choosing a CNC Plasma Cutting Machine: 100 A vs 200 A | 1516 |
 | /guides/cobot-vs-robot-welding | Cobot vs Industrial Robot Welding: Which Suits Your Shop? | Cobot vs Industrial Robot Welding: Which Is Right for Your Shop? | 1632 |
-| /guides/fiber-laser-power-guide | Fiber Laser Power Guide: Choosing 1.5 kW to 30 kW | How to Choose Fiber Laser Power (1.5 kW to 30 kW) | 1591 |
+| /guides/fiber-laser-power-guide | Fiber Laser Power Guide: Choosing 1.5 kW to 30 kW | How to Choose Fiber Laser Power (1.5 kW to 30 kW) | 1577 |
 | /guides/importing-cnc-machines-from-india | Importing a CNC Machine from India: Shipping and Documents | Importing a CNC Machine from India: Shipping, Documents and Installation | 1706 |
 | /guides/laser-vs-plasma-cutting | Laser vs Plasma Cutting: Which CNC Cutter Do You Need? | Laser vs Plasma Cutting: Which CNC Cutting Machine Do You Need? | 1643 |
 | /guides/mig-vs-tig-vs-mma-welding | MIG vs TIG vs MMA Welding: Which Process to Use \| RA Machine | MIG vs TIG vs MMA (Stick) Welding: Which Process Should You Use? | 1736 |
 | /guides/preparing-factory-for-cnc-machine | CNC Machine Site Preparation: How to Prepare Your Factory | How to Prepare Your Factory for a CNC Cutting or Welding Machine | 1689 |
 | /guides/submerged-arc-welding-guide | Submerged Arc Welding (SAW): What It Is and When to Use It | What Is Submerged Arc Welding (SAW) and When Should You Use It? | 1617 |
 | /guides/welding-machine-220v-vs-440v | 220 V vs 440 V Welding Machines: Which Supply Do You Need? | 220 V vs 440 V Welding Machines: Which Supply Do You Need? | 1643 |
-| / | CNC Laser, Plasma & Welding Machines India \| RA Machine | CNC Laser, Plasma & Welding Machines — Built in India | 1342 |
+| / | CNC Laser, Plasma & Welding Machines India \| RA Machine | CNC Laser, Plasma & Welding Machines — Built in India | 1341 |
 | /india | Laser Cutting Machine Manufacturer in India \| RA Machine | CNC Laser, Plasma & Welding Machine Supplier Across India | 338 |
 | /india/andaman-and-nicobar-islands | Cutting & Welding Machines in Andaman and Nicobar Islands | CNC Laser, Plasma & Welding Machines in Andaman and Nicobar Islands — Manufacturer, Supplier & Service | 1437 |
 | /india/andaman-and-nicobar-islands/port-blair | Laser, Plasma & Welding Machines in Port Blair \| RA Machine | CNC Laser, Plasma & Welding Machines in Port Blair, Andaman and Nicobar Islands — Sales, Installation, Repair & Training | 1032 |
@@ -289,12 +289,12 @@ Total pages: 264
 | /india/west-bengal/kolkata | Laser, Plasma & Welding Machines in Kolkata \| RA Machine | CNC Laser, Plasma & Welding Machines in Kolkata, West Bengal — Sales, Installation, Repair & Training | 998 |
 | /india/west-bengal/siliguri | Laser, Plasma & Welding Machines in Siliguri \| RA Machine | CNC Laser, Plasma & Welding Machines in Siliguri, West Bengal — Sales, Installation, Repair & Training | 923 |
 | /privacy-policy | Privacy Policy \| RA Machine | Privacy Policy | 488 |
-| /products | CNC Laser, Plasma & Welding Machines \| RA Machine | Machines | 579 |
+| /products | CNC Laser, Plasma & Welding Machines \| RA Machine | Machines | 631 |
 | /products/cnc-plasma-cutting-machines | CNC Plasma Cutting Machine Manufacturer, India \| RA Machine | CNC Plasma Cutting Machines | 1893 |
-| /products/fiber-laser-cutting-machines | CNC Fiber Laser Cutting Machine Manufacturer, India | CNC Fiber Laser Cutting Machines | 2051 |
-| /products/mig-tig-arc-welding-machines | MIG, TIG & Arc Welding Machine Manufacturer, India | MIG, TIG & Arc (MMA) Welding Machines | 1981 |
+| /products/fiber-laser-cutting-machines | CNC Fiber Laser Cutting Machine Manufacturer, India | CNC Fiber Laser Cutting Machines | 2019 |
+| /products/mig-tig-arc-welding-machines | MIG, TIG & Arc Welding Machine Manufacturer, India | MIG, TIG & Arc (MMA) Welding Machines | 2023 |
 | /products/robotic-welding-systems | Cobot & Robotic Welding System Manufacturer, India | Cobot & Robotic Welding Systems | 1683 |
-| /products/submerged-arc-welding-machines | Submerged Arc Welding (SAW) Machine Manufacturer, India | Submerged Arc Welding (SAW) Machines | 1766 |
+| /products/submerged-arc-welding-machines | Submerged Arc Welding (SAW) Machine Manufacturer, India | Submerged Arc Welding (SAW) Machines | 1788 |
 | /services/laser-cutting-job-work | Laser Cutting Job Work — Custom Metal Cutting \| RA Machine | Laser Cutting Job Work | 721 |
 | /services/machine-repair | RA Machine Repair & Maintenance Service, India | Repair & Maintenance for Your RA Machine | 1769 |
 | /services/operator-training | Laser Cutting Machine Operator Training & CNC Course | Laser Cutting Machine Operator Training & CNC Training | 1056 |

@@ -21,7 +21,7 @@ export const machinesIntro =
   "Five technologies, each configured to the job: CNC laser and plasma cutting, MIG/TIG/MMA and submerged arc welding, and cobot and robotic welding — designed, fabricated and calibrated at our own works, then supported by the same team through installation, training and service.";
 
 export const flagshipPitch =
-  "Fiber laser cutting from 1.5 kW to 30 kW — and the laser can also be fitted for welding.";
+  "Fiber laser cutting machines from 1.5 kW to 30 kW, built and configured for your sheet and plate work.";
 
 /** The closing bento tile: what "customisable" and "as per requirement" mean for a buyer. */
 export const customBuild = {
