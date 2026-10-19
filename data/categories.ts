@@ -1,7 +1,7 @@
 /**
  * data/categories.ts — RA Machine's five machine families, each with the
  * buyer-education copy shown on its /products/[category] page:
- *   1. CNC fiber laser cutting (1.5–30 kW; source can also be fitted for welding)
+ *   1. CNC fiber laser cutting (1.5–30 kW; cutting only, no welding)
  *   2. CNC plasma cutting (100–200 A, cutting range 2–25 mm)
  *   3. MIG / TIG / MMA arc welding (220 V and 440 V, customisable)
  *   4. Submerged arc welding (440 V, customisable)
@@ -32,12 +32,12 @@ export const categories: Category[] = [
     headlineLabel: "laser power",
     ranges: [
       { label: "Laser power", value: "1.5 kW – 30 kW" },
-      { label: "Process", value: "Cutting; laser can also be fitted for welding" },
+      { label: "Process", value: "Cutting only" },
     ],
     description:
       "CNC fiber laser cutting machines from 1.5 kW to 30 kW, engineered and built in India for sheet and plate fabrication. Installation and training included.",
     intro:
-      "A CNC fiber laser cutting machine uses a focused, high-power beam from a solid-state fiber laser source to cut carbon steel, stainless steel, aluminium and other metals with a narrow kerf, little heat distortion and edges that rarely need further finishing. RA Machine builds fiber laser machines with sources from 1.5 kW to 30 kW, so a job shop cutting thin sheet and a heavy fabricator cutting thick plate can each have a machine configured to their material, thickness and daily output. Where the job calls for it, the same laser source can be fitted for welding instead of cutting.",
+      "A CNC fiber laser cutting machine uses a focused, high-power beam from a solid-state fiber laser source to cut carbon steel, stainless steel, aluminium and other metals with a narrow kerf, little heat distortion and edges that rarely need further finishing. RA Machine builds fiber laser machines with sources from 1.5 kW to 30 kW, so a job shop cutting thin sheet and a heavy fabricator cutting thick plate can each have a machine configured to their material, thickness and daily output.",
     longCopy: [
       "A fiber laser generates its beam inside an optical fibre pumped by laser diodes, then carries it through a flexible fibre cable to a cutting head that a CNC-controlled gantry moves over the sheet. A lens focuses the beam to a small spot that melts the metal, and a jet of assist gas blows the molten material out of the kerf. Unlike CO2 lasers, which build the beam in a gas-filled resonator and steer it with mirrors, fiber lasers convert electrical power to light far more efficiently and have no beam-path mirrors to align, which keeps running cost and routine maintenance low.",
       "Laser power is the first decision, and it should follow your work rather than assume bigger is better. Higher power cuts thicker plate and cuts thin sheet faster, but it also raises the cost of the source, the chiller and the electrical connection. A shop cutting mostly thin and medium sheet is usually well served towards the lower end of the 1.5–30 kW range; heavy engineering, plate processing and high-volume production, where cycle time sets output, justify more. We size the source to the thickest material you cut regularly, not the occasional exception, and to the hours the machine will run each day.",
@@ -73,8 +73,8 @@ export const categories: Category[] = [
         a: "Yes. The laser source and cutting head generate heat that must be removed to keep beam quality stable and protect the optics, so every fiber laser runs with a dedicated industrial water chiller sized to the laser power. It works as a closed loop and needs periodic coolant and filter checks, which are covered in operator training along with the machine's other routine maintenance tasks.",
       },
       {
-        q: "Can the laser be used for welding as well as cutting?",
-        a: "Yes. The laser source can be fitted for cutting or for welding, depending on what the job needs. Laser welding produces a narrow, low-distortion weld at high travel speed and suits thin sheet, stainless steel and joints where appearance matters. Tell us whether you need cutting, welding or both, and we will configure the source, head and controls to suit your parts and production.",
+        q: "Do you offer laser welding machines?",
+        a: "No. RA Machine's fiber laser machines are for cutting only. For joining metal we build MIG, TIG and MMA welding machines, submerged arc welding machines, and cobot and robotic welding systems, which suit everything from one-off repairs to repeat production welding. Tell us the parts and joints you have in mind and we will point you to the right machine for both the cutting and the welding.",
       },
       {
         q: "Can one machine cut both thin sheet and thick plate well?",
@@ -87,7 +87,7 @@ export const categories: Category[] = [
     ],
     image: {
       src: "/categories/fiber-laser-cutting-machines.webp",
-      alt: "CNC fiber laser cutting machine cutting parts from a steel sheet",
+      alt: "RA Machine CNC fiber laser cutting machine with enclosed cutting table",
       width: 1200,
       height: 800,
     },
@@ -167,7 +167,11 @@ export const categories: Category[] = [
     ranges: [
       { label: "Processes", value: "MIG, TIG, MMA (arc)" },
       { label: "Supply", value: "220 V and 440 V" },
-      { label: "Configuration", value: "Customisable" },
+      {
+        label: "Configuration",
+        value:
+          "Standard: 1 phase – 200 A, 1 phase – 250 A, 3 phase – 400 A etc. SPM (Special Purpose Machine): customised",
+      },
     ],
     description:
       "MIG, TIG and MMA arc welding machines for 220 V and 440 V supply, customisable to your work. Engineered and built in India, with installation and training.",
@@ -235,7 +239,7 @@ export const categories: Category[] = [
     headlineLabel: "supply",
     ranges: [
       { label: "Supply", value: "440 V" },
-      { label: "Configuration", value: "Customisable" },
+      { label: "Configuration", value: "Standard: 3 phase – 300 A, 3 phase – 1000 A etc." },
     ],
     description:
       "Submerged arc welding (SAW) machines for 440 V, customisable for long seams on thick plate. Engineered and built in India, with installation and training.",
@@ -354,7 +358,7 @@ export const categories: Category[] = [
     ],
     image: {
       src: "/categories/robotic-welding-systems.webp",
-      alt: "Robot arm MIG welding a steel assembly held in a fixture",
+      alt: "Industrial robot arm for automated welding, from RA Machine's cobot and robotic welding range",
       width: 1200,
       height: 800,
     },

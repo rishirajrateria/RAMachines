@@ -32,11 +32,12 @@ const emit = makeEmit(PUBLIC);
 
 // ---- Fixed slugs (must match data/categories.ts — the five machine families) ----
 const CATEGORIES = [
-  { slug: "fiber-laser-cutting-machines", name: "Fiber Laser Cutting Machines" },
+  // `fromClientPhoto`: built from the client's own pictures by scripts/compose-client-photos.mjs, not drawn here.
+  { slug: "fiber-laser-cutting-machines", name: "Fiber Laser Cutting Machines", fromClientPhoto: true },
   { slug: "cnc-plasma-cutting-machines", name: "CNC Plasma Cutting Machines" },
   { slug: "mig-tig-arc-welding-machines", name: "MIG / TIG / MMA Welding Machines" },
   { slug: "submerged-arc-welding-machines", name: "Submerged Arc Welding Machines" },
-  { slug: "robotic-welding-systems", name: "Robotic & Cobot Welding Systems" },
+  { slug: "robotic-welding-systems", name: "Robotic & Cobot Welding Systems", fromClientPhoto: true },
 ];
 
 const CERTS = [
@@ -74,6 +75,7 @@ async function main() {
   }
 
   for (const category of CATEGORIES) {
+    if (category.fromClientPhoto) continue;
     const full = await emit(`categories/${category.slug}.webp`, categorySvg(category), { superSample: [1200, 800] });
     written.push(full);
     // `<slug>-1200.webp` mirrors the legacy 1200w WebP q72 variant that sits

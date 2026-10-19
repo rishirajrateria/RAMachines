@@ -53,10 +53,10 @@ function img(key: PhotoKey, alt: string, size: { width: number; height: number }
 }
 
 export const photos: Record<PhotoKey, Img> = {
-  "hero-home": img("hero-home", "Wide illustration of the RA Machine factory floor in soft teal-tinted light", HERO),
+  "hero-home": img("hero-home", "RA Auto Engineering Works fiber laser cutting machine with an enclosed cutting area, on a dark teal background", HERO),
   "hero-products": img("hero-products", "Illustration of the RA Machine product range on the factory floor, graphite and teal light", HERO),
-  "hero-fiber": img("hero-fiber", "Illustration of a fiber laser cutting machine gantry under industrial light", HERO),
-  "hero-welding": img("hero-welding", "Illustration of a robotic welding cell mid-weld with bright arc sparks", HERO),
+  "hero-fiber": img("hero-fiber", "RA Auto Engineering Works fiber laser cutting machine with an enclosed cutting area, on a dark teal background", HERO),
+  "hero-welding": img("hero-welding", "Yellow industrial welding robot with a MIG welding torch, on a dark teal background", HERO),
   "hero-plasma": img("hero-plasma", "Illustration of a CNC plasma cutting table with the torch cutting steel plate", HERO),
   "hero-arc-welding": img("hero-arc-welding", "Illustration of a MIG welding set on a trolley with the torch welding a workpiece", HERO),
   "hero-saw": img("hero-saw", "Illustration of a submerged arc welding tractor running along a plate seam", HERO),

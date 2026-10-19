@@ -69,7 +69,7 @@ export const guide: Guide = {
     {
       h2: "How RA Machine sizes the laser for your job",
       paragraphs: [
-        "RA Machine builds CNC fiber laser cutting machines with sources from 1.5 kW to 30 kW, and the same laser source can be fitted for welding where the job needs it. There are no fixed models: we review your drawings, materials and volumes and recommend a power level, explaining why.",
+        "RA Machine builds CNC fiber laser cutting machines with sources from 1.5 kW to 30 kW, built for cutting only. There are no fixed models: we review your drawings, materials and volumes and recommend a power level, explaining why.",
         "Installation, commissioning and operator training are included, covering cutting parameters, gas settings and routine care. After handover, we offer remote diagnostics within 4 working hours, stocked spares and on-site support, with a 12-month warranty and extended cover available on request.",
       ],
     },
@@ -89,7 +89,7 @@ export const guide: Guide = {
     },
     {
       q: "Can the same fiber laser be used for welding?",
-      a: "Yes. The laser source can be fitted for welding instead of cutting, depending on the application. Laser welding gives a narrow, low-distortion weld at high travel speed, which suits thin sheet, stainless steel and joints where appearance matters. The power needed for welding is often different from the power needed for cutting, so tell us the parts and joints you have in mind when discussing the configuration.",
+      a: "No. RA Machine's fiber laser machines are for cutting only. For joining the cut parts we build MIG, TIG and MMA welding machines, submerged arc welding machines, and cobot and robotic welding systems. A laser cutter also pairs well with robotic welding, because accurate, consistent blanks are what make a robot weld reliably. Tell us your parts and we will recommend the right combination.",
     },
     {
       q: "Can I upgrade the laser power on a machine later?",

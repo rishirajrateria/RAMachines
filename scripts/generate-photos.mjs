@@ -648,8 +648,10 @@ function photoSvg(key, width, height) {
   });
 }
 
+// hero-home, hero-fiber and hero-welding are NOT generated here: they are built from the
+// client's own pictures by scripts/compose-client-photos.mjs (so they are never overwritten).
 const HERO_KEYS = [
-  "hero-home", "hero-products", "hero-fiber", "hero-welding",
+  "hero-products",
   "hero-repair", "hero-training", "hero-jobwork", "hero-about", "hero-contact",
   "hero-certifications", "hero-india", "hero-state", "hero-city", "hero-export", "hero-country",
   "hero-plasma", "hero-arc-welding", "hero-saw",
