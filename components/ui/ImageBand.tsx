@@ -13,6 +13,7 @@
  */
 import type { Img as ImgData } from "@/data/types";
 import Img from "@/components/media/Img";
+import HeroVideo from "@/components/media/HeroVideo";
 import Reveal from "./Reveal";
 
 export default function ImageBand({
@@ -20,6 +21,7 @@ export default function ImageBand({
   overlayText,
   label,
   placeholder = true,
+  video,
   className = "",
 }: {
   image: ImgData;
@@ -28,13 +30,19 @@ export default function ImageBand({
   label?: string;
   /** Set false once a real photo replaces the generated placeholder to hide the label pill. */
   placeholder?: boolean;
+  /** Clip name under /public/video: autoplays muted on a loop once near view, the image is its poster. */
+  video?: string;
   className?: string;
 }) {
   return (
     <div className={`image-band section-rhythm-tight w-full ${className}`.trim()}>
       <Reveal>
         <div className="relative aspect-[16/9] w-full overflow-hidden md:aspect-[21/9]">
-          <Img image={image} sizes="100vw" fill />
+          {video ? (
+            <HeroVideo poster={image} posterAlt={image.alt} video={video} priority={false} />
+          ) : (
+            <Img image={image} sizes="100vw" fill />
+          )}
           <div className="hero-scrim absolute inset-0" />
           {placeholder && label && <span className="photo-label">{label}</span>}
           {overlayText && (

@@ -122,9 +122,10 @@ export default function HomePage() {
       </Section>
 
       <ImageBand
-        image={photos["slot-factory"]}
+        image={photos["factory-floor"]}
+        video="factory"
         overlayText="Built and tested at our works in India"
-        label="Photo: factory floor"
+        placeholder={false}
       />
 
       {/* 3. Machines — the centrepiece: a deep bento grid led by the CNC laser

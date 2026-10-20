@@ -1,6 +1,6 @@
 # Content audit
 
-Generated: 2026-10-19T04:33:13.619Z
+Generated: 2026-10-20T10:57:30.017Z
 Total pages: 264
 
 ## Summary by section
@@ -13,7 +13,7 @@ Total pages: 264
 | contact | 1 | 211 | 211 | 211 |
 | export-country | 30 | 1337 | 1435 | 1681 |
 | export-hub | 1 | 1131 | 1131 | 1131 |
-| home | 1 | 1341 | 1341 | 1341 |
+| home | 1 | 1338 | 1338 | 1338 |
 | india-city | 170 | 877 | 965 | 1072 |
 | india-state | 36 | 1196 | 1355 | 1546 |
 | job-work | 1 | 721 | 721 | 721 |
@@ -80,7 +80,7 @@ Total pages: 264
 | /guides/preparing-factory-for-cnc-machine | CNC Machine Site Preparation: How to Prepare Your Factory | How to Prepare Your Factory for a CNC Cutting or Welding Machine | 1689 |
 | /guides/submerged-arc-welding-guide | Submerged Arc Welding (SAW): What It Is and When to Use It | What Is Submerged Arc Welding (SAW) and When Should You Use It? | 1617 |
 | /guides/welding-machine-220v-vs-440v | 220 V vs 440 V Welding Machines: Which Supply Do You Need? | 220 V vs 440 V Welding Machines: Which Supply Do You Need? | 1643 |
-| / | CNC Laser, Plasma & Welding Machines India \| RA Machine | CNC Laser, Plasma & Welding Machines — Built in India | 1341 |
+| / | CNC Laser, Plasma & Welding Machines India \| RA Machine | CNC Laser, Plasma & Welding Machines — Built in India | 1338 |
 | /india | Laser Cutting Machine Manufacturer in India \| RA Machine | CNC Laser, Plasma & Welding Machine Supplier Across India | 338 |
 | /india/andaman-and-nicobar-islands | Cutting & Welding Machines in Andaman and Nicobar Islands | CNC Laser, Plasma & Welding Machines in Andaman and Nicobar Islands — Manufacturer, Supplier & Service | 1437 |
 | /india/andaman-and-nicobar-islands/port-blair | Laser, Plasma & Welding Machines in Port Blair \| RA Machine | CNC Laser, Plasma & Welding Machines in Port Blair, Andaman and Nicobar Islands — Sales, Installation, Repair & Training | 1032 |

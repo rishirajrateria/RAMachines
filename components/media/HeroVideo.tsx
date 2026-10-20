@@ -16,21 +16,27 @@ import Img from "@/components/media/Img";
 export default function HeroVideo({
   poster,
   posterAlt,
+  video = "hero",
+  priority = true,
 }: {
   poster: { src: string; width: number; height: number };
   posterAlt: string;
+  /** Clip name under /public/video (mp4, plus webm when present). */
+  video?: string;
+  /** The hero poster is the LCP image; lower-page uses (the factory band) pass false. */
+  priority?: boolean;
 }) {
   return (
     <div data-herovideo className="absolute inset-0 h-full w-full overflow-hidden">
       <Img
         image={{ src: poster.src, alt: posterAlt, width: poster.width, height: poster.height }}
         sizes="100vw"
-        priority
+        priority={priority}
         className="h-full w-full object-cover"
       />
       <template
         dangerouslySetInnerHTML={{
-          __html: `<video muted loop playsinline preload="none" poster="${poster.src}" class="absolute inset-0 h-full w-full object-cover"><source src="/video/hero.webm" type="video/webm" /><source src="/video/hero.mp4" type="video/mp4" /></video>`,
+          __html: `<video muted loop playsinline preload="none" poster="${poster.src}" class="absolute inset-0 h-full w-full object-cover">${video === "hero" ? `<source src="/video/hero.webm" type="video/webm" />` : ""}<source src="/video/${video}.mp4" type="video/mp4" /></video>`,
         }}
       />
     </div>
