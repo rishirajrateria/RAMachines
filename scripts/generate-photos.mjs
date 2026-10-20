@@ -656,11 +656,13 @@ const HERO_KEYS = [
   "hero-certifications", "hero-india", "hero-state", "hero-city", "hero-export", "hero-country",
   "hero-plasma", "hero-arc-welding", "hero-saw",
 ];
+// slot-engineer-service, slot-installation and slot-quality-check come from
+// scripts/compose-why-images.mjs (RA Machine logo in the corner), not from here.
 const SLOT_KEYS = [
   "slot-factory", "slot-assembly", "slot-cutting-head", "slot-sparks",
-  "slot-robot-weld", "slot-control-panel", "slot-engineer-service", "slot-training-room",
-  "slot-crate-shipping", "slot-port", "slot-team", "slot-office", "slot-installation",
-  "slot-quality-check", "slot-warehouse-spares",
+  "slot-robot-weld", "slot-control-panel", "slot-training-room",
+  "slot-crate-shipping", "slot-port", "slot-team", "slot-office",
+  "slot-warehouse-spares",
 ];
 
 async function emit(key, width, height, quality) {
