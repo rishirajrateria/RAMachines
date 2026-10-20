@@ -30,6 +30,7 @@ export type PhotoKey =
   | "hero-export"
   | "hero-country"
   | "slot-factory"
+  | "factory-floor"
   | "slot-assembly"
   | "slot-cutting-head"
   | "slot-sparks"
@@ -71,6 +72,7 @@ export const photos: Record<PhotoKey, Img> = {
   "hero-city": img("hero-city", "Illustration evoking a city skyline near an RA Machine service hub", HERO),
   "hero-export": img("hero-export", "Illustration of a shipping port with cranes and containers, export light", HERO),
   "hero-country": img("hero-country", "Illustration evoking RA Machine's export reach, globe light forms", HERO),
+  "factory-floor": img("factory-floor", "20 kW fiber laser cutting machine cutting steel plate on the RA Machine factory floor", { width: 1600, height: 900 }),
   "slot-factory": img("slot-factory", "Illustration of the RA Machine factory floor with machines in a row", SLOT),
   "slot-assembly": img("slot-assembly", "Illustration of technicians assembling a machine on the shop floor", SLOT),
   "slot-cutting-head": img("slot-cutting-head", "Close-up illustration of a laser cutting head and nozzle", SLOT),
