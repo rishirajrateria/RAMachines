@@ -1,7 +1,7 @@
 /**
  * app/privacy-policy/page.tsx — short, static privacy policy for a B2B
- * marketing site whose only data collection is through FormSubmit-powered
- * enquiry forms. No analytics or tracking scripts are used on this site.
+ * marketing site: enquiry forms (delivered by FormSubmit, with a copy kept in
+ * our own private dashboard) and cookie-less first-party visit statistics.
  */
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
@@ -30,9 +30,9 @@ export default function PrivacyPolicyPage() {
       <Prose className="mt-8">
         <p>
           This policy explains what information RA Machine collects through this website and how it
-          is used. We collect information only when you submit it directly to us — there is no
-          analytics or advertising tracking on this site, and we do not sell or rent visitor data to
-          third parties.
+          is used. We collect the information you submit to us directly, plus basic anonymous
+          visit statistics described below. There is no advertising tracking on this site, and we do
+          not sell or rent visitor data to third parties.
         </p>
         <h2>Information we collect</h2>
         <p>
@@ -54,13 +54,25 @@ export default function PrivacyPolicyPage() {
         <p>
           Our website forms are submitted through FormSubmit (formsubmit.co), a third-party form-delivery
           service that receives your submission and forwards it to our email address. FormSubmit processes this data
-          solely to deliver your message to us and operates under its own privacy practices; we do not
-          store form submissions in a database on this website, since the site itself has no backend
-          or server-side storage.
+          solely to deliver your message to us and operates under its own privacy practices. A copy of
+          each submission is also kept in a private, password-protected dashboard that only RA
+          Machine staff can open, so that enquiries are not lost.
+        </p>
+        <h2>Visit statistics</h2>
+        <p>
+          To understand which pages are useful, we record anonymous visit statistics on our own
+          servers: the pages viewed, how long a page was open, the website or search engine that sent
+          you, your browser and device type, your approximate location (country and city, taken from
+          your connection), and whether you tapped or copied our phone number, email address or
+          WhatsApp link. We do not store your IP address, and we do not use cookies or anything else
+          saved on your device. Visitors are told apart only by a daily code that cannot be traced
+          back to you and changes every day. If your browser sends a Do Not Track or Global Privacy
+          Control signal, we do not record your visit.
         </p>
         <h2>Cookies and browser storage</h2>
         <p>
-          This website does not use advertising or analytics cookies. Where a page uses browser local
+          This website does not use cookies for advertising or analytics, and its visit statistics store
+          nothing on your device. Where a page uses browser local
           storage for a purely functional purpose — for example, remembering that you dismissed a
           notice — that information stays on your device and is never transmitted to us.
         </p>

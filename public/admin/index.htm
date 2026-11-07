@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="color-scheme" content="light dark">
+<title>Admin · RA Machine</title>
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/admin/dashboard.css">
+</head>
+<body>
+<noscript><p style="padding:24px;font:16px system-ui">The dashboard needs JavaScript.</p></noscript>
+
+<main id="login" class="login" hidden>
+  <form id="login-form" class="login-card" autocomplete="on">
+    <img class="login-logo" src="/brand/ra-machine-mark.svg" alt="" width="56" height="56">
+    <h1>RA Machine admin</h1>
+    <p class="muted" id="login-note">Sign in to see leads, visits and where they come from.</p>
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" autocomplete="current-password" required autofocus>
+    <p id="login-error" class="error" role="alert" hidden></p>
+    <button type="submit" class="btn primary">Sign in</button>
+  </form>
+</main>
+
+<div id="app" hidden>
+  <header class="topbar">
+    <div class="brand"><img src="/brand/ra-machine-mark.svg" alt="" width="32" height="32"><strong>RA Machine</strong><span class="muted">Admin</span></div>
+    <span id="live" class="live" title="Visitors who opened a page in the last 5 minutes"><i></i><b>0</b> online now</span>
+    <button id="refresh" class="btn ghost" type="button">Refresh</button>
+    <button id="logout" class="btn ghost" type="button">Sign out</button>
+  </header>
+
+  <section class="controls" aria-label="Date range">
+    <div class="presets" id="presets" role="group" aria-label="Quick ranges"></div>
+    <div class="custom">
+      <label>From <input type="date" id="from"></label>
+      <label>To <input type="date" id="to"></label>
+      <button id="apply" class="btn primary" type="button">Apply</button>
+    </div>
+    <p class="muted range-note" id="range-note"></p>
+  </section>
+
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Sections">
+    <button role="tab" data-tab="overview" aria-selected="true">Overview</button>
+    <button role="tab" data-tab="leads" aria-selected="false">Leads</button>
+    <button role="tab" data-tab="places" aria-selected="false">Locations</button>
+    <button role="tab" data-tab="contact" aria-selected="false">Calls &amp; contact</button>
+    <button role="tab" data-tab="traffic" aria-selected="false">Traffic &amp; pages</button>
+  </nav>
+
+  <p id="status" class="status" role="status" hidden></p>
+  <section id="setup" class="card setup" hidden></section>
+  <main id="view" class="view"></main>
+  <footer class="foot muted">All dates and times are India time (IST). A visitor is counted once per day without cookies or IP addresses stored.</footer>
+</div>
+
+<script src="/admin/charts.js"></script>
+<script src="/admin/dashboard.js"></script>
+</body>
+</html>
