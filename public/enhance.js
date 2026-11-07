@@ -282,4 +282,109 @@
       if (e.target === certDialog) certDialog.close();
     });
   }
+  /* --------------------------------------------------------------- analytics
+   * First-party and cookie-less: nothing is written to the visitor's device and
+   * no IP address is stored (the server derives a daily anonymous id). Sends to
+   * /api/collect; the /admin dashboard reads it back. Skipped when the browser
+   * says Do Not Track / Global Privacy Control, on localhost, and in /admin.
+   * Form delivery does NOT depend on any of this — forms post to FormSubmit.
+   */
+  var optOut = navigator.doNotTrack === "1" || window.doNotTrack === "1" || navigator.globalPrivacyControl === true;
+  var onLocal = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) && !window.__trackLocal;
+  if (!optOut && !onLocal && location.pathname.indexOf("/admin") !== 0) {
+    var pvid = Math.random().toString(36).slice(2) + Date.now().toString(36);
+    var visibleMs = 0, lastTick = doc.visibilityState === "visible" ? Date.now() : 0;
+    var maxScroll = 0, lastSent = 0;
+
+    var send = function (payload) {
+      var data = JSON.stringify(payload);
+      try {
+        if (navigator.sendBeacon && navigator.sendBeacon("/api/collect", new Blob([data], { type: "text/plain" }))) return;
+      } catch (e) {}
+      try {
+        fetch("/api/collect", { method: "POST", body: data, keepalive: true, headers: { "Content-Type": "text/plain" } });
+      } catch (e) {}
+    };
+    var act = function (type, label) {
+      send({ t: "act", type: type, label: String(label || "").slice(0, 100), path: location.pathname });
+    };
+    var tick = function () {
+      if (lastTick) { visibleMs += Date.now() - lastTick; lastTick = Date.now(); }
+    };
+    var flush = function () {
+      tick();
+      var seconds = Math.round(visibleMs / 1000);
+      if (seconds < 1 || seconds === lastSent) return;
+      lastSent = seconds;
+      send({ t: "ping", pvid: pvid, d: seconds, s: maxScroll });
+    };
+
+    var q = {};
+    try {
+      var params = new URLSearchParams(location.search);
+      ["utm_source", "utm_medium", "utm_campaign", "gclid"].forEach(function (k) { if (params.get(k)) q[k] = params.get(k); });
+    } catch (e) {}
+    send({ t: "pv", pvid: pvid, path: location.pathname, title: doc.title, ref: doc.referrer, q: q, lang: navigator.language });
+
+    doc.addEventListener("visibilitychange", function () {
+      if (doc.visibilityState === "hidden") { flush(); lastTick = 0; } else { lastTick = Date.now(); }
+    });
+    addEventListener("pagehide", flush);
+    setTimeout(flush, 10000); // lets the dashboard count a 10 s visit as engaged even if the exit beacon is lost
+    var scrollTimer = 0;
+    addEventListener("scroll", function () {
+      if (scrollTimer) return;
+      scrollTimer = setTimeout(function () {
+        scrollTimer = 0;
+        var h = doc.documentElement.scrollHeight;
+        if (h > 0) maxScroll = Math.max(maxScroll, Math.min(100, Math.round(((scrollY + innerHeight) / h) * 100)));
+      }, 200);
+    }, { passive: true });
+
+    // Phone / WhatsApp / email: taps and copies.
+    doc.addEventListener("click", function (e) {
+      var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+      if (!a) return;
+      var href = a.getAttribute("href") || "";
+      if (href.indexOf("tel:") === 0) act("phone_click", href.slice(4));
+      else if (href.indexOf("mailto:") === 0) act("email_click", href.slice(7).split("?")[0]);
+      else if (/^https?:\/\/(wa\.me|api\.whatsapp\.com|wa\.link)\b/.test(href)) act("whatsapp_click", "WhatsApp");
+    }, true);
+    var lastCopy = 0;
+    doc.addEventListener("copy", function () {
+      var text = String(getSelection() || "").trim();
+      if (!text || text.length > 60 || Date.now() - lastCopy < 1000) return;
+      var found = /\+?\d[\d\s().-]{6,}\d/.exec(text);
+      var isPhone = !!found && text.replace(/[\d\s+().-]/g, "").length < 12;
+      var digits = isPhone ? found[0].replace(/\D/g, "").slice(-8) : "";
+      var matches = false;
+      each(isPhone ? 'a[href^="tel:"]' : 'a[href^="mailto:"]', function (a) {
+        var v = a.getAttribute("href").replace(/^(tel|mailto):/, "").split("?")[0];
+        if (isPhone ? v.replace(/\D/g, "").slice(-8) === digits : v.toLowerCase() === text.toLowerCase()) matches = true;
+      });
+      if (!matches) return;
+      lastCopy = Date.now();
+      act(isPhone ? "phone_copy" : "email_copy", isPhone ? found[0].trim() : text);
+    });
+
+    // Forms: first touch, and a copy of each submission (FormSubmit still delivers the email).
+    var formName = function (form) {
+      var subject = form.querySelector('input[name="_subject"]');
+      var m = subject && /^New (.+?) enquiry/.exec(subject.value);
+      return m ? m[1] : "Form";
+    };
+    var started = false;
+    doc.addEventListener("focusin", function (e) {
+      var form = e.target && e.target.closest ? e.target.closest("form") : null;
+      if (!started && form && form.querySelector('input[name="_subject"]')) { started = true; act("form_start", formName(form)); }
+    });
+    doc.addEventListener("submit", function (e) {
+      var form = e.target;
+      if (!form || form.tagName !== "FORM" || !form.querySelector('input[name="_subject"]')) return;
+      var data = new FormData(form), fields = {};
+      if (data.get("_honey")) return;
+      data.forEach(function (value, key) { if (typeof value === "string" && key.charAt(0) !== "_") fields[key] = value; });
+      send({ t: "lead", form: formName(form), fields: fields, path: location.pathname });
+    }, true);
+  }
 })();

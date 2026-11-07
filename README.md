@@ -4,7 +4,7 @@ Static marketing site for **RA Machine** (an RA Group company), Kolkata — lase
 tube lasers, CO2 lasers and robotic MIG/MAG welding systems, sold and serviced across India and
 exported worldwide.
 
-- Next.js 15 App Router, TypeScript, Tailwind CSS, `output: 'export'` — no backend, no CMS, no database.
+- Next.js 15 App Router, TypeScript, Tailwind CSS, `output: 'export'` for the public site (no CMS). The only server code is `api/` (Vercel Functions: tracking + the `/admin` dashboard, backed by Neon Postgres).
 - ~260 pre-rendered routes: home, products (4 categories, 8 SKUs), services, about/contact/certifications,
   36 state/UT pages, 170 city pages, 30 export-country pages, split sitemaps, `robots.txt`, `llms.txt`.
 - Forms post to Web3Forms (see `NOTES.md` §4).

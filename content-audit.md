@@ -1,6 +1,6 @@
 # Content audit
 
-Generated: 2026-10-20T11:25:30.786Z
+Generated: 2026-11-07T02:15:53.005Z
 Total pages: 264
 
 ## Summary by section
@@ -17,7 +17,7 @@ Total pages: 264
 | india-city | 170 | 877 | 965 | 1072 |
 | india-state | 36 | 1196 | 1355 | 1546 |
 | job-work | 1 | 721 | 721 | 721 |
-| legal | 2 | 475 | 482 | 488 |
+| legal | 2 | 475 | 551 | 626 |
 | other | 12 | 338 | 1629 | 1736 |
 | products-index | 1 | 631 | 631 | 631 |
 | repair | 1 | 1769 | 1769 | 1769 |
@@ -288,7 +288,7 @@ Total pages: 264
 | /india/west-bengal/kharagpur | Laser, Plasma & Welding Machines in Kharagpur \| RA Machine | CNC Laser, Plasma & Welding Machines in Kharagpur, West Bengal — Sales, Installation, Repair & Training | 924 |
 | /india/west-bengal/kolkata | Laser, Plasma & Welding Machines in Kolkata \| RA Machine | CNC Laser, Plasma & Welding Machines in Kolkata, West Bengal — Sales, Installation, Repair & Training | 998 |
 | /india/west-bengal/siliguri | Laser, Plasma & Welding Machines in Siliguri \| RA Machine | CNC Laser, Plasma & Welding Machines in Siliguri, West Bengal — Sales, Installation, Repair & Training | 923 |
-| /privacy-policy | Privacy Policy \| RA Machine | Privacy Policy | 488 |
+| /privacy-policy | Privacy Policy \| RA Machine | Privacy Policy | 626 |
 | /products | CNC Laser, Plasma & Welding Machines \| RA Machine | Machines | 631 |
 | /products/cnc-plasma-cutting-machines | CNC Plasma Cutting Machine Manufacturer, India \| RA Machine | CNC Plasma Cutting Machines | 1893 |
 | /products/fiber-laser-cutting-machines | CNC Fiber Laser Cutting Machine Manufacturer, India | CNC Fiber Laser Cutting Machines | 2019 |
