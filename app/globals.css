@@ -1160,6 +1160,25 @@ html:not(.js) .mobilenav-panel:target + .mobilenav-backdrop {
  * `animation: none` under reduced motion (on top of the generic blanket rule
  * above) so a looping decorative animation is fully off, not just very fast.
  * ------------------------------------------------------------------------- */
+.wa-float {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 9999px;
+  background: var(--color-whatsapp);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(15, 26, 26, 0.3), 0 0 0 3px rgba(255, 255, 255, 0.85);
+  transition: transform 0.2s ease;
+}
+.wa-float:hover {
+  transform: scale(1.08);
+}
 .wa-ring {
   position: absolute;
   inset: 0;
